@@ -1,0 +1,1 @@
+Files describing the model will be created in this folder during the training phase. The model files must be kept here unchanged for the test phase.

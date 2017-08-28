@@ -32,8 +32,8 @@ import abc
 
 import six
 
-from tensorflow.contrib.distributions.python.ops import bernoulli
-from tensorflow.contrib.distributions.python.ops import categorical
+from tensorflow.contrib.distributions import Bernoulli
+from tensorflow.contrib.distributions import Categorical
 from tensorflow.python.framework import dtypes
 from tensorflow.python.framework import ops
 from tensorflow.python.layers import base as layers_base
