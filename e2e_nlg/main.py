@@ -1,7 +1,10 @@
 import argparse
 import sys
 import os
+import io
+import json
 import platform
+import pandas as pd
 import numpy as np
 
 import data_loader
@@ -72,10 +75,12 @@ def train(data_trainset, data_devset):
 
 
 def test(data_testset):
-    test_source_file = 'data/test_source.txt'
+    test_source_file = 'data/test_source_dict.json'
     test_target_file = 'data/test_target.txt'
     vocab_file = 'data/vocab_proper_nouns.txt'
     predictions_file = 'predictions/predictions.txt'
+    predictions_final_file = 'predictions/predictions_final.txt'
+    predictions_reduced_file = 'metrics/predictions_reduced.txt'
 
     print('Loading test data...', end=' ')
     sys.stdout.flush()
@@ -89,19 +94,28 @@ def test(data_testset):
     print('Evaluating...')
     sys.stdout.flush()
 
-    if not os.path.isfile(predictions_file):
-        os.system('bash test_script.sh')
+    os.system('bash test_script.sh')
 
-    with open(predictions_file, 'r') as f_predictions:
-        with open('predictions/predictions_final.txt', 'w') as f_predictions_final:
-            predictions = f_predictions.read().splitlines()
-            utterances = postprocessing.capitalize_batch(predictions)
-            utterances = postprocessing.detokenize_batch(utterances)
+    with io.open(predictions_file, 'r', encoding='utf8') as f_predictions:
+        with io.open(test_source_file, 'r', encoding='utf8') as f_test_source:
+            with io.open(predictions_final_file, 'w', encoding='utf8') as f_predictions_final:
+                mrs = json.load(f_test_source)
+                predictions = f_predictions.read().splitlines()
+                predictions_final = postprocessing.finalize_utterances(predictions, mrs)
 
-            for utterance in utterances:
-                f_predictions_final.write(utterance + '\n')
+                for prediction in predictions_final:
+                    f_predictions_final.write(prediction + '\n')
 
-    os.system('perl ../bin/tools/multi-bleu.perl ' + test_target_file + ' < ' + predictions_file)
+                # create a file with a single prediction for each group of the same MRs
+                data_frame_test = pd.read_csv('data/testset.csv', header=0, encoding='utf8')
+                test_mrs = data_frame_test.mr.tolist()
+
+                with io.open(predictions_reduced_file, 'w', encoding='utf8') as f_predictions_reduced:
+                    for i in range(len(test_mrs)):
+                        if i == 0 or test_mrs[i] != test_mrs[i - 1]:
+                            f_predictions_reduced.write(predictions_final[i] + '\n')
+
+    os.system('perl ../bin/tools/multi-bleu.perl ' + test_target_file + ' < ' + predictions_final_file)
 
     print('DONE')
 

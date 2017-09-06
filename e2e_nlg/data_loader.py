@@ -1,19 +1,22 @@
 import sys
 import os
 import io
+import json
+import copy
 import pandas as pd
 import numpy as np
+from collections import OrderedDict
 from nltk.tokenize import word_tokenize
 
 
 def load_training_data(data_trainset, data_devset):
     # read the training data from file
-    data_frame_train = pd.read_csv(data_trainset, header=0, encoding='latin1')  # names=['mr', 'ref']
+    data_frame_train = pd.read_csv(data_trainset, header=0, encoding='utf8')    # names=['mr', 'ref']
     x_train = data_frame_train.mr.tolist()
     y_train = data_frame_train.ref.tolist()
 
     # read the development data from file
-    data_frame_dev = pd.read_csv(data_devset, header=0, encoding='latin1')      # names=['mr', 'ref']
+    data_frame_dev = pd.read_csv(data_devset, header=0, encoding='utf8')        # names=['mr', 'ref']
     x_dev = data_frame_dev.mr.tolist()
     y_dev = data_frame_dev.ref.tolist()
 
@@ -23,33 +26,44 @@ def load_training_data(data_trainset, data_devset):
 
     # produce sequences of extracted words from the meaning representations (MRs) in the trainset
     x_train_seq = []
-    for mr in x_train:
-        row_list = []
+    for i, mr in enumerate(x_train):
+        mr_dict = OrderedDict()
         for slot_value in mr.split(','):
             sep_idx = slot_value.find('[')
             # parse the slot
             slot = slot_value[:sep_idx].strip()
-            row_list.extend([slot_word.lower() for slot_word in slot.split()])
             # parse the value
             value = slot_value[sep_idx + 1:-1].strip()
-            row_list.extend([value_word.lower() for value_word in value.split()])
 
-        x_train_seq.append(row_list)
+            mr_dict[slot.lower()] = value.lower()
+
+        y_train[i] = delex_sample(mr_dict, y_train[i])
+
+        # convert the dictionary to a list
+        x_train_seq.append([])
+        for key, val in mr_dict.items():
+            x_train_seq[i].extend([key, val])
+
 
     # produce sequences of extracted words from the meaning representations (MRs) in the devset
     x_dev_seq = []
-    for mr in x_dev:
-        row_list = []
+    for i, mr in enumerate(x_dev):
+        mr_dict = OrderedDict()
         for slot_value in mr.split(','):
             sep_idx = slot_value.find('[')
             # parse the slot
             slot = slot_value[:sep_idx].strip()
-            row_list.extend([slot_word.lower() for slot_word in slot.split()])
             # parse the value
             value = slot_value[sep_idx + 1:-1].strip()
-            row_list.extend([value_word.lower() for value_word in value.split()])
 
-        x_dev_seq.append(row_list)
+            mr_dict[slot.lower()] = value.lower()
+
+        y_dev[i] = delex_sample(mr_dict, y_dev[i])
+
+        # convert the dictionary to a list
+        x_dev_seq.append([])
+        for key, val in mr_dict.items():
+            x_dev_seq[i].extend([key, val])
 
     with io.open('data/training_source.txt', 'w', encoding='utf8') as f_x_train:
         for line in x_train_seq:
@@ -68,9 +82,9 @@ def load_training_data(data_trainset, data_devset):
             f_y_dev.write('{}\n'.format(' '.join(line)))
 
 
-def load_test_data(data_test):
+def load_test_data(data_testset):
     # read the test data from file
-    data_frame_test = pd.read_csv(data_test, header=0, encoding='latin1')  # names=['mr', 'ref']
+    data_frame_test = pd.read_csv(data_testset, header=0, encoding='utf8')  # names=['mr', 'ref']
     x_test = data_frame_test.mr.tolist()
     y_test = data_frame_test.ref.tolist()
 
@@ -79,66 +93,91 @@ def load_test_data(data_test):
 
     # produce sequences of extracted words from the meaning representations (MRs) in the testset
     x_test_seq = []
-    for mr in x_test:
-        row_list = []
+    x_test_dict = []
+    for i, mr in enumerate(x_test):
+        mr_dict = OrderedDict()
         for slot_value in mr.split(','):
             sep_idx = slot_value.find('[')
             # parse the slot
             slot = slot_value[:sep_idx].strip()
-            row_list.extend([slot_word.lower() for slot_word in slot.split()])
             # parse the value
             value = slot_value[sep_idx + 1:-1].strip()
-            row_list.extend([value_word.lower() for value_word in value.split()])
+
             # store proper noun values (for retrieval in postprocessing)
             if slot in slots_with_proper_nouns and value[0].isupper():
                 vocab_proper_nouns.add(value)
 
-        x_test_seq.append(row_list)
+            mr_dict[slot.lower()] = value.lower()
+
+        # build the MR dictionary
+        x_test_dict.append(copy.deepcopy(mr_dict))
+
+        delex_sample(mr_dict, y_test[i], mr_only=True)
+
+        # convert the dictionary to a list
+        x_test_seq.append([])
+        for key, val in mr_dict.items():
+            x_test_seq[i].extend([key, val])
 
     with io.open('data/test_source.txt', 'w', encoding='utf8') as f_x_test:
         for line in x_test_seq:
             f_x_test.write('{}\n'.format(' '.join(line)))
 
+    with io.open('data/test_source_dict.json', 'w', encoding='utf8') as f_x_test_dict:
+        json.dump(x_test_dict, f_x_test_dict)
+
     with io.open('data/test_target.txt', 'w', encoding='utf8') as f_y_test:
         for line in y_test:
             f_y_test.write(line + '\n')
 
+    # vocabulary of proper nouns to be used for capitalization in postprocessing
     with io.open('data/vocab_proper_nouns.txt', 'w', encoding='utf8') as f_vocab:
         for value in vocab_proper_nouns:
             f_vocab.write(value + '\n')
+
+    # reference file for calculating metrics for test predictions
+    with io.open('metrics/test_references.txt', 'w', encoding='utf8') as f_y_test:
+        for i, line in enumerate(y_test):
+            if i > 0 and x_test[i] != x_test[i - 1]:
+                f_y_test.write('\n')
+            f_y_test.write(line + '\n')
 
 
 def preprocess_utterance(utterance):
     return word_tokenize(utterance.lower())
 
 
-def delex_data(mrs, sentences, update_data_source=False, specific_slots=None, split=True):
-    if specific_slots is not None:
-        delex_slots = specific_slots
+def delex_sample(mr, utterance, slots_to_delex=None, mr_only=False):
+    '''
+    Delexicalize a single sample (MR and the corresponding utterance).
+    By default, the slots 'name' and 'near' are delexicalized.
+    '''
+    vowels = 'aeiou'
+
+    if slots_to_delex is not None:
+        delex_slots = slots_to_delex
     else:
-        delex_slots = ['name', 'food', 'near']
+        delex_slots = ['name', 'near']
 
-    for x, mr in enumerate(mrs):
-        if split:
-            sentence = ' '.join(sentences[x])
-        else:
-            sentence = sentences[x].lower()
+    if not mr_only:
+        utterance = ' '.join(utterance)
+    mr_update = {}
 
-        for slot_value in mr.split(','):
-            sep_idx = slot_value.find('[')
-            # parse the slot
-            slot = slot_value[:sep_idx].strip()
-            if slot in delex_slots:
-                value = slot_value[sep_idx + 1:-1].strip()
-                sentence = sentence.replace(value.lower(), '&slot_val_{0}&'.format(slot))
-                mr = mr.replace(value, '&slot_val_{0}&'.format(slot))
-
-        if update_data_source:
-            if split:
-                sentences[x] = sentence.split()
+    for slot, value in mr.items():
+        if slot in delex_slots:
+            placeholder = '&slot_'
+            if value[0].lower() in vowels:
+                placeholder += 'vow_'
             else:
-                sentences[x] = sentence
-            mrs[x] = mr
+                placeholder += 'con_'
+            placeholder += (slot + '&')
 
-        if not split:
-            return sentence
+            if not mr_only:
+                utterance = utterance.replace(value, placeholder)
+            mr_update[slot] = placeholder
+
+    for slot, new_value in mr_update.items():
+        mr[slot] = new_value
+
+    if not mr_only:
+        return utterance.split()

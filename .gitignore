@@ -154,8 +154,12 @@ flycheck_*.el
 .dir-locals.el
 
 # E2E NLG
-e2e_nlg/data/*.txt
-e2e_nlg/model/*.*
-e2e_nlg/predictions/*.txt
+/e2e_nlg/data/*.json
+/e2e_nlg/data/*.txt
+/e2e_nlg/metrics/*.txt
+/e2e_nlg/model/*.*
+/e2e_nlg/predictions/*.txt
+/e2e_nlg/predictions/beams.npz
+/e2e_nlg/predictions/beam_visualizations/
 
 # End of https://www.gitignore.io/api/emacs

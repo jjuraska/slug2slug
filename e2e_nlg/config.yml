@@ -30,3 +30,4 @@ model_params:
   source.max_seq_len: 50
   source.reverse: false
   target.max_seq_len: 50
+buckets: 10,20,30,40
