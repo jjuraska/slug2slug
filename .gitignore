@@ -153,6 +153,13 @@ flycheck_*.el
 # directory configuration
 .dir-locals.el
 
+# Visual Studio
+# User-specific files
+*.suo
+*.user
+*.userosscache
+*.sln.docstates
+
 # E2E NLG
 /e2e_nlg/data/*.json
 /e2e_nlg/data/*.txt

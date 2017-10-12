@@ -53,7 +53,7 @@ def train(data_trainset, data_devset):
             not os.path.isfile(training_target_file) or \
             not os.path.isfile(dev_source_file) or \
             not os.path.isfile(dev_target_file):
-        data_loader.load_training_data(data_trainset, data_devset)
+        data_loader.load_training_data(data_trainset, data_devset, input_concat=False)
 
     print('DONE')
     print('Generating vocabulary...', end=' ')
@@ -88,7 +88,7 @@ def test(data_testset):
     if not os.path.isfile(test_source_file) or \
             not os.path.isfile(test_target_file) or \
             not os.path.isfile(vocab_file):
-        data_loader.load_test_data(data_testset)
+        data_loader.load_test_data(data_testset, input_concat=False)
         
     print('DONE')
     print('Evaluating...')

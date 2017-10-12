@@ -105,6 +105,23 @@ class BasicSeq2Seq(Seq2SeqModel):
   def encode(self, features, labels):
     source_embedded = tf.nn.embedding_lookup(self.source_embedding,
                                              features["source_ids"])
+
+    input_concat = False
+    if input_concat:
+        #print("\n---- DEBUG ----")
+        #print(source_embedded)
+        #print("----")
+        #dims = tf.shape(source_embedded)
+        dims = source_embedded.get_shape().as_list()
+        #print(dims)
+        source_embedded_reshaped = tf.reshape(source_embedded, [self.batch_size(features, labels), -1, 2, dims[-1]])
+        split0, split1 = tf.split(source_embedded_reshaped, 2, 2)
+        source_embedded = tf.concat([tf.squeeze(split0, 2), tf.squeeze(split1, 2)], 2)
+        #print(split0)
+        #print(split1)
+        #print(source_embedded_reshaped)
+        #print("----\n")
+
     encoder_fn = self.encoder_class(self.params["encoder.params"], self.mode)
     return encoder_fn(source_embedded, features["source_len"])
 

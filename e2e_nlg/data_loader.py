@@ -9,7 +9,7 @@ from collections import OrderedDict
 from nltk.tokenize import word_tokenize
 
 
-def load_training_data(data_trainset, data_devset):
+def load_training_data(data_trainset, data_devset, input_concat=False):
     # read the training data from file
     data_frame_train = pd.read_csv(data_trainset, header=0, encoding='utf8')    # names=['mr', 'ref']
     x_train = data_frame_train.mr.tolist()
@@ -32,17 +32,21 @@ def load_training_data(data_trainset, data_devset):
             sep_idx = slot_value.find('[')
             # parse the slot
             slot = slot_value[:sep_idx].strip()
+            slot = slot.replace(' ', '_')
             # parse the value
             value = slot_value[sep_idx + 1:-1].strip()
 
             mr_dict[slot.lower()] = value.lower()
 
-        y_train[i] = delex_sample(mr_dict, y_train[i])
+        y_train[i] = delex_sample(mr_dict, y_train[i], input_concat=True)
 
         # convert the dictionary to a list
         x_train_seq.append([])
         for key, val in mr_dict.items():
             x_train_seq[i].extend([key, val])
+
+        if input_concat:
+            x_train_seq[i].append('&stop&')
 
 
     # produce sequences of extracted words from the meaning representations (MRs) in the devset
@@ -53,17 +57,21 @@ def load_training_data(data_trainset, data_devset):
             sep_idx = slot_value.find('[')
             # parse the slot
             slot = slot_value[:sep_idx].strip()
+            slot = slot.replace(' ', '_')
             # parse the value
             value = slot_value[sep_idx + 1:-1].strip()
 
             mr_dict[slot.lower()] = value.lower()
 
-        y_dev[i] = delex_sample(mr_dict, y_dev[i])
+        y_dev[i] = delex_sample(mr_dict, y_dev[i], input_concat=True)
 
         # convert the dictionary to a list
         x_dev_seq.append([])
         for key, val in mr_dict.items():
             x_dev_seq[i].extend([key, val])
+
+        if input_concat:
+            x_dev_seq[i].append('&stop&')
 
     with io.open('data/training_source.txt', 'w', encoding='utf8') as f_x_train:
         for line in x_train_seq:
@@ -82,7 +90,7 @@ def load_training_data(data_trainset, data_devset):
             f_y_dev.write('{}\n'.format(' '.join(line)))
 
 
-def load_test_data(data_testset):
+def load_test_data(data_testset, input_concat=False):
     # read the test data from file
     data_frame_test = pd.read_csv(data_testset, header=0, encoding='utf8')  # names=['mr', 'ref']
     x_test = data_frame_test.mr.tolist()
@@ -100,6 +108,7 @@ def load_test_data(data_testset):
             sep_idx = slot_value.find('[')
             # parse the slot
             slot = slot_value[:sep_idx].strip()
+            slot = slot.replace(' ', '_')
             # parse the value
             value = slot_value[sep_idx + 1:-1].strip()
 
@@ -112,12 +121,15 @@ def load_test_data(data_testset):
         # build the MR dictionary
         x_test_dict.append(copy.deepcopy(mr_dict))
 
-        delex_sample(mr_dict, y_test[i], mr_only=True)
+        delex_sample(mr_dict, y_test[i], mr_only=True, input_concat=True)
 
         # convert the dictionary to a list
         x_test_seq.append([])
         for key, val in mr_dict.items():
             x_test_seq[i].extend([key, val])
+
+        if input_concat:
+            x_test_seq[i].append('&stop&')
 
     with io.open('data/test_source.txt', 'w', encoding='utf8') as f_x_test:
         for line in x_test_seq:
@@ -147,7 +159,7 @@ def preprocess_utterance(utterance):
     return word_tokenize(utterance.lower())
 
 
-def delex_sample(mr, utterance, slots_to_delex=None, mr_only=False):
+def delex_sample(mr, utterance, slots_to_delex=None, mr_only=False, input_concat=False):
     '''
     Delexicalize a single sample (MR and the corresponding utterance).
     By default, the slots 'name' and 'near' are delexicalized.
@@ -157,7 +169,7 @@ def delex_sample(mr, utterance, slots_to_delex=None, mr_only=False):
     if slots_to_delex is not None:
         delex_slots = slots_to_delex
     else:
-        delex_slots = ['name', 'near']
+        delex_slots = ['name', 'near', 'food']
 
     if not mr_only:
         utterance = ' '.join(utterance)
@@ -170,11 +182,18 @@ def delex_sample(mr, utterance, slots_to_delex=None, mr_only=False):
                 placeholder += 'vow_'
             else:
                 placeholder += 'con_'
+
+            if slot == 'food':
+                if 'food' not in value.lower():
+                    placeholder += 'cuisine_'
             placeholder += (slot + '&')
 
             if not mr_only:
                 utterance = utterance.replace(value, placeholder)
             mr_update[slot] = placeholder
+        else:
+            if input_concat:
+                mr_update[slot] = value.replace(' ', '_')
 
     for slot, new_value in mr_update.items():
         mr[slot] = new_value

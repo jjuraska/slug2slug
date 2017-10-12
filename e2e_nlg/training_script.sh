@@ -1,7 +1,7 @@
 python ../bin/train.py \
   --config_paths="
-      ./config.yml,
-	  ./config_metrics.yml" \
+      ./config_rnn.yml,
+      ./config_metrics.yml" \
   --model_params "
       vocab_source: ./data/vocab_source.txt
       vocab_target: ./data/vocab_target.txt" \
@@ -20,5 +20,5 @@ python ../bin/train.py \
        target_files:
         - ./data/dev_target.txt" \
   --batch_size 64 \
-  --train_steps 50000 \
+  --train_steps 10000 \
   --output_dir ./model
