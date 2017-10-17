@@ -22,9 +22,11 @@ from __future__ import unicode_literals
 
 from collections import namedtuple
 import tensorflow as tf
+import numpy as np
 from seq2seq.decoders.rnn_decoder import RNNDecoder
 
 from seq2seq.contrib.seq2seq.helper import CustomHelper
+import numpy as np
 
 
 class AttentionDecoderOutput(
@@ -62,6 +64,7 @@ class AttentionDecoder(RNNDecoder):
       return the scores in non-reversed order.
   """
 
+
   def __init__(self,
                params,
                mode,
@@ -79,6 +82,9 @@ class AttentionDecoder(RNNDecoder):
     self.attention_values_length = attention_values_length
     self.attention_fn = attention_fn
     self.reverse_scores_lengths = reverse_scores_lengths
+
+    #panos addition
+    self.logits=np.zeros(shape=(5,1))
 
   @property
   def output_size(self):
@@ -138,6 +144,7 @@ class AttentionDecoder(RNNDecoder):
         activation_fn=None,
         scope="logits")
 
+    
     return softmax_input, logits, att_scores, attention_context
 
   def _setup(self, initial_state, helper):
@@ -175,6 +182,12 @@ class AttentionDecoder(RNNDecoder):
 
     sample_ids = self.helper.sample(
         time=time_, outputs=logits, state=cell_state)
+
+    print('cell outputs:------ \n')
+    print(np.argmax(logits, 0))
+    self.logits=logits
+    #print(type(tf.Session().run(logits[0][2])))
+    print('------------- \n')
 
     outputs = AttentionDecoderOutput(
         logits=logits,

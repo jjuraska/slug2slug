@@ -12,4 +12,4 @@ python ../bin/infer.py \
     params:
       source_files:
         - ./data/test_source.txt" \
-  >  ./predictions/predictions.txt
+#  >  ./predictions/predictions.txt

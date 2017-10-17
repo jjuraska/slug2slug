@@ -106,6 +106,7 @@ class DumpAttention(InferenceTask):
     fetches = {}
     fetches["predicted_tokens"] = self._predictions["predicted_tokens"]
     fetches["features.source_len"] = self._predictions["features.source_len"]
+
     fetches["features.source_tokens"] = self._predictions[
         "features.source_tokens"]
     fetches["attention_scores"] = self._predictions["attention_scores"]
