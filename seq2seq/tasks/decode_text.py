@@ -30,6 +30,9 @@ from tensorflow import gfile
 
 from seq2seq.tasks.inference_task import InferenceTask, unbatch_dict
 
+import os #to logits locally 
+
+
 
 def _get_prediction_length(predictions_dict):
   """Returns the length of the prediction based on the index
@@ -144,13 +147,53 @@ class DecodeText(InferenceTask):
     fetches["features.source_tokens"] = self._predictions[
         "features.source_tokens"]
 
+    fetches["logits"] = self._predictions["logits"]
+
     if "attention_scores" in self._predictions:
       fetches["attention_scores"] = self._predictions["attention_scores"]
 
     return tf.train.SessionRunArgs(fetches)
 
   def after_run(self, _run_context, run_values):
-    fetches_batch = run_values.results
+    fetches_batch = run_values.results # number of input sent x vocab_size x sentence len
+    
+
+    # fist time we load the batch
+    if not os.path.isfile('logits_folder/logits_rnn.npy'):
+      print("working at", os.getcwd())
+      print("initializing logits_rnn...")
+      np.save('logits_folder/logits_rnn', fetches_batch['logits'])
+    else:
+      # now concatenate current with previous results
+      print('appending to logits...')
+      temp = np.load('logits_folder/logits_rnn.npy')
+      batch = fetches_batch['logits'].shape
+
+      print('\n------DEBUG-------------')
+      print('temp_shape = ', temp.shape)
+      print('batch_shape =', batch)
+      print('\n-------------------')
+      # a problem occurs if the max number of words is different in the
+      # batch we are currenlty examining and in the file of accumulated results
+      # fix this by padding 0 'columns' to the smallest of the two
+      if temp.shape[1] < batch.shape[1]:
+        resized = np.zeros(batch.shape)
+        resized[:temp.shape[0], :temp.shape[1], :temp.shape[2]]
+        concat = np.concatenate((resized, batch), axis=0)
+        np.save('logits_folder/logits_rnn', concat)
+
+      elif temp.shape[1] > batch.shape[1]:
+        resized = np.zeros(temp.shape)
+        resized[:batch.shape[1], :batch.shape[2], :batch.shape[3]] = batch
+        concat = np.concatenate((temp, resized), axis=0)
+        np.save('logits_folder/logits_rnn', concat)
+
+      else:
+        temp = np.concatenate((temp, fetches_batch['logits']), axis=0)
+        np.save('logits_folder/logits_rnn', temp)
+
+
+
     for fetches in unbatch_dict(fetches_batch):
       # Convert to unicode
       fetches["predicted_tokens"] = np.char.decode(
