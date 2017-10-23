@@ -7,7 +7,9 @@ import pandas as pd
 import numpy as np
 from collections import OrderedDict
 from nltk.tokenize import word_tokenize
-
+from nltk.tokenize import sent_tokenize
+import re
+import itertools
 
 def load_training_data(data_trainset, data_devset, input_concat=False):
     # read the training data from file
@@ -163,6 +165,7 @@ def delex_sample(mr, utterance, slots_to_delex=None, mr_only=False, input_concat
     '''
     Delexicalize a single sample (MR and the corresponding utterance).
     By default, the slots 'name' and 'near' are delexicalized.
+    All fields: name, near, area, food, customer rating, familyFriendly, eatType, priceRange
     '''
     vowels = 'aeiou'
 
