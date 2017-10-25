@@ -20,5 +20,5 @@ python ../bin/train.py \
        target_files:
         - ./data/dev_target.txt" \
   --batch_size 64 \
-  --train_steps 1000 \
+  --train_steps 10000 \
   --output_dir ./model

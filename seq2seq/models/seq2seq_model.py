@@ -95,6 +95,7 @@ class Seq2SeqModel(ModelBase):
     if losses is not None:
       predictions["losses"] = _transpose_batch_time(losses)
 
+
     # Decoders returns output in time-major form [T, B, ...]
     # Here we transpose everything back to batch-major for the user
     output_dict = collections.OrderedDict(
@@ -105,6 +106,8 @@ class Seq2SeqModel(ModelBase):
         for k, v in decoder_output_flat.items()
     }
     predictions.update(decoder_output_flat)
+
+
 
     # If we predict the ids also map them back into the vocab and process them
     if "predicted_ids" in predictions.keys():
@@ -314,7 +317,7 @@ class Seq2SeqModel(ModelBase):
           features=features,
           labels=labels,
           losses=losses)
-
+    
     # We add "useful" tensors to the graph collection so that we
     # can easly find them in our hooks/monitors.
     graph_utils.add_dict_to_collection(predictions, "predictions")

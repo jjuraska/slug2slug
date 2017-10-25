@@ -158,39 +158,43 @@ class DecodeText(InferenceTask):
     fetches_batch = run_values.results # number of input sent x vocab_size x sentence len
     
 
+    model_type = 'logits_rnn' # TODO: ADD some functionality to detect automatically
+
     # fist time we load the batch
-    if not os.path.isfile('logits_folder/logits_rnn.npy'):
-      print("working at", os.getcwd())
+    if not os.path.isfile('logits_folder/'+model_type+'.npy'):
       print("initializing logits_rnn...")
-      np.save('logits_folder/logits_rnn', fetches_batch['logits'])
+      np.save('logits_folder/'+model_type, fetches_batch['logits'])
     else:
       # now concatenate current with previous results
-      print('appending to logits...')
-      temp = np.load('logits_folder/logits_rnn.npy')
-      batch = fetches_batch['logits'].shape
+      print('\n appending to logits...')
+      temp = np.load('logits_folder/'+model_type+'.npy')
+      batch = fetches_batch['logits']
 
       print('\n------DEBUG-------------')
       print('temp_shape = ', temp.shape)
-      print('batch_shape =', batch)
+      print('batch_shape =', batch.shape)
       print('\n-------------------')
       # a problem occurs if the max number of words is different in the
       # batch we are currenlty examining and in the file of accumulated results
       # fix this by padding 0 'columns' to the smallest of the two
       if temp.shape[1] < batch.shape[1]:
-        resized = np.zeros(batch.shape)
-        resized[:temp.shape[0], :temp.shape[1], :temp.shape[2]]
+        #define new shape to store temp with larger shape[1]
+        new_shape = (temp.shape[0], batch.shape[1], temp.shape[2])
+        resized = np.zeros(new_shape)
+        resized[:temp.shape[0], :temp.shape[1], :temp.shape[2]] = temp
         concat = np.concatenate((resized, batch), axis=0)
-        np.save('logits_folder/logits_rnn', concat)
+        np.save('logits_folder/'+model_type, concat)
 
       elif temp.shape[1] > batch.shape[1]:
-        resized = np.zeros(temp.shape)
-        resized[:batch.shape[1], :batch.shape[2], :batch.shape[3]] = batch
+        new_shape = (batch.shape[0], temp.shape[1], batch.shape[2])
+        resized = np.zeros(new_shape)
+        resized[:batch.shape[0], :batch.shape[1], :batch.shape[2]] = batch
         concat = np.concatenate((temp, resized), axis=0)
-        np.save('logits_folder/logits_rnn', concat)
+        np.save('logits_folder/'+model_type, concat)
 
       else:
         temp = np.concatenate((temp, fetches_batch['logits']), axis=0)
-        np.save('logits_folder/logits_rnn', temp)
+        np.save('logits_folder/'+model_type, temp)
 
 
 

@@ -64,7 +64,7 @@ class DecoderTests(object):
     decoder_output, _ = decoder_fn(initial_state, helper)
 
     #pylint: disable=E1101
-    with self.test_session() as sess:
+    with tf.Session() as sess:
       sess.run(tf.global_variables_initializer())
       decoder_output_ = sess.run(decoder_output)
 
@@ -235,6 +235,8 @@ class AttentionDecoderTest(tf.test.TestCase, DecoderTests):
 
     # Make sure the attention scores sum to 1 for each step
     scores_sum = np.sum(decoder_output_.attention_scores, axis=2)
+    print("----- attention scores sum ---- ")
+    print(scores_sum)
     np.testing.assert_array_almost_equal(
         scores_sum, np.ones([self.sequence_length, self.batch_size]))
 

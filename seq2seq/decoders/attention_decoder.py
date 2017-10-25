@@ -183,11 +183,6 @@ class AttentionDecoder(RNNDecoder):
     sample_ids = self.helper.sample(
         time=time_, outputs=logits, state=cell_state)
 
-    print('cell outputs:------ \n')
-    print(np.argmax(logits, 0))
-    self.logits=logits
-    #print(type(tf.Session().run(logits[0][2])))
-    print('------------- \n')
 
     outputs = AttentionDecoderOutput(
         logits=logits,
