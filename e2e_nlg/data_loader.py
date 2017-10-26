@@ -112,7 +112,7 @@ def load_test_data(data_testset, input_concat=False):
             sep_idx = slot_value.find('[')
             # parse the slot
             slot = slot_value[:sep_idx].strip()
-            #slot = slot.replace(' ', '_')
+            slot = slot.replace(' ', '_')
             # parse the value
             value = slot_value[sep_idx + 1:-1].strip()
 
