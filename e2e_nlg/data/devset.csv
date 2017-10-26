@@ -28,7 +28,7 @@ mr,ref
 "name[Clowns], eatType[pub], priceRange[cheap], customer rating[5 out of 5], area[riverside]",Clowns pub located at the riverside has a cheap price range and customer rating of 5 out of 5.
 "name[The Cricketers], eatType[coffee shop], food[Italian], customer rating[average], familyFriendly[yes], near[The Portland Arms]",The Cricketers is near The Portland Arms. They are your average coffee shop with Italian food and is child friendly.
 "name[The Cricketers], eatType[pub], customer rating[average], familyFriendly[no], near[Ranch]","Close to Ranch you'll find The Cricketers, an average rated pub not so child friendly"
-"name[Browns Cambridge], eatType[coffee shop], food[French], customer rating[1 out of 5], area[riverside], familyFriendly[yes], near[Crowne Plaza Hotel]",Browns Cambridge is a kid friendly coffee shop near Crown Plaza Hotel with a 1 out of 5 rating
+"name[Browns Cambridge], eatType[coffee shop], food[French], customer rating[1 out of 5], area[riverside], familyFriendly[yes], near[Crowne Plaza Hotel]",Browns Cambridge is a kid friendly coffee shop near Crowne Plaza Hotel with a 1 out of 5 rating
 "name[The Rice Boat], food[Italian], priceRange[high], customer rating[average], area[riverside], familyFriendly[no], near[Express by Holiday Inn]",I went to a Italian restaurant called The Rice Boat. It is not children friendly and has average customer ratings. It is in riverside near Express by Holiday Inn.
 "name[The Golden Palace], eatType[coffee shop], food[Indian], priceRange[cheap], customer rating[average], area[riverside]",The Golden Palace is a  cheap Indian coffee shop in the river side. Rating is average.
 "name[Fitzbillies], priceRange[less than £20], customer rating[low], familyFriendly[no], near[Express by Holiday Inn]",Fitzbillies is located near Express by Holiday Inn. Priced less than £20. Low ratings and not kid friendly.
@@ -130,7 +130,7 @@ mr,ref
 "name[The Eagle], eatType[coffee shop], food[Indian], priceRange[high], customer rating[1 out of 5], area[riverside], familyFriendly[yes], near[Burger King]",There is a coffee shop near Burger King that serves Indian food.  It doesn't have a very good rating and the prices are high.  It is called The Eagle.
 "name[Blue Spice], priceRange[more than £30], customer rating[5 out of 5], area[riverside], familyFriendly[yes]",Blue Spice serves highly priced food near the river. It is family friendly and has a rating of 5 out of 5.
 "name[Alimentum], food[Indian], priceRange[less than £20], area[riverside], familyFriendly[yes]","Alimentum is a restaurant serving Indian food in the medium price range. It is located by the riverside, and is family friendly."
-"name[The Waterman], food[French], familyFriendly[yes], near[Crowne Plaza Hotel]",For kid friendly French food there is The Waterman near Crown Plaza Hotel.
+"name[The Waterman], food[French], familyFriendly[yes], near[Crowne Plaza Hotel]",For kid friendly French food there is The Waterman near Crowne Plaza Hotel.
 "name[The Cambridge Blue], eatType[restaurant], food[Indian], customer rating[average]",The Cambridge Blue is a restaurant that provides Indian food Its customer rating is average.
 "name[Blue Spice], priceRange[more than £30], customer rating[high], area[riverside], familyFriendly[yes]",Blue Spice is located in the riverside area. It has a high customer rating and a price range of more than £30 while also being children friendly.
 "name[The Eagle], priceRange[less than £20], customer rating[average], area[city centre]",The Eagle is located in city centre. They have an average rating and their prices are under 20 pounds.
@@ -671,7 +671,7 @@ mr,ref
 "name[The Golden Palace], eatType[pub], priceRange[cheap], area[riverside], near[Rainbow Vegetarian Café]",In the riverside area near Rainbow Vegetarian Café is a reasonably priced pub called The Golden Palace.
 "name[The Punter], food[Japanese], priceRange[£20-25]","The Punter, Japanese restaurant prices £20-25."
 "name[The Golden Palace], eatType[coffee shop], food[Fast food], priceRange[cheap], customer rating[5 out of 5], area[riverside]","The Golden Palace, a coffee shop located near the riverside, has a 5 out of 5 customer rating. It offers Fast food at a very cheap price."
-"name[The Waterman], food[French], familyFriendly[yes], near[Crowne Plaza Hotel]",The Waterman is near Crown Plaza Hotel. It is a child friendly restaurant serving French food.
+"name[The Waterman], food[French], familyFriendly[yes], near[Crowne Plaza Hotel]",The Waterman is near Crowne Plaza Hotel. It is a child friendly restaurant serving French food.
 "name[Fitzbillies], food[Japanese], priceRange[more than £30], near[The Six Bells]",There is a moderately priced Japanese restaurant near The Six Bells called Fitzbillies.
 "name[Fitzbillies], priceRange[high], customer rating[1 out of 5], familyFriendly[yes], near[Express by Holiday Inn]","Fitzbillies is high price, but has a customer rating of 1 out of 5.  It is located near Express by Holiday Inn, and is family friendly."
 "name[The Phoenix], food[French], priceRange[cheap], customer rating[5 out of 5], area[riverside]","The Phoenix by the riverside serving French food, is cheap and has a customer rating of 5 out of 5."
@@ -1172,7 +1172,7 @@ mr,ref
 "name[Alimentum], food[French], priceRange[more than £30], customer rating[low], area[city centre], near[Yippee Noodle Bar]",Alimentum located in the city centre near Yippee Noodle Bar provides French food with a price range of more than  £30. It low customer rating.
 "name[The Eagle], eatType[coffee shop], food[Japanese], priceRange[£20-25], customer rating[3 out of 5], area[riverside], familyFriendly[no], near[Burger King]",There is a coffee shop near Burger King in the riverside. Its name is The Eagle. It provides Japanese food. The price range and its rating is average but it isn't family-friendly.
 "name[The Waterman], eatType[pub], food[French], customer rating[1 out of 5], area[riverside]",The Waterman has a customer rating of 1 out 5. It is a pub that serves French food in riverside.
-"name[Browns Cambridge], eatType[coffee shop], food[Japanese], customer rating[1 out of 5], area[riverside], familyFriendly[yes], near[Crowne Plaza Hotel]","Located in the Riverside area near Crown Plaza Hotel is Browns Cambridge, a kids friendly Japanese coffee shop. It is rated 1 out of 5 stars."
+"name[Browns Cambridge], eatType[coffee shop], food[Japanese], customer rating[1 out of 5], area[riverside], familyFriendly[yes], near[Crowne Plaza Hotel]","Located in the Riverside area near Crowne Plaza Hotel is Browns Cambridge, a kids friendly Japanese coffee shop. It is rated 1 out of 5 stars."
 "name[Midsummer House], food[French], customer rating[low], near[Café Rouge]",One star rated Midsummer House located at Café Rouge offers whole meal deals to love.
 "name[Fitzbillies], food[French], priceRange[less than £20], near[The Six Bells]","Fitzbillies is a restaurant that serves low-cost, British style food and alcohol.  It is located near The Six Bells."
 "name[Loch Fyne], food[Japanese], customer rating[3 out of 5], area[riverside], near[The Rice Boat]","Loch Fyne is located on the riverside, near The Rice Boat. The food is Japanese and customers rate it 3 out of 5."
@@ -1422,7 +1422,7 @@ mr,ref
 "name[Wildwood], eatType[pub], food[Italian], priceRange[less than £20], customer rating[low]",Wildwood is an Italian pub that has a one star rating and has cheap prices. It is located south of the city centre.
 "name[The Twenty Two], food[English], area[riverside], familyFriendly[no]",In riverside there is an English restaurant called The Twenty Two which is not family-friendly.
 "name[The Eagle], eatType[coffee shop], food[French], priceRange[more than £30], customer rating[5 out of 5], area[riverside], familyFriendly[yes], near[Burger King]",The Eagle is a coffee shop that offers wine and is located near Burger King and is family friendly.
-"name[The Waterman], food[Italian], familyFriendly[yes], near[Crowne Plaza Hotel]",The Waterman is a yes to family friendly. It has Italian food near the Crown Plaza Hotel.
+"name[The Waterman], food[Italian], familyFriendly[yes], near[Crowne Plaza Hotel]",The Waterman is a yes to family friendly. It has Italian food near the Crowne Plaza Hotel.
 "name[Cotto], eatType[coffee shop], food[Japanese], priceRange[more than £30], customer rating[low], area[riverside], near[The Portland Arms]","Cotto located near The Portland Arms is an expensive, one star coffee shop."
 "name[The Waterman], food[Italian], priceRange[more than £30], customer rating[high], area[riverside], familyFriendly[no]",The Waterman serves Italian food and is located in the riverside area. It has a high customer rating and a price range of more than £30. It is not child-friendly.
 "name[Clowns], eatType[coffee shop], food[Fast food], customer rating[low], area[riverside], near[Clare Hall]","Clowns is a one star coffee shop located near the City centre, Clare Hall"
@@ -1857,7 +1857,7 @@ mr,ref
 "name[Loch Fyne], eatType[restaurant], food[Fast food], familyFriendly[yes]",There is a kid friendly fast food restaurant called Loch Fyne.
 "name[The Eagle], eatType[coffee shop], food[Fast food], priceRange[moderate], customer rating[1 out of 5], area[city centre], familyFriendly[no], near[Burger King]",Moderately priced fast food can be found at the 1 out of 5 rated coffee shop called The Eagle. It's near Burger King in city centre. This coffee shop is not kid friendly.
 "name[The Punter], eatType[coffee shop], food[French], priceRange[less than £20], customer rating[low], familyFriendly[no], near[Café Sicilia]",There is a cheap coffee shop The Punter located at the Café Sicilia that provides food and beverages like wine.
-"name[The Waterman], food[Japanese], familyFriendly[yes], near[Crowne Plaza Hotel]","The Waterman is a family friendly restaurant that server Japanese food, they are near Crown Plaza Hotel."
+"name[The Waterman], food[Japanese], familyFriendly[yes], near[Crowne Plaza Hotel]","The Waterman is a family friendly restaurant that server Japanese food, they are near Crowne Plaza Hotel."
 "name[The Punter], eatType[coffee shop], food[Italian], priceRange[more than £30], customer rating[high], familyFriendly[no], near[Café Sicilia]",There is a coffee shop which serves Italian cuisine with a high customer rating. It is called The Punter and is located close to Café Sicilia. It has a price range of more than £30 and it is not child-friendly.
 "name[Wildwood], eatType[pub], food[Japanese], priceRange[high], customer rating[3 out of 5]","Wildwood is an more expensive pub which serves Japanese food, it has a mediocre customer rating."
 "name[The Golden Curry], food[Chinese], customer rating[low], area[city centre], familyFriendly[no], near[Café Rouge]",The Golden Curry is a low-rated Chinese restaurant that is located near Café Rouge in city centre. It is not family friendly.
@@ -1980,7 +1980,7 @@ mr,ref
 "name[The Golden Palace], eatType[coffee shop], food[Italian], priceRange[high], customer rating[1 out of 5], area[riverside]",The Golden Palace has a high price range and a 1 out of 5 customer rating. The Golden Palace is a riverside coffee shop that serves Italian food.
 "name[Alimentum], food[Chinese], priceRange[less than £20], customer rating[low], area[city centre], near[Yippee Noodle Bar]",Alimentum near Yippee Noodle Bar in the city centre serves cheap Chinese food but is not highly rated.
 "name[The Eagle], priceRange[less than £20], customer rating[average], area[riverside]",The Eagle has an average customer rating in the riverside area with a price range of less than 20 pounds.
-"name[The Waterman], food[Fast food], familyFriendly[yes], near[Crowne Plaza Hotel]",The Waterman is a kid friendly fast food restaurant that's located by the Crown Plaza Hotel.
+"name[The Waterman], food[Fast food], familyFriendly[yes], near[Crowne Plaza Hotel]",The Waterman is a kid friendly fast food restaurant that's located by the Crowne Plaza Hotel.
 "name[The Dumpling Tree], eatType[pub], food[Japanese], familyFriendly[yes], near[The Portland Arms]","The Dumpling Tree pub serves Japanese food, it's child friendly and is located near The Portland Arms."
 "name[Strada], priceRange[moderate], customer rating[1 out of 5], familyFriendly[yes]","Strada is a kids friendly moderate price range, with the customer  rating of 1 of of 5."
 "name[Green Man], priceRange[less than £20], area[riverside], familyFriendly[no]",Riverside has an inexpensive adult restaurant called Green Man.

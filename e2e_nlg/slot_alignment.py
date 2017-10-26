@@ -8,6 +8,7 @@ import numpy as np
 from collections import OrderedDict
 from nltk.tokenize import word_tokenize
 from nltk.tokenize import sent_tokenize
+from nltk.corpus import wordnet
 import re
 import itertools
 
@@ -54,7 +55,7 @@ def areaSlot(sent, value):
     return False
 
 #TODO this one is tough, it can be easy to spot, like cheap, or it can be hard like "for upper class people" which implies high...
-#TODO maybe we can use synonyms to catch most cases, eitherway - 71 instances
+#TODO maybe we can use synonyms to catch most cases, eitherway - 70 instances
 def priceRangeSlot(sent, value):
     """
         :param sent: target utterance
@@ -63,7 +64,7 @@ def priceRangeSlot(sent, value):
             Note it's only possible to have 'moderate', 'high', 'less than £20', 'more than £30', 'cheap', '£20-25'
              as possible values...
         """
-    if value in sent:
+    if value in sent or '\xa3' in sent:
         return True
     nums = re.findall("\d", value)
     if nums:
@@ -90,7 +91,7 @@ def eatTypeSlot(sent, value):
     return False
 
 #TODO this one is a little wierd... a highly rated restraunt could add something as simple as "great service" which is hard to detect
-#TODO should we perhaps this is a case in which we just have to accept the noise, i.e. keep the arg - 216 instances
+#TODO should we perhaps this is a case in which we just have to accept the noise, i.e. keep the arg - 185 instances
 def customerRatingSlot(sent, value):
     if value in sent:
         return True
@@ -99,19 +100,44 @@ def customerRatingSlot(sent, value):
             return True
         else:
             sent = re.sub("-", " ", sent)
-            for rating in ["one star", "two star", "three star", "four star", "five star"]:
+            for rating in ["one star", "two star", "three star", "four star", "five star", "review"]:
                 if rating in sent:
+                    return True
+            tokens = word_tokenize(sent)
+            for rating in ["three", "four", "five", "one", "two"]:
+                if rating in tokens:
                     return True
     return False
 
 
-#TODO @near slot messy data... crowne plaza hotel slot value but crown plaza hotel in the utterance..
-#TODO check if maybe the grammar parser can fix this - 9 instances
+#TODO @near 2 acceptable failures
 
-#TODO @food slot is brutal. "sushi" and "pasta" indicate japanese and italian, but it is very common to never mention the action "type"
-#TODO we will have to accept this noise I suppose, perhaps we could try and train a classifier to detect it, but otherwise I'm not sure - 305 instances
+#TODO @food has 24 failures which are acceptable to remove the slot
+def foodSlot(sent, value):
+    value = value.lower()
+    sent = re.sub("-", " ", sent.lower())
+    if value in sent:
+        return True
+    elif value == "english" and "british" in sent:
+        return True
+    elif value == "fast food" and "american style" in sent:
+        return True
+    else:
+        tokens = word_tokenize(sent)
+        for token in tokens:
+            #FIXME warning this will be slow on start up
+            synsets = wordnet.synsets(token, pos='n')
+            for synset in synsets:
+                hypernyms = synset.hypernyms()
+                while len(hypernyms) > 0:
+                    lemmas = [l.name() for l in hypernyms[0].lemmas()]
+                    if "food" in lemmas:
+                        return True
+                    hypernyms = hypernyms[0].hypernyms()
+    return False
 
-def splitContent(old_mrs, old_utterances, use_heuristics=True, permute=True):
+
+def splitContent(old_mrs, old_utterances, filename, use_heuristics=True, permute=True, remove_misses=True):
     """
     :param mr: list of dicts
     :param utterance: list
@@ -123,11 +149,18 @@ def splitContent(old_mrs, old_utterances, use_heuristics=True, permute=True):
     new_utterances = []
     slot_fails = {}
     instance_fails = set()
+    misses = ["The following samples were removed: "]
+    base = max(int(len(old_utterances) * .1), 1)
+    benchmarks = [base * i for i in range(1, 11)]
     for index in range(0,len(old_mrs)):
+        if index in benchmarks:
+            curr_state = index / base
+            print("Slot alignment is " + str(10 * curr_state) + "% done.")
         curr_mr = old_mrs[index]
         curr_utterance = old_utterances[index]
         new_pair = {re.sub(r'\s+', ' ', sent).strip():{} for sent in sent_tokenize(curr_utterance)}
         foundSlots = set()
+        rm_slot = []
         for slot, value in curr_mr.items():
             hasSlot = False
             for sent, new_slots in new_pair.items():
@@ -146,6 +179,9 @@ def splitContent(old_mrs, old_utterances, use_heuristics=True, permute=True):
                     elif slot == "familyFriendly":
                         if familyFriendlySlot(sent, value):
                             foundSlot = True
+                    elif slot == "food":
+                        if foodSlot(sent, value):
+                            foundSlot = True
                     elif slot == "area":
                         if areaSlot(sent, value):
                             foundSlot = True
@@ -161,15 +197,19 @@ def splitContent(old_mrs, old_utterances, use_heuristics=True, permute=True):
                     hasSlot = True
                     continue
             if not hasSlot:
-                # if slot in ["eatType", "familyFriendly", "area"]:
-                #     continue
+                # if slot in ["eatType", "familyFriendly", "area", "near", "food"]:
+                misses.append("Couldn't find " + slot + "(" + value + ") - " + old_utterances[index])
+                rm_slot.append(slot)
+                    # continue
                 instance_fails.add(curr_utterance)
                 if slot not in slot_fails:
                     slot_fails[slot] = 0
                 slot_fails[slot] += 1
-                # if slot == "priceRange":
+                # if slot == "customer_rating":
                 #     print("Couldn't find " + slot + "(" + value + ")in " + old_utterances[index])
         else:
+            for slot in rm_slot:
+                del curr_mr[slot]
             new_mrs.append(curr_mr)
             new_utterances.append(curr_utterance.strip())
             if len(new_pair) > 1:
@@ -178,8 +218,11 @@ def splitContent(old_mrs, old_utterances, use_heuristics=True, permute=True):
                     new_utterances.append(sent)
             if permute:
                 permuteSentCombos(new_pair, new_mrs, new_utterances)
-    print(str(slot_fails.items()))
-    print("So we had " + str(len(instance_fails)) + " fails out of " + str(len(old_utterances)))
+    misses.append("We had these misses from all categories: " + str(slot_fails.items()))
+    misses.append("So we had " + str(len(instance_fails)) + " samples with misses out of " + str(len(old_utterances)))
+    with io.open(os.path.join(os.getcwd(), "data", "logs", filename), 'w', encoding='utf8') as log_file:
+        log_file.write('\n'.join(misses))
+
     return new_mrs, new_utterances
 
 
@@ -352,7 +395,7 @@ def wrangleSlots(filename):
             value = slot_value[sep_idx + 1:-1].strip()
             mr_dict[slot] = value
         x_dicts.append(mr_dict)
-    new_x, new_y = splitContent(x_dicts, y_dev)
+    new_x, new_y = splitContent(x_dicts, y_dev, filename)
     filename = filename.split(".")[0]+"_wrangled.csv"
     new_file = open(os.path.join(os.getcwd(), "data", filename), "w")
     for row in range(0, len(new_x)):
@@ -364,8 +407,9 @@ def wrangleSlots(filename):
         new_file.write(utterance)
         new_file.write("\n")
 
-wrangleSlots("devset.csv")
+wrangleSlots("trainset.csv")
 
+# foodSlot("This is a test of pasta", "English")
 # testPermute()
 # testSplitContent()
 # testSlotPooling()
