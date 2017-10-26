@@ -40,7 +40,7 @@ def load_training_data(data_trainset, data_devset, input_concat=False):
 
             mr_dict[slot.lower()] = value.lower()
 
-        y_train[i] = delex_sample(mr_dict, y_train[i], input_concat=True)
+        y_train[i] = delex_sample(mr_dict, y_train[i], input_concat=input_concat)
 
         # convert the dictionary to a list
         x_train_seq.append([])
@@ -48,7 +48,8 @@ def load_training_data(data_trainset, data_devset, input_concat=False):
             x_train_seq[i].extend([key, val])
 
         if input_concat:
-            x_train_seq[i].append('&stop&')
+            # append a sequence-end token to be paired up with seq2seq's sequence-end token when concatenating
+            x_train_seq[i].append('&sequence_end&')
 
 
     # produce sequences of extracted words from the meaning representations (MRs) in the devset
@@ -65,7 +66,7 @@ def load_training_data(data_trainset, data_devset, input_concat=False):
 
             mr_dict[slot.lower()] = value.lower()
 
-        y_dev[i] = delex_sample(mr_dict, y_dev[i], input_concat=True)
+        y_dev[i] = delex_sample(mr_dict, y_dev[i], input_concat=input_concat)
 
         # convert the dictionary to a list
         x_dev_seq.append([])
@@ -95,8 +96,9 @@ def load_training_data(data_trainset, data_devset, input_concat=False):
 def load_test_data(data_testset, input_concat=False):
     # read the test data from file
     data_frame_test = pd.read_csv(data_testset, header=0, encoding='utf8')  # names=['mr', 'ref']
-    x_test = data_frame_test.mr.tolist()
-    y_test = data_frame_test.ref.tolist()
+    x_test = data_frame_test.iloc[:, 0].tolist()
+    if data_frame_test.shape[1] > 1:
+        y_test = data_frame_test.iloc[:, 1].tolist()
 
     slots_with_proper_nouns = ['name', 'near', 'area', 'food']
     vocab_proper_nouns = set()
@@ -110,7 +112,7 @@ def load_test_data(data_testset, input_concat=False):
             sep_idx = slot_value.find('[')
             # parse the slot
             slot = slot_value[:sep_idx].strip()
-            slot = slot.replace(' ', '_')
+            #slot = slot.replace(' ', '_')
             # parse the value
             value = slot_value[sep_idx + 1:-1].strip()
 
@@ -123,7 +125,7 @@ def load_test_data(data_testset, input_concat=False):
         # build the MR dictionary
         x_test_dict.append(copy.deepcopy(mr_dict))
 
-        delex_sample(mr_dict, y_test[i], mr_only=True, input_concat=True)
+        delex_sample(mr_dict, mr_only=True, input_concat=input_concat)
 
         # convert the dictionary to a list
         x_test_seq.append([])
@@ -140,34 +142,40 @@ def load_test_data(data_testset, input_concat=False):
     with io.open('data/test_source_dict.json', 'w', encoding='utf8') as f_x_test_dict:
         json.dump(x_test_dict, f_x_test_dict)
 
-    with io.open('data/test_target.txt', 'w', encoding='utf8') as f_y_test:
-        for line in y_test:
-            f_y_test.write(line + '\n')
-
     # vocabulary of proper nouns to be used for capitalization in postprocessing
     with io.open('data/vocab_proper_nouns.txt', 'w', encoding='utf8') as f_vocab:
         for value in vocab_proper_nouns:
             f_vocab.write(value + '\n')
 
-    # reference file for calculating metrics for test predictions
-    with io.open('metrics/test_references.txt', 'w', encoding='utf8') as f_y_test:
-        for i, line in enumerate(y_test):
-            if i > 0 and x_test[i] != x_test[i - 1]:
-                f_y_test.write('\n')
-            f_y_test.write(line + '\n')
+    if data_frame_test.shape[1] > 1:
+        with io.open('data/test_target.txt', 'w', encoding='utf8') as f_y_test:
+            for line in y_test:
+                f_y_test.write(line + '\n')
+
+        # reference file for calculating metrics for test predictions
+        with io.open('metrics/test_references.txt', 'w', encoding='utf8') as f_y_test:
+            for i, line in enumerate(y_test):
+                if i > 0 and x_test[i] != x_test[i - 1]:
+                    f_y_test.write('\n')
+                f_y_test.write(line + '\n')
 
 
 def preprocess_utterance(utterance):
     return word_tokenize(utterance.lower())
 
 
-def delex_sample(mr, utterance, slots_to_delex=None, mr_only=False, input_concat=False):
+def delex_sample(mr, utterance=None, slots_to_delex=None, mr_only=False, input_concat=False):
     '''
     Delexicalize a single sample (MR and the corresponding utterance).
     By default, the slots 'name' and 'near' are delexicalized.
     All fields: name, near, area, food, customer rating, familyFriendly, eatType, priceRange
     '''
+
     vowels = 'aeiou'
+
+    if not mr_only and utterance == None:
+        raise ValueError('the \'utterance\' argument must be provided when \'mr_only\' is False.')
+        return None
 
     if slots_to_delex is not None:
         delex_slots = slots_to_delex

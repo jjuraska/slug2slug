@@ -6,7 +6,8 @@ python ../bin/infer.py \
         file: predictions/beams.npz" \
   --model_dir ./model \
   --model_params "
-    inference.beam_search.beam_width: 10" \
+    inference.beam_search.beam_width: 10
+    inference.beam_search.length_penalty_weight: 0.6" \
   --input_pipeline "
     class: ParallelTextInputPipeline
     params:

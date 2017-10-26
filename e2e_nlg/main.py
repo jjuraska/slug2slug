@@ -12,11 +12,12 @@ import postprocessing
 
 
 def main():
-    parser = argparse.ArgumentParser(description='Process some integers.')
+    parser = argparse.ArgumentParser(description='Perform a specific task (e.g. training, testing, prediction) with the defined model.')
     group = parser.add_mutually_exclusive_group()
     group.add_argument('--train', nargs=2, help='takes as arguments the paths to the trainset and the devset')
     group.add_argument('--test', nargs=1, help='takes as argument the path to the testset')
-    #group.add_argument('--predict', nargs=1)
+    group.add_argument('--predict', nargs=1, help='takes as argument the path to the testset')
+    group.add_argument('--beam_dump', nargs=1, help='takes as argument the path to the testset')
 
     args = parser.parse_args()
 
@@ -29,12 +30,24 @@ def main():
         if not os.path.isfile(args.test[0]):
             print('Error: invalid file path.')
         else:
-            test(args.test[0])
+            test(args.test[0], predict_only=False)
+    elif args.predict is not None:
+        if not os.path.isfile(args.predict[0]):
+            print('Error: invalid file path.')
+        else:
+            test(args.predict[0], predict_only=True)
+    elif args.beam_dump is not None:
+        if not os.path.isfile(args.beam_dump[0]):
+            print('Error: invalid file path.')
+        else:
+            postprocessing.get_utterances_from_beam(args.beam_dump[0])
     else:
         print('Usage:\n')
         print('main.py')
         print('\t--train [path_to_trainset] [path_to_devset]')
         print('\t--test [path_to_testset]')
+        print('\t--predict [path_to_testset]')
+        print('\t--beam_dump [path_to_beams]')
 
 
 
@@ -74,7 +87,7 @@ def train(data_trainset, data_devset):
     print('DONE')
 
 
-def test(data_testset):
+def test(data_testset, predict_only=True):
     test_source_file = 'data/test_source_dict.json'
     test_target_file = 'data/test_target.txt'
     vocab_file = 'data/vocab_proper_nouns.txt'
@@ -85,10 +98,7 @@ def test(data_testset):
     print('Loading test data...', end=' ')
     sys.stdout.flush()
 
-    if not os.path.isfile(test_source_file) or \
-            not os.path.isfile(test_target_file) or \
-            not os.path.isfile(vocab_file):
-        data_loader.load_test_data(data_testset, input_concat=False)
+    data_loader.load_test_data(data_testset, input_concat=False)
         
     print('DONE')
     print('Evaluating...')
@@ -106,16 +116,18 @@ def test(data_testset):
                 for prediction in predictions_final:
                     f_predictions_final.write(prediction + '\n')
 
-                # create a file with a single prediction for each group of the same MRs
-                data_frame_test = pd.read_csv('data/testset.csv', header=0, encoding='utf8')
-                test_mrs = data_frame_test.mr.tolist()
+                if not predict_only:
+                    # create a file with a single prediction for each group of the same MRs
+                    data_frame_test = pd.read_csv('data/testset.csv', header=0, encoding='utf8')
+                    test_mrs = data_frame_test.mr.tolist()
 
-                with io.open(predictions_reduced_file, 'w', encoding='utf8') as f_predictions_reduced:
-                    for i in range(len(test_mrs)):
-                        if i == 0 or test_mrs[i] != test_mrs[i - 1]:
-                            f_predictions_reduced.write(predictions_final[i] + '\n')
+                    with io.open(predictions_reduced_file, 'w', encoding='utf8') as f_predictions_reduced:
+                        for i in range(len(test_mrs)):
+                            if i == 0 or test_mrs[i] != test_mrs[i - 1]:
+                                f_predictions_reduced.write(predictions_final[i] + '\n')
 
-    os.system('perl ../bin/tools/multi-bleu.perl ' + test_target_file + ' < ' + predictions_final_file)
+    if not predict_only:
+        os.system('perl ../bin/tools/multi-bleu.perl ' + test_target_file + ' < ' + predictions_final_file)
 
     print('DONE')
 
