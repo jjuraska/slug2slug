@@ -104,7 +104,7 @@ def customerRatingSlot(sent, value):
                 if rating in sent:
                     return True
             tokens = word_tokenize(sent)
-            for rating in ["three", "four", "five", "one", "two"]:
+            for rating in ["three", "four", "five", "one", "two", "star"]:
                 if rating in tokens:
                     return True
     return False
@@ -169,7 +169,7 @@ def splitContent(old_mrs, old_utterances, filename, use_heuristics=True, permute
                 if value.lower() in sent.lower():
                     foundSlot = True
                 elif slot == "name":
-                    for pronoun in ["it", "its", "it's"]:
+                    for pronoun in ["it", "its", "it's", "they"]:
                         if pronoun in word_tokenize(curr_utterance.lower()):
                             foundSlot = True
                 elif use_heuristics:
@@ -348,6 +348,8 @@ def testSplitContent():
     x_dicts = []
     for i, mr in enumerate(x_dev):
         mr_dict = {}
+        if len(mr) == 0:
+            continue
         for slot_value in mr.split(','):
             sep_idx = slot_value.find('[')
             # parse the slot
@@ -357,7 +359,7 @@ def testSplitContent():
             value = slot_value[sep_idx + 1:-1].strip()
             mr_dict[slot] = value
         x_dicts.append(mr_dict)
-    new_x, new_y = splitContent(x_dicts, y_dev)
+    new_x, new_y = splitContent(x_dicts, y_dev, "devset.csv")
     print("Split contents test passed.")
     # for x in range(0, len(new_x)):
     #     print(str(new_y[x]))
@@ -379,6 +381,7 @@ def testPermute():
         print(utter + " --- " + str(mr))
 
 def wrangleSlots(filename):
+    print("Aligning " + str(filename))
     data_frame_dev = pd.read_csv(os.path.join(os.getcwd(), "data", filename), header=0,
                                  encoding='utf8')  # names=['mr', 'ref']
     x_dev = data_frame_dev.mr.tolist()
@@ -398,16 +401,20 @@ def wrangleSlots(filename):
     new_x, new_y = splitContent(x_dicts, y_dev, filename)
     filename = filename.split(".")[0]+"_wrangled.csv"
     new_file = open(os.path.join(os.getcwd(), "data", filename), "w")
+    new_file.write("mr,ref\n")
     for row in range(0, len(new_x)):
         utterance = new_y[row]
         mr = new_x[row]
+        if len(mr) == 0:
+            continue
         mr_str = '"'+', '.join(['%s[%s]' % (key, value) for (key, value) in mr.items()])+'"'
         new_file.write(mr_str)
-        new_file.write(",")
+        new_file.write(",\"")
         new_file.write(utterance)
-        new_file.write("\n")
+        new_file.write("\"\n")
 
 wrangleSlots("trainset.csv")
+wrangleSlots("devset.csv")
 
 # foodSlot("This is a test of pasta", "English")
 # testPermute()
