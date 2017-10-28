@@ -3,9 +3,11 @@ import re
 import numpy as np
 import networkx as nx
 import pickle
+import pandas as pd
+import os
 from nltk.tokenize import word_tokenize, sent_tokenize
 from nltk.tokenize.moses import MosesDetokenizer
-
+from slot_alignment import scoreAlignment
 
 def finalize_utterances(utterances, mrs):
     utterances_final = []
@@ -70,6 +72,51 @@ def detokenize(utterance):
     return ' '.join(sentences)
 
 
+def extractMRs(data_file):
+    data_frame_dev = pd.read_csv(os.path.join(os.getcwd(), "data", data_file), header=0,
+                                 encoding='utf8')  # names=['mr', 'ref']
+    x_dev = data_frame_dev.mr.tolist()
+    # y_dev = data_frame_dev.ref.tolist()
+    x_dicts = []
+    for i, mr in enumerate(x_dev):
+        mr_dict = {}
+        for slot_value in mr.split(','):
+            sep_idx = slot_value.find('[')
+            # parse the slot
+            slot = slot_value[:sep_idx].strip()
+            slot = slot.replace(' ', '_')
+            # parse the value
+            value = slot_value[sep_idx + 1:-1].strip()
+            mr_dict[slot] = value
+        x_dicts.append(mr_dict)
+    return x_dicts
+
+
+def align_beams(beams=None, beams_file=None, data_file=None):
+    new_beams = []
+    if beams is None:
+        if beams_file is None:
+            beams_file = 'predictions/beams_dump.pkl'
+        with (open(beams_file, "rb")) as openfile:
+            beams = pickle.load(openfile)
+    mrs = extractMRs(data_file)
+    for index in range(0, len(mrs)):
+        curr_mr = mrs[index]
+        scored_beams = []
+        for beam in beams[index]:
+            # utterance = beam[0]
+            utterance, neg_score, score = beam
+            sent = " ".join(utterance)
+            score = scoreAlignment(sent, curr_mr)
+            scored_beams.append((score, beam))
+        scored_beams.sort(key=lambda tup: tup[0], reverse=True)
+        new_beams.append(scored_beams)
+        if index > 100:
+            exit()
+    with open('predictions/beams_dump_reranked.pkl', 'wb') as f_beam_dump:
+        pickle.dump(np.array(beams), f_beam_dump)
+
+
 # beam retrieval adopted from Shubham Agarwal's code
 
 def get_utterances_from_beam(beam_data):
@@ -80,7 +127,9 @@ def get_utterances_from_beam(beam_data):
     token_unk = 'UNK'
     token_seq_start = 'SEQUENCE_START'
     token_seq_end = 'SEQUENCE_END'
-    
+    token_seq_inner = 'SEQUENCE_INNER'
+    token_seq_outer = 'SEQUENCE_OUTER'
+
     beam_sequences = []
     beams = np.load(beam_file)
 
@@ -93,7 +142,7 @@ def get_utterances_from_beam(beam_data):
     vocab_target = [line.split('\t')[0] for line in vocab_target]
 
     # add auxiliary tokens to the vocabulary
-    vocab_target += [token_unk, token_seq_start, token_seq_end]
+    vocab_target += [token_unk, token_seq_start, token_seq_end, token_seq_inner, token_seq_outer]
 
     # for predicted_ids, parent_ids, scores in data_iterator:
     for idx in range(len(beams['predicted_ids'])):
@@ -167,3 +216,5 @@ def __extend_graph(graph, depth, parent_ids, names, scores):
         
         # connect the new node with its parent
         graph.add_edge(parent_node, new_node)
+
+align_beams(data_file="testset.csv")

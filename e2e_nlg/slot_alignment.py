@@ -137,7 +137,7 @@ def foodSlot(sent, value):
     return False
 
 
-def splitContent(old_mrs, old_utterances, filename, use_heuristics=True, permute=True, remove_misses=True):
+def splitContent(old_mrs, old_utterances, filename, use_heuristics=True, permute=True):
     """
     :param mr: list of dicts
     :param utterance: list
@@ -298,6 +298,11 @@ def permuteSentCombos(newPairs, mrs, utterances, max_iter=False, depth=1, assume
     return utterances, mrs
 
 
+def assignScopeToken(utterance):
+    tokens = sent_tokenize(utterance)
+    utterance = "&sequence_outer& " + " &sequence_inner& ".join(tokens)
+    return utterance
+
 def mergeEntries(merge_tuples):
     """
     :param merge_tuples: list of (utterance, mr) tuples to merge into one pair
@@ -310,6 +315,58 @@ def mergeEntries(merge_tuples):
         mr.update(curr_mr)
     return mr, sent
 
+
+def scoreAlignment(curr_utterance, curr_mr, scoring="default+over-class"):
+    foundSlots = set()
+    sent = curr_utterance
+    matches = set(re.findall(r'&slot_.*?&', sent))
+    for slot, value in curr_mr.items():
+        foundSlot = False
+        sent = sent.lower()
+        if value.lower() in sent.lower():
+            foundSlot = True
+        elif slot == "name":
+            for pronoun in ["it", "its", "it's", "they"]:
+                if pronoun in word_tokenize(curr_utterance.lower()):
+                    foundSlot = True
+        elif slot == "priceRange":
+            if priceRangeSlot(sent, value):
+                foundSlot = True
+        elif slot == "familyFriendly":
+            if familyFriendlySlot(sent, value):
+                foundSlot = True
+        elif slot == "food":
+            if foodSlot(sent, value):
+                foundSlot = True
+        elif slot == "area":
+            if areaSlot(sent, value):
+                foundSlot = True
+        elif slot == "eatType":
+            if eatTypeSlot(sent, value):
+                foundSlot = True
+        elif slot == "customer_rating":
+            if customerRatingSlot(sent, value):
+                foundSlot = True
+        else:
+            delex_slot = checkDelexSlots(slot, matches)
+            if delex_slot:
+                foundSlot = True
+                matches.remove(delex_slot)
+        if foundSlot:
+            foundSlots.add(slot)
+            continue
+    if scoring == "default":
+        return len(foundSlots)/len(curr_mr)
+    elif scoring == "default+over-class":
+        return (len(foundSlots) / len(curr_mr))/(len(matches) + 1)
+
+def checkDelexSlots(slot, matches):
+    for match in matches:
+        if slot in match:
+            return match
+        elif slot == "food" and "cuisine" in match:
+            return match
+    return False
 
 def testSlotPooling():
     """
@@ -380,7 +437,7 @@ def testPermute():
     for mr, utter in zip(mrs, utters):
         print(utter + " --- " + str(mr))
 
-def wrangleSlots(filename):
+def wrangleSlots(filename, add_sequence_tokens=True):
     print("Aligning " + str(filename))
     data_frame_dev = pd.read_csv(os.path.join(os.getcwd(), "data", filename), header=0,
                                  encoding='utf8')  # names=['mr', 'ref']
@@ -410,6 +467,8 @@ def wrangleSlots(filename):
         mr_str = '"'+', '.join(['%s[%s]' % (key, value) for (key, value) in mr.items()])+'"'
         new_file.write(mr_str)
         new_file.write(",\"")
+        if add_sequence_tokens:
+            utterance = assignScopeToken(utterance)
         new_file.write(utterance)
         new_file.write("\"\n")
 

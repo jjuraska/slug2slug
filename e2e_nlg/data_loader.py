@@ -29,17 +29,21 @@ def load_training_data(data_trainset, data_devset, input_concat=False):
     # produce sequences of extracted words from the meaning representations (MRs) in the trainset
     x_train_seq = []
     for i, mr in enumerate(x_train):
-        mr_dict = OrderedDict()
-        for slot_value in mr.split(','):
-            sep_idx = slot_value.find('[')
-            # parse the slot
-            slot = slot_value[:sep_idx].strip()
-            slot = slot.replace(' ', '_')
-            # parse the value
-            value = slot_value[sep_idx + 1:-1].strip()
+        try:
+            mr_dict = OrderedDict()
+            for slot_value in mr.split(','):
+                sep_idx = slot_value.find('[')
+                # parse the slot
+                slot = slot_value[:sep_idx].strip()
+                slot = slot.replace(' ', '_')
+                # parse the value
+                value = slot_value[sep_idx + 1:-1].strip()
 
-            mr_dict[slot.lower()] = value.lower()
-
+                mr_dict[slot.lower()] = value.lower()
+        except:
+            print(str(mr))
+            print(str(y_train[i]))
+            exit()
         y_train[i] = delex_sample(mr_dict, y_train[i], input_concat=input_concat)
 
         # convert the dictionary to a list
