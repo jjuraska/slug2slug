@@ -24,8 +24,6 @@ from __future__ import unicode_literals
 import os
 import tempfile
 
-import sys, os
-print(sys.path)
 import yaml
 
 import tensorflow as tf
