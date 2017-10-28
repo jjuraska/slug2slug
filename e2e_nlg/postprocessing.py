@@ -103,18 +103,21 @@ def align_beams(beams=None, beams_file=None, data_file=None):
     for index in range(0, len(mrs)):
         curr_mr = mrs[index]
         scored_beams = []
+
         for beam in beams[index]:
             # utterance = beam[0]
             utterance, neg_score, score = beam
             sent = " ".join(utterance)
             score = scoreAlignment(sent, curr_mr)
-            scored_beams.append((score, beam))
-        scored_beams.sort(key=lambda tup: tup[0], reverse=True)
-        new_beams.append(scored_beams)
-        if index > 100:
-            exit()
+            beam[1] = beam[1]*score
+            beam[2] = beam[2]*score
+            new_beam = np.asarray((beam[0],beam[1]*score,beam[2]*score))
+            scored_beams.append((score, new_beam))
+        scored_beams.sort(key=lambda tup: tup[1][2], reverse=True)
+        final_beams = [beam[1] for beam in scored_beams]
+        new_beams.append(final_beams)
     with open('predictions/beams_dump_reranked.pkl', 'wb') as f_beam_dump:
-        pickle.dump(np.array(beams), f_beam_dump)
+        pickle.dump(np.array(new_beams), f_beam_dump)
 
 
 # beam retrieval adopted from Shubham Agarwal's code
@@ -127,8 +130,6 @@ def get_utterances_from_beam(beam_data):
     token_unk = 'UNK'
     token_seq_start = 'SEQUENCE_START'
     token_seq_end = 'SEQUENCE_END'
-    token_seq_inner = 'SEQUENCE_INNER'
-    token_seq_outer = 'SEQUENCE_OUTER'
 
     beam_sequences = []
     beams = np.load(beam_file)

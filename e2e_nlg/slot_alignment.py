@@ -158,7 +158,9 @@ def splitContent(old_mrs, old_utterances, filename, use_heuristics=True, permute
             print("Slot alignment is " + str(10 * curr_state) + "% done.")
         curr_mr = old_mrs[index]
         curr_utterance = old_utterances[index]
-        new_pair = {re.sub(r'\s+', ' ', sent).strip():{} for sent in sent_tokenize(curr_utterance)}
+        sents = sent_tokenize(curr_utterance)
+        root_utterance = sents[0]
+        new_pair = {re.sub(r'\s+', ' ', sent).strip():{} for sent in sents}
         foundSlots = set()
         rm_slot = []
         for slot, value in curr_mr.items():
@@ -214,6 +216,10 @@ def splitContent(old_mrs, old_utterances, filename, use_heuristics=True, permute
             new_utterances.append(curr_utterance.strip())
             if len(new_pair) > 1:
                 for sent, new_slots in new_pair.items():
+                    if root_utterance == sent:
+                        new_slots["position"] = "outer"
+                    else:
+                        new_slots["position"] = "inner"
                     new_mrs.append(new_slots)
                     new_utterances.append(sent)
             if permute:
@@ -298,10 +304,12 @@ def permuteSentCombos(newPairs, mrs, utterances, max_iter=False, depth=1, assume
     return utterances, mrs
 
 
-def assignScopeToken(utterance):
-    tokens = sent_tokenize(utterance)
-    utterance = "&sequence_outer& " + " &sequence_inner& ".join(tokens)
-    return utterance
+def assignScopeToken(mrs):
+    for index, mr in enumerate(mrs):
+        if index > 1:
+            mr["position"] = "inner"
+        else:
+            mr["position"] = "outer"
 
 def mergeEntries(merge_tuples):
     """
@@ -467,13 +475,11 @@ def wrangleSlots(filename, add_sequence_tokens=True):
         mr_str = '"'+', '.join(['%s[%s]' % (key, value) for (key, value) in mr.items()])+'"'
         new_file.write(mr_str)
         new_file.write(",\"")
-        if add_sequence_tokens:
-            utterance = assignScopeToken(utterance)
         new_file.write(utterance)
         new_file.write("\"\n")
 
-wrangleSlots("trainset.csv")
-wrangleSlots("devset.csv")
+# wrangleSlots("trainset.csv")
+# wrangleSlots("devset.csv")
 
 # foodSlot("This is a test of pasta", "English")
 # testPermute()
