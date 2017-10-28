@@ -147,7 +147,7 @@ def splitContent(old_mrs, old_utterances, filename, use_heuristics=True, permute
     # delex_slots = ['name', 'near', 'food', 'area', 'customer rating', 'familyFriendly', 'eatType', 'priceRange']
     new_mrs = []
     new_utterances = []
-    slot_fails = {}
+    slot_fails = OrderedDict()
     instance_fails = set()
     misses = ["The following samples were removed: "]
     base = max(int(len(old_utterances) * .1), 1)
@@ -161,7 +161,7 @@ def splitContent(old_mrs, old_utterances, filename, use_heuristics=True, permute
         curr_utterance = re.sub(r'\s+', ' ', curr_utterance).strip()
         sents = sent_tokenize(curr_utterance)
         root_utterance = sents[0]
-        new_pair = {sent:{} for sent in sents}
+        new_pair = {sent:OrderedDict() for sent in sents}
         foundSlots = set()
         rm_slot = []
         for slot, value in curr_mr.items():
@@ -198,7 +198,6 @@ def splitContent(old_mrs, old_utterances, filename, use_heuristics=True, permute
                     new_slots[slot] = value
                     foundSlots.add(slot)
                     hasSlot = True
-                    continue
             if not hasSlot:
                 # if slot in ["eatType", "familyFriendly", "area", "near", "food"]:
                 misses.append("Couldn't find " + slot + "(" + value + ") - " + old_utterances[index])
@@ -240,7 +239,7 @@ def poolSlotVals(old_mrs, slots_to_pool=None):
     :return:
     """
     # delex_slots = ['name', 'near', 'food', 'area', 'customer rating', 'familyFriendly', 'eatType', 'priceRange']
-    slots = {}
+    slots = OrderedDict()
     if slots_to_pool is None:
         slots_to_pool = ['area', 'customer_rating', 'eatType', 'priceRange']
     for curr_mr in old_mrs:
@@ -313,7 +312,7 @@ def mergeEntries(merge_tuples):
     :return:
     """
     sent = ""
-    mr = {}
+    mr = OrderedDict()
     for curr_sent, curr_mr in merge_tuples:
         sent += " " + curr_sent
         mr.update(curr_mr)
@@ -382,7 +381,7 @@ def testSlotPooling():
     y_dev = data_frame_dev.ref.tolist()
     x_dicts = []
     for i, mr in enumerate(x_dev):
-        mr_dict = {}
+        mr_dict = OrderedDict()
         for slot_value in mr.split(','):
             sep_idx = slot_value.find('[')
             # parse the slot
@@ -408,7 +407,7 @@ def testSplitContent():
     y_dev = data_frame_dev.ref.tolist()
     x_dicts = []
     for i, mr in enumerate(x_dev):
-        mr_dict = {}
+        mr_dict = OrderedDict()
         if len(mr) == 0:
             continue
         for slot_value in mr.split(','):
@@ -449,7 +448,7 @@ def wrangleSlots(filename, add_sequence_tokens=True):
     y_dev = data_frame_dev.ref.tolist()
     x_dicts = []
     for i, mr in enumerate(x_dev):
-        mr_dict = {}
+        mr_dict = OrderedDict()
         for slot_value in mr.split(','):
             sep_idx = slot_value.find('[')
             # parse the slot
@@ -459,7 +458,7 @@ def wrangleSlots(filename, add_sequence_tokens=True):
             value = slot_value[sep_idx + 1:-1].strip()
             mr_dict[slot] = value
         x_dicts.append(mr_dict)
-    new_x, new_y = splitContent(x_dicts, y_dev, filename)
+    new_x, new_y = splitContent(x_dicts, y_dev, filename, permute=False)
     filename = filename.split(".")[0]+"_wrangled.csv"
     new_file = open(os.path.join(os.getcwd(), "data", filename), "w")
     new_file.write("mr,ref\n")

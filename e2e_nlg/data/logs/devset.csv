@@ -590,5 +590,5 @@ Couldn't find familyFriendly(yes) - The Wrestlers is a cheap fast food restauran
 Couldn't find priceRange(less than £20) - The Waterman is a three star family friendly sushi bar located north from the City Centre
 Couldn't find area(riverside) - The Waterman is a three star family friendly sushi bar located north from the City Centre
 Couldn't find customer_rating(low) - The Eagle is an inexpensive coffee shop near Burger King and the river. It is family-friendly and serves pasta.
-We had these misses from all categories: dict_items([('familyFriendly', 134), ('eatType', 36), ('priceRange', 70), ('customer_rating', 166), ('area', 159), ('food', 24), ('near', 2)])
+We had these misses from all categories: odict_items([('familyFriendly', 134), ('eatType', 36), ('priceRange', 70), ('customer_rating', 166), ('area', 159), ('food', 24), ('near', 2)])
 So we had 424 samples with misses out of 2000
