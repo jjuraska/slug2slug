@@ -158,9 +158,10 @@ def splitContent(old_mrs, old_utterances, filename, use_heuristics=True, permute
             print("Slot alignment is " + str(10 * curr_state) + "% done.")
         curr_mr = old_mrs[index]
         curr_utterance = old_utterances[index]
+        curr_utterance = re.sub(r'\s+', ' ', curr_utterance).strip()
         sents = sent_tokenize(curr_utterance)
         root_utterance = sents[0]
-        new_pair = {re.sub(r'\s+', ' ', sent).strip():{} for sent in sents}
+        new_pair = {sent:{} for sent in sents}
         foundSlots = set()
         rm_slot = []
         for slot, value in curr_mr.items():
@@ -293,6 +294,8 @@ def permuteSentCombos(newPairs, mrs, utterances, max_iter=False, depth=1, assume
         for comb in combs:
             if 0 < len(comb) <= depth:
                 new_mr, new_utterance = mergeEntries([root]+comb)
+                if "position" in new_mr:
+                    del new_mr["position"]
                 new_utterance = new_utterance.strip()
                 if new_utterance not in utterances:
                     mrs.append(new_mr)
@@ -303,13 +306,6 @@ def permuteSentCombos(newPairs, mrs, utterances, max_iter=False, depth=1, assume
     #frivolous return for potential debug
     return utterances, mrs
 
-
-def assignScopeToken(mrs):
-    for index, mr in enumerate(mrs):
-        if index > 1:
-            mr["position"] = "inner"
-        else:
-            mr["position"] = "outer"
 
 def mergeEntries(merge_tuples):
     """
@@ -478,8 +474,8 @@ def wrangleSlots(filename, add_sequence_tokens=True):
         new_file.write(utterance)
         new_file.write("\"\n")
 
-# wrangleSlots("trainset.csv")
-# wrangleSlots("devset.csv")
+wrangleSlots("trainset.csv")
+wrangleSlots("devset.csv")
 
 # foodSlot("This is a test of pasta", "English")
 # testPermute()
