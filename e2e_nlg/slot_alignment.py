@@ -251,6 +251,18 @@ def poolSlotVals(old_mrs, slots_to_pool=None):
     return slots
 
 
+def mergeOrderedDicts(mrs, order=None):
+    if order is None:
+        order = ["name", "eatType", "food", "priceRange", "customer_rating", "area", "familyFriendly", "near"]
+    merged_mr = OrderedDict()
+    for slot in order:
+        for mr in mrs:
+            if slot in mr:
+                merged_mr[slot] = mr[slot]
+                break
+    return merged_mr
+
+
 def permuteSentCombos(newPairs, mrs, utterances, max_iter=False, depth=1, assume_root=False):
     """
     :param newPairs: dict of {utterance:mr}
@@ -313,9 +325,11 @@ def mergeEntries(merge_tuples):
     """
     sent = ""
     mr = OrderedDict()
+    mrs = []
     for curr_sent, curr_mr in merge_tuples:
         sent += " " + curr_sent
-        mr.update(curr_mr)
+        mrs.append(curr_mr)
+    mr = mergeOrderedDicts(mrs)
     return mr, sent
 
 
@@ -370,6 +384,37 @@ def checkDelexSlots(slot, matches):
         elif slot == "food" and "cuisine" in match:
             return match
     return False
+
+
+def testSlotOrder():
+    data_frame_dev = pd.read_csv(os.path.join(os.getcwd(), "data", "devset_wrangled.csv"), header=0,
+                                 encoding='utf8')  # names=['mr', 'ref']
+    x_dev = data_frame_dev.mr.tolist()
+    y_dev = data_frame_dev.ref.tolist()
+    x_dicts = []
+    for i, mr in enumerate(x_dev):
+        mr_dict = OrderedDict()
+        for slot_value in mr.split(','):
+            sep_idx = slot_value.find('[')
+            # parse the slot
+            slot = slot_value[:sep_idx].strip()
+            slot = slot.replace(' ', '_')
+            # parse the value
+            value = slot_value[sep_idx + 1:-1].strip()
+            mr_dict[slot] = value
+        x_dicts.append(mr_dict)
+    for mr in x_dicts:
+        keys = list(mr.keys())
+        order = ["name", "eatType", "food", "priceRange", "customer_rating", "area", "familyFriendly", "near"]
+        curr = 0
+        for key in keys:
+            if key in order:
+                k_index = keys.index(key)
+                if k_index <= order.index(key) and order.index(key) >= curr:
+                    curr = order.index(key)
+                else:
+                    print("FAIL: %s has index %s in dev, but the order requires index %s."%(key, k_index, order.index(key)))
+
 
 def testSlotPooling():
     """
@@ -473,8 +518,10 @@ def wrangleSlots(filename, add_sequence_tokens=True):
         new_file.write(utterance)
         new_file.write("\"\n")
 
-wrangleSlots("trainset.csv")
-wrangleSlots("devset.csv")
+# wrangleSlots("trainset.csv")
+# wrangleSlots("devset.csv")
+
+# testSlotOrder()
 
 # foodSlot("This is a test of pasta", "English")
 # testPermute()
