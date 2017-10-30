@@ -223,7 +223,7 @@ def splitContent(old_mrs, old_utterances, filename, use_heuristics=True, permute
                     new_mrs.append(new_slots)
                     new_utterances.append(sent)
             if permute:
-                permuteSentCombos(new_pair, new_mrs, new_utterances)
+                permuteSentCombos(new_pair, new_mrs, new_utterances, max_iter=True)
     misses.append("We had these misses from all categories: " + str(slot_fails.items()))
     misses.append("So we had " + str(len(instance_fails)) + " samples with misses out of " + str(len(old_utterances)))
     with io.open(os.path.join(os.getcwd(), "data", "logs", filename), 'w', encoding='utf8') as log_file:
@@ -503,9 +503,9 @@ def wrangleSlots(filename, add_sequence_tokens=True):
             value = slot_value[sep_idx + 1:-1].strip()
             mr_dict[slot] = value
         x_dicts.append(mr_dict)
-    new_x, new_y = splitContent(x_dicts, y_dev, filename, permute=False)
+    new_x, new_y = splitContent(x_dicts, y_dev, filename, permute=True)
     filename = filename.split(".")[0]+"_wrangled.csv"
-    new_file = open(os.path.join(os.getcwd(), "data", filename), "w")
+    new_file = io.open(os.path.join(os.getcwd(), "data", filename), "w", encoding='utf8')
     new_file.write("mr,ref\n")
     for row in range(0, len(new_x)):
         utterance = new_y[row]

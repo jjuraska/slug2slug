@@ -2,6 +2,7 @@ import argparse
 import sys
 import os
 import io
+import random
 import json
 import platform
 import pickle
@@ -143,7 +144,7 @@ def test(data_testset, predict_only=True):
                 if not predict_only:
                     # create a file with a single prediction for each group of the same MRs
                     data_frame_test = pd.read_csv(data_testset, header=0, encoding='utf8')
-                    test_mrs = data_frame_test.mr.tolist()
+                    test_mrs = data_frame_test.iloc[:, 0].tolist()
 
                     with io.open(predictions_reduced_file, 'w', encoding='utf8') as f_predictions_reduced:
                         for i in range(len(test_mrs)):
