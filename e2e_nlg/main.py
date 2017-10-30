@@ -4,6 +4,7 @@ import os
 import io
 import json
 import platform
+import pickle
 import pandas as pd
 import numpy as np
 
@@ -91,6 +92,8 @@ def test(data_testset, predict_only=True):
     test_source_file = 'data/test_source_dict.json'
     test_target_file = 'data/test_target.txt'
     vocab_file = 'data/vocab_proper_nouns.txt'
+    beams_file = 'predictions/beams.npz'
+    beams_dump_file = 'predictions/beams_dump.pkl'
     predictions_file = 'predictions/predictions.txt'
     predictions_final_file = 'predictions/predictions_final.txt'
     predictions_reduced_file = 'metrics/predictions_reduced.txt'
@@ -101,16 +104,37 @@ def test(data_testset, predict_only=True):
     data_loader.load_test_data(data_testset, input_concat=False)
         
     print('DONE')
-    print('Evaluating...')
+    print('Predicting...')
     sys.stdout.flush()
 
     os.system('bash test_script.sh')
+
+    print('DONE')
+    print('Extracting beams...')
+    sys.stdout.flush()
+
+    beams = postprocessing.get_utterances_from_beam(beams_file)
+    #with open(beams_dump_file, 'rb') as f_beams_dump:
+    #    beams = pickle.load(f_beams_dump)
+
+    print('DONE')
+    print('Reranking...')
+    sys.stdout.flush()
+
+    predictions_reranked = postprocessing.align_beams(beams, data_file=data_testset)
+    #with open('predictions/beams_dump_reranked.pkl', 'rb') as f_beams_dump_reranked:
+    #    predictions_reranked = pickle.load(f_beams_dump_reranked)
+
+    print('DONE')
+    print('Evaluating...')
+    sys.stdout.flush()
 
     with io.open(predictions_file, 'r', encoding='utf8') as f_predictions:
         with io.open(test_source_file, 'r', encoding='utf8') as f_test_source:
             with io.open(predictions_final_file, 'w', encoding='utf8') as f_predictions_final:
                 mrs = json.load(f_test_source)
-                predictions = f_predictions.read().splitlines()
+                #predictions = f_predictions.read().splitlines()
+                predictions = [' '.join(pred[0][0]) for pred in predictions_reranked]
                 predictions_final = postprocessing.finalize_utterances(predictions, mrs)
 
                 for prediction in predictions_final:
@@ -118,7 +142,7 @@ def test(data_testset, predict_only=True):
 
                 if not predict_only:
                     # create a file with a single prediction for each group of the same MRs
-                    data_frame_test = pd.read_csv('data/testset.csv', header=0, encoding='utf8')
+                    data_frame_test = pd.read_csv(data_testset, header=0, encoding='utf8')
                     test_mrs = data_frame_test.mr.tolist()
 
                     with io.open(predictions_reduced_file, 'w', encoding='utf8') as f_predictions_reduced:

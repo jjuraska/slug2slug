@@ -137,7 +137,7 @@ def foodSlot(sent, value):
     return False
 
 
-def splitContent(old_mrs, old_utterances, filename, use_heuristics=True, permute=True):
+def splitContent(old_mrs, old_utterances, filename, use_heuristics=True, permute=False):
     """
     :param mr: list of dicts
     :param utterance: list
@@ -338,50 +338,50 @@ def scoreAlignment(curr_utterance, curr_mr, scoring="default+over-class"):
     sent = curr_utterance
     matches = set(re.findall(r'&slot_.*?&', sent))
     for slot, value in curr_mr.items():
-        foundSlot = False
+        found_slot = False
         sent = sent.lower()
         if value.lower() in sent.lower():
-            foundSlot = True
+            found_slot = True
         elif slot == "name":
             for pronoun in ["it", "its", "it's", "they"]:
                 if pronoun in word_tokenize(curr_utterance.lower()):
-                    foundSlot = True
+                    found_slot = True
         elif slot == "priceRange":
             if priceRangeSlot(sent, value):
-                foundSlot = True
+                found_slot = True
         elif slot == "familyFriendly":
             if familyFriendlySlot(sent, value):
-                foundSlot = True
+                found_slot = True
         elif slot == "food":
             if foodSlot(sent, value):
-                foundSlot = True
+                found_slot = True
         elif slot == "area":
             if areaSlot(sent, value):
-                foundSlot = True
+                found_slot = True
         elif slot == "eatType":
             if eatTypeSlot(sent, value):
-                foundSlot = True
+                found_slot = True
         elif slot == "customer_rating":
             if customerRatingSlot(sent, value):
-                foundSlot = True
-        else:
-            delex_slot = checkDelexSlots(slot, matches)
-            if delex_slot:
-                foundSlot = True
-                matches.remove(delex_slot)
-        if foundSlot:
+                found_slot = True
+        
+        delex_slot = checkDelexSlots(slot, matches)
+        if delex_slot:
+            found_slot = True
+            matches.remove(delex_slot)
+
+        if found_slot:
             foundSlots.add(slot)
             continue
+
     if scoring == "default":
-        return len(foundSlots)/len(curr_mr)
+        return len(foundSlots) / len(curr_mr)
     elif scoring == "default+over-class":
-        return (len(foundSlots) / len(curr_mr))/(len(matches) + 1)
+        return (len(foundSlots) / len(curr_mr)) / (len(matches) + 1)
 
 def checkDelexSlots(slot, matches):
     for match in matches:
         if slot in match:
-            return match
-        elif slot == "food" and "cuisine" in match:
             return match
     return False
 
@@ -518,12 +518,14 @@ def wrangleSlots(filename, add_sequence_tokens=True):
         new_file.write(utterance)
         new_file.write("\"\n")
 
-# wrangleSlots("trainset.csv")
-# wrangleSlots("devset.csv")
 
-# testSlotOrder()
+if __name__ == "__main__":
+    wrangleSlots("trainset.csv")
+    wrangleSlots("devset.csv")
 
-# foodSlot("This is a test of pasta", "English")
-# testPermute()
-# testSplitContent()
-# testSlotPooling()
+    # testSlotOrder()
+    
+    # foodSlot("This is a test of pasta", "English")
+    # testPermute()
+    # testSplitContent()
+    # testSlotPooling()
