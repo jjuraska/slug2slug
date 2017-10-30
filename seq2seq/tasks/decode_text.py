@@ -155,10 +155,10 @@ class DecodeText(InferenceTask):
     return tf.train.SessionRunArgs(fetches)
 
   def after_run(self, _run_context, run_values):
-    fetches_batch = run_values.results # number of input sent x vocab_size x sentence len
+    fetches_batch = run_values.results # number of input sent x sentence len x vocab size
     
 
-    model_type = 'logits_rnn' # TODO: ADD some functionality to detect automatically
+    model_type = 'logits_rnn_gru' # TODO: ADD some functionality to detect automatically
 
     # fist time we load the batch
     if not os.path.isfile('logits_folder/'+model_type+'.npy'):
