@@ -115,23 +115,69 @@ def decode(c_matrix,vocab_trgt):
 	with open('predictions/predictions.txt','w') as f:
 		f.write(all_sentences)
 
-#def score_sentence(sen):
+def score_sentence(sentence_matrix):
+	''' sentence in the form of matrix'''
+	score = np.sum( np.nan_to_num(np.amax(sentence_matrix, axis = 1)))
+	return score
+
+def convert_to_words(sentence_matrix):
+	decoded_sentence = ""
+	mapping_d = parse_vocab('data/vocab_target.txt')
+
+	#for each token in the sentence
+	for token_arr in sentence_matrix:
+		#notice: indexing here starts from 0
+		predicted_mapping = np.argmax(token_arr)
+		predicted_token = mapping_d[predicted_mapping]
+		if predicted_token != 'SEQUENCE END' and add_period(decoded_sentence, predicted_token):
+			decoded_sentence = decoded_sentence +" "+predicted_token
+
+	decoded_sentence = decoded_sentence +'\n' #add extra line after sentence is over
+	return decoded_sentence
 
 
 def smart_combine():
+	logdir ='logits_folder'
 	list_npy = glob.glob(logdir+'/*.npy')
 	n_models = len(list_npy)
 
+
 	all_matrices = np.empty(n_models)
 
-	for matrix, i in zip(list_npy, i):
-		print('Loading ' + element)
-		all_matrices[i] = np.load(matrix)
+	print('Loading..', list_npy)
+	m1 = np.load(list_npy[0])
+	m2 = np.load(list_npy[1])
 
-	#get number of sentences for the first matrix
-	n_sentences,_,_ = all_matrices[0].shape
+	#get number of sentences from the first matrix
+	n_sentences,_,_ = m1.shape
+	all_sentences = ""
 	for i in range(n_sentences):
-		#implementation goes here
+		temp_score = -1000000
+		temp_sen =  " "
+		
+		s1 = m1[i, :, :]
+		s2 = m2[i, :, :]
+
+		score1 = score_sentence(s1)
+		score2 = score_sentence(s2)
+		print score1
+		print score2
+
+		if score1 > score2:
+			temp_sen = convert_to_words(s1)
+		elif score2 > score1:
+			temp_sen = convert_to_words(s2)
+		else:
+			temp_sen = convert_to_words(s2)
+
+
+		all_sentences = all_sentences + temp_sen
+
+	with open('predictions/predictions.txt','w') as f:
+		f.write(all_sentences)
+
+	
+
 
 
 
@@ -139,10 +185,11 @@ def smart_combine():
 
 
 def main():
-	c = average('logits_folder')
-	decode(c, 'data/vocab_target.txt')
+	#c = average('logits_folder')
+	#decode(c, 'data/vocab_target.txt')
 	#d = parse_vocab('data/vocab_target.txt')
 	#print d
+	smart_combine()
 
 if __name__ == '__main__':
 	main()
