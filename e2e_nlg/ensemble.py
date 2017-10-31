@@ -115,6 +115,29 @@ def decode(c_matrix,vocab_trgt):
 	with open('predictions/predictions.txt','w') as f:
 		f.write(all_sentences)
 
+#def score_sentence(sen):
+
+
+def smart_combine():
+	list_npy = glob.glob(logdir+'/*.npy')
+	n_models = len(list_npy)
+
+	all_matrices = np.empty(n_models)
+
+	for matrix, i in zip(list_npy, i):
+		print('Loading ' + element)
+		all_matrices[i] = np.load(matrix)
+
+	#get number of sentences for the first matrix
+	n_sentences,_,_ = all_matrices[0].shape
+	for i in range(n_sentences):
+		#implementation goes here
+
+
+
+
+
+
 def main():
 	c = average('logits_folder')
 	decode(c, 'data/vocab_target.txt')
