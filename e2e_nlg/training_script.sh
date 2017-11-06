@@ -20,5 +20,8 @@ python ../bin/train.py \
        target_files:
         - ./data/dev_target.txt" \
   --batch_size 64 \
-  --train_steps 10000 \
-  --output_dir ./model
+  --train_steps 20000 \
+  --output_dir ./model \
+  --eval_every_n_steps 2000 \
+  --save_checkpoints_steps 1000 \
+  --keep_checkpoint_every_n_hours 1

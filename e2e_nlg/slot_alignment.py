@@ -544,7 +544,7 @@ def wrangleSlots(filename, add_sequence_tokens=True):
             value = slot_value[sep_idx + 1:-1].strip()
             mr_dict[slot] = value
         x_dicts.append(mr_dict)
-    new_x, new_y = splitContent(x_dicts, y_dev, filename, permute=True)
+    new_x, new_y = splitContent(x_dicts, y_dev, filename, permute=False)
     filename = filename.split(".")[0] + "_wrangled.csv"
     new_file = io.open(os.path.join(os.getcwd(), "data", filename), "w", encoding='utf8')
     new_file.write("mr,ref\n")
@@ -561,8 +561,8 @@ def wrangleSlots(filename, add_sequence_tokens=True):
 
 
 if __name__ == "__main__":
-    # wrangleSlots("trainset.csv")
-    wrangleSlots("devset.csv")
+    wrangleSlots("trainset_e2e.csv")
+    wrangleSlots("devset_e2e.csv")
 
     # testSlotOrder()
 

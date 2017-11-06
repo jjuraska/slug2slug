@@ -6,7 +6,11 @@ import pandas as pd
 
 
 def create_eval_files():
-    num_instances = 547
+    #test_file = 'data/testset.csv'
+    test_file = 'data/testset_e2e.csv'
+
+    #num_instances = 547     # for testset.csv
+    num_instances = 630     # for testset_e2e.csv
     num_samples = 50
     
     prediction_files = os.listdir('eval/predictions')
@@ -30,7 +34,7 @@ def create_eval_files():
         json.dump(files_dict, f_file_map, indent=4, sort_keys=True)
 
     # sample the MRs
-    data_frame_test = pd.read_csv('data/testset.csv', header=0, encoding='utf8')
+    data_frame_test = pd.read_csv(test_file, header=0, encoding='utf8')
     mrs = data_frame_test.iloc[:, 0].tolist()
     mrs_reduced = []
 
