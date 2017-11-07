@@ -12,13 +12,15 @@ from nltk.corpus import wordnet
 import re
 import itertools
 
-#TODO 139 instances in training which have the slot, but no value in the utterance
-#TODO verify this is true... can we just delete this arg?
+
+# TODO 139 instances in training which have the slot, but no value in the utterance
+# TODO verify this is true... can we just delete this arg?
 def familyFriendlySlot(sent, value):
     # children-friendly, children friendly, family-friendly, family friendly, kid-friendly, kid friendly
     curr = re.sub("-", " ", sent)
+    curr = re.sub("'", "", curr)
     curr = curr.lower()
-    # curr_tokens = word_tokenize(curr.lower())
+    curr_tokens = word_tokenize(curr.lower())
     for sval in ["famil", "kid", "child"]:
         if sval in curr:
             # root_sval = sval.split(" ")
@@ -26,20 +28,26 @@ def familyFriendlySlot(sent, value):
             # neg_indicies = -1
             # for x, tok in enumerate(curr_tokens):
             #     if sval in tok:
-                # if root_sval[0] == tok:
-                    # break
-                # elif tok in ["not", "non"]:
-                #     neg_indicies = x
+            # if root_sval[0] == tok:
+            # break
+            # elif tok in ["not", "non"]:
+            #     neg_indicies = x
             # if (value == "no" and neg_indicies != -1 and curr_index != -1) or value == "yes":
-                # sval = " ".join(curr_tokens[neg_indicies:curr_index+2])
+            # sval = " ".join(curr_tokens[neg_indicies:curr_index+2])
+            if value == "no":
+                for x in ["not", "non", "isnt", "dont", "doesnt", "lowly", "lacking", "bad", "none"]:
+                    if x in curr_tokens:
+                        return True
+            else:
                 return True
         elif value == "no" and "adult" in sent:
             return True
     # print(curr)
     return False
 
-#TODO 166 instances in training which have the slot, but no value in the utterance or worse, city center is tn utterance
-#TODO verify this is true... can we just delete this arg? It seems maybe in rl city center is near the river, hence they are interchangable?
+
+# TODO 166 instances in training which have the slot, but no value in the utterance or worse, city center is tn utterance
+# TODO verify this is true... can we just delete this arg? It seems maybe in rl city center is near the river, hence they are interchangable?
 def areaSlot(sent, value):
     """
     :param sent: target utterance
@@ -54,8 +62,32 @@ def areaSlot(sent, value):
             return True
     return False
 
-#TODO this one is tough, it can be easy to spot, like cheap, or it can be hard like "for upper class people" which implies high...
-#TODO maybe we can use synonyms to catch most cases, eitherway - 70 instances
+
+def scorePriceRangeNaive(sent, value):
+    pot_values = {'moderate':'£20-25', 'high':'more than £30', 'cheap':'less than £20'}
+    for k,v in pot_values.items():
+        if value == k or value == v:
+            if k in sent or v in sent:
+                return True
+    return False
+
+
+def scoreCustomerRatingNaive(sent, value):
+    pot_values = {'1 out of 5':'low', '3 out of 5':'average', '5 out of 5':'high'}
+    for k,v in pot_values.items():
+        if value == k or value == v:
+            if k in sent:
+                return True
+            if v in sent:
+                if v == 'high' and 'high price' in sent:
+                    if 'high customer' in sent:
+                        return True
+                else:
+                    return True
+    return False
+
+# TODO this one is tough, it can be easy to spot, like cheap, or it can be hard like "for upper class people" which implies high...
+# TODO maybe we can use synonyms to catch most cases, eitherway - 70 instances
 def priceRangeSlot(sent, value):
     """
         :param sent: target utterance
@@ -79,8 +111,9 @@ def priceRangeSlot(sent, value):
             return True
     return False
 
-#TODO 36 instances in training which have the slot, but no value in the utterance
-#TODO verify this is true... can we just delete this arg?
+
+# TODO 36 instances in training which have the slot, but no value in the utterance
+# TODO verify this is true... can we just delete this arg?
 def eatTypeSlot(sent, value):
     if value in sent:
         return True
@@ -90,8 +123,9 @@ def eatTypeSlot(sent, value):
             return True
     return False
 
-#TODO this one is a little wierd... a highly rated restraunt could add something as simple as "great service" which is hard to detect
-#TODO should we perhaps this is a case in which we just have to accept the noise, i.e. keep the arg - 185 instances
+
+# TODO this one is a little wierd... a highly rated restraunt could add something as simple as "great service" which is hard to detect
+# TODO should we perhaps this is a case in which we just have to accept the noise, i.e. keep the arg - 185 instances
 def customerRatingSlot(sent, value):
     if value in sent:
         return True
@@ -110,9 +144,9 @@ def customerRatingSlot(sent, value):
     return False
 
 
-#TODO @near 2 acceptable failures
+# TODO @near 2 acceptable failures
 
-#TODO @food has 24 failures which are acceptable to remove the slot
+# TODO @food has 24 failures which are acceptable to remove the slot
 def foodSlot(sent, value):
     value = value.lower()
     sent = re.sub("-", " ", sent.lower())
@@ -125,7 +159,7 @@ def foodSlot(sent, value):
     else:
         tokens = word_tokenize(sent)
         for token in tokens:
-            #FIXME warning this will be slow on start up
+            # FIXME warning this will be slow on start up
             synsets = wordnet.synsets(token, pos='n')
             for synset in synsets:
                 hypernyms = synset.hypernyms()
@@ -152,7 +186,7 @@ def splitContent(old_mrs, old_utterances, filename, use_heuristics=True, permute
     misses = ["The following samples were removed: "]
     base = max(int(len(old_utterances) * .1), 1)
     benchmarks = [base * i for i in range(1, 11)]
-    for index in range(0,len(old_mrs)):
+    for index in range(0, len(old_mrs)):
         if index in benchmarks:
             curr_state = index / base
             print("Slot alignment is " + str(10 * curr_state) + "% done.")
@@ -161,7 +195,7 @@ def splitContent(old_mrs, old_utterances, filename, use_heuristics=True, permute
         curr_utterance = re.sub(r'\s+', ' ', curr_utterance).strip()
         sents = sent_tokenize(curr_utterance)
         root_utterance = sents[0]
-        new_pair = {sent:OrderedDict() for sent in sents}
+        new_pair = {sent: OrderedDict() for sent in sents}
         foundSlots = set()
         rm_slot = []
         for slot, value in curr_mr.items():
@@ -202,7 +236,7 @@ def splitContent(old_mrs, old_utterances, filename, use_heuristics=True, permute
                 # if slot in ["eatType", "familyFriendly", "area", "near", "food"]:
                 misses.append("Couldn't find " + slot + "(" + value + ") - " + old_utterances[index])
                 rm_slot.append(slot)
-                    # continue
+                # continue
                 instance_fails.add(curr_utterance)
                 if slot not in slot_fails:
                     slot_fails[slot] = 0
@@ -304,7 +338,7 @@ def permuteSentCombos(newPairs, mrs, utterances, max_iter=False, depth=1, assume
 
         for comb in combs:
             if 0 < len(comb) <= depth:
-                new_mr, new_utterance = mergeEntries([root]+comb)
+                new_mr, new_utterance = mergeEntries([root] + comb)
                 if "position" in new_mr:
                     del new_mr["position"]
                 new_utterance = new_utterance.strip()
@@ -314,7 +348,7 @@ def permuteSentCombos(newPairs, mrs, utterances, max_iter=False, depth=1, assume
 
         if assume_root:
             break
-    #frivolous return for potential debug
+    # frivolous return for potential debug
     return utterances, mrs
 
 
@@ -347,7 +381,8 @@ def scoreAlignment(curr_utterance, curr_mr, scoring="default+over-class"):
                 if pronoun in word_tokenize(curr_utterance.lower()):
                     found_slot = True
         elif slot == "priceRange":
-            if priceRangeSlot(sent, value):
+            if scorePriceRangeNaive(sent, value):
+            # if priceRangeSlot(sent, value):
                 found_slot = True
         elif slot == "familyFriendly":
             if familyFriendlySlot(sent, value):
@@ -362,9 +397,9 @@ def scoreAlignment(curr_utterance, curr_mr, scoring="default+over-class"):
             if eatTypeSlot(sent, value):
                 found_slot = True
         elif slot == "customer_rating":
-            if customerRatingSlot(sent, value):
+            if scoreCustomerRatingNaive(sent, value):
                 found_slot = True
-        
+
         delex_slot = checkDelexSlots(slot, matches)
         if delex_slot:
             found_slot = True
@@ -378,6 +413,7 @@ def scoreAlignment(curr_utterance, curr_mr, scoring="default+over-class"):
         return len(foundSlots) / len(curr_mr)
     elif scoring == "default+over-class":
         return (len(foundSlots) / len(curr_mr)) / (len(matches) + 1)
+
 
 def checkDelexSlots(slot, matches):
     for match in matches:
@@ -413,7 +449,8 @@ def testSlotOrder():
                 if k_index <= order.index(key) and order.index(key) >= curr:
                     curr = order.index(key)
                 else:
-                    print("FAIL: %s has index %s in dev, but the order requires index %s."%(key, k_index, order.index(key)))
+                    print("FAIL: %s has index %s in dev, but the order requires index %s." % (
+                    key, k_index, order.index(key)))
 
 
 def testSlotPooling():
@@ -421,7 +458,8 @@ def testSlotPooling():
     Test code to test the splitting without having the run the model
     :return:
     """
-    data_frame_dev = pd.read_csv(os.path.join(os.getcwd(), "data", "devset.csv"), header=0, encoding='utf8')  # names=['mr', 'ref']
+    data_frame_dev = pd.read_csv(os.path.join(os.getcwd(), "data", "devset.csv"), header=0,
+                                 encoding='utf8')  # names=['mr', 'ref']
     x_dev = data_frame_dev.mr.tolist()
     y_dev = data_frame_dev.ref.tolist()
     x_dicts = []
@@ -447,7 +485,8 @@ def testSplitContent():
     Test code to test the splitting without having the run the model
     :return:
     """
-    data_frame_dev = pd.read_csv(os.path.join(os.getcwd(), "data", "devset.csv"), header=0, encoding='utf8')  # names=['mr', 'ref']
+    data_frame_dev = pd.read_csv(os.path.join(os.getcwd(), "data", "devset.csv"), header=0,
+                                 encoding='utf8')  # names=['mr', 'ref']
     x_dev = data_frame_dev.mr.tolist()
     y_dev = data_frame_dev.ref.tolist()
     x_dicts = []
@@ -479,11 +518,13 @@ def testPermute():
     Testing the permute function
     :return:
     """
-    newPairs = {"There is a pizza place named Chucky Cheese.": {"name":"Chucky Cheese"}, "Chucky Cheese Sucks.": {"name":"Chucky Cheese"},
-                "It has a ball pit.":{"b":1}, "The mascot is a giant mouse.":{"a":1}}
+    newPairs = {"There is a pizza place named Chucky Cheese.": {"name": "Chucky Cheese"},
+                "Chucky Cheese Sucks.": {"name": "Chucky Cheese"},
+                "It has a ball pit.": {"b": 1}, "The mascot is a giant mouse.": {"a": 1}}
     mrs, utters = permuteSentCombos(newPairs, [], [])
     for mr, utter in zip(mrs, utters):
         print(utter + " --- " + str(mr))
+
 
 def wrangleSlots(filename, add_sequence_tokens=True):
     print("Aligning " + str(filename))
@@ -504,7 +545,7 @@ def wrangleSlots(filename, add_sequence_tokens=True):
             mr_dict[slot] = value
         x_dicts.append(mr_dict)
     new_x, new_y = splitContent(x_dicts, y_dev, filename, permute=True)
-    filename = filename.split(".")[0]+"_wrangled.csv"
+    filename = filename.split(".")[0] + "_wrangled.csv"
     new_file = io.open(os.path.join(os.getcwd(), "data", filename), "w", encoding='utf8')
     new_file.write("mr,ref\n")
     for row in range(0, len(new_x)):
@@ -512,7 +553,7 @@ def wrangleSlots(filename, add_sequence_tokens=True):
         mr = new_x[row]
         if len(mr) == 0:
             continue
-        mr_str = '"'+', '.join(['%s[%s]' % (key, value) for (key, value) in mr.items()])+'"'
+        mr_str = '"' + ', '.join(['%s[%s]' % (key, value) for (key, value) in mr.items()]) + '"'
         new_file.write(mr_str)
         new_file.write(",\"")
         new_file.write(utterance)
@@ -520,11 +561,11 @@ def wrangleSlots(filename, add_sequence_tokens=True):
 
 
 if __name__ == "__main__":
-    wrangleSlots("trainset.csv")
+    # wrangleSlots("trainset.csv")
     wrangleSlots("devset.csv")
 
     # testSlotOrder()
-    
+
     # foodSlot("This is a test of pasta", "English")
     # testPermute()
     # testSplitContent()
