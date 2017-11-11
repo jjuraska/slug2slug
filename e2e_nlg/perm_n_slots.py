@@ -5,7 +5,7 @@ from random import shuffle
 
 #set this value to the number of permutations to produce for each mr
 ##############
-n_slots=2
+n_slots=4
 ##############
 
 #filter function
@@ -37,10 +37,10 @@ def permute(df, print_diagnostics=True):
 			shuffle(r)
 			new_df.loc[len(new_df)] = [  ','.join(r), row['ref'] ]
 
-	new_df.to_csv('trainset_augm_%d.csv' % n_slots, index=False)
+	new_df.to_csv('trainset_augm_2best_%d.csv' % n_slots, index=False)
 
 def main():
-	train_file='data/trainset.csv'
+	train_file='data/train_2best.csv'
 	df=pd.read_csv(train_file)
 	#df=pd.read_csv('data/trainset.csv', encoding="latin-1")
 	df['mr']=df['mr'].astype('str')
