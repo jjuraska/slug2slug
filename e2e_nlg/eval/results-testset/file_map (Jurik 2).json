@@ -1,0 +1,5 @@
+{
+    "0": "predictions RNN (2+2) utterance split, beam norm, reranking (15k iter).txt",
+    "1": "predictions RNN (2+2) utterance split, beam norm, reranking (20k iter).txt",
+    "2": "predictions CNN (pool 10) utterance split, beam norm, reranking (14k iter).txt"
+}

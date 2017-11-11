@@ -1,0 +1,3 @@
+13: "predictions RNN (2+2) utterance split, beam norm, reranking (20k iter).txt"
+14: "predictions ensemble 4.txt"
+9:  "predictions RNN (2+2) utterance split, beam norm, reranking (15k iter).txt"
