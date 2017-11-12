@@ -10,6 +10,7 @@ def print_group(g1, g2):
 
 
 def compare(df1, df2):
+	''' All the references in a group if they differ in at least one selection '''
 	diff_counter = 0 
 
 	for (name1, group1), (name2, group2) in zip(df1.groupby('mr'), df2.groupby('mr')):
