@@ -4,13 +4,24 @@ from collections import Counter
 import pandas as pd
 from math import ceil
 
+def add_period(line):
+	''' add a period to the end of the reference'''
+	if line[-1] != '.':
+		line = line + '.'
+	return line
+
 def eval_ref(group, n, penalize_and):	
 	''' Evaluate a group of references and return the n best '''	
 	score_tracker = []
 
 	for line in group['ref']:
+
+		#add period
+		line = add_period(line)
+
 		pos = nltk.pos_tag(nltk.word_tokenize(line))
-		if len(pos) < 2 : #less than two words in mr
+
+		if len(pos) < 2 : #less than two words in reference
 			avg_score =  -10000
 		else:
 			c = Counter([j for i,j in pos])
@@ -54,11 +65,16 @@ def keep_the_best(df,n, penalize_and = False):
 			new_pair = {'mr': [name], 'ref': [element[1]]}
 			temp_df = pd.DataFrame(data=new_pair, dtype=str)
 			new_df = new_df.append(temp_df)
-		#print(s+'\n')
+		print(s+'\n')
 
-	new_df.to_csv('train_2best_penalizeAnd.csv', index=False, encoding='utf-8')
+	if penalize_and == True:
+		file_name = 'data/train_%sbest_penalizeAnd.csv' %(str(n))
+	else:
+		file_name = 'data/train_%sbest.csv' %(str(n))
 
-def keep_the_best_weighted(df, weight, n):
+	new_df.to_csv(file_name, index=False, encoding='utf-8')
+
+def keep_the_best_weighted(df, weight, n, penalize_and = False):
 	''' Increases the weight of the n best references. 
 		Note that the weight means that an extra amount of weight many
 		instances will be added in addition to the existing ones 
@@ -67,7 +83,7 @@ def keep_the_best_weighted(df, weight, n):
 	new_df =  pd.DataFrame(columns=['mr', 'ref'])
 	for name, group in df.groupby('mr'):
 
-		n_best = eval_ref(group, n)
+		n_best = eval_ref(group, n, penalize_and)
 		new_df = new_df.append(group) #append existing
 
 		#TO DO: make this more generic for n best not just 2
@@ -96,24 +112,19 @@ def keep_the_best_weighted(df, weight, n):
 
 
 
-
-
 def main():
-	#path_ref = 'all_ref.txt'
-	#eval_ref(path_ref)
-
 	csv_path =  'data/trainset_e2e.csv'
 	df=pd.read_csv(csv_path)
+
+	# activate encoding if running locally:
 	#df=pd.read_csv('data/trainset.csv', encoding="latin-1")
+
 	df['mr']=df['mr'].astype('str')
 	df['ref']=df['ref'].astype('str')
 
-	keep_the_best(df, n=2, penalize_and = True)
+	keep_the_best(df, n=1, penalize_and = False)
+	#keep_the_best(df, n=1, penalize_and = True)
 	#keep_the_best_weighted(df, weight = 5, n = 2)
-
-
-
-	
 
 
 if __name__ == '__main__':
