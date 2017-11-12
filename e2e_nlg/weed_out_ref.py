@@ -4,7 +4,7 @@ from collections import Counter
 import pandas as pd
 from math import ceil
 
-def eval_ref(group, n):	
+def eval_ref(group, n, penalize_and):	
 	''' Evaluate a group of references and return the n best '''	
 	score_tracker = []
 
@@ -14,20 +14,24 @@ def eval_ref(group, n):
 			avg_score =  -10000
 		else:
 			c = Counter([j for i,j in pos])
-			#print('DEBUG \n line === ', line)
-			#print(len(line))
+			word_counter = Counter(line.split(" "))
 
-			#favour if it doesnt start with a proper noun, has conjuctions and few periods
+			#Favor if it has conjuctions and few periods
+
+			# do not penalize if 'and' appears as a conjuction
+			if penalize_and == False:
+				avg_score = c['CC'] - c['.'] 
+			else:
+				avg_score = c['CC'] - word_counter['and']*0.5 - c['.']
+
+
+			#favour if it doesnt start with a proper noun
 			if pos[0][1] != 'NNP' and pos[0][1] != 'NNPS':
 				if pos[1][1] != 'NNP' and pos[1][1] != 'NNPS':
 					#print('# of CC, Periods, + 3 NNP = ', c['CC'], c['.'])
-					avg_score =  c['CC'] - c['.']  + 2
+					avg_score =  avg_score  + 2
 				else:
-					avg_score =  c['CC'] - c['.']  + 1
-
-			else:
-				#print('# of CC, Periods, + No NNP = ', c['CC'], c['.'])
-				avg_score =  c['CC'] - c['.'] 
+					avg_score =  avg_score  + 1
 
 
 		# invert since this is a min heap
@@ -37,13 +41,13 @@ def eval_ref(group, n):
 	return heapq.nsmallest(n, score_tracker)
 			
 		
-def keep_the_best(df,n):
+def keep_the_best(df,n, penalize_and = False):
 	''' Keeps n best references after evaluation '''
 	new_df =  pd.DataFrame(columns=['mr', 'ref'])
 	for name, group in df.groupby('mr'):
 		#print(name)
 
-		n_best = eval_ref(group, n)
+		n_best = eval_ref(group, n, penalize_and)
 		s=''
 		for element in n_best:
 			#s = s + "S: "+ str(-element[0])+", "+element[1]+'\n'
@@ -52,7 +56,7 @@ def keep_the_best(df,n):
 			new_df = new_df.append(temp_df)
 		#print(s+'\n')
 
-	new_df.to_csv('train_2best.csv', index=False, encoding='utf-8')
+	new_df.to_csv('train_2best_penalizeAnd.csv', index=False, encoding='utf-8')
 
 def keep_the_best_weighted(df, weight, n):
 	''' Increases the weight of the n best references. 
@@ -104,8 +108,8 @@ def main():
 	df['mr']=df['mr'].astype('str')
 	df['ref']=df['ref'].astype('str')
 
-	#keep_the_best(df, n=2)
-	keep_the_best_weighted(df, weight = 5, n = 2)
+	keep_the_best(df, n=2, penalize_and = True)
+	#keep_the_best_weighted(df, weight = 5, n = 2)
 
 
 
