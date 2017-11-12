@@ -45,7 +45,7 @@ def eval_ref(group, n, penalize_and):
 					avg_score =  avg_score  + 1
 
 
-		# invert since this is a min heap
+		# negate since this is a min heap
 		heapq.heappush(score_tracker, (-avg_score, line))
 
 	#return n smallest since we save the negative of the score since this is a min heap
@@ -65,7 +65,7 @@ def keep_the_best(df,n, penalize_and = False):
 			new_pair = {'mr': [name], 'ref': [element[1]]}
 			temp_df = pd.DataFrame(data=new_pair, dtype=str)
 			new_df = new_df.append(temp_df)
-		print(s+'\n')
+		#print(s+'\n')
 
 	if penalize_and == True:
 		file_name = 'data/train_%sbest_penalizeAnd.csv' %(str(n))
@@ -122,8 +122,8 @@ def main():
 	df['mr']=df['mr'].astype('str')
 	df['ref']=df['ref'].astype('str')
 
-	keep_the_best(df, n=1, penalize_and = False)
-	#keep_the_best(df, n=1, penalize_and = True)
+	keep_the_best(df, n=2, penalize_and = False)
+	keep_the_best(df, n=2, penalize_and = True)
 	#keep_the_best_weighted(df, weight = 5, n = 2)
 
 
