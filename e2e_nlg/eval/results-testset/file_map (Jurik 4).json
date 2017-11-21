@@ -1,0 +1,6 @@
+{
+    "0": "predictions ensemble.txt",
+    "1": "predictions RNN (4+4) augmented 1, reranking (16k iter).txt",
+    "2": "predictions RNN (4+4) augmented 3, reranking (17k iter).txt",
+    "3": "predictions RNN (4+4) augmented 3, reranking (20k iter).txt"
+}

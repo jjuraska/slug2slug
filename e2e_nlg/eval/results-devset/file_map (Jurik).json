@@ -1,9 +1,0 @@
-{
-    "0": "predictions RNN utterance split, beam norm (19000 iter).txt",
-    "1": "predictions CNN utterance split, beam norm, reranking (20000 iter).txt",
-    "2": "predictions CNN pool 10, beam norm (10000 iter).txt",
-    "3": "predictions CNN pool 10, beam norm, reranking (10000 iter).txt",
-    "4": "predictions CNN utterance split, beam norm (32000 iter).txt",
-    "5": "predictions CNN utterance split, beam norm (20000 iter).txt",
-    "6": "predictions RNN utterance split, beam norm, reranking (19000 iter).txt"
-}

@@ -410,9 +410,9 @@ def scoreAlignment(curr_utterance, curr_mr, scoring="default+over-class"):
             continue
 
     if scoring == "default":
-        return len(foundSlots) / len(curr_mr)
+        return len(curr_mr) / (len(curr_mr) - len(foundSlots) + 1)
     elif scoring == "default+over-class":
-        return (len(foundSlots) / len(curr_mr)) / (len(matches) + 1)
+        return len(curr_mr) / (len(curr_mr) - len(foundSlots) + 1) / (len(matches) + 1)
 
 
 def checkDelexSlots(slot, matches):

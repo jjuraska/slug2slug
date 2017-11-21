@@ -6,10 +6,10 @@ import pandas as pd
 
 
 def create_eval_files():
-    #test_file = 'data/testset.csv'
+    #test_file = 'data/devset_e2e.csv'
     test_file = 'data/testset_e2e.csv'
 
-    #num_instances = 547     # for testset.csv
+    #num_instances = 547     # for devset_e2e.csv
     num_instances = 630     # for testset_e2e.csv
     num_samples = 50
     
@@ -63,7 +63,7 @@ def create_eval_files():
     df = df[header_reordered]
 
     # store the data frame into a CSV file
-    df.to_csv('eval/human_evaluation.csv', index=False, encoding='utf-8')
+    df.to_csv('eval/human_evaluation.csv', index=False, encoding='utf8')
 
 
 if __name__ == "__main__":
