@@ -1,0 +1,4 @@
+19: "predictions ensemble.txt"
+20: "predictions RNN (4+4) augmented 1, reranking (16k iter).txt"
+4:  "predictions RNN (4+4) augmented 3, reranking (17k iter).txt"
+9:  "predictions RNN (4+4) augmented 3, reranking (20k iter).txt"
