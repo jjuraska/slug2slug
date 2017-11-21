@@ -31,32 +31,47 @@ def combine_keep_best(beams_folder):
 def merge_beams(beams_folder):
 	list_beams = glob.glob(beams_folder+'/*.pkl')
 	n_models = len(list_beams)
+	print("Merging "+ str(n_models)+" beams...")
 
-	beam1 = pickle.load(open(list_beams[0], 'rb'))
-	beam2 = pickle.load(open(list_beams[1], 'rb'))
-	beam3 = pickle.load(open(list_beams[2], 'rb'))
+	all_beams = tuple( pickle.load(open(list_beams[i[0]], 'rb')) for i in enumerate(list_beams))
 
-	if len(beam1) != len(beam3):
+	beam_new = np.concatenate( all_beams, axis = 0) 
+
+	print(list_beams[0]+" -->size " +str(all_beams[0].shape))
+	print(list_beams[1]+" -->size " +str(all_beams[1].shape))
+	print(list_beams[2]+" -->size " +str(all_beams[2].shape))
+	print(list_beams[3]+" -->size " +str(all_beams[3].shape))
+	print(list_beams[4]+" -->size " +str(all_beams[4].shape))
+	
+
+	if len(all_beams[0]) != len(all_beams[1]):
 		print("Beams of unequal size. \n Aborting.")
 		exit(-1)
 
-	beam_new = copy.deepcopy(beam1)
+	beam_new = copy.deepcopy(all_beams[0])
 
-	for b2, i in zip(beam2, range(beam2.shape[0])):
-		beam_new[i] = np.concatenate((beam1[i], beam2[i], beam3[i]), axis=0)
+	for b2, i in zip(all_beams[1], range(all_beams[1].shape[0])):
+		#k is any beam, now take the ith "row"
+		i_row = tuple(k[i] for k in all_beams )
+		beam_new[i] = np.concatenate( i_row, axis = 0) 
+
 		
+	
+	print(all_beams[0].shape)
+	print(len(all_beams[0][3]))
 
-	print(beam1.shape)
-	print(len(beam1[3]))
 	print("------")
-	print(beam2.shape)
-	print(len(beam2[3]))
+	print(all_beams[1].shape)
+	print(len(all_beams[1][3]))
+
 	print("-------")
-	print(beam3.shape)
-	print(len(beam3[3]))
+	print(all_beams[2].shape)
+	print(len(all_beams[2][3]))
+
 	print("-------")
 	print(beam_new.shape)
 	print(len(beam_new[3]))
+	
 
 	
 	np.savez('predictions/beams_combined', beam_new)
