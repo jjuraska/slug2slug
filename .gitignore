@@ -161,7 +161,7 @@ flycheck_*.el
 *.sln.docstates
 
 # E2E NLG
-/e2e_nlg/archive/models
+/e2e_nlg/archive
 /e2e_nlg/data/*.json
 /e2e_nlg/data/*.txt
 /e2e_nlg/metrics/predictions_reduced.txt
