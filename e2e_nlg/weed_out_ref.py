@@ -4,11 +4,13 @@ from collections import Counter
 import pandas as pd
 from math import ceil
 
+
 def add_period(line):
 	''' add a period to the end of the reference'''
 	if line[-1] != '.':
 		line = line + '.'
 	return line
+
 
 def eval_ref(group, n, penalize_and):	
 	''' Evaluate a group of references and return the n best '''	
@@ -22,16 +24,16 @@ def eval_ref(group, n, penalize_and):
 		pos = nltk.pos_tag(nltk.word_tokenize(line))
 
 		if len(pos) < 2 : #less than two words in reference
-			avg_score =  -10000
+			avg_score = -10000
 		else:
 			c = Counter([j for i,j in pos])
-			word_counter = Counter(line.split(" "))
+			word_counter = Counter(line.split(' '))
 
 			#Favor if it has conjuctions and few periods
 
 			# do not penalize if 'and' appears as a conjuction
 			if penalize_and == False:
-				avg_score = c['CC'] - c['.'] 
+				avg_score = c['CC'] - c['.']
 			else:
 				avg_score = c['CC'] - word_counter['and']*0.5 - c['.']
 
@@ -50,6 +52,40 @@ def eval_ref(group, n, penalize_and):
 
 	#return n smallest since we save the negative of the score since this is a min heap
 	return heapq.nsmallest(n, score_tracker)
+
+
+def eval_ref_alt(group, n, penalize_and):	
+	''' Evaluate a group of references and return the n best '''	
+	score_tracker = []
+
+	for line in group['ref']:
+
+		#add period
+		line = add_period(line)
+
+		pos = nltk.pos_tag(nltk.word_tokenize(line))
+
+		if len(pos) < 2 : #less than two words in reference
+			avg_score = -10000
+		else:
+			tag_cnt = Counter([j for i, j in pos])
+			word_cnt = Counter([i.lower() for i, j in pos])
+
+			#Favor if it has conjuctions and few periods
+
+			# do not penalize if 'and' appears as a conjuction
+			if penalize_and == False:
+				avg_score = tag_cnt['CC'] + (tag_cnt['IN'] - word_cnt['in'] - word_cnt['near'] - word_cnt['out'] - word_cnt['of']) + (tag_cnt[','] - tag_cnt['.'])
+			else:
+				avg_score = (tag_cnt['CC'] - word_cnt['and'] * 0.5) + (tag_cnt['IN'] - word_cnt['in'] - word_cnt['near'] - word_cnt['out'] - word_cnt['of']) + (tag_cnt[','] - tag_cnt['.'])
+
+		score_tracker.append((avg_score, line))
+	
+	top_candidates = [(score, utt) for score, utt in score_tracker if score > 0]
+	if len(top_candidates) == 0:
+		top_candidates = [max(score_tracker, key=lambda item:item[0])]
+	
+	return top_candidates
 			
 		
 def keep_the_best(df,n, penalize_and = False):
@@ -73,6 +109,7 @@ def keep_the_best(df,n, penalize_and = False):
 		file_name = 'data/train_%sbest.csv' %(str(n))
 
 	new_df.to_csv(file_name, index=False, encoding='utf-8')
+
 
 def keep_the_best_weighted(df, weight, n, penalize_and = False):
 	''' Increases the weight of the n best references. 
@@ -111,9 +148,8 @@ def keep_the_best_weighted(df, weight, n, penalize_and = False):
 	new_df.to_csv('data/train_2best_weight.csv', index=False, encoding='utf-8')
 
 
-
 def main():
-	csv_path =  'data/trainset_e2e.csv'
+	csv_path = 'data/trainset_e2e.csv'
 	df=pd.read_csv(csv_path)
 
 	# activate encoding if running locally:
