@@ -318,7 +318,7 @@ def read_tv_dataset_test(path_to_testset):
     return x_test, y_test
 
 
-def read_laptop_dataset_train(data_trainset, data_devset):
+def read_laptop_dataset_train(path_to_trainset, path_to_devset):
     with io.open(path_to_trainset, encoding='utf8') as f_trainset:
         # remove the comment at the beginning of the file
         for i in range(5):
@@ -353,7 +353,7 @@ def read_laptop_dataset_train(data_trainset, data_devset):
     return x_train, y_train, x_dev, y_dev
 
 
-def read_laptop_dataset_test(data_testset):
+def read_laptop_dataset_test(path_to_testset):
     with io.open(path_to_testset, encoding='utf8') as f_testset:
         # remove the comment at the beginning of the file
         for i in range(5):
@@ -403,14 +403,14 @@ def split_plural_noun(word, stemmer):
 
 def preprocess_mr(mr, da_sep, slot_sep, val_sep):
     sep_idx = mr.find(da_sep)
-    da_type = mr[:sep_idx]
+    da_type = mr[:sep_idx].lstrip('?')
     slot_value_pairs = mr[sep_idx:].strip('()')
 
     mr_new = 'da=' + da_type
     if len(slot_value_pairs) > 0:
         mr_new += slot_sep + slot_value_pairs
 
-    if da_type in ['?compare', 'suggest']:
+    if da_type in ['compare', 'suggest']:
         slot_counts = {}
         mr_modified = ''
         for slot_value in mr_new.split(slot_sep):
@@ -473,7 +473,7 @@ def delex_sample(mr, utterance=None, slots_to_delex=None, mr_only=False, input_c
         delex_slots = slots_to_delex
     else:
         delex_slots = ['name', 'near', 'food',
-                       'family', 'hdmiport', 'screensizerange', 'screensize', 'pricerange', 'price', 'audio', 'resolution', 'powerconsumption', 'color', 'count',
+                       'family', 'hdmiport', 'screensizerange', 'screensize', 'price', 'audio', 'resolution', 'powerconsumption', 'color', 'count',
                        'processor', 'memory', 'drive', 'battery', 'weight', 'dimension', 'design', 'platform', 'warranty']
 
     if not mr_only:

@@ -1,6 +1,7 @@
 import sys
 import os
 import io
+import string
 import json
 import copy
 import pandas as pd
@@ -236,19 +237,92 @@ def accessoriesSlot(sent, value):
     return True
 
 
+def weightSlot(sent, value):
+    value = value.split(" ")[0]
+    if value in sent:
+        return True
+
+    return False
+
+
+def batterySlot(sent, value):
+    value = value.split(" ")[0]
+    if value in sent:
+        return True
+
+    return False
+
+
+def driveSlot(sent, value):
+    value = value.split(" ")[0]
+    if value in sent:
+        return True
+
+    return False
+
+
+def dimensionSlot(sent, value):
+    value = value.split(" ")[0]
+    if value in sent:
+        return True
+
+    return False
+
+
+def designSlot(sent, value):
+    for w in value.split(" "):
+        if w not in sent and w not in [",", "and", "with"]:
+            return False
+
+    return True
+
+
+def utilitySlot(sent, value):
+    for w in value.split(" "):
+        if w in sent and w not in [",", "and"]:
+            return True
+
+    return False
+
+
+def isforbusinesscomputingSlot(sent, value):
+    curr = re.sub("-", " ", sent)
+    curr = re.sub("'", "", curr)
+    curr = curr.lower()
+    curr_tokens = word_tokenize(curr)
+    if value == "false":
+        if "business" in curr_tokens:
+            for x in ["no", "not", "non", "isnt", "arent", "dont", "doesnt", "cant", "cannot", "except", "neither", "none"]:
+                if x in curr_tokens:
+                    return True
+        else:
+            for x in ["personal", "general", "home", "nonbusiness"]:
+                if x in curr_tokens:
+                    return True
+    else:
+        if "business" in curr:
+            return True
+    
+    return False
+
+
 def dontcareRealization(sent, value):
     curr = re.sub("-", " ", sent)
     curr = re.sub("'", "", curr)
     curr = curr.lower()
     curr_tokens = word_tokenize(curr)
-    for x in ["any", "all", "varying", "vary", "various", "different", "unspecified", "unknown", "n/a", "choosy", "picky",
-              "regardless", "disregarding", "disregard", "unconcerned", "concern", "factoring", "accounting", "ignoring", "unnecessary"]:
+
+    for x in ["any", "all", "vary", "varying", "varied", "various", "variety", "different",
+              "unspecified", "irrelevant", "unnecessary", "unknown", "n/a", "particular", "specific", "priority", "choosy", "picky",
+              "regardless", "disregarding", "disregard", "excluding", "unconcerned", "matter", "specification",
+              "concern", "consideration", "considerations", "factoring", "accounting", "ignoring"]:
         if x in curr_tokens:
             return True
-    for x in ["no preference", "without a preference", "without preference", "without specification", "without caring",
-              "no predetermined", "no certain", "not have a preference", "dont have a preference",
-              "not care", "dont care", "didnt care", "not mind", "dont mind",
-              "not matter", "doesnt matter", "dont matter", "not important", "not an issue"]:
+    for x in ["no preference", "no predetermined", "no certain", "wide range", "may or may not",
+              "not an issue", "not a factor", "not important", "not considered", "not considering", "not concerned",
+              "without a preference", "without preference", "without specification", "without caring", "without considering",
+              "not have a preference", "dont have a preference", "not consider", "dont consider", "not mind", "dont mind",
+              "not caring", "not care", "dont care", "didnt care"]:
         if x in curr:
             return True
     if ("preference" in curr_tokens or "specifics" in curr_tokens) and ("no" in curr_tokens):
@@ -262,13 +336,10 @@ def noneRealization(sent, value):
     curr = re.sub("'", "", curr)
     curr = curr.lower()
     curr_tokens = word_tokenize(curr)
-    for x in ["no information", "no info", "any information", "any info", "not sure"]:
-        if x in curr:
+
+    for x in ["information", "info", "inform", "results", "requirement", "requirements", "specification", "specifications"]:
+        if x in curr_tokens and ("no" in curr_tokens or "not" in curr_tokens):
             return True
-    for x in ["there isnt any", "i do not have any", "i dont have any"]:
-        if x in curr:
-            if "information" in curr_tokens or "info" in curr_tokens:
-                return True
     
     return False
 
@@ -302,15 +373,16 @@ def splitContent(old_mrs, old_utterances, filename, use_heuristics=True, permute
         foundSlots = set()
         rm_slot = []
         for slot, value in curr_mr.items():
+            slot_root = slot.rstrip(string.digits)
             hasSlot = False
             for sent, new_slots in new_pair.items():
                 found_slot = False
                 sent = sent.lower()
                 if value.lower() in sent.lower():
                     found_slot = True
-                elif slot == "da":
+                elif slot_root == "da":
                     found_slot = True
-                elif slot == "name":
+                elif slot_root == "name":
                     for pronoun in ["it", "its", "it's", "they"]:
                         if pronoun in word_tokenize(curr_utterance.lower()):
                             found_slot = True
@@ -321,50 +393,74 @@ def splitContent(old_mrs, old_utterances, filename, use_heuristics=True, permute
                     elif value == "none":
                         if noneRealization(sent, value):
                             found_slot = True
-                    elif slot == "priceRange":
+                    elif slot_root == "priceRange":
                         if priceRangeSlot(sent, value):
                             found_slot = True
-                    elif slot == "familyFriendly":
+                    elif slot_root == "familyFriendly":
                         if familyFriendlySlot(sent, value):
                             found_slot = True
-                    elif slot == "food":
+                    elif slot_root == "food":
                         if foodSlot(sent, value):
                             found_slot = True
-                    elif slot == "area":
+                    elif slot_root == "area":
                         if areaSlot(sent, value):
                             found_slot = True
-                    elif slot == "eatType":
+                    elif slot_root == "eatType":
                         if eatTypeSlot(sent, value):
                             found_slot = True
-                    elif slot == "customer_rating":
+                    elif slot_root == "customer_rating":
                         if customerRatingSlot(sent, value):
                             found_slot = True
                 
-                    elif slot == "type":
+                    elif slot_root == "type":
                         if typeSlot(sent, value):
                             found_slot = True
-                    elif slot == "hasusbport":
+                    elif slot_root == "hasusbport":
                         if hasusbportSlot(sent, value):
                             found_slot = True
-                    elif slot == "screensize":
+                    elif slot_root == "screensize":
                         if screensizeSlot(sent, value):
                             found_slot = True
-                    elif slot == "price":
+                    elif slot_root == "price":
                         if priceSlot(sent, value):
                             found_slot = True
-                    elif slot == "powerconsumption":
+                    elif slot_root == "powerconsumption":
                         if powerconsumptionSlot(sent, value):
                             found_slot = True
-                    elif slot == "color":
+                    elif slot_root == "color":
                         if colorSlot(sent, value):
                             found_slot = True
-                    elif slot == "accessories":
+                    elif slot_root == "accessories":
                         if accessoriesSlot(sent, value):
                             found_slot = True
+
+                    elif slot_root == "weight":
+                        if weightSlot(sent, value):
+                            found_slot = True
+                    elif slot_root == "battery":
+                        if batterySlot(sent, value):
+                            found_slot = True
+                    elif slot_root == "drive":
+                        if driveSlot(sent, value):
+                            found_slot = True
+                    elif slot_root == "dimension":
+                        if dimensionSlot(sent, value):
+                            found_slot = True
+                    elif slot_root == "design":
+                        if designSlot(sent, value):
+                            found_slot = True
+                    elif slot_root == "utility":
+                        if utilitySlot(sent, value):
+                            found_slot = True
+                    elif slot_root == "isforbusinesscomputing":
+                        if isforbusinesscomputingSlot(sent, value):
+                            found_slot = True
+
                 if found_slot:
                     new_slots[slot] = value
                     foundSlots.add(slot)
                     hasSlot = True
+
             if not hasSlot:
                 # if slot in ["eatType", "familyFriendly", "area", "near", "food"]:
                 misses.append("Couldn't find " + slot + "(" + value + ") - " + old_utterances[index])
@@ -393,7 +489,7 @@ def splitContent(old_mrs, old_utterances, filename, use_heuristics=True, permute
                 permuteSentCombos(new_pair, new_mrs, new_utterances, max_iter=True)
     misses.append("We had these misses from all categories: " + str(slot_fails.items()))
     misses.append("So we had " + str(len(instance_fails)) + " samples with misses out of " + str(len(old_utterances)))
-    with io.open(os.path.join(os.getcwd(), "data", "logs", filename), 'w', encoding='utf8') as log_file:
+    with io.open(os.path.join(os.getcwd(), "data", "_logs", filename), 'w', encoding='utf8') as log_file:
         log_file.write('\n'.join(misses))
 
     return new_mrs, new_utterances
@@ -508,6 +604,7 @@ def scoreAlignment(curr_utterance, curr_mr, scoring="default+over-class"):
     matches = set(re.findall(r'&slot_.*?&', sent))
 
     for slot, value in curr_mr.items():
+        slot_root = slot.rstrip(string.digits)
         found_slot = False
         sent = sent.lower()
         if value.lower() in sent.lower():
@@ -518,52 +615,74 @@ def scoreAlignment(curr_utterance, curr_mr, scoring="default+over-class"):
         elif value == "none":
             if noneRealization(sent, value):
                 found_slot = True
-        elif slot == "da":
+        elif slot_root == "da":
             found_slot = True
-        elif slot == "name":
+        elif slot_root == "name":
             for pronoun in ["it", "its", "it's", "they"]:
                 if pronoun in word_tokenize(curr_utterance.lower()):
                     found_slot = True
-        elif slot == "priceRange":
+        elif slot_root == "priceRange":
             if scorePriceRangeNaive(sent, value):
             # if priceRangeSlot(sent, value):
                 found_slot = True
-        elif slot == "familyFriendly":
+        elif slot_root == "familyFriendly":
             if familyFriendlySlot(sent, value):
                 found_slot = True
-        elif slot == "food":
+        elif slot_root == "food":
             if foodSlot(sent, value):
                 found_slot = True
-        elif slot == "area":
+        elif slot_root == "area":
             if areaSlot(sent, value):
                 found_slot = True
-        elif slot == "eatType":
+        elif slot_root == "eatType":
             if eatTypeSlot(sent, value):
                 found_slot = True
-        elif slot == "customer_rating":
+        elif slot_root == "customer_rating":
             if scoreCustomerRatingNaive(sent, value):
                 found_slot = True
                 
-        elif slot == "type":
+        elif slot_root == "type":
             if typeSlot(sent, value):
                 found_slot = True
-        elif slot == "hasusbport":
+        elif slot_root == "hasusbport":
             if hasusbportSlot(sent, value):
                 found_slot = True
-        elif slot == "screensize":
+        elif slot_root == "screensize":
             if screensizeSlot(sent, value):
                 found_slot = True
-        elif slot == "price":
+        elif slot_root == "price":
             if priceSlot(sent, value):
                 found_slot = True
-        elif slot == "powerconsumption":
+        elif slot_root == "powerconsumption":
             if powerconsumptionSlot(sent, value):
                 found_slot = True
-        elif slot == "color":
+        elif slot_root == "color":
             if colorSlot(sent, value):
                 found_slot = True
-        elif slot == "accessories":
+        elif slot_root == "accessories":
             if accessoriesSlot(sent, value):
+                found_slot = True
+
+        elif slot_root == "weight":
+            if weightSlot(sent, value):
+                found_slot = True
+        elif slot_root == "battery":
+            if batterySlot(sent, value):
+                found_slot = True
+        elif slot_root == "drive":
+            if driveSlot(sent, value):
+                found_slot = True
+        elif slot_root == "dimension":
+            if dimensionSlot(sent, value):
+                found_slot = True
+        elif slot_root == "design":
+            if designSlot(sent, value):
+                found_slot = True
+        elif slot_root == "utility":
+            if utilitySlot(sent, value):
+                found_slot = True
+        elif slot_root == "isforbusinesscomputing":
+            if isforbusinesscomputingSlot(sent, value):
                 found_slot = True
 
         if slot != "da":
@@ -575,6 +694,16 @@ def scoreAlignment(curr_utterance, curr_mr, scoring="default+over-class"):
         if found_slot:
             foundSlots.add(slot)
             continue
+
+    #if scoring == "default":
+    #    return len(foundSlots) / len(curr_mr)
+    #elif scoring == "default+over-class":
+    #    return (len(foundSlots) / len(curr_mr)) / (len(matches) + 1)
+
+    #if scoring == "default":
+    #    return len(foundSlots) / len(curr_mr)
+    #elif scoring == "default+over-class":
+    #    return (len(foundSlots) - len(matches) + 1) / (len(curr_mr) + 1)
 
     if scoring == "default":
         return len(curr_mr) / (len(curr_mr) - len(foundSlots) + 1)
@@ -778,8 +907,8 @@ def wrangleSlotsJSON(filename, add_sequence_tokens=True):
 if __name__ == "__main__":
     #wrangleSlots("rest_e2e/trainset_e2e.csv")
 
-    wrangleSlotsJSON("tv/train.json")
-    #wrangleSlotsJSON("laptop/train.json")
+    #wrangleSlotsJSON("tv/train.json")
+    wrangleSlotsJSON("laptop/train.json")
 
     # testSlotOrder()
 
