@@ -2,12 +2,12 @@ import argparse
 import sys
 import os
 import io
-import random
 import json
 import platform
 import pickle
 import pandas as pd
 import numpy as np
+from collections import OrderedDict
 
 import data_loader
 import postprocessing
@@ -133,7 +133,7 @@ def test(data_testset, predict_only=True):
     with io.open(predictions_file, 'r', encoding='utf8') as f_predictions:
         with io.open(test_source_file, 'r', encoding='utf8') as f_test_source:
             with io.open(predictions_final_file, 'w', encoding='utf8') as f_predictions_final:
-                mrs = json.load(f_test_source)
+                mrs = json.load(f_test_source, object_pairs_hook=OrderedDict)
                 #predictions = f_predictions.read().splitlines()
                 predictions = [' '.join(pred[0][0]) for pred in predictions_reranked]
                 predictions_final = postprocessing.finalize_utterances(predictions, mrs)
@@ -143,8 +143,14 @@ def test(data_testset, predict_only=True):
 
                 if not predict_only:
                     # create a file with a single prediction for each group of the same MRs
-                    data_frame_test = pd.read_csv(data_testset, header=0, encoding='utf8')
-                    test_mrs = data_frame_test.iloc[:, 0].tolist()
+                    if '/rest_e2e/' in data_testset or '\\rest_e2e\\' in data_testset:
+                        test_mrs, _ = data_loader.read_rest_e2e_dataset_test(data_testset)
+                    elif '/tv/' in data_testset or '\\tv\\' in data_testset:
+                        test_mrs, _ = data_loader.read_tv_dataset_test(data_testset)
+                    elif '/laptop/' in data_testset or '\\laptop\\' in data_testset:
+                        test_mrs, _ = data_loader.read_laptop_dataset_test(data_testset)
+                    else:
+                        raise FileNotFoundError
 
                     with io.open(predictions_reduced_file, 'w', encoding='utf8') as f_predictions_reduced:
                         for i in range(len(test_mrs)):

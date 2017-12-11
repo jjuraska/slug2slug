@@ -1,13 +1,15 @@
+import os
 import io
 import re
 import numpy as np
-import networkx as nx
-import pickle
 import pandas as pd
-import os
+import json
+import pickle
+import networkx as nx
 from nltk.tokenize import word_tokenize, sent_tokenize
 from nltk.tokenize.moses import MosesDetokenizer
 from slot_alignment import scoreAlignment
+
 
 def finalize_utterances(utterances, mrs):
     utterances_final = []
@@ -17,11 +19,30 @@ def finalize_utterances(utterances, mrs):
 
     for i, utterance in enumerate(utterances):
         utterance_relexed = relex(utterance, mrs[i])
-        utterance_capitalized = capitalize(utterance_relexed, proper_nouns)
+        utterance_pluralized = join_plural_nouns(utterance_relexed)
+        utterance_capitalized = capitalize(utterance_pluralized, proper_nouns)
         utterance_detokenized = detokenize(utterance_capitalized)
         utterances_final.append(utterance_detokenized)
 
     return utterances_final
+
+
+def join_plural_nouns(utterance):
+    tokens = utterance.split()
+
+    utterance_new = ''
+    cur_pos = 0
+    while cur_pos < len(tokens):
+        if cur_pos < len(tokens) - 1 and tokens[cur_pos + 1] in ['-s', '-es']:
+            token_new = tokens[cur_pos] + tokens[cur_pos + 1].lstrip('-')
+            cur_pos += 2
+        else:
+            token_new = tokens[cur_pos]
+            cur_pos += 1
+            
+        utterance_new += token_new + ' '
+
+    return utterance_new.strip()
 
 
 def relex(utterance, mr_dict):
@@ -73,11 +94,18 @@ def detokenize(utterance):
 
 
 def extractMRs(data_file):
-    data_frame_test = pd.read_csv(data_file, header=0, encoding='utf8')
-    x_test = data_frame_test.iloc[:, 0].tolist()
+    # create a file with a single prediction for each group of the same MRs
+    if '/rest_e2e/' in data_testset or '\\rest_e2e\\' in data_testset:
+        test_mrs, _ = data_loader.read_rest_e2e_dataset_test(data_testset)
+    elif '/tv/' in data_testset or '\\tv\\' in data_testset:
+        test_mrs, _ = data_loader.read_tv_dataset_test(data_testset)
+    elif '/laptop/' in data_testset or '\\laptop\\' in data_testset:
+        test_mrs, _ = data_loader.read_laptop_dataset_test(data_testset)
+    else:
+        raise FileNotFoundError
 
     x_dicts = []
-    for i, mr in enumerate(x_test):
+    for i, mr in enumerate(test_mrs):
         mr_dict = {}
         for slot_value in mr.split(','):
             sep_idx = slot_value.find('[')
@@ -100,7 +128,9 @@ def align_beams(beams=None, beams_file=None, data_file=None):
         with open(beams_file, 'rb') as openfile:
             beams = pickle.load(openfile)
             
-    mrs = extractMRs(data_file)
+    #mrs = extractMRs(data_file)
+    with io.open('data/test_source_dict.json', 'r', encoding='utf8') as f_test_mrs_dict:
+        mrs = json.load(f_test_mrs_dict)
 
     step = max(int(len(mrs) * 0.1), 1)
     checkpoints = range(step - 1, len(mrs), step)

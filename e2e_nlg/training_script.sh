@@ -24,4 +24,5 @@ python ../bin/train.py \
   --output_dir ./model \
   --eval_every_n_steps 2000 \
   --save_checkpoints_steps 1000 \
-  --keep_checkpoint_every_n_hours 1
+  --keep_checkpoint_max 10 \
+  --keep_checkpoint_every_n_hours 2
