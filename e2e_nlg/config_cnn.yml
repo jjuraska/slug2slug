@@ -8,7 +8,7 @@ model_params:
   encoder.class: seq2seq.encoders.PoolingEncoder
   encoder.params:
     dropout_keep_prob: 0.8
-    pool_size: 10
+    pool_size: 3
     strides: 1
   decoder.class: seq2seq.decoders.AttentionDecoder
   decoder.params:
