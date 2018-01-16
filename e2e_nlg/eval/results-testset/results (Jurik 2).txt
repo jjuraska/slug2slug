@@ -1,3 +1,0 @@
-29: "predictions RNN (2+2) utterance split, beam norm, reranking (15k iter).txt"
-20: "predictions RNN (2+2) utterance split, beam norm, reranking (20k iter).txt"
-20: "predictions CNN (pool 10) utterance split, beam norm, reranking (14k iter).txt"
