@@ -95,6 +95,7 @@ def test(data_testset, predict_only=True):
     vocab_file = 'data/vocab_proper_nouns.txt'
     beams_file = 'predictions/beams.npz'
     beams_dump_file = 'predictions/beams_dump.pkl'
+    #beams_dump_file = 'predictions/beams_dump_combined.pkl'
     predictions_file = 'predictions/predictions.txt'
     predictions_final_file = 'predictions/predictions_final.txt'
     predictions_reduced_file = 'metrics/predictions_reduced.txt'

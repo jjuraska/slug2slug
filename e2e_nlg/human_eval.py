@@ -6,12 +6,12 @@ import pandas as pd
 
 
 def create_eval_files():
-    #test_file = 'data/devset_e2e.csv'
-    test_file = 'data/testset_e2e.csv'
+    #test_file = 'data/rest_e2e/devset_e2e.csv'
+    test_file = 'data/rest_e2e/testset_e2e.csv'
 
     #num_instances = 547     # for devset_e2e.csv
     num_instances = 630     # for testset_e2e.csv
-    num_samples = 50
+    num_samples = 40
     
     prediction_files = os.listdir('eval/predictions')
     header = ['sample #', 'MR']

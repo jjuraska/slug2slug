@@ -19,8 +19,9 @@ def finalize_utterances(utterances, mrs):
 
     for i, utterance in enumerate(utterances):
         utterance_relexed = relex(utterance, mrs[i])
-        utterance_pluralized = join_plural_nouns(utterance_relexed)
-        utterance_capitalized = capitalize(utterance_pluralized, proper_nouns)
+        #utterance_pluralized = join_plural_nouns(utterance_relexed)
+        #utterance_capitalized = capitalize(utterance_pluralized, proper_nouns)
+        utterance_capitalized = capitalize(utterance_relexed, proper_nouns)
         utterance_detokenized = detokenize(utterance_capitalized)
         utterances_final.append(utterance_detokenized)
 
@@ -144,10 +145,10 @@ def align_beams(beams=None, beams_file=None, data_file=None):
             utterance, logprob, score = beam
             sent = " ".join(utterance)
             score = scoreAlignment(sent, curr_mr)
-            new_beam = np.asarray((beam[0], beam[1] * score, beam[2] * score))
+            new_beam = np.asarray((beam[0], beam[1] / score, beam[2] * score))      # beam[1] ~ log-prob (negative), beam[2] ~ prob (positive)
             scored_beams.append((score, new_beam))
 
-        scored_beams.sort(key=lambda tup: tup[1][2], reverse=True)
+        scored_beams.sort(key=lambda tup: tup[1][1], reverse=True)
         final_beams = [beam[1] for beam in scored_beams]
         new_beams.append(final_beams)
 

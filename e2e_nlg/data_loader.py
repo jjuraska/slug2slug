@@ -415,7 +415,7 @@ def preprocess_mr(mr, da_sep, slot_sep, val_sep):
         mr_modified = ''
         for slot_value in mr_new.split(slot_sep):
             slot, value = parse_slot_and_value(slot_value, val_sep)
-            if slot == 'da':
+            if slot in ['da', 'position']:
                 mr_modified += slot
             else:
                 slot_counts[slot] = slot_counts.get(slot, 0) + 1
@@ -473,7 +473,7 @@ def delex_sample(mr, utterance=None, slots_to_delex=None, mr_only=False, input_c
         delex_slots = slots_to_delex
     else:
         delex_slots = ['name', 'near', 'food',
-                       'family', 'hdmiport', 'screensizerange', 'screensize', 'price', 'audio', 'resolution', 'powerconsumption', 'color', 'count',
+                       'family', 'hdmiport', 'screensize', 'price', 'audio', 'resolution', 'powerconsumption', 'color', 'count',
                        'processor', 'memory', 'drive', 'battery', 'weight', 'dimension', 'design', 'platform', 'warranty']
 
     if not mr_only:
@@ -502,7 +502,7 @@ def delex_sample(mr, utterance=None, slots_to_delex=None, mr_only=False, input_c
                 utterance_delexed = re.sub(r'\b{}\b'.format(value), placeholder, utterance)     # replace whole-word matches only
 
             # don't replce value with a placeholder token unless there is an exact match in the utterance
-            if mr_only or utterance_delexed != utterance:           
+            if mr_only or utterance_delexed != utterance or (slot == 'name'):
                 mr_update[slot] = placeholder
                 utterance = utterance_delexed
         else:
@@ -573,7 +573,7 @@ if __name__ == '__main__':
 
 
     # produce a file from the predictions in the TV/Laptop dataset format by replacing the baseline utterances (in the 3rd column)
-    with io.open('eval/predictions-tv/predictions_rnn_4+4_10k_reranked.txt', 'r', encoding='utf8') as f_predictions:
+    with io.open('eval/predictions-tv/predictions_ensemble_2way_2.txt', 'r', encoding='utf8') as f_predictions:
         with io.open('data/tv/test.json', encoding='utf8') as f_testset:
             # remove the comment at the beginning of the file
             for i in range(5):
@@ -584,3 +584,17 @@ if __name__ == '__main__':
 
         df.iloc[:, 2] = f_predictions.readlines()
         df.to_json('data/tv/test_pred.json', orient='values')
+
+
+    # produce a file from the predictions in the TV/Laptop dataset format by replacing the baseline utterances (in the 3rd column)
+    #with io.open('eval/predictions-laptop/predictions_ensemble_2way_1.txt', 'r', encoding='utf8') as f_predictions:
+    #    with io.open('data/laptop/test.json', encoding='utf8') as f_testset:
+    #        # remove the comment at the beginning of the file
+    #        for i in range(5):
+    #            f_testset.readline()
+
+    #        # read the test data from file
+    #        df = pd.read_json(f_testset, encoding='utf8')
+
+    #    df.iloc[:, 2] = f_predictions.readlines()
+    #    df.to_json('data/laptop/test_pred.json', orient='values')

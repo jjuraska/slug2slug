@@ -306,42 +306,61 @@ def isforbusinesscomputingSlot(sent, value):
     return False
 
 
-def dontcareRealization(sent, value):
+def dontcareRealization(sent, slot, value):
     curr = re.sub("-", " ", sent)
     curr = re.sub("'", "", curr)
     curr = curr.lower()
     curr_tokens = word_tokenize(curr)
 
-    for x in ["any", "all", "vary", "varying", "varied", "various", "variety", "different",
-              "unspecified", "irrelevant", "unnecessary", "unknown", "n/a", "particular", "specific", "priority", "choosy", "picky",
-              "regardless", "disregarding", "disregard", "excluding", "unconcerned", "matter", "specification",
-              "concern", "consideration", "considerations", "factoring", "accounting", "ignoring"]:
-        if x in curr_tokens:
+    if reduceSlotName(slot) in curr_tokens:
+        for x in ["any", "all", "vary", "varying", "varied", "various", "variety", "different",
+                  "unspecified", "irrelevant", "unnecessary", "unknown", "n/a", "particular", "specific", "priority", "choosy", "picky",
+                  "regardless", "disregarding", "disregard", "excluding", "unconcerned", "matter", "specification",
+                  "concern", "consideration", "considerations", "factoring", "accounting", "ignoring"]:
+            if x in curr_tokens:
+                return True
+        for x in ["no preference", "no predetermined", "no certain", "wide range", "may or may not",
+                  "not an issue", "not a factor", "not important", "not considered", "not considering", "not concerned",
+                  "without a preference", "without preference", "without specification", "without caring", "without considering",
+                  "not have a preference", "dont have a preference", "not consider", "dont consider", "not mind", "dont mind",
+                  "not caring", "not care", "dont care", "didnt care"]:
+            if x in curr:
+                return True
+        if ("preference" in curr_tokens or "specifics" in curr_tokens) and ("no" in curr_tokens):
             return True
-    for x in ["no preference", "no predetermined", "no certain", "wide range", "may or may not",
-              "not an issue", "not a factor", "not important", "not considered", "not considering", "not concerned",
-              "without a preference", "without preference", "without specification", "without caring", "without considering",
-              "not have a preference", "dont have a preference", "not consider", "dont consider", "not mind", "dont mind",
-              "not caring", "not care", "dont care", "didnt care"]:
-        if x in curr:
-            return True
-    if ("preference" in curr_tokens or "specifics" in curr_tokens) and ("no" in curr_tokens):
-        return True
     
     return False
 
 
-def noneRealization(sent, value):
+def noneRealization(sent, slot, value):
     curr = re.sub("-", " ", sent)
     curr = re.sub("'", "", curr)
     curr = curr.lower()
     curr_tokens = word_tokenize(curr)
-
-    for x in ["information", "info", "inform", "results", "requirement", "requirements", "specification", "specifications"]:
-        if x in curr_tokens and ("no" in curr_tokens or "not" in curr_tokens):
-            return True
+        
+    if reduceSlotName(slot) in curr_tokens:
+        for x in ["information", "info", "inform", "results", "requirement", "requirements", "specification", "specifications"]:
+            if x in curr_tokens and ("no" in curr_tokens or "not" in curr_tokens):
+                return True
     
     return False
+
+
+def reduceSlotName(slot):
+    slot = slot.replace('range', '')
+    slot = slot.replace('rating', '')
+    slot = slot.replace('size', '')
+
+    if slot == 'hasusbport':
+        slot == 'usb'
+    elif slot == 'hdmiport':
+        slot == 'hdmi'
+    elif slot == 'powerconsumption':
+        slot == 'power'
+    elif slot == 'isforbusinesscomputing':
+        slot == 'business'
+
+    return slot.lower()
 
 
 
@@ -388,10 +407,10 @@ def splitContent(old_mrs, old_utterances, filename, use_heuristics=True, permute
                             found_slot = True
                 elif use_heuristics:
                     if value == "dontcare":
-                        if dontcareRealization(sent, value):
+                        if dontcareRealization(sent, slot_root, value):
                             found_slot = True
                     elif value == "none":
-                        if noneRealization(sent, value):
+                        if noneRealization(sent, slot_root, value):
                             found_slot = True
                     elif slot_root == "priceRange":
                         if priceRangeSlot(sent, value):
@@ -602,18 +621,28 @@ def scoreAlignment(curr_utterance, curr_mr, scoring="default+over-class"):
     foundSlots = set()
     sent = curr_utterance
     matches = set(re.findall(r'&slot_.*?&', sent))
+    slot_overgens = 0
 
     for slot, value in curr_mr.items():
         slot_root = slot.rstrip(string.digits)
         found_slot = False
         sent = sent.lower()
         if value.lower() in sent.lower():
+            value_cnt = sent.lower().count(value.lower())
+            if value_cnt > 1:
+                slot_overgens += value_cnt - 1
             found_slot = True
         elif value == "dontcare":
-            if dontcareRealization(sent, value):
+            if dontcareRealization(sent, slot_root, value):
+                slot_cnt = sent.lower().count(reduceSlotName(slot_root))
+                if slot_cnt > 1:
+                    slot_overgens += slot_cnt - 1
                 found_slot = True
         elif value == "none":
-            if noneRealization(sent, value):
+            if noneRealization(sent, slot_root, value):
+                slot_cnt = sent.lower().count(reduceSlotName(slot_root))
+                if slot_cnt > 1:
+                    slot_overgens += slot_cnt - 1
                 found_slot = True
         elif slot_root == "da":
             found_slot = True
@@ -706,9 +735,9 @@ def scoreAlignment(curr_utterance, curr_mr, scoring="default+over-class"):
     #    return (len(foundSlots) - len(matches) + 1) / (len(curr_mr) + 1)
 
     if scoring == "default":
-        return len(curr_mr) / (len(curr_mr) - len(foundSlots) + 1)
+        return len(curr_mr) / (len(curr_mr) - len(foundSlots) + slot_overgens + 1)
     elif scoring == "default+over-class":
-        return len(curr_mr) / (len(curr_mr) - len(foundSlots) + 1) / (len(matches) + 1)
+        return len(curr_mr) / (len(curr_mr) - len(foundSlots) + slot_overgens + 1) / (len(matches) + 1)
 
 
 def checkDelexSlots(slot, matches):
@@ -861,7 +890,7 @@ def wrangleSlotsJSON(filename, add_sequence_tokens=True):
     val_sep = '='
     val_sep_closing = False
 
-    print("Aligning " + str(filename))
+    print('Aligning ' + str(filename))
     with io.open(os.path.join(os.getcwd(), 'data', filename), encoding='utf8') as f_trainset:
         # remove the comment at the beginning of the file
         for i in range(5):
@@ -888,14 +917,14 @@ def wrangleSlotsJSON(filename, add_sequence_tokens=True):
     new_x, new_y = splitContent(x_dicts, y_train, filename.split('/')[-1], permute=False)
 
     data_new = []
-    filename = filename.split(".")[0] + "_wrangled.json"
+    filename = filename.split('.')[0] + '_wrangled.json'
     for row in range(0, len(new_x)):
         utterance = new_y[row]
         mr = new_x[row]
         if len(mr) == 0:
             continue
         mr_str = mr.pop('da')
-        mr_str += "(" + ';'.join(['%s=%s' % (key, value) for (key, value) in mr.items()]) + ')'
+        mr_str += '(' + ';'.join(['%s=%s' % (key.rstrip(string.digits), value) for (key, value) in mr.items()]) + ')'
 
         data_new.append([])
         data_new[row].extend([mr_str, utterance])
@@ -904,15 +933,15 @@ def wrangleSlotsJSON(filename, add_sequence_tokens=True):
         json.dump(data_new, f_data_new, indent=4)
 
 
-if __name__ == "__main__":
-    #wrangleSlots("rest_e2e/trainset_e2e.csv")
+if __name__ == '__main__':
+    #wrangleSlots('rest_e2e/trainset_e2e.csv')
 
-    #wrangleSlotsJSON("tv/train.json")
-    wrangleSlotsJSON("laptop/train.json")
+    #wrangleSlotsJSON('tv/train.json')
+    wrangleSlotsJSON('laptop/train.json')
 
     # testSlotOrder()
 
-    # foodSlot("This is a test of pasta", "English")
+    # foodSlot('This is a test of pasta', 'English')
     # testPermute()
     # testSplitContent()
     # testSlotPooling()
