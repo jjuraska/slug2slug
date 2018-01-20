@@ -8,6 +8,7 @@ import pandas as pd
 import numpy as np
 from collections import OrderedDict
 import nltk
+from nltk import FreqDist
 from nltk.tokenize import word_tokenize
 from nltk.tokenize import sent_tokenize
 from nltk.stem.wordnet import WordNetLemmatizer
@@ -43,7 +44,7 @@ def load_training_data(data_trainset, data_devset, input_concat=False):
         val_sep = '='
     elif '/laptop/' in data_trainset and '/laptop/' in data_devset or \
             '\\laptop\\' in data_trainset and '\\laptop\\' in data_devset:
-        x_train, y_train, x_dev, y_dev = read_laptop_dataset_train(data_trainset, data_devset)
+        x_train, y_train, _, x_dev, y_dev, _ = read_laptop_dataset_train(data_trainset, data_devset)
         dataset_name = 'laptop'
         slot_sep = ';'
         val_sep = '='
@@ -160,7 +161,7 @@ def load_test_data(data_testset, input_concat=False):
         slot_sep = ';'
         val_sep = '='
     elif '/laptop/' in data_testset or '\\laptop\\' in data_testset:
-        x_test, y_test = read_laptop_dataset_test(data_testset)
+        x_test, y_test, _ = read_laptop_dataset_test(data_testset)
         dataset_name = 'laptop'
         slot_sep = ';'
         val_sep = '='
@@ -225,6 +226,269 @@ def load_test_data(data_testset, input_concat=False):
                 if i > 0 and x_test[i] != x_test[i - 1]:
                     f_y_test.write('\n')
                 f_y_test.write(line + '\n')
+
+
+def load_training_data_for_eval(data_trainset, data_devset, vocab_size, max_input_seq_len, max_output_seq_len):
+    dataset_name = ''
+    slot_sep = ''
+    val_sep = ''
+    val_sep_closing = False
+
+    if '/rest_e2e/' in data_trainset and '/rest_e2e/' in data_devset or \
+            '\\rest_e2e\\' in data_trainset and '\\rest_e2e\\' in data_devset:
+        x_train, y_train, x_dev, y_dev = read_rest_e2e_dataset_train(data_trainset, data_devset)
+        dataset_name = 'rest_e2e'
+        slot_sep = ','
+        val_sep = '['
+        val_sep_closing = True
+    elif '/tv/' in data_trainset and '/tv/' in data_devset or \
+            '\\tv\\' in data_trainset and '\\tv\\' in data_devset:
+        x_train, y_train, x_dev, y_dev = read_tv_dataset_train(data_trainset, data_devset)
+        dataset_name = 'tv'
+        slot_sep = ';'
+        val_sep = '='
+    elif '/laptop/' in data_trainset and '/laptop/' in data_devset or \
+            '\\laptop\\' in data_trainset and '\\laptop\\' in data_devset:
+        x_train, y_train, y_train_alt, x_dev, y_dev, y_dev_alt = read_laptop_dataset_train(data_trainset, data_devset)
+        dataset_name = 'laptop'
+        slot_sep = ';'
+        val_sep = '='
+    else:
+        raise FileNotFoundError
+
+    # parse the utterances into lists of words
+    y_train = [preprocess_utterance(y) for y in y_train]
+    y_train_alt = [preprocess_utterance(y) for y in y_train_alt]
+    
+
+    # produce sequences of extracted words from the meaning representations (MRs) in the trainset
+    x_train_seq = []
+    for i, mr in enumerate(x_train):
+        mr_dict = OrderedDict()
+        for slot_value in mr.split(slot_sep):
+            slot, value = parse_slot_and_value(slot_value, val_sep, val_sep_closing)
+            mr_dict[slot.lower()] = value.lower()
+
+        # delexicalize the MR and the utterance
+        y_train[i] = delex_sample(mr_dict, y_train[i], utterance_only=True)
+        y_train_alt[i] = delex_sample(mr_dict, y_train_alt[i])
+
+        # convert the dictionary to a list
+        x_train_seq.append([])
+        for key, val in mr_dict.items():
+            if len(val) > 0:
+                x_train_seq[i].extend([key, val])
+            else:
+                x_train_seq[i].append(key)
+
+
+    # create source vocabulary
+    if os.path.isfile('data/eval_vocab_source.json'):
+        with io.open('data/eval_vocab_source.json', 'r', encoding='utf8') as f_x_vocab:
+            x_vocab = json.load(f_x_vocab)
+    else:
+        x_distr = FreqDist([x_token for x in x_train_seq for x_token in x])
+        x_vocab = x_distr.most_common(min(len(x_distr), vocab_size - 2))        # cap the vocabulary size
+        with io.open('data/eval_vocab_source.json', 'w', encoding='utf8') as f_x_vocab:
+            json.dump(x_vocab, f_x_vocab, ensure_ascii=False)
+
+    x_idx2word = [word[0] for word in x_vocab]
+    x_idx2word.insert(0, '<PADDING>')
+    x_idx2word.append('<NA>')
+    x_word2idx = {word: idx for idx, word in enumerate(x_idx2word)}
+
+    #with io.open('data/eval_vocab_source_ordered.json', 'w', encoding='utf8') as f_x_vocab:
+    #    json.dump(OrderedDict(x_vocab), f_x_vocab, indent=4, ensure_ascii=False)
+
+    # create target vocabulary
+    if os.path.isfile('data/eval_vocab_target.json'):
+        with io.open('data/eval_vocab_target.json', 'r', encoding='utf8') as f_y_vocab:
+            y_vocab = json.load(f_y_vocab)
+    else:
+        y_distr = FreqDist([y_token for y in y_train for y_token in y] + [y_token for y in y_train_alt for y_token in y])
+        y_vocab = y_distr.most_common(min(len(y_distr), vocab_size - 2))        # cap the vocabulary size
+        with io.open('data/eval_vocab_target.json', 'w', encoding='utf8') as f_y_vocab:
+            json.dump(y_vocab, f_y_vocab, ensure_ascii=False)
+
+    y_idx2word = [word[0] for word in y_vocab]
+    y_idx2word.insert(0, '<PADDING>')
+    y_idx2word.append('<NA>')
+    y_word2idx = {token: idx for idx, token in enumerate(y_idx2word)}
+
+    #with io.open('data/eval_vocab_target_ordered.json', 'w', encoding='utf8') as f_y_vocab:
+    #    json.dump(OrderedDict(y_vocab), f_y_vocab, indent=4, ensure_ascii=False)
+
+
+    # produce sequences of indexes from the MRs in the training set
+    x_train_enc = np.zeros((len(x_train_seq), max_input_seq_len), dtype=np.int32)       # padding implicitly present, as the index of the padding token is 0
+    for i, x in enumerate(x_train_seq):
+        for j, token in enumerate(x):
+            # truncate long MRs
+            if j >= max_input_seq_len:
+                break
+
+            # represent each token with the corresponding index
+            if token in x_word2idx:
+                x_train_enc[i][j] = x_word2idx[token]
+            else:
+                x_train_enc[i][j] = x_word2idx['<NA>']
+
+    # produce sequences of indexes from the utterances in the training set
+    y_train_enc = np.zeros((len(y_train), max_output_seq_len), dtype=np.int32)       # padding implicitly present, as the index of the padding token is 0
+    for i, y in enumerate(y_train):
+        for j, token in enumerate(y):
+            # truncate long utterances
+            if j >= max_output_seq_len:
+                break
+
+            # represent each token with the corresponding index
+            if token in y_word2idx:
+                y_train_enc[i][j] = y_word2idx[token]
+            else:
+                y_train_enc[i][j] = y_word2idx['<NA>']
+
+    # produce sequences of indexes from the utterances in the training set
+    y_train_alt_enc = np.zeros((len(y_train_alt), max_output_seq_len), dtype=np.int32)       # padding implicitly present, as the index of the padding token is 0
+    for i, y in enumerate(y_train_alt):
+        for j, token in enumerate(y):
+            # truncate long utterances
+            if j >= max_output_seq_len:
+                break
+
+            # represent each token with the corresponding index
+            if token in y_word2idx:
+                y_train_alt_enc[i][j] = y_word2idx[token]
+            else:
+                y_train_alt_enc[i][j] = y_word2idx['<NA>']
+
+    # produce the list of the target labels in the training set
+    labels = np.concatenate((np.ones(len(y_train_enc)), np.zeros(len(y_train_alt_enc))))
+
+
+    return (np.concatenate((np.array(x_train_enc), np.array(x_train_enc))),
+            np.concatenate((np.array(y_train_enc), np.array(y_train_alt_enc))),
+            labels)
+
+
+def load_test_data_for_eval(data_testset, vocab_size, max_input_seq_len, max_output_seq_len):
+    dataset_name = ''
+    slot_sep = ''
+    val_sep = ''
+    val_sep_closing = False
+
+    if '/rest_e2e/' in data_testset or '\\rest_e2e\\' in data_testset:
+        x_test, y_test = read_rest_e2e_dataset_test(data_testset)
+        dataset_name = 'rest_e2e'
+        slot_sep = ','
+        val_sep = '['
+        val_sep_closing = True
+    elif '/tv/' in data_testset or '\\tv\\' in data_testset:
+        x_test, y_test = read_tv_dataset_test(data_testset)
+        dataset_name = 'tv'
+        slot_sep = ';'
+        val_sep = '='
+    elif '/laptop/' in data_testset or '\\laptop\\' in data_testset:
+        x_test, y_test, y_test_alt = read_laptop_dataset_test(data_testset)
+        dataset_name = 'laptop'
+        slot_sep = ';'
+        val_sep = '='
+    else:
+        raise FileNotFoundError
+
+    # parse the utterances into lists of words
+    y_test = [preprocess_utterance(y) for y in y_test]
+    y_test_alt = [preprocess_utterance(y) for y in y_test_alt]
+    
+
+    # produce sequences of extracted words from the meaning representations (MRs) in the testset
+    x_test_seq = []
+    for i, mr in enumerate(x_test):
+        mr_dict = OrderedDict()
+        for slot_value in mr.split(slot_sep):
+            slot, value = parse_slot_and_value(slot_value, val_sep, val_sep_closing)
+            mr_dict[slot.lower()] = value.lower()
+
+        # delexicalize the MR and the utterance
+        y_test[i] = delex_sample(mr_dict, y_test[i], utterance_only=True)
+        y_test_alt[i] = delex_sample(mr_dict, y_test_alt[i])
+
+        # convert the dictionary to a list
+        x_test_seq.append([])
+        for key, val in mr_dict.items():
+            if len(val) > 0:
+                x_test_seq[i].extend([key, val])
+            else:
+                x_test_seq[i].append(key)
+
+
+    # load the source vocabulary
+    with io.open('data/eval_vocab_source.json', 'r', encoding='utf8') as f_x_vocab:
+        x_vocab = json.load(f_x_vocab)
+
+    x_idx2word = [word[0] for word in x_vocab]
+    x_idx2word.insert(0, '<PADDING>')
+    x_idx2word.append('<NA>')
+    x_word2idx = {word: idx for idx, word in enumerate(x_idx2word)}
+
+    # load the target vocabulary
+    with io.open('data/eval_vocab_target.json', 'r', encoding='utf8') as f_y_vocab:
+        y_vocab = json.load(f_y_vocab)
+
+    y_idx2word = [word[0] for word in y_vocab]
+    y_idx2word.insert(0, '<PADDING>')
+    y_idx2word.append('<NA>')
+    y_word2idx = {token: idx for idx, token in enumerate(y_idx2word)}
+
+
+    # produce sequences of indexes from the MRs in the training set
+    x_test_enc = np.zeros((len(x_test_seq), max_input_seq_len), dtype=np.int32)       # padding implicitly present, as the index of the padding token is 0
+    for i, x in enumerate(x_test_seq):
+        for j, token in enumerate(x):
+            # truncate long MRs
+            if j >= max_input_seq_len:
+                break
+
+            # represent each token with the corresponding index
+            if token in x_word2idx:
+                x_test_enc[i][j] = x_word2idx[token]
+            else:
+                x_test_enc[i][j] = x_word2idx['<NA>']
+
+    # produce sequences of indexes from the utterances in the training set
+    y_test_enc = np.zeros((len(y_test), max_output_seq_len), dtype=np.int32)       # padding implicitly present, as the index of the padding token is 0
+    for i, y in enumerate(y_test):
+        for j, token in enumerate(y):
+            # truncate long utterances
+            if j >= max_output_seq_len:
+                break
+
+            # represent each token with the corresponding index
+            if token in y_word2idx:
+                y_test_enc[i][j] = y_word2idx[token]
+            else:
+                y_test_enc[i][j] = y_word2idx['<NA>']
+
+    # produce sequences of indexes from the utterances in the training set
+    y_test_alt_enc = np.zeros((len(y_test_alt), max_output_seq_len), dtype=np.int32)       # padding implicitly present, as the index of the padding token is 0
+    for i, y in enumerate(y_test_alt):
+        for j, token in enumerate(y):
+            # truncate long utterances
+            if j >= max_output_seq_len:
+                break
+
+            # represent each token with the corresponding index
+            if token in y_word2idx:
+                y_test_alt_enc[i][j] = y_word2idx[token]
+            else:
+                y_test_alt_enc[i][j] = y_word2idx['<NA>']
+
+    # produce the list of the target labels in the training set
+    labels = np.concatenate((np.ones(len(y_test_enc)), np.zeros(len(y_test_alt_enc))))
+
+
+    return (np.concatenate((np.array(x_test_enc), np.array(x_test_enc))),
+            np.concatenate((np.array(y_test_enc), np.array(y_test_alt_enc))),
+            labels)
 
 
 # ---- AUXILIARY FUNCTIONS ----
@@ -329,6 +593,7 @@ def read_laptop_dataset_train(path_to_trainset, path_to_devset):
 
     x_train = df_train.iloc[:, 0].tolist()
     y_train = df_train.iloc[:, 1].tolist()
+    y_train_alt = df_train.iloc[:, 2].tolist()
 
     # transform the MR to contain the DA type as the first slot
     for i, mr in enumerate(x_train):
@@ -345,12 +610,13 @@ def read_laptop_dataset_train(path_to_trainset, path_to_devset):
 
     x_dev = df_dev.iloc[:, 0].tolist()
     y_dev = df_dev.iloc[:, 1].tolist()
+    y_dev_alt = df_dev.iloc[:, 2].tolist()
 
     # transform the MR to contain the DA type as the first slot
     for i, mr in enumerate(x_dev):
         x_dev[i] = preprocess_mr(mr, '(', ';', '=')
 
-    return x_train, y_train, x_dev, y_dev
+    return x_train, y_train, y_train_alt, x_dev, y_dev, y_dev_alt
 
 
 def read_laptop_dataset_test(path_to_testset):
@@ -363,13 +629,14 @@ def read_laptop_dataset_test(path_to_testset):
         df_test = pd.read_json(f_testset, encoding='utf8')
 
     x_test = df_test.iloc[:, 0].tolist()
-    y_test = df_test.iloc[:, 2].tolist()
+    y_test = df_test.iloc[:, 1].tolist()
+    y_test_alt = df_test.iloc[:, 2].tolist()
 
     # transform the MR to contain the DA type as the first slot
     for i, mr in enumerate(x_test):
         x_test[i] = preprocess_mr(mr, '(', ';', '=')
 
-    return x_test, y_test
+    return x_test, y_test, y_test_alt
 
 
 def replace_plural_nouns(utt):
@@ -456,7 +723,7 @@ def parse_slot_and_value(slot_value, val_sep, val_sep_closing=False):
     return (slot, value)
 
 
-def delex_sample(mr, utterance=None, slots_to_delex=None, mr_only=False, input_concat=False):
+def delex_sample(mr, utterance=None, slots_to_delex=None, mr_only=False, input_concat=False, utterance_only=False):
     '''
     Delexicalize a single sample (MR and the corresponding utterance).
     By default, the slots 'name' and 'near' are delexicalized.
@@ -509,8 +776,9 @@ def delex_sample(mr, utterance=None, slots_to_delex=None, mr_only=False, input_c
             if input_concat:
                 mr_update[slot] = value.replace(' ', '_')
 
-    for slot, new_value in mr_update.items():
-        mr[slot] = new_value
+    if not utterance_only:
+        for slot, new_value in mr_update.items():
+            mr[slot] = new_value
 
     if not mr_only:
         return utterance.split()
