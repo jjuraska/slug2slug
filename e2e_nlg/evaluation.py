@@ -26,7 +26,7 @@ def main():
     group = parser.add_mutually_exclusive_group()
     group.add_argument('--train', nargs=2, help='takes as arguments the paths to the trainset and the devset')
     group.add_argument('--test', nargs=2, help='takes as arguments the path to the test set, and the path to the model')
-    group.add_argument('--predict', nargs=2, help='takes as argument the path to the testset, and the path to the model')
+    group.add_argument('--predict', nargs=3, help='takes as argument the path to the testset, the path to the predictions, and the path to the model')
 
     args = parser.parse_args()
 
@@ -44,13 +44,14 @@ def main():
         if not os.path.isfile(args.predict[0]):
             print('Error: invalid file path.')
         else:
-            test(args.predict[0], args.test[1], predict_only=True)
+            #test(args.predict[0], args.predict[1], predict_only=True)
+            predict(args.predict[0], args.predict[1], args.predict[2])
     else:
         print('Usage:\n')
         print('main.py')
         print('\t--train [path_to_trainset] [path_to_devset]')
-        print('\t--test [path_to_testset]')
-        print('\t--predict [path_to_testset]')
+        print('\t--test [path_to_testset] [path_to_model]')
+        print('\t--predict [path_to_testset] [path_to_predictions] [path_to_model]')
 
 
 def train(data_trainset, data_devset):
@@ -59,7 +60,7 @@ def train(data_trainset, data_devset):
     embedding_size = 300                    # dimension of the word embedding vectors
     rnn_depth = 2                           # number of RNN layers
     rnn_layer_size = 200                    # number of neurons in a single RNN layer
-    num_epochs = 10                          # number of training epochs
+    num_epochs = 2                          # number of training epochs
 
 
     # ---- LOAD THE DATA ----
@@ -67,7 +68,11 @@ def train(data_trainset, data_devset):
     print('Loading training data...', end=' ')
     sys.stdout.flush()
 
-    mr_train, utt_train, labels_train = data_loader.load_training_data_for_eval(data_trainset, data_devset, vocab_size, max_mr_seq_len, max_utt_seq_len)
+    mr_train, utt_train, labels_train, mr_dev, utt_dev, labels_dev = data_loader.load_training_data_for_eval(data_trainset,
+                                                                                                             data_devset,
+                                                                                                             vocab_size,
+                                                                                                             max_mr_seq_len,
+                                                                                                             max_utt_seq_len)
 
     # DEBUG PRINT
     #print('---- Input overview ----')
@@ -150,12 +155,12 @@ def train(data_trainset, data_devset):
     
     # ---- TRAIN THE MODEL ----
 
-    print('DONE')
     print('Training...')
     sys.stdout.flush()
 
     history = model.fit([mr_train, utt_train],
                         labels_train,
+                        validation_data=([mr_dev, utt_dev], labels_dev),
                         batch_size=64,
                         epochs=num_epochs,
                         callbacks=callback_list)
@@ -168,7 +173,7 @@ def test(data_testset, path_to_model, predict_only=True):
 
     vocab_source_file = 'data/eval_vocab_source.json'
     vocab_target_file = 'data/eval_vocab_target.json'
-    predictions_file = 'predictions/predictions.txt'
+    predictions_file = 'predictions/predictions.csv'
 
     print('Loading test data...', end=' ')
     sys.stdout.flush()
@@ -212,7 +217,7 @@ def test(data_testset, path_to_model, predict_only=True):
 
     # ---- PERFORM INFERENCE ----
 
-    print('\nPredicting...')
+    print('\nPredicting...', end=' ')
 
     results = []
     prediction_distr = model.predict([mr_test, utt_test])
@@ -223,7 +228,73 @@ def test(data_testset, path_to_model, predict_only=True):
 
     # save the results to a CSV file along with the corresponding DAs and reference classes
     df = pd.DataFrame(np.asarray(results))
-    df.to_csv('predictions/predictions.csv', header=['MR', 'utterance', 'prediction', 'ref'], index=False)
+    df.to_csv(predictions_file, header=['MR', 'utterance', 'prediction', 'ref'], index=False)
+    
+    print('DONE')
+    
+    
+def predict(data_testset, data_predictions, path_to_model):
+    # ---- LOAD THE DATA ----
+
+    vocab_source_file = 'data/eval_vocab_source.json'
+    vocab_target_file = 'data/eval_vocab_target.json'
+    evaluations_file = 'predictions/evaluations.csv'
+
+    print('Loading test data...', end=' ')
+    sys.stdout.flush()
+
+    if not os.path.isfile(vocab_source_file) or not os.path.isfile(vocab_target_file):
+        raise FileNotFoundError('Vocabulary files missing.')
+        
+    mr_pred, utt_pred, labels_pred = data_loader.load_pred_data_for_eval(data_testset, data_predictions, vocab_size, max_mr_seq_len, max_utt_seq_len)
+
+    # DEBUG PRINT
+    print('---- Input overview ----')
+    print('mr_pred.shape =', mr_pred.shape)
+    print('utt_pred.shape =', utt_pred.shape)
+    print('labels_pred.shape =', labels_pred.shape)
+    print('----')
+    
+    print('DONE')
+    
+
+    # ---- LOAD THE MODEL ----
+
+    print('\nLoading the model...')
+
+    # load the model from a checkpoint
+    model = load_model(path_to_model)
+    model.summary()
+
+
+    # ---- TEST THE MODEL ----
+
+    print('\nEvaluating...')
+
+    loss, acc = model.evaluate([mr_pred, utt_pred],
+                                labels_pred)
+
+    print()
+    print('-> Test loss:', loss)
+    print('-> Test accuracy:', acc)
+
+
+    # ---- PERFORM INFERENCE ----
+
+    print('\nPredicting...', end=' ')
+
+    results = []
+    prediction_distr = model.predict([mr_pred, utt_pred])
+    predictions = np.array(prediction_distr).flatten()
+    
+    for i, class_predicted in enumerate(predictions):
+        results.append([mr_pred[i], utt_pred[i], class_predicted, labels_pred[i]])
+
+    # save the results to a CSV file along with the corresponding DAs and reference classes
+    df = pd.DataFrame(np.asarray(results))
+    df.to_csv(evaluations_file, header=['MR', 'utterance', 'prediction', 'ref'], index=False)
+    
+    print('DONE')
 
 
 if __name__ == "__main__":

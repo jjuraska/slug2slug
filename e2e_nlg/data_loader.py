@@ -259,6 +259,8 @@ def load_training_data_for_eval(data_trainset, data_devset, vocab_size, max_inpu
     # parse the utterances into lists of words
     y_train = [preprocess_utterance(y) for y in y_train]
     y_train_alt = [preprocess_utterance(y) for y in y_train_alt]
+    y_dev = [preprocess_utterance(y) for y in y_dev]
+    y_dev_alt = [preprocess_utterance(y) for y in y_dev_alt]
     
 
     # produce sequences of extracted words from the meaning representations (MRs) in the trainset
@@ -280,6 +282,27 @@ def load_training_data_for_eval(data_trainset, data_devset, vocab_size, max_inpu
                 x_train_seq[i].extend([key, val])
             else:
                 x_train_seq[i].append(key)
+    
+
+    # produce sequences of extracted words from the meaning representations (MRs) in the devset
+    x_dev_seq = []
+    for i, mr in enumerate(x_dev):
+        mr_dict = OrderedDict()
+        for slot_value in mr.split(slot_sep):
+            slot, value = parse_slot_and_value(slot_value, val_sep, val_sep_closing)
+            mr_dict[slot.lower()] = value.lower()
+
+        # delexicalize the MR and the utterance
+        y_dev[i] = delex_sample(mr_dict, y_dev[i], utterance_only=True)
+        y_dev_alt[i] = delex_sample(mr_dict, y_dev_alt[i])
+
+        # convert the dictionary to a list
+        x_dev_seq.append([])
+        for key, val in mr_dict.items():
+            if len(val) > 0:
+                x_dev_seq[i].extend([key, val])
+            else:
+                x_dev_seq[i].append(key)
 
 
     # create source vocabulary
@@ -297,9 +320,6 @@ def load_training_data_for_eval(data_trainset, data_devset, vocab_size, max_inpu
     x_idx2word.append('<NA>')
     x_word2idx = {word: idx for idx, word in enumerate(x_idx2word)}
 
-    #with io.open('data/eval_vocab_source_ordered.json', 'w', encoding='utf8') as f_x_vocab:
-    #    json.dump(OrderedDict(x_vocab), f_x_vocab, indent=4, ensure_ascii=False)
-
     # create target vocabulary
     if os.path.isfile('data/eval_vocab_target.json'):
         with io.open('data/eval_vocab_target.json', 'r', encoding='utf8') as f_y_vocab:
@@ -315,59 +335,39 @@ def load_training_data_for_eval(data_trainset, data_devset, vocab_size, max_inpu
     y_idx2word.append('<NA>')
     y_word2idx = {token: idx for idx, token in enumerate(y_idx2word)}
 
-    #with io.open('data/eval_vocab_target_ordered.json', 'w', encoding='utf8') as f_y_vocab:
-    #    json.dump(OrderedDict(y_vocab), f_y_vocab, indent=4, ensure_ascii=False)
-
 
     # produce sequences of indexes from the MRs in the training set
-    x_train_enc = np.zeros((len(x_train_seq), max_input_seq_len), dtype=np.int32)       # padding implicitly present, as the index of the padding token is 0
-    for i, x in enumerate(x_train_seq):
-        for j, token in enumerate(x):
-            # truncate long MRs
-            if j >= max_input_seq_len:
-                break
-
-            # represent each token with the corresponding index
-            if token in x_word2idx:
-                x_train_enc[i][j] = x_word2idx[token]
-            else:
-                x_train_enc[i][j] = x_word2idx['<NA>']
+    x_train_enc = token_seq_to_idx_seq(x_train_seq, x_word2idx, max_input_seq_len)
 
     # produce sequences of indexes from the utterances in the training set
-    y_train_enc = np.zeros((len(y_train), max_output_seq_len), dtype=np.int32)       # padding implicitly present, as the index of the padding token is 0
-    for i, y in enumerate(y_train):
-        for j, token in enumerate(y):
-            # truncate long utterances
-            if j >= max_output_seq_len:
-                break
-
-            # represent each token with the corresponding index
-            if token in y_word2idx:
-                y_train_enc[i][j] = y_word2idx[token]
-            else:
-                y_train_enc[i][j] = y_word2idx['<NA>']
+    y_train_enc = token_seq_to_idx_seq(y_train, y_word2idx, max_output_seq_len)
 
     # produce sequences of indexes from the utterances in the training set
-    y_train_alt_enc = np.zeros((len(y_train_alt), max_output_seq_len), dtype=np.int32)       # padding implicitly present, as the index of the padding token is 0
-    for i, y in enumerate(y_train_alt):
-        for j, token in enumerate(y):
-            # truncate long utterances
-            if j >= max_output_seq_len:
-                break
-
-            # represent each token with the corresponding index
-            if token in y_word2idx:
-                y_train_alt_enc[i][j] = y_word2idx[token]
-            else:
-                y_train_alt_enc[i][j] = y_word2idx['<NA>']
+    y_train_alt_enc = token_seq_to_idx_seq(y_train_alt, y_word2idx, max_output_seq_len)
 
     # produce the list of the target labels in the training set
-    labels = np.concatenate((np.ones(len(y_train_enc)), np.zeros(len(y_train_alt_enc))))
+    labels_train = np.concatenate((np.ones(len(y_train_enc)), np.zeros(len(y_train_alt_enc))))
+    
+
+    # produce sequences of indexes from the MRs in the devset
+    x_dev_enc = token_seq_to_idx_seq(x_dev_seq, x_word2idx, max_input_seq_len)
+
+    # produce sequences of indexes from the utterances in the devset
+    y_dev_enc = token_seq_to_idx_seq(y_dev, y_word2idx, max_output_seq_len)
+
+    # produce sequences of indexes from the utterances in the devset
+    y_dev_alt_enc = token_seq_to_idx_seq(y_dev_alt, y_word2idx, max_output_seq_len)
+
+    # produce the list of the target labels in the devset
+    labels_dev = np.concatenate((np.ones(len(y_dev_enc)), np.zeros(len(y_dev_alt_enc))))
 
 
     return (np.concatenate((np.array(x_train_enc), np.array(x_train_enc))),
             np.concatenate((np.array(y_train_enc), np.array(y_train_alt_enc))),
-            labels)
+            labels_train,
+            np.concatenate((np.array(x_dev_enc), np.array(x_dev_enc))),
+            np.concatenate((np.array(y_dev_enc), np.array(y_dev_alt_enc))),
+            labels_dev)
 
 
 def load_test_data_for_eval(data_testset, vocab_size, max_input_seq_len, max_output_seq_len):
@@ -441,54 +441,105 @@ def load_test_data_for_eval(data_testset, vocab_size, max_input_seq_len, max_out
 
 
     # produce sequences of indexes from the MRs in the training set
-    x_test_enc = np.zeros((len(x_test_seq), max_input_seq_len), dtype=np.int32)       # padding implicitly present, as the index of the padding token is 0
-    for i, x in enumerate(x_test_seq):
-        for j, token in enumerate(x):
-            # truncate long MRs
-            if j >= max_input_seq_len:
-                break
-
-            # represent each token with the corresponding index
-            if token in x_word2idx:
-                x_test_enc[i][j] = x_word2idx[token]
-            else:
-                x_test_enc[i][j] = x_word2idx['<NA>']
+    x_test_enc = token_seq_to_idx_seq(x_test_seq, x_word2idx, max_input_seq_len)
 
     # produce sequences of indexes from the utterances in the training set
-    y_test_enc = np.zeros((len(y_test), max_output_seq_len), dtype=np.int32)       # padding implicitly present, as the index of the padding token is 0
-    for i, y in enumerate(y_test):
-        for j, token in enumerate(y):
-            # truncate long utterances
-            if j >= max_output_seq_len:
-                break
-
-            # represent each token with the corresponding index
-            if token in y_word2idx:
-                y_test_enc[i][j] = y_word2idx[token]
-            else:
-                y_test_enc[i][j] = y_word2idx['<NA>']
+    y_test_enc = token_seq_to_idx_seq(y_test, y_word2idx, max_output_seq_len)
 
     # produce sequences of indexes from the utterances in the training set
-    y_test_alt_enc = np.zeros((len(y_test_alt), max_output_seq_len), dtype=np.int32)       # padding implicitly present, as the index of the padding token is 0
-    for i, y in enumerate(y_test_alt):
-        for j, token in enumerate(y):
-            # truncate long utterances
-            if j >= max_output_seq_len:
-                break
-
-            # represent each token with the corresponding index
-            if token in y_word2idx:
-                y_test_alt_enc[i][j] = y_word2idx[token]
-            else:
-                y_test_alt_enc[i][j] = y_word2idx['<NA>']
+    y_test_alt_enc = token_seq_to_idx_seq(y_test_alt, y_word2idx, max_output_seq_len)
 
     # produce the list of the target labels in the training set
-    labels = np.concatenate((np.ones(len(y_test_enc)), np.zeros(len(y_test_alt_enc))))
+    labels_test = np.concatenate((np.ones(len(y_test_enc)), np.zeros(len(y_test_alt_enc))))
 
 
     return (np.concatenate((np.array(x_test_enc), np.array(x_test_enc))),
             np.concatenate((np.array(y_test_enc), np.array(y_test_alt_enc))),
-            labels)
+            labels_test)
+
+
+def load_pred_data_for_eval(data_testset, data_predictions, vocab_size, max_input_seq_len, max_output_seq_len):
+    dataset_name = ''
+    slot_sep = ''
+    val_sep = ''
+    val_sep_closing = False
+
+    if '/rest_e2e/' in data_testset or '\\rest_e2e\\' in data_testset:
+        x_pred, y_test = read_rest_e2e_dataset_test(data_testset)
+        dataset_name = 'rest_e2e'
+        slot_sep = ','
+        val_sep = '['
+        val_sep_closing = True
+    elif '/tv/' in data_testset or '\\tv\\' in data_testset:
+        x_pred, y_test = read_tv_dataset_test(data_testset)
+        dataset_name = 'tv'
+        slot_sep = ';'
+        val_sep = '='
+    elif '/laptop/' in data_testset or '\\laptop\\' in data_testset:
+        x_pred, _, _ = read_laptop_dataset_test(data_testset)
+        y_pred = read_predictions(data_predictions)
+        dataset_name = 'laptop'
+        slot_sep = ';'
+        val_sep = '='
+    else:
+        raise FileNotFoundError
+
+    # parse the utterances into lists of words
+    y_pred = [preprocess_utterance(y) for y in y_pred]
+    
+
+    # produce sequences of extracted words from the meaning representations (MRs) in the testset
+    x_pred_seq = []
+    for i, mr in enumerate(x_pred):
+        mr_dict = OrderedDict()
+        for slot_value in mr.split(slot_sep):
+            slot, value = parse_slot_and_value(slot_value, val_sep, val_sep_closing)
+            mr_dict[slot.lower()] = value.lower()
+
+        # delexicalize the MR and the utterance
+        y_pred[i] = delex_sample(mr_dict, y_pred[i])
+
+        # convert the dictionary to a list
+        x_pred_seq.append([])
+        for key, val in mr_dict.items():
+            if len(val) > 0:
+                x_pred_seq[i].extend([key, val])
+            else:
+                x_pred_seq[i].append(key)
+
+
+    # load the source vocabulary
+    with io.open('data/eval_vocab_source.json', 'r', encoding='utf8') as f_x_vocab:
+        x_vocab = json.load(f_x_vocab)
+
+    x_idx2word = [word[0] for word in x_vocab]
+    x_idx2word.insert(0, '<PADDING>')
+    x_idx2word.append('<NA>')
+    x_word2idx = {word: idx for idx, word in enumerate(x_idx2word)}
+
+    # load the target vocabulary
+    with io.open('data/eval_vocab_target.json', 'r', encoding='utf8') as f_y_vocab:
+        y_vocab = json.load(f_y_vocab)
+
+    y_idx2word = [word[0] for word in y_vocab]
+    y_idx2word.insert(0, '<PADDING>')
+    y_idx2word.append('<NA>')
+    y_word2idx = {token: idx for idx, token in enumerate(y_idx2word)}
+
+
+    # produce sequences of indexes from the MRs in the training set
+    x_pred_enc = token_seq_to_idx_seq(x_pred_seq, x_word2idx, max_input_seq_len)
+
+    # produce sequences of indexes from the utterances in the training set
+    y_pred_enc = token_seq_to_idx_seq(y_pred, y_word2idx, max_output_seq_len)
+
+    # produce the list of the target labels in the training set
+    labels_pred = np.ones(len(y_pred_enc))
+
+
+    return (np.array(x_pred_enc),
+            np.array(y_pred_enc),
+            labels_pred)
 
 
 # ---- AUXILIARY FUNCTIONS ----
@@ -639,6 +690,14 @@ def read_laptop_dataset_test(path_to_testset):
     return x_test, y_test, y_test_alt
 
 
+def read_predictions(path_to_predictions):
+    # read the test data from file
+    with io.open(path_to_predictions, encoding='utf8') as f_predictions:
+        y_pred = f_predictions.readlines()
+
+    return y_pred
+
+
 def replace_plural_nouns(utt):
     stemmer = WordNetLemmatizer()
 
@@ -782,6 +841,24 @@ def delex_sample(mr, utterance=None, slots_to_delex=None, mr_only=False, input_c
 
     if not mr_only:
         return utterance.split()
+
+
+def token_seq_to_idx_seq(token_seqences, token2idx, max_output_seq_len):
+    # produce sequences of indexes from the utterances in the training set
+    idx_sequences = np.zeros((len(token_seqences), max_output_seq_len), dtype=np.int32)       # padding implicitly present, as the index of the padding token is 0
+    for i, token_seq in enumerate(token_seqences):
+        for j, token in enumerate(token_seq):
+            # truncate long utterances
+            if j >= max_output_seq_len:
+                break
+
+            # represent each token with the corresponding index
+            if token in token2idx:
+                idx_sequences[i][j] = token2idx[token]
+            else:
+                idx_sequences[i][j] = token2idx['<NA>']
+
+    return idx_sequences
 
 
 def count_unique_mrs():
