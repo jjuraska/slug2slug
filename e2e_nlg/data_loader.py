@@ -228,28 +228,32 @@ def load_test_data(data_testset, input_concat=False):
                 f_y_test.write(line + '\n')
 
 
-def load_training_data_for_eval(data_trainset, data_devset, vocab_size, max_input_seq_len, max_output_seq_len):
+def load_training_data_for_eval(data_trainset, data_model_outputs_train, vocab_size, max_input_seq_len, max_output_seq_len, delex=False):
     dataset_name = ''
     slot_sep = ''
     val_sep = ''
     val_sep_closing = False
 
+    # TMP
+    data_devset = ''
+
     if '/rest_e2e/' in data_trainset and '/rest_e2e/' in data_devset or \
             '\\rest_e2e\\' in data_trainset and '\\rest_e2e\\' in data_devset:
-        x_train, y_train, x_dev, y_dev = read_rest_e2e_dataset_train(data_trainset, data_devset)
+        x_train, y_train_1, x_dev, y_dev = read_rest_e2e_dataset_train(data_trainset, data_devset)
         dataset_name = 'rest_e2e'
         slot_sep = ','
         val_sep = '['
         val_sep_closing = True
     elif '/tv/' in data_trainset and '/tv/' in data_devset or \
             '\\tv\\' in data_trainset and '\\tv\\' in data_devset:
-        x_train, y_train, x_dev, y_dev = read_tv_dataset_train(data_trainset, data_devset)
+        x_train, y_train_1, x_dev, y_dev = read_tv_dataset_train(data_trainset, data_devset)
         dataset_name = 'tv'
         slot_sep = ';'
         val_sep = '='
-    elif '/laptop/' in data_trainset and '/laptop/' in data_devset or \
-            '\\laptop\\' in data_trainset and '\\laptop\\' in data_devset:
-        x_train, y_train, y_train_alt, x_dev, y_dev, y_dev_alt = read_laptop_dataset_train(data_trainset, data_devset)
+    elif '/laptop/' in data_trainset or '\\laptop\\' in data_trainset:
+        x_train, y_train_1, y_train_2 = read_laptop_dataset_train(data_trainset)
+        if data_model_outputs_train is not None:
+            y_train_2 = read_predictions(data_model_outputs_train)
         dataset_name = 'laptop'
         slot_sep = ';'
         val_sep = '='
@@ -257,10 +261,8 @@ def load_training_data_for_eval(data_trainset, data_devset, vocab_size, max_inpu
         raise FileNotFoundError
 
     # parse the utterances into lists of words
-    y_train = [preprocess_utterance(y) for y in y_train]
-    y_train_alt = [preprocess_utterance(y) for y in y_train_alt]
-    y_dev = [preprocess_utterance(y) for y in y_dev]
-    y_dev_alt = [preprocess_utterance(y) for y in y_dev_alt]
+    y_train_1 = [preprocess_utterance(y) for y in y_train_1]
+    y_train_2 = [preprocess_utterance(y) for y in y_train_2]
     
 
     # produce sequences of extracted words from the meaning representations (MRs) in the trainset
@@ -271,9 +273,10 @@ def load_training_data_for_eval(data_trainset, data_devset, vocab_size, max_inpu
             slot, value = parse_slot_and_value(slot_value, val_sep, val_sep_closing)
             mr_dict[slot.lower()] = value.lower()
 
-        # delexicalize the MR and the utterance
-        y_train[i] = delex_sample(mr_dict, y_train[i], utterance_only=True)
-        y_train_alt[i] = delex_sample(mr_dict, y_train_alt[i])
+        if delex == True:
+            # delexicalize the MR and the utterance
+            y_train_1[i] = delex_sample(mr_dict, y_train_1[i], utterance_only=True)
+            y_train_2[i] = delex_sample(mr_dict, y_train_2[i])
 
         # convert the dictionary to a list
         x_train_seq.append([])
@@ -282,27 +285,6 @@ def load_training_data_for_eval(data_trainset, data_devset, vocab_size, max_inpu
                 x_train_seq[i].extend([key, val])
             else:
                 x_train_seq[i].append(key)
-    
-
-    # produce sequences of extracted words from the meaning representations (MRs) in the devset
-    x_dev_seq = []
-    for i, mr in enumerate(x_dev):
-        mr_dict = OrderedDict()
-        for slot_value in mr.split(slot_sep):
-            slot, value = parse_slot_and_value(slot_value, val_sep, val_sep_closing)
-            mr_dict[slot.lower()] = value.lower()
-
-        # delexicalize the MR and the utterance
-        y_dev[i] = delex_sample(mr_dict, y_dev[i], utterance_only=True)
-        y_dev_alt[i] = delex_sample(mr_dict, y_dev_alt[i])
-
-        # convert the dictionary to a list
-        x_dev_seq.append([])
-        for key, val in mr_dict.items():
-            if len(val) > 0:
-                x_dev_seq[i].extend([key, val])
-            else:
-                x_dev_seq[i].append(key)
 
 
     # create source vocabulary
@@ -325,7 +307,7 @@ def load_training_data_for_eval(data_trainset, data_devset, vocab_size, max_inpu
         with io.open('data/eval_vocab_target.json', 'r', encoding='utf8') as f_y_vocab:
             y_vocab = json.load(f_y_vocab)
     else:
-        y_distr = FreqDist([y_token for y in y_train for y_token in y] + [y_token for y in y_train_alt for y_token in y])
+        y_distr = FreqDist([y_token for y in y_train_1 for y_token in y] + [y_token for y in y_train_2 for y_token in y])
         y_vocab = y_distr.most_common(min(len(y_distr), vocab_size - 2))        # cap the vocabulary size
         with io.open('data/eval_vocab_target.json', 'w', encoding='utf8') as f_y_vocab:
             json.dump(y_vocab, f_y_vocab, ensure_ascii=False)
@@ -340,37 +322,117 @@ def load_training_data_for_eval(data_trainset, data_devset, vocab_size, max_inpu
     x_train_enc = token_seq_to_idx_seq(x_train_seq, x_word2idx, max_input_seq_len)
 
     # produce sequences of indexes from the utterances in the training set
-    y_train_enc = token_seq_to_idx_seq(y_train, y_word2idx, max_output_seq_len)
+    y_train_1_enc = token_seq_to_idx_seq(y_train_1, y_word2idx, max_output_seq_len)
 
     # produce sequences of indexes from the utterances in the training set
-    y_train_alt_enc = token_seq_to_idx_seq(y_train_alt, y_word2idx, max_output_seq_len)
+    y_train_2_enc = token_seq_to_idx_seq(y_train_2, y_word2idx, max_output_seq_len)
 
     # produce the list of the target labels in the training set
-    labels_train = np.concatenate((np.ones(len(y_train_enc)), np.zeros(len(y_train_alt_enc))))
+    labels_train = np.concatenate((np.ones(len(y_train_1_enc)), np.zeros(len(y_train_2_enc))))
+
+
+    return (np.concatenate((np.array(x_train_enc), np.array(x_train_enc))),
+            np.concatenate((np.array(y_train_1_enc), np.array(y_train_2_enc))),
+            labels_train)
+
+
+def load_dev_data_for_eval(data_devset, data_model_outputs_dev, vocab_size, max_input_seq_len, max_output_seq_len, delex=True):
+    dataset_name = ''
+    slot_sep = ''
+    val_sep = ''
+    val_sep_closing = False
+
+    # TMP
+    data_trainset = ''
+
+    if '/rest_e2e/' in data_trainset and '/rest_e2e/' in data_devset or \
+            '\\rest_e2e\\' in data_trainset and '\\rest_e2e\\' in data_devset:
+        x_train, y_train, x_dev, y_dev_1 = read_rest_e2e_dataset_train(data_trainset, data_devset)
+        dataset_name = 'rest_e2e'
+        slot_sep = ','
+        val_sep = '['
+        val_sep_closing = True
+    elif '/tv/' in data_trainset and '/tv/' in data_devset or \
+            '\\tv\\' in data_trainset and '\\tv\\' in data_devset:
+        x_train, y_train, x_dev, y_dev_1 = read_tv_dataset_train(data_trainset, data_devset)
+        dataset_name = 'tv'
+        slot_sep = ';'
+        val_sep = '='
+    elif '/laptop/' in data_devset or '\\laptop\\' in data_devset:
+        x_dev, y_dev_1, y_dev_2 = read_laptop_dataset_train(data_devset)
+        if data_model_outputs_dev is not None:
+            y_dev_2 = read_predictions(data_model_outputs_dev)
+        dataset_name = 'laptop'
+        slot_sep = ';'
+        val_sep = '='
+    else:
+        raise FileNotFoundError
+
+    # parse the utterances into lists of words
+    y_dev_1 = [preprocess_utterance(y) for y in y_dev_1]
+    y_dev_2 = [preprocess_utterance(y) for y in y_dev_2]
+    
+
+    # produce sequences of extracted words from the meaning representations (MRs) in the devset
+    x_dev_seq = []
+    for i, mr in enumerate(x_dev):
+        mr_dict = OrderedDict()
+        for slot_value in mr.split(slot_sep):
+            slot, value = parse_slot_and_value(slot_value, val_sep, val_sep_closing)
+            mr_dict[slot.lower()] = value.lower()
+            
+        if delex == True:
+            # delexicalize the MR and the utterance
+            y_dev_1[i] = delex_sample(mr_dict, y_dev_1[i], utterance_only=True)
+            y_dev_2[i] = delex_sample(mr_dict, y_dev_2[i])
+
+        # convert the dictionary to a list
+        x_dev_seq.append([])
+        for key, val in mr_dict.items():
+            if len(val) > 0:
+                x_dev_seq[i].extend([key, val])
+            else:
+                x_dev_seq[i].append(key)
+
+
+    # load the source vocabulary
+    with io.open('data/eval_vocab_source.json', 'r', encoding='utf8') as f_x_vocab:
+        x_vocab = json.load(f_x_vocab)
+
+    x_idx2word = [word[0] for word in x_vocab]
+    x_idx2word.insert(0, '<PADDING>')
+    x_idx2word.append('<NA>')
+    x_word2idx = {word: idx for idx, word in enumerate(x_idx2word)}
+
+    # load the target vocabulary
+    with io.open('data/eval_vocab_target.json', 'r', encoding='utf8') as f_y_vocab:
+        y_vocab = json.load(f_y_vocab)
+
+    y_idx2word = [word[0] for word in y_vocab]
+    y_idx2word.insert(0, '<PADDING>')
+    y_idx2word.append('<NA>')
+    y_word2idx = {token: idx for idx, token in enumerate(y_idx2word)}
     
 
     # produce sequences of indexes from the MRs in the devset
     x_dev_enc = token_seq_to_idx_seq(x_dev_seq, x_word2idx, max_input_seq_len)
 
     # produce sequences of indexes from the utterances in the devset
-    y_dev_enc = token_seq_to_idx_seq(y_dev, y_word2idx, max_output_seq_len)
+    y_dev_1_enc = token_seq_to_idx_seq(y_dev_1, y_word2idx, max_output_seq_len)
 
     # produce sequences of indexes from the utterances in the devset
-    y_dev_alt_enc = token_seq_to_idx_seq(y_dev_alt, y_word2idx, max_output_seq_len)
+    y_dev_2_enc = token_seq_to_idx_seq(y_dev_2, y_word2idx, max_output_seq_len)
 
     # produce the list of the target labels in the devset
-    labels_dev = np.concatenate((np.ones(len(y_dev_enc)), np.zeros(len(y_dev_alt_enc))))
+    labels_dev = np.concatenate((np.ones(len(y_dev_1_enc)), np.zeros(len(y_dev_2_enc))))
 
 
-    return (np.concatenate((np.array(x_train_enc), np.array(x_train_enc))),
-            np.concatenate((np.array(y_train_enc), np.array(y_train_alt_enc))),
-            labels_train,
-            np.concatenate((np.array(x_dev_enc), np.array(x_dev_enc))),
-            np.concatenate((np.array(y_dev_enc), np.array(y_dev_alt_enc))),
+    return (np.concatenate((np.array(x_dev_enc), np.array(x_dev_enc))),
+            np.concatenate((np.array(y_dev_1_enc), np.array(y_dev_2_enc))),
             labels_dev)
 
 
-def load_test_data_for_eval(data_testset, vocab_size, max_input_seq_len, max_output_seq_len):
+def load_test_data_for_eval(data_testset, data_model_outputs_test, vocab_size, max_input_seq_len, max_output_seq_len, delex=False):
     dataset_name = ''
     slot_sep = ''
     val_sep = ''
@@ -388,7 +450,9 @@ def load_test_data_for_eval(data_testset, vocab_size, max_input_seq_len, max_out
         slot_sep = ';'
         val_sep = '='
     elif '/laptop/' in data_testset or '\\laptop\\' in data_testset:
-        x_test, y_test, y_test_alt = read_laptop_dataset_test(data_testset)
+        x_test, _, y_test = read_laptop_dataset_test(data_testset)
+        if data_model_outputs_test is not None:
+            y_test = read_predictions(data_model_outputs_test)
         dataset_name = 'laptop'
         slot_sep = ';'
         val_sep = '='
@@ -397,7 +461,8 @@ def load_test_data_for_eval(data_testset, vocab_size, max_input_seq_len, max_out
 
     # parse the utterances into lists of words
     y_test = [preprocess_utterance(y) for y in y_test]
-    y_test_alt = [preprocess_utterance(y) for y in y_test_alt]
+    #y_test_1 = [preprocess_utterance(y) for y in y_test_1]
+    #y_test_2 = [preprocess_utterance(y) for y in y_test_2]
     
 
     # produce sequences of extracted words from the meaning representations (MRs) in the testset
@@ -408,9 +473,11 @@ def load_test_data_for_eval(data_testset, vocab_size, max_input_seq_len, max_out
             slot, value = parse_slot_and_value(slot_value, val_sep, val_sep_closing)
             mr_dict[slot.lower()] = value.lower()
 
-        # delexicalize the MR and the utterance
-        y_test[i] = delex_sample(mr_dict, y_test[i], utterance_only=True)
-        y_test_alt[i] = delex_sample(mr_dict, y_test_alt[i])
+        if delex == True:
+            # delexicalize the MR and the utterance
+            y_test[i] = delex_sample(mr_dict, y_test[i])
+            #y_test_1[i] = delex_sample(mr_dict, y_test_1[i], utterance_only=True)
+            #y_test_2[i] = delex_sample(mr_dict, y_test_2[i])
 
         # convert the dictionary to a list
         x_test_seq.append([])
@@ -440,106 +507,30 @@ def load_test_data_for_eval(data_testset, vocab_size, max_input_seq_len, max_out
     y_word2idx = {token: idx for idx, token in enumerate(y_idx2word)}
 
 
-    # produce sequences of indexes from the MRs in the training set
+    # produce sequences of indexes from the MRs in the test set
     x_test_enc = token_seq_to_idx_seq(x_test_seq, x_word2idx, max_input_seq_len)
 
-    # produce sequences of indexes from the utterances in the training set
+    # produce sequences of indexes from the utterances in the test set
     y_test_enc = token_seq_to_idx_seq(y_test, y_word2idx, max_output_seq_len)
+    #y_test_1_enc = token_seq_to_idx_seq(y_test_1, y_word2idx, max_output_seq_len)
+    #y_test_2_enc = token_seq_to_idx_seq(y_test_2, y_word2idx, max_output_seq_len)
 
-    # produce sequences of indexes from the utterances in the training set
-    y_test_alt_enc = token_seq_to_idx_seq(y_test_alt, y_word2idx, max_output_seq_len)
-
-    # produce the list of the target labels in the training set
-    labels_test = np.concatenate((np.ones(len(y_test_enc)), np.zeros(len(y_test_alt_enc))))
-
-
-    return (np.concatenate((np.array(x_test_enc), np.array(x_test_enc))),
-            np.concatenate((np.array(y_test_enc), np.array(y_test_alt_enc))),
-            labels_test)
+    # produce the list of the target labels in the test set
+    labels_test = np.ones(len(y_test_enc))
+    #labels_test = np.concatenate((np.ones(len(y_test_1_enc)), np.zeros(len(y_test_2_enc))))
 
 
-def load_pred_data_for_eval(data_testset, data_predictions, vocab_size, max_input_seq_len, max_output_seq_len):
-    dataset_name = ''
-    slot_sep = ''
-    val_sep = ''
-    val_sep_closing = False
+    return (np.array(x_test_enc),
+            np.array(y_test_enc),
+            labels_test,
+            x_idx2word,
+            y_idx2word)
 
-    if '/rest_e2e/' in data_testset or '\\rest_e2e\\' in data_testset:
-        x_pred, y_test = read_rest_e2e_dataset_test(data_testset)
-        dataset_name = 'rest_e2e'
-        slot_sep = ','
-        val_sep = '['
-        val_sep_closing = True
-    elif '/tv/' in data_testset or '\\tv\\' in data_testset:
-        x_pred, y_test = read_tv_dataset_test(data_testset)
-        dataset_name = 'tv'
-        slot_sep = ';'
-        val_sep = '='
-    elif '/laptop/' in data_testset or '\\laptop\\' in data_testset:
-        x_pred, _, _ = read_laptop_dataset_test(data_testset)
-        y_pred = read_predictions(data_predictions)
-        dataset_name = 'laptop'
-        slot_sep = ';'
-        val_sep = '='
-    else:
-        raise FileNotFoundError
-
-    # parse the utterances into lists of words
-    y_pred = [preprocess_utterance(y) for y in y_pred]
-    
-
-    # produce sequences of extracted words from the meaning representations (MRs) in the testset
-    x_pred_seq = []
-    for i, mr in enumerate(x_pred):
-        mr_dict = OrderedDict()
-        for slot_value in mr.split(slot_sep):
-            slot, value = parse_slot_and_value(slot_value, val_sep, val_sep_closing)
-            mr_dict[slot.lower()] = value.lower()
-
-        # delexicalize the MR and the utterance
-        y_pred[i] = delex_sample(mr_dict, y_pred[i])
-
-        # convert the dictionary to a list
-        x_pred_seq.append([])
-        for key, val in mr_dict.items():
-            if len(val) > 0:
-                x_pred_seq[i].extend([key, val])
-            else:
-                x_pred_seq[i].append(key)
-
-
-    # load the source vocabulary
-    with io.open('data/eval_vocab_source.json', 'r', encoding='utf8') as f_x_vocab:
-        x_vocab = json.load(f_x_vocab)
-
-    x_idx2word = [word[0] for word in x_vocab]
-    x_idx2word.insert(0, '<PADDING>')
-    x_idx2word.append('<NA>')
-    x_word2idx = {word: idx for idx, word in enumerate(x_idx2word)}
-
-    # load the target vocabulary
-    with io.open('data/eval_vocab_target.json', 'r', encoding='utf8') as f_y_vocab:
-        y_vocab = json.load(f_y_vocab)
-
-    y_idx2word = [word[0] for word in y_vocab]
-    y_idx2word.insert(0, '<PADDING>')
-    y_idx2word.append('<NA>')
-    y_word2idx = {token: idx for idx, token in enumerate(y_idx2word)}
-
-
-    # produce sequences of indexes from the MRs in the training set
-    x_pred_enc = token_seq_to_idx_seq(x_pred_seq, x_word2idx, max_input_seq_len)
-
-    # produce sequences of indexes from the utterances in the training set
-    y_pred_enc = token_seq_to_idx_seq(y_pred, y_word2idx, max_output_seq_len)
-
-    # produce the list of the target labels in the training set
-    labels_pred = np.ones(len(y_pred_enc))
-
-
-    return (np.array(x_pred_enc),
-            np.array(y_pred_enc),
-            labels_pred)
+    #return (np.concatenate((np.array(x_test_enc), np.array(x_test_enc))),
+    #        np.concatenate((np.array(y_test_1_enc), np.array(y_test_2_enc))),
+    #        labels_test,
+    #        x_idx2word,
+    #        y_idx2word)
 
 
 # ---- AUXILIARY FUNCTIONS ----
@@ -633,7 +624,7 @@ def read_tv_dataset_test(path_to_testset):
     return x_test, y_test
 
 
-def read_laptop_dataset_train(path_to_trainset, path_to_devset):
+def read_laptop_dataset_train(path_to_trainset):
     with io.open(path_to_trainset, encoding='utf8') as f_trainset:
         # remove the comment at the beginning of the file
         for i in range(5):
@@ -650,7 +641,10 @@ def read_laptop_dataset_train(path_to_trainset, path_to_devset):
     for i, mr in enumerate(x_train):
         x_train[i] = preprocess_mr(mr, '(', ';', '=')
 
+    return x_train, y_train, y_train_alt
 
+
+def read_laptop_dataset_dev(path_to_devset):
     with io.open(path_to_devset, encoding='utf8') as f_devset:
         # remove the comment at the beginning of the file
         for i in range(5):
@@ -667,7 +661,7 @@ def read_laptop_dataset_train(path_to_trainset, path_to_devset):
     for i, mr in enumerate(x_dev):
         x_dev[i] = preprocess_mr(mr, '(', ';', '=')
 
-    return x_train, y_train, y_train_alt, x_dev, y_dev, y_dev_alt
+    return x_dev, y_dev, y_dev_alt
 
 
 def read_laptop_dataset_test(path_to_testset):

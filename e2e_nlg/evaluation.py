@@ -17,6 +17,7 @@ import data_loader
 vocab_size = 10000                      # maximum vocabulary size of the DAs
 max_mr_seq_len = 30                     # number of words the DAs should be truncated/padded to
 max_utt_seq_len = 50                    # number of words the DAs should be truncated/padded to
+delex = False                           # should delexicalize the samples
 
 
 def main():
@@ -25,8 +26,8 @@ def main():
     parser = argparse.ArgumentParser(description='Perform a specific task (e.g. training, testing, prediction) with the defined model.')
     group = parser.add_mutually_exclusive_group()
     group.add_argument('--train', nargs=2, help='takes as arguments the paths to the trainset and the devset')
-    group.add_argument('--test', nargs=2, help='takes as arguments the path to the test set, and the path to the model')
-    group.add_argument('--predict', nargs=3, help='takes as argument the path to the testset, the path to the predictions, and the path to the model')
+    group.add_argument('--test', nargs=3, help='takes as arguments the path to the test set, the path to the model outputs, and the path to the model')
+    group.add_argument('--predict', nargs=3, help='takes as argument the path to the test set, the path to the model outputs, and the path to the model')
 
     args = parser.parse_args()
 
@@ -36,22 +37,21 @@ def main():
         else:
             train(args.train[0], args.train[1])
     elif args.test is not None:
-        if not os.path.isfile(args.test[0]):
+        if not os.path.isfile(args.test[0]) or not os.path.isfile(args.test[1]):
             print('Error: invalid file path.')
         else:
-            test(args.test[0], args.test[1], predict_only=False)
+            test(args.test[0], args.test[1], args.test[2], predict_only=False)
     elif args.predict is not None:
-        if not os.path.isfile(args.predict[0]):
+        if not os.path.isfile(args.predict[0]) or not os.path.isfile(args.predict[1]):
             print('Error: invalid file path.')
         else:
-            #test(args.predict[0], args.predict[1], predict_only=True)
-            predict(args.predict[0], args.predict[1], args.predict[2])
+            test(args.predict[0], args.predict[1], args.predict[2], predict_only=True)
     else:
         print('Usage:\n')
         print('main.py')
         print('\t--train [path_to_trainset] [path_to_devset]')
-        print('\t--test [path_to_testset] [path_to_model]')
-        print('\t--predict [path_to_testset] [path_to_predictions] [path_to_model]')
+        print('\t--test [path_to_testset] [path_to_model_outputs] [path_to_model]')
+        print('\t--predict [path_to_testset] [path_to_model_outputs] [path_to_model]')
 
 
 def train(data_trainset, data_devset):
@@ -60,7 +60,7 @@ def train(data_trainset, data_devset):
     embedding_size = 300                    # dimension of the word embedding vectors
     rnn_depth = 2                           # number of RNN layers
     rnn_layer_size = 200                    # number of neurons in a single RNN layer
-    num_epochs = 2                          # number of training epochs
+    num_epochs = 5                          # number of training epochs
 
 
     # ---- LOAD THE DATA ----
@@ -68,11 +68,24 @@ def train(data_trainset, data_devset):
     print('Loading training data...', end=' ')
     sys.stdout.flush()
 
-    mr_train, utt_train, labels_train, mr_dev, utt_dev, labels_dev = data_loader.load_training_data_for_eval(data_trainset,
-                                                                                                             data_devset,
-                                                                                                             vocab_size,
-                                                                                                             max_mr_seq_len,
-                                                                                                             max_utt_seq_len)
+    data_model_outputs_train = 'data/laptop/predictions_train.txt'
+    data_model_outputs_dev = 'data/laptop/predictions_dev.txt'
+    #data_model_outputs_train = None
+    #data_model_outputs_dev = None
+
+    mr_train, utt_train, labels_train = data_loader.load_training_data_for_eval(data_trainset,
+                                                                                data_model_outputs_train,
+                                                                                vocab_size,
+                                                                                max_mr_seq_len,
+                                                                                max_utt_seq_len,
+                                                                                delex=delex)
+
+    mr_dev, utt_dev, labels_dev = data_loader.load_dev_data_for_eval(data_devset,
+                                                                     data_model_outputs_dev,
+                                                                     vocab_size,
+                                                                     max_mr_seq_len,
+                                                                     max_utt_seq_len,
+                                                                     delex=delex)
 
     # DEBUG PRINT
     #print('---- Input overview ----')
@@ -168,12 +181,12 @@ def train(data_trainset, data_devset):
     print('DONE')
     
     
-def test(data_testset, path_to_model, predict_only=True):
+def test(data_testset, data_model_outputs, path_to_model, predict_only=True):
     # ---- LOAD THE DATA ----
 
     vocab_source_file = 'data/eval_vocab_source.json'
     vocab_target_file = 'data/eval_vocab_target.json'
-    predictions_file = 'predictions/predictions.csv'
+    evaluations_file = 'predictions/predictions.csv'
 
     print('Loading test data...', end=' ')
     sys.stdout.flush()
@@ -181,14 +194,19 @@ def test(data_testset, path_to_model, predict_only=True):
     if not os.path.isfile(vocab_source_file) or not os.path.isfile(vocab_target_file):
         raise FileNotFoundError('Vocabulary files missing.')
         
-    mr_test, utt_test, labels_test = data_loader.load_test_data_for_eval(data_testset, vocab_size, max_mr_seq_len, max_utt_seq_len)
+    mr_test, utt_test, labels_test, mr_idx2word, utt_idx2word = data_loader.load_test_data_for_eval(data_testset,
+                                                                                                    data_model_outputs,
+                                                                                                    vocab_size,
+                                                                                                    max_mr_seq_len,
+                                                                                                    max_utt_seq_len,
+                                                                                                    delex=delex)
 
     # DEBUG PRINT
-    print('---- Input overview ----')
-    print('mr_test.shape =', mr_test.shape)
-    print('utt_test.shape =', utt_test.shape)
-    print('labels_test.shape =', labels_test.shape)
-    print('----')
+    #print('---- Input overview ----')
+    #print('mr_pred.shape =', mr_pred.shape)
+    #print('utt_pred.shape =', utt_pred.shape)
+    #print('labels_pred.shape =', labels_pred.shape)
+    #print('----')
     
     print('DONE')
     
@@ -208,7 +226,7 @@ def test(data_testset, path_to_model, predict_only=True):
         print('\nEvaluating...')
 
         loss, acc = model.evaluate([mr_test, utt_test],
-                                   labels_test)
+                                    labels_test)
 
         print()
         print('-> Test loss:', loss)
@@ -224,71 +242,9 @@ def test(data_testset, path_to_model, predict_only=True):
     predictions = np.array(prediction_distr).flatten()
     
     for i, class_predicted in enumerate(predictions):
-        results.append([mr_test[i], utt_test[i], class_predicted, labels_test[i]])
-
-    # save the results to a CSV file along with the corresponding DAs and reference classes
-    df = pd.DataFrame(np.asarray(results))
-    df.to_csv(predictions_file, header=['MR', 'utterance', 'prediction', 'ref'], index=False)
-    
-    print('DONE')
-    
-    
-def predict(data_testset, data_predictions, path_to_model):
-    # ---- LOAD THE DATA ----
-
-    vocab_source_file = 'data/eval_vocab_source.json'
-    vocab_target_file = 'data/eval_vocab_target.json'
-    evaluations_file = 'predictions/evaluations.csv'
-
-    print('Loading test data...', end=' ')
-    sys.stdout.flush()
-
-    if not os.path.isfile(vocab_source_file) or not os.path.isfile(vocab_target_file):
-        raise FileNotFoundError('Vocabulary files missing.')
-        
-    mr_pred, utt_pred, labels_pred = data_loader.load_pred_data_for_eval(data_testset, data_predictions, vocab_size, max_mr_seq_len, max_utt_seq_len)
-
-    # DEBUG PRINT
-    print('---- Input overview ----')
-    print('mr_pred.shape =', mr_pred.shape)
-    print('utt_pred.shape =', utt_pred.shape)
-    print('labels_pred.shape =', labels_pred.shape)
-    print('----')
-    
-    print('DONE')
-    
-
-    # ---- LOAD THE MODEL ----
-
-    print('\nLoading the model...')
-
-    # load the model from a checkpoint
-    model = load_model(path_to_model)
-    model.summary()
-
-
-    # ---- TEST THE MODEL ----
-
-    print('\nEvaluating...')
-
-    loss, acc = model.evaluate([mr_pred, utt_pred],
-                                labels_pred)
-
-    print()
-    print('-> Test loss:', loss)
-    print('-> Test accuracy:', acc)
-
-
-    # ---- PERFORM INFERENCE ----
-
-    print('\nPredicting...', end=' ')
-
-    results = []
-    prediction_distr = model.predict([mr_pred, utt_pred])
-    predictions = np.array(prediction_distr).flatten()
-    
-    for i, class_predicted in enumerate(predictions):
-        results.append([mr_pred[i], utt_pred[i], class_predicted, labels_pred[i]])
+        mr_pred_words = ' '.join([mr_idx2word[idx] for idx in mr_test[i] if idx > 0])
+        utt_pred_words = ' '.join([utt_idx2word[idx] for idx in utt_test[i] if idx > 0])
+        results.append([mr_pred_words, utt_pred_words, class_predicted, labels_test[i]])
 
     # save the results to a CSV file along with the corresponding DAs and reference classes
     df = pd.DataFrame(np.asarray(results))
