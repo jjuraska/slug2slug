@@ -17,7 +17,7 @@ import data_loader
 vocab_size = 10000                      # maximum vocabulary size of the DAs
 max_mr_seq_len = 30                     # number of words the DAs should be truncated/padded to
 max_utt_seq_len = 50                    # number of words the DAs should be truncated/padded to
-delex = False                           # should delexicalize the samples
+delex = True                           # should delexicalize the samples
 
 
 def main():
@@ -25,7 +25,7 @@ def main():
     
     parser = argparse.ArgumentParser(description='Perform a specific task (e.g. training, testing, prediction) with the defined model.')
     group = parser.add_mutually_exclusive_group()
-    group.add_argument('--train', nargs=2, help='takes as arguments the paths to the trainset and the devset')
+    group.add_argument('--train', nargs='+', help='takes as arguments the path to the trainset and (optionally) the path to the devset')
     group.add_argument('--test', nargs=3, help='takes as arguments the path to the test set, the path to the model outputs, and the path to the model')
     group.add_argument('--predict', nargs=3, help='takes as argument the path to the test set, the path to the model outputs, and the path to the model')
 
@@ -35,7 +35,12 @@ def main():
         if not os.path.isfile(args.train[0]) or not os.path.isfile(args.train[1]):
             print('Error: invalid file path.')
         else:
-            train(args.train[0], args.train[1])
+            if len(args.train) == 2:
+                train(args.train[0], args.train[1])
+            elif len(args.train) == 4:
+                train(args.train[0], args.train[1], args.train[2], args.train[3])
+            else:
+                print('Error: expected 2 or 4 arguments.')
     elif args.test is not None:
         if not os.path.isfile(args.test[0]) or not os.path.isfile(args.test[1]):
             print('Error: invalid file path.')
@@ -49,29 +54,24 @@ def main():
     else:
         print('Usage:\n')
         print('main.py')
-        print('\t--train [path_to_trainset] [path_to_devset]')
-        print('\t--test [path_to_testset] [path_to_model_outputs] [path_to_model]')
-        print('\t--predict [path_to_testset] [path_to_model_outputs] [path_to_model]')
+        print('\t--train path_to_trainset [path_to_devset]')
+        print('\t--test path_to_testset path_to_model_outputs path_to_model')
+        print('\t--predict path_to_testset path_to_model_outputs path_to_model')
 
 
-def train(data_trainset, data_devset):
+def train(data_trainset, data_model_outputs_train, data_devset=None, data_model_outputs_dev=None):
     # ---- PARAMETERS ----
 
     embedding_size = 300                    # dimension of the word embedding vectors
     rnn_depth = 2                           # number of RNN layers
     rnn_layer_size = 200                    # number of neurons in a single RNN layer
-    num_epochs = 5                          # number of training epochs
+    num_epochs = 10                          # number of training epochs
 
 
     # ---- LOAD THE DATA ----
 
     print('Loading training data...', end=' ')
     sys.stdout.flush()
-
-    data_model_outputs_train = 'data/laptop/predictions_train.txt'
-    data_model_outputs_dev = 'data/laptop/predictions_dev.txt'
-    #data_model_outputs_train = None
-    #data_model_outputs_dev = None
 
     mr_train, utt_train, labels_train = data_loader.load_training_data_for_eval(data_trainset,
                                                                                 data_model_outputs_train,
@@ -80,12 +80,13 @@ def train(data_trainset, data_devset):
                                                                                 max_utt_seq_len,
                                                                                 delex=delex)
 
-    mr_dev, utt_dev, labels_dev = data_loader.load_dev_data_for_eval(data_devset,
-                                                                     data_model_outputs_dev,
-                                                                     vocab_size,
-                                                                     max_mr_seq_len,
-                                                                     max_utt_seq_len,
-                                                                     delex=delex)
+    if data_devset is not None:
+        mr_dev, utt_dev, labels_dev = data_loader.load_dev_data_for_eval(data_devset,
+                                                                         data_model_outputs_dev,
+                                                                         vocab_size,
+                                                                         max_mr_seq_len,
+                                                                         max_utt_seq_len,
+                                                                         delex=delex)
 
     # DEBUG PRINT
     #print('---- Input overview ----')
@@ -171,12 +172,19 @@ def train(data_trainset, data_devset):
     print('Training...')
     sys.stdout.flush()
 
-    history = model.fit([mr_train, utt_train],
-                        labels_train,
-                        validation_data=([mr_dev, utt_dev], labels_dev),
-                        batch_size=64,
-                        epochs=num_epochs,
-                        callbacks=callback_list)
+    if data_devset is not None:
+        history = model.fit([mr_train, utt_train],
+                            labels_train,
+                            validation_data=([mr_dev, utt_dev], labels_dev),
+                            batch_size=64,
+                            epochs=num_epochs,
+                            callbacks=callback_list)
+    else:
+        history = model.fit([mr_train, utt_train],
+                            labels_train,
+                            batch_size=64,
+                            epochs=num_epochs,
+                            callbacks=callback_list)
 
     print('DONE')
     

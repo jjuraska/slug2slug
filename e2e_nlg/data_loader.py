@@ -31,20 +31,23 @@ def load_training_data(data_trainset, data_devset, input_concat=False):
 
     if '/rest_e2e/' in data_trainset and '/rest_e2e/' in data_devset or \
             '\\rest_e2e\\' in data_trainset and '\\rest_e2e\\' in data_devset:
-        x_train, y_train, x_dev, y_dev = read_rest_e2e_dataset_train(data_trainset, data_devset)
+        x_train, y_train = read_rest_e2e_dataset_train(data_trainset)
+        x_dev, y_dev = read_rest_e2e_dataset_dev(data_devset)
         dataset_name = 'rest_e2e'
         slot_sep = ','
         val_sep = '['
         val_sep_closing = True
     elif '/tv/' in data_trainset and '/tv/' in data_devset or \
             '\\tv\\' in data_trainset and '\\tv\\' in data_devset:
-        x_train, y_train, x_dev, y_dev = read_tv_dataset_train(data_trainset, data_devset)
+        x_train, y_train, _ = read_tv_dataset_train(data_trainset)
+        x_dev, y_dev, _ = read_tv_dataset_dev(data_devset)
         dataset_name = 'tv'
         slot_sep = ';'
         val_sep = '='
     elif '/laptop/' in data_trainset and '/laptop/' in data_devset or \
             '\\laptop\\' in data_trainset and '\\laptop\\' in data_devset:
-        x_train, y_train, _, x_dev, y_dev, _ = read_laptop_dataset_train(data_trainset, data_devset)
+        x_train, y_train, _ = read_laptop_dataset_train(data_trainset)
+        x_dev, y_dev, _ = read_laptop_dataset_dev(data_devset)
         dataset_name = 'laptop'
         slot_sep = ';'
         val_sep = '='
@@ -156,7 +159,7 @@ def load_test_data(data_testset, input_concat=False):
         val_sep = '['
         val_sep_closing = True
     elif '/tv/' in data_testset or '\\tv\\' in data_testset:
-        x_test, y_test = read_tv_dataset_test(data_testset)
+        x_test, y_test, _ = read_tv_dataset_test(data_testset)
         dataset_name = 'tv'
         slot_sep = ';'
         val_sep = '='
@@ -234,19 +237,17 @@ def load_training_data_for_eval(data_trainset, data_model_outputs_train, vocab_s
     val_sep = ''
     val_sep_closing = False
 
-    # TMP
-    data_devset = ''
-
-    if '/rest_e2e/' in data_trainset and '/rest_e2e/' in data_devset or \
-            '\\rest_e2e\\' in data_trainset and '\\rest_e2e\\' in data_devset:
-        x_train, y_train_1, x_dev, y_dev = read_rest_e2e_dataset_train(data_trainset, data_devset)
+    if '/rest_e2e/' in data_trainset or '\\rest_e2e\\' in data_trainset:
+        x_train, y_train_1 = read_rest_e2e_dataset_train(data_trainset)
+        y_train_2 = read_predictions(data_model_outputs_train)
         dataset_name = 'rest_e2e'
         slot_sep = ','
         val_sep = '['
         val_sep_closing = True
-    elif '/tv/' in data_trainset and '/tv/' in data_devset or \
-            '\\tv\\' in data_trainset and '\\tv\\' in data_devset:
-        x_train, y_train_1, x_dev, y_dev = read_tv_dataset_train(data_trainset, data_devset)
+    elif '/tv/' in data_trainset or '\\tv\\' in data_trainset:
+        x_train, y_train_1, y_train_2 = read_tv_dataset_train(data_trainset)
+        if data_model_outputs_train is not None:
+            y_train_2 = read_predictions(data_model_outputs_train)
         dataset_name = 'tv'
         slot_sep = ';'
         val_sep = '='
@@ -342,24 +343,22 @@ def load_dev_data_for_eval(data_devset, data_model_outputs_dev, vocab_size, max_
     val_sep = ''
     val_sep_closing = False
 
-    # TMP
-    data_trainset = ''
-
-    if '/rest_e2e/' in data_trainset and '/rest_e2e/' in data_devset or \
-            '\\rest_e2e\\' in data_trainset and '\\rest_e2e\\' in data_devset:
-        x_train, y_train, x_dev, y_dev_1 = read_rest_e2e_dataset_train(data_trainset, data_devset)
+    if '/rest_e2e/' in data_devset or '\\rest_e2e\\' in data_devset:
+        x_dev, y_dev_1 = read_rest_e2e_dataset_dev(data_devset)
+        y_dev_2 = read_predictions(data_model_outputs_dev)
         dataset_name = 'rest_e2e'
         slot_sep = ','
         val_sep = '['
         val_sep_closing = True
-    elif '/tv/' in data_trainset and '/tv/' in data_devset or \
-            '\\tv\\' in data_trainset and '\\tv\\' in data_devset:
-        x_train, y_train, x_dev, y_dev_1 = read_tv_dataset_train(data_trainset, data_devset)
+    elif '/tv/' in data_devset or '\\tv\\' in data_devset:
+        x_dev, y_dev_1, y_dev_2 = read_tv_dataset_dev(data_devset)
+        if data_model_outputs_dev is not None:
+            y_dev_2 = read_predictions(data_model_outputs_dev)
         dataset_name = 'tv'
         slot_sep = ';'
         val_sep = '='
     elif '/laptop/' in data_devset or '\\laptop\\' in data_devset:
-        x_dev, y_dev_1, y_dev_2 = read_laptop_dataset_train(data_devset)
+        x_dev, y_dev_1, y_dev_2 = read_laptop_dataset_dev(data_devset)
         if data_model_outputs_dev is not None:
             y_dev_2 = read_predictions(data_model_outputs_dev)
         dataset_name = 'laptop'
@@ -439,13 +438,16 @@ def load_test_data_for_eval(data_testset, data_model_outputs_test, vocab_size, m
     val_sep_closing = False
 
     if '/rest_e2e/' in data_testset or '\\rest_e2e\\' in data_testset:
-        x_test, y_test = read_rest_e2e_dataset_test(data_testset)
+        x_test, _ = read_rest_e2e_dataset_test(data_testset)
+        y_test = read_predictions(data_model_outputs_test)
         dataset_name = 'rest_e2e'
         slot_sep = ','
         val_sep = '['
         val_sep_closing = True
     elif '/tv/' in data_testset or '\\tv\\' in data_testset:
-        x_test, y_test = read_tv_dataset_test(data_testset)
+        x_test, _, y_test = read_tv_dataset_test(data_testset)
+        if data_model_outputs_test is not None:
+            y_test = read_predictions(data_model_outputs_test)
         dataset_name = 'tv'
         slot_sep = ';'
         val_sep = '='
@@ -535,23 +537,27 @@ def load_test_data_for_eval(data_testset, data_model_outputs_test, vocab_size, m
 
 # ---- AUXILIARY FUNCTIONS ----
 
-def read_rest_e2e_dataset_train(data_trainset, data_devset):
+def read_rest_e2e_dataset_train(data_trainset):
     # read the training data from file
     df_train = pd.read_csv(data_trainset, header=0, encoding='utf8')    # names=['mr', 'ref']
     x_train = df_train.mr.tolist()
     y_train = df_train.ref.tolist()
 
+    return x_train, y_train
+
+
+def read_rest_e2e_dataset_dev(data_devset):
     # read the development data from file
     df_dev = pd.read_csv(data_devset, header=0, encoding='utf8')        # names=['mr', 'ref']
     x_dev = df_dev.mr.tolist()
     y_dev = df_dev.ref.tolist()
 
-    return x_train, y_train, x_dev, y_dev
+    return x_dev, y_dev
 
 
 def read_rest_e2e_dataset_test(data_testset):
     # read the test data from file
-    df_test = pd.read_csv(data_testset, header=0, encoding='utf8')  # names=['mr', 'ref']
+    df_test = pd.read_csv(data_testset, header=0, encoding='utf8')      # names=['mr', 'ref']
     x_test = df_test.iloc[:, 0].tolist()
     y_test = []
     if df_test.shape[1] > 1:
@@ -560,7 +566,7 @@ def read_rest_e2e_dataset_test(data_testset):
     return x_test, y_test
 
 
-def read_tv_dataset_train(path_to_trainset, path_to_devset):
+def read_tv_dataset_train(path_to_trainset):
     with io.open(path_to_trainset, encoding='utf8') as f_trainset:
         # remove the comment at the beginning of the file
         for i in range(5):
@@ -571,6 +577,7 @@ def read_tv_dataset_train(path_to_trainset, path_to_devset):
 
     x_train = df_train.iloc[:, 0].tolist()
     y_train = df_train.iloc[:, 1].tolist()
+    y_train_alt = df_train.iloc[:, 2].tolist()
 
     # transform the MR to contain the DA type as the first slot
     for i, mr in enumerate(x_train):
@@ -580,8 +587,14 @@ def read_tv_dataset_train(path_to_trainset, path_to_devset):
     stemmer = WordNetLemmatizer()
     for i, utt in enumerate(y_train):
         y_train[i] = replace_plural_nouns(utt)
+    for i, utt in enumerate(y_train_alt):
+        y_train_alt[i] = replace_plural_nouns(utt)
 
         
+    return x_train, y_train, y_train_alt
+
+
+def read_tv_dataset_dev(path_to_devset):
     with io.open(path_to_devset, encoding='utf8') as f_devset:
         # remove the comment at the beginning of the file
         for i in range(5):
@@ -592,6 +605,7 @@ def read_tv_dataset_train(path_to_trainset, path_to_devset):
 
     x_dev = df_dev.iloc[:, 0].tolist()
     y_dev = df_dev.iloc[:, 1].tolist()
+    y_dev_alt = df_dev.iloc[:, 2].tolist()
 
     # transform the MR to contain the DA type as the first slot
     for i, mr in enumerate(x_dev):
@@ -601,8 +615,10 @@ def read_tv_dataset_train(path_to_trainset, path_to_devset):
     stemmer = WordNetLemmatizer()
     for i, utt in enumerate(y_dev):
         y_dev[i] = replace_plural_nouns(utt)
+    for i, utt in enumerate(y_dev_alt):
+        y_dev_alt[i] = replace_plural_nouns(utt)
 
-    return x_train, y_train, x_dev, y_dev
+    return x_dev, y_dev, y_dev_alt
 
 
 def read_tv_dataset_test(path_to_testset):
@@ -616,12 +632,13 @@ def read_tv_dataset_test(path_to_testset):
 
     x_test = df_test.iloc[:, 0].tolist()
     y_test = df_test.iloc[:, 1].tolist()
+    y_test_alt = df_test.iloc[:, 2].tolist()
 
     # transform the MR to contain the DA type as the first slot
     for i, mr in enumerate(x_test):
         x_test[i] = preprocess_mr(mr, '(', ';', '=')
 
-    return x_test, y_test
+    return x_test, y_test, y_test_alt
 
 
 def read_laptop_dataset_train(path_to_trainset):
