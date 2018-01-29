@@ -165,11 +165,12 @@ flycheck_*.el
 /e2e_nlg/data/*.json
 /e2e_nlg/data/*.txt
 /e2e_nlg/metrics/predictions_reduced.txt
-/e2e_nlg/model/*.*
+/e2e_nlg/model
 /e2e_nlg/predictions/*.txt
 /e2e_nlg/predictions/beam_visualizations/
 /e2e_nlg/predictions/beams.npz
 /e2e_nlg/predictions/beams_dump.pkl
 /e2e_nlg/predictions/beams_dump_reranked.pkl
+/e2e_nlg/saved_model
 
 # End of https://www.gitignore.io/api/emacs
