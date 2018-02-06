@@ -28,6 +28,10 @@ def finalize_utterances(utterances, mrs):
     return utterances_final
 
 
+def finalize_utterance(utterance, mr_dict):
+    return detokenize(relex(utterance, mr_dict))
+
+
 def join_plural_nouns(utterance):
     tokens = utterance.split()
 

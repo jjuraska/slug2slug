@@ -99,6 +99,7 @@ def load_training_data(data_trainset, data_devset, input_concat=False):
     # produce sequences of extracted words from the meaning representations (MRs) in the devset
     x_dev_seq = []
     for i, mr in enumerate(x_dev):
+        # extract the slot-value pairs into a dictionary
         mr_dict = OrderedDict()
         for slot_value in mr.split(slot_sep):
             slot, value = parse_slot_and_value(slot_value, val_sep, val_sep_closing)
@@ -178,6 +179,7 @@ def load_test_data(data_testset, input_concat=False):
     x_test_seq = []
     x_test_dict = []
     for i, mr in enumerate(x_test):
+        # extract the slot-value pairs into a dictionary
         mr_dict = OrderedDict()
         for slot_value in mr.split(slot_sep):
             slot, value = parse_slot_and_value(slot_value, val_sep, val_sep_closing)
@@ -229,6 +231,42 @@ def load_test_data(data_testset, input_concat=False):
                 if i > 0 and x_test[i] != x_test[i - 1]:
                     f_y_test.write('\n')
                 f_y_test.write(line + '\n')
+
+
+def tokenize_mr(mr):
+    '''
+    Produces a (delexed) sequence of tokens from the input MR.
+    '''
+
+    slot_sep = ','
+    val_sep = '['
+    val_sep_closing = True
+    
+    mr_seq = []
+    mr_dict = OrderedDict()
+
+    # extract the slot-value pairs into a dictionary
+    for slot_value in mr.split(slot_sep):
+        slot, value = parse_slot_and_value(slot_value, val_sep, val_sep_closing)
+        mr_dict[slot.lower()] = value.lower()
+
+    # make a copy of the dictionary for delexing
+    mr_dict_delex = copy.deepcopy(mr_dict)
+
+    # delexicalize the MR
+    delex_sample(mr_dict_delex, mr_only=True)
+
+    # convert the dictionary to a list
+    for key, val in mr_dict_delex.items():
+        if len(val) > 0:
+            mr_seq.extend([key, val])
+        else:
+            mr_seq.append(key)
+
+    # append the sequence-end token
+    mr_seq.append('SEQUENCE_END')
+
+    return mr_seq, mr_dict
 
 
 def load_training_data_for_eval(data_trainset, data_model_outputs_train, vocab_size, max_input_seq_len, max_output_seq_len, delex=False):
