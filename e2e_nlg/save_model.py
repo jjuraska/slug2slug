@@ -30,11 +30,11 @@ def save_model(model_dir, vocab_dir):
     model_params = train_options.model_params
 
     # add beam search parameters
-    model_params['inference.beam_search.beam_width'] = 10
-    model_params['inference.beam_search.length_penalty_weight'] = 1.0
+    #model_params['inference.beam_search.beam_width'] = 10
+    #model_params['inference.beam_search.length_penalty_weight'] = 1.0
 
     # DEBUG PRINT
-    print(model_params)
+    #print(model_params)
 
     model = model_cls(params=model_params,
                       mode=tf.contrib.learn.ModeKeys.INFER)

@@ -69,8 +69,8 @@ def merge_beams(beams_folder):
 
 
 def main():
-    #beams_folder = 'beams/rest_e2e/'
-    beams_folder = 'beams/tv/'
+    beams_folder = 'beams/rest_e2e/'
+    #beams_folder = 'beams/tv/'
     #beams_folder = 'beams/laptop/'
 
     #combine_keep_best(beams_folder)

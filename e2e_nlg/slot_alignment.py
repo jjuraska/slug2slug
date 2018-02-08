@@ -1,3 +1,8 @@
+# -*- coding: utf-8 -*-
+
+from __future__ import print_function
+from __future__ import division
+
 import sys
 import os
 import io
@@ -626,99 +631,100 @@ def scoreAlignment(curr_utterance, curr_mr, scoring="default+over-class"):
     for slot, value in curr_mr.items():
         slot_root = slot.rstrip(string.digits)
         found_slot = False
-        sent = sent.lower()
-        if value.lower() in sent.lower():
-            value_cnt = sent.lower().count(value.lower())
-            if value_cnt > 1:
-                slot_overgens += value_cnt - 1
+        
+        if slot_root == "da":
             found_slot = True
-        elif value == "dontcare":
-            if dontcareRealization(sent, slot_root, value):
-                slot_cnt = sent.lower().count(reduceSlotName(slot_root))
-                if slot_cnt > 1:
-                    slot_overgens += slot_cnt - 1
-                found_slot = True
-        elif value == "none":
-            if noneRealization(sent, slot_root, value):
-                slot_cnt = sent.lower().count(reduceSlotName(slot_root))
-                if slot_cnt > 1:
-                    slot_overgens += slot_cnt - 1
-                found_slot = True
-        elif slot_root == "da":
-            found_slot = True
-        elif slot_root == "name":
-            for pronoun in ["it", "its", "it's", "they"]:
-                if pronoun in word_tokenize(curr_utterance.lower()):
-                    found_slot = True
-        elif slot_root == "priceRange":
-            if scorePriceRangeNaive(sent, value):
-            # if priceRangeSlot(sent, value):
-                found_slot = True
-        elif slot_root == "familyFriendly":
-            if familyFriendlySlot(sent, value):
-                found_slot = True
-        elif slot_root == "food":
-            if foodSlot(sent, value):
-                found_slot = True
-        elif slot_root == "area":
-            if areaSlot(sent, value):
-                found_slot = True
-        elif slot_root == "eatType":
-            if eatTypeSlot(sent, value):
-                found_slot = True
-        elif slot_root == "customer_rating":
-            if scoreCustomerRatingNaive(sent, value):
-                found_slot = True
-                
-        elif slot_root == "type":
-            if typeSlot(sent, value):
-                found_slot = True
-        elif slot_root == "hasusbport":
-            if hasusbportSlot(sent, value):
-                found_slot = True
-        elif slot_root == "screensize":
-            if screensizeSlot(sent, value):
-                found_slot = True
-        elif slot_root == "price":
-            if priceSlot(sent, value):
-                found_slot = True
-        elif slot_root == "powerconsumption":
-            if powerconsumptionSlot(sent, value):
-                found_slot = True
-        elif slot_root == "color":
-            if colorSlot(sent, value):
-                found_slot = True
-        elif slot_root == "accessories":
-            if accessoriesSlot(sent, value):
-                found_slot = True
-
-        elif slot_root == "weight":
-            if weightSlot(sent, value):
-                found_slot = True
-        elif slot_root == "battery":
-            if batterySlot(sent, value):
-                found_slot = True
-        elif slot_root == "drive":
-            if driveSlot(sent, value):
-                found_slot = True
-        elif slot_root == "dimension":
-            if dimensionSlot(sent, value):
-                found_slot = True
-        elif slot_root == "design":
-            if designSlot(sent, value):
-                found_slot = True
-        elif slot_root == "utility":
-            if utilitySlot(sent, value):
-                found_slot = True
-        elif slot_root == "isforbusinesscomputing":
-            if isforbusinesscomputingSlot(sent, value):
-                found_slot = True
-
-        if slot != "da":
+        else:
             delex_slot = checkDelexSlots(slot, matches)
             if delex_slot:
                 found_slot = True
                 matches.remove(delex_slot)
+            else:
+                sent = sent.lower()
+                if value.lower() in sent.lower():
+                    value_cnt = sent.lower().count(value.lower())
+                    if value_cnt > 1:
+                        slot_overgens += value_cnt - 1
+                    found_slot = True
+                elif value == "dontcare":
+                    if dontcareRealization(sent, slot_root, value):
+                        slot_cnt = sent.lower().count(reduceSlotName(slot_root))
+                        if slot_cnt > 1:
+                            slot_overgens += slot_cnt - 1
+                        found_slot = True
+                elif value == "none":
+                    if noneRealization(sent, slot_root, value):
+                        slot_cnt = sent.lower().count(reduceSlotName(slot_root))
+                        if slot_cnt > 1:
+                            slot_overgens += slot_cnt - 1
+                        found_slot = True
+                elif slot_root == "name":
+                    for pronoun in ["it", "its", "it's", "they"]:
+                        if pronoun in word_tokenize(curr_utterance.lower()):
+                            found_slot = True
+                elif slot_root == "priceRange":
+                    if scorePriceRangeNaive(sent, value):
+                    # if priceRangeSlot(sent, value):
+                        found_slot = True
+                elif slot_root == "familyFriendly":
+                    if familyFriendlySlot(sent, value):
+                        found_slot = True
+                elif slot_root == "food":
+                    if foodSlot(sent, value):
+                        found_slot = True
+                elif slot_root == "area":
+                    if areaSlot(sent, value):
+                        found_slot = True
+                elif slot_root == "eatType":
+                    if eatTypeSlot(sent, value):
+                        found_slot = True
+                elif slot_root == "customer_rating":
+                    if scoreCustomerRatingNaive(sent, value):
+                        found_slot = True
+                
+                elif slot_root == "type":
+                    if typeSlot(sent, value):
+                        found_slot = True
+                elif slot_root == "hasusbport":
+                    if hasusbportSlot(sent, value):
+                        found_slot = True
+                elif slot_root == "screensize":
+                    if screensizeSlot(sent, value):
+                        found_slot = True
+                elif slot_root == "price":
+                    if priceSlot(sent, value):
+                        found_slot = True
+                elif slot_root == "powerconsumption":
+                    if powerconsumptionSlot(sent, value):
+                        found_slot = True
+                elif slot_root == "color":
+                    if colorSlot(sent, value):
+                        found_slot = True
+                elif slot_root == "accessories":
+                    if accessoriesSlot(sent, value):
+                        found_slot = True
+
+                elif slot_root == "weight":
+                    if weightSlot(sent, value):
+                        found_slot = True
+                elif slot_root == "battery":
+                    if batterySlot(sent, value):
+                        found_slot = True
+                elif slot_root == "drive":
+                    if driveSlot(sent, value):
+                        found_slot = True
+                elif slot_root == "dimension":
+                    if dimensionSlot(sent, value):
+                        found_slot = True
+                elif slot_root == "design":
+                    if designSlot(sent, value):
+                        found_slot = True
+                elif slot_root == "utility":
+                    if utilitySlot(sent, value):
+                        found_slot = True
+                elif slot_root == "isforbusinesscomputing":
+                    if isforbusinesscomputingSlot(sent, value):
+                        found_slot = True
 
         if found_slot:
             foundSlots.add(slot)
