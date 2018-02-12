@@ -15,7 +15,6 @@ from slot_alignment import scoreAlignment
 from postprocessing import finalize_utterance
 
 
-#tf.app.flags.DEFINE_string('server', '', 'Host:port of the service')
 tf.app.flags.DEFINE_string('query', '', 'Input MR')
 FLAGS = tf.app.flags.FLAGS
 
@@ -31,9 +30,8 @@ class UtteranceGenerationClient:
 
     def get_utterance_from_mr(self, mr):
         '''
-        Sends a request to the prediction service to produce an utterance.
+        Sends a request to the prediction services to produce an utterance.
         Args:
-            hostport: Host:port address where the service is running.
             mr: THe query MR for which an utterance should be generated.
         Returns:
             The utterance generated from the query MR.
@@ -63,13 +61,18 @@ class UtteranceGenerationClient:
         pool.close()
         pool.join()
 
+        print('Done')
+
         # gather the results from the services
-        utt_candidates = [(utt, utt_score) for utt, utt_score in results.get()]
+        utt_candidates = results.get()
 
         # DEBUG PRINT
         #print(utt_candidates)
-        
-        print('Done')
+
+        # if none of the services returned a valid response, return None
+        if all(utt[0] is None for utt in utt_candidates):
+            return None
+
         print('Re-ranking candidate utterances...', end=' ')
         sys.stdout.flush()
 
@@ -145,6 +148,13 @@ def process_query(task_args):
     # retrieve the list of tokens representing the utterance
     utt_tokens = response.outputs['utterance'].string_val
     # remove the sequence-end token and convert to a string
+
+    utt_temp = []
+    for t in utt_tokens:
+        if type(t) is str:
+            break
+        utt_temp.append(t.decode())
+    utt_tokens = utt_temp
     utt = ' '.join(utt_tokens[:-1]).strip()
     # score the utterance
     utt_score = scoreAlignment(utt, mr_dict)
@@ -153,10 +163,6 @@ def process_query(task_args):
 
 
 def main(_):
-    #if not FLAGS.server:
-    #    print('Please, specify the server [host:port]')
-    #    return
-
     if not FLAGS.query:
         print('Please, specify the query MR')
         return
