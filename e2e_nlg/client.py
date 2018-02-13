@@ -81,7 +81,7 @@ class UtteranceGenerationClient:
         best_score = -1
         for utt, utt_score in utt_candidates:
             if utt_score > best_score:
-                best_utt = utt
+                best_utt, best_score = utt, utt_score
     
         print('Done')
         print('Postprocessing the utterance...', end=' ')

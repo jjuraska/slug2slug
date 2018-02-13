@@ -23,6 +23,6 @@ Finally, the evaluation produces output files in the _predictions_ folder. The _
 
 ###### REQUIREMENTS
 
-- Python libraries: tensorflow, numpy, nltk
+- Python libraries: tensorflow, numpy, pandas, nltk, networkx
 - NLTK modules: perluniprops, punkt
     - install using the following command: python -c "import nltk; nltk.download('[module_name]')"
