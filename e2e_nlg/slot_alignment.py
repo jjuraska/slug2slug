@@ -157,7 +157,7 @@ def customerRatingSlot(sent, value):
 # TODO @food has 24 failures which are acceptable to remove the slot
 def foodSlot(sent, value):
     value = value.lower()
-    sent = re.sub("-", " ", sent.lower())
+    sent = re.sub("-", " ", sent)
     if value in sent:
         return True
     elif value == "english" and "british" in sent:
@@ -641,20 +641,20 @@ def scoreAlignment(curr_utterance, curr_mr, scoring="default+over-class"):
                 matches.remove(delex_slot)
             else:
                 sent = sent.lower()
-                if value.lower() in sent.lower():
-                    value_cnt = sent.lower().count(value.lower())
+                if value.lower() in sent:
+                    value_cnt = sent.count(value.lower())
                     if value_cnt > 1:
                         slot_overgens += value_cnt - 1
                     found_slot = True
                 elif value == "dontcare":
                     if dontcareRealization(sent, slot_root, value):
-                        slot_cnt = sent.lower().count(reduceSlotName(slot_root))
+                        slot_cnt = sent.count(reduceSlotName(slot_root))
                         if slot_cnt > 1:
                             slot_overgens += slot_cnt - 1
                         found_slot = True
                 elif value == "none":
                     if noneRealization(sent, slot_root, value):
-                        slot_cnt = sent.lower().count(reduceSlotName(slot_root))
+                        slot_cnt = sent.count(reduceSlotName(slot_root))
                         if slot_cnt > 1:
                             slot_overgens += slot_cnt - 1
                         found_slot = True
@@ -728,7 +728,6 @@ def scoreAlignment(curr_utterance, curr_mr, scoring="default+over-class"):
 
         if found_slot:
             foundSlots.add(slot)
-            continue
 
     #if scoring == "default":
     #    return len(foundSlots) / len(curr_mr)
@@ -750,7 +749,8 @@ def checkDelexSlots(slot, matches):
     for match in matches:
         if slot in match:
             return match
-    return False
+
+    return None
 
 
 def testSlotOrder():

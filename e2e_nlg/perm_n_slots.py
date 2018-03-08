@@ -1,56 +1,50 @@
 import pandas as pd
-import os 
-import itertools
 from random import shuffle
 
-#set this value to the number of permutations to produce for each mr
-##############
-n_slots=4
-##############
 
-#filter function
-#it basically gives the count of all the slots from a given MR
+# set this value to the number of permutations to produce for each MR
+num_permutations = 5
+
+
+# filter function (it basically gives the count of all the slots from a given MR)
 def slot_count(s):
-	return len(s.split(",")) 
+    return len(s.split(','))
 
 
 def permute(df, print_diagnostics=True):
+    num_rows = len(df.index)
+    print('Number of samples:', num_rows)
 
-	num_rows = len(df.index)
-	print ("Number of rows remaining:" + str(num_rows))
-	count = 0
+    new_df = pd.DataFrame(columns=['mr', 'ref'])
 
-	new_df = pd.DataFrame({'mr': [], 'ref': []})
-	for d_index, row in df.iterrows():
-		r = row['mr'].split(",")
-		new_df.loc[len(new_df)] = row #store original
+    for _, row in df.iterrows():
+        # print the progress of the data expansion
+        if print_diagnostics:
+            if num_rows % 500 == 0:
+                print('Number of samples remaining:', num_rows)
+            num_rows -= 1
 
-		if print_diagnostics: #prints the progress of the expansion
-			if (count == 250):
-				print ("Number of rows remaining:" + str(num_rows))
-				count = 0 #reset count
+        slots = row['mr'].split(',')
+        # store the original MR
+        new_df.loc[len(new_df)] = row
 
-			num_rows = num_rows-1
-			count += 1
+        for i in range(0, num_permutations):
+            shuffle(slots)
+            new_df.loc[len(new_df)] = [','.join(slots), row['ref']]
 
-		for j in range(0,n_slots): 
-			shuffle(r)
-			new_df.loc[len(new_df)] = [  ','.join(r), row['ref'] ]
+    new_df.to_csv('data/rest_e2e/trainset_augm_%d.csv' % num_permutations, index=False)
 
-	new_df.to_csv('trainset_augm_2best_%d.csv' % n_slots, index=False)
 
 def main():
-	train_file='data/train_2best.csv'
-	df=pd.read_csv(train_file)
-	#df=pd.read_csv('data/trainset.csv', encoding="latin-1")
-	df['mr']=df['mr'].astype('str')
-	df['ref']=df['ref'].astype('str')
+    train_file = 'data/rest_e2e/trainset_stylistic_agreement_only.csv'
+    # train_file = 'data/rest_e2e/trainset_stylistic_thresh_2.csv'
 
-	permute(df, print_diagnostics=True)
+    df = pd.read_csv(train_file)
+    df['mr'] = df['mr'].astype('str')
+    df['ref'] = df['ref'].astype('str')
 
+    permute(df, print_diagnostics=True)
 
 
 if __name__ == '__main__':
-	main()
-
-	
+    main()
