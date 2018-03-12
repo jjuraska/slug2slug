@@ -24,34 +24,39 @@ import data_loader
 # TODO 139 instances in training which have the slot, but no value in the utterance
 # TODO verify this is true... can we just delete this arg?
 def familyFriendlySlot(sent, value):
-    # children-friendly, children friendly, family-friendly, family friendly, kid-friendly, kid friendly
-    curr = re.sub("-", " ", sent)
-    curr = re.sub("'", "", curr)
+    pos = -1
+
+    # family-friendly, family friendly, kid-friendly, kid friendly, child(ren)-friendly, child(ren) friendly
+    curr = re.sub('-', ' ', sent)
+    curr = re.sub('\'', '', curr)
     curr = curr.lower()
     curr_tokens = word_tokenize(curr.lower())
-    for sval in ["famil", "kid", "child"]:
-        if sval in curr:
-            # root_sval = sval.split(" ")
+
+    for sval in ['famil', 'kid', 'child']:
+        pos = curr.find(sval)
+        if pos >= 0:
+            # root_sval = sval.split(' ')
             # curr_index = -1
             # neg_indicies = -1
             # for x, tok in enumerate(curr_tokens):
             #     if sval in tok:
             # if root_sval[0] == tok:
             # break
-            # elif tok in ["not", "non"]:
+            # elif tok in ['not', 'non']:
             #     neg_indicies = x
-            # if (value == "no" and neg_indicies != -1 and curr_index != -1) or value == "yes":
-            # sval = " ".join(curr_tokens[neg_indicies:curr_index+2])
-            if value == "no":
-                for x in ["not", "non", "isnt", "dont", "doesnt", "lowly", "lacking", "bad", "none"]:
+            # if (value == 'no' and neg_indicies != -1 and curr_index != -1) or value == 'yes':
+            # sval = ' '.join(curr_tokens[neg_indicies:curr_index+2])
+            if value == 'no':
+                for x in ['not', 'non', 'isnt', 'dont', 'doesnt', 'lowly', 'lacking', 'bad', 'none']:
                     if x in curr_tokens:
-                        return True
+                        return pos
             else:
-                return True
-        elif value == "no" and "adult" in sent:
-            return True
+                return pos
+        elif value == 'no' and 'adult' in sent:
+            return curr.find('adult')
+    
     # print(curr)
-    return False
+    return pos
 
 
 # TODO 166 instances in training which have the slot, but no value in the utterance or worse, city center is tn utterance
@@ -63,36 +68,63 @@ def areaSlot(sent, value):
     :return:
         Note it's only possible to have city centre and riverside as possible values...
     """
-    if value == "riverside" and "river" in sent:
-        return True
-    elif value == "city centre":
-        if "center" in sent or "centre" in sent or ("middle" in sent and "city" in sent):
-            return True
-    return False
+    pos = -1
+
+    if value == 'riverside':
+        return sent.find('river')
+    elif value == 'city centre':
+        for val in ['center', 'centre']:
+            pos = sent.find(val)
+            if pos >= 0:
+                return pos
+
+        if 'middle' in sent:
+            for val in ['city', 'town']:
+                pos = sent.find(val)
+                if pos >= 0:
+                    return pos
+
+    return pos
 
 
 def scorePriceRangeNaive(sent, value):
-    pot_values = {'moderate':'£20-25', 'high':'more than £30', 'cheap':'less than £20'}
-    for k,v in pot_values.items():
+    pos = -1
+    pot_values = {'cheap': 'less than £20',
+                  'moderate': '£20-25',
+                  'high': 'more than £30'}
+
+    for k, v in pot_values.items():
         if value == k or value == v:
-            if k in sent or v in sent:
-                return True
-    return False
+            pos = sent.find(k)
+            if pos >= 0:
+                return pos
+
+            pos = sent.find(v)
+            if pos >= 0:
+                return pos
+
+    return pos
 
 
 def scoreCustomerRatingNaive(sent, value):
-    pot_values = {'1 out of 5':'low', '3 out of 5':'average', '5 out of 5':'high'}
-    for k,v in pot_values.items():
-        if value == k or value == v:
-            if k in sent:
-                return True
-            if v in sent:
-                if v == 'high' and 'high price' in sent:
-                    if 'high customer' in sent:
-                        return True
-                else:
-                    return True
-    return False
+    pos = -1
+    pot_values = {'1 out of 5': 'low',
+                  '3 out of 5': 'average',
+                  '5 out of 5': 'high'}
+
+    if 'customer' in sent or 'rate' in sent or 'rating' in sent:
+        for k, v in pot_values.items():
+            if value == k or value == v:
+                pos = sent.find(k)
+                if pos >= 0:
+                    return pos
+
+                pos = sent.find(v)
+                if pos >= 0:
+                    return pos
+
+    return pos
+
 
 # TODO this one is tough, it can be easy to spot, like cheap, or it can be hard like "for upper class people" which implies high...
 # TODO maybe we can use synonyms to catch most cases, eitherway - 70 instances
@@ -101,55 +133,75 @@ def priceRangeSlot(sent, value):
         :param sent: target utterance
         :param value: slot value
         :return:
-            Note it's only possible to have 'moderate', 'high', 'less than £20', 'more than £30', 'cheap', '£20-25'
+            Note it's only possible to have 'cheap', 'moderate', 'high', 'less than £20', '£20-25', 'more than £30'
              as possible values...
-        """
-    if value in sent or '\xa3' in sent:
-        return True
-    nums = re.findall("\d", value)
-    if nums:
-        if re.findall("\d pounds", sent):
-            return True
+    """
+
+    # check for the presence of the pound symbol
+    pos = sent.find('\xa3')
+    if pos >= 0:
+        return pos
+
+    nums_in_slot_val = re.findall('\d', value)
+    if nums_in_slot_val:
+        match = re.search('\d (?:pounds|dollars|euros)', sent)
+        if match:
+            return match.start()
         else:
-            for num in nums:
-                if num in sent:
-                    return True
-    for term in ["price", "cheap", "pricing", "expensive", "cost", "affordable", "high end"]:
-        if term in sent:
-            return True
-    return False
+            for num in nums_in_slot_val:
+                pos = sent.find(num)
+                if pos >= 0:
+                    return pos
+
+    for term in ['price', 'cheap', 'pricing', 'expensive', 'cost', 'affordable', 'high end']:
+        pos = sent.find(term)
+        if pos >= 0:
+            return pos
+
+    return pos
 
 
 # TODO 36 instances in training which have the slot, but no value in the utterance
 # TODO verify this is true... can we just delete this arg?
 def eatTypeSlot(sent, value):
-    if value in sent:
-        return True
+    pos = sent.find(value)
+    if pos >= 0:
+        return pos
     else:
-        value = value.split(" ")[0]
-        if value in sent:
-            return True
-    return False
+        value = value.split(' ')[0]
+        pos = sent.find(value)
+        if pos >= 0:
+            return pos
+
+    return pos
 
 
 # TODO this one is a little wierd... a highly rated restraunt could add something as simple as "great service" which is hard to detect
 # TODO should we perhaps this is a case in which we just have to accept the noise, i.e. keep the arg - 185 instances
 def customerRatingSlot(sent, value):
-    if value in sent:
-        return True
-    else:
-        if "rated" in sent or "rating" in sent:
-            return True
-        else:
-            sent = re.sub("-", " ", sent)
-            for rating in ["one star", "two star", "three star", "four star", "five star", "review"]:
-                if rating in sent:
-                    return True
-            tokens = word_tokenize(sent)
-            for rating in ["three", "four", "five", "one", "two", "star"]:
-                if rating in tokens:
-                    return True
-    return False
+    pos = -1
+    
+    for term in ['customer', 'rate', 'rating', 'review']:
+        pos = sent.find(term)
+        if pos >= 0:
+            return pos
+    
+    sent = re.sub('-', ' ', sent)
+    for rating in ['one star', 'two star', 'three star', 'four star', 'five star']:
+        pos = sent.find(rating)
+        if pos >= 0:
+            return pos
+
+    match = re.search('\d star', sent)
+    if match:
+        return match.start()
+
+    # sent_tokens = word_tokenize(sent)
+    # for rating in ['one', 'two', 'three', 'four', 'five', 'star']:
+    #     if rating in sent_tokens:
+    #         return True
+
+    return pos
 
 
 # TODO @near 2 acceptable failures
@@ -157,13 +209,15 @@ def customerRatingSlot(sent, value):
 # TODO @food has 24 failures which are acceptable to remove the slot
 def foodSlot(sent, value):
     value = value.lower()
-    sent = re.sub("-", " ", sent)
-    if value in sent:
-        return True
-    elif value == "english" and "british" in sent:
-        return True
-    elif value == "fast food" and "american style" in sent:
-        return True
+    sent = re.sub('-', ' ', sent)
+
+    pos = sent.find(value)
+    if pos >= 0:
+        return pos
+    elif value == 'english':
+        return sent.find('british')
+    elif value == 'fast food':
+        return sent.find('american style')
     else:
         tokens = word_tokenize(sent)
         for token in tokens:
@@ -173,10 +227,11 @@ def foodSlot(sent, value):
                 hypernyms = synset.hypernyms()
                 while len(hypernyms) > 0:
                     lemmas = [l.name() for l in hypernyms[0].lemmas()]
-                    if "food" in lemmas:
-                        return True
+                    if 'food' in lemmas:
+                        return sent.find(token)
                     hypernyms = hypernyms[0].hypernyms()
-    return False
+
+    return pos
 
 
 def typeSlot(sent, value):
@@ -374,146 +429,173 @@ def splitContent(old_mrs, old_utterances, filename, use_heuristics=True, permute
     :param mr: list of dicts
     :param utterance: list
     :return:
-        Splits the mrs into many mrs with smaller sentences... currently this is not as robust as it could be
+        Splits the MRs into many MRs with individual sentences... currently this is not as robust as it could be
     """
-    # delex_slots = ['name', 'near', 'food', 'area', 'customer rating', 'familyFriendly', 'eatType', 'priceRange']
+    # delex_slots = ['name', 'eatType', 'food', 'priceRange', 'customer rating', 'area', 'familyFriendly', 'near']
     new_mrs = []
     new_utterances = []
+    
     slot_fails = OrderedDict()
     instance_fails = set()
-    misses = ["The following samples were removed: "]
+    misses = ['The following samples were removed: ']
+    
     base = max(int(len(old_utterances) * .1), 1)
     benchmarks = [base * i for i in range(1, 11)]
-    for index in range(0, len(old_mrs)):
+
+    for index in range(len(old_mrs)):
+        # progress message
         if index in benchmarks:
             curr_state = index / base
-            print("Slot alignment is " + str(10 * curr_state) + "% done.")
-        curr_mr = old_mrs[index]
-        curr_utterance = old_utterances[index]
-        curr_utterance = re.sub(r'\s+', ' ', curr_utterance).strip()
-        sents = sent_tokenize(curr_utterance)
-        root_utterance = sents[0]
+            print('Slot alignment is ' + str(10 * curr_state) + '% done.')
+
+        cur_mr = old_mrs[index]
+        cur_utt = old_utterances[index]
+        cur_utt = re.sub(r'\s+', ' ', cur_utt).strip()
+        sents = sent_tokenize(cur_utt)
+        root_sent = sents[0]
+
         new_pair = {sent: OrderedDict() for sent in sents}
-        foundSlots = set()
+        slots_found = set()
         rm_slot = []
-        for slot, value in curr_mr.items():
+
+        for slot, value in cur_mr.items():
             slot_root = slot.rstrip(string.digits)
-            hasSlot = False
+            has_slot = False
+
+            # search for the realization of each token in each sentence
             for sent, new_slots in new_pair.items():
                 found_slot = False
                 sent = sent.lower()
-                if value.lower() in sent.lower():
+
+                if slot_root == 'da':
                     found_slot = True
-                elif slot_root == "da":
+                elif value.lower() in sent:
                     found_slot = True
-                elif slot_root == "name":
-                    for pronoun in ["it", "its", "it's", "they"]:
-                        if pronoun in word_tokenize(curr_utterance.lower()):
+                elif slot_root == 'name':
+                    sent_tokens = word_tokenize(sent)
+                    for pronoun in ['it', 'its', 'it\'s', 'they', 'their', 'they\'re']:
+                        if pronoun in sent_tokens:
                             found_slot = True
+                            break
                 elif use_heuristics:
-                    if value == "dontcare":
+                    # universal slot values
+                    if value == 'dontcare':
                         if dontcareRealization(sent, slot_root, value):
                             found_slot = True
-                    elif value == "none":
+                    elif value == 'none':
                         if noneRealization(sent, slot_root, value):
                             found_slot = True
-                    elif slot_root == "priceRange":
-                        if priceRangeSlot(sent, value):
+
+                    # E2E dataset slots
+                    elif slot_root == 'eatType':
+                        slot_pos = eatTypeSlot(sent, value)
+                        if slot_pos >= 0:
                             found_slot = True
-                    elif slot_root == "familyFriendly":
-                        if familyFriendlySlot(sent, value):
+                    elif slot_root == 'food':
+                        slot_pos = foodSlot(sent, value)
+                        if slot_pos >= 0:
                             found_slot = True
-                    elif slot_root == "food":
-                        if foodSlot(sent, value):
+                    elif slot_root == 'priceRange':
+                        slot_pos = priceRangeSlot(sent, value)
+                        if slot_pos >= 0:
                             found_slot = True
-                    elif slot_root == "area":
-                        if areaSlot(sent, value):
+                    elif slot_root == 'customer_rating':
+                        slot_pos = customerRatingSlot(sent, value)
+                        if slot_pos >= 0:
                             found_slot = True
-                    elif slot_root == "eatType":
-                        if eatTypeSlot(sent, value):
+                    elif slot_root == 'area':
+                        slot_pos = areaSlot(sent, value)
+                        if slot_pos >= 0:
                             found_slot = True
-                    elif slot_root == "customer_rating":
-                        if customerRatingSlot(sent, value):
+                    elif slot_root == 'familyFriendly':
+                        slot_pos = familyFriendlySlot(sent, value)
+                        if slot_pos >= 0:
                             found_slot = True
-                
-                    elif slot_root == "type":
+
+                    # TV dataset slots
+                    elif slot_root == 'type':
                         if typeSlot(sent, value):
                             found_slot = True
-                    elif slot_root == "hasusbport":
+                    elif slot_root == 'hasusbport':
                         if hasusbportSlot(sent, value):
                             found_slot = True
-                    elif slot_root == "screensize":
+                    elif slot_root == 'screensize':
                         if screensizeSlot(sent, value):
                             found_slot = True
-                    elif slot_root == "price":
+                    elif slot_root == 'price':
                         if priceSlot(sent, value):
                             found_slot = True
-                    elif slot_root == "powerconsumption":
+                    elif slot_root == 'powerconsumption':
                         if powerconsumptionSlot(sent, value):
                             found_slot = True
-                    elif slot_root == "color":
+                    elif slot_root == 'color':
                         if colorSlot(sent, value):
                             found_slot = True
-                    elif slot_root == "accessories":
+                    elif slot_root == 'accessories':
                         if accessoriesSlot(sent, value):
                             found_slot = True
 
-                    elif slot_root == "weight":
+                    # Laptop dataset slots
+                    elif slot_root == 'weight':
                         if weightSlot(sent, value):
                             found_slot = True
-                    elif slot_root == "battery":
+                    elif slot_root == 'battery':
                         if batterySlot(sent, value):
                             found_slot = True
-                    elif slot_root == "drive":
+                    elif slot_root == 'drive':
                         if driveSlot(sent, value):
                             found_slot = True
-                    elif slot_root == "dimension":
+                    elif slot_root == 'dimension':
                         if dimensionSlot(sent, value):
                             found_slot = True
-                    elif slot_root == "design":
+                    elif slot_root == 'design':
                         if designSlot(sent, value):
                             found_slot = True
-                    elif slot_root == "utility":
+                    elif slot_root == 'utility':
                         if utilitySlot(sent, value):
                             found_slot = True
-                    elif slot_root == "isforbusinesscomputing":
+                    elif slot_root == 'isforbusinesscomputing':
                         if isforbusinesscomputingSlot(sent, value):
                             found_slot = True
 
                 if found_slot:
                     new_slots[slot] = value
-                    foundSlots.add(slot)
-                    hasSlot = True
+                    slots_found.add(slot)
+                    has_slot = True
 
-            if not hasSlot:
-                # if slot in ["eatType", "familyFriendly", "area", "near", "food"]:
-                misses.append("Couldn't find " + slot + "(" + value + ") - " + old_utterances[index])
+            if not has_slot:
+                # if slot in ['eatType', 'familyFriendly', 'area', 'near', 'food']:
+                misses.append('Couldn\'t find ' + slot + '(' + value + ') - ' + old_utterances[index])
                 rm_slot.append(slot)
                 # continue
-                instance_fails.add(curr_utterance)
+                instance_fails.add(cur_utt)
                 if slot not in slot_fails:
                     slot_fails[slot] = 0
                 slot_fails[slot] += 1
-                # if slot == "customer_rating":
-                #     print("Couldn't find " + slot + "(" + value + ")in " + old_utterances[index])
         else:
+            # remove slots whose realizations were not found
             for slot in rm_slot:
-                del curr_mr[slot]
-            new_mrs.append(curr_mr)
-            new_utterances.append(curr_utterance.strip())
+                del cur_mr[slot]
+                
+            new_mrs.append(cur_mr)
+            new_utterances.append(cur_utt)
+            
             if len(new_pair) > 1:
                 for sent, new_slots in new_pair.items():
-                    if root_utterance == sent:
-                        new_slots["position"] = "outer"
+                    if root_sent == sent:
+                        new_slots['position'] = 'outer'
                     else:
-                        new_slots["position"] = "inner"
+                        new_slots['position'] = 'inner'
+                        
                     new_mrs.append(new_slots)
                     new_utterances.append(sent)
+                    
             if permute:
                 permuteSentCombos(new_pair, new_mrs, new_utterances, max_iter=True)
-    misses.append("We had these misses from all categories: " + str(slot_fails.items()))
-    misses.append("So we had " + str(len(instance_fails)) + " samples with misses out of " + str(len(old_utterances)))
-    with io.open(os.path.join(os.getcwd(), "data", "_logs", filename), 'w', encoding='utf8') as log_file:
+
+    misses.append('We had these misses from all categories: ' + str(slot_fails.items()))
+    misses.append('So we had ' + str(len(instance_fails)) + ' samples with misses out of ' + str(len(old_utterances)))
+    with io.open(os.path.join(os.getcwd(), 'data', '_logs', filename), 'w', encoding='utf8') as log_file:
         log_file.write('\n'.join(misses))
 
     return new_mrs, new_utterances
@@ -745,6 +827,91 @@ def scoreAlignment(curr_utterance, curr_mr, scoring="default+over-class"):
         return len(curr_mr) / (len(curr_mr) - len(foundSlots) + slot_overgens + 1) / (len(matches) + 1)
 
 
+def findAlignment(utt, mr):
+    alignment = []
+
+    for slot, value in mr.items():
+        slot_root = slot.rstrip(string.digits)
+        utt = utt.lower()
+        slot_pos = -1
+
+        if slot_root == 'da':
+            continue
+        elif value.lower() in utt:
+            slot_pos = utt.find(value.lower())
+        # elif value == 'dontcare':
+        #     if dontcareRealization(utt, slot_root, value):
+        #         found_slot = True
+        # elif value == 'none':
+        #     if noneRealization(utt, slot_root, value):
+        #         found_slot = True
+
+        elif slot_root == 'eatType':
+            slot_pos = eatTypeSlot(utt, value)
+        elif slot_root == 'food':
+            slot_pos = foodSlot(utt, value)
+        elif slot_root == 'priceRange':
+            slot_pos = priceRangeSlot(utt, value)
+        elif slot_root == 'customer_rating':
+            slot_pos = customerRatingSlot(utt, value)
+        elif slot_root == 'area':
+            slot_pos = areaSlot(utt, value)
+        elif slot_root == 'familyFriendly':
+            slot_pos = familyFriendlySlot(utt, value)
+
+        # elif slot_root == 'type':
+        #     if typeSlot(utt, value):
+        #         found_slot = True
+        # elif slot_root == 'hasusbport':
+        #     if hasusbportSlot(utt, value):
+        #         found_slot = True
+        # elif slot_root == 'screensize':
+        #     if screensizeSlot(utt, value):
+        #         found_slot = True
+        # elif slot_root == 'price':
+        #     if priceSlot(utt, value):
+        #         found_slot = True
+        # elif slot_root == 'powerconsumption':
+        #     if powerconsumptionSlot(utt, value):
+        #         found_slot = True
+        # elif slot_root == 'color':
+        #     if colorSlot(utt, value):
+        #         found_slot = True
+        # elif slot_root == 'accessories':
+        #     if accessoriesSlot(utt, value):
+        #         found_slot = True
+        #
+        # elif slot_root == 'weight':
+        #     if weightSlot(utt, value):
+        #         found_slot = True
+        # elif slot_root == 'battery':
+        #     if batterySlot(utt, value):
+        #         found_slot = True
+        # elif slot_root == 'drive':
+        #     if driveSlot(utt, value):
+        #         found_slot = True
+        # elif slot_root == 'dimension':
+        #     if dimensionSlot(utt, value):
+        #         found_slot = True
+        # elif slot_root == 'design':
+        #     if designSlot(utt, value):
+        #         found_slot = True
+        # elif slot_root == 'utility':
+        #     if utilitySlot(utt, value):
+        #         found_slot = True
+        # elif slot_root == 'isforbusinesscomputing':
+        #     if isforbusinesscomputingSlot(utt, value):
+        #         found_slot = True
+
+        if slot_pos >= 0:
+            alignment.append((slot, slot_pos))
+
+    # sort the slot realizations by their position
+    alignment.sort(key=lambda x: x[1])
+
+    return alignment
+
+
 def checkDelexSlots(slot, matches):
     for match in matches:
         if slot in match:
@@ -939,11 +1106,52 @@ def wrangleSlotsJSON(filename, add_sequence_tokens=True):
         json.dump(data_new, f_data_new, indent=4)
 
 
+def alignSlots(filename):
+    print('Aligning ' + str(filename))
+    data_frame_dev = pd.read_csv(os.path.join(os.getcwd(), "data", filename), header=0,
+                                 encoding='utf8')  # names=['mr', 'ref']
+    x_dev = data_frame_dev.mr.tolist()
+    y_dev = data_frame_dev.ref.tolist()
+
+    x_dicts = []
+    alignments = []
+    for i, mr in enumerate(x_dev):
+        mr_dict = OrderedDict()
+        for slot_value in mr.split(','):
+            sep_idx = slot_value.find('[')
+            # parse the slot
+            slot = slot_value[:sep_idx].strip()
+            slot = slot.replace(' ', '_')
+            # parse the value
+            value = slot_value[sep_idx + 1:-1].strip()
+            mr_dict[slot] = value
+
+        alignments.append(findAlignment(y_dev[i], mr_dict))
+
+    filename = filename.split('.')[0] + '_aligned.csv'
+    new_file = io.open(os.path.join(os.getcwd(), 'data', filename), 'w', encoding='utf8')
+
+    new_file.write('mr,ref,alignment\n')
+    for row in range(len(y_dev)):
+        mr = x_dev[row]
+        utt = y_dev[row]
+
+        alignment_str = ' '.join(['({0}:{1})'.format(slot, pos) for slot, pos in alignments[row]])
+        new_file.write('"')
+        new_file.write(mr)
+        new_file.write('","')
+        new_file.write(utt)
+        new_file.write('","')
+        new_file.write(alignment_str)
+        new_file.write('"\n')
+
+
 if __name__ == '__main__':
-    #wrangleSlots('rest_e2e/trainset_e2e.csv')
+    # wrangleSlots('rest_e2e/trainset_e2e.csv')
+    alignSlots('rest_e2e/trainset_e2e.csv')
 
     #wrangleSlotsJSON('tv/train.json')
-    wrangleSlotsJSON('laptop/train.json')
+    # wrangleSlotsJSON('laptop/train.json')
 
     # testSlotOrder()
 
