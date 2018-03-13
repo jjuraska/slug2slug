@@ -50,6 +50,7 @@ def familyFriendlySlot(sent, value):
                 for x in ['not', 'non', 'isnt', 'dont', 'doesnt', 'lowly', 'lacking', 'bad', 'none']:
                     if x in curr_tokens:
                         return pos
+                return -1
             else:
                 return pos
         elif value == 'no' and 'adult' in sent:
@@ -920,6 +921,185 @@ def checkDelexSlots(slot, matches):
     return None
 
 
+def extract_location(user_input, input_tokens, named_entities):
+    indicators_area = ['downtown', 'city center', 'city centre', 'center of', 'centre of', 'middle of']
+
+    city = None
+    area = None
+
+    for ne in named_entities:
+        if ne[0] == 'City':
+            city = ne[2]
+            break
+
+    if not city:
+        return None
+
+    for ind in indicators_area:
+        if ind in user_input:
+            area = 'downtown'
+            break
+
+    if not area:
+        return city
+    else:
+        return city + ' ' + area
+
+
+def extract_eat_type(user_input, input_tokens):
+    bar_synonyms = ['bar', 'bistro', 'brasserie', 'inn', 'tavern']
+    coffee_shop_synonyms = ['café', 'cafe', 'coffee shop', 'coffeehouse', 'teahouse']
+    restaurant_synonyms = ['cafeteria', 'canteen', 'chophouse', 'coffee shop', 'diner', 'donut shop', 'drive-in',
+                           'eatery', 'eating place', 'fast-food place', 'joint', 'pizzeria', 'place to eat',
+                           'restaurant', 'steakhouse']
+
+    if any(x in user_input for x in bar_synonyms):
+        return 'bar'
+    elif any(x in user_input for x in coffee_shop_synonyms):
+        return 'coffee shop'
+    elif any(x in user_input for x in restaurant_synonyms):
+        return 'restaurant'
+    else:
+        return None
+
+
+def extract_categories(user_input, input_tokens):
+    file_categories_restaurants = 'data/yelp/categories_restaurants.json'
+
+    with open(file_categories_restaurants, 'r') as f_categories:
+        categories = json.load(f_categories)
+
+        for i, token in enumerate(input_tokens):
+            # search for single-word occurrences in the category list
+            if token in categories:
+                return categories[token]
+
+            # search for bigram occurrences in the category list
+            if i > 0:
+                key = ' '.join(input_tokens[i-1:i+1])
+                if key in categories:
+                    return categories[key]
+
+    return []
+
+
+def extract_price_range(user_input, input_tokens):
+    CHEAP = '1, 2'
+    MODERATE = '2, 3'
+    HIGH = '3, 4'
+
+    indicators_indep = {'cheap': CHEAP,
+                        'inexpensive': CHEAP,
+                        'affordable': CHEAP,
+                        'modest': CHEAP,
+                        'budget': CHEAP,
+                        'economic': CHEAP,
+                        'economical': CHEAP,
+                        'expensive': HIGH,
+                        'costly': HIGH,
+                        'fancy': HIGH,
+                        'posh': HIGH,
+                        'stylish': HIGH,
+                        'elegant': HIGH,
+                        'extravagant': HIGH,
+                        'luxury': HIGH,
+                        'luxurious': HIGH}
+
+    indicators_indep_bigram = {'low cost': CHEAP,
+                               'high class': HIGH}
+
+    indicators_priced = {'low': CHEAP,
+                         'reasonably': CHEAP,
+                         'moderately': MODERATE,
+                         'high': HIGH,
+                         'highly': HIGH}
+
+    indicators_range = {'low': CHEAP,
+                        'moderate': MODERATE,
+                        'average': MODERATE,
+                        'ordinary': MODERATE,
+                        'middle': MODERATE,
+                        'high': HIGH}
+
+    # search for single-word occurrences in the indicator list
+    for token in input_tokens:
+        if token in indicators_indep:
+            return indicators_indep[token]
+
+    # search for bigram occurrences in the category list
+    for key, val in indicators_indep_bigram.items():
+        if key in user_input:
+            return val
+
+    idx = -1
+    try:
+        idx = input_tokens.index('priced')
+        if idx > 0:
+            prev_token = input_tokens[idx - 1]
+            if prev_token in indicators_priced:
+                return indicators_priced[prev_token]
+    except ValueError:
+        try:
+            idx = input_tokens.index('price')
+        except ValueError:
+            try:
+                idx = input_tokens.index('prices')
+            except ValueError:
+                pass
+
+        if idx > 0:
+            prev_token = input_tokens[idx - 1]
+            if prev_token in indicators_range:
+                return indicators_range[prev_token]
+
+    return None
+
+
+def extract_family_friendly(user_input, input_tokens):
+    indicators = ['family', 'families', 'child', 'children', 'kid', 'kids']
+
+    for ind in indicators:
+        if ind in user_input:
+            return True
+
+    return False
+
+
+def extract_near(user_input):
+    indicators = ['near', 'near to', 'close to', 'next to', 'neighborhood of', 'vicinity of']
+
+    return None
+
+
+def identifySlots(user_input, named_entities):
+    attributes = {}
+
+    user_input = user_input.lower()
+    input_tokens = word_tokenize(user_input)
+
+    location = extract_location(user_input, input_tokens, named_entities)
+    if location:
+        attributes['location'] = location
+
+    eat_type = extract_eat_type(user_input, input_tokens)
+    if eat_type:
+        attributes['eatType'] = eat_type
+
+    categories = extract_categories(user_input, input_tokens)
+    if categories:
+        attributes['categories'] = ','.join(categories)
+
+    price_range = extract_price_range(user_input, input_tokens)
+    if price_range:
+        attributes['price'] = price_range
+
+    family_friendly = extract_family_friendly(user_input, input_tokens)
+    if family_friendly:
+        attributes['familyFriendly'] = family_friendly
+
+    return attributes
+
+
 def testSlotOrder():
     data_frame_dev = pd.read_csv(os.path.join(os.getcwd(), "data", "devset_wrangled.csv"), header=0,
                                  encoding='utf8')  # names=['mr', 'ref']
@@ -1148,7 +1328,11 @@ def alignSlots(filename):
 
 if __name__ == '__main__':
     # wrangleSlots('rest_e2e/trainset_e2e.csv')
-    alignSlots('rest_e2e/trainset_e2e.csv')
+    # alignSlots('rest_e2e/trainset_e2e.csv')
+
+    user_input = 'Is there a family-friendly bar in downtown santa cruz that serves reasonably priced burgers?'
+    gnode_entities = [('VisualArtwork', 282.797767, 'restaurant in'), ('City', 2522.766114, 'Santa Cruz')]
+    print(identifySlots(user_input, gnode_entities))
 
     #wrangleSlotsJSON('tv/train.json')
     # wrangleSlotsJSON('laptop/train.json')

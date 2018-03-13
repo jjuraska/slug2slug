@@ -650,7 +650,6 @@ def read_tv_dataset_dev(path_to_devset):
         x_dev[i] = preprocess_mr(mr, '(', ';', '=')
         
     # convert plural nouns to "[noun] -s" or "[noun] -es" form
-    stemmer = WordNetLemmatizer()
     for i, utt in enumerate(y_dev):
         y_dev[i] = replace_plural_nouns(utt)
     for i, utt in enumerate(y_dev_alt):

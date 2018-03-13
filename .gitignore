@@ -161,6 +161,7 @@ flycheck_*.el
 *.sln.docstates
 
 # E2E NLG
+/e2e_nlg/.idea
 /e2e_nlg/archive
 /e2e_nlg/data/*.json
 /e2e_nlg/data/*.txt
@@ -172,5 +173,6 @@ flycheck_*.el
 /e2e_nlg/predictions/beams_dump.pkl
 /e2e_nlg/predictions/beams_dump_reranked.pkl
 /e2e_nlg/saved_model
+/e2e_nlg/tools
 
 # End of https://www.gitignore.io/api/emacs
