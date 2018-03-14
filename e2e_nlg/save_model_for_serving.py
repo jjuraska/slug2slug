@@ -11,8 +11,16 @@ tf.app.flags.DEFINE_string('vocab_dir', '', 'Path to the vocabulary files')
 FLAGS = tf.app.flags.FLAGS
 
 
-def save_model(model_dir, vocab_dir):
-    export_path = 'saved_model'
+def save_model_for_serving(model_dir, vocab_dir):
+    '''
+    Converts a model trained using the seq2seq framework to a TensorFlow SavedModel format, which enables the model
+    to be deployed as a service that can be queried.
+
+    :param model_dir: Path to the directory containing the trained seq2seq model.
+    :param vocab_dir: Path to the directory containing the vocabulary files of the model.
+    '''
+
+    export_path = 'saved_model/1'
     checkpoint_path = tf.train.latest_checkpoint(model_dir)
 
     # load saved training options
@@ -22,7 +30,7 @@ def save_model(model_dir, vocab_dir):
     source_tokens_ph = tf.placeholder(dtype=tf.string, shape=(1, None))
     source_len_ph = tf.placeholder(dtype=tf.int32, shape=(1,))
 
-    print('Rebuilding the model...', end=' ')
+    print('Restoring the model...')
     sys.stdout.flush()
 
     # rebuild the model graph
@@ -30,11 +38,11 @@ def save_model(model_dir, vocab_dir):
     model_params = train_options.model_params
 
     # add beam search parameters
-    #model_params['inference.beam_search.beam_width'] = 10
-    #model_params['inference.beam_search.length_penalty_weight'] = 1.0
+    model_params['inference.beam_search.beam_width'] = 10
+    model_params['inference.beam_search.length_penalty_weight'] = 0.6
 
     # DEBUG PRINT
-    #print(model_params)
+    # print(model_params)
 
     model = model_cls(params=model_params,
                       mode=tf.contrib.learn.ModeKeys.INFER)
@@ -52,7 +60,6 @@ def save_model(model_dir, vocab_dir):
 
     predictions = graph_utils.get_dict_from_collection('predictions')
 
-    print('Done')
     print('Exporting trained model...')
     sys.stdout.flush()
 
@@ -92,15 +99,15 @@ def save_model(model_dir, vocab_dir):
 
 def main(_):
     if not FLAGS.model_dir:
-        print('Please, specify the path to the trained model you would like to export')
+        print('Error: Please, specify the path to the directory containing the trained model you would like to export.')
         return
 
     if not FLAGS.vocab_dir:
-        print('Please, specify the path to the vocabulary files of the model')
+        print('Error: Please, specify the path to the directory containing the vocabulary files of the model.')
         return
 
-    save_model(FLAGS.model_dir, FLAGS.vocab_dir)
+    save_model_for_serving(FLAGS.model_dir, FLAGS.vocab_dir)
 
 
-if __name__ == "__main__":
+if __name__ == '__main__':
     tf.app.run()

@@ -3,7 +3,6 @@ from __future__ import print_function
 import sys
 import multiprocessing
 import time
-import numpy as np
 import tensorflow as tf
 from tensorflow_serving.apis import prediction_service_pb2, predict_pb2
 from grpc.beta import implementations, interfaces
@@ -67,7 +66,7 @@ class UtteranceGenerationClient:
         utt_candidates = results.get()
 
         # DEBUG PRINT
-        #print(utt_candidates)
+        # print(utt_candidates)
 
         # if none of the services returned a valid response, return None
         if all(utt[0] is None for utt in utt_candidates):
@@ -147,8 +146,8 @@ def process_query(task_args):
 
     # retrieve the list of tokens representing the utterance
     utt_tokens = response.outputs['utterance'].string_val
-    # remove the sequence-end token and convert to a string
 
+    # remove the sequence-end token and convert to a string
     utt_temp = []
     for t in utt_tokens:
         if type(t) is str:
@@ -156,6 +155,7 @@ def process_query(task_args):
         utt_temp.append(t.decode())
     utt_tokens = utt_temp
     utt = ' '.join(utt_tokens[:-1]).strip()
+
     # score the utterance
     utt_score = scoreAlignment(utt, mr_dict)
 
