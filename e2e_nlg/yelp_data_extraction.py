@@ -31,9 +31,10 @@ def extract_subcategories(filename, category):
                         subcategories[cat_title] = []
                     subcategories[cat_title].append(cat['alias'])
 
-                    if cat_title_stem not in subcategories:
-                        subcategories[cat_title_stem] = []
-                    subcategories[cat_title_stem].append(cat['alias'])
+                    if cat_title_stem != cat_title:
+                        if cat_title_stem not in subcategories:
+                            subcategories[cat_title_stem] = []
+                        subcategories[cat_title_stem].append(cat['alias'])
 
     with open('data/yelp/categories_' + category + '.json', 'w') as f_dump:
         json.dump(subcategories, f_dump, indent=4)

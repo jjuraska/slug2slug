@@ -1,42 +1,32 @@
 {
     "afghan": [
-        "afghani",
         "afghani"
     ],
     "african": [
-        "african",
         "african"
     ],
     "andalusian": [
-        "andalusian",
         "andalusian"
     ],
     "arabian": [
-        "arabian",
         "arabian"
     ],
     "argentine": [
-        "argentine",
         "argentine"
     ],
     "armenian": [
-        "armenian",
         "armenian"
     ],
     "asian fusion": [
-        "asianfusion",
         "asianfusion"
     ],
     "asturian": [
-        "asturian",
         "asturian"
     ],
     "australian": [
-        "australian",
         "australian"
     ],
     "austrian": [
-        "austrian",
         "austrian"
     ],
     "baguettes": [
@@ -46,35 +36,27 @@
         "baguettes"
     ],
     "bangladeshi": [
-        "bangladeshi",
         "bangladeshi"
     ],
     "basque": [
-        "basque",
         "basque"
     ],
     "bavarian": [
-        "bavarian",
         "bavarian"
     ],
     "barbeque": [
-        "bbq",
         "bbq"
     ],
     "beer garden": [
-        "beergarden",
         "beergarden"
     ],
     "beer hall": [
-        "beerhall",
         "beerhall"
     ],
     "beisl": [
-        "beisl",
         "beisl"
     ],
     "belgian": [
-        "belgian",
         "belgian"
     ],
     "bistros": [
@@ -84,7 +66,6 @@
         "bistros"
     ],
     "black sea": [
-        "blacksea",
         "blacksea"
     ],
     "brasseries": [
@@ -94,15 +75,12 @@
         "brasseries"
     ],
     "brazilian": [
-        "brazilian",
         "brazilian"
     ],
     "breakfast & brunch": [
-        "breakfast_brunch",
         "breakfast_brunch"
     ],
     "british": [
-        "british",
         "british"
     ],
     "buffets": [
@@ -112,7 +90,6 @@
         "buffets"
     ],
     "bulgarian": [
-        "bulgarian",
         "bulgarian"
     ],
     "burgers": [
@@ -122,7 +99,6 @@
         "burgers"
     ],
     "burmese": [
-        "burmese",
         "burmese"
     ],
     "cafes": [
@@ -132,35 +108,27 @@
         "cafes"
     ],
     "cafeteria": [
-        "cafeteria",
         "cafeteria"
     ],
     "cajun": [
-        "cajun",
         "cajun"
     ],
     "creole": [
-        "cajun",
         "cajun"
     ],
     "cambodian": [
-        "cambodian",
         "cambodian"
     ],
     "canteen": [
-        "canteen",
         "canteen"
     ],
     "caribbean": [
-        "caribbean",
         "caribbean"
     ],
     "catalan": [
-        "catalan",
         "catalan"
     ],
     "cheesesteaks": [
-        "cheesesteaks",
         "cheesesteaks"
     ],
     "chicken wings": [
@@ -170,55 +138,41 @@
         "chicken_wings"
     ],
     "chicken shop": [
-        "chickenshop",
         "chickenshop"
     ],
     "chilean": [
-        "chilean",
         "chilean"
     ],
     "chinese": [
-        "chinese",
         "chinese"
     ],
     "comfort food": [
-        "comfortfood",
         "comfortfood"
     ],
     "corsican": [
-        "corsican",
         "corsican"
     ],
     "creperies": [
-        "creperies",
         "creperies"
     ],
     "cuban": [
-        "cuban",
         "cuban"
     ],
     "curry sausage": [
-        "currysausage",
         "currysausage"
     ],
     "cypriot": [
-        "cypriot",
         "cypriot"
     ],
     "czech": [
         "czech",
-        "czech",
-        "czechslovakian",
         "czechslovakian"
     ],
     "slovakian": [
         "czechslovakian",
-        "czechslovakian",
-        "slovakian",
         "slovakian"
     ],
     "danish": [
-        "danish",
         "danish"
     ],
     "delis": [
@@ -234,7 +188,6 @@
         "diners"
     ],
     "dinner theater": [
-        "dinnertheater",
         "dinnertheater"
     ],
     "dumplings": [
@@ -244,7 +197,6 @@
         "dumplings"
     ],
     "eastern european": [
-        "eastern_european",
         "eastern_european"
     ],
     "parent cafes": [
@@ -254,15 +206,12 @@
         "eltern_cafes"
     ],
     "ethiopian": [
-        "ethiopian",
         "ethiopian"
     ],
     "filipino": [
-        "filipino",
         "filipino"
     ],
     "fischbroetchen": [
-        "fischbroetchen",
         "fischbroetchen"
     ],
     "fish & chips": [
@@ -272,15 +221,12 @@
         "fishnchips"
     ],
     "flatbread": [
-        "flatbread",
         "flatbread"
     ],
     "fondue": [
-        "fondue",
         "fondue"
     ],
     "food court": [
-        "food_court",
         "food_court"
     ],
     "food stands": [
@@ -290,31 +236,24 @@
         "foodstands"
     ],
     "freiduria": [
-        "freiduria",
         "freiduria"
     ],
     "french": [
-        "french",
         "french"
     ],
     "galician": [
-        "galician",
         "galician"
     ],
     "game meat": [
-        "gamemeat",
         "gamemeat"
     ],
     "gastropubs": [
-        "gastropubs",
         "gastropubs"
     ],
     "georgian": [
-        "georgian",
         "georgian"
     ],
     "german": [
-        "german",
         "german"
     ],
     "giblets": [
@@ -324,43 +263,33 @@
         "giblets"
     ],
     "gluten-free": [
-        "gluten_free",
         "gluten_free"
     ],
     "greek": [
-        "greek",
         "greek"
     ],
     "guamanian": [
-        "guamanian",
         "guamanian"
     ],
     "halal": [
-        "halal",
         "halal"
     ],
     "hawaiian": [
-        "hawaiian",
         "hawaiian"
     ],
     "heuriger": [
-        "heuriger",
         "heuriger"
     ],
     "himalayan": [
-        "himalayan",
         "himalayan"
     ],
     "nepalese": [
-        "himalayan",
         "himalayan"
     ],
     "hong kong style cafe": [
-        "hkcafe",
         "hkcafe"
     ],
     "honduran": [
-        "honduran",
         "honduran"
     ],
     "hot dogs": [
@@ -370,75 +299,57 @@
         "hotdog"
     ],
     "fast food": [
-        "hotdogs",
         "hotdogs"
     ],
     "hot pot": [
-        "hotpot",
         "hotpot"
     ],
     "hungarian": [
-        "hungarian",
         "hungarian"
     ],
     "iberian": [
-        "iberian",
         "iberian"
     ],
     "indonesian": [
-        "indonesian",
         "indonesian"
     ],
     "indian": [
-        "indpak",
         "indpak"
     ],
     "international": [
-        "international",
         "international"
     ],
     "irish": [
-        "irish",
         "irish"
     ],
     "island pub": [
-        "island_pub",
         "island_pub"
     ],
     "israeli": [
-        "israeli",
         "israeli"
     ],
     "italian": [
-        "italian",
         "italian"
     ],
     "japanese": [
-        "japanese",
         "japanese"
     ],
     "jewish": [
-        "jewish",
         "jewish"
     ],
     "kebab": [
-        "kebab",
         "kebab"
     ],
     "kopitiam": [
-        "kopitiam",
         "kopitiam"
     ],
     "korean": [
-        "korean",
         "korean"
     ],
     "kosher": [
-        "kosher",
         "kosher"
     ],
     "kurdish": [
-        "kurdish",
         "kurdish"
     ],
     "laos": [
@@ -448,19 +359,15 @@
         "laos"
     ],
     "laotian": [
-        "laotian",
         "laotian"
     ],
     "latin american": [
-        "latin",
         "latin"
     ],
     "lyonnais": [
-        "lyonnais",
         "lyonnais"
     ],
     "malaysian": [
-        "malaysian",
         "malaysian"
     ],
     "meatballs": [
@@ -470,15 +377,12 @@
         "meatballs"
     ],
     "mediterranean": [
-        "mediterranean",
         "mediterranean"
     ],
     "mexican": [
-        "mexican",
         "mexican"
     ],
     "middle eastern": [
-        "mideastern",
         "mideastern"
     ],
     "milk bars": [
@@ -488,49 +392,37 @@
         "milkbars"
     ],
     "modern australian": [
-        "modern_australian",
         "modern_australian"
     ],
     "modern european": [
-        "modern_european",
         "modern_european"
     ],
     "mongolian": [
-        "mongolian",
         "mongolian"
     ],
     "moroccan": [
-        "moroccan",
         "moroccan"
     ],
     "american": [
         "newamerican",
-        "newamerican",
-        "tradamerican",
         "tradamerican"
     ],
     "canadian": [
-        "newcanadian",
         "newcanadian"
     ],
     "new mexican cuisine": [
-        "newmexican",
         "newmexican"
     ],
     "new zealand": [
-        "newzealand",
         "newzealand"
     ],
     "nicaraguan": [
-        "nicaraguan",
         "nicaraguan"
     ],
     "night food": [
-        "nightfood",
         "nightfood"
     ],
     "nikkei": [
-        "nikkei",
         "nikkei"
     ],
     "noodles": [
@@ -540,11 +432,9 @@
         "noodles"
     ],
     "norcinerie": [
-        "norcinerie",
         "norcinerie"
     ],
     "traditional norwegian": [
-        "norwegian",
         "norwegian"
     ],
     "open sandwiches": [
@@ -554,55 +444,42 @@
         "opensandwiches"
     ],
     "oriental": [
-        "oriental",
         "oriental"
     ],
     "pakistani": [
-        "pakistani",
         "pakistani"
     ],
     "pan asian": [
-        "panasian",
         "panasian"
     ],
     "parma": [
-        "parma",
         "parma"
     ],
     "persian": [
-        "persian",
         "persian"
     ],
     "iranian": [
-        "persian",
         "persian"
     ],
     "peruvian": [
-        "peruvian",
         "peruvian"
     ],
     "pf": [
-        "pfcomercial",
         "pfcomercial"
     ],
     "comercial": [
-        "pfcomercial",
         "pfcomercial"
     ],
     "pita": [
-        "pita",
         "pita"
     ],
     "pizza": [
-        "pizza",
         "pizza"
     ],
     "polish": [
-        "polish",
         "polish"
     ],
     "polynesian": [
-        "polynesian",
         "polynesian"
     ],
     "pop-up restaurants": [
@@ -612,7 +489,6 @@
         "popuprestaurants"
     ],
     "portuguese": [
-        "portuguese",
         "portuguese"
     ],
     "potatoes": [
@@ -622,39 +498,30 @@
         "potatoes"
     ],
     "poutineries": [
-        "poutineries",
         "poutineries"
     ],
     "pub food": [
-        "pubfood",
         "pubfood"
     ],
     "live": [
-        "raw_food",
         "raw_food"
     ],
     "raw food": [
-        "raw_food",
         "raw_food"
     ],
     "rice": [
-        "riceshop",
         "riceshop"
     ],
     "romanian": [
-        "romanian",
         "romanian"
     ],
     "rotisserie chicken": [
-        "rotisserie_chicken",
         "rotisserie_chicken"
     ],
     "russian": [
-        "russian",
         "russian"
     ],
     "salad": [
-        "salad",
         "salad"
     ],
     "sandwiches": [
@@ -664,51 +531,39 @@
         "sandwiches"
     ],
     "scandinavian": [
-        "scandinavian",
         "scandinavian"
     ],
     "schnitzel": [
-        "schnitzel",
         "schnitzel"
     ],
     "scottish": [
-        "scottish",
         "scottish"
     ],
     "seafood": [
-        "seafood",
         "seafood"
     ],
     "serbo croatian": [
-        "serbocroatian",
         "serbocroatian"
     ],
     "signature cuisine": [
-        "signature_cuisine",
         "signature_cuisine"
     ],
     "singaporean": [
-        "singaporean",
         "singaporean"
     ],
     "soul food": [
-        "soulfood",
         "soulfood"
     ],
     "soup": [
-        "soup",
         "soup"
     ],
     "southern": [
-        "southern",
         "southern"
     ],
     "spanish": [
-        "spanish",
         "spanish"
     ],
     "sri lankan": [
-        "srilankan",
         "srilankan"
     ],
     "steakhouses": [
@@ -718,7 +573,6 @@
         "steak"
     ],
     "french southwest": [
-        "sud_ouest",
         "sud_ouest"
     ],
     "supper clubs": [
@@ -734,27 +588,21 @@
         "sushi"
     ],
     "swabian": [
-        "swabian",
         "swabian"
     ],
     "swedish": [
-        "swedish",
         "swedish"
     ],
     "swiss food": [
-        "swissfood",
         "swissfood"
     ],
     "syrian": [
-        "syrian",
         "syrian"
     ],
     "tabernas": [
-        "tabernas",
         "tabernas"
     ],
     "taiwanese": [
-        "taiwanese",
         "taiwanese"
     ],
     "tapas bars": [
@@ -776,51 +624,39 @@
         "tapasmallplates"
     ],
     "tavola calda": [
-        "tavolacalda",
         "tavolacalda"
     ],
     "tex-mex": [
-        "tex-mex",
         "tex-mex"
     ],
     "thai": [
-        "thai",
         "thai"
     ],
     "traditional swedish": [
-        "traditional_swedish",
         "traditional_swedish"
     ],
     "trattorie": [
-        "trattorie",
         "trattorie"
     ],
     "turkish": [
-        "turkish",
         "turkish"
     ],
     "ukrainian": [
-        "ukrainian",
         "ukrainian"
     ],
     "uzbek": [
-        "uzbek",
         "uzbek"
     ],
     "vegan": [
-        "vegan",
         "vegan"
     ],
     "vegetarian": [
-        "vegetarian",
         "vegetarian"
     ],
     "venison": [
-        "venison",
         "venison"
     ],
     "vietnamese": [
-        "vietnamese",
         "vietnamese"
     ],
     "waffles": [
@@ -830,7 +666,6 @@
         "waffles"
     ],
     "wok": [
-        "wok",
         "wok"
     ],
     "wraps": [
@@ -840,7 +675,6 @@
         "wraps"
     ],
     "yugoslav": [
-        "yugoslav",
         "yugoslav"
     ]
 }

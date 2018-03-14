@@ -921,32 +921,18 @@ def checkDelexSlots(slot, matches):
     return None
 
 
-def extract_location(user_input, input_tokens, named_entities):
-    indicators_area = ['downtown', 'city center', 'city centre', 'center of', 'centre of', 'middle of']
-
+def extract_city(user_input, input_tokens, named_entities):
     city = None
-    area = None
 
     for ne in named_entities:
         if ne[0] == 'City':
             city = ne[2]
             break
 
-    if not city:
-        return None
-
-    for ind in indicators_area:
-        if ind in user_input:
-            area = 'downtown'
-            break
-
-    if not area:
-        return city
-    else:
-        return city + ' ' + area
+    return city
 
 
-def extract_eat_type(user_input, input_tokens):
+def extract_eat_type(user_input):
     bar_synonyms = ['bar', 'bistro', 'brasserie', 'inn', 'tavern']
     coffee_shop_synonyms = ['café', 'cafe', 'coffee shop', 'coffeehouse', 'teahouse']
     restaurant_synonyms = ['cafeteria', 'canteen', 'chophouse', 'coffee shop', 'diner', 'donut shop', 'drive-in',
@@ -964,7 +950,7 @@ def extract_eat_type(user_input, input_tokens):
 
 
 def extract_categories(user_input, input_tokens):
-    file_categories_restaurants = 'data/yelp/categories_restaurants.json'
+    file_categories_restaurants = 'dialogue/dialogue_modules/slug2slug/data/yelp/categories_restaurants.json'
 
     with open(file_categories_restaurants, 'r') as f_categories:
         categories = json.load(f_categories)
@@ -972,21 +958,24 @@ def extract_categories(user_input, input_tokens):
         for i, token in enumerate(input_tokens):
             # search for single-word occurrences in the category list
             if token in categories:
-                return categories[token]
+                return {'title': token,
+                        'ids': categories[token]}
 
             # search for bigram occurrences in the category list
             if i > 0:
                 key = ' '.join(input_tokens[i-1:i+1])
                 if key in categories:
-                    return categories[key]
+                    return {'title': key,
+                            'ids': categories[key]}
 
-    return []
+    return {'title': None,
+            'ids': []}
 
 
 def extract_price_range(user_input, input_tokens):
-    CHEAP = '1, 2'
-    MODERATE = '2, 3'
-    HIGH = '3, 4'
+    CHEAP = ['1', '2']
+    MODERATE = ['2', '3']
+    HIGH = ['3', '4']
 
     indicators_indep = {'cheap': CHEAP,
                         'inexpensive': CHEAP,
@@ -1055,6 +1044,19 @@ def extract_price_range(user_input, input_tokens):
     return None
 
 
+def extract_area(user_input, input_tokens):
+    indicators_area = ['downtown', 'city center', 'city centre', 'center of', 'centre of', 'middle of']
+
+    area = None
+
+    for ind in indicators_area:
+        if ind in user_input:
+            area = 'downtown'
+            break
+
+    return area
+
+
 def extract_family_friendly(user_input, input_tokens):
     indicators = ['family', 'families', 'child', 'children', 'kid', 'kids']
 
@@ -1077,25 +1079,29 @@ def identifySlots(user_input, named_entities):
     user_input = user_input.lower()
     input_tokens = word_tokenize(user_input)
 
-    location = extract_location(user_input, input_tokens, named_entities)
-    if location:
-        attributes['location'] = location
+    city = extract_city(user_input, input_tokens, named_entities)
+    if city:
+        attributes['city'] = city
 
-    eat_type = extract_eat_type(user_input, input_tokens)
+    eat_type = extract_eat_type(user_input)
     if eat_type:
         attributes['eatType'] = eat_type
 
     categories = extract_categories(user_input, input_tokens)
     if categories:
-        attributes['categories'] = ','.join(categories)
+        attributes['categories'] = categories
 
-    price_range = extract_price_range(user_input, input_tokens)
-    if price_range:
-        attributes['price'] = price_range
+    prices = extract_price_range(user_input, input_tokens)
+    if prices:
+        attributes['prices'] = prices
 
     family_friendly = extract_family_friendly(user_input, input_tokens)
     if family_friendly:
         attributes['familyFriendly'] = family_friendly
+
+    area = extract_area(user_input, input_tokens)
+    if area:
+        attributes['area'] = area
 
     return attributes
 
