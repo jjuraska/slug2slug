@@ -38,8 +38,10 @@ def save_model_for_serving(model_dir, vocab_dir):
     model_params = train_options.model_params
 
     # add beam search parameters
-    model_params['inference.beam_search.beam_width'] = 10
-    model_params['inference.beam_search.length_penalty_weight'] = 0.6
+    # TODO: Resolve the "Not found: Op type not registered 'PyFunc' in binary" error when loading a servable model
+    # TODO:   with beam search enabled.
+    # model_params['inference.beam_search.beam_width'] = 10
+    # model_params['inference.beam_search.length_penalty_weight'] = 0.6
 
     # DEBUG PRINT
     # print(model_params)
