@@ -57,7 +57,7 @@ def eval_ref(group, n, penalize_and):
 
 def eval_ref_alt(group, n, penalize_and):    
     ''' Evaluate a group of references and return the n best '''
-    score_thresh = 3
+    score_thresh = 2
     scores = []
 
     nlp = StanfordCoreNLP('http://localhost:9000')
@@ -80,12 +80,12 @@ def eval_ref_alt(group, n, penalize_and):
         ptree = ptree.split('\n')
 
         style_score = 0
-        # if find_contrast(ptree):
-        #     style_score += 3
+        if find_contrast(ptree):
+            style_score += 3
         if find_agreement(ptree):
             style_score += 3
-        # if find_apposition(ptree):
-        #     style_score += 2
+        if find_apposition(ptree):
+            style_score += 2
         # if find_fronted_adjective_phrase(ptree):
         #     style_score += 2
         # if find_fronted_prepositional_phrase(ptree):
@@ -94,17 +94,17 @@ def eval_ref_alt(group, n, penalize_and):
         #     style_score += 2
         # if find_fronted_imperative_phrase(ptree):
         #     style_score += 2
-        # if find_gerund_verb(ptree):
-        #     style_score += 2
         # if find_modal_verb(ptree):
         #     style_score += 2
+        if find_gerund_verb(ptree):
+            style_score += 2
         # if find_subordinate_clause_non_wh(ptree):
         #     style_score += 2
         # if find_subordinate_clause_wh(ptree):
         #     style_score += 1
-        # if find_prepositions(ptree):
-        #     style_score += 1
         # if find_existential_there(ptree):
+        #     style_score += 1
+        # if find_prepositions(ptree):
         #     style_score += 1
 
         # normalize the score using the sentence count in the utterance
@@ -471,8 +471,9 @@ def test_parsing(df):
 
 
 def main():
-    # csv_path = 'data/rest_e2e/trainset_e2e.csv'
-    csv_path = 'data/rest_e2e/devset_e2e.csv'
+    csv_path = 'data/rest_e2e/trainset_e2e.csv'
+    # csv_path = 'data/rest_e2e/devset_e2e.csv'
+    # csv_path = 'eval/predictions-rest_e2e_stylistic_selection/devset/test.csv'
     df = pd.read_csv(csv_path)
 
     # activate encoding if running locally:

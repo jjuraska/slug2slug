@@ -706,16 +706,18 @@ def mergeEntries(merge_tuples):
 
 
 def scoreAlignment(curr_utterance, curr_mr, scoring="default+over-class"):
-    foundSlots = set()
+    slots_found = set()
     sent = curr_utterance
     matches = set(re.findall(r'&slot_.*?&', sent))
-    slot_overgens = 0
+    num_slot_overgens = 0
 
     for slot, value in curr_mr.items():
         slot_root = slot.rstrip(string.digits)
         found_slot = False
         
-        if slot_root == "da":
+        if slot_root == 'da':
+            found_slot = True
+        elif re.match(r'<.*>', slot_root):
             found_slot = True
         else:
             delex_slot = checkDelexSlots(slot, matches)
@@ -727,19 +729,19 @@ def scoreAlignment(curr_utterance, curr_mr, scoring="default+over-class"):
                 if value.lower() in sent:
                     value_cnt = sent.count(value.lower())
                     if value_cnt > 1:
-                        slot_overgens += value_cnt - 1
+                        num_slot_overgens += value_cnt - 1
                     found_slot = True
                 elif value == "dontcare":
                     if dontcareRealization(sent, slot_root, value):
                         slot_cnt = sent.count(reduceSlotName(slot_root))
                         if slot_cnt > 1:
-                            slot_overgens += slot_cnt - 1
+                            num_slot_overgens += slot_cnt - 1
                         found_slot = True
                 elif value == "none":
                     if noneRealization(sent, slot_root, value):
                         slot_cnt = sent.count(reduceSlotName(slot_root))
                         if slot_cnt > 1:
-                            slot_overgens += slot_cnt - 1
+                            num_slot_overgens += slot_cnt - 1
                         found_slot = True
                 elif slot_root == "name":
                     for pronoun in ["it", "its", "it's", "they"]:
@@ -810,25 +812,25 @@ def scoreAlignment(curr_utterance, curr_mr, scoring="default+over-class"):
                         found_slot = True
 
         if found_slot:
-            foundSlots.add(slot)
+            slots_found.add(slot)
 
     #if scoring == "default":
-    #    return len(foundSlots) / len(curr_mr)
+    #    return len(slots_found) / len(curr_mr)
     #elif scoring == "default+over-class":
-    #    return (len(foundSlots) / len(curr_mr)) / (len(matches) + 1)
+    #    return (len(slots_found) / len(curr_mr)) / (len(matches) + 1)
 
     #if scoring == "default":
-    #    return len(foundSlots) / len(curr_mr)
+    #    return len(slots_found) / len(curr_mr)
     #elif scoring == "default+over-class":
-    #    return (len(foundSlots) - len(matches) + 1) / (len(curr_mr) + 1)
+    #    return (len(slots_found) - len(matches) + 1) / (len(curr_mr) + 1)
 
     if scoring == "default":
-        return len(curr_mr) / (len(curr_mr) - len(foundSlots) + slot_overgens + 1)
+        return len(curr_mr) / (len(curr_mr) - len(slots_found) + num_slot_overgens + 1)
     elif scoring == "default+over-class":
-        return len(curr_mr) / (len(curr_mr) - len(foundSlots) + slot_overgens + 1) / (len(matches) + 1)
+        return len(curr_mr) / (len(curr_mr) - len(slots_found) + num_slot_overgens + 1) / (len(matches) + 1)
 
 
-def findAlignment(utt, mr):
+def find_alignment(utt, mr):
     alignment = []
 
     for slot, value in mr.items():
@@ -905,10 +907,10 @@ def findAlignment(utt, mr):
         #         found_slot = True
 
         if slot_pos >= 0:
-            alignment.append((slot, slot_pos))
+            alignment.append((slot_pos, slot, value))
 
     # sort the slot realizations by their position
-    alignment.sort(key=lambda x: x[1])
+    alignment.sort(key=lambda x: x[0])
 
     return alignment
 
@@ -1292,16 +1294,15 @@ def wrangleSlotsJSON(filename, add_sequence_tokens=True):
         json.dump(data_new, f_data_new, indent=4)
 
 
-def alignSlots(filename):
-    print('Aligning ' + str(filename))
-    data_frame_dev = pd.read_csv(os.path.join(os.getcwd(), "data", filename), header=0,
-                                 encoding='utf8')  # names=['mr', 'ref']
-    x_dev = data_frame_dev.mr.tolist()
-    y_dev = data_frame_dev.ref.tolist()
+def align_slots(file_path):
+    print('Aligning ' + str(file_path))
 
-    x_dicts = []
+    df_dataset = pd.read_csv(file_path, header=0, encoding='utf8')
+    x = df_dataset.mr.tolist()
+    y = df_dataset.ref.tolist()
+
     alignments = []
-    for i, mr in enumerate(x_dev):
+    for i, mr in enumerate(x):
         mr_dict = OrderedDict()
         for slot_value in mr.split(','):
             sep_idx = slot_value.find('[')
@@ -1312,36 +1313,304 @@ def alignSlots(filename):
             value = slot_value[sep_idx + 1:-1].strip()
             mr_dict[slot] = value
 
-        alignments.append(findAlignment(y_dev[i], mr_dict))
+        alignments.append(find_alignment(y[i], mr_dict))
 
-    filename = filename.split('.')[0] + '_aligned.csv'
-    new_file = io.open(os.path.join(os.getcwd(), 'data', filename), 'w', encoding='utf8')
+    alignment_strings = []
+    for i in range(len(y)):
+        alignment_strings.append(' '.join(['({0}: {1})'.format(pos, slot) for pos, slot, _ in alignments[i]]))
 
-    new_file.write('mr,ref,alignment\n')
-    for row in range(len(y_dev)):
-        mr = x_dev[row]
-        utt = y_dev[row]
+    new_df = pd.DataFrame(columns=['mr', 'ref', 'alignment'])
+    new_df['mr'] = x
+    new_df['ref'] = y
+    new_df['alignment'] = alignment_strings
 
-        alignment_str = ' '.join(['({0}:{1})'.format(slot, pos) for slot, pos in alignments[row]])
-        new_file.write('"')
-        new_file.write(mr)
-        new_file.write('","')
-        new_file.write(utt)
-        new_file.write('","')
-        new_file.write(alignment_str)
-        new_file.write('"\n')
+    new_df.to_csv(file_path.replace('.csv', '_aligned.csv'), index=False, encoding='utf8')
+
+
+def augment_with_emphasis(file_path):
+    print('Augmenting MRs with emphasis in ' + str(file_path))
+
+    df_dataset = pd.read_csv(file_path, header=0, encoding='utf8')
+    x = df_dataset.mr.tolist()
+    y = df_dataset.ref.tolist()
+
+    alignments = []
+    for i, mr in enumerate(x):
+        mr_dict = OrderedDict()
+        for slot_value in mr.split(','):
+            sep_idx = slot_value.find('[')
+            # parse the slot
+            slot = slot_value[:sep_idx].strip()
+            slot = slot.replace(' ', '_')
+            # parse the value
+            value = slot_value[sep_idx + 1:-1].strip()
+            mr_dict[slot] = value
+
+        alignments.append(find_alignment(y[i], mr_dict))
+
+    for i in range(len(y)):
+        for pos, slot, _ in alignments[i]:
+            if slot == 'name':
+                break
+            x[i] = x[i].replace(slot, '<emph>[], ' + slot)
+
+    new_df = pd.DataFrame(columns=['mr', 'ref'])
+    new_df['mr'] = x
+    new_df['ref'] = y
+
+    new_df.to_csv(file_path.replace('.csv', '_augm_emph.csv'), index=False, encoding='utf8')
+
+
+def evaluate_emphasis(file_path):
+    '''Determines how many of the indicated emphasis instances are realized in the utterance.
+    '''
+
+    emph_token = '<emph>'
+
+    df_dataset = pd.read_csv(file_path, header=0, encoding='utf8')
+    x = df_dataset.mr.tolist()
+    y = df_dataset.utterance.tolist()
+
+    x_dicts = []
+    emph_missed = []
+    emph_total = []
+    for i, mr in enumerate(x):
+        expect_emph = False
+        emph_slots = set()
+        mr_dict = OrderedDict()
+
+        for slot_value in mr.split(','):
+            sep_idx = slot_value.find('[')
+            # parse the slot
+            slot = slot_value[:sep_idx].strip()
+            slot = slot.replace(' ', '_')
+            # parse the value
+            value = slot_value[sep_idx + 1:-1].strip()
+
+            # extract tokens to be emphasized
+            if slot == emph_token:
+                expect_emph = True
+            else:
+                mr_dict[slot] = value
+                if expect_emph:
+                    emph_slots.add(slot)
+                    expect_emph = False
+
+        alignment = find_alignment(y[i], mr_dict)
+
+        emph_total.append(len(emph_slots))
+
+        # check how many emphasized slots were not realized before the name-slot
+        for pos, slot, _ in alignment:
+            # DEBUG PRINT
+            # print(alignment)
+            # print(emph_slots)
+            # print()
+
+            if slot == 'name':
+                break
+
+            if slot in emph_slots:
+                emph_slots.remove(slot)
+
+        emph_missed.append(len(emph_slots))
+
+    new_df = pd.DataFrame(columns=['mr', 'ref', 'emphasis (missed)', 'emphasis (total)'])
+    new_df['mr'] = x
+    new_df['ref'] = y
+    new_df['emphasis (missed)'] = emph_missed
+    new_df['emphasis (total)'] = emph_total
+
+    new_df.to_csv(file_path.replace('.csv', '_eval_emph.csv'), index=False, encoding='utf8')
+
+
+def augment_with_contrast(file_path):
+    contrast_connectors = ['but', 'however', 'yet']
+    scalar_slots = {
+        'customer_rating': {
+            'low': 1,
+            'average': 2,
+            'high': 3,
+            '1 out of 5': 1,
+            '3 out of 5': 2,
+            '5 out of 5': 3
+        },
+        'priceRange': {
+            'high': 1,
+            'moderate': 2,
+            'cheap': 3,
+            'more than £30': 1,
+            '£20-25': 2,
+            'less than £20': 3
+        },
+        'familyFriendly': {
+            'no': 1,
+            'yes': 3
+        }
+    }
+
+    print('Augmenting MRs with contrast in ' + str(file_path))
+
+    df_dataset = pd.read_csv(file_path, header=0, encoding='utf8')
+    x = df_dataset.mr.tolist()
+    y = df_dataset.ref.tolist()
+
+    alignments = []
+    for i, mr in enumerate(x):
+        mr_dict = OrderedDict()
+        for slot_value in mr.split(','):
+            sep_idx = slot_value.find('[')
+            # parse the slot
+            slot = slot_value[:sep_idx].strip()
+            slot = slot.replace(' ', '_')
+            # parse the value
+            value = slot_value[sep_idx + 1:-1].strip()
+            mr_dict[slot] = value
+
+        alignments.append(find_alignment(y[i], mr_dict))
+
+    for i in range(len(y)):
+        for contrast_conn in contrast_connectors:
+            contrast_pos = y[i].find(contrast_conn)
+            if contrast_pos >= 0:
+                slot_before = None
+                value_before = None
+                slot_after = None
+                value_after = None
+
+                for pos, slot, value in alignments[i]:
+                    if pos > contrast_pos:
+                        if not slot_before:
+                            break
+                        if slot in scalar_slots:
+                            slot_after = slot
+                            value_after = value
+                            break
+                    else:
+                        if slot in scalar_slots:
+                            slot_before = slot
+                            value_before = value
+
+                if slot_before and slot_after:
+                    if slot_before in scalar_slots and slot_after in scalar_slots:
+                        if scalar_slots[slot_before][value_before] - scalar_slots[slot_after][value_after] == 0:
+                            x[i] += ', <concession>[{0} {1}]'.format(slot_before, slot_after)
+                        else:
+                            x[i] += ', <contrast>[{0} {1}]'.format(slot_before, slot_after)
+
+                break
+
+    new_df = pd.DataFrame(columns=['mr', 'ref'])
+    new_df['mr'] = x
+    new_df['ref'] = y
+
+    new_df.to_csv(file_path.replace('.csv', '_augm_contrast.csv'), index=False, encoding='utf8')
+
+
+def augment_with_contrast_tgen(file_path):
+    contrast_connectors = ['but', 'however', 'yet']
+    scalar_slots = {
+        'customer_rating': {
+            'low': 1,
+            'average': 2,
+            'high': 3,
+            '1 out of 5': 1,
+            '3 out of 5': 2,
+            '5 out of 5': 3
+        },
+        'priceRange': {
+            'high': 1,
+            'moderate': 2,
+            'cheap': 3,
+            'more than £30': 1,
+            '£20-25': 2,
+            'less than £20': 3
+        },
+        'familyFriendly': {
+            'no': 1,
+            'yes': 3
+        }
+    }
+
+    print('Augmenting MRs with contrast in ' + str(file_path))
+
+    df_dataset = pd.read_csv(file_path, header=0, encoding='utf8')
+    x = df_dataset.mr.tolist()
+    y = df_dataset.ref.tolist()
+
+    alignments = []
+    for i, mr in enumerate(x):
+        mr_dict = OrderedDict()
+        for slot_value in mr.split(','):
+            sep_idx = slot_value.find('[')
+            # parse the slot
+            slot = slot_value[:sep_idx].strip()
+            slot = slot.replace(' ', '_')
+            # parse the value
+            value = slot_value[sep_idx + 1:-1].strip()
+            mr_dict[slot] = value
+
+        alignments.append(find_alignment(y[i], mr_dict))
+
+    contrasts = []
+
+    for i in range(len(y)):
+        contrasts.append(['none', 'none', 'none', 'none'])
+        for contrast_conn in contrast_connectors:
+            contrast_pos = y[i].find(contrast_conn)
+            if contrast_pos >= 0:
+                slot_before = None
+                value_before = None
+                slot_after = None
+                value_after = None
+
+                for pos, slot, value in alignments[i]:
+                    if pos > contrast_pos:
+                        if not slot_before:
+                            break
+                        if slot in scalar_slots:
+                            slot_after = slot
+                            value_after = value
+                            break
+                    else:
+                        if slot in scalar_slots:
+                            slot_before = slot
+                            value_before = value
+
+                if slot_before and slot_after:
+                    if scalar_slots[slot_before][value_before] - scalar_slots[slot_after][value_after] == 0:
+                        contrasts[i][2] = slot_before
+                        contrasts[i][3] = slot_after
+                    else:
+                        contrasts[i][0] = slot_before
+                        contrasts[i][1] = slot_after
+                break
+
+    new_df = pd.DataFrame(columns=['mr', 'ref', 'contrast1', 'contrast2', 'concession1', 'concession2'])
+    new_df['mr'] = x
+    new_df['ref'] = y
+    new_df['contrast1'] = [tup[0] for tup in contrasts]
+    new_df['contrast2'] = [tup[1] for tup in contrasts]
+    new_df['concession1'] = [tup[2] for tup in contrasts]
+    new_df['concession2'] = [tup[3] for tup in contrasts]
+
+    new_df.to_csv(file_path.replace('.csv', '_augm_contrast_tgen.csv'), index=False, encoding='utf8')
 
 
 if __name__ == '__main__':
-    # wrangleSlots('rest_e2e/trainset_e2e.csv')
-    # alignSlots('rest_e2e/trainset_e2e.csv')
+    # wrangleSlots('data/rest_e2e/trainset_e2e.csv')
+    # align_slots('data/rest_e2e/trainset_e2e.csv')
+    # augment_with_emphasis('data/rest_e2e/trainset_e2e.csv')
+    # augment_with_contrast('data/rest_e2e/trainset_stylistic_thresh_2_augm_5.csv')
+    # augment_with_contrast_tgen('data/rest_e2e/devset_e2e.csv')
+    evaluate_emphasis('eval/predictions-rest_e2e_stylistic_selection/devset/predictions RNN (4+4) augm emph (11k).csv')
 
-    user_input = 'Is there a family-friendly bar in downtown santa cruz that serves reasonably priced burgers?'
-    gnode_entities = [('VisualArtwork', 282.797767, 'restaurant in'), ('City', 2522.766114, 'Santa Cruz')]
-    print(identifySlots(user_input, gnode_entities))
+    # user_input = 'Is there a family-friendly bar in downtown santa cruz that serves reasonably priced burgers?'
+    # gnode_entities = [('VisualArtwork', 282.797767, 'restaurant in'), ('City', 2522.766114, 'Santa Cruz')]
+    # print(identifySlots(user_input, gnode_entities))
 
-    #wrangleSlotsJSON('tv/train.json')
-    # wrangleSlotsJSON('laptop/train.json')
+    #wrangleSlotsJSON('data/tv/train.json')
+    # wrangleSlotsJSON('data/laptop/train.json')
 
     # testSlotOrder()
 
