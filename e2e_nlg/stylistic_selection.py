@@ -86,22 +86,22 @@ def eval_ref_alt(group, n, penalize_and):
             style_score += 3
         if find_apposition(ptree):
             style_score += 2
-        # if find_fronted_adjective_phrase(ptree):
-        #     style_score += 2
-        # if find_fronted_prepositional_phrase(ptree):
-        #     style_score += 2
-        # if find_fronted_verb_phrase(ptree):
-        #     style_score += 2
+        if find_fronted_adjective_phrase(ptree):
+            style_score += 2
+        if find_fronted_prepositional_phrase(ptree):
+            style_score += 2
+        if find_fronted_verb_phrase(ptree):
+            style_score += 2
         # if find_fronted_imperative_phrase(ptree):
         #     style_score += 2
         # if find_modal_verb(ptree):
         #     style_score += 2
         if find_gerund_verb(ptree):
             style_score += 2
-        # if find_subordinate_clause_non_wh(ptree):
-        #     style_score += 2
-        # if find_subordinate_clause_wh(ptree):
-        #     style_score += 1
+        if find_subordinate_clause_non_wh(ptree):
+            style_score += 2
+        if find_subordinate_clause_wh(ptree):
+            style_score += 1
         # if find_existential_there(ptree):
         #     style_score += 1
         # if find_prepositions(ptree):
@@ -471,8 +471,8 @@ def test_parsing(df):
 
 
 def main():
-    csv_path = 'data/rest_e2e/trainset_e2e.csv'
-    # csv_path = 'data/rest_e2e/devset_e2e.csv'
+    # csv_path = 'data/rest_e2e/trainset_e2e.csv'
+    csv_path = 'data/rest_e2e/devset_e2e.csv'
     # csv_path = 'eval/predictions-rest_e2e_stylistic_selection/devset/test.csv'
     df = pd.read_csv(csv_path)
 

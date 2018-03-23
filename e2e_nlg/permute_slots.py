@@ -36,7 +36,7 @@ def permute(df, print_diagnostics=True):
 
 
 def main():
-    train_file = 'data/rest_e2e/trainset_stylistic_contrast+agreement+apposition.csv'
+    train_file = 'data/rest_e2e/trainset_stylistic_contrast+agreement+apposition+gerund+fronting+subord.csv'
     # train_file = 'data/rest_e2e/trainset_stylistic_thresh_2.csv'
 
     df = pd.read_csv(train_file)

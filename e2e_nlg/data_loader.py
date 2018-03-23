@@ -24,10 +24,7 @@ class SetEncoder(json.JSONEncoder):
 
 
 def load_training_data(data_trainset, data_devset, input_concat=False):
-    dataset_name = ''
-    slot_sep = ''
-    val_sep = ''
-    val_sep_closing = False
+    emph_token = '<emph>'
 
     if '/rest_e2e/' in data_trainset and '/rest_e2e/' in data_devset or \
             '\\rest_e2e\\' in data_trainset and '\\rest_e2e\\' in data_devset:
@@ -44,6 +41,7 @@ def load_training_data(data_trainset, data_devset, input_concat=False):
         dataset_name = 'tv'
         slot_sep = ';'
         val_sep = '='
+        val_sep_closing = False
     elif '/laptop/' in data_trainset and '/laptop/' in data_devset or \
             '\\laptop\\' in data_trainset and '\\laptop\\' in data_devset:
         x_train, y_train, _ = read_laptop_dataset_train(data_trainset)
@@ -51,6 +49,7 @@ def load_training_data(data_trainset, data_devset, input_concat=False):
         dataset_name = 'laptop'
         slot_sep = ';'
         val_sep = '='
+        val_sep_closing = False
     else:
         raise FileNotFoundError
 
@@ -63,11 +62,20 @@ def load_training_data(data_trainset, data_devset, input_concat=False):
     # produce sequences of extracted words from the meaning representations (MRs) in the trainset
     x_train_seq = []
     for i, mr in enumerate(x_train):
+        slot_ctr = 0
+        emph_idxs = set()
+        mr_dict = OrderedDict()
+
         try:
-            mr_dict = OrderedDict()
+            # extract the slot-value pairs into a dictionary
             for slot_value in mr.split(slot_sep):
                 slot, value = parse_slot_and_value(slot_value, val_sep, val_sep_closing)
-                mr_dict[slot.lower()] = value.lower()
+
+                if slot == emph_token:
+                    emph_idxs.add(slot_ctr)
+                else:
+                    mr_dict[slot.lower()] = value.lower()
+                    slot_ctr += 1
 
                 # collect all possible values for each slot
                 key_clean = slot.rstrip(string.digits)
@@ -83,27 +91,42 @@ def load_training_data(data_trainset, data_devset, input_concat=False):
         # delexicalize the MR and the utterance
         y_train[i] = delex_sample(mr_dict, y_train[i], input_concat=input_concat)
 
+        slot_ctr = 0
+
         # convert the dictionary to a list
         x_train_seq.append([])
         for key, val in mr_dict.items():
+            # insert the emphasis token where appropriate
+            if slot_ctr in emph_idxs:
+                x_train_seq[i].append(emph_token)
+
             if len(val) > 0:
                 x_train_seq[i].extend([key, val])
             else:
                 x_train_seq[i].append(key)
 
+            slot_ctr += 1
+
         if input_concat:
             # append a sequence-end token to be paired up with seq2seq's sequence-end token when concatenating
             x_train_seq[i].append('&stop&')
 
-
     # produce sequences of extracted words from the meaning representations (MRs) in the devset
     x_dev_seq = []
     for i, mr in enumerate(x_dev):
-        # extract the slot-value pairs into a dictionary
+        slot_ctr = 0
+        emph_idxs = set()
         mr_dict = OrderedDict()
+
+        # extract the slot-value pairs into a dictionary
         for slot_value in mr.split(slot_sep):
             slot, value = parse_slot_and_value(slot_value, val_sep, val_sep_closing)
-            mr_dict[slot.lower()] = value.lower()
+
+            if slot == emph_token:
+                emph_idxs.add(slot_ctr)
+            else:
+                mr_dict[slot.lower()] = value.lower()
+                slot_ctr += 1
 
             # collect all possible values for each slot
             key_clean = slot.rstrip(string.digits)
@@ -115,13 +138,21 @@ def load_training_data(data_trainset, data_devset, input_concat=False):
         # delexicalize the MR and the utterance
         y_dev[i] = delex_sample(mr_dict, y_dev[i], input_concat=input_concat)
 
+        slot_ctr = 0
+
         # convert the dictionary to a list
         x_dev_seq.append([])
         for key, val in mr_dict.items():
+            # insert the emphasis token where appropriate
+            if slot_ctr in emph_idxs:
+                x_dev_seq[i].append(emph_token)
+
             if len(val) > 0:
                 x_dev_seq[i].extend([key, val])
             else:
                 x_dev_seq[i].append(key)
+
+            slot_ctr += 1
 
         if input_concat:
             # append a sequence-end token to be paired up with seq2seq's sequence-end token when concatenating
@@ -148,10 +179,7 @@ def load_training_data(data_trainset, data_devset, input_concat=False):
 
 
 def load_test_data(data_testset, input_concat=False):
-    dataset_name = ''
-    slot_sep = ''
-    val_sep = ''
-    val_sep_closing = False
+    emph_token = '<emph>'
 
     if '/rest_e2e/' in data_testset or '\\rest_e2e\\' in data_testset:
         x_test, y_test = read_rest_e2e_dataset_test(data_testset)
@@ -164,11 +192,13 @@ def load_test_data(data_testset, input_concat=False):
         dataset_name = 'tv'
         slot_sep = ';'
         val_sep = '='
+        val_sep_closing = False
     elif '/laptop/' in data_testset or '\\laptop\\' in data_testset:
         x_test, y_test, _ = read_laptop_dataset_test(data_testset)
         dataset_name = 'laptop'
         slot_sep = ';'
         val_sep = '='
+        val_sep_closing = False
     else:
         raise FileNotFoundError
 
@@ -179,8 +209,11 @@ def load_test_data(data_testset, input_concat=False):
     x_test_seq = []
     x_test_dict = []
     for i, mr in enumerate(x_test):
-        # extract the slot-value pairs into a dictionary
+        slot_ctr = 0
+        emph_idxs = set()
         mr_dict = OrderedDict()
+
+        # extract the slot-value pairs into a dictionary
         for slot_value in mr.split(slot_sep):
             slot, value = parse_slot_and_value(slot_value, val_sep, val_sep_closing)
 
@@ -188,7 +221,11 @@ def load_test_data(data_testset, input_concat=False):
             if slot in slots_with_proper_nouns and len(value) > 0 and value[0].isupper():
                 vocab_proper_nouns.add(value)
 
-            mr_dict[slot.lower()] = value.lower()
+            if slot == emph_token:
+                emph_idxs.add(slot_ctr)
+            else:
+                mr_dict[slot.lower()] = value.lower()
+                slot_ctr += 1
 
         # build the MR dictionary
         x_test_dict.append(copy.deepcopy(mr_dict))
@@ -196,13 +233,21 @@ def load_test_data(data_testset, input_concat=False):
         # delexicalize the MR
         delex_sample(mr_dict, mr_only=True, input_concat=input_concat)
 
+        slot_ctr = 0
+
         # convert the dictionary to a list
         x_test_seq.append([])
         for key, val in mr_dict.items():
+            # insert the emphasis token where appropriate
+            if slot_ctr in emph_idxs:
+                x_test_seq[i].append(emph_token)
+
             if len(val) > 0:
                 x_test_seq[i].extend([key, val])
             else:
                 x_test_seq[i].append(key)
+
+            slot_ctr += 1
 
         if input_concat:
             # append a sequence-end token to be paired up with seq2seq's sequence-end token when concatenating
@@ -827,7 +872,7 @@ def parse_slot_and_value(slot_value, val_sep, val_sep_closing=False):
                     
     slot = slot.replace(' ', '_')
 
-    return (slot, value)
+    return slot, value
 
 
 def delex_sample(mr, utterance=None, slots_to_delex=None, mr_only=False, input_concat=False, utterance_only=False):
@@ -875,7 +920,7 @@ def delex_sample(mr, utterance=None, slots_to_delex=None, mr_only=False, input_c
             if not mr_only:
                 utterance_delexed = re.sub(r'\b{}\b'.format(value), placeholder, utterance)     # replace whole-word matches only
 
-            # don't replce value with a placeholder token unless there is an exact match in the utterance
+            # don't replace value with a placeholder token unless there is an exact match in the utterance
             if mr_only or utterance_delexed != utterance or (slot == 'name'):
                 mr_update[slot] = placeholder
                 utterance = utterance_delexed
