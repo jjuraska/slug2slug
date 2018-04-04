@@ -706,6 +706,8 @@ def mergeEntries(merge_tuples):
 
 
 def scoreAlignment(curr_utterance, curr_mr, scoring="default+over-class"):
+    '''Score a delexed utterance based on the rate of unrealized and/or overgenerated slots.
+    '''
     slots_found = set()
     sent = curr_utterance
     matches = set(re.findall(r'&slot_.*?&', sent))
@@ -748,23 +750,23 @@ def scoreAlignment(curr_utterance, curr_mr, scoring="default+over-class"):
                         if pronoun in word_tokenize(curr_utterance.lower()):
                             found_slot = True
                 elif slot_root == "priceRange":
-                    if scorePriceRangeNaive(sent, value):
-                    # if priceRangeSlot(sent, value):
+                    # if scorePriceRangeNaive(sent, value):
+                    if priceRangeSlot(sent, value) >= 0:
                         found_slot = True
                 elif slot_root == "familyFriendly":
-                    if familyFriendlySlot(sent, value):
+                    if familyFriendlySlot(sent, value) >= 0:
                         found_slot = True
                 elif slot_root == "food":
-                    if foodSlot(sent, value):
+                    if foodSlot(sent, value) >= 0:
                         found_slot = True
                 elif slot_root == "area":
-                    if areaSlot(sent, value):
+                    if areaSlot(sent, value) >= 0:
                         found_slot = True
                 elif slot_root == "eatType":
-                    if eatTypeSlot(sent, value):
+                    if eatTypeSlot(sent, value) >= 0:
                         found_slot = True
                 elif slot_root == "customer_rating":
-                    if scoreCustomerRatingNaive(sent, value):
+                    if scoreCustomerRatingNaive(sent, value) >= 0:
                         found_slot = True
                 
                 elif slot_root == "type":
@@ -828,6 +830,121 @@ def scoreAlignment(curr_utterance, curr_mr, scoring="default+over-class"):
         return len(curr_mr) / (len(curr_mr) - len(slots_found) + num_slot_overgens + 1)
     elif scoring == "default+over-class":
         return len(curr_mr) / (len(curr_mr) - len(slots_found) + num_slot_overgens + 1) / (len(matches) + 1)
+
+
+def count_errors(curr_utterance, curr_mr):
+    '''Count unrealized and overgenerated slots in a lexicalized utterance.
+    '''
+
+    slots_found = set()
+    sent = curr_utterance
+    matches = set(re.findall(r'&slot_.*?&', sent))
+    num_slot_overgens = len(matches)
+
+    for slot, value in curr_mr.items():
+        slot_root = slot.rstrip(string.digits)
+        found_slot = False
+
+        if slot_root == 'da':
+            found_slot = True
+        elif re.match(r'<.*>', slot_root):
+            found_slot = True
+        else:
+            delex_slot = checkDelexSlots(slot, matches)
+            if delex_slot:
+                found_slot = True
+                matches.remove(delex_slot)
+            else:
+                sent = sent.lower()
+                if value.lower() in sent:
+                    value_cnt = sent.count(value.lower())
+                    if value_cnt > 1:
+                        num_slot_overgens += value_cnt - 1
+                    found_slot = True
+                elif value == "dontcare":
+                    if dontcareRealization(sent, slot_root, value):
+                        slot_cnt = sent.count(reduceSlotName(slot_root))
+                        if slot_cnt > 1:
+                            num_slot_overgens += slot_cnt - 1
+                        found_slot = True
+                elif value == "none":
+                    if noneRealization(sent, slot_root, value):
+                        slot_cnt = sent.count(reduceSlotName(slot_root))
+                        if slot_cnt > 1:
+                            num_slot_overgens += slot_cnt - 1
+                        found_slot = True
+                # elif slot_root == "name":
+                #     for pronoun in ["it", "its", "it's", "they"]:
+                #         if pronoun in word_tokenize(curr_utterance.lower()):
+                #             found_slot = True
+                elif slot_root == "priceRange":
+                    # if scorePriceRangeNaive(sent, value):
+                    if priceRangeSlot(sent, value) >= 0:
+                        found_slot = True
+                elif slot_root == "familyFriendly":
+                    if familyFriendlySlot(sent, value) >= 0:
+                        found_slot = True
+                elif slot_root == "food":
+                    if foodSlot(sent, value) >= 0:
+                        found_slot = True
+                elif slot_root == "area":
+                    if areaSlot(sent, value) >= 0:
+                        found_slot = True
+                elif slot_root == "eatType":
+                    if eatTypeSlot(sent, value) >= 0:
+                        found_slot = True
+                elif slot_root == "customer_rating":
+                    if scoreCustomerRatingNaive(sent, value) >= 0:
+                        found_slot = True
+
+                # elif slot_root == "type":
+                #     if typeSlot(sent, value):
+                #         found_slot = True
+                # elif slot_root == "hasusbport":
+                #     if hasusbportSlot(sent, value):
+                #         found_slot = True
+                # elif slot_root == "screensize":
+                #     if screensizeSlot(sent, value):
+                #         found_slot = True
+                # elif slot_root == "price":
+                #     if priceSlot(sent, value):
+                #         found_slot = True
+                # elif slot_root == "powerconsumption":
+                #     if powerconsumptionSlot(sent, value):
+                #         found_slot = True
+                # elif slot_root == "color":
+                #     if colorSlot(sent, value):
+                #         found_slot = True
+                # elif slot_root == "accessories":
+                #     if accessoriesSlot(sent, value):
+                #         found_slot = True
+                #
+                # elif slot_root == "weight":
+                #     if weightSlot(sent, value):
+                #         found_slot = True
+                # elif slot_root == "battery":
+                #     if batterySlot(sent, value):
+                #         found_slot = True
+                # elif slot_root == "drive":
+                #     if driveSlot(sent, value):
+                #         found_slot = True
+                # elif slot_root == "dimension":
+                #     if dimensionSlot(sent, value):
+                #         found_slot = True
+                # elif slot_root == "design":
+                #     if designSlot(sent, value):
+                #         found_slot = True
+                # elif slot_root == "utility":
+                #     if utilitySlot(sent, value):
+                #         found_slot = True
+                # elif slot_root == "isforbusinesscomputing":
+                #     if isforbusinesscomputingSlot(sent, value):
+                #         found_slot = True
+
+        if found_slot:
+            slots_found.add(slot)
+
+    return (len(curr_mr) - len(slots_found)) + num_slot_overgens
 
 
 def find_alignment(utt, mr):
@@ -1327,6 +1444,43 @@ def align_slots(file_path):
     new_df.to_csv(file_path.replace('.csv', '_aligned.csv'), index=False, encoding='utf8')
 
 
+def score_slot_realizations(file_path):
+    print('Analyzing missing/extra slot realizations ' + str(file_path))
+
+    # slot_cnt = 0
+
+    df_dataset = pd.read_csv(file_path, header=0, encoding='utf8')
+    x = df_dataset.iloc[:, 0].tolist()
+    y = df_dataset.iloc[:, 1].tolist()
+
+    misses = []
+    for i, mr in enumerate(x):
+        mr_dict = OrderedDict()
+        for slot_value in mr.split(','):
+            sep_idx = slot_value.find('[')
+            # parse the slot
+            slot = slot_value[:sep_idx].strip()
+            slot = slot.replace(' ', '_')
+            # parse the value
+            value = slot_value[sep_idx + 1:-1].strip()
+            mr_dict[slot] = value
+
+            # if not re.match(r'<.*>', slot):
+            #     slot_cnt += 1
+
+        misses.append(count_errors(y[i], mr_dict))
+
+    # DEBUG PRINT
+    # print(slot_cnt)
+
+    new_df = pd.DataFrame(columns=['mr', 'ref', 'misses'])
+    new_df['mr'] = x
+    new_df['ref'] = y
+    new_df['misses'] = misses
+
+    new_df.to_csv(file_path.replace('.csv', '_misses.csv'), index=False, encoding='utf8')
+
+
 def augment_with_emphasis(file_path):
     print('Augmenting MRs with emphasis in ' + str(file_path))
 
@@ -1603,7 +1757,8 @@ if __name__ == '__main__':
     # augment_with_emphasis('data/rest_e2e/trainset_e2e.csv')
     # augment_with_contrast('data/rest_e2e/trainset_stylistic_thresh_2_augm_5.csv')
     # augment_with_contrast_tgen('data/rest_e2e/devset_e2e.csv')
-    evaluate_emphasis('eval/predictions-rest_e2e_stylistic_selection/devset/predictions RNN (4+4) augm emph (11k).csv')
+    # evaluate_emphasis('eval/predictions-rest_e2e_stylistic_selection/devset/predictions RNN (4+4) (16k) utt split.csv')
+    score_slot_realizations('eval/predictions-rest_e2e_stylistic_selection/devset/predictions RNN (4+4) stylistic thresh 2, augm 5 contrast (18k).csv')
 
     # user_input = 'Is there a family-friendly bar in downtown santa cruz that serves reasonably priced burgers?'
     # gnode_entities = [('VisualArtwork', 282.797767, 'restaurant in'), ('City', 2522.766114, 'Santa Cruz')]
