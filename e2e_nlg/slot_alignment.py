@@ -836,10 +836,12 @@ def count_errors(curr_utterance, curr_mr):
     '''Count unrealized and overgenerated slots in a lexicalized utterance.
     '''
 
+    non_categorical_slots = ['familyFriendly', 'priceRange', 'customer_rating']
+
     slots_found = set()
     sent = curr_utterance
     matches = set(re.findall(r'&slot_.*?&', sent))
-    num_slot_overgens = len(matches)
+    num_slot_overgens = 0
 
     for slot, value in curr_mr.items():
         slot_root = slot.rstrip(string.digits)
@@ -858,7 +860,7 @@ def count_errors(curr_utterance, curr_mr):
                 sent = sent.lower()
                 if value.lower() in sent:
                     value_cnt = sent.count(value.lower())
-                    if value_cnt > 1:
+                    if slot_root not in non_categorical_slots and value_cnt > 1:
                         num_slot_overgens += value_cnt - 1
                     found_slot = True
                 elif value == "dontcare":
@@ -943,6 +945,11 @@ def count_errors(curr_utterance, curr_mr):
 
         if found_slot:
             slots_found.add(slot)
+
+    # DEBUG PRINT
+    for slot in curr_mr:
+        if slot not in slots_found:
+            print(slot, end=' ')
 
     return (len(curr_mr) - len(slots_found)) + num_slot_overgens
 
@@ -1447,28 +1454,42 @@ def align_slots(file_path):
 def score_slot_realizations(file_path):
     print('Analyzing missing/extra slot realizations ' + str(file_path))
 
+    slot_sep = ','
+    val_sep = '['
+    val_sep_closing = True
+
     # slot_cnt = 0
 
     df_dataset = pd.read_csv(file_path, header=0, encoding='utf8')
     x = df_dataset.iloc[:, 0].tolist()
     y = df_dataset.iloc[:, 1].tolist()
+    y = [data_loader.preprocess_utterance(utt) for utt in y]
 
     misses = []
     for i, mr in enumerate(x):
         mr_dict = OrderedDict()
-        for slot_value in mr.split(','):
-            sep_idx = slot_value.find('[')
-            # parse the slot
-            slot = slot_value[:sep_idx].strip()
-            slot = slot.replace(' ', '_')
-            # parse the value
-            value = slot_value[sep_idx + 1:-1].strip()
-            mr_dict[slot] = value
+
+        # extract the slot-value pairs into a dictionary
+        for slot_value in mr.split(slot_sep):
+            slot, value = data_loader.parse_slot_and_value(slot_value, val_sep, val_sep_closing)
+            mr_dict[slot] = value.lower()
 
             # if not re.match(r'<.*>', slot):
             #     slot_cnt += 1
 
+        # TODO: get rid of this hack
+        # move the food-slot to the end of the dict (because of delexing)
+        if 'food' in mr_dict:
+            food_val = mr_dict['food']
+            del(mr_dict['food'])
+            mr_dict['food'] = food_val
+
+        # delexicalize the MR and the utterance
+        y[i] = ' '.join(data_loader.delex_sample(mr_dict, y[i]))
+
+        print(str(i) + '.\t', end='')
         misses.append(count_errors(y[i], mr_dict))
+        print()
 
     # DEBUG PRINT
     # print(slot_cnt)
@@ -1758,7 +1779,7 @@ if __name__ == '__main__':
     # augment_with_contrast('data/rest_e2e/trainset_stylistic_thresh_2_augm_5.csv')
     # augment_with_contrast_tgen('data/rest_e2e/devset_e2e.csv')
     # evaluate_emphasis('eval/predictions-rest_e2e_stylistic_selection/devset/predictions RNN (4+4) (16k) utt split.csv')
-    score_slot_realizations('eval/predictions-rest_e2e_stylistic_selection/devset/predictions RNN (4+4) stylistic thresh 2, augm 5 contrast (18k).csv')
+    score_slot_realizations('eval/predictions-rest_e2e/devset/predictions_devset_ensemble.csv')
 
     # user_input = 'Is there a family-friendly bar in downtown santa cruz that serves reasonably priced burgers?'
     # gnode_entities = [('VisualArtwork', 282.797767, 'restaurant in'), ('City', 2522.766114, 'Santa Cruz')]

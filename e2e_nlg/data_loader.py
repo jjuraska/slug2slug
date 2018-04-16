@@ -53,6 +53,7 @@ def load_training_data(data_trainset, data_devset, input_concat=False):
     else:
         raise FileNotFoundError
 
+    # TODO: do the utterances still need to be parsed into lists of words?
     # parse the utterances into lists of words
     y_train = [preprocess_utterance(y) for y in y_train]
     y_dev = [preprocess_utterance(y) for y in y_dev]
@@ -74,7 +75,7 @@ def load_training_data(data_trainset, data_devset, input_concat=False):
                 if slot == emph_token:
                     emph_idxs.add(slot_ctr)
                 else:
-                    mr_dict[slot.lower()] = value.lower()
+                    mr_dict[slot] = value.lower()
                     slot_ctr += 1
 
                 # collect all possible values for each slot
@@ -125,7 +126,7 @@ def load_training_data(data_trainset, data_devset, input_concat=False):
             if slot == emph_token:
                 emph_idxs.add(slot_ctr)
             else:
-                mr_dict[slot.lower()] = value.lower()
+                mr_dict[slot] = value.lower()
                 slot_ctr += 1
 
             # collect all possible values for each slot
@@ -224,7 +225,7 @@ def load_test_data(data_testset, input_concat=False):
             if slot == emph_token:
                 emph_idxs.add(slot_ctr)
             else:
-                mr_dict[slot.lower()] = value.lower()
+                mr_dict[slot] = value.lower()
                 slot_ctr += 1
 
         # build the MR dictionary
@@ -293,7 +294,7 @@ def tokenize_mr(mr):
     # extract the slot-value pairs into a dictionary
     for slot_value in mr.split(slot_sep):
         slot, value = parse_slot_and_value(slot_value, val_sep, val_sep_closing)
-        mr_dict[slot.lower()] = value.lower()
+        mr_dict[slot] = value.lower()
 
     # make a copy of the dictionary for delexing
     mr_dict_delex = copy.deepcopy(mr_dict)
@@ -355,7 +356,7 @@ def load_training_data_for_eval(data_trainset, data_model_outputs_train, vocab_s
         mr_dict = OrderedDict()
         for slot_value in mr.split(slot_sep):
             slot, value = parse_slot_and_value(slot_value, val_sep, val_sep_closing)
-            mr_dict[slot.lower()] = value.lower()
+            mr_dict[slot] = value.lower()
 
         if delex == True:
             # delexicalize the MR and the utterance
@@ -461,7 +462,7 @@ def load_dev_data_for_eval(data_devset, data_model_outputs_dev, vocab_size, max_
         mr_dict = OrderedDict()
         for slot_value in mr.split(slot_sep):
             slot, value = parse_slot_and_value(slot_value, val_sep, val_sep_closing)
-            mr_dict[slot.lower()] = value.lower()
+            mr_dict[slot] = value.lower()
             
         if delex == True:
             # delexicalize the MR and the utterance
@@ -556,7 +557,7 @@ def load_test_data_for_eval(data_testset, data_model_outputs_test, vocab_size, m
         mr_dict = OrderedDict()
         for slot_value in mr.split(slot_sep):
             slot, value = parse_slot_and_value(slot_value, val_sep, val_sep_closing)
-            mr_dict[slot.lower()] = value.lower()
+            mr_dict[slot] = value.lower()
 
         if delex == True:
             # delexicalize the MR and the utterance
