@@ -827,9 +827,9 @@ def scoreAlignment(curr_utterance, curr_mr, scoring="default+over-class"):
     #    return (len(slots_found) - len(matches) + 1) / (len(curr_mr) + 1)
 
     if scoring == "default":
-        return len(curr_mr) / (len(curr_mr) - len(slots_found) + num_slot_overgens + 1)
+        return 1 / (len(curr_mr) - len(slots_found) + num_slot_overgens + 1)
     elif scoring == "default+over-class":
-        return len(curr_mr) / (len(curr_mr) - len(slots_found) + num_slot_overgens + 1) / (len(matches) + 1)
+        return 1 / (len(curr_mr) - len(slots_found) + num_slot_overgens + 1) / (len(matches) + 1)
 
 
 def count_errors(curr_utterance, curr_mr):

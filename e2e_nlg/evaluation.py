@@ -246,7 +246,7 @@ def test(data_testset, data_model_outputs, path_to_model, predict_only=True):
     print('\nPredicting...', end=' ')
 
     results = []
-    prediction_distr = model.predict([mr_test, utt_test])
+    prediction_distr = model.__predict_single_input([mr_test, utt_test])
     predictions = np.array(prediction_distr).flatten()
     
     for i, class_predicted in enumerate(predictions):

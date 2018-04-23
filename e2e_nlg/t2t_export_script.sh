@@ -13,4 +13,4 @@ t2t-exporter \
     --data_dir=$DATA_DIR \
     --output_dir=$TRAIN_DIR \
     --t2t_usr_dir=$USR_DIR \
-    --decode_hparams="beam_size=10,alpha=0.6,write_beam_scores=True,return_beams=True"
+    --decode_hparams="beam_size=4,alpha=0.6,write_beam_scores=True,return_beams=True"
