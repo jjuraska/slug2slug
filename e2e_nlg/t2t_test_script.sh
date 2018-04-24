@@ -1,14 +1,14 @@
-PROBLEM=lang_gen
-MODEL=transformer
-HPARAMS=transformer_lang_gen
-
 USR_DIR=./transformer
-DATA_DIR=./transformer/t2t_data
-TRAIN_DIR=./transformer/t2t_train/$PROBLEM-$HPARAMS
+DATA_DIR=./data
+TRAIN_DIR=./model
+
 DECODE_FILE=$DATA_DIR/test_source.txt
 PREDICTION_FILE=./predictions/predictions.txt
 
-BEAM_SIZE=10
+PROBLEM=lang_gen
+MODEL=transformer
+HPARAMS=transformer_lang_gen
+BEAM_SIZE=4
 ALPHA=0.6
 
 t2t-decoder \

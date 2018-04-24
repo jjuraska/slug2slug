@@ -10,6 +10,7 @@ from tensor2tensor.data_generators import text_problems
 from tensor2tensor.models import transformer
 from tensor2tensor.utils import registry
 
+import config
 import data_loader
 
 
@@ -81,23 +82,10 @@ class LangGen(text_problems.Text2TextProblem):
         }]
 
     def generate_samples(self, data_dir, tmp_dir, dataset_split):
-        data_trainset = 'data/rest_e2e/trainset_e2e.csv'
-        data_devset = 'data/rest_e2e/devset_e2e.csv'
-        training_source_file = 'data/training_source.txt'
-        training_target_file = 'data/training_target.txt'
-        dev_source_file = 'data/dev_source.txt'
-        dev_target_file = 'data/dev_target.txt'
-
-        print('Loading training data...', end=' ')
-        sys.stdout.flush()
-
-        if not os.path.isfile(training_source_file) or \
-                not os.path.isfile(training_target_file) or \
-                not os.path.isfile(dev_source_file) or \
-                not os.path.isfile(dev_target_file):
-            data_loader.load_training_data(data_trainset, data_devset, input_concat=False)
-
-        print('DONE')
+        training_source_file = os.path.join(config.DATA_DIR, 'training_source.txt')
+        training_target_file = os.path.join(config.DATA_DIR, 'training_target.txt')
+        dev_source_file = os.path.join(config.DATA_DIR, 'dev_source.txt')
+        dev_target_file = os.path.join(config.DATA_DIR, 'dev_target.txt')
 
         train = dataset_split == problem.DatasetSplit.TRAIN
         source_file = (training_source_file if train else dev_source_file)

@@ -15,17 +15,33 @@ from nltk.stem.wordnet import WordNetLemmatizer
 import re
 import itertools
 
+import config
+
 
 class SetEncoder(json.JSONEncoder):
-   def default(self, obj):
-      if isinstance(obj, set):
-         return list(obj)
-      return json.JSONEncoder.default(self, obj)
+    def default(self, obj):
+        if isinstance(obj, set):
+            return list(obj)
+        return json.JSONEncoder.default(self, obj)
 
 
 def load_training_data(data_trainset, data_devset, input_concat=False):
+    training_source_file = os.path.join(config.DATA_DIR, 'training_source.txt')
+    training_target_file = os.path.join(config.DATA_DIR, 'training_target.txt')
+    dev_source_file = os.path.join(config.DATA_DIR, 'dev_source.txt')
+    dev_target_file = os.path.join(config.DATA_DIR, 'dev_target.txt')
+    slot_values_file = os.path.join(config.DATA_DIR, 'slot_values.json')
+
+    if os.path.isfile(training_source_file) and \
+            os.path.isfile(training_target_file) and \
+            os.path.isfile(dev_source_file) and \
+            os.path.isfile(dev_target_file):
+        return
+
+
     emph_token = '<emph>'
 
+    # TODO: encapsulate input separator determination
     if '/rest_e2e/' in data_trainset and '/rest_e2e/' in data_devset or \
             '\\rest_e2e\\' in data_trainset and '\\rest_e2e\\' in data_devset:
         x_train, y_train = read_rest_e2e_dataset_train(data_trainset)
@@ -159,29 +175,36 @@ def load_training_data(data_trainset, data_devset, input_concat=False):
             # append a sequence-end token to be paired up with seq2seq's sequence-end token when concatenating
             x_dev_seq[i].append('&stop&')
 
-    with io.open('data/training_source.txt', 'w', encoding='utf8') as f_x_train:
+    with io.open(training_source_file, 'w', encoding='utf8') as f_x_train:
         for line in x_train_seq:
             f_x_train.write('{}\n'.format(' '.join(line)))
 
-    with io.open('data/training_target.txt', 'w', encoding='utf8') as f_y_train:
+    with io.open(training_target_file, 'w', encoding='utf8') as f_y_train:
         for line in y_train:
             f_y_train.write('{}\n'.format(' '.join(line)))
 
-    with io.open('data/dev_source.txt', 'w', encoding='utf8') as f_x_dev:
+    with io.open(dev_source_file, 'w', encoding='utf8') as f_x_dev:
         for line in x_dev_seq:
             f_x_dev.write('{}\n'.format(' '.join(line)))
 
-    with io.open('data/dev_target.txt', 'w', encoding='utf8') as f_y_dev:
+    with io.open(dev_target_file, 'w', encoding='utf8') as f_y_dev:
         for line in y_dev:
             f_y_dev.write('{}\n'.format(' '.join(line)))
 
-    with io.open('data/slot_values.json', 'w', encoding='utf8') as f_slot_values:
+    with io.open(slot_values_file, 'w', encoding='utf8') as f_slot_values:
         json.dump(slot_poss_values, f_slot_values, cls=SetEncoder, indent=4)
 
 
 def load_test_data(data_testset, input_concat=False):
+    test_source_file = os.path.join(config.DATA_DIR, 'test_source.txt')
+    test_source_dict_file = os.path.join(config.DATA_DIR, 'test_source_dict.json')
+    test_target_file = os.path.join(config.DATA_DIR, 'test_target.txt')
+    test_reference_file = os.path.join(config.METRICS_DIR, 'test_references.txt')
+    vocab_proper_nouns_file = os.path.join(config.DATA_DIR, 'vocab_proper_nouns.txt')
+
     emph_token = '<emph>'
 
+    # TODO: encapsulate input separator determination
     if '/rest_e2e/' in data_testset or '\\rest_e2e\\' in data_testset:
         x_test, y_test = read_rest_e2e_dataset_test(data_testset)
         dataset_name = 'rest_e2e'
@@ -254,25 +277,25 @@ def load_test_data(data_testset, input_concat=False):
             # append a sequence-end token to be paired up with seq2seq's sequence-end token when concatenating
             x_test_seq[i].append('&stop&')
 
-    with io.open('data/test_source.txt', 'w', encoding='utf8') as f_x_test:
+    with io.open(test_source_file, 'w', encoding='utf8') as f_x_test:
         for line in x_test_seq:
             f_x_test.write('{}\n'.format(' '.join(line)))
 
-    with io.open('data/test_source_dict.json', 'w', encoding='utf8') as f_x_test_dict:
+    with io.open(test_source_dict_file, 'w', encoding='utf8') as f_x_test_dict:
         json.dump(x_test_dict, f_x_test_dict)
 
     # vocabulary of proper nouns to be used for capitalization in postprocessing
-    with io.open('data/vocab_proper_nouns.txt', 'w', encoding='utf8') as f_vocab:
+    with io.open(vocab_proper_nouns_file, 'w', encoding='utf8') as f_vocab:
         for value in vocab_proper_nouns:
             f_vocab.write(value + '\n')
 
     if len(y_test) > 0:
-        with io.open('data/test_target.txt', 'w', encoding='utf8') as f_y_test:
+        with io.open(test_target_file, 'w', encoding='utf8') as f_y_test:
             for line in y_test:
                 f_y_test.write(line + '\n')
 
         # reference file for calculating metrics for test predictions
-        with io.open('metrics/test_references.txt', 'w', encoding='utf8') as f_y_test:
+        with io.open(test_reference_file, 'w', encoding='utf8') as f_y_test:
             for i, line in enumerate(y_test):
                 if i > 0 and x_test[i] != x_test[i - 1]:
                     f_y_test.write('\n')

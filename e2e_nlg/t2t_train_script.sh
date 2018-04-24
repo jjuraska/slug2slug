@@ -1,10 +1,11 @@
+USR_DIR=./transformer
+DATA_DIR=./data
+TRAIN_DIR=./model
+
 PROBLEM=lang_gen
 MODEL=transformer
 HPARAMS=transformer_lang_gen
 
-USR_DIR=./transformer
-DATA_DIR=./transformer/t2t_data
-TRAIN_DIR=./transformer/t2t_train/$PROBLEM-$HPARAMS
 mkdir -p $TRAIN_DIR
 
 t2t-trainer \

@@ -8,6 +8,8 @@ import pickle
 import networkx as nx
 from nltk.tokenize import word_tokenize, sent_tokenize
 from nltk.tokenize.moses import MosesDetokenizer
+
+import config
 from slot_alignment import scoreAlignment
 
 
@@ -98,6 +100,7 @@ def detokenize(utterance):
     return ' '.join(sentences)
 
 
+# TODO: remove this function?
 def extractMRs(data_file):
     # create a file with a single prediction for each group of the same MRs
     if '/rest_e2e/' in data_testset or '\\rest_e2e\\' in data_testset:
@@ -134,7 +137,7 @@ def align_beams(beams=None, beams_file=None, data_file=None):
             beams = pickle.load(openfile)
             
     #mrs = extractMRs(data_file)
-    with io.open('data/test_source_dict.json', 'r', encoding='utf8') as f_test_mrs_dict:
+    with io.open(os.path.join(config.DATA_DIR, 'test_source_dict.json'), 'r', encoding='utf8') as f_test_mrs_dict:
         mrs = json.load(f_test_mrs_dict)
 
     step = max(int(len(mrs) * 0.1), 1)
@@ -163,6 +166,43 @@ def align_beams(beams=None, beams_file=None, data_file=None):
 
     with open('predictions/beams_dump_reranked.pkl', 'wb') as f_beam_dump:
         pickle.dump(np.array(new_beams), f_beam_dump)
+
+    return new_beams
+
+
+def align_beams_t2t(beams=None, beams_file=None, data_file=None):
+    new_beams = []
+    if beams is None:
+        if beams_file is None:
+            beams_file = 'predictions/beams_dump.pkl'
+        with open(beams_file, 'rb') as openfile:
+            beams = pickle.load(openfile)
+
+    #mrs = extractMRs(data_file)
+    with io.open(os.path.join(config.DATA_DIR, 'test_source_dict.json'), 'r', encoding='utf8') as f_test_mrs_dict:
+        mrs = json.load(f_test_mrs_dict)
+
+    step = max(int(len(mrs) * 0.1), 1)
+    checkpoints = range(step - 1, len(mrs), step)
+
+    for index in range(len(mrs)):
+        cur_mr = mrs[index]
+        scored_beams = []
+
+        for utt, log_prob in beams[index]:
+            score = scoreAlignment(utt, cur_mr)
+            scored_beams.append((utt, log_prob / score))
+
+        scored_beams.sort(key=lambda x: x[1], reverse=True)
+        new_beams.append(scored_beams)
+
+        # print progress status
+        if index in checkpoints:
+            progress = (index + 1) // step
+            print(str(progress * 10) + '% done')
+
+    # with open('predictions/beams_dump_reranked.pkl', 'wb') as f_beam_dump:
+    #     pickle.dump(np.array(new_beams), f_beam_dump)
 
     return new_beams
 

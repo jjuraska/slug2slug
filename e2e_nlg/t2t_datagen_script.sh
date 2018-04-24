@@ -1,7 +1,9 @@
 USR_DIR=./transformer
-PROBLEM=lang_gen
-DATA_DIR=./transformer/t2t_data
+DATA_DIR=./data
 TMP_DIR=./transformer/t2t_tmp
+
+PROBLEM=lang_gen
+
 mkdir -p $DATA_DIR $TMP_DIR
 
 t2t-datagen \
