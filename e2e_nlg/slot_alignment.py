@@ -946,12 +946,14 @@ def count_errors(curr_utterance, curr_mr):
         if found_slot:
             slots_found.add(slot)
 
-    # DEBUG PRINT
+    missing_slots = []
     for slot in curr_mr:
         if slot not in slots_found:
-            print(slot, end=' ')
+            missing_slots.append(slot)
 
-    return (len(curr_mr) - len(slots_found)) + num_slot_overgens
+    num_erroneous_slots = (len(curr_mr) - len(slots_found)) + num_slot_overgens
+
+    return num_erroneous_slots, missing_slots
 
 
 def find_alignment(utt, mr):
@@ -1465,7 +1467,8 @@ def score_slot_realizations(file_path):
     y = df_dataset.iloc[:, 1].tolist()
     y = [data_loader.preprocess_utterance(utt) for utt in y]
 
-    misses = []
+    errors = []
+    missing_slots = []
     for i, mr in enumerate(x):
         mr_dict = OrderedDict()
 
@@ -1487,17 +1490,19 @@ def score_slot_realizations(file_path):
         # delexicalize the MR and the utterance
         y[i] = ' '.join(data_loader.delex_sample(mr_dict, y[i]))
 
-        print(str(i) + '.\t', end='')
-        misses.append(count_errors(y[i], mr_dict))
-        print()
+        # count the missing and over-generated slots in the utterance
+        cur_errors, cur_missing_slots = count_errors(y[i], mr_dict)
+        errors.append(cur_errors)
+        missing_slots.append(', '.join(cur_missing_slots))
 
     # DEBUG PRINT
     # print(slot_cnt)
 
-    new_df = pd.DataFrame(columns=['mr', 'ref', 'misses'])
+    new_df = pd.DataFrame(columns=['mr', 'ref', 'errors', 'missing slots'])
     new_df['mr'] = x
     new_df['ref'] = y
-    new_df['misses'] = misses
+    new_df['errors'] = errors
+    new_df['missing slots'] = missing_slots
 
     new_df.to_csv(file_path.replace('.csv', '_misses.csv'), index=False, encoding='utf8')
 
@@ -1779,7 +1784,7 @@ if __name__ == '__main__':
     # augment_with_contrast('data/rest_e2e/trainset_stylistic_thresh_2_augm_5.csv')
     # augment_with_contrast_tgen('data/rest_e2e/devset_e2e.csv')
     # evaluate_emphasis('eval/predictions-rest_e2e_stylistic_selection/devset/predictions RNN (4+4) (16k) utt split.csv')
-    score_slot_realizations('eval/predictions-rest_e2e/devset/predictions_devset_TRANS_tokens2.csv')
+    score_slot_realizations('eval/predictions-rest_e2e/devset/predictions_devset_TRANS_tokens.csv')
 
     # user_input = 'Is there a family-friendly bar in downtown santa cruz that serves reasonably priced burgers?'
     # gnode_entities = [('VisualArtwork', 282.797767, 'restaurant in'), ('City', 2522.766114, 'Santa Cruz')]

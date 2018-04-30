@@ -3,10 +3,7 @@ import sys
 import os
 import io
 import json
-import platform
-import pickle
 import pandas as pd
-import numpy as np
 from collections import OrderedDict
 
 import config
@@ -62,14 +59,14 @@ def train(data_trainset, data_devset):
     data_loader.load_training_data(data_trainset, data_devset, generate_vocab=True)
 
     # Generate the data files in the format required for T2T
-    os.system('bash t2t_datagen_script.sh')
+    os.system('bash ' + os.path.join(config.T2T_DIR, 't2t_datagen_script.sh'))
 
     print('DONE')
     print('Training...')
     sys.stdout.flush()
 
     # Run the model training
-    os.system('bash t2t_train_script.sh')
+    os.system('bash ' + os.path.join(config.T2T_DIR, 't2t_train_script.sh'))
 
     print('DONE')
 
@@ -94,7 +91,7 @@ def test(data_testset, predict_only=True, reranking=True):
     # TODO: set DECODE_FILE and PREDICTION_FILE environment variables from here instead of the shell script
 
     # Run inference for the test samples
-    os.system('bash t2t_test_script.sh')
+    os.system('bash ' + os.path.join(config.T2T_DIR, 't2t_test_script.sh'))
 
     print('DONE')
     print('Extracting beams...')
