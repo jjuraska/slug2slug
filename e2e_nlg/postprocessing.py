@@ -54,13 +54,13 @@ def join_plural_nouns(utterance):
 
 def relex(utterance, mr_dict):
     # identify all value placeholders
-    matches = re.findall(r'&slot_.*?&', utterance)
+    matches = re.findall(r'<slot_.*?>', utterance)
     
     # replace the value placeholders with the corresponding values from the MR
     fail_flags = []
     for match in matches:
         slot = match.split('_')
-        slot = slot[-1].rstrip('&')
+        slot = slot[-1].rstrip('>')
         if slot in mr_dict.keys():
             utterance = utterance.replace(match, mr_dict[slot])
         else:

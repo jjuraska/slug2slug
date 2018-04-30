@@ -25,7 +25,8 @@ class SetEncoder(json.JSONEncoder):
         return json.JSONEncoder.default(self, obj)
 
 
-def load_training_data(data_trainset, data_devset, input_concat=False):
+# TODO: redesign the data loading so as to be object-oriented
+def load_training_data(data_trainset, data_devset, input_concat=False, generate_vocab=False):
     training_source_file = os.path.join(config.DATA_DIR, 'training_source.txt')
     training_target_file = os.path.join(config.DATA_DIR, 'training_target.txt')
     dev_source_file = os.path.join(config.DATA_DIR, 'dev_source.txt')
@@ -39,7 +40,7 @@ def load_training_data(data_trainset, data_devset, input_concat=False):
         return
 
 
-    emph_token = '<emph>'
+    emph_token = '<!emph>'
 
     # TODO: encapsulate input separator determination
     if '/rest_e2e/' in data_trainset and '/rest_e2e/' in data_devset or \
@@ -86,20 +87,20 @@ def load_training_data(data_trainset, data_devset, input_concat=False):
         try:
             # extract the slot-value pairs into a dictionary
             for slot_value in mr.split(slot_sep):
-                slot, value = parse_slot_and_value(slot_value, val_sep, val_sep_closing)
+                slot, value, _ = parse_slot_and_value(slot_value, val_sep, val_sep_closing)
 
                 if slot == emph_token:
                     emph_idxs.add(slot_ctr)
                 else:
-                    mr_dict[slot] = value.lower()
+                    mr_dict[slot] = value
                     slot_ctr += 1
 
                 # collect all possible values for each slot
-                key_clean = slot.rstrip(string.digits)
-                if key_clean not in slot_poss_values:
-                    slot_poss_values[key_clean] = set([value.lower()])
+                slot_root = slot.rstrip(string.digits)
+                if slot_root not in slot_poss_values:
+                    slot_poss_values[slot_root] = set([value])
                 else:
-                    slot_poss_values[key_clean].add(value.lower())
+                    slot_poss_values[slot_root].add(value)
         except:
             print(str(mr))
             print(str(y_train[i]))
@@ -118,7 +119,7 @@ def load_training_data(data_trainset, data_devset, input_concat=False):
                 x_train_seq[i].append(emph_token)
 
             if len(val) > 0:
-                x_train_seq[i].extend([key, val])
+                x_train_seq[i].extend([key] + val.split())
             else:
                 x_train_seq[i].append(key)
 
@@ -126,7 +127,7 @@ def load_training_data(data_trainset, data_devset, input_concat=False):
 
         if input_concat:
             # append a sequence-end token to be paired up with seq2seq's sequence-end token when concatenating
-            x_train_seq[i].append('&stop&')
+            x_train_seq[i].append('<STOP>')
 
     # produce sequences of extracted words from the meaning representations (MRs) in the devset
     x_dev_seq = []
@@ -137,20 +138,20 @@ def load_training_data(data_trainset, data_devset, input_concat=False):
 
         # extract the slot-value pairs into a dictionary
         for slot_value in mr.split(slot_sep):
-            slot, value = parse_slot_and_value(slot_value, val_sep, val_sep_closing)
+            slot, value, _ = parse_slot_and_value(slot_value, val_sep, val_sep_closing)
 
             if slot == emph_token:
                 emph_idxs.add(slot_ctr)
             else:
-                mr_dict[slot] = value.lower()
+                mr_dict[slot] = value
                 slot_ctr += 1
 
             # collect all possible values for each slot
-            key_clean = slot.rstrip(string.digits)
-            if key_clean not in slot_poss_values:
-                slot_poss_values[key_clean] = set([value.lower()])
+            slot_root = slot.rstrip(string.digits)
+            if slot_root not in slot_poss_values:
+                slot_poss_values[slot_root] = set([value])
             else:
-                slot_poss_values[key_clean].add(value.lower())
+                slot_poss_values[slot_root].add(value)
 
         # delexicalize the MR and the utterance
         y_dev[i] = delex_sample(mr_dict, y_dev[i], input_concat=input_concat)
@@ -165,7 +166,7 @@ def load_training_data(data_trainset, data_devset, input_concat=False):
                 x_dev_seq[i].append(emph_token)
 
             if len(val) > 0:
-                x_dev_seq[i].extend([key, val])
+                x_dev_seq[i].extend([key] + val.split())
             else:
                 x_dev_seq[i].append(key)
 
@@ -173,7 +174,16 @@ def load_training_data(data_trainset, data_devset, input_concat=False):
 
         if input_concat:
             # append a sequence-end token to be paired up with seq2seq's sequence-end token when concatenating
-            x_dev_seq[i].append('&stop&')
+            x_dev_seq[i].append('<STOP>')
+
+    # Generate a vocabulary file if necessary
+    if generate_vocab:
+        generate_vocab_file(np.concatenate(x_train_seq + x_dev_seq + y_train + y_dev),
+                            vocab_filename='vocab.lang_gen.tokens')
+        # generate_vocab_file(np.concatenate(x_train_seq + x_dev_seq),
+        #                     vocab_filename='vocab.lang_gen_multi_vocab.source')
+        # generate_vocab_file(np.concatenate(y_train + y_dev),
+        #                     vocab_filename='vocab.lang_gen_multi_vocab.target')
 
     with io.open(training_source_file, 'w', encoding='utf8') as f_x_train:
         for line in x_train_seq:
@@ -202,7 +212,7 @@ def load_test_data(data_testset, input_concat=False):
     test_reference_file = os.path.join(config.METRICS_DIR, 'test_references.txt')
     vocab_proper_nouns_file = os.path.join(config.DATA_DIR, 'vocab_proper_nouns.txt')
 
-    emph_token = '<emph>'
+    emph_token = '<!emph>'
 
     # TODO: encapsulate input separator determination
     if '/rest_e2e/' in data_testset or '\\rest_e2e\\' in data_testset:
@@ -239,16 +249,16 @@ def load_test_data(data_testset, input_concat=False):
 
         # extract the slot-value pairs into a dictionary
         for slot_value in mr.split(slot_sep):
-            slot, value = parse_slot_and_value(slot_value, val_sep, val_sep_closing)
+            slot, value, value_orig = parse_slot_and_value(slot_value, val_sep, val_sep_closing)
 
             # store proper noun values (for retrieval in postprocessing)
-            if slot in slots_with_proper_nouns and len(value) > 0 and value[0].isupper():
-                vocab_proper_nouns.add(value)
+            if slot in slots_with_proper_nouns and len(value_orig) > 0 and value_orig[0].isupper():
+                vocab_proper_nouns.add(value_orig)
 
             if slot == emph_token:
                 emph_idxs.add(slot_ctr)
             else:
-                mr_dict[slot] = value.lower()
+                mr_dict[slot] = value
                 slot_ctr += 1
 
         # build the MR dictionary
@@ -267,7 +277,7 @@ def load_test_data(data_testset, input_concat=False):
                 x_test_seq[i].append(emph_token)
 
             if len(val) > 0:
-                x_test_seq[i].extend([key, val])
+                x_test_seq[i].extend([key] + val.split())
             else:
                 x_test_seq[i].append(key)
 
@@ -275,7 +285,7 @@ def load_test_data(data_testset, input_concat=False):
 
         if input_concat:
             # append a sequence-end token to be paired up with seq2seq's sequence-end token when concatenating
-            x_test_seq[i].append('&stop&')
+            x_test_seq[i].append('<STOP>')
 
     with io.open(test_source_file, 'w', encoding='utf8') as f_x_test:
         for line in x_test_seq:
@@ -302,7 +312,20 @@ def load_test_data(data_testset, input_concat=False):
                 f_y_test.write(line + '\n')
 
 
-def tokenize_mr(mr):
+def generate_vocab_file(token_sequences, vocab_filename, vocab_size=10000):
+    vocab_file = os.path.join(config.DATA_DIR, vocab_filename)
+
+    distr = FreqDist(token_sequences)
+    vocab = distr.most_common(min(len(distr), vocab_size - 3))      # cap the vocabulary size
+
+    vocab_with_reserved_tokens = ['<pad>', '<EOS>'] + list(map(lambda tup: tup[0], vocab)) + ['UNK']
+
+    with io.open(vocab_file, 'w', encoding='utf8') as f_vocab:
+        for token in vocab_with_reserved_tokens:
+            f_vocab.write('{}\n'.format(token))
+
+
+def tokenize_mr(mr, add_eos_token=True):
     '''
     Produces a (delexed) sequence of tokens from the input MR.
     '''
@@ -316,8 +339,8 @@ def tokenize_mr(mr):
 
     # extract the slot-value pairs into a dictionary
     for slot_value in mr.split(slot_sep):
-        slot, value = parse_slot_and_value(slot_value, val_sep, val_sep_closing)
-        mr_dict[slot] = value.lower()
+        slot, value, _ = parse_slot_and_value(slot_value, val_sep, val_sep_closing)
+        mr_dict[slot] = value
 
     # make a copy of the dictionary for delexing
     mr_dict_delex = copy.deepcopy(mr_dict)
@@ -333,7 +356,8 @@ def tokenize_mr(mr):
             mr_seq.append(key)
 
     # append the sequence-end token
-    mr_seq.append('SEQUENCE_END')
+    if add_eos_token:
+        mr_seq.append('SEQUENCE_END')
 
     return mr_seq, mr_dict
 
@@ -378,8 +402,8 @@ def load_training_data_for_eval(data_trainset, data_model_outputs_train, vocab_s
     for i, mr in enumerate(x_train):
         mr_dict = OrderedDict()
         for slot_value in mr.split(slot_sep):
-            slot, value = parse_slot_and_value(slot_value, val_sep, val_sep_closing)
-            mr_dict[slot] = value.lower()
+            slot, value, _ = parse_slot_and_value(slot_value, val_sep, val_sep_closing)
+            mr_dict[slot] = value
 
         if delex == True:
             # delexicalize the MR and the utterance
@@ -484,8 +508,8 @@ def load_dev_data_for_eval(data_devset, data_model_outputs_dev, vocab_size, max_
     for i, mr in enumerate(x_dev):
         mr_dict = OrderedDict()
         for slot_value in mr.split(slot_sep):
-            slot, value = parse_slot_and_value(slot_value, val_sep, val_sep_closing)
-            mr_dict[slot] = value.lower()
+            slot, value, _ = parse_slot_and_value(slot_value, val_sep, val_sep_closing)
+            mr_dict[slot] = value
             
         if delex == True:
             # delexicalize the MR and the utterance
@@ -579,8 +603,8 @@ def load_test_data_for_eval(data_testset, data_model_outputs_test, vocab_size, m
     for i, mr in enumerate(x_test):
         mr_dict = OrderedDict()
         for slot_value in mr.split(slot_sep):
-            slot, value = parse_slot_and_value(slot_value, val_sep, val_sep_closing)
-            mr_dict[slot] = value.lower()
+            slot, value, _ = parse_slot_and_value(slot_value, val_sep, val_sep_closing)
+            mr_dict[slot] = value
 
         if delex == True:
             # delexicalize the MR and the utterance
@@ -857,14 +881,14 @@ def preprocess_mr(mr, da_sep, slot_sep, val_sep):
         slot_counts = {}
         mr_modified = ''
         for slot_value in mr_new.split(slot_sep):
-            slot, value = parse_slot_and_value(slot_value, val_sep)
+            slot, _, value_orig = parse_slot_and_value(slot_value, val_sep)
             if slot in ['da', 'position']:
                 mr_modified += slot
             else:
                 slot_counts[slot] = slot_counts.get(slot, 0) + 1
                 mr_modified += slot + str(slot_counts[slot])
 
-            mr_modified += val_sep + value + slot_sep
+            mr_modified += val_sep + value_orig + slot_sep
 
         mr_new = mr_modified[:-1]
 
@@ -894,23 +918,19 @@ def parse_slot_and_value(slot_value, val_sep, val_sep_closing=False):
         # set the value to the empty string
         value = ''
                     
-    slot = slot.replace(' ', '_')
+    slot = slot.replace(' ', '')
 
-    return slot, value
+    return slot.lower(), value.lower(), value
 
 
 def delex_sample(mr, utterance=None, slots_to_delex=None, mr_only=False, input_concat=False, utterance_only=False):
-    '''
-    Delexicalize a single sample (MR and the corresponding utterance).
-    By default, the slots 'name' and 'near' are delexicalized.
+    '''Delexicalize a single sample (MR and the corresponding utterance).
+    By default, the slots 'name', 'near' and 'food' are delexicalized.
     All fields: name, near, area, food, customer rating, familyFriendly, eatType, priceRange
     '''
 
-    vowels = 'aeiou'
-
-    if not mr_only and utterance == None:
+    if not mr_only and utterance is None:
         raise ValueError('the \'utterance\' argument must be provided when \'mr_only\' is False.')
-        return None
 
     if slots_to_delex is not None:
         delex_slots = slots_to_delex
@@ -925,27 +945,17 @@ def delex_sample(mr, utterance=None, slots_to_delex=None, mr_only=False, input_c
 
     for slot, value in mr.items():
         if slot.rstrip(string.digits) in delex_slots and value not in ['dontcare', 'none', '']:
-            placeholder = '&slot_'
-            if value[0].lower() in vowels:
-                placeholder += 'vow_'
-            else:
-                placeholder += 'con_'
+            # Assemble a placeholder token for the value
+            placeholder = create_placeholder(slot, value)
 
-            if slot == 'name':
-                if value.lower().startswith(('the ', 'a ', 'an ')):
-                    placeholder += 'det_'
-            elif slot == 'food':
-                if 'food' not in value.lower():
-                    placeholder += 'cuisine_'
-
-            placeholder += (slot + '&')
-
-            utterance_delexed = utterance
+            # Replace the value (whole-word matches only) with the placeholder
             if not mr_only:
-                utterance_delexed = re.sub(r'\b{}\b'.format(value), placeholder, utterance)     # replace whole-word matches only
+                utterance_delexed = re.sub(r'\b{}\b'.format(value), placeholder, utterance)
+            else:
+                utterance_delexed = utterance
 
-            # don't replace value with a placeholder token unless there is an exact match in the utterance
-            if mr_only or utterance_delexed != utterance or (slot == 'name'):
+            # Do not replace value with a placeholder token unless there is an exact match in the utterance
+            if mr_only or utterance_delexed != utterance or slot == 'name':
                 mr_update[slot] = placeholder
                 utterance = utterance_delexed
         else:
@@ -958,6 +968,29 @@ def delex_sample(mr, utterance=None, slots_to_delex=None, mr_only=False, input_c
 
     if not mr_only:
         return utterance.split()
+
+
+def create_placeholder(slot, value):
+    vowels = 'aeiou'
+
+    placeholder = '<slot_'
+
+    value = value.lower()
+    if value[0] in vowels:
+        placeholder += 'vow_'
+    else:
+        placeholder += 'con_'
+
+    if slot == 'name':
+        if value.startswith(('the ', 'a ', 'an ')):
+            placeholder += 'det_'
+    elif slot == 'food':
+        if 'food' not in value:
+            placeholder += 'cuisine_'
+
+    placeholder += (slot + '>')
+
+    return placeholder
 
 
 def token_seq_to_idx_seq(token_seqences, token2idx, max_output_seq_len):
@@ -1017,22 +1050,21 @@ def count_unique_mrs():
 
 # ---- MAIN ----
 
-if __name__ == '__main__':
-    #count_unique_mrs()
+def main():
+    # count_unique_mrs()
 
-    #x_test, y_test = read_laptop_dataset_test('data/tv/test.json')
+    # x_test, y_test = read_laptop_dataset_test('data/tv/test.json')
 
-    #print(x_test)
-    #print()
-    #print(y_test)
-    #print()
-    #print(len(x_test), len(y_test))
+    # print(x_test)
+    # print()
+    # print(y_test)
+    # print()
+    # print(len(x_test), len(y_test))
 
-    #if len(y_test) > 0:
+    # if len(y_test) > 0:
     #    with io.open('data/predictions_baseline.txt', 'w', encoding='utf8') as f_y_test:
     #        for line in y_test:
     #            f_y_test.write(line + '\n')
-
 
     # produce a file from the predictions in the TV/Laptop dataset format by replacing the baseline utterances (in the 3rd column)
     with io.open('eval/predictions-tv/predictions_ensemble_2way_2.txt', 'r', encoding='utf8') as f_predictions:
@@ -1047,9 +1079,8 @@ if __name__ == '__main__':
         df.iloc[:, 2] = f_predictions.readlines()
         df.to_json('data/tv/test_pred.json', orient='values')
 
-
     # produce a file from the predictions in the TV/Laptop dataset format by replacing the baseline utterances (in the 3rd column)
-    #with io.open('eval/predictions-laptop/predictions_ensemble_2way_1.txt', 'r', encoding='utf8') as f_predictions:
+    # with io.open('eval/predictions-laptop/predictions_ensemble_2way_1.txt', 'r', encoding='utf8') as f_predictions:
     #    with io.open('data/laptop/test.json', encoding='utf8') as f_testset:
     #        # remove the comment at the beginning of the file
     #        for i in range(5):
@@ -1060,3 +1091,7 @@ if __name__ == '__main__':
 
     #    df.iloc[:, 2] = f_predictions.readlines()
     #    df.to_json('data/laptop/test_pred.json', orient='values')
+
+
+if __name__ == '__main__':
+    main()

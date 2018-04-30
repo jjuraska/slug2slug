@@ -59,7 +59,7 @@ def train(data_trainset, data_devset):
     sys.stdout.flush()
 
     # Load and preprocess the training and validation data
-    data_loader.load_training_data(data_trainset, data_devset)
+    data_loader.load_training_data(data_trainset, data_devset, generate_vocab=True)
 
     # Generate the data files in the format required for T2T
     os.system('bash t2t_datagen_script.sh')
@@ -102,21 +102,25 @@ def test(data_testset, predict_only=True, reranking=True):
 
     # Read in the beams and their log-probs as produced by the T2T beam search
     df_predictions = pd.read_csv(predictions_file, sep='\t', header=None, encoding='utf8')
+    beams_present = len(df_predictions.columns) > 1
 
-    # Combine beams and their corresponding scores into tuples
-    beams = []
-    for i in range(0, len(df_predictions.columns), 2):
-        beams.append(list(zip(df_predictions.iloc[:, i], df_predictions.iloc[:, i+1])))
+    if beams_present:
+        # Combine beams and their corresponding scores into tuples
+        beams = []
+        for i in range(0, len(df_predictions.columns), 2):
+            beams.append(list(zip(df_predictions.iloc[:, i], df_predictions.iloc[:, i+1])))
 
-    # Transpose the list of beams so as to have all beams of a single sample per line
-    beams = list(map(list, zip(*beams)))
+        # Transpose the list of beams so as to have all beams of a single sample per line
+        beams = list(map(list, zip(*beams)))
+    else:
+        beams = [[(beam,)] for beam in df_predictions.iloc[:, 0].tolist()]
 
     print('DONE')
     print('Reranking...')
     sys.stdout.flush()
 
     # Score the slot alignment in the beams, and rerank the beams accordingly
-    if reranking:
+    if reranking and beams_present:
         beams = postprocessing.align_beams_t2t(beams)
 
     print('DONE')
@@ -128,7 +132,6 @@ def test(data_testset, predict_only=True, reranking=True):
             io.open(predictions_final_file, 'w', encoding='utf8') as f_predictions_final:
 
         mrs = json.load(f_test_source, object_pairs_hook=OrderedDict)
-        # predictions = f_predictions.read().splitlines()
         predictions = [prediction_beams[0][0] for prediction_beams in beams]
         predictions_final = postprocessing.finalize_utterances(predictions, mrs)
 
@@ -157,5 +160,5 @@ def test(data_testset, predict_only=True, reranking=True):
     print('DONE')
 
 
-if __name__ == "__main__":
+if __name__ == '__main__':
     sys.exit(int(main() or 0))

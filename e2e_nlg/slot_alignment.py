@@ -432,7 +432,7 @@ def splitContent(old_mrs, old_utterances, filename, use_heuristics=True, permute
     :return:
         Splits the MRs into many MRs with individual sentences... currently this is not as robust as it could be
     """
-    # delex_slots = ['name', 'eatType', 'food', 'priceRange', 'customer rating', 'area', 'familyFriendly', 'near']
+    # delex_slots = ['name', 'eattype', 'food', 'pricerange', 'customerrating', 'area', 'familyfriendly', 'near']
     new_mrs = []
     new_utterances = []
     
@@ -488,7 +488,7 @@ def splitContent(old_mrs, old_utterances, filename, use_heuristics=True, permute
                             found_slot = True
 
                     # E2E dataset slots
-                    elif slot_root == 'eatType':
+                    elif slot_root == 'eattype':
                         slot_pos = eatTypeSlot(sent, value)
                         if slot_pos >= 0:
                             found_slot = True
@@ -496,11 +496,11 @@ def splitContent(old_mrs, old_utterances, filename, use_heuristics=True, permute
                         slot_pos = foodSlot(sent, value)
                         if slot_pos >= 0:
                             found_slot = True
-                    elif slot_root == 'priceRange':
+                    elif slot_root == 'pricerange':
                         slot_pos = priceRangeSlot(sent, value)
                         if slot_pos >= 0:
                             found_slot = True
-                    elif slot_root == 'customer_rating':
+                    elif slot_root == 'customerrating':
                         slot_pos = customerRatingSlot(sent, value)
                         if slot_pos >= 0:
                             found_slot = True
@@ -508,7 +508,7 @@ def splitContent(old_mrs, old_utterances, filename, use_heuristics=True, permute
                         slot_pos = areaSlot(sent, value)
                         if slot_pos >= 0:
                             found_slot = True
-                    elif slot_root == 'familyFriendly':
+                    elif slot_root == 'familyfriendly':
                         slot_pos = familyFriendlySlot(sent, value)
                         if slot_pos >= 0:
                             found_slot = True
@@ -565,7 +565,7 @@ def splitContent(old_mrs, old_utterances, filename, use_heuristics=True, permute
                     has_slot = True
 
             if not has_slot:
-                # if slot in ['eatType', 'familyFriendly', 'area', 'near', 'food']:
+                # if slot in ['eattype', 'familyfriendly', 'area', 'near', 'food']:
                 misses.append('Couldn\'t find ' + slot + '(' + value + ') - ' + old_utterances[index])
                 rm_slot.append(slot)
                 # continue
@@ -605,13 +605,13 @@ def splitContent(old_mrs, old_utterances, filename, use_heuristics=True, permute
 def poolSlotVals(old_mrs, slots_to_pool=None):
     """
     :param old_mrs: list of mrs
-    :param slots_to_pool: default (small space) = ['area', 'customer_rating', 'eatType', 'priceRange']
+    :param slots_to_pool: default (small space) = ['area', 'customerrating', 'eattype', 'pricerange']
     :return:
     """
-    # delex_slots = ['name', 'near', 'food', 'area', 'customer rating', 'familyFriendly', 'eatType', 'priceRange']
+    # delex_slots = ['name', 'near', 'food', 'area', 'customerrating', 'familyfriendly', 'eattype', 'pricerange']
     slots = OrderedDict()
     if slots_to_pool is None:
-        slots_to_pool = ['area', 'customer_rating', 'eatType', 'priceRange']
+        slots_to_pool = ['area', 'customerrating', 'eattype', 'pricerange']
     for curr_mr in old_mrs:
         for slot, value in curr_mr.items():
             if slot in slots_to_pool:
@@ -623,7 +623,7 @@ def poolSlotVals(old_mrs, slots_to_pool=None):
 
 def mergeOrderedDicts(mrs, order=None):
     if order is None:
-        order = ["da", "name", "eatType", "food", "priceRange", "customer_rating", "area", "familyFriendly", "near",
+        order = ["da", "name", "eattype", "food", "pricerange", "customerrating", "area", "familyfriendly", "near",
                  "type", "family", "hasusbport", "hdmiport", "ecorating", "screensizerange", "screensize", "pricerange", "price", "audio", "resolution", "powerconsumption", "color", "accessories", "count",
                  "processor", "memory", "driverange", "drive", "batteryrating", "battery", "weightrange", "weight", "dimension", "design", "utility", "platform", "isforbusinesscomputing", "warranty"]
     merged_mr = OrderedDict()
@@ -710,7 +710,7 @@ def scoreAlignment(curr_utterance, curr_mr, scoring="default+over-class"):
     '''
     slots_found = set()
     sent = curr_utterance
-    matches = set(re.findall(r'&slot_.*?&', sent))
+    matches = set(re.findall(r'<slot_.*?>', sent))
     num_slot_overgens = 0
 
     for slot, value in curr_mr.items():
@@ -719,7 +719,7 @@ def scoreAlignment(curr_utterance, curr_mr, scoring="default+over-class"):
         
         if slot_root == 'da':
             found_slot = True
-        elif re.match(r'<.*>', slot_root):
+        elif re.match(r'<!.*?>', slot_root):
             found_slot = True
         else:
             delex_slot = checkDelexSlots(slot, matches)
@@ -749,11 +749,11 @@ def scoreAlignment(curr_utterance, curr_mr, scoring="default+over-class"):
                     for pronoun in ["it", "its", "it's", "they"]:
                         if pronoun in word_tokenize(curr_utterance.lower()):
                             found_slot = True
-                elif slot_root == "priceRange":
+                elif slot_root == "pricerange":
                     # if scorePriceRangeNaive(sent, value):
                     if priceRangeSlot(sent, value) >= 0:
                         found_slot = True
-                elif slot_root == "familyFriendly":
+                elif slot_root == "familyfriendly":
                     if familyFriendlySlot(sent, value) >= 0:
                         found_slot = True
                 elif slot_root == "food":
@@ -762,10 +762,10 @@ def scoreAlignment(curr_utterance, curr_mr, scoring="default+over-class"):
                 elif slot_root == "area":
                     if areaSlot(sent, value) >= 0:
                         found_slot = True
-                elif slot_root == "eatType":
+                elif slot_root == "eattype":
                     if eatTypeSlot(sent, value) >= 0:
                         found_slot = True
-                elif slot_root == "customer_rating":
+                elif slot_root == "customerrating":
                     if scoreCustomerRatingNaive(sent, value) >= 0:
                         found_slot = True
                 
@@ -836,11 +836,11 @@ def count_errors(curr_utterance, curr_mr):
     '''Count unrealized and overgenerated slots in a lexicalized utterance.
     '''
 
-    non_categorical_slots = ['familyFriendly', 'priceRange', 'customer_rating']
+    non_categorical_slots = ['familyfriendly', 'pricerange', 'customerrating']
 
     slots_found = set()
     sent = curr_utterance
-    matches = set(re.findall(r'&slot_.*?&', sent))
+    matches = set(re.findall(r'<slot_.*?>', sent))
     num_slot_overgens = 0
 
     for slot, value in curr_mr.items():
@@ -849,7 +849,7 @@ def count_errors(curr_utterance, curr_mr):
 
         if slot_root == 'da':
             found_slot = True
-        elif re.match(r'<.*>', slot_root):
+        elif re.match(r'<!.*?>', slot_root):
             found_slot = True
         else:
             delex_slot = checkDelexSlots(slot, matches)
@@ -879,11 +879,11 @@ def count_errors(curr_utterance, curr_mr):
                 #     for pronoun in ["it", "its", "it's", "they"]:
                 #         if pronoun in word_tokenize(curr_utterance.lower()):
                 #             found_slot = True
-                elif slot_root == "priceRange":
+                elif slot_root == "pricerange":
                     # if scorePriceRangeNaive(sent, value):
                     if priceRangeSlot(sent, value) >= 0:
                         found_slot = True
-                elif slot_root == "familyFriendly":
+                elif slot_root == "familyfriendly":
                     if familyFriendlySlot(sent, value) >= 0:
                         found_slot = True
                 elif slot_root == "food":
@@ -892,10 +892,10 @@ def count_errors(curr_utterance, curr_mr):
                 elif slot_root == "area":
                     if areaSlot(sent, value) >= 0:
                         found_slot = True
-                elif slot_root == "eatType":
+                elif slot_root == "eattype":
                     if eatTypeSlot(sent, value) >= 0:
                         found_slot = True
-                elif slot_root == "customer_rating":
+                elif slot_root == "customerrating":
                     if scoreCustomerRatingNaive(sent, value) >= 0:
                         found_slot = True
 
@@ -973,17 +973,17 @@ def find_alignment(utt, mr):
         #     if noneRealization(utt, slot_root, value):
         #         found_slot = True
 
-        elif slot_root == 'eatType':
+        elif slot_root == 'eattype':
             slot_pos = eatTypeSlot(utt, value)
         elif slot_root == 'food':
             slot_pos = foodSlot(utt, value)
-        elif slot_root == 'priceRange':
+        elif slot_root == 'pricerange':
             slot_pos = priceRangeSlot(utt, value)
-        elif slot_root == 'customer_rating':
+        elif slot_root == 'customerrating':
             slot_pos = customerRatingSlot(utt, value)
         elif slot_root == 'area':
             slot_pos = areaSlot(utt, value)
-        elif slot_root == 'familyFriendly':
+        elif slot_root == 'familyfriendly':
             slot_pos = familyFriendlySlot(utt, value)
 
         # elif slot_root == 'type':
@@ -1251,7 +1251,7 @@ def testSlotOrder():
         x_dicts.append(mr_dict)
     for mr in x_dicts:
         keys = list(mr.keys())
-        order = ["name", "eatType", "food", "priceRange", "customer_rating", "area", "familyFriendly", "near"]
+        order = ["name", "eattype", "food", "pricerange", "customerrating", "area", "familyfriendly", "near"]
         curr = 0
         for key in keys:
             if key in order:
@@ -1395,8 +1395,8 @@ def wrangleSlotsJSON(filename, add_sequence_tokens=True):
     for i, mr in enumerate(x_train):
         mr_dict = OrderedDict()
         for slot_value in mr.split(slot_sep):
-            slot, value = data_loader.parse_slot_and_value(slot_value, val_sep, val_sep_closing)
-            mr_dict[slot] = value
+            slot, _, value_orig = data_loader.parse_slot_and_value(slot_value, val_sep, val_sep_closing)
+            mr_dict[slot] = value_orig
         x_dicts.append(mr_dict)
 
     new_x, new_y = splitContent(x_dicts, y_train, filename.split('/')[-1], permute=False)
@@ -1471,10 +1471,10 @@ def score_slot_realizations(file_path):
 
         # extract the slot-value pairs into a dictionary
         for slot_value in mr.split(slot_sep):
-            slot, value = data_loader.parse_slot_and_value(slot_value, val_sep, val_sep_closing)
-            mr_dict[slot] = value.lower()
+            slot, value, _ = data_loader.parse_slot_and_value(slot_value, val_sep, val_sep_closing)
+            mr_dict[slot] = value
 
-            # if not re.match(r'<.*>', slot):
+            # if not re.match(r'<!.*?>', slot):
             #     slot_cnt += 1
 
         # TODO: get rid of this hack
@@ -1527,7 +1527,7 @@ def augment_with_emphasis(file_path):
         for pos, slot, _ in alignments[i]:
             if slot == 'name':
                 break
-            x[i] = x[i].replace(slot, '<emph>[], ' + slot)
+            x[i] = x[i].replace(slot, '<!emph>[], ' + slot)
 
     new_df = pd.DataFrame(columns=['mr', 'ref'])
     new_df['mr'] = x
@@ -1540,7 +1540,7 @@ def evaluate_emphasis(file_path):
     '''Determines how many of the indicated emphasis instances are realized in the utterance.
     '''
 
-    emph_token = '<emph>'
+    emph_token = '<!emph>'
 
     df_dataset = pd.read_csv(file_path, header=0, encoding='utf8')
     x = df_dataset.mr.tolist()
@@ -1669,9 +1669,9 @@ def augment_with_contrast(file_path):
                 if slot_before and slot_after:
                     if slot_before in scalar_slots and slot_after in scalar_slots:
                         if scalar_slots[slot_before][value_before] - scalar_slots[slot_after][value_after] == 0:
-                            x[i] += ', <concession>[{0} {1}]'.format(slot_before, slot_after)
+                            x[i] += ', <!concession>[{0} {1}]'.format(slot_before, slot_after)
                         else:
-                            x[i] += ', <contrast>[{0} {1}]'.format(slot_before, slot_after)
+                            x[i] += ', <!contrast>[{0} {1}]'.format(slot_before, slot_after)
 
                 break
 
@@ -1779,7 +1779,7 @@ if __name__ == '__main__':
     # augment_with_contrast('data/rest_e2e/trainset_stylistic_thresh_2_augm_5.csv')
     # augment_with_contrast_tgen('data/rest_e2e/devset_e2e.csv')
     # evaluate_emphasis('eval/predictions-rest_e2e_stylistic_selection/devset/predictions RNN (4+4) (16k) utt split.csv')
-    score_slot_realizations('eval/predictions-rest_e2e/devset/predictions_devset_ensemble.csv')
+    score_slot_realizations('eval/predictions-rest_e2e/devset/predictions_devset_TRANS_tokens2.csv')
 
     # user_input = 'Is there a family-friendly bar in downtown santa cruz that serves reasonably priced burgers?'
     # gnode_entities = [('VisualArtwork', 282.797767, 'restaurant in'), ('City', 2522.766114, 'Santa Cruz')]

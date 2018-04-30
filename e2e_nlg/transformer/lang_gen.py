@@ -1,17 +1,12 @@
-import sys
 import os
-# import io
-# import tensorflow as tf
 
 from tensor2tensor.data_generators import problem
 from tensor2tensor.data_generators import text_problems
-# from tensor2tensor.data_generators import text_encoder
-# from tensor2tensor.data_generators import generator_utils
 from tensor2tensor.models import transformer
+from tensor2tensor.models import lstm
 from tensor2tensor.utils import registry
 
 import config
-import data_loader
 
 
 @registry.register_hparams
@@ -25,6 +20,28 @@ def transformer_lang_gen():
     hparams.attention_dropout = 0.6
     hparams.layer_prepostprocess_dropout = 0.6
     hparams.learning_rate = 0.05
+    # hparams.batch_size = 64             # default: 4096
+    hparams.max_input_seq_length = 50
+    hparams.max_target_seq_length = 60
+    # hparams.min_length_bucket = 10      # default: 0
+
+    return hparams
+
+
+@registry.register_hparams
+def lstm_lang_gen():
+    hparams = lstm.lstm_bahdanau_attention()
+
+    hparams.num_hidden_layers = 2
+    hparams.hidden_size = 256
+    hparams.attention_layer_size = 256
+    hparams.attention_dropout = 0.8
+    hparams.layer_prepostprocess_dropout = 0.8
+    hparams.learning_rate = 0.05
+    # hparams.batch_size = 64             # default: 4096
+    # hparams.max_input_seq_length = 50
+    # hparams.max_target_seq_length = 60
+    # hparams.min_length_bucket = 10      # default: 0
 
     return hparams
 
@@ -34,35 +51,17 @@ class LangGen(text_problems.Text2TextProblem):
     """Generate a natural language utterance from a structured meaning representation (MR)."""
 
     @property
-    def approx_vocab_size(self):
-        return 2**12
+    def vocab_type(self):
+        # return text_problems.VocabType.SUBWORD
+        return text_problems.VocabType.TOKEN
+
+    @property
+    def oov_token(self):
+        return 'UNK'
 
     # @property
-    # def input_vocab_size(self):
-    #     return 2**7
-    #
-    # @property
-    # def target_vocab_size(self):
+    # def approx_vocab_size(self):
     #     return 2**12
-    #
-    # @property
-    # def vocab_input_filename(self):
-    #     return "{}.{}".format('vocab.lang_gen.source', self.input_vocab_size)
-    #
-    # @property
-    # def vocab_target_filename(self):
-    #     return "{}.{}".format('vocab.lang_gen.target', self.target_vocab_size)
-    #
-    # def feature_encoders(self, data_dir):
-    #     source_vocab_filename = os.path.join(data_dir, self.vocab_input_filename)
-    #     target_vocab_filename = os.path.join(data_dir, self.vocab_target_filename)
-    #     source_token = text_encoder.SubwordTextEncoder(source_vocab_filename)
-    #     target_token = text_encoder.SubwordTextEncoder(target_vocab_filename)
-    #
-    #     return {
-    #         'inputs': source_token,
-    #         'targets': target_token,
-    #     }
 
     @property
     def is_generate_per_split(self):
@@ -71,14 +70,12 @@ class LangGen(text_problems.Text2TextProblem):
 
     @property
     def dataset_splits(self):
-        """Splits of data to produce and number of output shards for each."""
-
         return [{
-            "split": problem.DatasetSplit.TRAIN,
-            "shards": 10,
+            'split': problem.DatasetSplit.TRAIN,
+            'shards': 10,
         }, {
-            "split": problem.DatasetSplit.EVAL,
-            "shards": 1,
+            'split': problem.DatasetSplit.EVAL,
+            'shards': 1,
         }]
 
     def generate_samples(self, data_dir, tmp_dir, dataset_split):
@@ -90,49 +87,5 @@ class LangGen(text_problems.Text2TextProblem):
         train = dataset_split == problem.DatasetSplit.TRAIN
         source_file = (training_source_file if train else dev_source_file)
         target_file = (training_target_file if train else dev_target_file)
-
-        # def generator_samples_content(get_source, get_target):
-        #     source, target = None, None
-        #
-        #     with tf.gfile.GFile(source_file, mode='r') as f_x_train, \
-        #             tf.gfile.GFile(target_file, mode='r') as f_y_train:
-        #
-        #         mrs = f_x_train.read().splitlines()
-        #         utterances = f_y_train.read().splitlines()
-        #
-        #         for mr, utt in zip(mrs, utterances):
-        #             yield mr, utt
-        #
-        # def generator_source():
-        #     for source, _ in generator_samples_content(False, True):
-        #         yield source.strip()
-        #
-        # def generator_target():
-        #     for _, target in generator_samples_content(False, True):
-        #         yield target.strip()
-        #
-        # # Generate vocab for both source and target
-        # source_vocab = generator_utils.get_or_generate_vocab_inner(
-        #     data_dir=data_dir,
-        #     vocab_filename=self.vocab_input_filename,
-        #     vocab_size=self.input_vocab_size,
-        #     generator=generator_source())
-        #
-        # target_vocab = generator_utils.get_or_generate_vocab_inner(
-        #     data_dir=data_dir,
-        #     vocab_filename=self.vocab_target_filename,
-        #     vocab_size=self.target_vocab_size,
-        #     generator=generator_target())
-
-        # with io.open('data/training_source.txt', 'r', encoding='utf8') as f_x_train, \
-        #         io.open('data/training_target.txt', 'r', encoding='utf8') as f_y_train:
-        #     mrs = f_x_train.read().splitlines()
-        #     utterances = f_y_train.read().splitlines()
-        #
-        #     for mr, utt in zip(mrs, utterances):
-        #         yield {
-        #             'inputs': mr,
-        #             'targets': utt
-        #         }
 
         return text_problems.text2text_txt_iterator(source_file, target_file)

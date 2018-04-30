@@ -32,7 +32,7 @@ class UtteranceGenerationClient:
 
         usr_dir.import_usr_dir('./transformer')
         problem = registry.problem('lang_gen')
-        hparams = tf.contrib.training.HParams(data_dir='./transformer/t2t_data')
+        hparams = tf.contrib.training.HParams(data_dir='./data')
         problem.get_hparams(hparams)
 
         self.problem = problem
@@ -73,7 +73,7 @@ class UtteranceGenerationClient:
         sys.stdout.flush()
     
         # Delexicalize the input MR
-        mr_tokens, mr_dict = tokenize_mr(mr)
+        mr_tokens, mr_dict = tokenize_mr(mr, add_eos_token=False)
         mr_delexed = ' '.join(mr_tokens)
 
         print('Done')
