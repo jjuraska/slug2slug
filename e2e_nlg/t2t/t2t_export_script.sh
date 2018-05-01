@@ -5,8 +5,8 @@ TRAIN_DIR=./model
 PROBLEM=lang_gen
 #PROBLEM=lang_gen_multi_vocab
 
-#MODEL=transformer
-MODEL=lstm_seq2seq_attention_bidirectional_encoder
+MODEL=transformer
+#MODEL=lstm_seq2seq_attention_bidirectional_encoder
 
 HPARAMS=transformer_lang_gen
 #HPARAMS=transformer_lang_gen_multi_vocab
