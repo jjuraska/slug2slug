@@ -20,7 +20,7 @@ ALPHA=1.0
 
 t2t-decoder \
     --data_dir=$DATA_DIR \
-    --problems=$PROBLEM \
+    --problem=$PROBLEM \
     --model=$MODEL \
     --hparams_set=$HPARAMS \
     --output_dir=$TRAIN_DIR \

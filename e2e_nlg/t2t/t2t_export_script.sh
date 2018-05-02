@@ -18,7 +18,7 @@ ALPHA=1.0
 t2t-exporter \
     --model=$MODEL \
     --hparams_set=$HPARAMS \
-    --problems=$PROBLEM \
+    --problem=$PROBLEM \
     --data_dir=$DATA_DIR \
     --output_dir=$TRAIN_DIR \
     --t2t_usr_dir=$USR_DIR \

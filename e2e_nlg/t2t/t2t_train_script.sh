@@ -18,7 +18,7 @@ t2t-trainer \
     --data_dir=$DATA_DIR \
     --t2t_usr_dir=$USR_DIR \
     --output_dir=$TRAIN_DIR \
-    --problems=$PROBLEM \
+    --problem=$PROBLEM \
     --model=$MODEL \
     --hparams_set=$HPARAMS \
     --train_steps=8000 \
