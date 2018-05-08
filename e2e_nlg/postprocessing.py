@@ -2,15 +2,14 @@ import os
 import io
 import re
 import numpy as np
-import pandas as pd
 import json
 import pickle
 import networkx as nx
-from nltk.tokenize import word_tokenize, sent_tokenize
+from nltk.tokenize import sent_tokenize
 from nltk.tokenize.moses import MosesDetokenizer
 
 import config
-from slot_alignment import scoreAlignment
+from slot_aligner.slot_alignment import score_alignment
 
 
 def finalize_utterances(utterances, mrs):
@@ -151,7 +150,7 @@ def align_beams(beams=None, beams_file=None, data_file=None):
             # utterance = beam[0]
             utterance, logprob, score = beam
             sent = " ".join(utterance)
-            score = scoreAlignment(sent, curr_mr)
+            score = score_alignment(sent, curr_mr)
             new_beam = np.asarray((beam[0], beam[1] / score, beam[2] * score))      # beam[1] ~ log-prob (negative), beam[2] ~ prob (positive)
             scored_beams.append((score, new_beam))
 
@@ -190,7 +189,7 @@ def align_beams_t2t(beams=None, beams_file=None, data_file=None):
         scored_beams = []
 
         for utt, log_prob in beams[index]:
-            score = scoreAlignment(utt, cur_mr)
+            score = score_alignment(utt, cur_mr)
             scored_beams.append((utt, log_prob / score))
 
         scored_beams.sort(key=lambda x: x[1], reverse=True)
@@ -315,5 +314,5 @@ def __extend_graph(graph, depth, parent_ids, names, scores):
         graph.add_edge(parent_node, new_node)
 
 
-if __name__ == "__main__":
-    align_beams(data_file="testset.csv")
+if __name__ == '__main__':
+    align_beams(data_file='testset_e2e.csv')

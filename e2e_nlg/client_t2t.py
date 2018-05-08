@@ -15,7 +15,7 @@ from tensor2tensor.utils import usr_dir
 from tensor2tensor.data_generators import text_encoder
 
 from data_loader import tokenize_mr
-from slot_alignment import scoreAlignment
+from slot_aligner.slot_alignment import score_alignment
 from postprocessing import finalize_utterance
 
 
@@ -207,7 +207,7 @@ def process_query(task_args):
         log_probs = log_probs.squeeze()
 
     # Update the utterance scores
-    scores = [log_prob / scoreAlignment(utt, mr_dict) for utt, log_prob in zip(utterances, log_probs)]
+    scores = [log_prob / score_alignment(utt, mr_dict) for utt, log_prob in zip(utterances, log_probs)]
 
     return list(zip(utterances, scores))
 

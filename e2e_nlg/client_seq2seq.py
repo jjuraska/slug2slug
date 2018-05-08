@@ -10,7 +10,7 @@ from grpc.framework.interfaces.face import face
 from itertools import repeat
 
 from data_loader import tokenize_mr
-from slot_alignment import scoreAlignment
+from slot_aligner.slot_alignment import score_alignment
 from postprocessing import finalize_utterance
 
 
@@ -157,7 +157,7 @@ def process_query(task_args):
     utt = ' '.join(utt_tokens[:-1]).strip()
 
     # score the utterance
-    utt_score = scoreAlignment(utt, mr_dict)
+    utt_score = score_alignment(utt, mr_dict)
 
     return utt, utt_score
 

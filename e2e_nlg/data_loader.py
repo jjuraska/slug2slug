@@ -1,4 +1,3 @@
-import sys
 import os
 import io
 import string
@@ -10,19 +9,15 @@ from collections import OrderedDict
 import nltk
 from nltk import FreqDist
 from nltk.tokenize import word_tokenize
-from nltk.tokenize import sent_tokenize
 from nltk.stem.wordnet import WordNetLemmatizer
 import re
-import itertools
 
 import config
 
 
-class SetEncoder(json.JSONEncoder):
-    def default(self, obj):
-        if isinstance(obj, set):
-            return list(obj)
-        return json.JSONEncoder.default(self, obj)
+EMPH_TOKEN = config.EMPH_TOKEN
+CONTRAST_TOKEN = config.CONTRAST_TOKEN
+CONCESSION_TOKEN = config.CONCESSION_TOKEN
 
 
 # TODO: redesign the data loading so as to be object-oriented
@@ -31,7 +26,6 @@ def load_training_data(data_trainset, data_devset, input_concat=False, generate_
     training_target_file = os.path.join(config.DATA_DIR, 'training_target.txt')
     dev_source_file = os.path.join(config.DATA_DIR, 'dev_source.txt')
     dev_target_file = os.path.join(config.DATA_DIR, 'dev_target.txt')
-    slot_values_file = os.path.join(config.DATA_DIR, 'slot_values.json')
 
     if os.path.isfile(training_source_file) and \
             os.path.isfile(training_target_file) and \
@@ -39,43 +33,14 @@ def load_training_data(data_trainset, data_devset, input_concat=False, generate_
             os.path.isfile(dev_target_file):
         return
 
-
-    emph_token = '<!emph>'
-
-    # TODO: encapsulate input separator determination
-    if '/rest_e2e/' in data_trainset and '/rest_e2e/' in data_devset or \
-            '\\rest_e2e\\' in data_trainset and '\\rest_e2e\\' in data_devset:
-        x_train, y_train = read_rest_e2e_dataset_train(data_trainset)
-        x_dev, y_dev = read_rest_e2e_dataset_dev(data_devset)
-        dataset_name = 'rest_e2e'
-        slot_sep = ','
-        val_sep = '['
-        val_sep_closing = True
-    elif '/tv/' in data_trainset and '/tv/' in data_devset or \
-            '\\tv\\' in data_trainset and '\\tv\\' in data_devset:
-        x_train, y_train, _ = read_tv_dataset_train(data_trainset)
-        x_dev, y_dev, _ = read_tv_dataset_dev(data_devset)
-        dataset_name = 'tv'
-        slot_sep = ';'
-        val_sep = '='
-        val_sep_closing = False
-    elif '/laptop/' in data_trainset and '/laptop/' in data_devset or \
-            '\\laptop\\' in data_trainset and '\\laptop\\' in data_devset:
-        x_train, y_train, _ = read_laptop_dataset_train(data_trainset)
-        x_dev, y_dev, _ = read_laptop_dataset_dev(data_devset)
-        dataset_name = 'laptop'
-        slot_sep = ';'
-        val_sep = '='
-        val_sep_closing = False
-    else:
-        raise FileNotFoundError
+    dataset = init_training_data(data_trainset, data_devset)
+    x_train, y_train, x_dev, y_dev = dataset['data']
+    slot_sep, val_sep, val_sep_closing = dataset['separators']
 
     # TODO: do the utterances still need to be parsed into lists of words?
     # parse the utterances into lists of words
     y_train = [preprocess_utterance(y) for y in y_train]
     y_dev = [preprocess_utterance(y) for y in y_dev]
-
-    slot_poss_values = {}
 
     # produce sequences of extracted words from the meaning representations (MRs) in the trainset
     x_train_seq = []
@@ -84,27 +49,15 @@ def load_training_data(data_trainset, data_devset, input_concat=False, generate_
         emph_idxs = set()
         mr_dict = OrderedDict()
 
-        try:
-            # extract the slot-value pairs into a dictionary
-            for slot_value in mr.split(slot_sep):
-                slot, value, _ = parse_slot_and_value(slot_value, val_sep, val_sep_closing)
+        # extract the slot-value pairs into a dictionary
+        for slot_value in mr.split(slot_sep):
+            slot, value, _, _ = parse_slot_and_value(slot_value, val_sep, val_sep_closing)
 
-                if slot == emph_token:
-                    emph_idxs.add(slot_ctr)
-                else:
-                    mr_dict[slot] = value
-                    slot_ctr += 1
-
-                # collect all possible values for each slot
-                slot_root = slot.rstrip(string.digits)
-                if slot_root not in slot_poss_values:
-                    slot_poss_values[slot_root] = set([value])
-                else:
-                    slot_poss_values[slot_root].add(value)
-        except:
-            print(str(mr))
-            print(str(y_train[i]))
-            exit()
+            if slot == EMPH_TOKEN:
+                emph_idxs.add(slot_ctr)
+            else:
+                mr_dict[slot] = value
+                slot_ctr += 1
 
         # delexicalize the MR and the utterance
         y_train[i] = delex_sample(mr_dict, y_train[i], input_concat=input_concat)
@@ -116,7 +69,7 @@ def load_training_data(data_trainset, data_devset, input_concat=False, generate_
         for key, val in mr_dict.items():
             # insert the emphasis token where appropriate
             if slot_ctr in emph_idxs:
-                x_train_seq[i].append(emph_token)
+                x_train_seq[i].append(EMPH_TOKEN)
 
             if len(val) > 0:
                 x_train_seq[i].extend([key] + val.split())
@@ -138,20 +91,13 @@ def load_training_data(data_trainset, data_devset, input_concat=False, generate_
 
         # extract the slot-value pairs into a dictionary
         for slot_value in mr.split(slot_sep):
-            slot, value, _ = parse_slot_and_value(slot_value, val_sep, val_sep_closing)
+            slot, value, _, _ = parse_slot_and_value(slot_value, val_sep, val_sep_closing)
 
-            if slot == emph_token:
+            if slot == EMPH_TOKEN:
                 emph_idxs.add(slot_ctr)
             else:
                 mr_dict[slot] = value
                 slot_ctr += 1
-
-            # collect all possible values for each slot
-            slot_root = slot.rstrip(string.digits)
-            if slot_root not in slot_poss_values:
-                slot_poss_values[slot_root] = set([value])
-            else:
-                slot_poss_values[slot_root].add(value)
 
         # delexicalize the MR and the utterance
         y_dev[i] = delex_sample(mr_dict, y_dev[i], input_concat=input_concat)
@@ -163,7 +109,7 @@ def load_training_data(data_trainset, data_devset, input_concat=False, generate_
         for key, val in mr_dict.items():
             # insert the emphasis token where appropriate
             if slot_ctr in emph_idxs:
-                x_dev_seq[i].append(emph_token)
+                x_dev_seq[i].append(EMPH_TOKEN)
 
             if len(val) > 0:
                 x_dev_seq[i].extend([key] + val.split())
@@ -201,8 +147,7 @@ def load_training_data(data_trainset, data_devset, input_concat=False, generate_
         for line in y_dev:
             f_y_dev.write('{}\n'.format(' '.join(line)))
 
-    with io.open(slot_values_file, 'w', encoding='utf8') as f_slot_values:
-        json.dump(slot_poss_values, f_slot_values, cls=SetEncoder, indent=4)
+    return np.concatenate(x_train_seq + x_dev_seq + y_train + y_dev).flatten()
 
 
 def load_test_data(data_testset, input_concat=False):
@@ -212,29 +157,9 @@ def load_test_data(data_testset, input_concat=False):
     test_reference_file = os.path.join(config.METRICS_DIR, 'test_references.txt')
     vocab_proper_nouns_file = os.path.join(config.DATA_DIR, 'vocab_proper_nouns.txt')
 
-    emph_token = '<!emph>'
-
-    # TODO: encapsulate input separator determination
-    if '/rest_e2e/' in data_testset or '\\rest_e2e\\' in data_testset:
-        x_test, y_test = read_rest_e2e_dataset_test(data_testset)
-        dataset_name = 'rest_e2e'
-        slot_sep = ','
-        val_sep = '['
-        val_sep_closing = True
-    elif '/tv/' in data_testset or '\\tv\\' in data_testset:
-        x_test, y_test, _ = read_tv_dataset_test(data_testset)
-        dataset_name = 'tv'
-        slot_sep = ';'
-        val_sep = '='
-        val_sep_closing = False
-    elif '/laptop/' in data_testset or '\\laptop\\' in data_testset:
-        x_test, y_test, _ = read_laptop_dataset_test(data_testset)
-        dataset_name = 'laptop'
-        slot_sep = ';'
-        val_sep = '='
-        val_sep_closing = False
-    else:
-        raise FileNotFoundError
+    dataset = init_test_data(data_testset)
+    x_test, y_test = dataset['data']
+    slot_sep, val_sep, val_sep_closing = dataset['separators']
 
     slots_with_proper_nouns = ['name', 'near', 'area', 'food']
     vocab_proper_nouns = set()
@@ -249,13 +174,13 @@ def load_test_data(data_testset, input_concat=False):
 
         # extract the slot-value pairs into a dictionary
         for slot_value in mr.split(slot_sep):
-            slot, value, value_orig = parse_slot_and_value(slot_value, val_sep, val_sep_closing)
+            slot, value, _, value_orig = parse_slot_and_value(slot_value, val_sep, val_sep_closing)
 
             # store proper noun values (for retrieval in postprocessing)
             if slot in slots_with_proper_nouns and len(value_orig) > 0 and value_orig[0].isupper():
                 vocab_proper_nouns.add(value_orig)
 
-            if slot == emph_token:
+            if slot == EMPH_TOKEN:
                 emph_idxs.add(slot_ctr)
             else:
                 mr_dict[slot] = value
@@ -274,7 +199,7 @@ def load_test_data(data_testset, input_concat=False):
         for key, val in mr_dict.items():
             # insert the emphasis token where appropriate
             if slot_ctr in emph_idxs:
-                x_test_seq[i].append(emph_token)
+                x_test_seq[i].append(EMPH_TOKEN)
 
             if len(val) > 0:
                 x_test_seq[i].extend([key] + val.split())
@@ -339,7 +264,7 @@ def tokenize_mr(mr, add_eos_token=True):
 
     # extract the slot-value pairs into a dictionary
     for slot_value in mr.split(slot_sep):
-        slot, value, _ = parse_slot_and_value(slot_value, val_sep, val_sep_closing)
+        slot, value, _, _ = parse_slot_and_value(slot_value, val_sep, val_sep_closing)
         mr_dict[slot] = value
 
     # make a copy of the dictionary for delexing
@@ -402,7 +327,7 @@ def load_training_data_for_eval(data_trainset, data_model_outputs_train, vocab_s
     for i, mr in enumerate(x_train):
         mr_dict = OrderedDict()
         for slot_value in mr.split(slot_sep):
-            slot, value, _ = parse_slot_and_value(slot_value, val_sep, val_sep_closing)
+            slot, value, _, _ = parse_slot_and_value(slot_value, val_sep, val_sep_closing)
             mr_dict[slot] = value
 
         if delex == True:
@@ -508,7 +433,7 @@ def load_dev_data_for_eval(data_devset, data_model_outputs_dev, vocab_size, max_
     for i, mr in enumerate(x_dev):
         mr_dict = OrderedDict()
         for slot_value in mr.split(slot_sep):
-            slot, value, _ = parse_slot_and_value(slot_value, val_sep, val_sep_closing)
+            slot, value, _, _ = parse_slot_and_value(slot_value, val_sep, val_sep_closing)
             mr_dict[slot] = value
             
         if delex == True:
@@ -603,7 +528,7 @@ def load_test_data_for_eval(data_testset, data_model_outputs_test, vocab_size, m
     for i, mr in enumerate(x_test):
         mr_dict = OrderedDict()
         for slot_value in mr.split(slot_sep):
-            slot, value, _ = parse_slot_and_value(slot_value, val_sep, val_sep_closing)
+            slot, value, _, _ = parse_slot_and_value(slot_value, val_sep, val_sep_closing)
             mr_dict[slot] = value
 
         if delex == True:
@@ -668,6 +593,68 @@ def load_test_data_for_eval(data_testset, data_model_outputs_test, vocab_size, m
 
 # ---- AUXILIARY FUNCTIONS ----
 
+
+def init_training_data(data_trainset, data_devset):
+    if 'rest_e2e' in data_trainset and 'rest_e2e' in data_devset:
+        x_train, y_train = read_rest_e2e_dataset_train(data_trainset)
+        x_dev, y_dev = read_rest_e2e_dataset_dev(data_devset)
+        dataset_name = 'rest_e2e'
+        slot_sep = ','
+        val_sep = '['
+        val_sep_closing = True
+    elif 'tv' in data_trainset and 'tv' in data_devset:
+        x_train, y_train, _ = read_tv_dataset_train(data_trainset)
+        x_dev, y_dev, _ = read_tv_dataset_dev(data_devset)
+        dataset_name = 'tv'
+        slot_sep = ';'
+        val_sep = '='
+        val_sep_closing = False
+    elif 'laptop' in data_trainset and 'laptop' in data_devset:
+        x_train, y_train, _ = read_laptop_dataset_train(data_trainset)
+        x_dev, y_dev, _ = read_laptop_dataset_dev(data_devset)
+        dataset_name = 'laptop'
+        slot_sep = ';'
+        val_sep = '='
+        val_sep_closing = False
+    else:
+        raise ValueError('Unexpected file name or path: {0}, {1}'.format(data_trainset, data_devset))
+
+    return {
+        'dataset_name': dataset_name,
+        'data': (x_train, y_train, x_dev, y_dev),
+        'separators': (slot_sep, val_sep, val_sep_closing)
+    }
+
+
+def init_test_data(data_testset):
+    if 'rest_e2e' in data_testset:
+        x_test, y_test = read_rest_e2e_dataset_test(data_testset)
+        dataset_name = 'rest_e2e'
+        slot_sep = ','
+        val_sep = '['
+        val_sep_closing = True
+    elif 'tv' in data_testset:
+        x_test, y_test, _ = read_tv_dataset_test(data_testset)
+        dataset_name = 'tv'
+        slot_sep = ';'
+        val_sep = '='
+        val_sep_closing = False
+    elif 'laptop' in data_testset:
+        x_test, y_test, _ = read_laptop_dataset_test(data_testset)
+        dataset_name = 'laptop'
+        slot_sep = ';'
+        val_sep = '='
+        val_sep_closing = False
+    else:
+        raise ValueError('Unexpected file name or path: {0}'.format(data_testset))
+
+    return {
+        'dataset_name': dataset_name,
+        'data': (x_test, y_test),
+        'separators': (slot_sep, val_sep, val_sep_closing)
+    }
+
+
 def read_rest_e2e_dataset_train(data_trainset):
     # read the training data from file
     df_train = pd.read_csv(data_trainset, header=0, encoding='utf8')    # names=['mr', 'ref']
@@ -715,12 +702,10 @@ def read_tv_dataset_train(path_to_trainset):
         x_train[i] = preprocess_mr(mr, '(', ';', '=')
         
     # convert plural nouns to "[noun] -s" or "[noun] -es" form
-    stemmer = WordNetLemmatizer()
     for i, utt in enumerate(y_train):
         y_train[i] = replace_plural_nouns(utt)
     for i, utt in enumerate(y_train_alt):
         y_train_alt[i] = replace_plural_nouns(utt)
-
         
     return x_train, y_train, y_train_alt
 
@@ -881,7 +866,7 @@ def preprocess_mr(mr, da_sep, slot_sep, val_sep):
         slot_counts = {}
         mr_modified = ''
         for slot_value in mr_new.split(slot_sep):
-            slot, _, value_orig = parse_slot_and_value(slot_value, val_sep)
+            slot, _, _, value_orig = parse_slot_and_value(slot_value, val_sep)
             if slot in ['da', 'position']:
                 mr_modified += slot
             else:
@@ -917,10 +902,11 @@ def parse_slot_and_value(slot_value, val_sep, val_sep_closing=False):
             slot = slot_value.strip()
         # set the value to the empty string
         value = ''
-                    
-    slot = slot.replace(' ', '')
 
-    return slot.lower(), value.lower(), value
+    slot_processed = slot.replace(' ', '').lower()
+    value_processed = value.lower()
+
+    return slot_processed, value_processed, slot, value
 
 
 def delex_sample(mr, utterance=None, slots_to_delex=None, mr_only=False, input_concat=False, utterance_only=False):
@@ -1011,41 +997,150 @@ def token_seq_to_idx_seq(token_seqences, token2idx, max_output_seq_len):
     return idx_sequences
 
 
+# ---- SCRIPTS ----
+
 def count_unique_mrs():
+    """Counts unique MRs in the datasets and prints the statistics. (Requires the initial comment blocks in
+    the TV and Laptop data files to be manually removed first.)
+    """
+
     print('Unique MRs (E2E NLG):')
 
-    df = pd.read_csv('data/rest_e2e/trainset_e2e.csv', header=0, encoding='utf8')
+    df = pd.read_csv(os.path.join(config.E2E_DATA_DIR, 'trainset_e2e.csv'), header=0, encoding='utf8')
     print('train:\t', len(df.iloc[:, 0].unique()), '/', len(df.iloc[:, 0]))
 
-    df = pd.read_csv('data/rest_e2e/devset_e2e.csv', header=0, encoding='utf8')
+    df = pd.read_csv(os.path.join(config.E2E_DATA_DIR, 'devset_e2e.csv'), header=0, encoding='utf8')
     print('valid:\t', len(df.iloc[:, 0].unique()), '/', len(df.iloc[:, 0]))
 
-    df = pd.read_csv('data/rest_e2e/testset_e2e.csv', header=0, encoding='utf8')
+    df = pd.read_csv(os.path.join(config.E2E_DATA_DIR, 'testset_e2e.csv'), header=0, encoding='utf8')
     print('test:\t', len(df.iloc[:, 0].unique()), '/', len(df.iloc[:, 0]))
 
 
     print('\nUnique MRs (Laptop):')
 
-    df = pd.read_json('data/laptop/train.json', encoding='utf8')
+    df = pd.read_json(os.path.join(config.LAPTOP_DATA_DIR, 'train.json'), encoding='utf8')
     print('train:\t', len(df.iloc[:, 0].unique()), '/', len(df.iloc[:, 0]))
 
-    df = pd.read_json('data/laptop/valid.json', encoding='utf8')
+    df = pd.read_json(os.path.join(config.LAPTOP_DATA_DIR, 'valid.json'), encoding='utf8')
     print('valid:\t', len(df.iloc[:, 0].unique()), '/', len(df.iloc[:, 0]))
 
-    df = pd.read_json('data/laptop/test.json', encoding='utf8')
+    df = pd.read_json(os.path.join(config.LAPTOP_DATA_DIR, 'test.json'), encoding='utf8')
     print('test:\t', len(df.iloc[:, 0].unique()), '/', len(df.iloc[:, 0]))
 
 
     print('\nUnique MRs (TV):')
 
-    df = pd.read_json('data/tv/train.json', encoding='utf8')
+    df = pd.read_json(os.path.join(config.TV_DATA_DIR, 'train.json'), encoding='utf8')
     print('train:\t', len(df.iloc[:, 0].unique()), '/', len(df.iloc[:, 0]))
 
-    df = pd.read_json('data/tv/valid.json', encoding='utf8')
+    df = pd.read_json(os.path.join(config.TV_DATA_DIR, 'valid.json'), encoding='utf8')
     print('valid:\t', len(df.iloc[:, 0].unique()), '/', len(df.iloc[:, 0]))
 
-    df = pd.read_json('data/tv/test.json', encoding='utf8')
+    df = pd.read_json(os.path.join(config.TV_DATA_DIR, 'test.json'), encoding='utf8')
     print('test:\t', len(df.iloc[:, 0].unique()), '/', len(df.iloc[:, 0]))
+
+
+def verify_slot_order(dataset, filename):
+    """Verifies whether the slot order in all MRs corresponds to the desired order.
+    """
+
+    slots_ordered = ['name', 'eattype', 'food', 'pricerange', 'customerrating', 'area', 'familyfriendly', 'near']
+    mrs_dicts = []
+
+    # Read in the data
+    data_cont = init_test_data(os.path.join(config.DATA_DIR, dataset, filename))
+    mrs, utterances = data_cont['data']
+    slot_sep, val_sep, val_sep_closing = data_cont['separators']
+
+    for i, mr in enumerate(mrs):
+        mr_dict = OrderedDict()
+
+        # Extract the slot-value pairs into a dictionary
+        for slot_value in mr.split(slot_sep):
+            slot, _, _, value_orig = parse_slot_and_value(slot_value, val_sep, val_sep_closing)
+            mr_dict[slot] = value_orig
+
+        mrs_dicts.append(mr_dict)
+
+    for mr_dict in mrs_dicts:
+        slots = list(mr_dict.keys())
+        cur_idx = 0
+
+        for slot in slots:
+            if slot in slots_ordered:
+                slot_idx = slots.index(slot)
+                rightmost_idx = slots_ordered.index(slot)
+
+                if slot_idx <= rightmost_idx and rightmost_idx >= cur_idx:
+                    cur_idx = rightmost_idx
+                else:
+                    print('TEST FAILED: {0} has index {1} in the MR, but the order requires index {2}.'.format(
+                        slot, slot_idx, slots_ordered.index(slot)))
+
+
+def pool_slot_values(dataset, filenames):
+    """Gathers all possible values for each slot type in the dataset.
+    """
+
+    # slots_to_pool = ['eattype', 'pricerange', 'customerrating', 'familyfriendly']
+    slots_to_pool = None
+    slot_poss_values = {}
+
+    # Read in the data
+    if len(filenames) == 1:
+        data_cont = init_test_data(os.path.join(config.DATA_DIR, dataset, filenames[0]))
+        mrs, utterances = data_cont['data']
+    else:
+        data_cont = init_training_data(os.path.join(config.DATA_DIR, dataset, filenames[0]),
+                                       os.path.join(config.DATA_DIR, dataset, filenames[1]))
+        x_train, y_train, x_dev, y_dev = data_cont['data']
+        mrs, utterances = (x_train + x_dev), (y_train + y_dev)
+
+    slot_sep, val_sep, val_sep_closing = data_cont['separators']
+
+    for i, mr in enumerate(mrs):
+        mr_dict = OrderedDict()
+
+        # Extract the slot-value pairs into a dictionary
+        for slot_value in mr.split(slot_sep):
+            slot, _, _, value_orig = parse_slot_and_value(slot_value, val_sep, val_sep_closing)
+            mr_dict[slot] = value_orig
+
+        # For each slot gather all possible values
+        for slot, value in mr_dict.items():
+            slot = slot.rstrip(string.digits)
+            if slots_to_pool is None or slot in slots_to_pool:
+                if slot not in slot_poss_values:
+                    slot_poss_values[slot] = set()
+                slot_poss_values[slot].add(value)
+
+    # Convert the value sets to lists (and make thus the dictionary serializable into JSON)
+    for slot in slot_poss_values.keys():
+        slot_poss_values[slot] = sorted(list(slot_poss_values[slot]))
+
+    # Store the dictionary to a file
+    with io.open(os.path.join(config.DATA_DIR, dataset, 'slot_values.json'), 'w', encoding='utf8') as f_slot_values:
+        json.dump(slot_poss_values, f_slot_values, indent=4, sort_keys=True, ensure_ascii=False)
+
+
+def generate_joint_vocab():
+    """Generates a joint vocabulary for multiple datasets.
+    """
+
+    data_trainset = os.path.join(config.LAPTOP_DATA_DIR, 'train.json')
+    data_devset = os.path.join(config.LAPTOP_DATA_DIR, 'valid.json')
+    data_laptop = load_training_data(data_trainset, data_devset)
+
+    data_trainset = os.path.join(config.TV_DATA_DIR, 'train.json')
+    data_devset = os.path.join(config.TV_DATA_DIR, 'valid.json')
+    data_tv = load_training_data(data_trainset, data_devset)
+
+    data_trainset = os.path.join(config.E2E_DATA_DIR, 'trainset_e2e_wrangled.csv')
+    data_devset = os.path.join(config.E2E_DATA_DIR, 'devset_e2e.csv')
+    data_rest = load_training_data(data_trainset, data_devset)
+
+    generate_vocab_file(np.concatenate((data_rest, data_tv, data_laptop)),
+                        vocab_filename='vocab.lang_gen.tokens')
 
 
 # ---- MAIN ----
@@ -1053,33 +1148,44 @@ def count_unique_mrs():
 def main():
     # count_unique_mrs()
 
-    # x_test, y_test = read_laptop_dataset_test('data/tv/test.json')
+    # verify_slot_order('rest_e2e', 'trainset_e2e_utt_split.csv')
 
+    pool_slot_values('rest_e2e', ['trainset_e2e.csv', 'devset_e2e.csv'])
+    # pool_slot_values('tv', ['train.json', 'valid.json'])
+    # pool_slot_values('laptop', ['train.json', 'valid.json'])
+
+    # generate_joint_vocab()
+
+    # ----------
+
+    # x_test, y_test = read_laptop_dataset_test('data/tv/test.json')
     # print(x_test)
     # print()
     # print(y_test)
     # print()
     # print(len(x_test), len(y_test))
 
+    # ----------
+
     # if len(y_test) > 0:
     #    with io.open('data/predictions_baseline.txt', 'w', encoding='utf8') as f_y_test:
     #        for line in y_test:
     #            f_y_test.write(line + '\n')
 
-    # produce a file from the predictions in the TV/Laptop dataset format by replacing the baseline utterances (in the 3rd column)
-    with io.open('eval/predictions-tv/predictions_ensemble_2way_2.txt', 'r', encoding='utf8') as f_predictions:
-        with io.open('data/tv/test.json', encoding='utf8') as f_testset:
-            # remove the comment at the beginning of the file
-            for i in range(5):
-                f_testset.readline()
+    # Produce a file from the predictions in the TV/Laptop dataset format by replacing the baseline utterances (in the 3rd column)
+    # with io.open('eval/predictions-tv/predictions_ensemble_2way_2.txt', 'r', encoding='utf8') as f_predictions:
+    #     with io.open('data/tv/test.json', encoding='utf8') as f_testset:
+    #         # remove the comment at the beginning of the file
+    #         for i in range(5):
+    #             f_testset.readline()
+    #
+    #         # read the test data from file
+    #         df = pd.read_json(f_testset, encoding='utf8')
+    #
+    #     df.iloc[:, 2] = f_predictions.readlines()
+    #     df.to_json('data/tv/test_pred.json', orient='values')
 
-            # read the test data from file
-            df = pd.read_json(f_testset, encoding='utf8')
-
-        df.iloc[:, 2] = f_predictions.readlines()
-        df.to_json('data/tv/test_pred.json', orient='values')
-
-    # produce a file from the predictions in the TV/Laptop dataset format by replacing the baseline utterances (in the 3rd column)
+    # Produce a file from the predictions in the TV/Laptop dataset format by replacing the baseline utterances (in the 3rd column)
     # with io.open('eval/predictions-laptop/predictions_ensemble_2way_1.txt', 'r', encoding='utf8') as f_predictions:
     #    with io.open('data/laptop/test.json', encoding='utf8') as f_testset:
     #        # remove the comment at the beginning of the file

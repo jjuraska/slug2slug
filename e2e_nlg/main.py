@@ -92,7 +92,6 @@ def train(data_trainset, data_devset):
 def test(data_testset, predict_only=True):
     test_source_file = 'data/test_source_dict.json'
     test_target_file = 'data/test_target.txt'
-    vocab_file = 'data/vocab_proper_nouns.txt'
     beams_file = 'predictions/beams.npz'
     beams_dump_file = 'predictions/beams_dump.pkl'
     #beams_dump_file = 'predictions/beams_dump_combined.pkl'
@@ -144,12 +143,12 @@ def test(data_testset, predict_only=True):
 
                 if not predict_only:
                     # create a file with a single prediction for each group of the same MRs
-                    if '/rest_e2e/' in data_testset or '\\rest_e2e\\' in data_testset:
+                    if 'rest_e2e' in data_testset:
                         test_mrs, _ = data_loader.read_rest_e2e_dataset_test(data_testset)
-                    elif '/tv/' in data_testset or '\\tv\\' in data_testset:
-                        test_mrs, _ = data_loader.read_tv_dataset_test(data_testset)
-                    elif '/laptop/' in data_testset or '\\laptop\\' in data_testset:
-                        test_mrs, _ = data_loader.read_laptop_dataset_test(data_testset)
+                    elif 'tv' in data_testset:
+                        test_mrs, _, _ = data_loader.read_tv_dataset_test(data_testset)
+                    elif 'laptop' in data_testset:
+                        test_mrs, _, _ = data_loader.read_laptop_dataset_test(data_testset)
                     else:
                         raise FileNotFoundError
 
@@ -164,5 +163,5 @@ def test(data_testset, predict_only=True):
     print('DONE')
 
 
-if __name__ == "__main__":
+if __name__ == '__main__':
     sys.exit(int(main() or 0))

@@ -137,12 +137,12 @@ def test(data_testset, predict_only=True, reranking=True):
 
         if not predict_only:
             # create a file with a single prediction for each group of the same MRs
-            if '/rest_e2e/' in data_testset or '\\rest_e2e\\' in data_testset:
+            if 'rest_e2e' in data_testset:
                 test_mrs, _ = data_loader.read_rest_e2e_dataset_test(data_testset)
-            elif '/tv/' in data_testset or '\\tv\\' in data_testset:
-                test_mrs, _ = data_loader.read_tv_dataset_test(data_testset)
-            elif '/laptop/' in data_testset or '\\laptop\\' in data_testset:
-                test_mrs, _ = data_loader.read_laptop_dataset_test(data_testset)
+            elif 'tv' in data_testset:
+                test_mrs, _, _ = data_loader.read_tv_dataset_test(data_testset)
+            elif 'laptop' in data_testset:
+                test_mrs, _, _ = data_loader.read_laptop_dataset_test(data_testset)
             else:
                 raise FileNotFoundError
 
