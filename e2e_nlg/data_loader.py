@@ -31,6 +31,7 @@ def load_training_data(data_trainset, data_devset, input_concat=False, generate_
             os.path.isfile(training_target_file) and \
             os.path.isfile(dev_source_file) and \
             os.path.isfile(dev_target_file):
+        print('Found existing input files. Skipping their generation.')
         return
 
     dataset = init_training_data(data_trainset, data_devset)
@@ -616,6 +617,13 @@ def init_training_data(data_trainset, data_devset):
         slot_sep = ';'
         val_sep = '='
         val_sep_closing = False
+    elif 'hotel' in data_trainset and 'hotel' in data_devset:
+        x_train, y_train, _ = read_hotel_dataset_train(data_trainset)
+        x_dev, y_dev, _ = read_hotel_dataset_dev(data_devset)
+        dataset_name = 'hotel'
+        slot_sep = ';'
+        val_sep = '='
+        val_sep_closing = False
     else:
         raise ValueError('Unexpected file name or path: {0}, {1}'.format(data_trainset, data_devset))
 
@@ -642,6 +650,12 @@ def init_test_data(data_testset):
     elif 'laptop' in data_testset:
         x_test, y_test, _ = read_laptop_dataset_test(data_testset)
         dataset_name = 'laptop'
+        slot_sep = ';'
+        val_sep = '='
+        val_sep_closing = False
+    elif 'hotel' in data_testset:
+        x_test, y_test, _ = read_hotel_dataset_test(data_testset)
+        dataset_name = 'hotel'
         slot_sep = ';'
         val_sep = '='
         val_sep_closing = False
@@ -816,6 +830,66 @@ def read_laptop_dataset_test(path_to_testset):
     return x_test, y_test, y_test_alt
 
 
+def read_hotel_dataset_train(path_to_trainset):
+    with io.open(path_to_trainset, encoding='utf8') as f_trainset:
+        # remove the comment at the beginning of the file
+        for i in range(5):
+            f_trainset.readline()
+
+        # read the training data from file
+        df_train = pd.read_json(f_trainset, encoding='utf8')
+
+    x_train = df_train.iloc[:, 0].tolist()
+    y_train = df_train.iloc[:, 1].tolist()
+    y_train_alt = df_train.iloc[:, 2].tolist()
+
+    # transform the MR to contain the DA type as the first slot
+    for i, mr in enumerate(x_train):
+        x_train[i] = preprocess_mr(mr, '(', ';', '=')
+
+    return x_train, y_train, y_train_alt
+
+
+def read_hotel_dataset_dev(path_to_devset):
+    with io.open(path_to_devset, encoding='utf8') as f_devset:
+        # remove the comment at the beginning of the file
+        for i in range(5):
+            f_devset.readline()
+
+        # read the development data from file
+        df_dev = pd.read_json(f_devset, encoding='utf8')
+
+    x_dev = df_dev.iloc[:, 0].tolist()
+    y_dev = df_dev.iloc[:, 1].tolist()
+    y_dev_alt = df_dev.iloc[:, 2].tolist()
+
+    # transform the MR to contain the DA type as the first slot
+    for i, mr in enumerate(x_dev):
+        x_dev[i] = preprocess_mr(mr, '(', ';', '=')
+
+    return x_dev, y_dev, y_dev_alt
+
+
+def read_hotel_dataset_test(path_to_testset):
+    with io.open(path_to_testset, encoding='utf8') as f_testset:
+        # remove the comment at the beginning of the file
+        for i in range(5):
+            f_testset.readline()
+
+        # read the test data from file
+        df_test = pd.read_json(f_testset, encoding='utf8')
+
+    x_test = df_test.iloc[:, 0].tolist()
+    y_test = df_test.iloc[:, 1].tolist()
+    y_test_alt = df_test.iloc[:, 2].tolist()
+
+    # transform the MR to contain the DA type as the first slot
+    for i, mr in enumerate(x_test):
+        x_test[i] = preprocess_mr(mr, '(', ';', '=')
+
+    return x_test, y_test, y_test_alt
+
+
 def read_predictions(path_to_predictions):
     # read the test data from file
     with io.open(path_to_predictions, encoding='utf8') as f_predictions:
@@ -861,6 +935,17 @@ def preprocess_mr(mr, da_sep, slot_sep, val_sep):
     mr_new = 'da=' + da_type
     if len(slot_value_pairs) > 0:
         mr_new += slot_sep + slot_value_pairs
+
+    mr_modified = ''
+    for slot_value in mr_new.split(slot_sep):
+        slot, _, _, value_orig = parse_slot_and_value(slot_value, val_sep)
+        # If the value is enclosed in apostrophes, remove them
+        if value_orig.startswith('\'') and value_orig.endswith('\''):
+            value_orig = value_orig[1:-1]
+
+        mr_modified += slot + val_sep + value_orig + slot_sep
+
+    mr_new = mr_modified[:-1]
 
     if da_type in ['compare', 'suggest']:
         slot_counts = {}
@@ -1016,6 +1101,18 @@ def count_unique_mrs():
     print('test:\t', len(df.iloc[:, 0].unique()), '/', len(df.iloc[:, 0]))
 
 
+    print('\nUnique MRs (TV):')
+
+    df = pd.read_json(os.path.join(config.TV_DATA_DIR, 'train.json'), encoding='utf8')
+    print('train:\t', len(df.iloc[:, 0].unique()), '/', len(df.iloc[:, 0]))
+
+    df = pd.read_json(os.path.join(config.TV_DATA_DIR, 'valid.json'), encoding='utf8')
+    print('valid:\t', len(df.iloc[:, 0].unique()), '/', len(df.iloc[:, 0]))
+
+    df = pd.read_json(os.path.join(config.TV_DATA_DIR, 'test.json'), encoding='utf8')
+    print('test:\t', len(df.iloc[:, 0].unique()), '/', len(df.iloc[:, 0]))
+
+
     print('\nUnique MRs (Laptop):')
 
     df = pd.read_json(os.path.join(config.LAPTOP_DATA_DIR, 'train.json'), encoding='utf8')
@@ -1028,15 +1125,15 @@ def count_unique_mrs():
     print('test:\t', len(df.iloc[:, 0].unique()), '/', len(df.iloc[:, 0]))
 
 
-    print('\nUnique MRs (TV):')
+    print('\nUnique MRs (Hotel):')
 
-    df = pd.read_json(os.path.join(config.TV_DATA_DIR, 'train.json'), encoding='utf8')
+    df = pd.read_json(os.path.join(config.HOTEL_DATA_DIR, 'train.json'), encoding='utf8')
     print('train:\t', len(df.iloc[:, 0].unique()), '/', len(df.iloc[:, 0]))
 
-    df = pd.read_json(os.path.join(config.TV_DATA_DIR, 'valid.json'), encoding='utf8')
+    df = pd.read_json(os.path.join(config.HOTEL_DATA_DIR, 'valid.json'), encoding='utf8')
     print('valid:\t', len(df.iloc[:, 0].unique()), '/', len(df.iloc[:, 0]))
 
-    df = pd.read_json(os.path.join(config.TV_DATA_DIR, 'test.json'), encoding='utf8')
+    df = pd.read_json(os.path.join(config.HOTEL_DATA_DIR, 'test.json'), encoding='utf8')
     print('test:\t', len(df.iloc[:, 0].unique()), '/', len(df.iloc[:, 0]))
 
 
@@ -1127,6 +1224,10 @@ def generate_joint_vocab():
     """Generates a joint vocabulary for multiple datasets.
     """
 
+    data_trainset = os.path.join(config.HOTEL_DATA_DIR, 'train.json')
+    data_devset = os.path.join(config.HOTEL_DATA_DIR, 'valid.json')
+    data_hotel = load_training_data(data_trainset, data_devset)
+
     data_trainset = os.path.join(config.LAPTOP_DATA_DIR, 'train.json')
     data_devset = os.path.join(config.LAPTOP_DATA_DIR, 'valid.json')
     data_laptop = load_training_data(data_trainset, data_devset)
@@ -1135,11 +1236,11 @@ def generate_joint_vocab():
     data_devset = os.path.join(config.TV_DATA_DIR, 'valid.json')
     data_tv = load_training_data(data_trainset, data_devset)
 
-    data_trainset = os.path.join(config.E2E_DATA_DIR, 'trainset_e2e_wrangled.csv')
+    data_trainset = os.path.join(config.E2E_DATA_DIR, 'trainset_e2e_utt_split.csv')
     data_devset = os.path.join(config.E2E_DATA_DIR, 'devset_e2e.csv')
     data_rest = load_training_data(data_trainset, data_devset)
 
-    generate_vocab_file(np.concatenate((data_rest, data_tv, data_laptop)),
+    generate_vocab_file(np.concatenate((data_rest, data_tv, data_laptop, data_hotel)),
                         vocab_filename='vocab.lang_gen.tokens')
 
 
@@ -1150,9 +1251,10 @@ def main():
 
     # verify_slot_order('rest_e2e', 'trainset_e2e_utt_split.csv')
 
-    pool_slot_values('rest_e2e', ['trainset_e2e.csv', 'devset_e2e.csv'])
+    # pool_slot_values('rest_e2e', ['trainset_e2e.csv', 'devset_e2e.csv'])
     # pool_slot_values('tv', ['train.json', 'valid.json'])
     # pool_slot_values('laptop', ['train.json', 'valid.json'])
+    pool_slot_values('hotel', ['train.json', 'valid.json'])
 
     # generate_joint_vocab()
 

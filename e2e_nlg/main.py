@@ -149,6 +149,8 @@ def test(data_testset, predict_only=True):
                         test_mrs, _, _ = data_loader.read_tv_dataset_test(data_testset)
                     elif 'laptop' in data_testset:
                         test_mrs, _, _ = data_loader.read_laptop_dataset_test(data_testset)
+                    elif 'hotel' in data_testset:
+                        test_mrs, _, _ = data_loader.read_hotel_dataset_test(data_testset)
                     else:
                         raise FileNotFoundError
 
