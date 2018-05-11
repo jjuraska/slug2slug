@@ -700,9 +700,8 @@ def read_rest_e2e_dataset_test(data_testset):
 
 def read_tv_dataset_train(path_to_trainset):
     with io.open(path_to_trainset, encoding='utf8') as f_trainset:
-        # remove the comment at the beginning of the file
-        for i in range(5):
-            f_trainset.readline()
+        # Skip the comment block at the beginning of the file
+        f_trainset, _ = skip_comment_block(f_trainset, '#')
 
         # read the training data from file
         df_train = pd.read_json(f_trainset, encoding='utf8')
@@ -726,9 +725,8 @@ def read_tv_dataset_train(path_to_trainset):
 
 def read_tv_dataset_dev(path_to_devset):
     with io.open(path_to_devset, encoding='utf8') as f_devset:
-        # remove the comment at the beginning of the file
-        for i in range(5):
-            f_devset.readline()
+        # Skip the comment block at the beginning of the file
+        f_devset, _ = skip_comment_block(f_devset, '#')
 
         # read the development data from file
         df_dev = pd.read_json(f_devset, encoding='utf8')
@@ -752,9 +750,8 @@ def read_tv_dataset_dev(path_to_devset):
 
 def read_tv_dataset_test(path_to_testset):
     with io.open(path_to_testset, encoding='utf8') as f_testset:
-        # remove the comment at the beginning of the file
-        for i in range(5):
-            f_testset.readline()
+        # Skip the comment block at the beginning of the file
+        f_testset, _ = skip_comment_block(f_testset, '#')
 
         # read the test data from file
         df_test = pd.read_json(f_testset, encoding='utf8')
@@ -772,9 +769,8 @@ def read_tv_dataset_test(path_to_testset):
 
 def read_laptop_dataset_train(path_to_trainset):
     with io.open(path_to_trainset, encoding='utf8') as f_trainset:
-        # remove the comment at the beginning of the file
-        for i in range(5):
-            f_trainset.readline()
+        # Skip the comment block at the beginning of the file
+        f_trainset, _ = skip_comment_block(f_trainset, '#')
 
         # read the training data from file
         df_train = pd.read_json(f_trainset, encoding='utf8')
@@ -792,9 +788,8 @@ def read_laptop_dataset_train(path_to_trainset):
 
 def read_laptop_dataset_dev(path_to_devset):
     with io.open(path_to_devset, encoding='utf8') as f_devset:
-        # remove the comment at the beginning of the file
-        for i in range(5):
-            f_devset.readline()
+        # Skip the comment block at the beginning of the file
+        f_devset, _ = skip_comment_block(f_devset, '#')
 
         # read the development data from file
         df_dev = pd.read_json(f_devset, encoding='utf8')
@@ -812,9 +807,8 @@ def read_laptop_dataset_dev(path_to_devset):
 
 def read_laptop_dataset_test(path_to_testset):
     with io.open(path_to_testset, encoding='utf8') as f_testset:
-        # remove the comment at the beginning of the file
-        for i in range(5):
-            f_testset.readline()
+        # Skip the comment block at the beginning of the file
+        f_testset, _ = skip_comment_block(f_testset, '#')
 
         # read the test data from file
         df_test = pd.read_json(f_testset, encoding='utf8')
@@ -832,9 +826,8 @@ def read_laptop_dataset_test(path_to_testset):
 
 def read_hotel_dataset_train(path_to_trainset):
     with io.open(path_to_trainset, encoding='utf8') as f_trainset:
-        # remove the comment at the beginning of the file
-        for i in range(5):
-            f_trainset.readline()
+        # Skip the comment block at the beginning of the file
+        f_trainset, _ = skip_comment_block(f_trainset, '#')
 
         # read the training data from file
         df_train = pd.read_json(f_trainset, encoding='utf8')
@@ -852,9 +845,8 @@ def read_hotel_dataset_train(path_to_trainset):
 
 def read_hotel_dataset_dev(path_to_devset):
     with io.open(path_to_devset, encoding='utf8') as f_devset:
-        # remove the comment at the beginning of the file
-        for i in range(5):
-            f_devset.readline()
+        # Skip the comment block at the beginning of the file
+        f_devset, _ = skip_comment_block(f_devset, '#')
 
         # read the development data from file
         df_dev = pd.read_json(f_devset, encoding='utf8')
@@ -872,9 +864,8 @@ def read_hotel_dataset_dev(path_to_devset):
 
 def read_hotel_dataset_test(path_to_testset):
     with io.open(path_to_testset, encoding='utf8') as f_testset:
-        # remove the comment at the beginning of the file
-        for i in range(5):
-            f_testset.readline()
+        # Skip the comment block at the beginning of the file
+        f_testset, _ = skip_comment_block(f_testset, '#')
 
         # read the test data from file
         df_test = pd.read_json(f_testset, encoding='utf8')
@@ -896,6 +887,27 @@ def read_predictions(path_to_predictions):
         y_pred = f_predictions.readlines()
 
     return y_pred
+
+
+def skip_comment_block(fd, comment_symbol):
+    """Reads the initial lines of the file (represented by the file descriptor) corresponding to a comment block.
+    All consecutive lines starting with the given symbol are considered to be part of the comment block.
+    """
+
+    comment_block = ''
+
+    line_beg = fd.tell()
+    line = fd.readline()
+    while line != '':
+        if not line.startswith(comment_symbol):
+            fd.seek(line_beg)
+            break
+
+        comment_block += line
+        line_beg = fd.tell()
+        line = fd.readline()
+
+    return fd, comment_block
 
 
 def replace_plural_nouns(utt):
@@ -1175,6 +1187,44 @@ def verify_slot_order(dataset, filename):
                         slot, slot_idx, slots_ordered.index(slot)))
 
 
+def filter_samples_by_da_type_json(dataset, filename, das_to_keep):
+    """Create a new JSON dataset file by filtering only those samples in the given dataset that contain an MR
+    with one of the desired DA types.
+    """
+
+    if not filename.lower().endswith('.json'):
+        raise ValueError('Unexpected file type. Please provide a JSON file as input.')
+
+    data_filtered = []
+
+    with io.open(os.path.join(config.DATA_DIR, dataset, filename), encoding='utf8') as f_dataset:
+        # Skip and store the comment at the beginning of the file
+        f_dataset, comment_block = skip_comment_block(f_dataset, '#')
+
+        # Read the dataset from file
+        data = json.load(f_dataset, encoding='utf8')
+
+    # Append the opening parenthesis to the DA names, so as to avoid matching DAs whose names have these as prefixes
+    das_to_keep = tuple(da + '(' for da in das_to_keep)
+
+    # Filter MRs with the desired DA types only
+    for sample in data:
+        mr = sample[0]
+        if mr.startswith(das_to_keep):
+            data_filtered.append(sample)
+
+    # Save the filtered dataset to a new file
+    filename_out = ''.join(filename.split('.')[:-1]) + '_filtered.json'
+    with io.open(os.path.join(config.DATA_DIR, dataset, filename_out), 'w', encoding='utf8') as f_dataset_filtered:
+        f_dataset_filtered.write(comment_block)
+        json.dump(data_filtered, f_dataset_filtered, indent=4, ensure_ascii=False)
+
+
+def get_vocab_overlap(dataset1, filename1, dataset2, filename2):
+    # TODO: implement
+    pass
+
+
 def pool_slot_values(dataset, filenames):
     """Gathers all possible values for each slot type in the dataset.
     """
@@ -1251,10 +1301,15 @@ def main():
 
     # verify_slot_order('rest_e2e', 'trainset_e2e_utt_split.csv')
 
+    das_to_keep = ['inform']
+    filter_samples_by_da_type_json('tv', 'train.json', das_to_keep)
+    filter_samples_by_da_type_json('tv', 'valid.json', das_to_keep)
+    filter_samples_by_da_type_json('tv', 'test.json', das_to_keep)
+
     # pool_slot_values('rest_e2e', ['trainset_e2e.csv', 'devset_e2e.csv'])
     # pool_slot_values('tv', ['train.json', 'valid.json'])
     # pool_slot_values('laptop', ['train.json', 'valid.json'])
-    pool_slot_values('hotel', ['train.json', 'valid.json'])
+    # pool_slot_values('hotel', ['train.json', 'valid.json'])
 
     # generate_joint_vocab()
 
@@ -1277,9 +1332,8 @@ def main():
     # Produce a file from the predictions in the TV/Laptop dataset format by replacing the baseline utterances (in the 3rd column)
     # with io.open('eval/predictions-tv/predictions_ensemble_2way_2.txt', 'r', encoding='utf8') as f_predictions:
     #     with io.open('data/tv/test.json', encoding='utf8') as f_testset:
-    #         # remove the comment at the beginning of the file
-    #         for i in range(5):
-    #             f_testset.readline()
+    #         # Skip the comment block at the beginning of the file
+    #         f_testset, _ = skip_comment_block(f_testset, '#')
     #
     #         # read the test data from file
     #         df = pd.read_json(f_testset, encoding='utf8')
@@ -1289,16 +1343,15 @@ def main():
 
     # Produce a file from the predictions in the TV/Laptop dataset format by replacing the baseline utterances (in the 3rd column)
     # with io.open('eval/predictions-laptop/predictions_ensemble_2way_1.txt', 'r', encoding='utf8') as f_predictions:
-    #    with io.open('data/laptop/test.json', encoding='utf8') as f_testset:
-    #        # remove the comment at the beginning of the file
-    #        for i in range(5):
-    #            f_testset.readline()
-
-    #        # read the test data from file
-    #        df = pd.read_json(f_testset, encoding='utf8')
-
-    #    df.iloc[:, 2] = f_predictions.readlines()
-    #    df.to_json('data/laptop/test_pred.json', orient='values')
+    #     with io.open('data/laptop/test.json', encoding='utf8') as f_testset:
+    #         # Skip the comment block at the beginning of the file
+    #         f_testset, _ = skip_comment_block(f_testset, '#')
+    #
+    #         # read the test data from file
+    #         df = pd.read_json(f_testset, encoding='utf8')
+    #
+    #     df.iloc[:, 2] = f_predictions.readlines()
+    #     df.to_json('data/laptop/test_pred.json', orient='values')
 
 
 if __name__ == '__main__':
