@@ -1,6 +1,7 @@
 import argparse
 import sys
 import os
+import glob
 import io
 import json
 import pandas as pd
@@ -17,6 +18,7 @@ def main():
     group = parser.add_mutually_exclusive_group()
     group.add_argument('--train', nargs=2, help='takes as arguments the paths to the trainset and the devset')
     group.add_argument('--test', nargs=1, help='takes as argument the path to the testset')
+    group.add_argument('--test_all', nargs=1, help='takes as argument the path to the testset')
     group.add_argument('--predict', nargs=1, help='takes as argument the path to the testset')
     group.add_argument('--beam_dump', nargs=1, help='takes as argument the path to the testset')
 
@@ -32,6 +34,11 @@ def main():
             print('Error: invalid file path.')
         else:
             test(args.test[0], predict_only=False)
+    elif args.test_all is not None:
+        if not os.path.isfile(args.test_all[0]):
+            print('Error: invalid file path.')
+        else:
+            test_all(args.test_all[0])
     elif args.predict is not None:
         if not os.path.isfile(args.predict[0]):
             print('Error: invalid file path.')
@@ -47,6 +54,7 @@ def main():
         print('main.py')
         print('\t--train [path_to_trainset] [path_to_devset]')
         print('\t--test [path_to_testset]')
+        print('\t--test_all [path_to_testset]')
         print('\t--predict [path_to_testset]')
         print('\t--beam_dump [path_to_beams]')
 
@@ -124,8 +132,7 @@ def test(data_testset, predict_only=True, reranking=True):
     print('Evaluating...')
     sys.stdout.flush()
 
-    with io.open(predictions_file, 'r', encoding='utf8') as f_predictions, \
-            io.open(test_source_file, 'r', encoding='utf8') as f_test_source, \
+    with io.open(test_source_file, 'r', encoding='utf8') as f_test_source, \
             io.open(predictions_final_file, 'w', encoding='utf8') as f_predictions_final:
 
         mrs = json.load(f_test_source, object_pairs_hook=OrderedDict)
@@ -154,7 +161,70 @@ def test(data_testset, predict_only=True, reranking=True):
                         f_predictions_reduced.write(predictions_final[i] + '\n')
 
     if not predict_only:
-        os.system('perl ../bin/tools/multi-bleu.perl ' + test_target_file + ' < ' + predictions_final_file)
+        os.system('t2t-bleu --translation=' + predictions_final_file + ' --reference=' + test_target_file)
+
+    print('DONE')
+
+
+def test_all(data_testset):
+    test_source_file = os.path.join(config.DATA_DIR, 'test_source_dict.json')
+    test_target_file = os.path.join(config.DATA_DIR, 'test_target.txt')
+
+    if not os.path.exists(config.PREDICTIONS_BATCH_LEX_DIR):
+        os.makedirs(config.PREDICTIONS_BATCH_LEX_DIR)
+
+    print('Loading test data...', end=' ')
+    sys.stdout.flush()
+
+    # Load and preprocess the test data
+    data_loader.load_test_data(data_testset)
+
+    print('DONE')
+    print('Predicting...')
+    sys.stdout.flush()
+
+    # Run inference for the test samples using each checkpoint of the model
+    os.system('bash ' + os.path.join(config.T2T_DIR, 't2t_test_all_script.sh'))
+
+    print('DONE')
+    print('Evaluating...')
+    sys.stdout.flush()
+
+    # Relexicalize all prediction files
+    for predictions_file in glob.glob(os.path.join(config.PREDICTIONS_BATCH_DIR, '*')):
+        filename = predictions_file.split('/')[-1]
+        predictions_final_file = os.path.join(config.PREDICTIONS_BATCH_LEX_DIR, filename)
+
+        # Read in the beams and their log-probs as produced by the T2T beam search
+        df_predictions = pd.read_csv(predictions_file, sep='\t', header=None, encoding='utf8')
+        beams_present = len(df_predictions.columns) > 1
+
+        if beams_present:
+            # Combine beams and their corresponding scores into tuples
+            beams = []
+            for i in range(0, len(df_predictions.columns), 2):
+                beams.append(list(zip(df_predictions.iloc[:, i], df_predictions.iloc[:, i+1])))
+
+            # Transpose the list of beams so as to have all beams of a single sample per line
+            beams = list(map(list, zip(*beams)))
+        else:
+            beams = [[(beam,)] for beam in df_predictions.iloc[:, 0].tolist()]
+
+        # Postprocess the generated utterances and save them to a new file
+        with io.open(test_source_file, 'r', encoding='utf8') as f_test_source, \
+                io.open(predictions_final_file, 'w', encoding='utf8') as f_predictions_final:
+
+            mrs = json.load(f_test_source, object_pairs_hook=OrderedDict)
+            predictions = [prediction_beams[0][0] for prediction_beams in beams]
+            predictions_final = postprocessing.finalize_utterances(predictions, mrs)
+
+            for prediction in predictions_final:
+                f_predictions_final.write(prediction + '\n')
+
+    os.system('t2t-bleu' +
+              ' --translations_dir=' + config.PREDICTIONS_BATCH_LEX_DIR +
+              ' --reference=' + test_target_file +
+              ' --event_dir=' + config.PREDICTIONS_BATCH_EVENT_DIR)
 
     print('DONE')
 
