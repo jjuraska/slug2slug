@@ -35,6 +35,7 @@ def load_training_data(data_trainset, data_devset, input_concat=False, generate_
         return
 
     dataset = init_training_data(data_trainset, data_devset)
+    dataset_name = dataset['dataset_name']
     x_train, y_train, x_dev, y_dev = dataset['data']
     slot_sep, val_sep, val_sep_closing = dataset['separators']
 
@@ -61,7 +62,7 @@ def load_training_data(data_trainset, data_devset, input_concat=False, generate_
                 slot_ctr += 1
 
         # delexicalize the MR and the utterance
-        y_train[i] = delex_sample(mr_dict, y_train[i], input_concat=input_concat)
+        y_train[i] = delex_sample(mr_dict, y_train[i], dataset=dataset_name, input_concat=input_concat)
 
         slot_ctr = 0
 
@@ -101,7 +102,7 @@ def load_training_data(data_trainset, data_devset, input_concat=False, generate_
                 slot_ctr += 1
 
         # delexicalize the MR and the utterance
-        y_dev[i] = delex_sample(mr_dict, y_dev[i], input_concat=input_concat)
+        y_dev[i] = delex_sample(mr_dict, y_dev[i], dataset=dataset_name, input_concat=input_concat)
 
         slot_ctr = 0
 
@@ -159,6 +160,7 @@ def load_test_data(data_testset, input_concat=False):
     vocab_proper_nouns_file = os.path.join(config.DATA_DIR, 'vocab_proper_nouns.txt')
 
     dataset = init_test_data(data_testset)
+    dataset_name = dataset['dataset_name']
     x_test, y_test = dataset['data']
     slot_sep, val_sep, val_sep_closing = dataset['separators']
 
@@ -191,7 +193,7 @@ def load_test_data(data_testset, input_concat=False):
         x_test_dict.append(copy.deepcopy(mr_dict))
 
         # delexicalize the MR
-        delex_sample(mr_dict, mr_only=True, input_concat=input_concat)
+        delex_sample(mr_dict, dataset=dataset_name, mr_only=True, input_concat=input_concat)
 
         slot_ctr = 0
 
@@ -249,6 +251,15 @@ def generate_vocab_file(token_sequences, vocab_filename, vocab_size=10000):
     with io.open(vocab_file, 'w', encoding='utf8') as f_vocab:
         for token in vocab_with_reserved_tokens:
             f_vocab.write('{}\n'.format(token))
+
+
+def get_vocabulary(token_sequences, vocab_size=10000):
+    distr = FreqDist(token_sequences)
+    vocab = distr.most_common(min(len(distr), vocab_size))          # cap the vocabulary size
+
+    vocab_set = set(map(lambda tup: tup[0], vocab))
+
+    return vocab_set
 
 
 def tokenize_mr(mr, add_eos_token=True):
@@ -333,8 +344,8 @@ def load_training_data_for_eval(data_trainset, data_model_outputs_train, vocab_s
 
         if delex == True:
             # delexicalize the MR and the utterance
-            y_train_1[i] = delex_sample(mr_dict, y_train_1[i], utterance_only=True)
-            y_train_2[i] = delex_sample(mr_dict, y_train_2[i])
+            y_train_1[i] = delex_sample(mr_dict, y_train_1[i], dataset=dataset_name, utterance_only=True)
+            y_train_2[i] = delex_sample(mr_dict, y_train_2[i], dataset=dataset_name)
 
         # convert the dictionary to a list
         x_train_seq.append([])
@@ -439,8 +450,8 @@ def load_dev_data_for_eval(data_devset, data_model_outputs_dev, vocab_size, max_
             
         if delex == True:
             # delexicalize the MR and the utterance
-            y_dev_1[i] = delex_sample(mr_dict, y_dev_1[i], utterance_only=True)
-            y_dev_2[i] = delex_sample(mr_dict, y_dev_2[i])
+            y_dev_1[i] = delex_sample(mr_dict, y_dev_1[i], dataset=dataset_name, utterance_only=True)
+            y_dev_2[i] = delex_sample(mr_dict, y_dev_2[i], dataset=dataset_name)
 
         # convert the dictionary to a list
         x_dev_seq.append([])
@@ -534,9 +545,9 @@ def load_test_data_for_eval(data_testset, data_model_outputs_test, vocab_size, m
 
         if delex == True:
             # delexicalize the MR and the utterance
-            y_test[i] = delex_sample(mr_dict, y_test[i])
-            #y_test_1[i] = delex_sample(mr_dict, y_test_1[i], utterance_only=True)
-            #y_test_2[i] = delex_sample(mr_dict, y_test_2[i])
+            y_test[i] = delex_sample(mr_dict, y_test[i], dataset=dataset_name)
+            #y_test_1[i] = delex_sample(mr_dict, y_test_1[i], dataset=dataset_name, utterance_only=True)
+            #y_test_2[i] = delex_sample(mr_dict, y_test_2[i], dataset=dataset_name)
 
         # convert the dictionary to a list
         x_test_seq.append([])
@@ -1006,11 +1017,12 @@ def parse_slot_and_value(slot_value, val_sep, val_sep_closing=False):
     return slot_processed, value_processed, slot, value
 
 
-def delex_sample(mr, utterance=None, slots_to_delex=None, mr_only=False, input_concat=False, utterance_only=False):
-    '''Delexicalize a single sample (MR and the corresponding utterance).
-    By default, the slots 'name', 'near' and 'food' are delexicalized.
-    All fields: name, near, area, food, customer rating, familyFriendly, eatType, priceRange
-    '''
+def delex_sample(mr, utterance=None, dataset=None, slots_to_delex=None, mr_only=False, input_concat=False, utterance_only=False):
+    """Delexicalize a single sample (MR and the corresponding utterance).
+    By default, the slots 'name', 'near' and 'food' are delexicalized (for the E2E dataset).
+
+    All fields (E2E): name, near, area, food, customer rating, familyFriendly, eatType, priceRange
+    """
 
     if not mr_only and utterance is None:
         raise ValueError('the \'utterance\' argument must be provided when \'mr_only\' is False.')
@@ -1018,9 +1030,17 @@ def delex_sample(mr, utterance=None, slots_to_delex=None, mr_only=False, input_c
     if slots_to_delex is not None:
         delex_slots = slots_to_delex
     else:
-        delex_slots = ['name', 'near', 'food',
-                       'family', 'hdmiport', 'screensize', 'price', 'audio', 'resolution', 'powerconsumption', 'color', 'count',
-                       'processor', 'memory', 'drive', 'battery', 'weight', 'dimension', 'design', 'platform', 'warranty']
+        if dataset == 'rest_e2e':
+            delex_slots = ['name', 'near', 'food']
+        elif dataset == 'tv':
+            delex_slots = ['name', 'family', 'hdmiport', 'screensize', 'price', 'audio', 'resolution', 'powerconsumption', 'color', 'count']
+        elif dataset == 'laptop':
+            delex_slots = ['name', 'family', 'processor', 'memory', 'drive', 'battery', 'weight', 'dimension', 'design', 'platform', 'warranty', 'count']
+        elif dataset == 'hotel':
+            delex_slots = ['name', 'address', 'postcode', 'area', 'near', 'phone', 'count']
+        else:
+            # By default, assume the dataset is 'rest_e2e'
+            delex_slots = ['name', 'near', 'food']
 
     if not mr_only:
         utterance = ' '.join(utterance)
@@ -1031,11 +1051,22 @@ def delex_sample(mr, utterance=None, slots_to_delex=None, mr_only=False, input_c
             # Assemble a placeholder token for the value
             placeholder = create_placeholder(slot, value)
 
-            # Replace the value (whole-word matches only) with the placeholder
-            if not mr_only:
-                utterance_delexed = re.sub(r'\b{}\b'.format(value), placeholder, utterance)
-            else:
-                utterance_delexed = utterance
+            values_alt = [value]
+            # Specify alternative representations of the value
+            if slot == 'address':
+                if 'street' in value:
+                    values_alt.append(re.sub(r'\b{}\b'.format('street'), 'st', value))
+                elif 'avenue' in value:
+                    values_alt.append(re.sub(r'\b{}\b'.format('avenue'), 'ave', value))
+
+            for val in values_alt:
+                # Replace the value (whole-word matches only) with the placeholder
+                if not mr_only:
+                    utterance_delexed = re.sub(r'\b{}\b'.format(val), placeholder, utterance)
+                    if utterance_delexed != utterance:
+                        break
+                else:
+                    utterance_delexed = utterance
 
             # Do not replace value with a placeholder token unless there is an exact match in the utterance
             if mr_only or utterance_delexed != utterance or slot == 'name':
@@ -1220,9 +1251,26 @@ def filter_samples_by_da_type_json(dataset, filename, das_to_keep):
         json.dump(data_filtered, f_dataset_filtered, indent=4, ensure_ascii=False)
 
 
-def get_vocab_overlap(dataset1, filename1, dataset2, filename2):
-    # TODO: implement
-    pass
+def get_vocab_overlap(dataset1, filename_train1, filename_dev1, dataset2, filename_train2, filename_dev2):
+    data_trainset1 = os.path.join(config.DATA_DIR, dataset1, filename_train1)
+    data_devset1 = os.path.join(config.DATA_DIR, dataset1, filename_dev1)
+    data_trainset2 = os.path.join(config.DATA_DIR, dataset2, filename_train2)
+    data_devset2 = os.path.join(config.DATA_DIR, dataset2, filename_dev2)
+
+    dataset1 = load_training_data(data_trainset1, data_devset1)
+    dataset2 = load_training_data(data_trainset2, data_devset2)
+
+    vocab1 = get_vocabulary(dataset1)
+    vocab2 = get_vocabulary(dataset2)
+
+    common_vocab = vocab1.intersection(vocab2)
+
+    print('Size of vocab 1:', len(vocab1))
+    print('Size of vocab 2:', len(vocab2))
+    print('Number of common words:', len(common_vocab))
+
+    print('Common words:')
+    print(common_vocab)
 
 
 def pool_slot_values(dataset, filenames):
@@ -1305,6 +1353,11 @@ def main():
     filter_samples_by_da_type_json('tv', 'train.json', das_to_keep)
     filter_samples_by_da_type_json('tv', 'valid.json', das_to_keep)
     filter_samples_by_da_type_json('tv', 'test.json', das_to_keep)
+
+    # get_vocab_overlap('rest_e2e', 'trainset_e2e.csv', 'devset_e2e.csv',
+    #                   'hotel', 'train.json', 'valid.json')
+    # get_vocab_overlap('laptop', 'train.json', 'valid.json',
+    #                   'tv', 'train.json', 'valid.json')
 
     # pool_slot_values('rest_e2e', ['trainset_e2e.csv', 'devset_e2e.csv'])
     # pool_slot_values('tv', ['train.json', 'valid.json'])

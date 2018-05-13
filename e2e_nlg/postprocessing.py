@@ -20,8 +20,7 @@ def finalize_utterances(utterances, mrs):
 
     for i, utterance in enumerate(utterances):
         utterance_relexed = relex(utterance, mrs[i])
-        #utterance_pluralized = join_plural_nouns(utterance_relexed)
-        #utterance_capitalized = capitalize(utterance_pluralized, proper_nouns)
+        # utterance_pluralized = join_plural_nouns(utterance_relexed)                 # disable for E2E, Laptop, Hotel
         utterance_capitalized = capitalize(utterance_relexed, proper_nouns)
         utterance_detokenized = detokenize(utterance_capitalized)
         utterances_final.append(utterance_detokenized)
