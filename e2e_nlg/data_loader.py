@@ -1320,14 +1320,18 @@ def filter_samples_by_slot_count_json(dataset, filename, min_count=None, max_cou
 
     with io.open(os.path.join(config.DATA_DIR, dataset, filename), encoding='utf8') as f_dataset:
         # Skip and store the comment at the beginning of the file
-        _, comment_block = skip_comment_block(f_dataset, '#')
+        f_dataset, comment_block = skip_comment_block(f_dataset, '#')
 
-    # Read in the data
+        # Read the dataset from file
+        data = json.load(f_dataset, encoding='utf8')
+
     data_cont = init_test_data(os.path.join(config.DATA_DIR, dataset, filename))
-    mrs, utterances = data_cont['data']
     slot_sep, val_sep, val_sep_closing = data_cont['separators']
 
-    for mr, utt in zip(mrs, utterances):
+    # Filter MRs with a number of slots in the desired range only
+    for sample in data:
+        mr = sample[0]
+
         mr_dict = OrderedDict()
         cur_min_count = min_count or 0
         cur_max_count = max_count or 20
@@ -1345,7 +1349,7 @@ def filter_samples_by_slot_count_json(dataset, filename, min_count=None, max_cou
                 if mr_dict['position'] == 'inner':
                     continue
                 elif mr_dict['position'] == 'outer':
-                    mr = mr.replace(', position[outer]', '')
+                    mr = mr.replace(';position=outer', '')
             cur_min_count += 1
             cur_max_count += 1
 
@@ -1353,7 +1357,7 @@ def filter_samples_by_slot_count_json(dataset, filename, min_count=None, max_cou
                 max_count is not None and len(mr_dict) > cur_max_count:
             continue
 
-        data_filtered.append([mr, utt, utt])
+        data_filtered.append([mr, sample[1], sample[2]])
 
     # Save the filtered dataset to a new file
     filename_out = ''.join(filename.split('.')[:-1])
@@ -1451,7 +1455,7 @@ def generate_joint_vocab():
     data_devset = os.path.join(config.TV_DATA_DIR, 'valid.json')
     data_tv = load_training_data(data_trainset, data_devset)
 
-    data_trainset = os.path.join(config.E2E_DATA_DIR, 'trainset_e2e_utt_split.csv')
+    data_trainset = os.path.join(config.E2E_DATA_DIR, 'trainset_e2e.csv')
     data_devset = os.path.join(config.E2E_DATA_DIR, 'devset_e2e.csv')
     data_rest = load_training_data(data_trainset, data_devset)
 
