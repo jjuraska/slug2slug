@@ -1219,7 +1219,7 @@ def verify_slot_order(dataset, filename):
 
 
 def filter_samples_by_da_type_json(dataset, filename, das_to_keep):
-    """Create a new JSON dataset file by filtering only those samples in the given dataset that contain an MR
+    """Create a new JSON data file by filtering only those samples in the given dataset that contain an MR
     with one of the desired DA types.
     """
 
@@ -1246,6 +1246,123 @@ def filter_samples_by_da_type_json(dataset, filename, das_to_keep):
 
     # Save the filtered dataset to a new file
     filename_out = ''.join(filename.split('.')[:-1]) + '_filtered.json'
+    with io.open(os.path.join(config.DATA_DIR, dataset, filename_out), 'w', encoding='utf8') as f_dataset_filtered:
+        f_dataset_filtered.write(comment_block)
+        json.dump(data_filtered, f_dataset_filtered, indent=4, ensure_ascii=False)
+
+
+def filter_samples_by_slot_count_csv(dataset, filename, min_count=None, max_count=None, eliminate_position_slot=True):
+    """Create a new CSV data file by filtering only those samples in the given dataset that contain an MR
+    with the number of slots in the desired range.
+    """
+
+    if not filename.lower().endswith('.csv'):
+        raise ValueError('Unexpected file type. Please provide a CSV file as input.')
+
+    data_filtered = []
+
+    # Read in the data
+    data_cont = init_test_data(os.path.join(config.DATA_DIR, dataset, filename))
+    mrs, utterances = data_cont['data']
+    slot_sep, val_sep, val_sep_closing = data_cont['separators']
+
+    for mr, utt in zip(mrs, utterances):
+        mr_dict = OrderedDict()
+        cur_min_count = min_count or 0
+        cur_max_count = max_count or 20
+
+        # Extract the slot-value pairs into a dictionary
+        for slot_value in mr.split(slot_sep):
+            _, _, slot_orig, value_orig = parse_slot_and_value(slot_value, val_sep, val_sep_closing)
+            mr_dict[slot_orig] = value_orig
+
+        if 'da' in mr_dict:
+            cur_min_count += 1
+            cur_max_count += 1
+        if 'position' in mr_dict:
+            if eliminate_position_slot:
+                if mr_dict['position'] == 'inner':
+                    continue
+                elif mr_dict['position'] == 'outer':
+                    mr = mr.replace(', position[outer]', '')
+            cur_min_count += 1
+            cur_max_count += 1
+
+        if min_count is not None and len(mr_dict) < cur_min_count or \
+                max_count is not None and len(mr_dict) > cur_max_count:
+            continue
+
+        data_filtered.append([mr, utt])
+
+    # Save the filtered dataset to a new file
+    filename_out = ''.join(filename.split('.')[:-1])
+    if min_count is not None:
+        filename_out += '_min{}'.format(min_count)
+    if max_count is not None:
+        filename_out += '_max{}'.format(max_count)
+    filename_out += '_slots.csv'
+
+    pd.DataFrame(data_filtered).to_csv(os.path.join(config.DATA_DIR, dataset, filename_out),
+                                       header=['mr', 'ref'],
+                                       index=False,
+                                       encoding='utf8')
+
+
+def filter_samples_by_slot_count_json(dataset, filename, min_count=None, max_count=None, eliminate_position_slot=True):
+    """Create a new JSON data file by filtering only those samples in the given dataset that contain an MR
+    with the number of slots in the desired range.
+    """
+
+    if not filename.lower().endswith('.json'):
+        raise ValueError('Unexpected file type. Please provide a JSON file as input.')
+
+    data_filtered = []
+
+    with io.open(os.path.join(config.DATA_DIR, dataset, filename), encoding='utf8') as f_dataset:
+        # Skip and store the comment at the beginning of the file
+        _, comment_block = skip_comment_block(f_dataset, '#')
+
+    # Read in the data
+    data_cont = init_test_data(os.path.join(config.DATA_DIR, dataset, filename))
+    mrs, utterances = data_cont['data']
+    slot_sep, val_sep, val_sep_closing = data_cont['separators']
+
+    for mr, utt in zip(mrs, utterances):
+        mr_dict = OrderedDict()
+        cur_min_count = min_count or 0
+        cur_max_count = max_count or 20
+
+        # Extract the slot-value pairs into a dictionary
+        for slot_value in mr.split(slot_sep):
+            _, _, slot_orig, value_orig = parse_slot_and_value(slot_value, val_sep, val_sep_closing)
+            mr_dict[slot_orig] = value_orig
+
+        if 'da' in mr_dict:
+            cur_min_count += 1
+            cur_max_count += 1
+        if 'position' in mr_dict:
+            if eliminate_position_slot:
+                if mr_dict['position'] == 'inner':
+                    continue
+                elif mr_dict['position'] == 'outer':
+                    mr = mr.replace(', position[outer]', '')
+            cur_min_count += 1
+            cur_max_count += 1
+
+        if min_count is not None and len(mr_dict) < cur_min_count or \
+                max_count is not None and len(mr_dict) > cur_max_count:
+            continue
+
+        data_filtered.append([mr, utt, utt])
+
+    # Save the filtered dataset to a new file
+    filename_out = ''.join(filename.split('.')[:-1])
+    if min_count is not None:
+        filename_out += '_min{}'.format(min_count)
+    if max_count is not None:
+        filename_out += '_max{}'.format(max_count)
+    filename_out += '_slots.json'
+
     with io.open(os.path.join(config.DATA_DIR, dataset, filename_out), 'w', encoding='utf8') as f_dataset_filtered:
         f_dataset_filtered.write(comment_block)
         json.dump(data_filtered, f_dataset_filtered, indent=4, ensure_ascii=False)
@@ -1349,10 +1466,13 @@ def main():
 
     # verify_slot_order('rest_e2e', 'trainset_e2e_utt_split.csv')
 
-    das_to_keep = ['inform']
-    filter_samples_by_da_type_json('tv', 'train.json', das_to_keep)
-    filter_samples_by_da_type_json('tv', 'valid.json', das_to_keep)
-    filter_samples_by_da_type_json('tv', 'test.json', das_to_keep)
+    # das_to_keep = ['inform']
+    # filter_samples_by_da_type_json('tv', 'train.json', das_to_keep)
+    # filter_samples_by_da_type_json('tv', 'valid.json', das_to_keep)
+    # filter_samples_by_da_type_json('tv', 'test.json', das_to_keep)
+
+    # filter_samples_by_slot_count_csv('rest_e2e', 'testset_e2e.csv', min_count=3, max_count=4)
+    filter_samples_by_slot_count_json('hotel', 'test_filtered.json', min_count=3, max_count=4)
 
     # get_vocab_overlap('rest_e2e', 'trainset_e2e.csv', 'devset_e2e.csv',
     #                   'hotel', 'train.json', 'valid.json')
