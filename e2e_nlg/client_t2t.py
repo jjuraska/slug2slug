@@ -1,5 +1,3 @@
-from __future__ import print_function
-
 import sys
 import itertools
 from operator import itemgetter
@@ -14,6 +12,7 @@ from tensor2tensor.utils import registry
 from tensor2tensor.utils import usr_dir
 from tensor2tensor.data_generators import text_encoder
 
+import config
 from data_loader import tokenize_mr
 from slot_aligner.slot_alignment import score_alignment
 from postprocessing import finalize_utterance
@@ -30,9 +29,9 @@ class UtteranceGenerationClient:
         self.hostports = hostports
         self.model_name = 'slug2slug'
 
-        usr_dir.import_usr_dir('./transformer')
+        usr_dir.import_usr_dir(config.T2T_DIR)
         problem = registry.problem('lang_gen')
-        hparams = tf.contrib.training.HParams(data_dir='./data')
+        hparams = tf.contrib.training.HParams(data_dir=config.DATA_DIR)
         problem.get_hparams(hparams)
 
         self.problem = problem

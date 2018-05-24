@@ -1,5 +1,6 @@
 import os
 import io
+import random
 import string
 import json
 import copy
@@ -1018,7 +1019,7 @@ def parse_slot_and_value(slot_value, val_sep, val_sep_closing=False):
 
 
 def delex_sample(mr, utterance=None, dataset=None, slots_to_delex=None, mr_only=False, input_concat=False, utterance_only=False):
-    """Delexicalize a single sample (MR and the corresponding utterance).
+    """Delexicalizes a single sample (MR and the corresponding utterance).
     By default, the slots 'name', 'near' and 'food' are delexicalized (for the E2E dataset).
 
     All fields (E2E): name, near, area, food, customer rating, familyFriendly, eatType, priceRange
@@ -1084,7 +1085,85 @@ def delex_sample(mr, utterance=None, dataset=None, slots_to_delex=None, mr_only=
         return utterance.split()
 
 
+def counterfeit_sample(mr, utt, dataset=None, slots_to_delex=None):
+    """Counterfeits a single E2E sample (MR and the corresponding utterance).
+    """
+
+    if slots_to_delex is not None:
+        delex_slots = slots_to_delex
+    else:
+        if dataset == 'rest_e2e':
+            delex_slots = ['name', 'near', 'food']
+        elif dataset == 'tv':
+            delex_slots = ['name', 'family', 'hdmiport', 'screensize', 'price', 'audio', 'resolution', 'powerconsumption', 'color', 'count']
+        elif dataset == 'laptop':
+            delex_slots = ['name', 'family', 'processor', 'memory', 'drive', 'battery', 'weight', 'dimension', 'design', 'platform', 'warranty', 'count']
+        elif dataset == 'hotel':
+            delex_slots = ['name', 'address', 'postcode', 'area', 'near', 'phone', 'count']
+        else:
+            # By default, assume the dataset is 'rest_e2e'
+            delex_slots = ['name', 'near', 'food']
+
+    mr_counterfeit = {}
+    utt = ' '.join(utt)
+    utt_counterfeit = utt
+
+    for slot_orig, value_orig in mr.items():
+        if slot_orig.rstrip(string.digits) in delex_slots:
+            # Substitute the slot with the corresponding slot from the target domain
+            slot_counterfeit = e2e_slot_to_hotel_slot(slot_orig)
+            while slot_counterfeit in mr_counterfeit:
+                slot_counterfeit = e2e_slot_to_hotel_slot(slot_orig)
+
+            if slot_orig == 'familyfriendly':
+                if slot_counterfeit == 'acceptscreditcards':
+                    value_counterfeit = 'credit card'
+                elif slot_counterfeit == 'dogsallowed':
+                    value_counterfeit = 'dog'
+                elif slot_counterfeit == 'hasinternet':
+                    value_counterfeit = 'internet'
+                else:
+                    value_counterfeit = value_orig
+
+                for w in ['families', 'children', 'kids']:
+                    utt_counterfeit = re.sub(r'\b{}\b'.format(w),
+                                             value_counterfeit + 's' if value_counterfeit != 'internet' else value_counterfeit,
+                                             utt)
+                    if utt_counterfeit != utt:
+                        break
+                if utt_counterfeit == utt:
+                    for w in ['family', 'child', 'kid']:
+                        utt_counterfeit = re.sub(r'\b{}\b'.format(w), value_counterfeit, utt)
+                        if utt_counterfeit != utt:
+                            break
+            elif slot_orig == 'customerrating' or slot_orig == 'food':
+                if slot_counterfeit == 'address':
+                    value_counterfeit = 'address'
+                elif slot_counterfeit == 'phone':
+                    value_counterfeit = 'phone number'
+                elif slot_counterfeit == 'postcode':
+                    value_counterfeit = 'postcode'
+                else:
+                    value_counterfeit = value_orig
+
+                if slot_orig == 'customerrating':
+                    for w in ['customer rating of', 'customer ratings', 'customer rating', 'ratings', 'rating']:
+                        utt_counterfeit = re.sub(r'\b{}\b'.format(w), value_counterfeit, utt)
+                        if utt_counterfeit != utt:
+                            break
+                elif slot_orig == 'food':
+                    utt_counterfeit = re.sub(r'\b{}\b'.format('food'), value_counterfeit, utt)
+
+            mr_counterfeit[slot_counterfeit] = value_orig
+            utt = utt_counterfeit
+
+    return mr_counterfeit, utt_counterfeit
+
+
 def create_placeholder(slot, value):
+    """Assemble a placeholder token for the given slot value.
+    """
+
     vowels = 'aeiou'
 
     placeholder = '<slot_'
@@ -1105,6 +1184,27 @@ def create_placeholder(slot, value):
     placeholder += (slot + '>')
 
     return placeholder
+
+
+def e2e_slot_to_hotel_slot(slot):
+    """Map an E2E slot onto a slot in the Hotel domain. If there are multiple tokens in the corresponding category
+    in the Hotel domain, randomly pick one from that category.
+    """
+
+    e2e_to_hotel = {
+        'eattype': ['type'],
+        'familyfriendly': ['acceptscreditcards', 'dogsallowed', 'hasinternet'],
+        'customerrating': ['address', 'phone', 'postcode'],
+        'food': ['address', 'phone', 'postcode']
+    }
+
+    if slot in e2e_to_hotel:
+        if len(e2e_to_hotel[slot]) == 1:
+            return e2e_to_hotel[slot][0]
+        else:
+            return random.choice(e2e_to_hotel[slot])
+    else:
+        return slot
 
 
 def token_seq_to_idx_seq(token_seqences, token2idx, max_output_seq_len):
@@ -1372,7 +1472,53 @@ def filter_samples_by_slot_count_json(dataset, filename, min_count=None, max_cou
         json.dump(data_filtered, f_dataset_filtered, indent=4, ensure_ascii=False)
 
 
+def counterfeit_dataset_from_e2e(filename, target_dataset):
+    """Creates a counterfeit target dataset from the E2E restaurant dataset by mapping the E2E slots onto similar
+    slots in the target domain. Boolean slots are handled by heuristically replacing the corresponding mention
+    in the reference utterance to reflect the slot from the target domain that replaced the original E2E one.
+    The counterfeit dataset is stored in a JSON format.
+    """
+
+    delex_slots = ['name', 'eattype', 'food', 'pricerange', 'customerrating', 'area', 'familyfriendly', 'near']
+    data_counterfeit = []
+    data_out = []
+
+    # Read in the data
+    data_cont = init_test_data(os.path.join(config.E2E_DATA_DIR, filename))
+    mrs, utterances = data_cont['data']
+    slot_sep, val_sep, val_sep_closing = data_cont['separators']
+
+    utterances = [preprocess_utterance(utt.lower()) for utt in utterances]
+
+    for mr, utt in zip(mrs, utterances):
+        mr_dict = OrderedDict()
+
+        # Extract the slot-value pairs into a dictionary
+        for slot_value in mr.split(slot_sep):
+            slot, value, _, _ = parse_slot_and_value(slot_value, val_sep, val_sep_closing)
+            mr_dict[slot] = value
+
+        # Delexicalize the MR and the utterance
+        data_counterfeit.append(counterfeit_sample(mr_dict, utt, dataset=target_dataset, slots_to_delex=delex_slots))
+
+    for mr, utt in data_counterfeit:
+        mr_modified = 'inform('
+        for slot, val in mr.items():
+            mr_modified += slot + '=\'' + val + '\';'
+        mr_modified = mr_modified[:-1] + ')'
+
+        data_out.append([mr_modified, utt, utt])
+
+    # Save the conterfeit dataset to a new file
+    filename_out = ''.join(filename.split('.')[:-1]) + '_counterfeit_{}.json'.format(target_dataset)
+    with io.open(os.path.join(config.DATA_DIR, target_dataset, filename_out), 'w', encoding='utf8') as f_dataset_counterfeit:
+        json.dump(data_out, f_dataset_counterfeit, indent=4, ensure_ascii=False)
+
+
 def get_vocab_overlap(dataset1, filename_train1, filename_dev1, dataset2, filename_train2, filename_dev2):
+    """Calculates the word overlap between the vocabularies of two datasets.
+    """
+
     data_trainset1 = os.path.join(config.DATA_DIR, dataset1, filename_train1)
     data_devset1 = os.path.join(config.DATA_DIR, dataset1, filename_dev1)
     data_trainset2 = os.path.join(config.DATA_DIR, dataset2, filename_train2)
@@ -1476,7 +1622,9 @@ def main():
     # filter_samples_by_da_type_json('tv', 'test.json', das_to_keep)
 
     # filter_samples_by_slot_count_csv('rest_e2e', 'testset_e2e.csv', min_count=3, max_count=4)
-    filter_samples_by_slot_count_json('hotel', 'test_filtered.json', min_count=3, max_count=4)
+    # filter_samples_by_slot_count_json('hotel', 'test_filtered.json', min_count=3, max_count=4)
+
+    counterfeit_dataset_from_e2e('testset_e2e_min3_max4_slots.csv', 'hotel')
 
     # get_vocab_overlap('rest_e2e', 'trainset_e2e.csv', 'devset_e2e.csv',
     #                   'hotel', 'train.json', 'valid.json')
