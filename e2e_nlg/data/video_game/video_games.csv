@@ -1,0 +1,107 @@
+﻿name,rating,player_perspective,genres,has_multiplayer,release_year,exp_release_date,developer,platforms,available_on_steam,has_linux_release,has_mac_release,esrb
+The Witcher 3: Wild Hunt,excellent,third person,"action-adventure, role-playing",no,2015,,CD Projekt RED,"PlayStation, Xbox, PC",yes,no,no,M (for Mature)
+God of War,excellent,third person,"action-adventure, platformer, role-playing",no,2018,,SIE Santa Monica Studio,PlayStation,,,,M (for Mature)
+The Last of Us,excellent,third person,"action-adventure, shooter",yes,2013,,Naughty Dog,PlayStation,,,,M (for Mature)
+Silent Hill 2,excellent,third person,"action-adventure, puzzle",no,2001,,Konami Computer Entertainment Tokyo,"PlayStation, Xbox, PC",no,no,no,M (for Mature)
+Horizon: Zero Dawn,excellent,third person,"action-adventure, role-playing, shooter",no,2017,,Guerrilla Games,PlayStation,,,,T (for Teen)
+The Legend of Zelda: Ocarina of Time,excellent,"bird view, third person","action-adventure, puzzle, role-playing",no,1998,,Nintendo EAD,Nintendo,,,,E (for Everyone)
+Mass Effect 2,excellent,third person,"action-adventure, role-playing, shooter",no,2010,,BioWare,"PlayStation, Xbox, PC",yes,no,no,M (for Mature)
+Metal Gear Solid 3: Snake Eater,excellent,"bird view, first person, third person","action-adventure, shooter, tactical",no,2004,,Konami Computer Entertainment Japan,PlayStation,,,,M (for Mature)
+Uncharted 4: A Thief's End,excellent,third person,"action-adventure, shooter",yes,2016,,Naughty Dog,PlayStation,,,,T (for Teen)
+Half-Life 2,excellent,first person,shooter,no,2004,,Valve Corporation,"PlayStation, Xbox, PC",yes,yes,yes,M (for Mature)
+Grand Theft Auto V,excellent,"first person, third person","action-adventure, driving/racing, shooter",yes,2013,,Rockstar North,"PlayStation, Xbox, PC",yes,no,no,M (for Mature)
+Resident Evil 4,excellent,third person,"action-adventure, shooter",no,2005,,Capcom Production Studio 4,"PlayStation, Xbox, Nintendo, PC",yes,no,no,M (for Mature)
+Super Mario World,excellent,side view,platformer,yes,1990,,Nintendo EAD,Nintendo,,,,E (for Everyone)
+Final Fantasy VII,excellent,"bird view, third person","adventure, role-playing",no,1997,,Square,"PlayStation, PC",yes,no,no,T (for Teen)
+Portal 2,excellent,first person,"platformer, puzzle, shooter",yes,2011,,Valve Corporation,"PlayStation, PC",yes,no,yes,E 10+ (for Everyone 10 and Older)
+Mafia,excellent,third person,"driving/racing, fighting, shooter",no,2002,,Illusion Softworks,"PlayStation, Xbox, PC",yes,no,no,M (for Mature)
+Tetris,excellent,side view,"arcade, puzzle, strategy",no,1986,,"Spectrum HoloByte, Inc.","Nintendo, PC",no,no,yes,
+Warcraft III: Reign of Chaos,excellent,bird view,real-time strategy,yes,2002,,Blizzard Entertainment,PC,no,no,yes,T (for Teen)
+Undertale,excellent,bird view,"adventure, indie, role-playing",no,2015,,tobyfox,"PlayStation, Nintendo Switch, PC",yes,yes,yes,E (for Everyone)
+Ori and the Blind Forest,excellent,side view,"adventure, platformer, puzzle",no,2015,,Moon Studios,"Xbox, PC",yes,no,no,E (for Everyone)
+Hellblade: Senua's Sacrifice,excellent,third person,"adventure, hack-and-slash, indie",no,2017,,Ninja Theory,"PlayStation, Xbox, PC",yes,no,no,M (for Mature)
+The Room,excellent,first person,"indie, point-and-click, puzzle",no,2012,,Fireproof Games,PC,yes,no,no,
+BioShock,good,first person,"action-adventure, role-playing, shooter",no,2007,,2K Boston,"PlayStation, Xbox, PC",yes,no,yes,M (for Mature)
+Max Payne,good,third person,"action-adventure, shooter",no,2001,,Remedy Entertainment,"PlayStation, Xbox, PC",yes,no,yes,M (for Mature)
+StarCraft,good,bird view,real-time strategy,yes,1998,,Blizzard Entertainment,PC,no,no,yes,T (for Teen)
+The Elder Scrolls V: Skyrim,good,"first person, third person","adventure, role-playing",no,2011,,Bethesda Game Studios,"PlayStation, Xbox, Nintendo, PC",yes,no,no,M (for Mature)
+Age of Empires II: The Age of Kings,good,bird view,real-time strategy,yes,1999,,Ensemble Studios,"PlayStation, PC",no,no,yes,T (for Teen)
+Diablo II,good,bird view,"hack-and-slash, role-playing",yes,2000,,Blizzard North,PC,no,no,yes,M (for Mature)
+Assassin's Creed II,good,third person,"action-adventure, platformer",no,2009,,Ubisoft Montreal,"PlayStation, Xbox, PC",yes,no,yes,M (for Mature)
+Sid Meier's Civilization V,good,bird view,"simulator, turn-based strategy",yes,2010,,Firaxis Games,PC,yes,yes,yes,E 10+ (for Everyone 10 and Older)
+Life is Strange,good,third person,role-playing,no,2015,,Dontnod Entertainment,"PlayStation, Xbox, PC",yes,yes,yes,M (for Mature)
+Far Cry 3,good,first person,"action-adventure, shooter",yes,2012,,Ubisoft Massive,"PlayStation, Xbox, PC",yes,no,no,M (for Mature)
+Rise of the Tomb Raider,good,"first person, third person","action-adventure, shooter",yes,2015,,Crystal Dynamics,"PlayStation, Xbox, PC",yes,no,no,M (for Mature)
+The Wolf Among Us,good,third person,"adventure, point-and-click",no,2013,,Telltale Games,"PlayStation, Xbox, PC",yes,no,yes,M (for Mature)
+Need for Speed: Most Wanted,good,"first person, third person",driving/racing,yes,2005,,EA Redwood Shores,"PlayStation, Xbox, Nintendo, PC",no,no,no,T (for Teen)
+Assetto Corsa,good,"first person, third person","driving/racing, simulator, sport",yes,2014,,Kunos Simulazioni,"PlayStation, Xbox, PC",yes,no,no,E (for Everyone)
+Rocket League,good,third person,"sport, vehicular combat",yes,2015,,Psyonix,"PlayStation, Xbox, Nintendo Switch, PC",yes,yes,yes,E (for Everyone)
+The Sims,good,bird view,"simulator, strategy",no,2000,,Maxis,"PlayStation, Xbox, Nintendo, PC",no,no,yes,T (for Teen)
+RollerCoaster Tycoon,good,bird view,"simulator, strategy",no,1999,,MicroProse,"Xbox, PC",no,no,no,E (for Everyone)
+Heroes of Might and Magic III: The Restoration of Erathia,good,bird view,turn-based strategy,yes,1999,,Loki Software,PC,no,yes,yes,E (for Everyone)
+Metro 2033,good,first person,"action, role-playing, shooter",no,2010,,4A Games,"Xbox, PC",yes,no,no,M (for Mature)
+Tom Clancy's Splinter Cell: Chaos Theory,good,"first person, third person","action, tactical",yes,2005,,Ubisoft Montreal,"PlayStation, Xbox, Nintendo, PC",yes,no,no,M (for Mature)
+Commandos: Behind Enemy Lines,good,bird view,"strategy, tactical",yes,1998,,Pyro Studios,PC,yes,no,no,T (for Teen)
+Crysis,good,first person,"action-adventure, shooter",yes,2007,,Crytek Frankfurt,"PlayStation, Xbox, PC",yes,no,no,M (for Mature)
+NBA 2K16,good,third person,sport,yes,2015,,Visual Concepts,"PlayStation, Xbox, PC",yes,no,no,E 10+ (for Everyone 10 and Older)
+Football Manager 2015,good,,"simulator, sport, strategy",yes,2014,,Sports Interactive,,,,,
+World of Warcraft,good,third person,"adventure, MMORPG",,2004,,Blizzard Entertainment,PC,no,no,yes,T (for Teen)
+Tomb Raider: The Last Revelation,good,third person,"action-adventure, puzzle, shooter",no,1999,,Core Design,"PlayStation, PC",yes,no,yes,T (for Teen)
+Little Nightmares,good,side view,"adventure, platformer, puzzle",no,2017,,Tarsier Studios,"PlayStation, Xbox, PC",yes,no,no,E (for Everyone)
+TrackMania Turbo,good,"first person, third person","arcade, driving/racing",yes,2016,,Nadeo,"PlayStation, Xbox, PC",yes,no,no,
+A Way Out,good,third person,action-adventure,yes,2018,,Hazelight Studios,"PlayStation, Xbox, PC",no,no,no,M (for Mature)
+Need for Speed: Shift,average,"first person, third person","driving/racing, simulator",yes,2009,,Slightly Mad Studios,"PlayStation, Xbox, PC",yes,no,no,E (for Everyone)
+Tony Hawk's Pro Skater 3,average,third person,sport,yes,2001,,Neversoft Entertainment,"PlayStation, Xbox, Nintendo, PC",no,no,yes,T (for Teen)
+Little Big Adventure,average,third person,action-adventure,no,1994,,Adeline Software International,"PlayStation, PC",yes,no,yes,T (for Teen)
+The Vanishing of Ethan Carter,average,first person,"adventure, indie",no,2014,,The Astronauts,"PlayStation, Xbox, PC",yes,no,no,M (for Mature)
+Worms: Reloaded,average,side view,"action, platformer, strategy",yes,2010,,Team17 Digital Ltd,PC,yes,yes,yes,E 10+ (for Everyone 10 and Older)
+Madden NFL 15,average,"bird view, third person","simulator, sport",yes,2014,,EA Tiburon,"PlayStation, Xbox",,,,
+Transport Tycoon,average,bird view,"simulator, strategy",no,1994,,Chris Sawyer,PC,no,no,no,E (for Everyone)
+Superhot,average,first person,"indie, shooter, tactical",no,2016,,SUPERHOT Team,"PlayStation, Xbox, PC",yes,yes,yes,T (for Teen)
+Payday 2,average,first person,"role-playing, shooter",yes,2013,,Overkill Software,"PlayStation, Xbox, Nintendo Switch, PC",yes,no,no,M (for Mature)
+Rollcage,average,third person,"action, driving/racing",yes,1999,,Attention To Detail,"PlayStation, PC",no,no,no,E (for Everyone)
+Never Alone,average,side view,"adventure, indie, platformer",yes,2014,,Upper One Games,"PlayStation, Xbox, PC",yes,no,no,T (for Teen)
+Tom Clancy's The Division,average,third person,"role-playing, shooter, tactical",yes,2016,,Massive Entertainment,"PlayStation, Xbox, PC",yes,no,no,M (for Mature)
+Driver,average,third person,"driving/racing, simulator",no,1999,,Reflections Interactive,"PlayStation, PC",no,no,yes,T (for Teen)
+Call of Duty: Advanced Warfare,average,first person,"action, shooter",yes,2014,,Sledgehammer Games,"PlayStation, Xbox, PC",yes,no,no,M (for Mature)
+Stronghold 2,average,bird view,"real-time strategy, simulator",yes,2005,,Firefly Studios,PC,yes,no,no,T (for Teen)
+F1 2014,average,"first person, third person","driving/racing, simulator, sport",yes,2014,,Codemasters Birmingham,"PlayStation, Xbox, PC",yes,no,no,
+NHL 15,average,bird view,"simulator, sport",yes,2014,,EA Canada,"PlayStation, Xbox",,,,E 10+ (for Everyone 10 and Older)
+FIFA 12,average,"bird view, side view","simulator, sport",yes,2011,,EA Canada,"PlayStation, Xbox, Nintendo, PC",no,no,yes,E (for Everyone)
+Need for Speed: The Run,average,"first person, third person",driving/racing,yes,2011,,Firebrand Games,"PlayStation, Xbox, Nintendo, PC",no,no,no,T (for Teen)
+Might & Magic: Heroes VI,average,bird view,"role-playing, turn-based strategy",yes,2011,,Black Hole Entertainment,PC,yes,no,no,T (for Teen)
+The Elder Scrolls Online,average,"first person, third person",MMORPG,,2014,,ZeniMax Online Studios,"PlayStation, Xbox, PC",yes,no,yes,M (for Mature)
+Super Bomberman,average,bird view,"action, strategy",no,1993,,Hudson Soft,Nintendo,no,no,no,E (for Everyone)
+Lara Croft and the Temple of Osiris,average,bird view,"action-adventure, puzzle, shooter",yes,2014,,Crystal Dynamics,"PlayStation, Xbox, PC",yes,no,no,T (for Teen)
+Mirror's Edge Catalyst,average,first person,"action-adventure, fighting",yes,2016,,EA Digital Illusions CE,"PlayStation, Xbox, PC",no,no,no,T (for Teen)
+Quantum Break,average,third person,"adventure, shooter",no,2016,,Remedy Entertainment,"Xbox, PC",yes,no,no,M (for Mature)
+Dirt: Showdown,average,"first person, third person","driving/racing, sport",yes,2012,,Codemasters Southam,"PlayStation, Xbox, PC",no,no,no,E 10+ (for Everyone 10 and Older)
+Outlast II,average,first person,"adventure, indie",no,2017,,Red Barrels,"PlayStation, Xbox, Nintendo Switch, PC",yes,no,yes,M (for Mature)
+Metroid Prime Pinball,average,,"pinball, puzzle",yes,2005,,Fuse Games,Nintendo,,,,E (for Everyone)
+The Forest of Doom,average,,"role-playing, text adventure",no,2014,,Tin Man Games,PC,yes,yes,yes,
+Alan Wake's American Nightmare,unimpressive,third person,"action-adventure, shooter",no,2012,,Remedy Entertainment,"Xbox, PC",yes,no,no,T (for Teen)
+Tomb Raider: The Angel of Darkness,unimpressive,third person,"action-adventure, shooter",no,2003,,Core Design,"PlayStation, PC",yes,no,yes,T (for Teen)
+Assassin's Creed Chronicles: India,unimpressive,side view,"action-adventure, platformer",no,2016,,Climax Studios,"PlayStation, Xbox, PC",yes,no,no,
+Layers of Fear,unimpressive,first person,"adventure, indie, point-and-click",no,2015,,Bloober Team,"PlayStation, Xbox, Nintendo Switch, PC",yes,no,no,M (for Mature)
+Dance Dance Revolution Universe 3,unimpressive,,music,yes,2008,,Konami,Xbox,,,,E (for Everyone)
+Euro Truck Simulator,unimpressive,first person,"driving/racing, simulator",no,2008,,SCS Software,PC,yes,no,yes,
+SpellForce 3,unimpressive,bird view,"real-time strategy, role-playing",yes,2017,,Grimlore Games,PC,yes,no,no,
+Need for Speed: Payback,unimpressive,third person,driving/racing,yes,2017,,Ghost Games,"PlayStation, Xbox, PC",no,no,no,T (for Teen)
+Skyforge,unimpressive,third person,"adventure, hack-and-slash, MMORPG",,2015,,Allods Online,"PlayStation, Xbox, PC",yes,no,no,
+Bus Driver,unimpressive,,"driving/racing, indie, simulation",no,2014,,SCS Software,PC,yes,no,no,E (for Everyone)
+Guitar Hero: Smash Hits,unimpressive,first person,music,yes,2009,,Beenox,"PlayStation, Xbox, Nintendo",,,,T (for Teen)
+Age of Wonders II: The Wizard's Throne,unimpressive,bird view,"role-playing, turn-based strategy",yes,2002,,Triumph Studios,PC,yes,no,no,T (for Teen)
+Small World 2,unimpressive,,"indie, trivia/board game",yes,2010,,Days of Wonder,PC,yes,yes,yes,
+Nightshade,unimpressive,,text adventure,no,2017,,Red Entertainment Corporation,PC,yes,no,no,
+MotorStorm: Apocalypse,unimpressive,third person,vehicular combat,yes,2011,,Evolution Studios,PlayStation,,,,T (for Teen)
+Trivial Pursuit,unimpressive,,trivia/board game,yes,2009,,Electronic Arts,"PlayStation, Nintendo",,,,
+The Crew 2,,third person,driving/racing,yes,,"June 29, 2018",Ivory Tower,"PlayStation, Xbox, PC",,,,
+World of Warcraft: Battle for Azeroth,,third person,MMORPG,,,"August 14, 2018",Blizzard Entertainment,PC,,,,
+Spider-Man,,third person,action-adventure,,,"September 7, 2018",Insomniac Games,PlayStation,,,,
+NBA 2K19,,,sport,,,"September 11, 2018",Visual Concepts,"PlayStation, Xbox, Nintendo Switch, PC",,,,
+Shadow of the Tomb Raider,,third person,"adventure, shooter",,,"September 14, 2018",Eidos Montréal,"PlayStation, Xbox, PC",,,,
+Battlefield V,,first person,"action, shooter",yes,,"October 16, 2018",EA Digital Illusions CE,"PlayStation, Xbox, PC",,,,
+Hitman 2,,third person,"shooter, tactical",,,"November 13, 2018",IO Interactive,"PlayStation, Xbox, PC",,,,
+Ancient Cities,,bird view,"simulator, strategy",,,"December 1, 2018",Uncasual Games,PC,,,,
+Anthem,,third person,"action-adventure, role-playing, shooter",yes,,"February 22, 2019",BioWare,"PlayStation, Xbox, PC",,,,
+Metro Exodus,,first person,"adventure, shooter, tactical",,,2019,4A Games,"PlayStation, Xbox, PC",,,,
