@@ -23,6 +23,7 @@ E2E_DATA_DIR = os.path.join(DATA_DIR, 'rest_e2e')
 TV_DATA_DIR = os.path.join(DATA_DIR, 'tv')
 LAPTOP_DATA_DIR = os.path.join(DATA_DIR, 'laptop')
 HOTEL_DATA_DIR = os.path.join(DATA_DIR, 'hotel')
+VIDEO_GAME_DATA_DIR = os.path.join(DATA_DIR, 'video_game')
 
 # Script paths
 METRICS_SCRIPT_PATH = os.path.join(METRICS_DIR, 'measure_scores.py')

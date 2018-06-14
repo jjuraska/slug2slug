@@ -6,11 +6,25 @@ from collections import OrderedDict
 import config
 
 
-NUM_VARS = 10
+NUM_VARIATIONS = 10
+slot_names = ['name',
+              'release_year',
+              'exp_release_date',
+              'developer',
+              'esrb',
+              'rating',
+              'genres',
+              'player_perspective',
+              'has_multiplayer',
+              'platforms',
+              'available_on_steam',
+              'has_linux_release',
+              'has_mac_release']
 
 
-def create_mrs_from_game_data(file_in, file_out):
+def create_mrs_from_game_data(file_in, file_out, file_out_hit):
     mrs = []
+    mr_dicts = []
 
     # Read in the CSV file with the video game data
     df = pd.read_csv(file_in, header=0, dtype=object, encoding='utf8')
@@ -20,9 +34,14 @@ def create_mrs_from_game_data(file_in, file_out):
     for i in range(3, 9):
         mr_len_distr[str(i)] = 0
 
+    # Initialize the slot distribution dictionary
+    slot_distr = OrderedDict()
+    for s in slot_names:
+        slot_distr[s] = 0
+
     for _, row in df.iterrows():
         mr_var_cnt = 0
-        while mr_var_cnt < NUM_VARS:
+        while mr_var_cnt < NUM_VARIATIONS:
             # Generate a random MR from the current game's data
             mr_dict = get_random_slot_comb(row)
 
@@ -33,35 +52,57 @@ def create_mrs_from_game_data(file_in, file_out):
             mr = mr[:-2]
 
             # If such an MR variant has not yet generated, save it
-            if mr not in mrs[-NUM_VARS:]:
+            if mr not in mrs[-NUM_VARIATIONS:]:
                 # DEBUG PRINT
                 # if len(mr_dict) > 8:
                 #     print('CHECK:', mr_dict)
 
                 mrs.append(mr)
+                mr_dicts.append(mr_dict)
+
                 mr_len_distr[str(len(mr_dict))] = mr_len_distr.get(str(len(mr_dict)), 0) + 1
+                for slot in mr_dict:
+                    slot_distr[slot] += 1
+
                 mr_var_cnt += 1
 
             # The not-yet-released games typically have fewer slots, so fewer MR variants are possible for them
             if 'exp_release_date' in mr_dict and mr_var_cnt >= 4:
                 break
 
-    # Print MR length distribution
-    print(mr_len_distr)
+    # Print the MR length distribution and the slot distribution
+    print('MR length distribution:\n')
+    print_stats_from_dict(mr_len_distr)
+    print('\nSlot distribution:\n')
+    print_stats_from_dict(slot_distr)
 
-    # Store the generated MRs to file
+    # Store the generated MRs to a text file
     with open(file_out, 'w', encoding='utf8') as f_out:
         f_out.write('\n'.join(mrs))
 
+    # Format the generated MRs for a HIT and store them in a CSV file
+    save_csv_for_hit(mr_dicts, file_out_hit)
+
 
 def get_random_slot_comb(row):
+    pc_op_systems = ['has_linux_release', 'has_mac_release']
+    pc_platforms = ['available_on_steam'] + pc_op_systems
+    linux_mac_remove_flag = False
+
     # Remove all NaN values from the row
     mr_dict = OrderedDict(row[~row.isnull()])
 
-    # if 'exp_release_date' in mr_dict:
-    #     return mr_dict
+    if 'developer' in mr_dict:
+        if np.random.random() < 0.5:
+            del mr_dict['developer']
+    if 'esrb' in mr_dict:
+        if np.random.random() < 0.5:
+            del mr_dict['esrb']
+    if 'has_multiplayer' in mr_dict:
+        if np.random.random() < 0.25:
+            del mr_dict['has_multiplayer']
 
-    max_slots = int(min(max(np.round(np.random.normal(loc=5.5, scale=1.5)), 3), 8))
+    max_slots = int(min(max(np.round(np.random.normal(loc=6.5, scale=1.5)), 3), 8))
     max_slots = min(max_slots, len(mr_dict))
     num_slots = len(mr_dict)
 
@@ -87,24 +128,39 @@ def get_random_slot_comb(row):
         if slot in ['name', 'genres', 'exp_release_date']:
             continue
 
-        # Mark the current slot for removal
-        mr_dict[slot] = None
-        num_slots -= 1
-
         # Apply slot dependency rules
         if slot == 'platforms':
-            for s in ['available_on_steam', 'has_linux_release', 'has_mac_release']:
-                if s in mr_dict:
-                    mr_dict[s] = None
-                    num_slots -= 1
-        elif slot == 'has_linux_release':
-            if 'has_mac_release' in mr_dict:
-                mr_dict['has_mac_release'] = None
+            pc_platform_slot_cnt = 0
+            for s in pc_platforms:
+                if mr_dict.get(s, None) is not None:
+                    pc_platform_slot_cnt += 1
+
+            if num_slots - pc_platform_slot_cnt - 1 >= 3:
+                mr_dict['platforms'] = None
                 num_slots -= 1
-        elif slot == 'has_mac_release':
-            if 'has_linux_release' in mr_dict:
-                mr_dict['has_linux_release'] = None
+                for s in pc_platforms:
+                    if mr_dict.get(s, None) is not None:
+                        mr_dict[s] = None
+                        num_slots -= 1
+        elif slot in pc_op_systems:
+            if num_slots - len(pc_op_systems) >= max_slots:
+                if linux_mac_remove_flag:
+                    for s in pc_op_systems:
+                        if s in mr_dict:
+                            mr_dict[s] = None
+                            num_slots -= 1
+                else:
+                    linux_mac_remove_flag = True
+        elif slot == 'available_on_steam':
+            if np.random.random() < 0.5:
+                continue
+            else:
+                mr_dict['available_on_steam'] = None
                 num_slots -= 1
+        else:
+            # Mark the current slot for removal
+            mr_dict[slot] = None
+            num_slots -= 1
 
     # Remove the marked slots from the MR
     mr_dict_reduced = OrderedDict()
@@ -115,11 +171,63 @@ def get_random_slot_comb(row):
     return mr_dict_reduced
 
 
-def main():
-    games_file_in = os.path.join(config.DATA_DIR, 'video_game', 'video_games.csv')
-    games_file_out = os.path.join(config.DATA_DIR, 'video_game', 'video_games_mrs.txt')
+def save_csv_for_hit(mr_dicts, filepath):
+    # Add HTML formatting to the values
+    for mr_dict in mr_dicts:
+        for slot, val in mr_dict.items():
+            if slot == 'name':
+                mr_dict[slot] = '<b>' + val + '</b>'
+            elif slot == 'release_year':
+                mr_dict[slot] = 'Year: ' + '<b>' + val + '</b>'
+            elif slot == 'exp_release_date':
+                mr_dict[slot] = 'Expected release date: ' + '<b>' + val + '</b>'
+            elif slot == 'developer':
+                mr_dict[slot] = 'Developer: ' + '<b>' + val + '</b>'
+            elif slot == 'esrb':
+                mr_dict[slot] = 'ESRB: ' + '<b>' + val + '</b>'
+            elif slot == 'rating':
+                mr_dict[slot] = 'Liking/Rating: ' + '<b>' + val + '</b>'
+            elif slot == 'genres':
+                mr_dict[slot] = 'Genres: ' + '<b>' + val + '</b>'
+            elif slot == 'player_perspective':
+                mr_dict[slot] = 'Player perspective: ' + '<b>' + val + '</b>'
+            elif slot == 'has_multiplayer':
+                mr_dict[slot] = 'Has multiplayer: ' + '<b>' + val + '</b>'
+            elif slot == 'platforms':
+                mr_dict[slot] = 'Platforms: ' + '<b>' + val + '</b>'
+            elif slot == 'available_on_steam':
+                mr_dict[slot] = 'Available on Steam: ' + '<b>' + val + '</b>'
+            elif slot == 'has_linux_release':
+                mr_dict[slot] = 'Has a Linux release: ' + '<b>' + val + '</b>'
+            elif slot == 'has_mac_release':
+                mr_dict[slot] = 'Has a Mac release: ' + '<b>' + val + '</b>'
 
-    create_mrs_from_game_data(games_file_in, games_file_out)
+    # Store the formatted MRs to a CSV file
+    df_hit = pd.DataFrame(mr_dicts, columns=slot_names)
+    df_hit.to_csv(filepath, index=False, encoding='utf8')
+
+
+def shuffle_samples_csv(filepath):
+    df = pd.read_csv(filepath, header=0, dtype=object, encoding='utf8')
+    df = df.sample(frac=1).reset_index(drop=True)
+
+    filepath_out = filepath.rstrip('.csv') + '_shuffled.csv'
+    df.to_csv(filepath_out, index=False, encoding='utf8')
+
+
+def print_stats_from_dict(stats_dict):
+    for key, val in stats_dict.items():
+        print(key + ': ' + str(val))
+
+
+def main():
+    games_file_in = os.path.join(config.VIDEO_GAME_DATA_DIR, 'video_games.csv')
+    games_file_out = os.path.join(config.VIDEO_GAME_DATA_DIR, 'video_games_mrs.txt')
+    games_file_out_hit = os.path.join(config.VIDEO_GAME_DATA_DIR, 'video_games_mrs_hit.csv')
+
+    create_mrs_from_game_data(games_file_in, games_file_out, games_file_out_hit)
+
+    shuffle_samples_csv(games_file_out_hit)
 
 
 if __name__ == '__main__':
