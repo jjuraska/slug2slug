@@ -615,6 +615,13 @@ def init_training_data(data_trainset, data_devset):
         slot_sep = ','
         val_sep = '['
         val_sep_closing = True
+    elif 'video_game' in data_trainset and 'video_game' in data_devset:
+        x_train, y_train = read_video_game_dataset_train(data_trainset)
+        x_dev, y_dev = read_video_game_dataset_dev(data_devset)
+        dataset_name = 'video_game'
+        slot_sep = ','
+        val_sep = '['
+        val_sep_closing = True
     elif 'tv' in data_trainset and 'tv' in data_devset:
         x_train, y_train, _ = read_tv_dataset_train(data_trainset)
         x_dev, y_dev, _ = read_tv_dataset_dev(data_devset)
@@ -650,6 +657,12 @@ def init_test_data(data_testset):
     if 'rest_e2e' in data_testset:
         x_test, y_test = read_rest_e2e_dataset_test(data_testset)
         dataset_name = 'rest_e2e'
+        slot_sep = ','
+        val_sep = '['
+        val_sep_closing = True
+    elif 'video_game' in data_testset:
+        x_test, y_test = read_rest_e2e_dataset_test(data_testset)
+        dataset_name = 'video_game'
         slot_sep = ','
         val_sep = '['
         val_sep_closing = True
@@ -700,6 +713,35 @@ def read_rest_e2e_dataset_dev(data_devset):
 
 
 def read_rest_e2e_dataset_test(data_testset):
+    # read the test data from file
+    df_test = pd.read_csv(data_testset, header=0, encoding='utf8')      # names=['mr', 'ref']
+    x_test = df_test.iloc[:, 0].tolist()
+    y_test = []
+    if df_test.shape[1] > 1:
+        y_test = df_test.iloc[:, 1].tolist()
+
+    return x_test, y_test
+
+
+def read_video_game_dataset_train(data_trainset):
+    # read the training data from file
+    df_train = pd.read_csv(data_trainset, header=0, encoding='utf8')    # names=['mr', 'ref']
+    x_train = df_train.mr.tolist()
+    y_train = df_train.ref.tolist()
+
+    return x_train, y_train
+
+
+def read_video_game_dataset_dev(data_devset):
+    # read the development data from file
+    df_dev = pd.read_csv(data_devset, header=0, encoding='utf8')        # names=['mr', 'ref']
+    x_dev = df_dev.mr.tolist()
+    y_dev = df_dev.ref.tolist()
+
+    return x_dev, y_dev
+
+
+def read_video_game_dataset_test(data_testset):
     # read the test data from file
     df_test = pd.read_csv(data_testset, header=0, encoding='utf8')      # names=['mr', 'ref']
     x_test = df_test.iloc[:, 0].tolist()
@@ -1033,6 +1075,8 @@ def delex_sample(mr, utterance=None, dataset=None, slots_to_delex=None, mr_only=
     else:
         if dataset == 'rest_e2e':
             delex_slots = ['name', 'near', 'food']
+        elif dataset == 'video_game':
+            delex_slots = ['name', 'release_year', 'exp_release_date', 'developer']
         elif dataset == 'tv':
             delex_slots = ['name', 'family', 'hdmiport', 'screensize', 'price', 'audio', 'resolution', 'powerconsumption', 'color', 'count']
         elif dataset == 'laptop':
@@ -1059,11 +1103,14 @@ def delex_sample(mr, utterance=None, dataset=None, slots_to_delex=None, mr_only=
                     values_alt.append(re.sub(r'\b{}\b'.format('street'), 'st', value))
                 elif 'avenue' in value:
                     values_alt.append(re.sub(r'\b{}\b'.format('avenue'), 'ave', value))
+            elif slot in ['developer', 'exp_release_date']:
+                values_alt = [value.replace(';', ',')]
 
             for val in values_alt:
                 # Replace the value (whole-word matches only) with the placeholder
                 if not mr_only:
-                    utterance_delexed = re.sub(r'\b{}\b'.format(val), placeholder, utterance)
+                    val_preproc = ' '.join(word_tokenize(val))
+                    utterance_delexed = re.sub(r'\b{}\b'.format(val_preproc), placeholder, utterance)
                     if utterance_delexed != utterance:
                         break
                 else:
@@ -1094,6 +1141,8 @@ def counterfeit_sample(mr, utt, dataset=None, slots_to_delex=None):
     else:
         if dataset == 'rest_e2e':
             delex_slots = ['name', 'near', 'food']
+        elif dataset == 'video_game':
+            delex_slots = ['name', 'release_year', 'exp_release_date', 'developer']
         elif dataset == 'tv':
             delex_slots = ['name', 'family', 'hdmiport', 'screensize', 'price', 'audio', 'resolution', 'powerconsumption', 'color', 'count']
         elif dataset == 'laptop':
@@ -1165,7 +1214,6 @@ def create_placeholder(slot, value):
     """
 
     vowels = 'aeiou'
-
     placeholder = '<slot_'
 
     value = value.lower()
@@ -1174,7 +1222,7 @@ def create_placeholder(slot, value):
     else:
         placeholder += 'con_'
 
-    if slot == 'name':
+    if slot in ['name', 'developer']:
         if value.startswith(('the ', 'a ', 'an ')):
             placeholder += 'det_'
     elif slot == 'food':
@@ -1242,6 +1290,18 @@ def count_unique_mrs():
 
     df = pd.read_csv(os.path.join(config.E2E_DATA_DIR, 'testset_e2e.csv'), header=0, encoding='utf8')
     print('test:\t', len(df.iloc[:, 0].unique()), '/', len(df.iloc[:, 0]))
+
+
+    print('Unique MRs (Video Games):')
+
+    df = pd.read_csv(os.path.join(config.VIDEO_GAME_DATA_DIR, 'trainset.csv'), header=0, encoding='utf8')
+    print('train:\t', len(df.iloc[:, 0].unique()), '/', len(df.iloc[:, 0]))
+
+    # df = pd.read_csv(os.path.join(config.VIDEO_GAME_DATA_DIR, 'devset.csv'), header=0, encoding='utf8')
+    # print('valid:\t', len(df.iloc[:, 0].unique()), '/', len(df.iloc[:, 0]))
+    #
+    # df = pd.read_csv(os.path.join(config.VIDEO_GAME_DATA_DIR, 'testset.csv'), header=0, encoding='utf8')
+    # print('test:\t', len(df.iloc[:, 0].unique()), '/', len(df.iloc[:, 0]))
 
 
     print('\nUnique MRs (TV):')

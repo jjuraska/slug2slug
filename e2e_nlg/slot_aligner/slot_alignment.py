@@ -12,6 +12,286 @@ from nltk.corpus import wordnet
 import config
 
 
+NEG_THRESH = 10
+
+negation_cues = [
+    'no', 'not', 'non', 'none', 'nor', 'n\'t', 'isnt', 'cant', 'cannot', 'doesnt', 'dont', 'didnt',
+    'lack', 'lacks', 'lacking', 'unavailable', 'without'
+]
+
+
+def find_first_in_list(val, lst):
+    try:
+        return lst.index(val)
+    except ValueError as e:
+        return -1
+
+
+def find_all_in_list(val, lst):
+    positions = []
+
+    for pos, elem in enumerate(lst):
+        if elem == val:
+            positions.append(pos)
+
+    return positions
+
+
+def playerPerspectiveSlot(sent, value):
+    leftmost_pos = -1
+
+    sent = re.sub('-', ' ', sent)
+    sent_tok = word_tokenize(sent)
+
+    # Split the slot-value into individual items and extract the first word of each item only
+    items = [item.split(' ')[0] for item in value.split('; ')]
+
+    # Search for all individual items exhaustively
+    for item in items:
+        idx = find_first_in_list(item, sent_tok)
+        if idx >= 0:
+            pos = sent.find(item)
+            if leftmost_pos == -1 or pos < leftmost_pos:
+                leftmost_pos = pos
+        else:
+            # Alternative for when the value is 'first person'
+            if value == 'first person':
+                idx2 = find_first_in_list('fps', sent_tok)
+                if idx2 >= 0:
+                    return sent.find('fps')
+            elif value == 'bird view':
+                pos2 = sent.find('top down')
+                if pos2 >= 0:
+                    return pos2
+
+            return -1
+
+    return leftmost_pos
+
+
+def genreSlot(sent, value):
+    leftmost_pos = -1
+
+    # Split the slot-value into individual items
+    genres = [item for item in value.split('; ')]
+
+    # Define root forms of the genre terms
+    genres_root = []
+    for genre in genres:
+        if genre == 'action-adventure':
+            genres_root.extend(['action', 'adventur'])
+        elif genre == 'adventure':
+            genres_root.append('adventur')
+        elif genre == 'driving/racing':
+            genres_root.append(['driving', 'drive', 'racing', 'race'])
+        elif genre == 'fighting':
+            genres_root.append('fight')
+        elif genre == 'mmorpg':
+            genres_root.append(['mmorpg', 'massively'])
+        elif genre == 'platformer':
+            genres_root.append(['platformer', 'platforming'])
+        elif genre == 'real-time strategy':
+            genres_root.append(['real-time', 'rts'])
+        elif genre == 'role-playing':
+            genres_root.append(['role-play', 'rpg'])
+        elif genre == 'shooter':
+            genres_root.append(['shoot', 'fps'])
+        elif genre == 'simulation':
+            genres_root.append(['simulat', ' sim'])
+        elif genre == 'strategy':
+            genres_root.append('strateg')
+        elif genre == 'tactical':
+            genres_root.append('tactic')
+        elif genre == 'trivia/board game':
+            genres_root.extend(['trivia', 'board'])
+        elif genre == 'turn-based strategy':
+            genres_root.append('turn-based')
+        elif genre == 'vehicular combat':
+            genres_root.extend(['vehic', 'combat'])
+        else:
+            genres_root.append(genre)
+
+    # DEBUG PRINT
+    # print(genres_root)
+
+    # Search for all individual items exhaustively
+    for keywords in genres_root:
+        variant_found = False
+
+        if not isinstance(keywords, list):
+            keywords = [keywords]
+
+        for kw in keywords:
+            pos = sent.find(kw)
+            if pos >= 0:
+                variant_found = True
+                if leftmost_pos == -1 or pos < leftmost_pos:
+                    leftmost_pos = pos
+
+        if not variant_found:
+            # DEBUG PRINT
+            print('GENRE NOT FOUND:', keywords)
+
+            return -1
+
+    return leftmost_pos
+
+
+def platformsSlot(sent, value):
+    leftmost_pos = -1
+
+    # Split the slot-value into individual items and extract the first word of each item only
+    platforms = [item.split(' ')[0] for item in value.split('; ')]
+
+    # Search for all individual items exhaustively
+    for platform in platforms:
+        pos = sent.find(platform)
+        if pos >= 0:
+            if leftmost_pos == -1 or pos < leftmost_pos:
+                leftmost_pos = pos
+        else:
+            return pos
+
+    return leftmost_pos
+
+
+def esrbSlot(sent, value):
+    pos = -1
+    sent = re.sub('-', ' ', sent)
+
+    rating_poss_vals = [value]
+    if value == 'e (for everyone)':
+        rating_poss_vals.extend(['e rated', 'rated e', 'e rating', 'rating e', 'everyone', 'all'])
+    elif value == 'e 10+ (for everyone 10 and older)':
+        rating_poss_vals.extend(['e 10+', 'e 10 plus', 'everyone 10', 'everyone above', 'everyone over', 'everyone older'])
+    elif value == 't (for teen)':
+        rating_poss_vals.extend(['t rated', 'rated t', 't rating', 'rating t', 'teen', 'teens', 'teenagers'])
+    elif value == 'm (for mature)':
+        rating_poss_vals.extend(['m rated', 'rated m', 'm rating', 'rating m', 'mature', 'adult'])
+
+    sent_tok = word_tokenize(sent.lower())
+
+    for rating_val in rating_poss_vals:
+        if rating_val.count(' ') == 0:
+            idx = find_first_in_list(rating_val, sent_tok)
+            if idx >= 0:
+                # if len(rating_val) == 1:
+                #     return sent.find(rating_val)
+                # else:
+                return sent.find(rating_val)
+        else:
+            pos = sent.find(rating_val)
+            if pos >= 0:
+                return pos
+
+    return pos
+
+
+def ratingSlot(sent, value):
+    pos = -1
+    rating_poss_vals = [value]
+
+    if value == 'excellent':
+        rating_poss_vals.extend(['amazing', 'awesome', 'fantastic', 'great', 'high'])
+    elif value == 'good':
+        rating_poss_vals.extend(['acclaim', 'fun', 'positive', 'solid'])
+    elif value == 'average':
+        rating_poss_vals.extend(['decent', 'middle', 'middling', 'okay'])
+    elif value == 'poor':
+        rating_poss_vals.extend(['bad', 'lackluster', 'low', 'negative', 'poorly'])
+
+    for rating_val in rating_poss_vals:
+        pos = sent.find(rating_val)
+        if pos >= 0:
+            return pos
+
+    return pos
+
+
+def hasMultiplayerSlot(sent, value):
+    sent = re.sub('-', ' ', sent.lower())
+    sent_tok = word_tokenize(sent)
+
+    for sval in ['multiplayer', 'friends']:
+        idx = find_first_in_list(sval, sent_tok)
+        if idx >= 0:
+            pos = sent.find(sval)
+            if value == 'no':
+                for negation in negation_cues:
+                    if negation in sent_tok:
+                        neg_idxs = find_all_in_list(negation, sent_tok)
+                        for neg_idx in neg_idxs:
+                            if idx - neg_idx < NEG_THRESH:
+                                return pos
+            else:
+                return pos
+
+    # Alternative for when the value is 'no'
+    if value == 'no':
+        pos = sent.find('single player')
+        if pos >= 0:
+            return pos
+
+    return -1
+
+
+def availableOnSteamSlot(sent, value):
+    sent_tok = word_tokenize(sent.lower())
+
+    idx = find_first_in_list('steam', sent_tok)
+    if idx >= 0:
+        pos = sent.find('steam')
+        if value == 'no':
+            for negation in negation_cues:
+                if negation in sent_tok:
+                    neg_idxs = find_all_in_list(negation, sent_tok)
+                    for neg_idx in neg_idxs:
+                        if idx - neg_idx < NEG_THRESH:
+                            return pos
+        else:
+            return pos
+
+    return -1
+
+
+def hasLinuxReleaseSlot(sent, value):
+    sent_tok = word_tokenize(sent.lower())
+
+    idx = find_first_in_list('linux', sent_tok)
+    if idx >= 0:
+        pos = sent.find('linux')
+        if value == 'no':
+            for negation in negation_cues + ['luck']:
+                if negation in sent_tok:
+                    neg_idxs = find_all_in_list(negation, sent_tok)
+                    for neg_idx in neg_idxs:
+                        if idx - neg_idx < NEG_THRESH:
+                            return pos
+        else:
+            return pos
+
+    return -1
+
+
+def hasMacReleaseSlot(sent, value):
+    sent_tok = word_tokenize(sent.lower())
+
+    idx = find_first_in_list('mac', sent_tok)
+    if idx >= 0:
+        pos = sent.find('mac')
+        if value == 'no':
+            for negation in negation_cues + ['luck']:
+                if negation in sent_tok:
+                    neg_idxs = find_all_in_list(negation, sent_tok)
+                    for neg_idx in neg_idxs:
+                        if idx - neg_idx < NEG_THRESH:
+                            return pos
+        else:
+            return pos
+
+    return -1
+
+
 # TODO 139 instances in training which have the slot, but no value in the utterance
 # TODO verify this is true... can we just delete this arg?
 def familyFriendlySlot(sent, value):
@@ -45,7 +325,7 @@ def familyFriendlySlot(sent, value):
                 return pos
         elif value == 'no' and 'adult' in sent:
             return curr.find('adult')
-    
+
     # print(curr)
     return pos
 
@@ -611,6 +891,34 @@ def split_content(old_mrs, old_utterances, filename, use_heuristics=True, permut
                         if isforbusinesscomputingSlot(sent, value):
                             found_slot = True
 
+                    elif slot_root == "player_perspective":
+                        if playerPerspectiveSlot(sent, value) >= 0:
+                            found_slot = True
+                    elif slot_root == "genres":
+                        if genreSlot(sent, value) >= 0:
+                            found_slot = True
+                    elif slot_root == "platforms":
+                        if platformsSlot(sent, value) >= 0:
+                            found_slot = True
+                    elif slot_root == "esrb":
+                        if esrbSlot(sent, value) >= 0:
+                            found_slot = True
+                    elif slot_root == "rating":
+                        if ratingSlot(sent, value) >= 0:
+                            found_slot = True
+                    elif slot_root == "has_multiplayer":
+                        if hasMultiplayerSlot(sent, value) >= 0:
+                            found_slot = True
+                    elif slot_root == "available_on_steam":
+                        if availableOnSteamSlot(sent, value) >= 0:
+                            found_slot = True
+                    elif slot_root == "has_linux_release":
+                        if hasLinuxReleaseSlot(sent, value) >= 0:
+                            found_slot = True
+                    elif slot_root == "has_mac_release":
+                        if hasMacReleaseSlot(sent, value) >= 0:
+                            found_slot = True
+
                 if found_slot:
                     new_slots[slot] = value
                     slots_found.add(slot)
@@ -695,6 +1003,7 @@ def score_alignment(curr_utterance, curr_mr, scoring="default+over-class"):
                         if slot_cnt > 1:
                             num_slot_overgens += slot_cnt - 1
                         found_slot = True
+
                 elif slot_root == "name":
                     for pronoun in ["it", "its", "it's", "they"]:
                         if pronoun in word_tokenize(curr_utterance.lower()):
@@ -763,6 +1072,34 @@ def score_alignment(curr_utterance, curr_mr, scoring="default+over-class"):
                     if isforbusinesscomputingSlot(sent, value):
                         found_slot = True
 
+                elif slot_root == "player_perspective":
+                    if playerPerspectiveSlot(sent, value) >= 0:
+                        found_slot = True
+                elif slot_root == "genres":
+                    if genreSlot(sent, value) >= 0:
+                        found_slot = True
+                elif slot_root == "platforms":
+                    if platformsSlot(sent, value) >= 0:
+                        found_slot = True
+                elif slot_root == "esrb":
+                    if esrbSlot(sent, value) >= 0:
+                        found_slot = True
+                elif slot_root == "rating":
+                    if ratingSlot(sent, value) >= 0:
+                        found_slot = True
+                elif slot_root == "has_multiplayer":
+                    if hasMultiplayerSlot(sent, value) >= 0:
+                        found_slot = True
+                elif slot_root == "available_on_steam":
+                    if availableOnSteamSlot(sent, value) >= 0:
+                        found_slot = True
+                elif slot_root == "has_linux_release":
+                    if hasLinuxReleaseSlot(sent, value) >= 0:
+                        found_slot = True
+                elif slot_root == "has_mac_release":
+                    if hasMacReleaseSlot(sent, value) >= 0:
+                        found_slot = True
+
         if found_slot:
             slots_found.add(slot)
 
@@ -786,7 +1123,8 @@ def count_errors(utt, mr):
     """Counts unrealized and overgenerated slots in a lexicalized utterance.
     """
 
-    non_categorical_slots = ['familyfriendly', 'pricerange', 'customerrating']
+    non_categorical_slots = ['familyfriendly', 'pricerange', 'customerrating',
+                             'rating', 'has_multiplayer', 'available_on_steam', 'has_linux_release', 'has_mac_release']
 
     slots_found = set()
     sent = utt
@@ -811,6 +1149,7 @@ def count_errors(utt, mr):
                 if value.lower() in sent:
                     value_cnt = sent.count(value.lower())
                     if slot_root not in non_categorical_slots and value_cnt > 1:
+                        print('-> OVERGEN SLOT:', slot_root)
                         num_slot_overgens += value_cnt - 1
                     found_slot = True
                 elif value == 'dontcare':
@@ -887,6 +1226,34 @@ def count_errors(utt, mr):
                         found_slot = True
                 elif slot_root == 'isforbusinesscomputing':
                     if isforbusinesscomputingSlot(sent, value):
+                        found_slot = True
+
+                elif slot_root == "player_perspective":
+                    if playerPerspectiveSlot(sent, value) >= 0:
+                        found_slot = True
+                elif slot_root == "genres":
+                    if genreSlot(sent, value) >= 0:
+                        found_slot = True
+                elif slot_root == "platforms":
+                    if platformsSlot(sent, value) >= 0:
+                        found_slot = True
+                elif slot_root == "esrb":
+                    if esrbSlot(sent, value) >= 0:
+                        found_slot = True
+                elif slot_root == "rating":
+                    if ratingSlot(sent, value) >= 0:
+                        found_slot = True
+                elif slot_root == "has_multiplayer":
+                    if hasMultiplayerSlot(sent, value) >= 0:
+                        found_slot = True
+                elif slot_root == "available_on_steam":
+                    if availableOnSteamSlot(sent, value) >= 0:
+                        found_slot = True
+                elif slot_root == "has_linux_release":
+                    if hasLinuxReleaseSlot(sent, value) >= 0:
+                        found_slot = True
+                elif slot_root == "has_mac_release":
+                    if hasMacReleaseSlot(sent, value) >= 0:
                         found_slot = True
 
         if found_slot:
@@ -980,6 +1347,25 @@ def find_alignment(utt, mr):
         # elif slot_root == 'isforbusinesscomputing':
         #     if isforbusinesscomputingSlot(utt, value):
         #         found_slot = True
+
+        elif slot_root == "player_perspective":
+            slot_pos = playerPerspectiveSlot(utt, value)
+        elif slot_root == "genres":
+            slot_pos = genreSlot(utt, value)
+        elif slot_root == "platforms":
+            slot_pos = platformsSlot(utt, value)
+        elif slot_root == "esrb":
+            slot_pos = esrbSlot(utt, value)
+        elif slot_root == "rating":
+            slot_pos = ratingSlot(utt, value)
+        elif slot_root == "has_multiplayer":
+            slot_pos = hasMultiplayerSlot(utt, value)
+        elif slot_root == "available_on_steam":
+            slot_pos = availableOnSteamSlot(utt, value)
+        elif slot_root == "has_linux_release":
+            slot_pos = hasLinuxReleaseSlot(utt, value)
+        elif slot_root == "has_mac_release":
+            slot_pos = hasMacReleaseSlot(utt, value)
 
         if slot_pos >= 0:
             alignment.append((slot_pos, slot, value))

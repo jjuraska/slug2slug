@@ -58,6 +58,7 @@ def score_slot_realizations(dataset, filename):
 
     # Read in the data
     data_cont = data_loader.init_test_data(os.path.join(config.EVAL_DIR, dataset, filename))
+    dataset_name = data_cont['dataset_name']
     mrs, utterances = data_cont['data']
     slot_sep, val_sep, val_sep_closing = data_cont['separators']
 
@@ -82,7 +83,7 @@ def score_slot_realizations(dataset, filename):
             mr_dict['food'] = food_val
 
         # delexicalize the MR and the utterance
-        utterances[i] = ' '.join(data_loader.delex_sample(mr_dict, utterances[i]))
+        utterances[i] = ' '.join(data_loader.delex_sample(mr_dict, utterances[i], dataset=dataset_name))
 
         # count the missing and over-generated slots in the utterance
         cur_errors, cur_missing_slots = count_errors(utterances[i], mr_dict)
@@ -165,8 +166,10 @@ def score_emphasis(dataset, filename):
 
 if __name__ == '__main__':
     # align_slots('rest_e2e', 'trainset_e2e.csv')
+    # align_slots('video_game', 'trainset.csv')
 
-    score_slot_realizations(os.path.join('predictions-rest_e2e', 'devset'), 'predictions_devset_TRANS_tmp.csv')
+    # score_slot_realizations(os.path.join('predictions-rest_e2e', 'devset'), 'predictions_devset_TRANS_tmp.csv')
     # score_slot_realizations(os.path.join('predictions-rest_e2e', 'testset'), 'predictions_testset_TRANS_tmp.csv')
+    score_slot_realizations(os.path.join('predictions-video_game', 'testset'), 'trainset.csv')
 
     # score_emphasis('predictions-rest_e2e_stylistic_selection/devset', 'predictions RNN (4+4) augm emph (reference).csv')
