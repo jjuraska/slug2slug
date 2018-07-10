@@ -1097,12 +1097,19 @@ def delex_sample(mr, utterance=None, dataset=None, slots_to_delex=None, mr_only=
             placeholder = create_placeholder(slot, value)
 
             values_alt = [value]
-            # Specify alternative representations of the value
+            # Specify special rules for individual slots, including alternative representations of the values
             if slot == 'address':
                 if 'street' in value:
                     values_alt.append(re.sub(r'\b{}\b'.format('street'), 'st', value))
                 elif 'avenue' in value:
                     values_alt.append(re.sub(r'\b{}\b'.format('avenue'), 'ave', value))
+            elif slot == 'name':
+                if 'developer' in mr and value in mr['developer']:
+                    dev_placeholder = create_placeholder('developer', mr['developer'])
+                    if not mr_only:
+                        dev_val_preproc = ' '.join(word_tokenize(mr['developer']))
+                        utterance = re.sub(r'\b{}\b'.format(dev_val_preproc), dev_placeholder, utterance)
+                        mr_update['developer'] = dev_placeholder
             elif slot in ['developer', 'exp_release_date']:
                 values_alt = [value.replace(';', ',')]
 
@@ -1117,7 +1124,7 @@ def delex_sample(mr, utterance=None, dataset=None, slots_to_delex=None, mr_only=
                     utterance_delexed = utterance
 
             # Do not replace value with a placeholder token unless there is an exact match in the utterance
-            if mr_only or utterance_delexed != utterance or slot == 'name':
+            if slot not in mr_update and (mr_only or utterance_delexed != utterance or slot == 'name'):
                 mr_update[slot] = placeholder
                 utterance = utterance_delexed
         else:

@@ -22,7 +22,7 @@ slot_names = ['name',
               'has_mac_release']
 
 
-def create_mrs_from_game_data(file_in, file_out, file_out_hit):
+def create_mrs_from_game_data(file_in, file_out, file_out_hit=None):
     mrs = []
     mr_dicts = []
 
@@ -81,7 +81,54 @@ def create_mrs_from_game_data(file_in, file_out, file_out_hit):
         f_out.write('\n'.join(mrs))
 
     # Format the generated MRs for a HIT and store them in a CSV file
-    save_csv_for_hit(mr_dicts, file_out_hit)
+    if file_out_hit is not None:
+        save_csv_for_hit(mr_dicts, file_out_hit)
+
+
+def create_mrs_from_csv(file_in, file_out):
+    """Generates MRs in a textual form from an input CSV file in which each column corresponds to one slot.
+    """
+
+    mrs = []
+
+    # Read in the CSV file with slot values in separate columns
+    df = pd.read_csv(file_in, header=0, dtype=object, encoding='utf8')
+
+    # Initialize the MR length distribution dictionary
+    mr_len_distr = OrderedDict()
+    for i in range(3, 9):
+        mr_len_distr[str(i)] = 0
+
+    # Initialize the slot distribution dictionary
+    slot_distr = OrderedDict()
+    for s in slot_names:
+        slot_distr[s] = 0
+
+    for _, row in df.iterrows():
+        # Remove all NaN values from the row
+        mr_dict = OrderedDict(row[~row.isnull()])
+
+        # Assemble the MR in a string form
+        mr = ''
+        for slot, val in mr_dict.items():
+            mr += slot + '[' + str(val).replace(',', ';') + '], '
+        mr = mr[:-2]
+
+        mrs.append(mr)
+
+        mr_len_distr[str(len(mr_dict))] = mr_len_distr.get(str(len(mr_dict)), 0) + 1
+        for slot in mr_dict:
+            slot_distr[slot] += 1
+
+    # Print the MR length distribution and the slot distribution
+    print('MR length distribution:\n')
+    print_stats_from_dict(mr_len_distr)
+    print('\nSlot distribution:\n')
+    print_stats_from_dict(slot_distr)
+
+    # Store the generated MRs to a text file
+    with open(file_out, 'w', encoding='utf8') as f_out:
+        f_out.write('\n'.join(mrs))
 
 
 def get_random_slot_comb(row):
@@ -221,13 +268,19 @@ def print_stats_from_dict(stats_dict):
 
 
 def main():
-    games_file_in = os.path.join(config.VIDEO_GAME_DATA_DIR, 'video_games.csv')
-    games_file_out = os.path.join(config.VIDEO_GAME_DATA_DIR, 'video_games_mrs.txt')
-    games_file_out_hit = os.path.join(config.VIDEO_GAME_DATA_DIR, 'video_games_mrs_hit.csv')
+    # games_file_in = os.path.join(config.VIDEO_GAME_DATA_DIR, 'video_games.csv')
+    # games_file_out = os.path.join(config.VIDEO_GAME_DATA_DIR, 'video_games_mrs.txt')
+    # games_file_out_hit = os.path.join(config.VIDEO_GAME_DATA_DIR, 'video_games_mrs_hit.csv')
 
-    create_mrs_from_game_data(games_file_in, games_file_out, games_file_out_hit)
+    # create_mrs_from_game_data(games_file_in, games_file_out, games_file_out_hit)
+    # shuffle_samples_csv(games_file_out_hit)
 
-    shuffle_samples_csv(games_file_out_hit)
+    # ----
+
+    file_in = os.path.join(config.VIDEO_GAME_DATA_DIR, 'results_combined_and_fixed.csv')
+    file_out = os.path.join(config.VIDEO_GAME_DATA_DIR, 'results_combined_and_fixed_mrs.txt')
+
+    create_mrs_from_csv(file_in, file_out)
 
 
 if __name__ == '__main__':

@@ -15,8 +15,12 @@ import config
 NEG_THRESH = 10
 
 negation_cues = [
-    'no', 'not', 'non', 'none', 'nor', 'n\'t', 'isnt', 'cant', 'cannot', 'doesnt', 'dont', 'didnt',
+    'no', 'not', 'non', 'none', 'nor', 'never',
+    'n\'t', 'isnt', 'cant', 'cannot', 'doesnt', 'dont', 'didnt',
     'lack', 'lacks', 'lacking', 'unavailable', 'without'
+]
+negation_phrases = [
+    'everything but', 'out of luck'
 ]
 
 
@@ -111,9 +115,6 @@ def genreSlot(sent, value):
         else:
             genres_root.append(genre)
 
-    # DEBUG PRINT
-    # print(genres_root)
-
     # Search for all individual items exhaustively
     for keywords in genres_root:
         variant_found = False
@@ -129,9 +130,6 @@ def genreSlot(sent, value):
                     leftmost_pos = pos
 
         if not variant_found:
-            # DEBUG PRINT
-            print('GENRE NOT FOUND:', keywords)
-
             return -1
 
     return leftmost_pos
@@ -194,11 +192,11 @@ def ratingSlot(sent, value):
     if value == 'excellent':
         rating_poss_vals.extend(['amazing', 'awesome', 'fantastic', 'great', 'high'])
     elif value == 'good':
-        rating_poss_vals.extend(['acclaim', 'fun', 'positive', 'solid'])
+        rating_poss_vals.extend(['acclaim', 'fun', 'positive', 'solid', 'well'])
     elif value == 'average':
-        rating_poss_vals.extend(['decent', 'middle', 'middling', 'okay'])
+        rating_poss_vals.extend(['decent', 'mediocre', 'middle', 'middling', 'moderate', 'okay'])
     elif value == 'poor':
-        rating_poss_vals.extend(['bad', 'lackluster', 'low', 'negative', 'poorly'])
+        rating_poss_vals.extend(['bad', 'disappointing', 'lackluster', 'low', 'negative', 'poorly'])
 
     for rating_val in rating_poss_vals:
         pos = sent.find(rating_val)
@@ -261,9 +259,16 @@ def hasLinuxReleaseSlot(sent, value):
     if idx >= 0:
         pos = sent.find('linux')
         if value == 'no':
-            for negation in negation_cues + ['luck']:
+            for negation in negation_cues:
                 if negation in sent_tok:
                     neg_idxs = find_all_in_list(negation, sent_tok)
+                    for neg_idx in neg_idxs:
+                        if idx - neg_idx < NEG_THRESH:
+                            return pos
+            for negation_phr in negation_phrases:
+                neg_pos = sent.find(negation_phr)
+                if neg_pos >= 0:
+                    neg_idxs = find_all_in_list(negation_phr.split(' ')[0], sent_tok)
                     for neg_idx in neg_idxs:
                         if idx - neg_idx < NEG_THRESH:
                             return pos
@@ -280,9 +285,16 @@ def hasMacReleaseSlot(sent, value):
     if idx >= 0:
         pos = sent.find('mac')
         if value == 'no':
-            for negation in negation_cues + ['luck']:
+            for negation in negation_cues:
                 if negation in sent_tok:
                     neg_idxs = find_all_in_list(negation, sent_tok)
+                    for neg_idx in neg_idxs:
+                        if idx - neg_idx < NEG_THRESH:
+                            return pos
+            for negation_phr in negation_phrases:
+                neg_pos = sent.find(negation_phr)
+                if neg_pos >= 0:
+                    neg_idxs = find_all_in_list(negation_phr.split(' ')[0], sent_tok)
                     for neg_idx in neg_idxs:
                         if idx - neg_idx < NEG_THRESH:
                             return pos
@@ -1149,7 +1161,7 @@ def count_errors(utt, mr):
                 if value.lower() in sent:
                     value_cnt = sent.count(value.lower())
                     if slot_root not in non_categorical_slots and value_cnt > 1:
-                        print('-> OVERGEN SLOT:', slot_root)
+                        print('OVERGEN SLOT:', slot_root)
                         num_slot_overgens += value_cnt - 1
                     found_slot = True
                 elif value == 'dontcare':
