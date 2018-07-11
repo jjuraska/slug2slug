@@ -1,4 +1,6 @@
 import os
+import random
+import re
 import pandas as pd
 import numpy as np
 from collections import OrderedDict
@@ -262,6 +264,89 @@ def shuffle_samples_csv(filepath):
     df.to_csv(filepath_out, index=False, encoding='utf8')
 
 
+def train_test_split(dataset_filepath, misses_filepath):
+    valid_ratio = 0.2
+    test_ratio = 0.2
+
+    non_train_ratio = valid_ratio + test_ratio
+
+    trainset = []
+    validset = []
+    testset = []
+
+    train_mrs_slots_only = set()
+
+    df_dataset = pd.read_csv(dataset_filepath, header=0, encoding='utf8')
+    df_misses = pd.read_csv(misses_filepath, header=0, encoding='utf8')
+
+    num_samples = df_dataset.shape[0]
+    num_refs_per_mr = 3
+
+    # DEBUG PRINT
+    # print(num_samples)
+    # print(df_misses.dtypes)
+
+    if df_misses.shape[0] != num_samples:
+        raise ValueError('Input files do not have matching numbers of lines.')
+
+    cur_row = 0
+    for mr_idx in range(num_samples // num_refs_per_mr):
+        mr_samples = []
+        has_ref_with_miss = False
+        for ref_idx in range(num_refs_per_mr):
+            mr_samples.append(tuple(df_dataset.iloc[cur_row, :].values))
+            if df_misses.iat[cur_row, 2] > 0:
+                has_ref_with_miss = True
+            cur_row += 1
+
+        # DEBUG PRINT
+        # print(cur_row, '->', has_ref_with_miss)
+        # print(mr_samples)
+
+        # Partition the samples into train/valid/test
+        if not has_ref_with_miss and random.random() < non_train_ratio and \
+                remove_vals_from_slots(mr_samples[0][0], selected_slots_only=True) not in train_mrs_slots_only:
+            if random.random() < (valid_ratio / non_train_ratio):
+                validset.extend(mr_samples)
+            else:
+                testset.extend(mr_samples)
+        else:
+            # All samples with missing/hallucinated information go to trainset
+            trainset.extend(mr_samples)
+            train_mrs_slots_only.add(remove_vals_from_slots(mr_samples[0][0], selected_slots_only=True))
+
+    # DEBUG PRINT
+    print('Partition:', len(trainset), len(validset), len(testset))
+    print('Unique MRs in trainset:', len(train_mrs_slots_only))
+
+    trainset_df = pd.DataFrame(trainset, columns=['mr', 'ref'])
+    validset_df = pd.DataFrame(validset, columns=['mr', 'ref'])
+    testset_df = pd.DataFrame(testset, columns=['mr', 'ref'])
+
+    dataset_dir = os.path.dirname(dataset_filepath)
+    trainset_df.to_csv(os.path.join(dataset_dir, 'train.csv'), index=False, encoding='utf8')
+    validset_df.to_csv(os.path.join(dataset_dir, 'valid.csv'), index=False, encoding='utf8')
+    testset_df.to_csv(os.path.join(dataset_dir, 'test.csv'), index=False, encoding='utf8')
+
+    return trainset, validset, testset
+
+
+def remove_vals_from_slots(mr, selected_slots_only=False):
+    if selected_slots_only:
+        # slots_to_remove_vals = ['name', 'release_year', 'exp_release_date', 'developer',
+        #                         'player_perspective', 'platforms', 'esrb', 'rating',
+        #                         'has_multiplayer', 'available_on_steam', 'has_linux_release', 'has_mac_release']
+        slots_to_remove_vals = ['name', 'release_year', 'exp_release_date', 'developer',
+                                'player_perspective', 'genres', 'platforms', 'esrb', 'has_multiplayer']
+
+        for slot in slots_to_remove_vals:
+            mr = re.sub(slot + r'\[.+?\]', slot, mr)
+    else:
+        mr = re.sub(r'\[.+?\]', '', mr)
+
+    return mr
+
+
 def print_stats_from_dict(stats_dict):
     for key, val in stats_dict.items():
         print(key + ': ' + str(val))
@@ -277,10 +362,17 @@ def main():
 
     # ----
 
-    file_in = os.path.join(config.VIDEO_GAME_DATA_DIR, 'results_combined_and_fixed.csv')
-    file_out = os.path.join(config.VIDEO_GAME_DATA_DIR, 'results_combined_and_fixed_mrs.txt')
+    # file_in = os.path.join(config.VIDEO_GAME_DATA_DIR, 'results_combined_and_fixed.csv')
+    # file_out = os.path.join(config.VIDEO_GAME_DATA_DIR, 'results_combined_and_fixed_mrs.txt')
+    #
+    # create_mrs_from_csv(file_in, file_out)
 
-    create_mrs_from_csv(file_in, file_out)
+    # ----
+
+    file_dataset = os.path.join(config.VIDEO_GAME_DATA_DIR, 'dataset.csv')
+    file_misses = os.path.join(config.VIDEO_GAME_DATA_DIR, 'dataset_misses.csv')
+
+    train_test_split(file_dataset, file_misses)
 
 
 if __name__ == '__main__':
