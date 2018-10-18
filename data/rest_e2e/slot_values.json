@@ -1,0 +1,97 @@
+{
+    "area": [
+        "city centre",
+        "riverside"
+    ],
+    "customerrating": [
+        "1 out of 5",
+        "3 out of 5",
+        "5 out of 5",
+        "average",
+        "high",
+        "low"
+    ],
+    "eattype": [
+        "coffee shop",
+        "pub",
+        "restaurant"
+    ],
+    "familyfriendly": [
+        "no",
+        "yes"
+    ],
+    "food": [
+        "Chinese",
+        "English",
+        "Fast food",
+        "French",
+        "Indian",
+        "Italian",
+        "Japanese"
+    ],
+    "name": [
+        "Alimentum",
+        "Aromi",
+        "Bibimbap House",
+        "Blue Spice",
+        "Browns Cambridge",
+        "Clowns",
+        "Cocum",
+        "Cotto",
+        "Fitzbillies",
+        "Giraffe",
+        "Green Man",
+        "Loch Fyne",
+        "Midsummer House",
+        "Strada",
+        "Taste of Cambridge",
+        "The Cambridge Blue",
+        "The Cricketers",
+        "The Dumpling Tree",
+        "The Eagle",
+        "The Golden Curry",
+        "The Golden Palace",
+        "The Mill",
+        "The Olive Grove",
+        "The Phoenix",
+        "The Plough",
+        "The Punter",
+        "The Rice Boat",
+        "The Twenty Two",
+        "The Vaults",
+        "The Waterman",
+        "The Wrestlers",
+        "Travellers Rest Beefeater",
+        "Wildwood",
+        "Zizzi"
+    ],
+    "near": [
+        "All Bar One",
+        "Avalon",
+        "Burger King",
+        "Café Adriatic",
+        "Café Brazil",
+        "Café Rouge",
+        "Café Sicilia",
+        "Clare Hall",
+        "Crowne Plaza Hotel",
+        "Express by Holiday Inn",
+        "Rainbow Vegetarian Café",
+        "Raja Indian Cuisine",
+        "Ranch",
+        "The Bakers",
+        "The Portland Arms",
+        "The Rice Boat",
+        "The Six Bells",
+        "The Sorrento",
+        "Yippee Noodle Bar"
+    ],
+    "pricerange": [
+        "cheap",
+        "high",
+        "less than £20",
+        "moderate",
+        "more than £30",
+        "£20-25"
+    ]
+}

@@ -1,0 +1,1102 @@
+[
+    [
+        "inform(name='blue spice';type='coffee shop';area='city centre')",
+        "a coffee shop in the city centre area called blue spice .",
+        "a coffee shop in the city centre area called blue spice ."
+    ],
+    [
+        "inform(name='blue spice';type='coffee shop';area='city centre')",
+        "blue spice is a coffee shop in city centre .",
+        "blue spice is a coffee shop in city centre ."
+    ],
+    [
+        "inform(name='blue spice';type='coffee shop';area='riverside')",
+        "there is a coffee shop blue spice in the riverside area .",
+        "there is a coffee shop blue spice in the riverside area ."
+    ],
+    [
+        "inform(name='blue spice';type='coffee shop';area='riverside')",
+        "at the riverside , there is a coffee shop called the blue spice .",
+        "at the riverside , there is a coffee shop called the blue spice ."
+    ],
+    [
+        "inform(name='blue spice';type='coffee shop';address='5 out of 5';near='crowne plaza hotel')",
+        "the coffee shop blue spice is based near crowne plaza hotel and has a high address 5 out of 5 .",
+        "the coffee shop blue spice is based near crowne plaza hotel and has a high address 5 out of 5 ."
+    ],
+    [
+        "inform(name='blue spice';type='coffee shop';postcode='5 out of 5';near='crowne plaza hotel')",
+        "the blue spice coffee shop , near crowne plaza hotel , has a postcode 5 out of 5 .",
+        "the blue spice coffee shop , near crowne plaza hotel , has a postcode 5 out of 5 ."
+    ],
+    [
+        "inform(name='blue spice';type='coffee shop';address='5 out of 5';near='crowne plaza hotel')",
+        "if you want a coffee shop rated 5 out of 5 pick blue spice . it is located near crowne plaza hotel .",
+        "if you want a coffee shop rated 5 out of 5 pick blue spice . it is located near crowne plaza hotel ."
+    ],
+    [
+        "inform(name='blue spice';type='coffee shop';address='average';near='burger king')",
+        "burger king is near the coffee shop blue spice which has an average address .",
+        "burger king is near the coffee shop blue spice which has an average address ."
+    ],
+    [
+        "inform(name='blue spice';type='coffee shop';address='average';near='burger king')",
+        "the blue spice coffee shop near burger king has good address with excellent food and service , with a lovely atmosphere .",
+        "the blue spice coffee shop near burger king has good address with excellent food and service , with a lovely atmosphere ."
+    ],
+    [
+        "inform(name='blue spice';type='coffee shop';address='average';near='burger king')",
+        "average address coffee shop include blue spice near burger king .",
+        "average address coffee shop include blue spice near burger king ."
+    ],
+    [
+        "inform(name='blue spice';type='coffee shop';address='average';near='burger king')",
+        "the blue spice coffee shop located near burger king has been rated average by customers .",
+        "the blue spice coffee shop located near burger king has been rated average by customers ."
+    ],
+    [
+        "inform(name='blue spice';type='coffee shop';phone='average';near='burger king')",
+        "located near burger king is a coffee shop named blue spice that has an average phone number .",
+        "located near burger king is a coffee shop named blue spice that has an average phone number ."
+    ],
+    [
+        "inform(name='blue spice';type='coffee shop';phone='average';near='burger king')",
+        "near burger king is a coffee shop called blue spice which has an average phone number .",
+        "near burger king is a coffee shop called blue spice which has an average phone number ."
+    ],
+    [
+        "inform(name='blue spice';type='coffee shop';phone='average';near='burger king')",
+        "near burger king is the blue spice coffee shop . it has average phone number .",
+        "near burger king is the blue spice coffee shop . it has average phone number ."
+    ],
+    [
+        "inform(name='blue spice';type='coffee shop';postcode='average';near='crowne plaza hotel')",
+        "crowne plaza hotel has a coffee shop nearby with an average postcode called blue spice .",
+        "crowne plaza hotel has a coffee shop nearby with an average postcode called blue spice ."
+    ],
+    [
+        "inform(name='blue spice';type='pub';area='city centre')",
+        "a pub in the city centre area called blue spice .",
+        "a pub in the city centre area called blue spice ."
+    ],
+    [
+        "inform(name='blue spice';type='pub';area='city centre')",
+        "blue spice is a pub in city centre .",
+        "blue spice is a pub in city centre ."
+    ],
+    [
+        "inform(name='blue spice';type='pub';area='riverside')",
+        "there is a pub blue spice in the riverside area .",
+        "there is a pub blue spice in the riverside area ."
+    ],
+    [
+        "inform(name='blue spice';type='pub';area='riverside')",
+        "at the riverside , there is a pub called the blue spice .",
+        "at the riverside , there is a pub called the blue spice ."
+    ],
+    [
+        "inform(name='blue spice';type='pub';address='5 out of 5';near='crowne plaza hotel')",
+        "the pub blue spice is based near crowne plaza hotel and has a high address 5 out of 5 .",
+        "the pub blue spice is based near crowne plaza hotel and has a high address 5 out of 5 ."
+    ],
+    [
+        "inform(name='blue spice';type='pub';postcode='5 out of 5';near='crowne plaza hotel')",
+        "the blue spice pub , near crowne plaza hotel , has a postcode 5 out of 5 .",
+        "the blue spice pub , near crowne plaza hotel , has a postcode 5 out of 5 ."
+    ],
+    [
+        "inform(name='blue spice';type='pub';postcode='5 out of 5';near='crowne plaza hotel')",
+        "if you want a pub rated 5 out of 5 pick blue spice . it is located near crowne plaza hotel .",
+        "if you want a pub rated 5 out of 5 pick blue spice . it is located near crowne plaza hotel ."
+    ],
+    [
+        "inform(name='blue spice';type='pub';address='average';near='burger king')",
+        "burger king is near the pub blue spice which has an average address .",
+        "burger king is near the pub blue spice which has an average address ."
+    ],
+    [
+        "inform(name='blue spice';type='pub';phone='average';near='burger king')",
+        "the blue spice pub near burger king has good phone number with excellent food and service , with a lovely atmosphere .",
+        "the blue spice pub near burger king has good phone number with excellent food and service , with a lovely atmosphere ."
+    ],
+    [
+        "inform(name='blue spice';type='pub';phone='average';near='burger king')",
+        "average phone number pub include blue spice near burger king .",
+        "average phone number pub include blue spice near burger king ."
+    ],
+    [
+        "inform(name='blue spice';type='pub';postcode='average';near='burger king')",
+        "the blue spice pub located near burger king has been rated average by customers .",
+        "the blue spice pub located near burger king has been rated average by customers ."
+    ],
+    [
+        "inform(name='blue spice';type='pub';phone='average';near='burger king')",
+        "located near burger king is a pub named blue spice that has an average phone number .",
+        "located near burger king is a pub named blue spice that has an average phone number ."
+    ],
+    [
+        "inform(name='blue spice';type='pub';address='average';near='burger king')",
+        "near burger king is a pub called blue spice which has an average address .",
+        "near burger king is a pub called blue spice which has an average address ."
+    ],
+    [
+        "inform(name='blue spice';type='pub';postcode='average';near='burger king')",
+        "near burger king is the blue spice pub . it has average postcode .",
+        "near burger king is the blue spice pub . it has average postcode ."
+    ],
+    [
+        "inform(name='blue spice';type='pub';phone='average';near='crowne plaza hotel')",
+        "crowne plaza hotel has a pub nearby with an average phone number called blue spice .",
+        "crowne plaza hotel has a pub nearby with an average phone number called blue spice ."
+    ],
+    [
+        "inform(name='clowns';type='coffee shop';postcode='3 out of 5';near='all bar one')",
+        "good customer score of 3 out of 5 clowns coffee shop is a recommended place to eat . located near the all bar one .",
+        "good customer score of 3 out of 5 clowns coffee shop is a recommended place to eat . located near the all bar one ."
+    ],
+    [
+        "inform(name='clowns';type='coffee shop';postcode='3 out of 5';near='all bar one')",
+        "near all bar one there is a coffee shop named clowns and it is rated 3 out of 5 .",
+        "near all bar one there is a coffee shop named clowns and it is rated 3 out of 5 ."
+    ],
+    [
+        "inform(name='clowns';type='coffee shop';postcode='3 out of 5';near='all bar one')",
+        "near all bar one the clowns coffee shop is rated 3 out of 5 .",
+        "near all bar one the clowns coffee shop is rated 3 out of 5 ."
+    ],
+    [
+        "inform(name='clowns';type='coffee shop';address='3 out of 5';near='all bar one')",
+        "a coffee shop called the clowns has a address 3 out of 5 and is located near all bar one .",
+        "a coffee shop called the clowns has a address 3 out of 5 and is located near all bar one ."
+    ],
+    [
+        "inform(name='clowns';type='coffee shop';phone='3 out of 5';near='all bar one')",
+        "for a 3 out of 5 star customer rated coffee shop near all bar one , clowns is relatively expensive .",
+        "for a 3 out of 5 star customer rated coffee shop near all bar one , clowns is relatively expensive ."
+    ],
+    [
+        "inform(name='clowns';type='coffee shop';address='3 out of 5';near='all bar one')",
+        "located near all bar one , the clowns coffee shop has a address 3 out of 5 .",
+        "located near all bar one , the clowns coffee shop has a address 3 out of 5 ."
+    ],
+    [
+        "inform(name='clowns';type='coffee shop';postcode='5 out of 5';near='crowne plaza hotel')",
+        "the coffee shop clowns that is near crowne plaza hotel has postcode of 5 out of 5 .",
+        "the coffee shop clowns that is near crowne plaza hotel has postcode of 5 out of 5 ."
+    ],
+    [
+        "inform(name='clowns';type='coffee shop';postcode='5 out of 5';near='crowne plaza hotel')",
+        "crowne plaza hotel is a popular coffee shop in clowns .",
+        "crowne plaza hotel is a popular coffee shop in clowns ."
+    ],
+    [
+        "inform(name='clowns';type='coffee shop';postcode='5 out of 5';near='crowne plaza hotel')",
+        "the coffee shop clowns is near crowne plaza hotel and has a postcode 5 out of 5 .",
+        "the coffee shop clowns is near crowne plaza hotel and has a postcode 5 out of 5 ."
+    ],
+    [
+        "inform(name='clowns';type='coffee shop';address='5 out of 5';near='crowne plaza hotel')",
+        "near crowne plaza hotel is a coffee shop named clowns that proudly boasts a high address 5 out of 5 .",
+        "near crowne plaza hotel is a coffee shop named clowns that proudly boasts a high address 5 out of 5 ."
+    ],
+    [
+        "inform(name='clowns';type='coffee shop';postcode='5 out of 5';near='crowne plaza hotel')",
+        "found near crowne plaza hotel , clowns is a coffee shop with a postcode 5 out of 5 .",
+        "found near crowne plaza hotel , clowns is a coffee shop with a postcode 5 out of 5 ."
+    ],
+    [
+        "inform(name='clowns';type='coffee shop';address='5 out of 5';near='crowne plaza hotel')",
+        "crowne plaza hotel is a coffee shop in clowns with a address 5 out of 5 .",
+        "crowne plaza hotel is a coffee shop in clowns with a address 5 out of 5 ."
+    ],
+    [
+        "inform(name='clowns';type='coffee shop';phone='5 out of 5';near='crowne plaza hotel')",
+        "5 out of 5 rated clowns coffee shop is located near crowne plaza hotel .",
+        "5 out of 5 rated clowns coffee shop is located near crowne plaza hotel ."
+    ],
+    [
+        "inform(name='clowns';type='coffee shop';phone='5 out of 5';near='crowne plaza hotel')",
+        "near crowne plaza hotel there is a coffee shop with a 5 out of 5 phone number . it 's called clowns .",
+        "near crowne plaza hotel there is a coffee shop with a 5 out of 5 phone number . it 's called clowns ."
+    ],
+    [
+        "inform(name='clowns';type='coffee shop';address='5 out of 5';near='crowne plaza hotel')",
+        "located near crowne plaza hotel , the clowns coffee shop has a address 5 out of 5 .",
+        "located near crowne plaza hotel , the clowns coffee shop has a address 5 out of 5 ."
+    ],
+    [
+        "inform(name='clowns';type='coffee shop';address='5 out of 5';near='crowne plaza hotel')",
+        "the coffee shop clowns is near crowne plaza hotel and has a address 5 out of 5 .",
+        "the coffee shop clowns is near crowne plaza hotel and has a address 5 out of 5 ."
+    ],
+    [
+        "inform(name='clowns';type='coffee shop';postcode='5 out of 5';near='crowne plaza hotel')",
+        "for a coffee shop with a 5 out of 5 postcode , check out clowns near crowne plaza hotel .",
+        "for a coffee shop with a 5 out of 5 postcode , check out clowns near crowne plaza hotel ."
+    ],
+    [
+        "inform(name='clowns';type='coffee shop';near='the sorrento')",
+        "close to the sorrento you can find clowns coffee shop .",
+        "close to the sorrento you can find clowns coffee shop ."
+    ],
+    [
+        "inform(name='clowns';type='pub';phone='3 out of 5';near='all bar one')",
+        "good customer score of 3 out of 5 clowns pub is a recommended place to eat . located near the all bar one .",
+        "good customer score of 3 out of 5 clowns pub is a recommended place to eat . located near the all bar one ."
+    ],
+    [
+        "inform(name='clowns';type='pub';address='3 out of 5';near='all bar one')",
+        "near all bar one there is a pub named clowns and it is rated 3 out of 5 .",
+        "near all bar one there is a pub named clowns and it is rated 3 out of 5 ."
+    ],
+    [
+        "inform(name='clowns';type='pub';postcode='3 out of 5';near='all bar one')",
+        "near all bar one the clowns pub is rated 3 out of 5 .",
+        "near all bar one the clowns pub is rated 3 out of 5 ."
+    ],
+    [
+        "inform(name='clowns';type='pub';address='3 out of 5';near='all bar one')",
+        "a pub called the clowns has a address 3 out of 5 and is located near all bar one .",
+        "a pub called the clowns has a address 3 out of 5 and is located near all bar one ."
+    ],
+    [
+        "inform(name='clowns';type='pub';postcode='3 out of 5';near='all bar one')",
+        "for a 3 out of 5 star customer rated pub near all bar one , clowns is relatively expensive .",
+        "for a 3 out of 5 star customer rated pub near all bar one , clowns is relatively expensive ."
+    ],
+    [
+        "inform(name='clowns';type='pub';address='3 out of 5';near='all bar one')",
+        "located near all bar one , the clowns pub has a address 3 out of 5 .",
+        "located near all bar one , the clowns pub has a address 3 out of 5 ."
+    ],
+    [
+        "inform(name='clowns';type='pub';postcode='5 out of 5';near='crowne plaza hotel')",
+        "the pub clowns that is near crowne plaza hotel has postcode of 5 out of 5 .",
+        "the pub clowns that is near crowne plaza hotel has postcode of 5 out of 5 ."
+    ],
+    [
+        "inform(name='clowns';type='pub';postcode='5 out of 5';near='crowne plaza hotel')",
+        "crowne plaza hotel is a popular pub in clowns .",
+        "crowne plaza hotel is a popular pub in clowns ."
+    ],
+    [
+        "inform(name='clowns';type='pub';address='5 out of 5';near='crowne plaza hotel')",
+        "the pub clowns is near crowne plaza hotel and has a address 5 out of 5 .",
+        "the pub clowns is near crowne plaza hotel and has a address 5 out of 5 ."
+    ],
+    [
+        "inform(name='clowns';type='pub';address='5 out of 5';near='crowne plaza hotel')",
+        "near crowne plaza hotel is a pub named clowns that proudly boasts a high address 5 out of 5 .",
+        "near crowne plaza hotel is a pub named clowns that proudly boasts a high address 5 out of 5 ."
+    ],
+    [
+        "inform(name='clowns';type='pub';phone='5 out of 5';near='crowne plaza hotel')",
+        "found near crowne plaza hotel , clowns is a pub with a phone number 5 out of 5 .",
+        "found near crowne plaza hotel , clowns is a pub with a phone number 5 out of 5 ."
+    ],
+    [
+        "inform(name='clowns';type='pub';phone='5 out of 5';near='crowne plaza hotel')",
+        "crowne plaza hotel is a pub in clowns with a phone number 5 out of 5 .",
+        "crowne plaza hotel is a pub in clowns with a phone number 5 out of 5 ."
+    ],
+    [
+        "inform(name='clowns';type='pub';address='5 out of 5';near='crowne plaza hotel')",
+        "5 out of 5 rated clowns pub is located near crowne plaza hotel .",
+        "5 out of 5 rated clowns pub is located near crowne plaza hotel ."
+    ],
+    [
+        "inform(name='clowns';type='pub';phone='5 out of 5';near='crowne plaza hotel')",
+        "near crowne plaza hotel there is a pub with a 5 out of 5 phone number . it 's called clowns .",
+        "near crowne plaza hotel there is a pub with a 5 out of 5 phone number . it 's called clowns ."
+    ],
+    [
+        "inform(name='clowns';type='pub';postcode='5 out of 5';near='crowne plaza hotel')",
+        "located near crowne plaza hotel , the clowns pub has a postcode 5 out of 5 .",
+        "located near crowne plaza hotel , the clowns pub has a postcode 5 out of 5 ."
+    ],
+    [
+        "inform(name='clowns';type='pub';phone='5 out of 5';near='crowne plaza hotel')",
+        "the pub clowns is near crowne plaza hotel and has a phone number 5 out of 5 .",
+        "the pub clowns is near crowne plaza hotel and has a phone number 5 out of 5 ."
+    ],
+    [
+        "inform(name='clowns';type='pub';phone='5 out of 5';near='crowne plaza hotel')",
+        "for a pub with a 5 out of 5 phone number , check out clowns near crowne plaza hotel .",
+        "for a pub with a 5 out of 5 phone number , check out clowns near crowne plaza hotel ."
+    ],
+    [
+        "inform(name='clowns';type='pub';near='the sorrento')",
+        "close to the sorrento you can find clowns pub .",
+        "close to the sorrento you can find clowns pub ."
+    ],
+    [
+        "inform(name='cocum';type='coffee shop';postcode='high';near='burger king')",
+        "near burger king there is a highly rated coffee shop named cocum .",
+        "near burger king there is a highly rated coffee shop named cocum ."
+    ],
+    [
+        "inform(name='cocum';type='coffee shop';phone='high';near='burger king')",
+        "there is a coffee shop named cocum located near burger king . this coffee shop has a high phone number .",
+        "there is a coffee shop named cocum located near burger king . this coffee shop has a high phone number ."
+    ],
+    [
+        "inform(name='cocum';type='coffee shop';phone='high';near='café sicilia')",
+        "coffee shop located near café sicilia called cocum with a high phone number",
+        "coffee shop located near café sicilia called cocum with a high phone number"
+    ],
+    [
+        "inform(name='cocum';type='coffee shop';phone='high';near='café sicilia')",
+        "near café sicilia is a high rated coffee shop called cocum",
+        "near café sicilia is a high rated coffee shop called cocum"
+    ],
+    [
+        "inform(name='cocum';type='coffee shop';postcode='high';near='café sicilia')",
+        "coffee shop cocum has a high postcode and is located near café sicilia .",
+        "coffee shop cocum has a high postcode and is located near café sicilia ."
+    ],
+    [
+        "inform(name='cocum';type='coffee shop';phone='high';near='café sicilia')",
+        "there is a coffee shop named cocum located near café sicilia . the phone number is high .",
+        "there is a coffee shop named cocum located near café sicilia . the phone number is high ."
+    ],
+    [
+        "inform(name='cocum';type='coffee shop';address='high';near='café sicilia')",
+        "for a coffee shop with high address near café sicilia , try cocum .",
+        "for a coffee shop with high address near café sicilia , try cocum ."
+    ],
+    [
+        "inform(name='cocum';type='coffee shop';address='high';near='café sicilia')",
+        "there is a high rated coffee shop named cocum near café sicilia .",
+        "there is a high rated coffee shop named cocum near café sicilia ."
+    ],
+    [
+        "inform(name='cocum';type='coffee shop';address='low';near='café sicilia')",
+        "cocum , a coffee shop with a low address , is near café sicilia .",
+        "cocum , a coffee shop with a low address , is near café sicilia ."
+    ],
+    [
+        "inform(name='cocum';type='coffee shop';address='low';near='express by holiday inn')",
+        "cocum is a coffee shop near express by holiday inn with food at low prices .",
+        "cocum is a coffee shop near express by holiday inn with food at low prices ."
+    ],
+    [
+        "inform(name='cocum';type='coffee shop';postcode='low';near='express by holiday inn')",
+        "if you are looking for a meal at a bargain price in the express by holiday inn area , visit cocum coffee shop .",
+        "if you are looking for a meal at a bargain price in the express by holiday inn area , visit cocum coffee shop ."
+    ],
+    [
+        "inform(name='cocum';type='coffee shop';phone='low';near='express by holiday inn')",
+        "cocum coffee shop is a one star coffee shop located next to express by holiday inn",
+        "cocum coffee shop is a one star coffee shop located next to express by holiday inn"
+    ],
+    [
+        "inform(name='cocum';type='coffee shop';postcode='low';near='express by holiday inn')",
+        "cocum coffee shop near express by holiday inn received a low postcode .",
+        "cocum coffee shop near express by holiday inn received a low postcode ."
+    ],
+    [
+        "inform(name='cocum';type='coffee shop';address='low';near='express by holiday inn')",
+        "cocum , a coffee shop located near express by holiday inn , has low address .",
+        "cocum , a coffee shop located near express by holiday inn , has low address ."
+    ],
+    [
+        "inform(name='cocum';type='coffee shop';address='low';near='express by holiday inn')",
+        "cocum is a coffee shop , near express by holiday inn , with a low address .",
+        "cocum is a coffee shop , near express by holiday inn , with a low address ."
+    ],
+    [
+        "inform(name='cocum';type='coffee shop';address='low';near='express by holiday inn')",
+        "there is a one star coffee shop cocum located near express by holiday inn",
+        "there is a one star coffee shop cocum located near express by holiday inn"
+    ],
+    [
+        "inform(name='cocum';type='coffee shop';near='the rice boat')",
+        "cocum is a coffee shop located a few steps of the rice boat .",
+        "cocum is a coffee shop located a few steps of the rice boat ."
+    ],
+    [
+        "inform(name='cocum';type='coffee shop';near='the rice boat')",
+        "for a coffee shop near the rice boat , try cocum .",
+        "for a coffee shop near the rice boat , try cocum ."
+    ],
+    [
+        "inform(name='cocum';type='coffee shop';near='the sorrento')",
+        "cocum is a coffee shop by the sorrento .",
+        "cocum is a coffee shop by the sorrento ."
+    ],
+    [
+        "inform(name='cocum';type='pub';address='high';near='burger king')",
+        "near burger king there is a highly rated pub named cocum .",
+        "near burger king there is a highly rated pub named cocum ."
+    ],
+    [
+        "inform(name='cocum';type='pub';postcode='high';near='burger king')",
+        "there is a pub named cocum located near burger king . this pub has a high postcode .",
+        "there is a pub named cocum located near burger king . this pub has a high postcode ."
+    ],
+    [
+        "inform(name='cocum';type='pub';postcode='high';near='café sicilia')",
+        "pub located near café sicilia called cocum with a high postcode",
+        "pub located near café sicilia called cocum with a high postcode"
+    ],
+    [
+        "inform(name='cocum';type='pub';postcode='high';near='café sicilia')",
+        "near café sicilia is a high rated pub called cocum",
+        "near café sicilia is a high rated pub called cocum"
+    ],
+    [
+        "inform(name='cocum';type='pub';address='high';near='café sicilia')",
+        "pub cocum has a high address and is located near café sicilia .",
+        "pub cocum has a high address and is located near café sicilia ."
+    ],
+    [
+        "inform(name='cocum';type='pub';address='high';near='café sicilia')",
+        "there is a pub named cocum located near café sicilia . the address is high .",
+        "there is a pub named cocum located near café sicilia . the address is high ."
+    ],
+    [
+        "inform(name='cocum';type='pub';phone='high';near='café sicilia')",
+        "for a pub with high phone number near café sicilia , try cocum .",
+        "for a pub with high phone number near café sicilia , try cocum ."
+    ],
+    [
+        "inform(name='cocum';type='pub';postcode='high';near='café sicilia')",
+        "there is a high rated pub named cocum near café sicilia .",
+        "there is a high rated pub named cocum near café sicilia ."
+    ],
+    [
+        "inform(name='cocum';type='pub';postcode='low';near='café sicilia')",
+        "cocum , a pub with a low postcode , is near café sicilia .",
+        "cocum , a pub with a low postcode , is near café sicilia ."
+    ],
+    [
+        "inform(name='cocum';type='pub';address='low';near='express by holiday inn')",
+        "cocum is a pub near express by holiday inn with food at low prices .",
+        "cocum is a pub near express by holiday inn with food at low prices ."
+    ],
+    [
+        "inform(name='cocum';type='pub';postcode='low';near='express by holiday inn')",
+        "if you are looking for a meal at a bargain price in the express by holiday inn area , visit cocum pub .",
+        "if you are looking for a meal at a bargain price in the express by holiday inn area , visit cocum pub ."
+    ],
+    [
+        "inform(name='cocum';type='pub';phone='low';near='express by holiday inn')",
+        "cocum pub is a one star pub located next to express by holiday inn",
+        "cocum pub is a one star pub located next to express by holiday inn"
+    ],
+    [
+        "inform(name='cocum';type='pub';phone='low';near='express by holiday inn')",
+        "cocum pub near express by holiday inn received a low phone number .",
+        "cocum pub near express by holiday inn received a low phone number ."
+    ],
+    [
+        "inform(name='cocum';type='pub';address='low';near='express by holiday inn')",
+        "cocum , a pub located near express by holiday inn , has low address .",
+        "cocum , a pub located near express by holiday inn , has low address ."
+    ],
+    [
+        "inform(name='cocum';type='pub';postcode='low';near='express by holiday inn')",
+        "cocum is a pub , near express by holiday inn , with a low postcode .",
+        "cocum is a pub , near express by holiday inn , with a low postcode ."
+    ],
+    [
+        "inform(name='cocum';type='pub';postcode='low';near='express by holiday inn')",
+        "there is a one star pub cocum located near express by holiday inn",
+        "there is a one star pub cocum located near express by holiday inn"
+    ],
+    [
+        "inform(name='cocum';type='pub';near='the rice boat')",
+        "cocum is a pub located a few steps of the rice boat .",
+        "cocum is a pub located a few steps of the rice boat ."
+    ],
+    [
+        "inform(name='cocum';type='pub';near='the rice boat')",
+        "for a pub near the rice boat , try cocum .",
+        "for a pub near the rice boat , try cocum ."
+    ],
+    [
+        "inform(name='cocum';type='pub';near='the sorrento')",
+        "cocum is a pub by the sorrento .",
+        "cocum is a pub by the sorrento ."
+    ],
+    [
+        "inform(name='cotto';type='coffee shop';near='the bakers')",
+        "next to the bakers resides a coffee shop by the name of cotto .",
+        "next to the bakers resides a coffee shop by the name of cotto ."
+    ],
+    [
+        "inform(name='cotto';type='coffee shop';near='the bakers')",
+        "a coffee shop called cotto is situated near the bakers .",
+        "a coffee shop called cotto is situated near the bakers ."
+    ],
+    [
+        "inform(name='cotto';type='pub';near='the bakers')",
+        "next to the bakers resides a pub by the name of cotto .",
+        "next to the bakers resides a pub by the name of cotto ."
+    ],
+    [
+        "inform(name='cotto';type='pub';near='the bakers')",
+        "a pub called cotto is situated near the bakers .",
+        "a pub called cotto is situated near the bakers ."
+    ],
+    [
+        "inform(name='giraffe';type='coffee shop';near='the bakers')",
+        "a coffee shop named giraffe is near the bakers .",
+        "a coffee shop named giraffe is near the bakers ."
+    ],
+    [
+        "inform(name='giraffe';type='coffee shop';near='the bakers')",
+        "giraffe is a coffee shop found near the bakers .",
+        "giraffe is a coffee shop found near the bakers ."
+    ],
+    [
+        "inform(name='giraffe';type='coffee shop';near='the rice boat')",
+        "near the rice boat you can visit coffee shop called giraffe .",
+        "near the rice boat you can visit coffee shop called giraffe ."
+    ],
+    [
+        "inform(name='giraffe';type='coffee shop';near='the rice boat')",
+        "near to the rice boat there is a coffee shop called giraffe .",
+        "near to the rice boat there is a coffee shop called giraffe ."
+    ],
+    [
+        "inform(name='giraffe';type='pub';near='the bakers')",
+        "a pub named giraffe is near the bakers .",
+        "a pub named giraffe is near the bakers ."
+    ],
+    [
+        "inform(name='giraffe';type='pub';near='the bakers')",
+        "giraffe is a pub found near the bakers .",
+        "giraffe is a pub found near the bakers ."
+    ],
+    [
+        "inform(name='giraffe';type='pub';near='the rice boat')",
+        "near the rice boat you can visit pub called giraffe .",
+        "near the rice boat you can visit pub called giraffe ."
+    ],
+    [
+        "inform(name='giraffe';type='pub';near='the rice boat')",
+        "near to the rice boat there is a pub called giraffe .",
+        "near to the rice boat there is a pub called giraffe ."
+    ],
+    [
+        "inform(name='green man';type='coffee shop';postcode='1 out of 5';near='all bar one')",
+        "rated 1 out of 5 , green man coffee shop is near all bar one .",
+        "rated 1 out of 5 , green man coffee shop is near all bar one ."
+    ],
+    [
+        "inform(name='green man';type='coffee shop';postcode='1 out of 5';near='all bar one')",
+        "the green man coffee shop received a postcode of 1 out of 5. it is located near all bar one .",
+        "the green man coffee shop received a postcode of 1 out of 5. it is located near all bar one ."
+    ],
+    [
+        "inform(name='green man';type='coffee shop';phone='1 out of 5';near='all bar one')",
+        "the coffee shop near all bar one is green man . it has a phone number 1 out of 5 .",
+        "the coffee shop near all bar one is green man . it has a phone number 1 out of 5 ."
+    ],
+    [
+        "inform(name='green man';type='coffee shop';address='1 out of 5';near='all bar one')",
+        "near all bar one you can find a coffee shop with a 1 out of 5 address called green man .",
+        "near all bar one you can find a coffee shop with a 1 out of 5 address called green man ."
+    ],
+    [
+        "inform(name='green man';type='coffee shop';phone='1 out of 5';near='all bar one')",
+        "if you 're nearby all bar one , you can give the coffee shop green man a try , although it currently gets low phone number from other customers - a 1 out of 5 .",
+        "if you 're nearby all bar one , you can give the coffee shop green man a try , although it currently gets low phone number from other customers - a 1 out of 5 ."
+    ],
+    [
+        "inform(name='green man';type='coffee shop';phone='1 out of 5';near='all bar one')",
+        "the green man , near all bar one , is coffee shop receiving phone number of 1 out of 5 .",
+        "the green man , near all bar one , is coffee shop receiving phone number of 1 out of 5 ."
+    ],
+    [
+        "inform(name='green man';type='coffee shop';postcode='3 out of 5';near='all bar one')",
+        "if you 're looking for a great place to eat , try green man , a coffee shop near all bar one with a postcode 3 out of 5 stars .",
+        "if you 're looking for a great place to eat , try green man , a coffee shop near all bar one with a postcode 3 out of 5 stars ."
+    ],
+    [
+        "inform(name='green man';type='coffee shop';phone='3 out of 5';near='all bar one')",
+        "a coffee shop called green man is near all bar one , their phone number is 3 out of 5 .",
+        "a coffee shop called green man is near all bar one , their phone number is 3 out of 5 ."
+    ],
+    [
+        "inform(name='green man';type='coffee shop';phone='3 out of 5';near='all bar one')",
+        "a coffee shop located by all bar one called green man was rated 3 out of 5 by customers .",
+        "a coffee shop located by all bar one called green man was rated 3 out of 5 by customers ."
+    ],
+    [
+        "inform(name='green man';type='coffee shop';address='3 out of 5';near='all bar one')",
+        "located near all bar one , the green man coffee shop has a address 3 out of 5 .",
+        "located near all bar one , the green man coffee shop has a address 3 out of 5 ."
+    ],
+    [
+        "inform(name='green man';type='coffee shop';postcode='3 out of 5';near='all bar one')",
+        "near all bar one is the green man coffee shop with a 3 out of 5 postcode .",
+        "near all bar one is the green man coffee shop with a 3 out of 5 postcode ."
+    ],
+    [
+        "inform(name='green man';type='coffee shop';phone='3 out of 5';near='all bar one')",
+        "expect nothing less than the usual coffee shop quality at green man located by all bar one .",
+        "expect nothing less than the usual coffee shop quality at green man located by all bar one ."
+    ],
+    [
+        "inform(name='green man';type='coffee shop';phone='3 out of 5';near='all bar one')",
+        "located close to all bar one , green man coffee shop has a 3 out of 5 phone number .",
+        "located close to all bar one , green man coffee shop has a 3 out of 5 phone number ."
+    ],
+    [
+        "inform(name='green man';type='pub';address='1 out of 5';near='all bar one')",
+        "rated 1 out of 5 , green man pub is near all bar one .",
+        "rated 1 out of 5 , green man pub is near all bar one ."
+    ],
+    [
+        "inform(name='green man';type='pub';postcode='1 out of 5';near='all bar one')",
+        "the green man pub received a postcode of 1 out of 5. it is located near all bar one .",
+        "the green man pub received a postcode of 1 out of 5. it is located near all bar one ."
+    ],
+    [
+        "inform(name='green man';type='pub';phone='1 out of 5';near='all bar one')",
+        "the pub near all bar one is green man . it has a phone number 1 out of 5 .",
+        "the pub near all bar one is green man . it has a phone number 1 out of 5 ."
+    ],
+    [
+        "inform(name='green man';type='pub';address='1 out of 5';near='all bar one')",
+        "near all bar one you can find a pub with a 1 out of 5 address called green man .",
+        "near all bar one you can find a pub with a 1 out of 5 address called green man ."
+    ],
+    [
+        "inform(name='green man';type='pub';address='1 out of 5';near='all bar one')",
+        "if you 're nearby all bar one , you can give the pub green man a try , although it currently gets low address from other customers - a 1 out of 5 .",
+        "if you 're nearby all bar one , you can give the pub green man a try , although it currently gets low address from other customers - a 1 out of 5 ."
+    ],
+    [
+        "inform(name='green man';type='pub';postcode='1 out of 5';near='all bar one')",
+        "the green man , near all bar one , is pub receiving postcode of 1 out of 5 .",
+        "the green man , near all bar one , is pub receiving postcode of 1 out of 5 ."
+    ],
+    [
+        "inform(name='green man';type='pub';phone='3 out of 5';near='all bar one')",
+        "if you 're looking for a great place to eat , try green man , a pub near all bar one with a phone number 3 out of 5 stars .",
+        "if you 're looking for a great place to eat , try green man , a pub near all bar one with a phone number 3 out of 5 stars ."
+    ],
+    [
+        "inform(name='green man';type='pub';address='3 out of 5';near='all bar one')",
+        "a pub called green man is near all bar one , their address is 3 out of 5 .",
+        "a pub called green man is near all bar one , their address is 3 out of 5 ."
+    ],
+    [
+        "inform(name='green man';type='pub';address='3 out of 5';near='all bar one')",
+        "a pub located by all bar one called green man was rated 3 out of 5 by customers .",
+        "a pub located by all bar one called green man was rated 3 out of 5 by customers ."
+    ],
+    [
+        "inform(name='green man';type='pub';address='3 out of 5';near='all bar one')",
+        "located near all bar one , the green man pub has a address 3 out of 5 .",
+        "located near all bar one , the green man pub has a address 3 out of 5 ."
+    ],
+    [
+        "inform(name='green man';type='pub';address='3 out of 5';near='all bar one')",
+        "near all bar one is the green man pub with a 3 out of 5 address .",
+        "near all bar one is the green man pub with a 3 out of 5 address ."
+    ],
+    [
+        "inform(name='green man';type='pub';address='3 out of 5';near='all bar one')",
+        "expect nothing less than the usual pub quality at green man located by all bar one .",
+        "expect nothing less than the usual pub quality at green man located by all bar one ."
+    ],
+    [
+        "inform(name='green man';type='pub';address='3 out of 5';near='all bar one')",
+        "located close to all bar one , green man pub has a 3 out of 5 address .",
+        "located close to all bar one , green man pub has a 3 out of 5 address ."
+    ],
+    [
+        "inform(name='loch fyne';type='coffee shop';area='riverside')",
+        "the loch fyne is a coffee shop at the riverside .",
+        "the loch fyne is a coffee shop at the riverside ."
+    ],
+    [
+        "inform(name='loch fyne';type='coffee shop';area='riverside')",
+        "the loch fyne is a coffee shop in the riverside area of the city .",
+        "the loch fyne is a coffee shop in the riverside area of the city ."
+    ],
+    [
+        "inform(name='loch fyne';type='coffee shop';area='riverside')",
+        "the loch fyne coffee shop is located on the bank of the river .",
+        "the loch fyne coffee shop is located on the bank of the river ."
+    ],
+    [
+        "inform(name='loch fyne';type='pub';area='riverside')",
+        "the loch fyne is a pub at the riverside .",
+        "the loch fyne is a pub at the riverside ."
+    ],
+    [
+        "inform(name='loch fyne';type='pub';area='riverside')",
+        "the loch fyne is a pub in the riverside area of the city .",
+        "the loch fyne is a pub in the riverside area of the city ."
+    ],
+    [
+        "inform(name='loch fyne';type='pub';area='riverside')",
+        "the loch fyne pub is located on the bank of the river .",
+        "the loch fyne pub is located on the bank of the river ."
+    ],
+    [
+        "inform(name='strada';type='coffee shop';area='city centre')",
+        "there is a coffee shop in the city centre called the strada .",
+        "there is a coffee shop in the city centre called the strada ."
+    ],
+    [
+        "inform(name='strada';type='coffee shop';area='city centre')",
+        "the strada is a city centre area coffee shop .",
+        "the strada is a city centre area coffee shop ."
+    ],
+    [
+        "inform(name='strada';type='coffee shop';area='city centre')",
+        "the strada is a coffee shop located in the centre of the city .",
+        "the strada is a coffee shop located in the centre of the city ."
+    ],
+    [
+        "inform(name='strada';type='coffee shop';area='city centre')",
+        "in city centre , there is a coffee shop called strada .",
+        "in city centre , there is a coffee shop called strada ."
+    ],
+    [
+        "inform(name='strada';type='coffee shop';postcode='1 out of 5';near='all bar one')",
+        "the strada is a coffee shop near all bar one that has a postcode 1 out of 5 .",
+        "the strada is a coffee shop near all bar one that has a postcode 1 out of 5 ."
+    ],
+    [
+        "inform(name='strada';type='coffee shop';phone='1 out of 5';near='all bar one')",
+        "near all bar one is the strada coffee shop with a phone number 1 out of 5 .",
+        "near all bar one is the strada coffee shop with a phone number 1 out of 5 ."
+    ],
+    [
+        "inform(name='strada';type='coffee shop';phone='1 out of 5';near='all bar one')",
+        "a few steps of the all bar one , there is a coffee shop called strada with with negative feedback from its customers .",
+        "a few steps of the all bar one , there is a coffee shop called strada with with negative feedback from its customers ."
+    ],
+    [
+        "inform(name='strada';type='coffee shop';address='1 out of 5';near='all bar one')",
+        "rated 1 out of 5 , strada is a coffee shop close to all bar one .",
+        "rated 1 out of 5 , strada is a coffee shop close to all bar one ."
+    ],
+    [
+        "inform(name='strada';type='coffee shop';address='1 out of 5';near='rainbow vegetarian café')",
+        "the customer rated 1 out of 5 , strada is near rainbow vegetarian café .",
+        "the customer rated 1 out of 5 , strada is near rainbow vegetarian café ."
+    ],
+    [
+        "inform(name='strada';type='coffee shop';phone='1 out of 5';near='rainbow vegetarian café')",
+        "a coffee shop named strada has a phone number 1 out of 5 and is near rainbow vegetarian café .",
+        "a coffee shop named strada has a phone number 1 out of 5 and is near rainbow vegetarian café ."
+    ],
+    [
+        "inform(name='strada';type='coffee shop';postcode='1 out of 5';near='rainbow vegetarian café')",
+        "near rainbow vegetarian café , there is a coffee shop called strada with postcode 1 out of 5 .",
+        "near rainbow vegetarian café , there is a coffee shop called strada with postcode 1 out of 5 ."
+    ],
+    [
+        "inform(name='strada';type='coffee shop';phone='low';near='express by holiday inn')",
+        "strada coffee shop has a low phone number and is located near express by holiday inn .",
+        "strada coffee shop has a low phone number and is located near express by holiday inn ."
+    ],
+    [
+        "inform(name='strada';type='coffee shop';address='low';near='express by holiday inn')",
+        "strada coffee shop has a low address and is located near express by holiday inn .",
+        "strada coffee shop has a low address and is located near express by holiday inn ."
+    ],
+    [
+        "inform(name='strada';type='coffee shop';address='low';near='express by holiday inn')",
+        "strada is a one star coffee shop located near express by holiday inn",
+        "strada is a one star coffee shop located near express by holiday inn"
+    ],
+    [
+        "inform(name='strada';type='coffee shop';postcode='low';near='express by holiday inn')",
+        "strada is a coffee shop , near express by holiday inn . it has a low postcode .",
+        "strada is a coffee shop , near express by holiday inn . it has a low postcode ."
+    ],
+    [
+        "inform(name='strada';type='coffee shop';phone='low';near='express by holiday inn')",
+        "strada coffee shop near express by holiday inn has a low phone number",
+        "strada coffee shop near express by holiday inn has a low phone number"
+    ],
+    [
+        "inform(name='strada';type='pub';area='city centre')",
+        "there is a pub in the city centre called the strada .",
+        "there is a pub in the city centre called the strada ."
+    ],
+    [
+        "inform(name='strada';type='pub';area='city centre')",
+        "the strada is a city centre area pub .",
+        "the strada is a city centre area pub ."
+    ],
+    [
+        "inform(name='strada';type='pub';area='city centre')",
+        "the strada is a pub located in the centre of the city .",
+        "the strada is a pub located in the centre of the city ."
+    ],
+    [
+        "inform(name='strada';type='pub';area='city centre')",
+        "in city centre , there is a pub called strada .",
+        "in city centre , there is a pub called strada ."
+    ],
+    [
+        "inform(name='strada';type='pub';postcode='1 out of 5';near='all bar one')",
+        "the strada is a pub near all bar one that has a postcode 1 out of 5 .",
+        "the strada is a pub near all bar one that has a postcode 1 out of 5 ."
+    ],
+    [
+        "inform(name='strada';type='pub';postcode='1 out of 5';near='all bar one')",
+        "near all bar one is the strada pub with a postcode 1 out of 5 .",
+        "near all bar one is the strada pub with a postcode 1 out of 5 ."
+    ],
+    [
+        "inform(name='strada';type='pub';postcode='1 out of 5';near='all bar one')",
+        "a few steps of the all bar one , there is a pub called strada with with negative feedback from its customers .",
+        "a few steps of the all bar one , there is a pub called strada with with negative feedback from its customers ."
+    ],
+    [
+        "inform(name='strada';type='pub';address='1 out of 5';near='all bar one')",
+        "rated 1 out of 5 , strada is a pub close to all bar one .",
+        "rated 1 out of 5 , strada is a pub close to all bar one ."
+    ],
+    [
+        "inform(name='strada';type='pub';phone='1 out of 5';near='rainbow vegetarian café')",
+        "the customer rated 1 out of 5 , strada is near rainbow vegetarian café .",
+        "the customer rated 1 out of 5 , strada is near rainbow vegetarian café ."
+    ],
+    [
+        "inform(name='strada';type='pub';postcode='1 out of 5';near='rainbow vegetarian café')",
+        "a pub named strada has a postcode 1 out of 5 and is near rainbow vegetarian café .",
+        "a pub named strada has a postcode 1 out of 5 and is near rainbow vegetarian café ."
+    ],
+    [
+        "inform(name='strada';type='pub';postcode='1 out of 5';near='rainbow vegetarian café')",
+        "near rainbow vegetarian café , there is a pub called strada with postcode 1 out of 5 .",
+        "near rainbow vegetarian café , there is a pub called strada with postcode 1 out of 5 ."
+    ],
+    [
+        "inform(name='strada';type='pub';phone='low';near='express by holiday inn')",
+        "strada pub has a low phone number and is located near express by holiday inn .",
+        "strada pub has a low phone number and is located near express by holiday inn ."
+    ],
+    [
+        "inform(name='strada';type='pub';address='low';near='express by holiday inn')",
+        "strada pub has a low address and is located near express by holiday inn .",
+        "strada pub has a low address and is located near express by holiday inn ."
+    ],
+    [
+        "inform(name='strada';type='pub';phone='low';near='express by holiday inn')",
+        "strada is a one star pub located near express by holiday inn",
+        "strada is a one star pub located near express by holiday inn"
+    ],
+    [
+        "inform(name='strada';type='pub';phone='low';near='express by holiday inn')",
+        "strada is a pub , near express by holiday inn . it has a low phone number .",
+        "strada is a pub , near express by holiday inn . it has a low phone number ."
+    ],
+    [
+        "inform(name='strada';type='pub';phone='low';near='express by holiday inn')",
+        "strada pub near express by holiday inn has a low phone number",
+        "strada pub near express by holiday inn has a low phone number"
+    ],
+    [
+        "inform(name='wildwood';type='coffee shop';area='riverside')",
+        "a coffee shop named wildwood is located at the riverside .",
+        "a coffee shop named wildwood is located at the riverside ."
+    ],
+    [
+        "inform(name='wildwood';type='coffee shop';area='riverside')",
+        "a coffee shop near the river is wildwood .",
+        "a coffee shop near the river is wildwood ."
+    ],
+    [
+        "inform(name='wildwood';type='coffee shop';area='riverside')",
+        "wildwood is a coffee shop located in riverside",
+        "wildwood is a coffee shop located in riverside"
+    ],
+    [
+        "inform(name='wildwood';type='coffee shop';area='riverside')",
+        "in the riverside area there is a coffee shop named wildwood .",
+        "in the riverside area there is a coffee shop named wildwood ."
+    ],
+    [
+        "inform(name='wildwood';type='pub';area='riverside')",
+        "a pub named wildwood is located at the riverside .",
+        "a pub named wildwood is located at the riverside ."
+    ],
+    [
+        "inform(name='wildwood';type='pub';area='riverside')",
+        "a pub near the river is wildwood .",
+        "a pub near the river is wildwood ."
+    ],
+    [
+        "inform(name='wildwood';type='pub';area='riverside')",
+        "wildwood is a pub located in riverside",
+        "wildwood is a pub located in riverside"
+    ],
+    [
+        "inform(name='wildwood';type='pub';area='riverside')",
+        "in the riverside area there is a pub named wildwood .",
+        "in the riverside area there is a pub named wildwood ."
+    ],
+    [
+        "inform(name='zizzi';type='coffee shop';area='riverside')",
+        "the zizzi is a coffee shop along the river .",
+        "the zizzi is a coffee shop along the river ."
+    ],
+    [
+        "inform(name='zizzi';type='coffee shop';area='riverside')",
+        "you can find a coffee shop named zizzi in the riverside area .",
+        "you can find a coffee shop named zizzi in the riverside area ."
+    ],
+    [
+        "inform(name='zizzi';type='coffee shop';area='riverside')",
+        "zizzi is a riverside coffee shop .",
+        "zizzi is a riverside coffee shop ."
+    ],
+    [
+        "inform(name='zizzi';type='coffee shop';postcode='average';near='burger king')",
+        "close by burger king , is zizzi . an average rated coffee shop .",
+        "close by burger king , is zizzi . an average rated coffee shop ."
+    ],
+    [
+        "inform(name='zizzi';type='coffee shop';address='average';near='burger king')",
+        "near burger king you can try the average zizzi coffee shop .",
+        "near burger king you can try the average zizzi coffee shop ."
+    ],
+    [
+        "inform(name='zizzi';type='coffee shop';postcode='average';near='burger king')",
+        "customers have rated the zizzi coffee shop situated near burger king as average .",
+        "customers have rated the zizzi coffee shop situated near burger king as average ."
+    ],
+    [
+        "inform(name='zizzi';type='coffee shop';phone='average';near='burger king')",
+        "an average rated coffee shop called zizzi is nearby burger king .",
+        "an average rated coffee shop called zizzi is nearby burger king ."
+    ],
+    [
+        "inform(name='zizzi';type='coffee shop';address='average';near='burger king')",
+        "customers rate zizzi coffee shop , near burger king , average .",
+        "customers rate zizzi coffee shop , near burger king , average ."
+    ],
+    [
+        "inform(name='zizzi';type='coffee shop';address='average';near='burger king')",
+        "the zizzi coffee shop is located near burger king . it has an average address .",
+        "the zizzi coffee shop is located near burger king . it has an average address ."
+    ],
+    [
+        "inform(name='zizzi';type='coffee shop';address='high';near='burger king')",
+        "near burger king is a highly rated coffee shop called zizzi .",
+        "near burger king is a highly rated coffee shop called zizzi ."
+    ],
+    [
+        "inform(name='zizzi';type='coffee shop';address='high';near='burger king')",
+        "located near burger king , zizzi is a high-rated coffee shop .",
+        "located near burger king , zizzi is a high-rated coffee shop ."
+    ],
+    [
+        "inform(name='zizzi';type='coffee shop';postcode='high';near='burger king')",
+        "the zizzi is a coffee shop near burger king . it has a high postcode .",
+        "the zizzi is a coffee shop near burger king . it has a high postcode ."
+    ],
+    [
+        "inform(name='zizzi';type='coffee shop';phone='high';near='burger king')",
+        "situated nearby burger king , is the highly rated zizzi coffee shop .",
+        "situated nearby burger king , is the highly rated zizzi coffee shop ."
+    ],
+    [
+        "inform(name='zizzi';type='coffee shop';address='high';near='burger king')",
+        "for a coffee shop highly-rated by customers , head to zizzi near burger king .",
+        "for a coffee shop highly-rated by customers , head to zizzi near burger king ."
+    ],
+    [
+        "inform(name='zizzi';type='coffee shop';near='the sorrento')",
+        "close to the sorrento you will be able to find a coffee shop called zizzi",
+        "close to the sorrento you will be able to find a coffee shop called zizzi"
+    ],
+    [
+        "inform(name='zizzi';type='coffee shop';near='the sorrento')",
+        "there is a coffee shop called zizzi located near the sorrento .",
+        "there is a coffee shop called zizzi located near the sorrento ."
+    ],
+    [
+        "inform(name='zizzi';type='pub';area='riverside')",
+        "the zizzi is a pub along the river .",
+        "the zizzi is a pub along the river ."
+    ],
+    [
+        "inform(name='zizzi';type='pub';area='riverside')",
+        "you can find a pub named zizzi in the riverside area .",
+        "you can find a pub named zizzi in the riverside area ."
+    ],
+    [
+        "inform(name='zizzi';type='pub';area='riverside')",
+        "zizzi is a riverside pub .",
+        "zizzi is a riverside pub ."
+    ],
+    [
+        "inform(name='zizzi';type='pub';phone='average';near='burger king')",
+        "close by burger king , is zizzi . an average rated pub .",
+        "close by burger king , is zizzi . an average rated pub ."
+    ],
+    [
+        "inform(name='zizzi';type='pub';postcode='average';near='burger king')",
+        "near burger king you can try the average zizzi pub .",
+        "near burger king you can try the average zizzi pub ."
+    ],
+    [
+        "inform(name='zizzi';type='pub';address='average';near='burger king')",
+        "customers have rated the zizzi pub situated near burger king as average .",
+        "customers have rated the zizzi pub situated near burger king as average ."
+    ],
+    [
+        "inform(name='zizzi';type='pub';phone='average';near='burger king')",
+        "an average rated pub called zizzi is nearby burger king .",
+        "an average rated pub called zizzi is nearby burger king ."
+    ],
+    [
+        "inform(name='zizzi';type='pub';phone='average';near='burger king')",
+        "customers rate zizzi pub , near burger king , average .",
+        "customers rate zizzi pub , near burger king , average ."
+    ],
+    [
+        "inform(name='zizzi';type='pub';address='average';near='burger king')",
+        "the zizzi pub is located near burger king . it has an average address .",
+        "the zizzi pub is located near burger king . it has an average address ."
+    ],
+    [
+        "inform(name='zizzi';type='pub';address='high';near='burger king')",
+        "near burger king is a highly rated pub called zizzi .",
+        "near burger king is a highly rated pub called zizzi ."
+    ],
+    [
+        "inform(name='zizzi';type='pub';phone='high';near='burger king')",
+        "located near burger king , zizzi is a high-rated pub .",
+        "located near burger king , zizzi is a high-rated pub ."
+    ],
+    [
+        "inform(name='zizzi';type='pub';postcode='high';near='burger king')",
+        "the zizzi is a pub near burger king . it has a high postcode .",
+        "the zizzi is a pub near burger king . it has a high postcode ."
+    ],
+    [
+        "inform(name='zizzi';type='pub';postcode='high';near='burger king')",
+        "situated nearby burger king , is the highly rated zizzi pub .",
+        "situated nearby burger king , is the highly rated zizzi pub ."
+    ],
+    [
+        "inform(name='zizzi';type='pub';address='high';near='burger king')",
+        "for a pub highly-rated by customers , head to zizzi near burger king .",
+        "for a pub highly-rated by customers , head to zizzi near burger king ."
+    ],
+    [
+        "inform(name='zizzi';type='pub';near='the sorrento')",
+        "close to the sorrento you will be able to find a pub called zizzi",
+        "close to the sorrento you will be able to find a pub called zizzi"
+    ],
+    [
+        "inform(name='zizzi';type='pub';near='the sorrento')",
+        "there is a pub called zizzi located near the sorrento .",
+        "there is a pub called zizzi located near the sorrento ."
+    ]
+]

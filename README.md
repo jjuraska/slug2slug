@@ -1,36 +1,28 @@
-[![CircleCI](https://circleci.com/gh/google/seq2seq.svg?style=svg)](https://circleci.com/gh/google/seq2seq)
+## E2E NLG
+
+The E2E NLG module leverages the seq2seq framework for end-to-end natural language generation from meaning representations (MRs). This is a work in progress...
 
 ---
 
-**[READ THE DOCUMENTATION](https://google.github.io/seq2seq)**
+##### USAGE
 
-**[CONTRIBUTING](https://google.github.io/seq2seq/contributing/)**
-
----
-
-A general-purpose encoder-decoder framework for Tensorflow that can be used for Machine Translation, Text Summarization, Conversational Modeling, Image Captioning, and more.
-
-![Translation Model](https://3.bp.blogspot.com/-3Pbj_dvt0Vo/V-qe-Nl6P5I/AAAAAAAABQc/z0_6WtVWtvARtMk0i9_AtLeyyGyV6AI4wCLcB/s1600/nmt-model-fast.gif)
-
----
-
-The official code used for the [Massive Exploration of Neural Machine Translation Architectures](https://arxiv.org/abs/1703.03906) paper.
-
-If you use this code for academic purposes, please cite it as:
+In the _e2e_nlg_ folder, optionally put your input files in the _data_ folder. Run _main.py_ in one of the following ways to run the training, or the evaluation (only after the training has been run):
 
 ```
-@ARTICLE{Britz:2017,
-  author          = {{Britz}, Denny and {Goldie}, Anna and {Luong}, Thang and {Le}, Quoc},
-  title           = "{Massive Exploration of Neural Machine Translation Architectures}",
-  journal         = {ArXiv e-prints},
-  archivePrefix   = "arXiv",
-  eprinttype      = {arxiv},
-  eprint          = {1703.03906},
-  primaryClass    = "cs.CL",
-  keywords        = {Computer Science - Computation and Language},
-  year            = 2017,
-  month           = mar,
-}
+python main.py --train [path_to_trainset] [path_to_devset]
+python main.py --test [path_to_testset]
 ```
 
-This is not an official Google product.
+Replace [path_to_trainset], [path_to_devset], [path_to_testset] with relative paths to your trainset, devset, or testset, respectively. They are expected to be CSV files with two columns (their headers must be _mr_ and _ref_, respectively), the first containing the MRs, and the second containing the corresponding reference utterances.
+
+Once the training is done, the _model_ folder will contain files describing the model, which will be used for evaluation. Therefore, you are not to modify them.
+
+Finally, the evaluation produces output files in the _predictions_ folder. The _predictions.txt_ file contains raw results, while the _predictions_final.txt_ is produced during the postprocessing step.
+
+---
+
+###### REQUIREMENTS
+
+- Python libraries: tensorflow, numpy, pandas, nltk, networkx
+- NLTK modules: perluniprops, punkt
+    - install using the following command: python -c "import nltk; nltk.download('[module_name]')"

@@ -160,19 +160,19 @@ flycheck_*.el
 *.userosscache
 *.sln.docstates
 
-# E2E NLG
-/e2e_nlg/.idea
-/e2e_nlg/archive
-/e2e_nlg/data/*.json
-/e2e_nlg/data/*.txt
-/e2e_nlg/metrics/predictions_reduced.txt
-/e2e_nlg/model
-/e2e_nlg/predictions/*.txt
-/e2e_nlg/predictions/beam_visualizations/
-/e2e_nlg/predictions/beams.npz
-/e2e_nlg/predictions/beams_dump.pkl
-/e2e_nlg/predictions/beams_dump_reranked.pkl
-/e2e_nlg/saved_model
-/e2e_nlg/tools
+# SLUG2SLUG
+/.idea
+/archive
+/data/*.json
+/data/*.txt
+/metrics/predictions_reduced.txt
+/model
+/predictions/*.txt
+/predictions/beam_visualizations/
+/predictions/beams.npz
+/predictions/beams_dump.pkl
+/predictions/beams_dump_reranked.pkl
+/saved_model
+/tools
 
 # End of https://www.gitignore.io/api/emacs

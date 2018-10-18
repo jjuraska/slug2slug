@@ -1,0 +1,847 @@
+#####################################################
+#####################################################
+#  Copyright Cambridge Dialogue Systems Group, 2016 #
+#####################################################
+#####################################################
+[
+    [
+        "inform(name='the carriage inn';hasinternet='yes';dogsallowed='no')",
+        "the carriage inn is a nice hotel that has internet and does not allow dogs",
+        "the carriage inn is a nice place , it has internet and where no dogs are allowed"
+    ],
+    [
+        "inform(name='hotel mirabelle';address='1906 mission street';phone='4153774170')",
+        "the address of hotel mirabelle is 1906 mission street . the phone number is 4153774170",
+        "hotel mirabelle is a nice place , their address is 1906 mission street and their phone number is 4153774170"
+    ],
+    [
+        "inform(name='grand hyatt san francisco';pricerange='pricey';phone='4153981234')",
+        "grand hyatt san francisco is pricey , the phone number is 4153981234",
+        "grand hyatt san francisco is a nice place , it is in the pricey price range and their phone number is 4153981234"
+    ],
+    [
+        "inform(name='noe 7s nest bed and breakfast';hasinternet='yes';near='mission')",
+        "noe 7s nest bed and breakfast is located near mission and has internet access available",
+        "noe 7s nest bed and breakfast is a nice place , it has internet and it is near mission"
+    ],
+    [
+        "inform(name='union hotel';dogsallowed='none';hasinternet='yes';near='mission')",
+        "union hotel does not allow dogs . it has internet access and is located near mission",
+        "union hotel is a nice place , it has internet , it is near mission and i do not know if it allows dogs"
+    ],
+    [
+        "inform(name='pickwick hotel';area='noma';dogsallowed='no')",
+        "the pickwick hotel in noma does not allow dogs",
+        "pickwick hotel is a nice place , it is in the area of noma and where no dogs are allowed"
+    ],
+    [
+        "inform(name='pickwick hotel';address='85 5th street';phone='4154217500')",
+        "the pickwick hotel is at 85 5th street , 4154217500",
+        "pickwick hotel is a nice place , their address is 85 5th street and their phone number is 4154217500"
+    ],
+    [
+        "inform(name='buena vista motor inn';area='fort mason';hasinternet='yes')",
+        "buena vista motor inn in fort mason has internet",
+        "buena vista motor inn is a nice place , it is in the area of fort mason and it has internet"
+    ],
+    [
+        "inform(name='buena vista motor inn';area='fort mason';hasinternet='yes')",
+        "buena vista motor inn in fort mason has internet",
+        "buena vista motor inn is a nice place , it is in the area of fort mason and it has internet"
+    ],
+    [
+        "inform(name='buena vista motor inn';area='fort mason';hasinternet='yes')",
+        "buena vista motor inn in fort mason has internet",
+        "buena vista motor inn is a nice place , it is in the area of fort mason and it has internet"
+    ],
+    [
+        "inform(name='buena vista motor inn';area='fort mason';hasinternet='yes')",
+        "buena vista motor inn in fort mason has internet",
+        "buena vista motor inn is a nice place , it is in the area of fort mason and it has internet"
+    ],
+    [
+        "inform(name='queen anne hotel';area='little osaka';dogsallowed='none')",
+        "the queen anne hotel is near little osaka and does not allow dogs",
+        "queen anne hotel is a nice place , it is in the area of little osaka and i do not know if it allows dogs"
+    ],
+    [
+        "inform(name='mandarin oriental c san francisco';area='financial district';dogsallowed='yes')",
+        "one hotel which does allow dogs in the financial district is the mandarin oriental c san francisco",
+        "mandarin oriental c san francisco is a nice place , it is in the area of financial district and where dogs are allowed"
+    ],
+    [
+        "inform(name='mandarin oriental c san francisco';hasinternet='yes';dogsallowed='yes';area='financial district')",
+        "the mandarin oriental c san francisco does have internet . it also allows dogs , and is in the financial district",
+        "mandarin oriental c san francisco is a nice place , where dogs are allowed , it is in the area of financial district and it has internet"
+    ],
+    [
+        "inform(name='mandarin oriental c san francisco';address='222 sansome street';phone='4152769888')",
+        "the address of the mandarin oriental c san francisco is 222 sansome street , and the phone number is 4152769888",
+        "mandarin oriental c san francisco is a nice place , their address is 222 sansome street and their phone number is 4152769888"
+    ],
+    [
+        "inform(name='red victorian bed breakfast and arts cafe';near='haight';pricerange='moderate')",
+        "the red victorian bed breakfast and arts cafe is available near haight at the moderate price",
+        "red victorian bed breakfast and arts cafe is a nice place , it is near haight and it is in the moderate price range"
+    ],
+    [
+        "inform(name='red victorian bed breakfast and arts cafe';address='1665 haight street';postcode='94117')",
+        "the red victorian bed breakfast and arts cafe is at 1665 haight street , 94117",
+        "red victorian bed breakfast and arts cafe is a nice place , their address is 1665 haight street and their postcode is 94117"
+    ],
+    [
+        "inform(name='hotel kabuki';dogsallowed='yes';hasinternet='yes';near='japantown')",
+        "hotel kabuki allows dogs and hans internet near japantown",
+        "hotel kabuki is a nice place , it has internet , it is near japantown and where dogs are allowed"
+    ],
+    [
+        "inform(name='inn on castro';address='321 castro street';phone='4158610321')",
+        "the inn on castro can be reached by phone at 4158610321 . the address is 321 castro st",
+        "inn on castro is a nice place , their address is 321 castro street and their phone number is 4158610321"
+    ],
+    [
+        "inform(name='holiday inn golden gateway hotel';address='1500 van ness avenue';postcode='94109')",
+        "how about the holiday inn golden gateway hotel at 1500 van ness avenue , 94109",
+        "holiday inn golden gateway hotel is a nice place , their address is 1500 van ness avenue and their postcode is 94109"
+    ],
+    [
+        "inform(name='the inn san francisco';hasinternet='yes';near='mission')",
+        "the inn san francisco is near mission and has internet",
+        "the inn san francisco is a nice place , it has internet and it is near mission"
+    ],
+    [
+        "inform(name='the inn san francisco';hasinternet='yes';near='mission')",
+        "the inn san francisco has internet and is near the mission",
+        "the inn san francisco is a nice place , it has internet and it is near mission"
+    ],
+    [
+        "inform(name='the carriage inn';hasinternet='yes';dogsallowed='no')",
+        "the carriage inn has internet and does not allow dogs",
+        "the carriage inn is a nice place , it has internet and where no dogs are allowed"
+    ],
+    [
+        "inform(name='marina inn';near='marina cow hollow';pricerange='inexpensive')",
+        "i found the marina inn near the marina cow hollow in your price inexpensive range",
+        "marina inn is a nice place , it is near marina cow hollow and it is in the inexpensive price range"
+    ],
+    [
+        "inform(name='marina inn';acceptscreditcards='yes';near='marina cow hollow';pricerange='inexpensive')",
+        "the inexpensive marina inn near marina cow hollow accepts credit card -s",
+        "marina inn is a nice place , it is near marina cow hollow , it is in the inexpensive price range and it accepts credit card -s"
+    ],
+    [
+        "inform(name='hotel drisco';hasinternet='yes';area='pacific heights')",
+        "the hotel drisco has internet and is in pacific heights",
+        "hotel drisco is a nice place , it has internet and it is in the area of pacific heights"
+    ],
+    [
+        "inform(name='hotel drisco';address='2901 pacific avenue';phone='4153462880')",
+        "the address of the hotel drisco is 2901 pacific avenue and the phone number is 4153462880",
+        "hotel drisco is a nice place , their address is 2901 pacific avenue and their phone number is 4153462880"
+    ],
+    [
+        "inform(name='red victorian bed breakfast and arts cafe';near='haight';hasinternet='yes')",
+        "red victorian bed breakfast and arts cafe is near haight and has internet",
+        "red victorian bed breakfast and arts cafe is a nice place , it is near haight and it has internet"
+    ],
+    [
+        "inform(name='red victorian bed breakfast and arts cafe';near='haight';hasinternet='yes')",
+        "the red victorian bed breakfast and arts cafe is near haight and has internet",
+        "red victorian bed breakfast and arts cafe is a nice place , it is near haight and it has internet"
+    ],
+    [
+        "inform(name='red victorian bed breakfast and arts cafe';near='haight';hasinternet='yes')",
+        "the red victorian bed breakfast and arts cafe is near haight and has internet",
+        "red victorian bed breakfast and arts cafe is a nice place , it is near haight and it has internet"
+    ],
+    [
+        "inform(name='red victorian bed breakfast and arts cafe';pricerange='moderate';address='1665 haight street';phone='4158641978')",
+        "the red victorian bed breakfast and arts cafe is moderate -ly priced and their address is 1665 haight street . their phone number is 4158641978",
+        "red victorian bed breakfast and arts cafe is a nice place , their address is 1665 haight street , their phone number is 4158641978 and it is in the moderate price range"
+    ],
+    [
+        "inform(name='inn on castro';hasinternet='yes';area='castro')",
+        "the inn on castro has internet in the castro area",
+        "inn on castro is a nice place , it has internet and it is in the area of castro"
+    ],
+    [
+        "inform(name='inn on castro';hasinternet='yes';area='castro')",
+        "the inn on castro has internet in the castro area",
+        "inn on castro is a nice place , it has internet and it is in the area of castro"
+    ],
+    [
+        "inform(name='inn on castro';address='321 castro street';postcode='94114')",
+        "the inn on castro is located at 321 castro street , postal code 94114",
+        "inn on castro is a nice place , their address is 321 castro street and their postcode is 94114"
+    ],
+    [
+        "inform(name='inn at the presidio';area='presidio';dogsallowed='yes')",
+        "dogs are allowed at the inn at the presidio , which is located in presidio area",
+        "inn at the presidio is a nice place , it is in the area of presidio and where dogs are allowed"
+    ],
+    [
+        "inform(name='inn at the presidio';area='presidio';dogsallowed='yes';hasinternet='yes')",
+        "the inn at the presidio in presidio area allows dogs and has internet service",
+        "inn at the presidio is a nice place , where dogs are allowed , it has internet and it is in the area of presidio"
+    ],
+    [
+        "inform(name='red victorian bed breakfast and arts cafe';near='haight';hasinternet='yes')",
+        "the red victorian bed breakfast and arts cafe is near haight and has internet",
+        "red victorian bed breakfast and arts cafe is a nice place , it is near haight and it has internet"
+    ],
+    [
+        "inform(name='ocean park motel';dogsallowed='none';phone='4155667020')",
+        "the phone number for ocean park motel is 4155667020 . no dogs are allowed there",
+        "ocean park motel is a nice place , i do not know if it allows dogs and their phone number is 4155667020"
+    ],
+    [
+        "inform(name='grand hyatt san francisco';pricerange='pricey';dogsallowed='yes')",
+        "the grand hyatt san francisco is in the pricey range and allows dogs",
+        "grand hyatt san francisco is a nice place , it is in the pricey price range and where dogs are allowed"
+    ],
+    [
+        "inform(name='laurel inn';near='presidio heights';hasinternet='yes')",
+        "a hotel near presidio heights that has internet is the laurel inn",
+        "laurel inn is a nice place , it is near presidio heights and it has internet"
+    ],
+    [
+        "inform(name='hotel drisco';area='pacific heights';hasinternet='yes')",
+        "hotel drisco is in pacific heights and has internet",
+        "hotel drisco is a nice place , it is in the area of pacific heights and it has internet"
+    ],
+    [
+        "inform(name='hotel drisco';address='2901 pacific avenue';phone='4153462880')",
+        "the hotel drisco address is 2901 pacific avenue and the phone number is 4153462880",
+        "hotel drisco is a nice place , their address is 2901 pacific avenue and their phone number is 4153462880"
+    ],
+    [
+        "inform(name='queen anne hotel';hasinternet='yes';near='japantown')",
+        "queen anne hotel has internet and is near japantown",
+        "queen anne hotel is a nice place , it has internet and it is near japantown"
+    ],
+    [
+        "inform(name='queen anne hotel';hasinternet='yes';near='japantown')",
+        "queen anne hotel has internet and is near japantown",
+        "queen anne hotel is a nice place , it has internet and it is near japantown"
+    ],
+    [
+        "inform(name='hotel metropolis';address='25 mason street';phone='4157754600')",
+        "sure . the address of the hotel metropolis is 25 mason street . and the hotel 's phone number is 4157754600",
+        "hotel metropolis is a nice place , their address is 25 mason street and their phone number is 4157754600"
+    ],
+    [
+        "inform(name='the tuscan best western plus';area='north beach';acceptscreditcards='yes')",
+        "yes , the tuscan best western plus in north beach accepts credit card -s",
+        "the tuscan best western plus is a nice place , it is in the area of north beach and it accepts credit card -s"
+    ],
+    [
+        "inform(name='buena vista motor inn';hasinternet='yes';area='fort mason')",
+        "the buena vista motor inn near fort mason does have internet",
+        "buena vista motor inn is a nice place , it has internet and it is in the area of fort mason"
+    ],
+    [
+        "inform(name='grand hyatt san francisco';pricerange='pricey';phone='4153981234')",
+        "grand hyatt san francisco is pricey , the phone number is 4153981234",
+        "grand hyatt san francisco is a nice place , it is in the pricey price range and their phone number is 4153981234"
+    ],
+    [
+        "inform(name='red victorian bed breakfast and arts cafe';acceptscreditcards='yes';near='haight')",
+        "the red victorian bed breakfast and arts cafe accepts credit card -s and is also near the haight area",
+        "red victorian bed breakfast and arts cafe is a nice place , it accepts credit card -s and it is near haight"
+    ],
+    [
+        "inform(name='red victorian bed breakfast and arts cafe';acceptscreditcards='yes';near='haight';hasinternet='yes')",
+        "yes it has internet and it is called the red victorian bed breakfast and arts cafe and is in the haight area",
+        "red victorian bed breakfast and arts cafe is a nice place , it is near haight , it has internet and it accepts credit card -s"
+    ],
+    [
+        "inform(name='red victorian bed breakfast and arts cafe';acceptscreditcards='yes';near='haight';hasinternet='yes')",
+        "the hotel is named the red victorian bed breakfast and arts cafe and is in the haight area and you can use your credit card there",
+        "red victorian bed breakfast and arts cafe is a nice place , it is near haight , it has internet and it accepts credit card -s"
+    ],
+    [
+        "inform(name='red victorian bed breakfast and arts cafe';acceptscreditcards='yes';near='haight';hasinternet='yes')",
+        "the red victorian bed breakfast and arts cafe will take your credit card and wil give you internet access and is in the haight area",
+        "red victorian bed breakfast and arts cafe is a nice place , it is near haight , it has internet and it accepts credit card -s"
+    ],
+    [
+        "inform(name='hotel stratford';address='242 powell street';phone='4153977080';postcode='94102')",
+        "for the hotel stratford the address is 242 powell street with the postcode of 94102 . the phone number is 4153977080",
+        "hotel stratford is a nice place , their phone number is 4153977080 , their postcode is 94102 and their address is 242 powell st"
+    ],
+    [
+        "inform(name='sw hotel';area='chinatown';hasinternet='yes')",
+        "i found a sw hotel in chinatown that has internet",
+        "sw hotel is a nice place , it is in the area of chinatown and it has internet"
+    ],
+    [
+        "inform(name='sw hotel';area='chinatown';hasinternet='yes')",
+        "sw hotel in chinatown has internet",
+        "sw hotel is a nice place , it is in the area of chinatown and it has internet"
+    ],
+    [
+        "inform(name='sw hotel';hasinternet='yes';area='chinatown')",
+        "i found an sw hotel that has internet in chinatown",
+        "sw hotel is a nice place , it has internet and it is in the area of chinatown"
+    ],
+    [
+        "inform(name='hilton san francisco financial district';hasinternet='yes';area='chinatown')",
+        "i found another hotel called the hilton san francisco financial district near chinatown that has internet",
+        "hilton san francisco financial district is a nice place , it has internet and it is in the area of chinatown"
+    ],
+    [
+        "inform(name='stanford court san francisco';pricerange='pricey';area='nob hill')",
+        "the stanford court san francisco is a pricey hotel in the nob hill area",
+        "stanford court san francisco is a nice place , it is in the pricey price range and it is in the area of nob hill"
+    ],
+    [
+        "inform(name='the fairmont san francisco';pricerange='pricey';area='nob hill')",
+        "the fairmont san francisco is a pricey hotel in the nob hill area",
+        "the fairmont san francisco is a nice place , it is in the pricey price range and it is in the area of nob hill"
+    ],
+    [
+        "inform(name='the street regis san francisco';pricerange='ultra high end';address='125 3rd street')",
+        "the address for the street regis san francisco is 125 3rd street and it is an ultra high end hotel",
+        "the street regis san francisco is a nice place , it is in the ultra high end price range and their address is 125 3rd st"
+    ],
+    [
+        "inform(name='hotel drisco';area='pacific heights';hasinternet='yes')",
+        "there is the hotel drisco in the pacific heights area , it has internet",
+        "hotel drisco is a nice place , it is in the area of pacific heights and it has internet"
+    ],
+    [
+        "inform(name='hotel drisco';address='2901 pacific avenue';phone='4153462880')",
+        "the address for hotel drisco is 2901 pacific avenue , the phone is 4153462880",
+        "hotel drisco is a nice place , their address is 2901 pacific avenue and their phone number is 4153462880"
+    ],
+    [
+        "inform(name='pontiac hostel hotel';address='509 minna street';phone='4158637775')",
+        "sure their address is 509 minna street and the pontiac hostel hotel 's phone number is 4158637775",
+        "pontiac hostel hotel is a nice place , their address is 509 minna street and their phone number is 4158637775"
+    ],
+    [
+        "inform(name='pontiac hostel hotel';hasinternet='yes';address='509 minna street';phone='4158637775')",
+        "okay well you can find the pontiac hostel hotel at 509 minna street and will be able to use the internet there and if you need to call them their number is 4158637775",
+        "pontiac hostel hotel is a nice place , their address is 509 minna street , their phone number is 4158637775 and it has internet"
+    ],
+    [
+        "inform(name='san remo hotel';address='2237 mason street';phone='4157768688')",
+        "san remo hotel address is 2237 mason street and the phone nubmer is 4157768688",
+        "san remo hotel is a nice place , their address is 2237 mason street and their phone number is 4157768688"
+    ],
+    [
+        "inform(name='hotel drisco';area='pacific heights';hasinternet='yes')",
+        "hotel drisco in the pacific heights area has internet connection",
+        "hotel drisco is a nice place , it is in the area of pacific heights and it has internet"
+    ],
+    [
+        "inform(name='hotel drisco';address='2901 pacific avenue';phone='4153462880')",
+        "hotel drisco 's address is 2901 pacific avenue , the phone number is 4153462880",
+        "hotel drisco is a nice place , their address is 2901 pacific avenue and their phone number is 4153462880"
+    ],
+    [
+        "inform(name='hyatt regency san francisco';hasinternet='yes';phone='4157881234')",
+        "the hyatt regency san francisco has internet and their phone number is 4157881234",
+        "hyatt regency san francisco is a nice place , it has internet and their phone number is 4157881234"
+    ],
+    [
+        "inform(name='hilton san francisco financial district';dogsallowed='yes';pricerange='pricey')",
+        "the hilton san francisco financial district allows dogs . it is in the pricey price range",
+        "hilton san francisco financial district is a nice place , where dogs are allowed and it is in the pricey price range"
+    ],
+    [
+        "inform(name='hilton san francisco financial district';address='750 kearny street';phone='4154336600')",
+        "the address of the hilton san francisco financial district is 750 kearny street , the phone number is 4154336600",
+        "hilton san francisco financial district is a nice place , their address is 750 kearny street and their phone number is 4154336600"
+    ],
+    [
+        "inform(name='noe 7s nest bed and breakfast';area='transmission';acceptscreditcards='yes')",
+        "noe 7s nest bed and breakfast is located in transmission and they accept credit card -s",
+        "noe 7s nest bed and breakfast is a nice place , it is in the area of transmission and it accepts credit card -s"
+    ],
+    [
+        "inform(name='noe 7s nest bed and breakfast';address='1257 guerrero street';phone='4158210751')",
+        "noe 7s nest bed and breakfast address is 1257 guerrero street . and their phone number is 4158210751",
+        "noe 7s nest bed and breakfast is a nice place , their address is 1257 guerrero street and their phone number is 4158210751"
+    ],
+    [
+        "inform(name='hotel union square';area='noma';dogsallowed='yes')",
+        "hotel union square allows dogs and is near noma",
+        "hotel union square is a nice place , it is in the area of noma and where dogs are allowed"
+    ],
+    [
+        "inform(name='hotel union square';address='114 powell street';postcode='94102')",
+        "hotel union square address is 114 powell street and the postcode is 94102",
+        "hotel union square is a nice place , their address is 114 powell street and their postcode is 94102"
+    ],
+    [
+        "inform(name='hotel union square';area='noma';dogsallowed='yes')",
+        "hotel union square is near noma and does allow dogs",
+        "hotel union square is a nice place , it is in the area of noma and where dogs are allowed"
+    ],
+    [
+        "inform(name='hotel union square';address='114 powell street';postcode='94102')",
+        "hotel union square address is 114 powell street and the postcode is 94102",
+        "hotel union square is a nice place , their address is 114 powell street and their postcode is 94102"
+    ],
+    [
+        "inform(name='carl hotel';near='inner sunset';hasinternet='yes')",
+        "the carl hotel near the inner sunset and has internet",
+        "carl hotel is a nice place , it is near inner sunset and it has internet"
+    ],
+    [
+        "inform(name='carl hotel';address='198 carl street';phone='4156615679')",
+        "the address to te carl hotel is 198 carl street . phone number is 4156615679",
+        "carl hotel is a nice place , their address is 198 carl street and their phone number is 4156615679"
+    ],
+    [
+        "inform(name='inn at the presidio';hasinternet='yes';address='42 moraga avenue and presidio main post';phone='4158007356')",
+        "inn at the presidio has internet . the address is 42 moraga avenue and presidio main post , and the phone number is 4158007356",
+        "inn at the presidio is a nice place , their address is 42 moraga avenue and presidio main post , their phone number is 4158007356 and it has internet"
+    ],
+    [
+        "inform(name='chateau tivoli bed and breakfast inn';area='martin luther king square';acceptscreditcards='yes')",
+        "chateau tivoli bed and breakfast inn in martin luther king square accepts credit card -s",
+        "chateau tivoli bed and breakfast inn is a nice place , it is in the area of martin luther king square and it accepts credit card -s"
+    ],
+    [
+        "inform(name='the tuscan best western plus';area='north beach';dogsallowed='none')",
+        "the tuscan best western plus is in the north beach area and they do not allow dogs",
+        "the tuscan best western plus is a nice place , it is in the area of north beach and i do not know if it allows dogs"
+    ],
+    [
+        "inform(name='the tuscan best western plus';hasinternet='yes';phone='4155611100')",
+        "the tuscan best western plus has internet . the phone number is 4155611100",
+        "the tuscan best western plus is a nice place , it has internet and their phone number is 4155611100"
+    ],
+    [
+        "inform(name='hotel metropolis';address='25 mason street';phone='4157754600')",
+        "the hotel metropolis is located at 25 mason street and the phone number is 4157754600",
+        "hotel metropolis is a nice place , their address is 25 mason street and their phone number is 4157754600"
+    ],
+    [
+        "inform(name='the powell hotel';hasinternet='yes';acceptscreditcards='yes')",
+        "the powell hotel has internet and accepts credit card -s",
+        "the powell hotel is a nice place , it has internet and it accepts credit card -s"
+    ],
+    [
+        "inform(name='inn on castro';hasinternet='yes';area='castro')",
+        "inn on castro in castro area has internet connection",
+        "inn on castro is a nice place , it has internet and it is in the area of castro"
+    ],
+    [
+        "inform(name='inn on castro';hasinternet='yes';area='castro')",
+        "inn on castro has internet connection in the area of castro",
+        "inn on castro is a nice place , it has internet and it is in the area of castro"
+    ],
+    [
+        "inform(name='inn on castro';address='321 castro street';postcode='94114')",
+        "inn on castro address is 321 castro street , postcode 94114",
+        "inn on castro is a nice place , their address is 321 castro street and their postcode is 94114"
+    ],
+    [
+        "inform(name='hotel mirabelle';near='mission';hasinternet='yes')",
+        "hotel mirabelle near mission has internet",
+        "hotel mirabelle is a nice place , it is near mission and it has internet"
+    ],
+    [
+        "inform(name='hotel mirabelle';address='1906 mission street';phone='4153774170')",
+        "hotel mirabelle is at 1906 mission street , 4153774170",
+        "hotel mirabelle is a nice place , their address is 1906 mission street and their phone number is 4153774170"
+    ],
+    [
+        "inform(name='red victorian bed breakfast and arts cafe';pricerange='moderate';phone='4158641978')",
+        "the red victorian bed breakfast and arts cafe has moderate price -s . their phone is 4158641978",
+        "red victorian bed breakfast and arts cafe is a nice place , it is in the moderate price range and their phone number is 4158641978"
+    ],
+    [
+        "inform(name='the orchard hotel';address='665 bush street';phone='4153628878';postcode='94108')",
+        "well how about visiting the orchard hotel at 665 bush street and if you want to call them their number is 4153628878 and their postcode is 94108",
+        "the orchard hotel is a nice place , their phone number is 4153628878 , their postcode is 94108 and their address is 665 bush st"
+    ],
+    [
+        "inform(name='hotel majestic';near='japantown';hasinternet='yes')",
+        "the hotel majestic is near japantown and has internet",
+        "hotel majestic is a nice place , it is near japantown and it has internet"
+    ],
+    [
+        "inform(name='hotel majestic';phone='4154411100';postcode='94109')",
+        "the phone number for hotel majestic is 4154411100 . its postal code is 94109",
+        "hotel majestic is a nice place , their phone number is 4154411100 and their postcode is 94109"
+    ],
+    [
+        "inform(name='noe 7s nest bed and breakfast';area='transmission';pricerange='moderate')",
+        "there is noe 7s nest bed and breakfast in the transmission area in the moderate price range",
+        "noe 7s nest bed and breakfast is a nice place , it is in the area of transmission and it is in the moderate price range"
+    ],
+    [
+        "inform(name='casa melissa';pricerange='moderate';area='little italy')",
+        "casa melissa has a moderate price range in the area of little italy",
+        "casa melissa is a nice place , it is in the moderate price range and it is in the area of little italy"
+    ],
+    [
+        "inform(name='casa melissa';address='615 union street';phone='4152257377')",
+        "casa melissa address is 615 union street and the phone number is 4152257377",
+        "casa melissa is a nice place , their address is 615 union street and their phone number is 4152257377"
+    ],
+    [
+        "inform(name='seal rock inn';acceptscreditcards='yes';near='outer richmond')",
+        "the seal rock inn near outer richmond accepts credit card -s",
+        "seal rock inn is a nice place , it accepts credit card -s and it is near outer richmond"
+    ],
+    [
+        "inform(name='seal rock inn';near='outer richmond';acceptscreditcards='yes')",
+        "the hotel seal rock inn near outer richmond accepts credit card -s",
+        "seal rock inn is a nice place , it is near outer richmond and it accepts credit card -s"
+    ],
+    [
+        "inform(name='seal rock inn';pricerange='moderate';address='545 point lobos avenue';phone='4157528000')",
+        "sure . the seal rock inn is moderate -ly priced and their address is 545 point lobos avenue and their phone number is 4157528000",
+        "seal rock inn is a nice place , their address is 545 point lobos avenue , their phone number is 4157528000 and it is in the moderate price range"
+    ],
+    [
+        "inform(name='the tuscan best western plus';area='north beach';acceptscreditcards='yes')",
+        "the tuscan best western plus , area north beach , accepts credit card -s",
+        "the tuscan best western plus is a nice place , it is in the area of north beach and it accepts credit card -s"
+    ],
+    [
+        "inform(name='super 8 hotel of san francisco';address='1015 geary street';phone='4156735232')",
+        "the address for super 8 hotel of san francisco is 1015 geary street . and their phone number is 4156735232",
+        "super 8 hotel of san francisco is a nice place , their address is 1015 geary street and their phone number is 4156735232"
+    ],
+    [
+        "inform(name='marina motel';address='2576 lombard street';phone='4159219406')",
+        "marina motel is located at 2576 lombard street . the phone number is 4159219406",
+        "marina motel is a nice place , their address is 2576 lombard street and their phone number is 4159219406"
+    ],
+    [
+        "inform(name='super 8 hotel of san francisco';address='1015 geary street';phone='4156735232')",
+        "the address of the super 8 hotel of san francisco is 1015 geary street . and the phone number is 4156735232",
+        "super 8 hotel of san francisco is a nice place , their address is 1015 geary street and their phone number is 4156735232"
+    ],
+    [
+        "inform(name='da vinci villa';address='2550 van ness avenue';postcode='94109')",
+        "da vinci villa is located at 2550 van ness avenue . zipcode 94109",
+        "da vinci villa is a nice place , their address is 2550 van ness avenue and their postcode is 94109"
+    ],
+    [
+        "inform(name='columbus motor inn';area='russian hill';pricerange='moderate')",
+        "the columbus motor inn is moderate -ly priced near russian hill",
+        "columbus motor inn is a nice place , it is in the area of russian hill and it is in the moderate price range"
+    ],
+    [
+        "inform(name='columbus motor inn';address='1075 columbus avenue';postcode='94133')",
+        "the columbus motor inn is located at 1075 columbus avenue postcode 94133",
+        "columbus motor inn is a nice place , their address is 1075 columbus avenue and their postcode is 94133"
+    ],
+    [
+        "inform(name='the orchard hotel';address='665 bush street';phone='4153628878';postcode='94108')",
+        "the orchard hotel is located at 665 bush street . phone number 4153628878 , post code 94108",
+        "the orchard hotel is a nice place , their phone number is 4153628878 , their postcode is 94108 and their address is 665 bush st"
+    ],
+    [
+        "inform(name='grand hyatt san francisco';pricerange='pricey';phone='4153981234')",
+        "grand hyatt san francisco is pricey , the phone number is 4153981234",
+        "grand hyatt san francisco is a nice place , it is in the pricey price range and their phone number is 4153981234"
+    ],
+    [
+        "inform(name='hotel kabuki';near='japantown';dogsallowed='yes')",
+        "the hotel kabuki in japantown allows dogs",
+        "hotel kabuki is a nice place , it is near japantown and where dogs are allowed"
+    ],
+    [
+        "inform(name='hotel kabuki';address='1625 post street';phone='4159223200')",
+        "the address and phone number of the hotel kabuki is 1625 post street 4159223200",
+        "hotel kabuki is a nice place , their address is 1625 post street and their phone number is 4159223200"
+    ],
+    [
+        "inform(name='hotel tomo';address='1800 sutter street';phone='4159214000')",
+        "hotel tomo is located at 1800 sutter street . they are reachable at 4159214000",
+        "hotel tomo is a nice place , their address is 1800 sutter street and their phone number is 4159214000"
+    ],
+    [
+        "inform(name='executive hotel vintage court';address='650 bush street';postcode='94108')",
+        "the executive hotel vintage court address is 650 bush street with a post code of 94108",
+        "executive hotel vintage court is a nice place , their address is 650 bush street and their postcode is 94108"
+    ],
+    [
+        "inform(name='balmoral hotel north no 2';acceptscreditcards='no';pricerange='inexpensive')",
+        "balmoral hotel north no 2 does not accept price card -s and is in the inexpensive price range",
+        "balmoral hotel north no 2 is a nice place , it does not accept credit card -s and it is in the inexpensive price range"
+    ],
+    [
+        "inform(name='the wharf inn';area='fishermans wharf';dogsallowed='yes')",
+        "absolutely . the wharf inn at fishermans wharf allows dogs",
+        "the wharf inn is a nice place , it is in the area of fishermans wharf and where dogs are allowed"
+    ],
+    [
+        "inform(name='queen anne hotel';hasinternet='yes';near='japantown')",
+        "queen anne hotel is a hotel near japantown which offers internet",
+        "queen anne hotel is a nice place , it has internet and it is near japantown"
+    ],
+    [
+        "inform(name='queen anne hotel';hasinternet='yes';near='japantown')",
+        "queen anne hotel has internet near japantown",
+        "queen anne hotel is a nice place , it has internet and it is near japantown"
+    ],
+    [
+        "inform(name='nob hill motor inn';dogsallowed='no';near='nob hill')",
+        "nob hill motor inn is a hotel near nob hill that does not allow dogs",
+        "nob hill motor inn is a nice place , where no dogs are allowed and it is near nob hill"
+    ],
+    [
+        "inform(name='nob hill motor inn';acceptscreditcards='yes';dogsallowed='no';near='nob hill')",
+        "nob hill motor inn accepts credit card -s near nob hill and does not allow dogs",
+        "nob hill motor inn is a nice place , where no dogs are allowed , it is near nob hill and it accepts credit card -s"
+    ],
+    [
+        "inform(name='nob hill motor inn';acceptscreditcards='yes';dogsallowed='no';near='nob hill')",
+        "nob hill motor inn takes credit card -s and does not allow dogs , it is located near nob hill",
+        "nob hill motor inn is a nice place , where no dogs are allowed , it is near nob hill and it accepts credit card -s"
+    ],
+    [
+        "inform(name='grant hotel';pricerange='inexpensive';dogsallowed='no')",
+        "the grant hotel does not allow dogs and is inexpensive",
+        "grant hotel is a nice place , it is in the inexpensive price range and where no dogs are allowed"
+    ],
+    [
+        "inform(name='the regency inn';hasinternet='yes';pricerange='inexpensive';dogsallowed='no')",
+        "the regency inn has internet , is inexpensive and does not allow dogs",
+        "the regency inn is a nice place , it is in the inexpensive price range , where no dogs are allowed and it has internet"
+    ],
+    [
+        "inform(name='the opal';area='cathedral hill';pricerange='moderate')",
+        "yes there is a place called the opal in the area of cathedral hill and they are moderate -ly priced",
+        "the opal is a nice place , it is in the area of cathedral hill and it is in the moderate price range"
+    ],
+    [
+        "inform(name='the opal';address='1050 van ness avenue';phone='8886734711')",
+        "okay well the opal 's address is 1050 van ness avenue and their phone number is 8886734711",
+        "the opal is a nice place , their address is 1050 van ness avenue and their phone number is 8886734711"
+    ],
+    [
+        "inform(name='san francisco marriott marquis';address='780 mission street';phone='4158961600')",
+        "the san francisco marriott marquis adress is 780 mission street and the phne number is 4158961600",
+        "san francisco marriott marquis is a nice place , their address is 780 mission street and their phone number is 4158961600"
+    ],
+    [
+        "inform(name='union hotel';hasinternet='yes';near='mission')",
+        "the union hotel is near mission and has internet",
+        "union hotel is a nice place , it has internet and it is near mission"
+    ],
+    [
+        "inform(name='sir francis drake c a kimpton hotel';pricerange='pricey';area='downtown')",
+        "the sir francis drake c a kimpton hotel is pricey and in the downtown area",
+        "sir francis drake c a kimpton hotel is a nice place , it is in the pricey price range and it is in the area of downtown"
+    ],
+    [
+        "inform(name='hotel north beach';hasinternet='yes';area='chinatown')",
+        "the hotel north beach in chinatown has an internet connection",
+        "hotel north beach is a nice place , it has internet and it is in the area of chinatown"
+    ],
+    [
+        "inform(name='hotel north beach';address='935 kearny street';phone='4159869911';postcode='94133')",
+        "the address of the hotel north beach is 935 kearny street . , 94133 , and the phone number is 4159869911",
+        "hotel north beach is a nice place , their phone number is 4159869911 , their postcode is 94133 and their address is 935 kearny st"
+    ],
+    [
+        "inform(name='red victorian bed breakfast and arts cafe';address='1665 haight street';phone='4158641978')",
+        "sure the address of the red victorian bed breakfast and arts cafe is 1665 haight street and the phone number is 4158641978",
+        "red victorian bed breakfast and arts cafe is a nice place , their address is 1665 haight street and their phone number is 4158641978"
+    ],
+    [
+        "inform(name='hotel kabuki';dogsallowed='yes';hasinternet='yes';near='japantown')",
+        "yes , hotel kabuki near japantown allows dogs and has available internet",
+        "hotel kabuki is a nice place , it has internet , it is near japantown and where dogs are allowed"
+    ],
+    [
+        "inform(name='inn on castro';address='321 castro street';postcode='94114')",
+        "inn on castro is located at 321 castro street and has postal code 94114",
+        "inn on castro is a nice place , their address is 321 castro street and their postcode is 94114"
+    ],
+    [
+        "inform(name='the wharf inn';near='north beach telegraph hill';dogsallowed='yes')",
+        "the wharf inn near north beach telegraph hill allows dogs",
+        "the wharf inn is a nice place , it is near north beach telegraph hill and where dogs are allowed"
+    ],
+    [
+        "inform(name='the wharf inn';phone='4156737411';postcode='94133')",
+        "the phone number to the wharf inn is 4156737411 post code 94133",
+        "the wharf inn is a nice place , their phone number is 4156737411 and their postcode is 94133"
+    ],
+    [
+        "inform(name='seal rock inn';address='545 point lobos avenue';postcode='94121')",
+        "seal rock inn 's address is 545 point lobos avenue . the postcode is 94121",
+        "seal rock inn is a nice place , their address is 545 point lobos avenue and their postcode is 94121"
+    ],
+    [
+        "inform(name='the inn san francisco';acceptscreditcards='yes';near='mission')",
+        "the inn san francisco is located near mission and they accept credit card -s",
+        "the inn san francisco is a nice place , it accepts credit card -s and it is near mission"
+    ],
+    [
+        "inform(name='the inn san francisco';hasinternet='yes';acceptscreditcards='yes';near='mission')",
+        "the inn san francisco is located near mission and they accept credit card -s and internet access",
+        "the inn san francisco is a nice place , it accepts credit card -s , it is near mission and it has internet"
+    ],
+    [
+        "inform(name='casa melissa';area='little italy';dogsallowed='no')",
+        "casa melissa is in little italy and does not allow dogs",
+        "casa melissa is a nice place , it is in the area of little italy and where no dogs are allowed"
+    ],
+    [
+        "inform(name='washington square inn';acceptscreditcards='yes';area='little italy')",
+        "washington square inn is in little italy and accepts credit card -s",
+        "washington square inn is a nice place , it accepts credit card -s and it is in the area of little italy"
+    ],
+    [
+        "inform(name='da vinci villa';pricerange='pricey';area='russian hill')",
+        "da vinci villa is a pricey hotel in the russian hill area",
+        "da vinci villa is a nice place , it is in the pricey price range and it is in the area of russian hill"
+    ],
+    [
+        "inform(name='da vinci villa';address='2550 van ness avenue';phone='4155292500')",
+        "da vinci villa is located at 2550 van ness avenue . the phone number is 4155292500",
+        "da vinci villa is a nice place , their address is 2550 van ness avenue and their phone number is 4155292500"
+    ],
+    [
+        "inform(name='w san francisco';pricerange='pricey';phone='4157775300')",
+        "w san francisco is pricey . the phone number is 4157775300",
+        "w san francisco is a nice place , it is in the pricey price range and their phone number is 4157775300"
+    ],
+    [
+        "inform(name='hotel kabuki';hasinternet='yes';near='japantown')",
+        "the hotel kabuki is located near japantown and has internet avalible",
+        "hotel kabuki is a nice place , it has internet and it is near japantown"
+    ],
+    [
+        "inform(name='hotel kabuki';pricerange='moderate';address='1625 post street')",
+        "the price range for the hotel kabuki is moderate , the address is 1625 post st",
+        "hotel kabuki is a nice place , it is in the moderate price range and their address is 1625 post st"
+    ],
+    [
+        "inform(name='hotel drisco';area='pacific heights';dogsallowed='none')",
+        "hotel drisco in pacific heights does not allow dogs",
+        "hotel drisco is a nice place , it is in the area of pacific heights and i do not know if it allows dogs"
+    ],
+    [
+        "inform(name='hotel drisco';address='2901 pacific avenue';phone='4153462880')",
+        "hotel drisco 's address is 2901 pacific avenue , their phone number is 4153462880",
+        "hotel drisco is a nice place , their address is 2901 pacific avenue and their phone number is 4153462880"
+    ],
+    [
+        "inform(name='hotel drisco';area='pacific heights';dogsallowed='none')",
+        "hotel drisco is in pacific heights and allows no dogs",
+        "hotel drisco is a nice place , it is in the area of pacific heights and i do not know if it allows dogs"
+    ],
+    [
+        "inform(name='hotel drisco';address='2901 pacific avenue';phone='4153462880')",
+        "hotel drisco is located at 2901 pacific avenue , and their phone number is 4153462880",
+        "hotel drisco is a nice place , their address is 2901 pacific avenue and their phone number is 4153462880"
+    ],
+    [
+        "inform(name='san francisco marriott marquis';dogsallowed='none';acceptscreditcards='yes')",
+        "san francisco marriott marquis accepts credit card -s and does not allow dogs",
+        "san francisco marriott marquis is a nice place , i do not know if it allows dogs and it accepts credit card -s"
+    ],
+    [
+        "inform(name='da vinci villa';pricerange='pricey';area='russian hill')",
+        "the da vinci villa is a pricey hotel in the russian hill area",
+        "da vinci villa is a nice place , it is in the pricey price range and it is in the area of russian hill"
+    ],
+    [
+        "inform(name='da vinci villa';address='2550 van ness avenue';phone='4155292500')",
+        "the da vinci villa is located at 2550 van ness avenue and its phone number is 4155292500",
+        "da vinci villa is a nice place , their address is 2550 van ness avenue and their phone number is 4155292500"
+    ],
+    [
+        "inform(name='parker guest house';area='mastro';address='520 church street';phone='4156213222')",
+        "parker guest house is near mastro at 520 church street . their phone number is 4156213222",
+        "parker guest house is a nice place , their address is 520 church street , their phone number is 4156213222 and it is in the area of mastro"
+    ],
+    [
+        "inform(name='hotel kabuki';dogsallowed='yes';near='japantown')",
+        "hotel kabuki near japantown allows dogs",
+        "hotel kabuki is a nice place , where dogs are allowed and it is near japantown"
+    ],
+    [
+        "inform(name='da vinci villa';address='2550 van ness avenue';postcode='94109')",
+        "the address of da vinci villa is 2550 van ness avenue and their postcode is 94109",
+        "da vinci villa is a nice place , their address is 2550 van ness avenue and their postcode is 94109"
+    ],
+    [
+        "inform(name='columbus motor inn';area='russian hill';pricerange='moderate')",
+        "columbus motor inn is in the area of russian hill and is moderate -ly priced",
+        "columbus motor inn is a nice place , it is in the area of russian hill and it is in the moderate price range"
+    ],
+    [
+        "inform(name='columbus motor inn';address='1075 columbus avenue';postcode='94133')",
+        "the address of columbus motor inn is 1075 columbus avenue and their postcode is 94133",
+        "columbus motor inn is a nice place , their address is 1075 columbus avenue and their postcode is 94133"
+    ],
+    [
+        "inform(name='sir francis drake c a kimpton hotel';pricerange='pricey';area='downtown')",
+        "sir francis drake c a kimpton hotel is a pricey downtown hotel",
+        "sir francis drake c a kimpton hotel is a nice place , it is in the pricey price range and it is in the area of downtown"
+    ],
+    [
+        "inform(name='super 8 san francisco funion square area';dogsallowed='none';phone='8005369326')",
+        "super 8 san francisco funion square area does not allow dogs and their phone number is 8005369326",
+        "super 8 san francisco funion square area is a nice place , i do not know if it allows dogs and their phone number is 8005369326"
+    ],
+    [
+        "inform(name='super 8 san francisco funion square area';pricerange='inexpensive';address='415 ofarrell street')",
+        "super 8 san francisco funion square area in an inexpensive hotel located at 415 ofarrell st",
+        "super 8 san francisco funion square area is a nice place , it is in the inexpensive price range and their address is 415 ofarrell st"
+    ],
+    [
+        "inform(name='inn on castro';area='the castro';hasinternet='yes')",
+        "i found the hotel inn on castro in the castro area . it has internet",
+        "inn on castro is a nice place , it is in the area of the castro and it has internet"
+    ],
+    [
+        "inform(name='inn on castro';area='the castro';hasinternet='yes')",
+        "the name of the hotel is inn on castro in the castro area . this hotel has internet",
+        "inn on castro is a nice place , it is in the area of the castro and it has internet"
+    ],
+    [
+        "inform(name='inn on castro';area='the castro';hasinternet='yes')",
+        "the name of the hotel is inn on castro in the castro area . this hotel has internet",
+        "inn on castro is a nice place , it is in the area of the castro and it has internet"
+    ],
+    [
+        "inform(name='inn on castro';phone='4158610321';postcode='94114')",
+        "the phone number of inn on castro is 4158610321 and the postcode is 94114",
+        "inn on castro is a nice place , their phone number is 4158610321 and their postcode is 94114"
+    ],
+    [
+        "inform(name='hotel kabuki';dogsallowed='yes';hasinternet='yes';near='japantown')",
+        "hotel kabuki is a hotel near japantown that allows dogs and has internet",
+        "hotel kabuki is a nice place , it has internet , it is near japantown and where dogs are allowed"
+    ],
+    [
+        "inform(name='the inn san francisco';near='mission';hasinternet='yes')",
+        "there is a hotel near the mission called the inn san francisco and they have internet access",
+        "the inn san francisco is a nice place , it is near mission and it has internet"
+    ],
+    [
+        "inform(name='the inn san francisco';pricerange='moderate';phone='4156410188')",
+        "the inn san francisco is moderate -ly priced and their phone number is 4156410188",
+        "the inn san francisco is a nice place , it is in the moderate price range and their phone number is 4156410188"
+    ],
+    [
+        "inform(name='fairmont heritage place c ghirardelli square';area='russian hill';pricerange='ultra high end')",
+        "the fairmont heritage place c ghirardelli square is in the russian hill area and is in the ultra high end price range",
+        "fairmont heritage place c ghirardelli square is a nice place , it is in the area of russian hill and it is in the ultra high end price range"
+    ],
+    [
+        "inform(name='fairmont heritage place c ghirardelli square';address='900 north point and ste d100';phone='4152689900')",
+        "the fairmont heritage place c ghirardelli square is located at 900 north point and ste d100 and the phone number is 4152689900",
+        "fairmont heritage place c ghirardelli square is a nice place , their address is 900 north point and ste d100 and their phone number is 4152689900"
+    ],
+    [
+        "inform(name='noe 7s nest bed and breakfast';address='1257 guerrero street';postcode='94124')",
+        "noe 7s nest bed and breakfast is at 1257 guerrero street in post code 94124",
+        "noe 7s nest bed and breakfast is a nice place , their address is 1257 guerrero street and their postcode is 94124"
+    ]
+]

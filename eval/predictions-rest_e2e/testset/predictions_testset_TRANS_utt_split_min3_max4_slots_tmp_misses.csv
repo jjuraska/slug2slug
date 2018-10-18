@@ -1,0 +1,221 @@
+mr,ref,errors,missing slots
+"name[Blue Spice], eatType[coffee shop], area[city centre]",<slot_con_name> is a restaurant in the city centre .,1,eattype
+"name[Blue Spice], eatType[coffee shop], area[city centre]",<slot_con_name> is a restaurant in the city centre .,1,eattype
+"name[Blue Spice], eatType[coffee shop], area[riverside]",<slot_con_name> is a restaurant in the riverside area .,1,eattype
+"name[Blue Spice], eatType[coffee shop], area[riverside]",<slot_con_name> is a restaurant in the riverside area .,1,eattype
+"name[Blue Spice], eatType[coffee shop], customer rating[5 out of 5], near[Crowne Plaza Hotel]",<slot_con_name> is a 5 star restaurant located near <slot_con_near> .,2,"eattype, customerrating"
+"name[Blue Spice], eatType[coffee shop], customer rating[5 out of 5], near[Crowne Plaza Hotel]",<slot_con_name> is a 5 star restaurant located near <slot_con_near> .,2,"eattype, customerrating"
+"name[Blue Spice], eatType[coffee shop], customer rating[5 out of 5], near[Crowne Plaza Hotel]",<slot_con_name> is a 5 star restaurant located near <slot_con_near> .,2,"eattype, customerrating"
+"name[Blue Spice], eatType[coffee shop], customer rating[average], near[Burger King]",<slot_con_name> is a three star restaurant located near <slot_con_near> .,2,"eattype, customerrating"
+"name[Blue Spice], eatType[coffee shop], customer rating[average], near[Burger King]",<slot_con_name> is a three star restaurant located near <slot_con_near> .,2,"eattype, customerrating"
+"name[Blue Spice], eatType[coffee shop], customer rating[average], near[Burger King]",<slot_con_name> is a three star restaurant located near <slot_con_near> .,2,"eattype, customerrating"
+"name[Blue Spice], eatType[coffee shop], customer rating[average], near[Burger King]",<slot_con_name> is a three star restaurant located near <slot_con_near> .,2,"eattype, customerrating"
+"name[Blue Spice], eatType[coffee shop], customer rating[average], near[Burger King]",<slot_con_name> is a three star restaurant located near <slot_con_near> .,2,"eattype, customerrating"
+"name[Blue Spice], eatType[coffee shop], customer rating[average], near[Burger King]",<slot_con_name> is a three star restaurant located near <slot_con_near> .,2,"eattype, customerrating"
+"name[Blue Spice], eatType[coffee shop], customer rating[average], near[Burger King]",<slot_con_name> is a three star restaurant located near <slot_con_near> .,2,"eattype, customerrating"
+"name[Blue Spice], eatType[coffee shop], customer rating[average], near[Crowne Plaza Hotel]",<slot_con_name> is a three star restaurant located near <slot_con_near> .,2,"eattype, customerrating"
+"name[Blue Spice], eatType[pub], area[city centre]",<slot_con_name> is a restaurant in the city centre .,1,eattype
+"name[Blue Spice], eatType[pub], area[city centre]",<slot_con_name> is a restaurant in the city centre .,1,eattype
+"name[Blue Spice], eatType[pub], area[riverside]",<slot_con_name> is a restaurant in the riverside area .,1,eattype
+"name[Blue Spice], eatType[pub], area[riverside]",<slot_con_name> is a restaurant in the riverside area .,1,eattype
+"name[Blue Spice], eatType[pub], customer rating[5 out of 5], near[Crowne Plaza Hotel]",<slot_con_name> is a 5 out of 5 rated restaurant near <slot_con_near> .,1,eattype
+"name[Blue Spice], eatType[pub], customer rating[5 out of 5], near[Crowne Plaza Hotel]",<slot_con_name> is a 5 out of 5 rated restaurant near <slot_con_near> .,1,eattype
+"name[Blue Spice], eatType[pub], customer rating[5 out of 5], near[Crowne Plaza Hotel]",<slot_con_name> is a 5 out of 5 rated restaurant near <slot_con_near> .,1,eattype
+"name[Blue Spice], eatType[pub], customer rating[average], near[Burger King]",<slot_con_name> is a restaurant near <slot_con_near> with an average customer rating .,1,eattype
+"name[Blue Spice], eatType[pub], customer rating[average], near[Burger King]",<slot_con_name> is a restaurant near <slot_con_near> with an average customer rating .,1,eattype
+"name[Blue Spice], eatType[pub], customer rating[average], near[Burger King]",<slot_con_name> is a restaurant near <slot_con_near> with an average customer rating .,1,eattype
+"name[Blue Spice], eatType[pub], customer rating[average], near[Burger King]",<slot_con_name> is a restaurant near <slot_con_near> with an average customer rating .,1,eattype
+"name[Blue Spice], eatType[pub], customer rating[average], near[Burger King]",<slot_con_name> is a restaurant near <slot_con_near> with an average customer rating .,1,eattype
+"name[Blue Spice], eatType[pub], customer rating[average], near[Burger King]",<slot_con_name> is a restaurant near <slot_con_near> with an average customer rating .,1,eattype
+"name[Blue Spice], eatType[pub], customer rating[average], near[Burger King]",<slot_con_name> is a restaurant near <slot_con_near> with an average customer rating .,1,eattype
+"name[Blue Spice], eatType[pub], customer rating[average], near[Crowne Plaza Hotel]",<slot_con_name> is a restaurant near <slot_con_near> with an average customer rating .,1,eattype
+"name[Clowns], eatType[coffee shop], customer rating[3 out of 5], near[All Bar One]",<slot_con_name> is a 3 out of 5 rated restaurant near <slot_vow_near> .,1,eattype
+"name[Clowns], eatType[coffee shop], customer rating[3 out of 5], near[All Bar One]",<slot_con_name> is a 3 out of 5 rated restaurant near <slot_vow_near> .,1,eattype
+"name[Clowns], eatType[coffee shop], customer rating[3 out of 5], near[All Bar One]",<slot_con_name> is a 3 out of 5 rated restaurant near <slot_vow_near> .,1,eattype
+"name[Clowns], eatType[coffee shop], customer rating[3 out of 5], near[All Bar One]",<slot_con_name> is a 3 out of 5 rated restaurant near <slot_vow_near> .,1,eattype
+"name[Clowns], eatType[coffee shop], customer rating[3 out of 5], near[All Bar One]",<slot_con_name> is a 3 out of 5 rated restaurant near <slot_vow_near> .,1,eattype
+"name[Clowns], eatType[coffee shop], customer rating[3 out of 5], near[All Bar One]",<slot_con_name> is a 3 out of 5 rated restaurant near <slot_vow_near> .,1,eattype
+"name[Clowns], eatType[coffee shop], customer rating[5 out of 5], near[Crowne Plaza Hotel]",<slot_con_name> is a 5 star restaurant located near <slot_con_near> .,2,"eattype, customerrating"
+"name[Clowns], eatType[coffee shop], customer rating[5 out of 5], near[Crowne Plaza Hotel]",<slot_con_name> is a 5 star restaurant located near <slot_con_near> .,2,"eattype, customerrating"
+"name[Clowns], eatType[coffee shop], customer rating[5 out of 5], near[Crowne Plaza Hotel]",<slot_con_name> is a 5 star restaurant located near <slot_con_near> .,2,"eattype, customerrating"
+"name[Clowns], eatType[coffee shop], customer rating[5 out of 5], near[Crowne Plaza Hotel]",<slot_con_name> is a 5 star restaurant located near <slot_con_near> .,2,"eattype, customerrating"
+"name[Clowns], eatType[coffee shop], customer rating[5 out of 5], near[Crowne Plaza Hotel]",<slot_con_name> is a 5 star restaurant located near <slot_con_near> .,2,"eattype, customerrating"
+"name[Clowns], eatType[coffee shop], customer rating[5 out of 5], near[Crowne Plaza Hotel]",<slot_con_name> is a 5 star restaurant located near <slot_con_near> .,2,"eattype, customerrating"
+"name[Clowns], eatType[coffee shop], customer rating[5 out of 5], near[Crowne Plaza Hotel]",<slot_con_name> is a 5 star restaurant located near <slot_con_near> .,2,"eattype, customerrating"
+"name[Clowns], eatType[coffee shop], customer rating[5 out of 5], near[Crowne Plaza Hotel]",<slot_con_name> is a 5 star restaurant located near <slot_con_near> .,2,"eattype, customerrating"
+"name[Clowns], eatType[coffee shop], customer rating[5 out of 5], near[Crowne Plaza Hotel]",<slot_con_name> is a 5 star restaurant located near <slot_con_near> .,2,"eattype, customerrating"
+"name[Clowns], eatType[coffee shop], customer rating[5 out of 5], near[Crowne Plaza Hotel]",<slot_con_name> is a 5 star restaurant located near <slot_con_near> .,2,"eattype, customerrating"
+"name[Clowns], eatType[coffee shop], customer rating[5 out of 5], near[Crowne Plaza Hotel]",<slot_con_name> is a 5 star restaurant located near <slot_con_near> .,2,"eattype, customerrating"
+"name[Clowns], eatType[coffee shop], near[The Sorrento]",<slot_con_name> is a restaurant near <slot_con_near> .,1,eattype
+"name[Clowns], eatType[pub], customer rating[3 out of 5], near[All Bar One]",<slot_con_name> is a restaurant near <slot_vow_near> with a customer rating of 3 out of 5 .,1,eattype
+"name[Clowns], eatType[pub], customer rating[3 out of 5], near[All Bar One]",<slot_con_name> is a restaurant near <slot_vow_near> with a customer rating of 3 out of 5 .,1,eattype
+"name[Clowns], eatType[pub], customer rating[3 out of 5], near[All Bar One]",<slot_con_name> is a restaurant near <slot_vow_near> with a customer rating of 3 out of 5 .,1,eattype
+"name[Clowns], eatType[pub], customer rating[3 out of 5], near[All Bar One]",<slot_con_name> is a restaurant near <slot_vow_near> with a customer rating of 3 out of 5 .,1,eattype
+"name[Clowns], eatType[pub], customer rating[3 out of 5], near[All Bar One]",<slot_con_name> is a restaurant near <slot_vow_near> with a customer rating of 3 out of 5 .,1,eattype
+"name[Clowns], eatType[pub], customer rating[3 out of 5], near[All Bar One]",<slot_con_name> is a restaurant near <slot_vow_near> with a customer rating of 3 out of 5 .,1,eattype
+"name[Clowns], eatType[pub], customer rating[5 out of 5], near[Crowne Plaza Hotel]",<slot_con_name> is a 5 out of 5 rated restaurant near <slot_con_near> .,1,eattype
+"name[Clowns], eatType[pub], customer rating[5 out of 5], near[Crowne Plaza Hotel]",<slot_con_name> is a 5 out of 5 rated restaurant near <slot_con_near> .,1,eattype
+"name[Clowns], eatType[pub], customer rating[5 out of 5], near[Crowne Plaza Hotel]",<slot_con_name> is a 5 out of 5 rated restaurant near <slot_con_near> .,1,eattype
+"name[Clowns], eatType[pub], customer rating[5 out of 5], near[Crowne Plaza Hotel]",<slot_con_name> is a 5 out of 5 rated restaurant near <slot_con_near> .,1,eattype
+"name[Clowns], eatType[pub], customer rating[5 out of 5], near[Crowne Plaza Hotel]",<slot_con_name> is a 5 out of 5 rated restaurant near <slot_con_near> .,1,eattype
+"name[Clowns], eatType[pub], customer rating[5 out of 5], near[Crowne Plaza Hotel]",<slot_con_name> is a 5 out of 5 rated restaurant near <slot_con_near> .,1,eattype
+"name[Clowns], eatType[pub], customer rating[5 out of 5], near[Crowne Plaza Hotel]",<slot_con_name> is a 5 out of 5 rated restaurant near <slot_con_near> .,1,eattype
+"name[Clowns], eatType[pub], customer rating[5 out of 5], near[Crowne Plaza Hotel]",<slot_con_name> is a 5 out of 5 rated restaurant near <slot_con_near> .,1,eattype
+"name[Clowns], eatType[pub], customer rating[5 out of 5], near[Crowne Plaza Hotel]",<slot_con_name> is a 5 out of 5 rated restaurant near <slot_con_near> .,1,eattype
+"name[Clowns], eatType[pub], customer rating[5 out of 5], near[Crowne Plaza Hotel]",<slot_con_name> is a 5 out of 5 rated restaurant near <slot_con_near> .,1,eattype
+"name[Clowns], eatType[pub], customer rating[5 out of 5], near[Crowne Plaza Hotel]",<slot_con_name> is a 5 out of 5 rated restaurant near <slot_con_near> .,1,eattype
+"name[Clowns], eatType[pub], near[The Sorrento]",<slot_con_name> is a restaurant near <slot_con_near> .,1,eattype
+"name[Cocum], eatType[coffee shop], customer rating[high], near[Burger King]",<slot_con_name> is a highly rated restaurant located near <slot_con_near> .,1,eattype
+"name[Cocum], eatType[coffee shop], customer rating[high], near[Burger King]",<slot_con_name> is a highly rated restaurant located near <slot_con_near> .,1,eattype
+"name[Cocum], eatType[coffee shop], customer rating[high], near[Café Sicilia]",<slot_con_name> is a highly rated restaurant located near <slot_con_near> .,1,eattype
+"name[Cocum], eatType[coffee shop], customer rating[high], near[Café Sicilia]",<slot_con_name> is a highly rated restaurant located near <slot_con_near> .,1,eattype
+"name[Cocum], eatType[coffee shop], customer rating[high], near[Café Sicilia]",<slot_con_name> is a highly rated restaurant located near <slot_con_near> .,1,eattype
+"name[Cocum], eatType[coffee shop], customer rating[high], near[Café Sicilia]",<slot_con_name> is a highly rated restaurant located near <slot_con_near> .,1,eattype
+"name[Cocum], eatType[coffee shop], customer rating[high], near[Café Sicilia]",<slot_con_name> is a highly rated restaurant located near <slot_con_near> .,1,eattype
+"name[Cocum], eatType[coffee shop], customer rating[high], near[Café Sicilia]",<slot_con_name> is a highly rated restaurant located near <slot_con_near> .,1,eattype
+"name[Cocum], eatType[coffee shop], customer rating[low], near[Café Sicilia]",<slot_con_name> is a one star restaurant located near <slot_con_near> .,2,"eattype, customerrating"
+"name[Cocum], eatType[coffee shop], customer rating[low], near[Express by Holiday Inn]",<slot_con_name> is a one star restaurant located near <slot_vow_near> .,2,"eattype, customerrating"
+"name[Cocum], eatType[coffee shop], customer rating[low], near[Express by Holiday Inn]",<slot_con_name> is a one star restaurant located near <slot_vow_near> .,2,"eattype, customerrating"
+"name[Cocum], eatType[coffee shop], customer rating[low], near[Express by Holiday Inn]",<slot_con_name> is a one star restaurant located near <slot_vow_near> .,2,"eattype, customerrating"
+"name[Cocum], eatType[coffee shop], customer rating[low], near[Express by Holiday Inn]",<slot_con_name> is a one star restaurant located near <slot_vow_near> .,2,"eattype, customerrating"
+"name[Cocum], eatType[coffee shop], customer rating[low], near[Express by Holiday Inn]",<slot_con_name> is a one star restaurant located near <slot_vow_near> .,2,"eattype, customerrating"
+"name[Cocum], eatType[coffee shop], customer rating[low], near[Express by Holiday Inn]",<slot_con_name> is a one star restaurant located near <slot_vow_near> .,2,"eattype, customerrating"
+"name[Cocum], eatType[coffee shop], customer rating[low], near[Express by Holiday Inn]",<slot_con_name> is a one star restaurant located near <slot_vow_near> .,2,"eattype, customerrating"
+"name[Cocum], eatType[coffee shop], near[The Rice Boat]",<slot_con_name> is a restaurant near <slot_con_near> .,1,eattype
+"name[Cocum], eatType[coffee shop], near[The Rice Boat]",<slot_con_name> is a restaurant near <slot_con_near> .,1,eattype
+"name[Cocum], eatType[coffee shop], near[The Sorrento]",<slot_con_name> is a restaurant near <slot_con_near> .,1,eattype
+"name[Cocum], eatType[pub], customer rating[high], near[Burger King]",<slot_con_name> is a highly rated restaurant near <slot_con_near> .,1,eattype
+"name[Cocum], eatType[pub], customer rating[high], near[Burger King]",<slot_con_name> is a highly rated restaurant near <slot_con_near> .,1,eattype
+"name[Cocum], eatType[pub], customer rating[high], near[Café Sicilia]",<slot_con_name> is a highly rated restaurant near <slot_con_near> .,1,eattype
+"name[Cocum], eatType[pub], customer rating[high], near[Café Sicilia]",<slot_con_name> is a highly rated restaurant near <slot_con_near> .,1,eattype
+"name[Cocum], eatType[pub], customer rating[high], near[Café Sicilia]",<slot_con_name> is a highly rated restaurant near <slot_con_near> .,1,eattype
+"name[Cocum], eatType[pub], customer rating[high], near[Café Sicilia]",<slot_con_name> is a highly rated restaurant near <slot_con_near> .,1,eattype
+"name[Cocum], eatType[pub], customer rating[high], near[Café Sicilia]",<slot_con_name> is a highly rated restaurant near <slot_con_near> .,1,eattype
+"name[Cocum], eatType[pub], customer rating[high], near[Café Sicilia]",<slot_con_name> is a highly rated restaurant near <slot_con_near> .,1,eattype
+"name[Cocum], eatType[pub], customer rating[low], near[Café Sicilia]",<slot_con_name> is a low rated restaurant located near <slot_con_near> .,1,eattype
+"name[Cocum], eatType[pub], customer rating[low], near[Express by Holiday Inn]",<slot_con_name> is a low rated restaurant located near <slot_vow_near> .,1,eattype
+"name[Cocum], eatType[pub], customer rating[low], near[Express by Holiday Inn]",<slot_con_name> is a low rated restaurant located near <slot_vow_near> .,1,eattype
+"name[Cocum], eatType[pub], customer rating[low], near[Express by Holiday Inn]",<slot_con_name> is a low rated restaurant located near <slot_vow_near> .,1,eattype
+"name[Cocum], eatType[pub], customer rating[low], near[Express by Holiday Inn]",<slot_con_name> is a low rated restaurant located near <slot_vow_near> .,1,eattype
+"name[Cocum], eatType[pub], customer rating[low], near[Express by Holiday Inn]",<slot_con_name> is a low rated restaurant located near <slot_vow_near> .,1,eattype
+"name[Cocum], eatType[pub], customer rating[low], near[Express by Holiday Inn]",<slot_con_name> is a low rated restaurant located near <slot_vow_near> .,1,eattype
+"name[Cocum], eatType[pub], customer rating[low], near[Express by Holiday Inn]",<slot_con_name> is a low rated restaurant located near <slot_vow_near> .,1,eattype
+"name[Cocum], eatType[pub], near[The Rice Boat]",<slot_con_name> is a restaurant near <slot_con_near> .,1,eattype
+"name[Cocum], eatType[pub], near[The Rice Boat]",<slot_con_name> is a restaurant near <slot_con_near> .,1,eattype
+"name[Cocum], eatType[pub], near[The Sorrento]",<slot_con_name> is a restaurant near <slot_con_near> .,1,eattype
+"name[Cotto], eatType[coffee shop], near[The Bakers]",<slot_con_name> is a restaurant near <slot_con_near> .,1,eattype
+"name[Cotto], eatType[coffee shop], near[The Bakers]",<slot_con_name> is a restaurant near <slot_con_near> .,1,eattype
+"name[Cotto], eatType[pub], near[The Bakers]",<slot_con_name> is a restaurant near <slot_con_near> .,1,eattype
+"name[Cotto], eatType[pub], near[The Bakers]",<slot_con_name> is a restaurant near <slot_con_near> .,1,eattype
+"name[Giraffe], eatType[coffee shop], near[The Bakers]",<slot_con_name> is a restaurant near <slot_con_near> .,1,eattype
+"name[Giraffe], eatType[coffee shop], near[The Bakers]",<slot_con_name> is a restaurant near <slot_con_near> .,1,eattype
+"name[Giraffe], eatType[coffee shop], near[The Rice Boat]",<slot_con_name> is a restaurant near <slot_con_near> .,1,eattype
+"name[Giraffe], eatType[coffee shop], near[The Rice Boat]",<slot_con_name> is a restaurant near <slot_con_near> .,1,eattype
+"name[Giraffe], eatType[pub], near[The Bakers]",<slot_con_name> is a restaurant near <slot_con_near> .,1,eattype
+"name[Giraffe], eatType[pub], near[The Bakers]",<slot_con_name> is a restaurant near <slot_con_near> .,1,eattype
+"name[Giraffe], eatType[pub], near[The Rice Boat]",<slot_con_name> is a restaurant near <slot_con_near> .,1,eattype
+"name[Giraffe], eatType[pub], near[The Rice Boat]",<slot_con_name> is a restaurant near <slot_con_near> .,1,eattype
+"name[Green Man], eatType[coffee shop], customer rating[1 out of 5], near[All Bar One]",<slot_con_name> is a 1 out of 5 rated restaurant located near <slot_vow_near> .,1,eattype
+"name[Green Man], eatType[coffee shop], customer rating[1 out of 5], near[All Bar One]",<slot_con_name> is a 1 out of 5 rated restaurant located near <slot_vow_near> .,1,eattype
+"name[Green Man], eatType[coffee shop], customer rating[1 out of 5], near[All Bar One]",<slot_con_name> is a 1 out of 5 rated restaurant located near <slot_vow_near> .,1,eattype
+"name[Green Man], eatType[coffee shop], customer rating[1 out of 5], near[All Bar One]",<slot_con_name> is a 1 out of 5 rated restaurant located near <slot_vow_near> .,1,eattype
+"name[Green Man], eatType[coffee shop], customer rating[1 out of 5], near[All Bar One]",<slot_con_name> is a 1 out of 5 rated restaurant located near <slot_vow_near> .,1,eattype
+"name[Green Man], eatType[coffee shop], customer rating[1 out of 5], near[All Bar One]",<slot_con_name> is a 1 out of 5 rated restaurant located near <slot_vow_near> .,1,eattype
+"name[Green Man], eatType[coffee shop], customer rating[3 out of 5], near[All Bar One]",<slot_con_name> is a 3 out of 5 rated restaurant near <slot_vow_near> .,1,eattype
+"name[Green Man], eatType[coffee shop], customer rating[3 out of 5], near[All Bar One]",<slot_con_name> is a 3 out of 5 rated restaurant near <slot_vow_near> .,1,eattype
+"name[Green Man], eatType[coffee shop], customer rating[3 out of 5], near[All Bar One]",<slot_con_name> is a 3 out of 5 rated restaurant near <slot_vow_near> .,1,eattype
+"name[Green Man], eatType[coffee shop], customer rating[3 out of 5], near[All Bar One]",<slot_con_name> is a 3 out of 5 rated restaurant near <slot_vow_near> .,1,eattype
+"name[Green Man], eatType[coffee shop], customer rating[3 out of 5], near[All Bar One]",<slot_con_name> is a 3 out of 5 rated restaurant near <slot_vow_near> .,1,eattype
+"name[Green Man], eatType[coffee shop], customer rating[3 out of 5], near[All Bar One]",<slot_con_name> is a 3 out of 5 rated restaurant near <slot_vow_near> .,1,eattype
+"name[Green Man], eatType[coffee shop], customer rating[3 out of 5], near[All Bar One]",<slot_con_name> is a 3 out of 5 rated restaurant near <slot_vow_near> .,1,eattype
+"name[Green Man], eatType[pub], customer rating[1 out of 5], near[All Bar One]",<slot_con_name> is a restaurant near <slot_vow_near> with a customer rating of 1 out of 5 .,1,eattype
+"name[Green Man], eatType[pub], customer rating[1 out of 5], near[All Bar One]",<slot_con_name> is a restaurant near <slot_vow_near> with a customer rating of 1 out of 5 .,1,eattype
+"name[Green Man], eatType[pub], customer rating[1 out of 5], near[All Bar One]",<slot_con_name> is a restaurant near <slot_vow_near> with a customer rating of 1 out of 5 .,1,eattype
+"name[Green Man], eatType[pub], customer rating[1 out of 5], near[All Bar One]",<slot_con_name> is a restaurant near <slot_vow_near> with a customer rating of 1 out of 5 .,1,eattype
+"name[Green Man], eatType[pub], customer rating[1 out of 5], near[All Bar One]",<slot_con_name> is a restaurant near <slot_vow_near> with a customer rating of 1 out of 5 .,1,eattype
+"name[Green Man], eatType[pub], customer rating[1 out of 5], near[All Bar One]",<slot_con_name> is a restaurant near <slot_vow_near> with a customer rating of 1 out of 5 .,1,eattype
+"name[Green Man], eatType[pub], customer rating[3 out of 5], near[All Bar One]",<slot_con_name> is a restaurant near <slot_vow_near> with a customer rating of 3 out of 5 .,1,eattype
+"name[Green Man], eatType[pub], customer rating[3 out of 5], near[All Bar One]",<slot_con_name> is a restaurant near <slot_vow_near> with a customer rating of 3 out of 5 .,1,eattype
+"name[Green Man], eatType[pub], customer rating[3 out of 5], near[All Bar One]",<slot_con_name> is a restaurant near <slot_vow_near> with a customer rating of 3 out of 5 .,1,eattype
+"name[Green Man], eatType[pub], customer rating[3 out of 5], near[All Bar One]",<slot_con_name> is a restaurant near <slot_vow_near> with a customer rating of 3 out of 5 .,1,eattype
+"name[Green Man], eatType[pub], customer rating[3 out of 5], near[All Bar One]",<slot_con_name> is a restaurant near <slot_vow_near> with a customer rating of 3 out of 5 .,1,eattype
+"name[Green Man], eatType[pub], customer rating[3 out of 5], near[All Bar One]",<slot_con_name> is a restaurant near <slot_vow_near> with a customer rating of 3 out of 5 .,1,eattype
+"name[Green Man], eatType[pub], customer rating[3 out of 5], near[All Bar One]",<slot_con_name> is a restaurant near <slot_vow_near> with a customer rating of 3 out of 5 .,1,eattype
+"name[Loch Fyne], eatType[coffee shop], area[riverside]",<slot_con_name> is a restaurant in the riverside area .,1,eattype
+"name[Loch Fyne], eatType[coffee shop], area[riverside]",<slot_con_name> is a restaurant in the riverside area .,1,eattype
+"name[Loch Fyne], eatType[coffee shop], area[riverside]",<slot_con_name> is a restaurant in the riverside area .,1,eattype
+"name[Loch Fyne], eatType[pub], area[riverside]",<slot_con_name> is a restaurant in the riverside area .,1,eattype
+"name[Loch Fyne], eatType[pub], area[riverside]",<slot_con_name> is a restaurant in the riverside area .,1,eattype
+"name[Loch Fyne], eatType[pub], area[riverside]",<slot_con_name> is a restaurant in the riverside area .,1,eattype
+"name[Strada], eatType[coffee shop], area[city centre]",<slot_con_name> is a restaurant in the city centre .,1,eattype
+"name[Strada], eatType[coffee shop], area[city centre]",<slot_con_name> is a restaurant in the city centre .,1,eattype
+"name[Strada], eatType[coffee shop], area[city centre]",<slot_con_name> is a restaurant in the city centre .,1,eattype
+"name[Strada], eatType[coffee shop], area[city centre]",<slot_con_name> is a restaurant in the city centre .,1,eattype
+"name[Strada], eatType[coffee shop], customer rating[1 out of 5], near[All Bar One]",<slot_con_name> is a 1 out of 5 rated restaurant located near <slot_vow_near> .,1,eattype
+"name[Strada], eatType[coffee shop], customer rating[1 out of 5], near[All Bar One]",<slot_con_name> is a 1 out of 5 rated restaurant located near <slot_vow_near> .,1,eattype
+"name[Strada], eatType[coffee shop], customer rating[1 out of 5], near[All Bar One]",<slot_con_name> is a 1 out of 5 rated restaurant located near <slot_vow_near> .,1,eattype
+"name[Strada], eatType[coffee shop], customer rating[1 out of 5], near[All Bar One]",<slot_con_name> is a 1 out of 5 rated restaurant located near <slot_vow_near> .,1,eattype
+"name[Strada], eatType[coffee shop], customer rating[1 out of 5], near[Rainbow Vegetarian Café]",<slot_con_name> is a 1 out of 5 rated restaurant located near <slot_con_near> .,1,eattype
+"name[Strada], eatType[coffee shop], customer rating[1 out of 5], near[Rainbow Vegetarian Café]",<slot_con_name> is a 1 out of 5 rated restaurant located near <slot_con_near> .,1,eattype
+"name[Strada], eatType[coffee shop], customer rating[1 out of 5], near[Rainbow Vegetarian Café]",<slot_con_name> is a 1 out of 5 rated restaurant located near <slot_con_near> .,1,eattype
+"name[Strada], eatType[coffee shop], customer rating[low], near[Express by Holiday Inn]",<slot_con_name> is a one star restaurant located near <slot_vow_near> .,2,"eattype, customerrating"
+"name[Strada], eatType[coffee shop], customer rating[low], near[Express by Holiday Inn]",<slot_con_name> is a one star restaurant located near <slot_vow_near> .,2,"eattype, customerrating"
+"name[Strada], eatType[coffee shop], customer rating[low], near[Express by Holiday Inn]",<slot_con_name> is a one star restaurant located near <slot_vow_near> .,2,"eattype, customerrating"
+"name[Strada], eatType[coffee shop], customer rating[low], near[Express by Holiday Inn]",<slot_con_name> is a one star restaurant located near <slot_vow_near> .,2,"eattype, customerrating"
+"name[Strada], eatType[coffee shop], customer rating[low], near[Express by Holiday Inn]",<slot_con_name> is a one star restaurant located near <slot_vow_near> .,2,"eattype, customerrating"
+"name[Strada], eatType[pub], area[city centre]",<slot_con_name> is a restaurant in the city centre .,1,eattype
+"name[Strada], eatType[pub], area[city centre]",<slot_con_name> is a restaurant in the city centre .,1,eattype
+"name[Strada], eatType[pub], area[city centre]",<slot_con_name> is a restaurant in the city centre .,1,eattype
+"name[Strada], eatType[pub], area[city centre]",<slot_con_name> is a restaurant in the city centre .,1,eattype
+"name[Strada], eatType[pub], customer rating[1 out of 5], near[All Bar One]",<slot_con_name> is a restaurant near <slot_vow_near> with a customer rating of 1 out of 5 .,1,eattype
+"name[Strada], eatType[pub], customer rating[1 out of 5], near[All Bar One]",<slot_con_name> is a restaurant near <slot_vow_near> with a customer rating of 1 out of 5 .,1,eattype
+"name[Strada], eatType[pub], customer rating[1 out of 5], near[All Bar One]",<slot_con_name> is a restaurant near <slot_vow_near> with a customer rating of 1 out of 5 .,1,eattype
+"name[Strada], eatType[pub], customer rating[1 out of 5], near[All Bar One]",<slot_con_name> is a restaurant near <slot_vow_near> with a customer rating of 1 out of 5 .,1,eattype
+"name[Strada], eatType[pub], customer rating[1 out of 5], near[Rainbow Vegetarian Café]",<slot_con_name> is a restaurant near <slot_con_near> with a customer rating of 1 out of 5 .,1,eattype
+"name[Strada], eatType[pub], customer rating[1 out of 5], near[Rainbow Vegetarian Café]",<slot_con_name> is a restaurant near <slot_con_near> with a customer rating of 1 out of 5 .,1,eattype
+"name[Strada], eatType[pub], customer rating[1 out of 5], near[Rainbow Vegetarian Café]",<slot_con_name> is a restaurant near <slot_con_near> with a customer rating of 1 out of 5 .,1,eattype
+"name[Strada], eatType[pub], customer rating[low], near[Express by Holiday Inn]",<slot_con_name> is a low rated restaurant located near <slot_vow_near> .,1,eattype
+"name[Strada], eatType[pub], customer rating[low], near[Express by Holiday Inn]",<slot_con_name> is a low rated restaurant located near <slot_vow_near> .,1,eattype
+"name[Strada], eatType[pub], customer rating[low], near[Express by Holiday Inn]",<slot_con_name> is a low rated restaurant located near <slot_vow_near> .,1,eattype
+"name[Strada], eatType[pub], customer rating[low], near[Express by Holiday Inn]",<slot_con_name> is a low rated restaurant located near <slot_vow_near> .,1,eattype
+"name[Strada], eatType[pub], customer rating[low], near[Express by Holiday Inn]",<slot_con_name> is a low rated restaurant located near <slot_vow_near> .,1,eattype
+"name[Wildwood], eatType[coffee shop], area[riverside]",<slot_con_name> is a restaurant in the riverside area .,1,eattype
+"name[Wildwood], eatType[coffee shop], area[riverside]",<slot_con_name> is a restaurant in the riverside area .,1,eattype
+"name[Wildwood], eatType[coffee shop], area[riverside]",<slot_con_name> is a restaurant in the riverside area .,1,eattype
+"name[Wildwood], eatType[coffee shop], area[riverside]",<slot_con_name> is a restaurant in the riverside area .,1,eattype
+"name[Wildwood], eatType[pub], area[riverside]",<slot_con_name> is a restaurant in the riverside area .,1,eattype
+"name[Wildwood], eatType[pub], area[riverside]",<slot_con_name> is a restaurant in the riverside area .,1,eattype
+"name[Wildwood], eatType[pub], area[riverside]",<slot_con_name> is a restaurant in the riverside area .,1,eattype
+"name[Wildwood], eatType[pub], area[riverside]",<slot_con_name> is a restaurant in the riverside area .,1,eattype
+"name[Zizzi], eatType[coffee shop], area[riverside]",<slot_con_name> is a restaurant in the riverside area .,1,eattype
+"name[Zizzi], eatType[coffee shop], area[riverside]",<slot_con_name> is a restaurant in the riverside area .,1,eattype
+"name[Zizzi], eatType[coffee shop], area[riverside]",<slot_con_name> is a restaurant in the riverside area .,1,eattype
+"name[Zizzi], eatType[coffee shop], customer rating[average], near[Burger King]",<slot_con_name> is a three star restaurant located near <slot_con_near> .,2,"eattype, customerrating"
+"name[Zizzi], eatType[coffee shop], customer rating[average], near[Burger King]",<slot_con_name> is a three star restaurant located near <slot_con_near> .,2,"eattype, customerrating"
+"name[Zizzi], eatType[coffee shop], customer rating[average], near[Burger King]",<slot_con_name> is a three star restaurant located near <slot_con_near> .,2,"eattype, customerrating"
+"name[Zizzi], eatType[coffee shop], customer rating[average], near[Burger King]",<slot_con_name> is a three star restaurant located near <slot_con_near> .,2,"eattype, customerrating"
+"name[Zizzi], eatType[coffee shop], customer rating[average], near[Burger King]",<slot_con_name> is a three star restaurant located near <slot_con_near> .,2,"eattype, customerrating"
+"name[Zizzi], eatType[coffee shop], customer rating[average], near[Burger King]",<slot_con_name> is a three star restaurant located near <slot_con_near> .,2,"eattype, customerrating"
+"name[Zizzi], eatType[coffee shop], customer rating[high], near[Burger King]",<slot_con_name> is a highly rated restaurant located near <slot_con_near> .,1,eattype
+"name[Zizzi], eatType[coffee shop], customer rating[high], near[Burger King]",<slot_con_name> is a highly rated restaurant located near <slot_con_near> .,1,eattype
+"name[Zizzi], eatType[coffee shop], customer rating[high], near[Burger King]",<slot_con_name> is a highly rated restaurant located near <slot_con_near> .,1,eattype
+"name[Zizzi], eatType[coffee shop], customer rating[high], near[Burger King]",<slot_con_name> is a highly rated restaurant located near <slot_con_near> .,1,eattype
+"name[Zizzi], eatType[coffee shop], customer rating[high], near[Burger King]",<slot_con_name> is a highly rated restaurant located near <slot_con_near> .,1,eattype
+"name[Zizzi], eatType[coffee shop], near[The Sorrento]",<slot_con_name> is a restaurant near <slot_con_near> .,1,eattype
+"name[Zizzi], eatType[coffee shop], near[The Sorrento]",<slot_con_name> is a restaurant near <slot_con_near> .,1,eattype
+"name[Zizzi], eatType[pub], area[riverside]",<slot_con_name> is a restaurant in the riverside area .,1,eattype
+"name[Zizzi], eatType[pub], area[riverside]",<slot_con_name> is a restaurant in the riverside area .,1,eattype
+"name[Zizzi], eatType[pub], area[riverside]",<slot_con_name> is a restaurant in the riverside area .,1,eattype
+"name[Zizzi], eatType[pub], customer rating[average], near[Burger King]",<slot_con_name> is a restaurant near <slot_con_near> with an average customer rating .,1,eattype
+"name[Zizzi], eatType[pub], customer rating[average], near[Burger King]",<slot_con_name> is a restaurant near <slot_con_near> with an average customer rating .,1,eattype
+"name[Zizzi], eatType[pub], customer rating[average], near[Burger King]",<slot_con_name> is a restaurant near <slot_con_near> with an average customer rating .,1,eattype
+"name[Zizzi], eatType[pub], customer rating[average], near[Burger King]",<slot_con_name> is a restaurant near <slot_con_near> with an average customer rating .,1,eattype
+"name[Zizzi], eatType[pub], customer rating[average], near[Burger King]",<slot_con_name> is a restaurant near <slot_con_near> with an average customer rating .,1,eattype
+"name[Zizzi], eatType[pub], customer rating[average], near[Burger King]",<slot_con_name> is a restaurant near <slot_con_near> with an average customer rating .,1,eattype
+"name[Zizzi], eatType[pub], customer rating[high], near[Burger King]",<slot_con_name> is a highly rated restaurant near <slot_con_near> .,1,eattype
+"name[Zizzi], eatType[pub], customer rating[high], near[Burger King]",<slot_con_name> is a highly rated restaurant near <slot_con_near> .,1,eattype
+"name[Zizzi], eatType[pub], customer rating[high], near[Burger King]",<slot_con_name> is a highly rated restaurant near <slot_con_near> .,1,eattype
+"name[Zizzi], eatType[pub], customer rating[high], near[Burger King]",<slot_con_name> is a highly rated restaurant near <slot_con_near> .,1,eattype
+"name[Zizzi], eatType[pub], customer rating[high], near[Burger King]",<slot_con_name> is a highly rated restaurant near <slot_con_near> .,1,eattype
+"name[Zizzi], eatType[pub], near[The Sorrento]",<slot_con_name> is a restaurant near <slot_con_near> .,1,eattype
+"name[Zizzi], eatType[pub], near[The Sorrento]",<slot_con_name> is a restaurant near <slot_con_near> .,1,eattype

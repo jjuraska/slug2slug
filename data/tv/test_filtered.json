@@ -1,0 +1,2462 @@
+#####################################################
+#####################################################
+#  Copyright Cambridge Dialogue Systems Group, 2016 #
+#####################################################
+#####################################################
+[
+    [
+        "inform(name=pontus 43;type=television;pricerange=cheap;ecorating=a+;hdmiport=4)",
+        "a nice choice would be the pontus 43 television that has 4 hdmi ports , is in the cheap price range , and has an a+ eco rating .",
+        "pontus 43 is a television which is in the cheap price range, is in the A+ eco rating, and has 4 hdmi ports."
+    ],
+    [
+        "inform(name=oceanus 39;type=television;accessories=remote control and european warranty;hasusbport=true;ecorating=a++)",
+        "the oceanus 39 television , with an a++ eco rating and usb ports , includes a remote control and european warranty .",
+        "oceanus 39 is a television which comes with remote control and european warranty, has usb ports, and is in the A++ eco rating."
+    ],
+    [
+        "inform(name=cerus 13;type=television;resolution=1080p;pricerange=cheap;accessories=remote control and european warranty)",
+        "the cerus 13 is a cheap television with 1080p resolution , remote control and european warranty .",
+        "cerus 13 is a television which has 1080p resolution, is in the cheap price range, and comes with remote control and european warranty."
+    ],
+    [
+        "inform(name=hesperus 33;type=television;resolution=720p;family=w2;screensize=32 inch)",
+        "hesperus 33 is a 720p television in the w2 product family with a 32 inch screen size .",
+        "hesperus 33 is a television which has 720p resolution, is in the W2 product family, and has a 32 inch screen size."
+    ],
+    [
+        "inform(name=attis 65;type=television;family=l1;hdmiport=3;pricerange=cheap)",
+        "the attis 65 television is in the l1 family and the cheap price range , and sports 3 hdmi ports .",
+        "attis 65 is a television which is in the L1 product family, has 3 hdmi ports, and is in the cheap price range."
+    ],
+    [
+        "inform(name=cerus 13;type=television;audio=nicam stereo;screensize=47 inch)",
+        "though the cerus 13 is a television with a nicam stereo , its screen is only 47 inches .",
+        "cerus 13 is a television which has a NICAM stereo audio equipment and has a 47 inch screen size"
+    ],
+    [
+        "inform(name=pricus 41;type=television;color=matt black bezel with silver trim and flat silver stand;screensizerange=medium;family=l5)",
+        "for a television with a matt black bezel with silver trim and flat silver stand , in the l5 family , and with a medium screen size , there is the pricus 41.",
+        "pricus 41 is a television which has a color of matt black bezel with silver trim and flat silver stand, is in the medium screen size range, and is in the L5 product family."
+    ],
+    [
+        "inform(name=crios 89;type=television;family=l1;hdmiport=2;powerconsumption=30 watt)",
+        "crios 89 is a 30 watt power television in the l1 product family with 2 hdmi ports .",
+        "crios 89 is a television which is in the L1 product family, has 2 hdmi ports, and has 30 watt power consumption."
+    ],
+    [
+        "inform(name=pontus 45;type=television;screensizerange=medium;family=w1;hasusbport=true)",
+        "it does has_usb_port pontus 45 television medium w1",
+        "pontus 45 is a television which is in the medium screen size range, is in the W1 product family, and has usb ports."
+    ],
+    [
+        "inform(name=pontus 18;type=television;pricerange=cheap;hasusbport=false;ecorating=a+)",
+        "the pontus 18 television has no usb ports . it is in the cheap price range and has an a+ eco rating .",
+        "pontus 18 is a television which is in the cheap price range, does not have any usb ports, and is in the A+ eco rating."
+    ],
+    [
+        "inform(name=aeolus 63;type=television;accessories=remote control and passive 3d glasses and passive 3d glasses;powerconsumption=450 watt;screensize=84 inch)",
+        "the aeolus 63 television has a 450 watt power consumption , and an 84 inch screen size . it comes with a remote control and passive 3d glasses and passive 3d glasses .",
+        "aeolus 63 is a television which comes with remote control and passive 3d glasses and passive 3d glasses, has 450 watt power consumption, and has a 84 inch screen size."
+    ],
+    [
+        "inform(name=helios 96;type=television;powerconsumption=84 watt;audio=nicam stereo)",
+        "helios 96 television comes equipped with a nicam stereo , it has a 84 watt power supply",
+        "helios 96 is a television which has 84 watt power consumption and has a NICAM stereo audio equipment"
+    ],
+    [
+        "inform(name=crios 69;type=television;screensize=48 inch;color=mat black bezel with silver trim and silver flat stand;screensizerange=large)",
+        "the crios 69 is a television with a 48 inch screen size . this is in the large screen size range . the television is mat black bezel with silver trim and silver flat stand .",
+        "crios 69 is a television which has a 48 inch screen size, has a color of mat black bezel with silver trim and silver flat stand, and is in the large screen size range."
+    ],
+    [
+        "inform(name=pontus 43;type=television;screensizerange=medium;pricerange=cheap;resolution=1080p)",
+        "the pontus 43 is a cheap , 1080p medium screen size television",
+        "pontus 43 is a television which is in the medium screen size range, is in the cheap price range, and has 1080p resolution."
+    ],
+    [
+        "inform(name=apollo 33;type=television;hasusbport=false;resolution=1080p;screensize=40 inch)",
+        "the apollo 33 television has a usb port , 1080p resolution and a 40 inch screen .",
+        "apollo 33 is a television which does not have any usb ports, has 1080p resolution, and has a 40 inch screen size."
+    ],
+    [
+        "inform(name=oceanus 80;type=television;accessories=remote control and european warranty;audio=nicam stereo;hdmiport=2)",
+        "the oceanus 80 is a television with remote control and european warranty , nicam stereo and 2 hdmi ports and",
+        "oceanus 80 is a television which comes with remote control and european warranty, has a NICAM stereo audio equipment, and has 2 hdmi ports."
+    ],
+    [
+        "inform(name=typhon 71;type=television;screensize=24 inch;family=w1;hasusbport=false)",
+        "the typhon 71 is a television with a 24 inch screen . it is in the w1 product family and has no usb ports . ",
+        "typhon 71 is a television which has a 24 inch screen size, is in the W1 product family, and does not have any usb ports."
+    ],
+    [
+        "inform(name=dionysus 44;type=television;hasusbport=false;screensize=32 inch;screensizerange=medium)",
+        "the dionysus 44 television has a 32 inch screen in the medium screen size range , and does not have usb ports .",
+        "dionysus 44 is a television which does not have any usb ports, has a 32 inch screen size, and is in the medium screen size range."
+    ],
+    [
+        "inform(name=typhon 49;type=television;audio=nicam stereo;pricerange=cheap;accessories=remote control and european warranty)",
+        "the cheaply priced typhon 49 television has a nicam stereo system and comes with a remote control and european warranty .",
+        "typhon 49 is a television which has a NICAM stereo audio equipment, is in the cheap price range, and comes with remote control and european warranty."
+    ],
+    [
+        "inform(name=aeolus 98;type=television;resolution=1080p;hasusbport=true;family=l2)",
+        "the aeolus 98 is a type of television that has 1080p resolution , is an l2 type , and has usb ports .",
+        "aeolus 98 is a television which has 1080p resolution, has usb ports, and is in the L2 product family."
+    ],
+    [
+        "inform(name=dinlas 26;type=television;price=1700 dollars;powerconsumption=32 watt;hasusbport=false)",
+        "the dinlas 26 television consumes 32 watts of power , does not have any usb ports and costs 1700 dollars .",
+        "dinlas 26 is a television which costs 1700 dollars, has 32 watt power consumption, and does not have any usb ports."
+    ],
+    [
+        "inform(name=hermes 77;type=television;hasusbport=false;family=l2)",
+        "hermes 77 is a television in the l2 product family that does not have usb ports",
+        "hermes 77 is a television which does not have any usb ports and is in the L2 product family"
+    ],
+    [
+        "inform(name=hephaestus 91;type=television;ecorating=a+;screensizerange=medium;color=matt white bezel with white trim and white frame stand)",
+        "the hephaestus 91 is a medium screen sized television that is matt white bezel with white trim and white frame stand and an eco rating of a+",
+        "hephaestus 91 is a television which is in the A+ eco rating, is in the medium screen size range, and has a color of matt white bezel with white trim and white frame stand."
+    ],
+    [
+        "inform(name=attis 82;type=television;powerconsumption=30 watt;resolution=720p;family=w1)",
+        "the attis 82 television from the w1 family has a 30 watt power consumption and a 720p resolution . ",
+        "attis 82 is a television which has 30 watt power consumption, has 720p resolution, and is in the W1 product family."
+    ],
+    [
+        "inform(name=crios 93;type=television;resolution=1080p;hdmiport=3;pricerange=cheap)",
+        "the crios 93 is a television that is cheap , has 3 hdmi ports and a resolution of 1080p . ",
+        "crios 93 is a television which has 1080p resolution, has 3 hdmi ports, and is in the cheap price range."
+    ],
+    [
+        "inform(name=hermes 77;type=television;audio=nicam stereo;hdmiport=2;screensizerange=medium)",
+        "the medium sized hermes 77 television has the features of 2 cdmi ports was well as nicam stereo audio equipment",
+        "hermes 77 is a television which has a NICAM stereo audio equipment, has 2 hdmi ports, and is in the medium screen size range."
+    ],
+    [
+        "inform(name=crios 93;type=television;hasusbport=true;screensize=48 inch;pricerange=cheap)",
+        "the crios 93 48 inch television has usb port , and is in the cheap price range .",
+        "crios 93 is a television which has usb ports, has a 48 inch screen size, and is in the cheap price range."
+    ],
+    [
+        "inform(name=poseidon 88;type=television;ecorating=a+;hasusbport=false;audio=nicam stereo)",
+        "poseidon 88 television does not have any usb port and has a a+ eco rating and a nicam stereo audio",
+        "poseidon 88 is a television which is in the A+ eco rating, does not have any usb ports, and has a NICAM stereo audio equipment."
+    ],
+    [
+        "inform(name=attis 75;type=television;hdmiport=2;audio=nicam stereo;screensize=50 inch)",
+        "the attis 75 television has 2 hdmi ports , a 50 inch screen and nicam stereo audio . ",
+        "attis 75 is a television which has 2 hdmi ports, has a NICAM stereo audio equipment, and has a 50 inch screen size."
+    ],
+    [
+        "inform(name=pontus 45;type=television;audio=nicam stereo;resolution=720p;ecorating=a+)",
+        "the pontus 45 television has 720p resolution , nicam stereo audio and a+ eco friendly rating .",
+        "pontus 45 is a television which has a NICAM stereo audio equipment, has 720p resolution, and is in the A+ eco rating."
+    ],
+    [
+        "inform(name=kratos 46;type=television;pricerange=cheap;color=matt black bezel with silver trim and flat silver stand;accessories=active 3d glasses and european warranty)",
+        "the kratos 46 television is colored matt black bezel with silver trim and flat silver stand , is included with active 3d glasses and european warranty , and is in the cheap price range",
+        "kratos 46 is a television which is in the cheap price range, has a color of matt black bezel with silver trim and flat silver stand, and comes with active 3d glasses and european warranty."
+    ],
+    [
+        "inform(name=apollo 96;type=television;pricerange=cheap;screensizerange=medium;ecorating=a+)",
+        "one of our cheap , medium sized a+ eco rated television is the apollo 96. ",
+        "apollo 96 is a television which is in the cheap price range, is in the medium screen size range, and is in the A+ eco rating."
+    ],
+    [
+        "inform(name=attis 82;type=television;hasusbport=false;price=1500 dollars;color=mat black bezel with black trim and slant mold black stand)",
+        "the attis 82 television comes in mat black bezel with black trim and slant mold black stand , doesn't have usb ports , and costs 1500 dollars . ",
+        "attis 82 is a television which does not have any usb ports, costs 1500 dollars, and has a color of mat black bezel with black trim and slant mold black stand."
+    ],
+    [
+        "inform(name=helios 75;type=television;hdmiport=1;screensizerange=small;pricerange=cheap)",
+        "the helios 75 television is in the cheap price range , it has a small screen size range and comes with 1 hdmi port .",
+        "helios 75 is a television which has 1 hdmi ports, is in the small screen size range, and is in the cheap price range."
+    ],
+    [
+        "inform(name=typhon 71;type=television;hasusbport=false;resolution=720p;powerconsumption=18 watt)",
+        "the typhon 71 television comsumes 18 watts of power while pwrovidng 720p resolution but lacks usb ports .",
+        "typhon 71 is a television which does not have any usb ports, has 720p resolution, and has 18 watt power consumption."
+    ],
+    [
+        "inform(name=charon 31;type=television;screensizerange=small;hasusbport=false;pricerange=cheap)",
+        "the charon 31 television has a small screen size and in a cheap price range but has no usb ports .",
+        "charon 31 is a television which is in the small screen size range, does not have any usb ports, and is in the cheap price range."
+    ],
+    [
+        "inform(name=attis 82;type=television;screensize=32 inch;hdmiport=2;color=mat black bezel with black trim and slant mold black stand)",
+        "the television has mat black bezel with black trim and slant mold black stand , 2 hdmi ports , 32 inch screen size it is the attis 82.",
+        "attis 82 is a television which has a 32 inch screen size, has 2 hdmi ports, and has a color of mat black bezel with black trim and slant mold black stand."
+    ],
+    [
+        "inform(name=glaucus 77;type=television;color=gloss black bezel and bottom deco with silver flat stand aluminium neck;audio=nicam stereo;screensize=32 inch)",
+        "the glaucus 77 television has a gloss black bezel and bottom deco with silver flat stand aluminium neck , nicam stereo , and has a 32 inch screen",
+        "glaucus 77 is a television which has a color of gloss black bezel and bottom deco with silver flat stand aluminium neck, has a NICAM stereo audio equipment, and has a 32 inch screen size."
+    ],
+    [
+        "inform(name=crios 89;type=television;color=mat black bezel with black trim and slant mold black stand;hdmiport=2;powerconsumption=30 watt)",
+        "the crios 89 is a 30 watt television that contains 2 hdmit ports . it is mat black bezel with black trim and slant mold black stand",
+        "crios 89 is a television which has a color of mat black bezel with black trim and slant mold black stand, has 2 hdmi ports, and has 30 watt power consumption."
+    ],
+    [
+        "inform(name=oceanus 39;type=television;powerconsumption=44 watt;hasusbport=true;screensizerange=large)",
+        "the oceanus 39 is a large screen television with 44 watt power consumption and a usb port .",
+        "oceanus 39 is a television which has 44 watt power consumption, has usb ports, and is in the large screen size range."
+    ],
+    [
+        "inform(name=pontus 32;type=television;hasusbport=false;accessories=remote control and european warranty;audio=nicam stereo)",
+        "the pontus 32 television features nicam stereo audio , remote control and european warranty . it has no usb ports .",
+        "pontus 32 is a television which does not have any usb ports, comes with remote control and european warranty, and has a NICAM stereo audio equipment."
+    ],
+    [
+        "inform(name=erebus 92;type=television;resolution=720p;screensizerange=medium;powerconsumption=31.4 watt)",
+        "the erebus 92 television has a medium screen size with 720p resolution . it's power consumption is 31.4 watts . ",
+        "erebus 92 is a television which has 720p resolution, is in the medium screen size range, and has 31.4 watt power consumption."
+    ],
+    [
+        "inform(name=hesperus 58;type=television;ecorating=a+;audio=nicam stereo;hasusbport=true)",
+        "the hesperus 58 is a a+ eco rating television with nicam stereo and incldues usb ports . ",
+        "hesperus 58 is a television which is in the A+ eco rating, has a NICAM stereo audio equipment, and has usb ports."
+    ],
+    [
+        "inform(name=apollo 98;type=television;pricerange=cheap;screensize=40 inch;hdmiport=2)",
+        "the apollo 98 is a television in the cheap price range that provides 2 hdmi ports and a 40 inch screen .",
+        "apollo 98 is a television which is in the cheap price range, has a 40 inch screen size, and has 2 hdmi ports."
+    ],
+    [
+        "inform(name=caerus 33;type=television;price=1000 dollars;hasusbport=true)",
+        "caerus 33 television priced at 1000 dollars .",
+        "caerus 33 is a television which costs 1000 dollars and has usb ports"
+    ],
+    [
+        "inform(name=uranus 29;type=television;family=d1;color=matt white bezel with white trim and slant mold white stand;resolution=720p)",
+        "the uranus 29 television from the d1 family has a matt white bezel with white trim and slant mold white stand and a 720p resolution . ",
+        "uranus 29 is a television which is in the D1 product family, has a color of matt white bezel with white trim and slant mold white stand, and has 720p resolution."
+    ],
+    [
+        "inform(name=hymenaios 80;type=television;resolution=1080p;pricerange=cheap;hasusbport=true)",
+        "the hymenaios 80 is a cheap television with a 1080p resolution and usb ports .",
+        "hymenaios 80 is a television which has 1080p resolution, is in the cheap price range, and has usb ports."
+    ],
+    [
+        "inform(name=hymenaios 17;type=television;ecorating=a++;price=1900 dollars;powerconsumption=44 watt)",
+        "the hymenaios 17 television costs 1900 dollars and consumes 44 watts of power . the televisions are in the a++ eco rating .",
+        "hymenaios 17 is a television which is in the A++ eco rating, costs 1900 dollars, and has 44 watt power consumption."
+    ],
+    [
+        "inform(name=heracles 29;type=television;hasusbport=false;family=l2;pricerange=cheap)",
+        "a part of the l2 product family , the heracles 29 television is a cheap television that does not include usb ports . ",
+        "heracles 29 is a television which does not have any usb ports, is in the L2 product family, and is in the cheap price range."
+    ],
+    [
+        "inform(name=apollo 98;type=television;hdmiport=2;accessories=remote control and european warranty;hasusbport=true)",
+        "the apollo 98 television has 2 hdmi ports , one usb port and a remote control and european warranty .",
+        "apollo 98 is a television which has 2 hdmi ports, comes with remote control and european warranty, and has usb ports."
+    ],
+    [
+        "inform(name=erebus 92;type=television;accessories=remote control and european warranty;price=1600 dollars;family=w2)",
+        "the erebus 92 (w2 product family) is a 1600 dollars television with remote control and european warranty .",
+        "erebus 92 is a television which comes with remote control and european warranty, costs 1600 dollars, and is in the W2 product family."
+    ],
+    [
+        "inform(name=dinlas 26;type=television;resolution=720p;hasusbport=true;audio=nicam stereo)",
+        "the dinlas 26 is a usb-enabled , 720p television with a nicam stereo for audio .",
+        "dinlas 26 is a television which has 720p resolution, has usb ports, and has a NICAM stereo audio equipment."
+    ],
+    [
+        "inform(name=typhon 49;type=television;hasusbport=false;family=w3;accessories=remote control and european warranty)",
+        "the typhon 49 television does not have a usb port , is in the w3 family , and includes a remote control and european warranty .",
+        "typhon 49 is a television which does not have any usb ports, is in the W3 product family, and comes with remote control and european warranty."
+    ],
+    [
+        "inform(name=heracles 18;type=television;color=half gloss black bezel with silver trim and frame stand;hasusbport=false;screensize=65 inch)",
+        "if you do not need any use ports , the 65 inch screen heracles 18 is an attractive television with half gloss black bezel with silver trim and frame stand .",
+        "heracles 18 is a television which has a color of half gloss black bezel with silver trim and frame stand, does not have any usb ports, and has a 65 inch screen size."
+    ],
+    [
+        "inform(name=apollo 98;type=television;price=1400 dollars;color=gloss black bezel with gloss black frame stand;accessories=remote control and european warranty)",
+        "there is a apollo 98 television , in gloss black bezel with gloss black frame stand for 1400 dollars . it comes with a remote control and european warranty",
+        "apollo 98 is a television which costs 1400 dollars, has a color of gloss black bezel with gloss black frame stand, and comes with remote control and european warranty."
+    ],
+    [
+        "inform(name=apollo 96;type=television;audio=nicam stereo;powerconsumption=31.4 watt;hasusbport=true)",
+        "the apollo 96 is a 31.4 watt television with a usb port and a nicam stereo .",
+        "apollo 96 is a television which has a NICAM stereo audio equipment, has 31.4 watt power consumption, and has usb ports."
+    ],
+    [
+        "inform(name=pontus 66;type=television;price=1000 dollars;hasusbport=false;hdmiport=2)",
+        "the pontus 66 television has no usb port , but offers 2 hdmi ports . it is priced at 1000 dollars .",
+        "pontus 66 is a television which costs 1000 dollars, does not have any usb ports, and has 2 hdmi ports."
+    ],
+    [
+        "inform(name=oceanus 39;type=television;ecorating=a++;family=l1;hasusbport=false)",
+        "the oceanus 39 television does not have any usbports but it is in the l1 product family and has a a++ eco rating .",
+        "oceanus 39 is a television which is in the A++ eco rating, is in the L1 product family, and does not have any usb ports."
+    ],
+    [
+        "inform(name=hephaestus 91;type=television;color=matt white bezel with white trim and white frame stand;pricerange=cheap;accessories=remote control)",
+        "hephaestus 91 is a television in the cheap price range in a matt white bezel with white trim and white frame stand . the television also comes with a remote control .",
+        "hephaestus 91 is a television which has a color of matt white bezel with white trim and white frame stand, is in the cheap price range, and comes with remote control."
+    ],
+    [
+        "inform(name=typhon 48;type=television;powerconsumption=55 watt;accessories=remote control and passive 3d glasses and european warranty;color=gloss black bezel , matt black bottom deco , silver frame metal stand)",
+        "the typhon 48 television has 55 watt power consumption with remote control and passive 3d glasses and european warranty , it is color of gloss black bezel , matt black bottom deco , silver frame metal stand .",
+        "typhon 48 is a television which has 55 watt power consumption, comes with remote control and passive 3d glasses and european warranty, and has a color of gloss black bezel, matt black bottom deco, silver frame metal stand."
+    ],
+    [
+        "inform(name=hesperus 33;type=television;screensizerange=medium;price=1300 dollars;audio=nicam stereo)",
+        "the hesperus 33 is a 1300 dollars television that features a medium size range and nicam stereo audio .",
+        "hesperus 33 is a television which is in the medium screen size range, costs 1300 dollars, and has a NICAM stereo audio equipment."
+    ],
+    [
+        "inform(name=pontus 66;type=television;family=w1;resolution=720p;hasusbport=false)",
+        "the pontus 66 television is in the w1 product line , it's resolution is720p , it has no usb ports .",
+        "pontus 66 is a television which is in the W1 product family, has 720p resolution, and does not have any usb ports."
+    ],
+    [
+        "inform(name=charon 41;type=television;screensizerange=large;price=1500 dollars;color=matt black bezel with silver trim and silver flat stand)",
+        "the charon 41 is a large television with matt black bezel with silver trim and silver flat stand and costs 1500 dollars",
+        "charon 41 is a television which is in the large screen size range, costs 1500 dollars, and has a color of matt black bezel with silver trim and silver flat stand."
+    ],
+    [
+        "inform(name=triton 56;type=television;color=gloss black bezel with silver frame stand;hasusbport=true;resolution=1080p)",
+        "the triton 56 television comes with 1080p resolution , usb ports and has a gloss black bezel with silver frame stand .",
+        "triton 56 is a television which has a color of gloss black bezel with silver frame stand, has usb ports, and has 1080p resolution."
+    ],
+    [
+        "inform(name=chronos 62;type=television;resolution=720p;accessories=remote control and european warranty;price=1600 dollars)",
+        "the chronos 62 is a 1600 dollars television with 720p resolution , remote control and european warranty",
+        "chronos 62 is a television which has 720p resolution, comes with remote control and european warranty, and costs 1600 dollars."
+    ],
+    [
+        "inform(name=kratos 31;type=television;price=1600 dollars;ecorating=a+;hasusbport=true)",
+        "the kratos 31 is in the a+ eco rating and has usb ports . the cost of this television is 1600 dollars .",
+        "kratos 31 is a television which costs 1600 dollars, is in the A+ eco rating, and has usb ports."
+    ],
+    [
+        "inform(name=triton 56;type=television;hasusbport=false;color=gloss black bezel with silver frame stand)",
+        "the triton 56 television is gloss black bezel with silver frame stand .",
+        "triton 56 is a television which does not have any usb ports and has a color of gloss black bezel with silver frame stand"
+    ],
+    [
+        "inform(name=poseidon 88;type=television;accessories=remote control and active 3d glasses and european warranty;price=1900 dollars;ecorating=a+)",
+        "the poseidon 88 is a television with an eco rating a+ with a remote control and active 3d glasses and european warranty and costs 1900 dollars",
+        "poseidon 88 is a television which comes with remote control and active 3d glasses and european warranty, costs 1900 dollars, and is in the A+ eco rating."
+    ],
+    [
+        "inform(name=achelous 99;type=television;powerconsumption=47.8 watt;audio=nicam stereo;pricerange=cheap)",
+        "achelous 99 is a 47.8 watt power television in the cheap price range with a nicam stereo audio equipment .",
+        "achelous 99 is a television which has 47.8 watt power consumption, has a NICAM stereo audio equipment, and is in the cheap price range."
+    ],
+    [
+        "inform(name=plutus 32;type=television;accessories=remote control;hasusbport=false;price=1600 dollars)",
+        "the plutus 32 television , priced at 1600 dollars , includes a remote control and does not have usb ports .",
+        "plutus 32 is a television which comes with remote control, does not have any usb ports, and costs 1600 dollars."
+    ],
+    [
+        "inform(name=eurus 24;type=television;accessories=remote control and passive 3d glasses and european warranty;resolution=1080p)",
+        "the eurus 24 television has 1080p resolution and its accessories include remote control and passive 3d glasses and european warranty .",
+        "eurus 24 is a television which comes with remote control and passive 3d glasses and european warranty and has 1080p resolution"
+    ],
+    [
+        "inform(name=pontus 43;type=television;pricerange=cheap;powerconsumption=34 watt;audio=nicam stereo)",
+        "a cheap television with 34 watt power comsuption and nicam stereo is the pontus 43.",
+        "pontus 43 is a television which is in the cheap price range, has 34 watt power consumption, and has a NICAM stereo audio equipment."
+    ],
+    [
+        "inform(name=aeolus 34;type=television;screensizerange=large;hasusbport=false;audio=nicam stereo)",
+        "the aeolus 34 large screen television comes equipped with nicam stereo equipment (usb ports not included) . ",
+        "aeolus 34 is a television which is in the large screen size range, does not have any usb ports, and has a NICAM stereo audio equipment."
+    ],
+    [
+        "inform(name=typhon 71;type=television;hasusbport=true;hdmiport=1;powerconsumption=18 watt)",
+        "the typhon 71 television has 1 hdmi port , usb ports and uses 18 watt of power .",
+        "typhon 71 is a television which has usb ports, has 1 hdmi ports, and has 18 watt power consumption."
+    ],
+    [
+        "inform(name=attis 65;type=television;ecorating=a++;accessories=remote control and european warranty;hdmiport=3)",
+        "the attis 65 is an a++ eco rating television with 3 hdmi ports and comes with both a remote control and european warranty",
+        "attis 65 is a television which is in the A++ eco rating, comes with remote control and european warranty, and has 3 hdmi ports."
+    ],
+    [
+        "inform(name=oceanus 80;type=television;hdmiport=2;price=1700 dollars;hasusbport=false)",
+        "the oceanus 80 television has 2 hdmi ports , no usb ports , and costs 1700 dollars .",
+        "oceanus 80 is a television which has 2 hdmi ports, costs 1700 dollars, and does not have any usb ports."
+    ],
+    [
+        "inform(name=tartarus 39;type=television;accessories=remote control and european warranty;color=mat black bezel with mat black frame stand)",
+        "we carry the tartarus 39 television; it has a remote control and european warranty and comes with a mat black bezel with mat black frame stand .",
+        "tartarus 39 is a television which comes with remote control and european warranty and has a color of mat black bezel with mat black frame stand"
+    ],
+    [
+        "inform(name=pontus 18;type=television;price=1900 dollars;pricerange=cheap)",
+        "the pontus 18 television in the cheap price range costs only 1900 dollars .",
+        "pontus 18 is a television which costs 1900 dollars and is in the cheap price range"
+    ],
+    [
+        "inform(name=aeolus 86;type=television;hasusbport=true;accessories=remote control and european warranty;color=gloss black bezel with silver frame stand)",
+        "the aeolus 86 television chas usb ports , a gloss black bezel with silver frame stand and comes with a remote control and european warranty .",
+        "aeolus 86 is a television which has usb ports, comes with remote control and european warranty, and has a color of gloss black bezel with silver frame stand."
+    ],
+    [
+        "inform(name=apollo 98;type=television;audio=nicam stereo;pricerange=cheap;hasusbport=true)",
+        "the apollo 98 television featues nicam stereo audio , usb ports , and is cheaply priced .",
+        "apollo 98 is a television which has a NICAM stereo audio equipment, is in the cheap price range, and has usb ports."
+    ],
+    [
+        "inform(name=eros 94;type=television;resolution=1080p;powerconsumption=44 watt;audio=nicam stereo)",
+        "eros 94 television has 1080p resolution with power consumption 44 watt , it has a nicam stereoaudio equipment .",
+        "eros 94 is a television which has 1080p resolution, has 44 watt power consumption, and has a NICAM stereo audio equipment."
+    ],
+    [
+        "inform(name=helios 96;type=television;hasusbport=true;resolution=1080p;price=1700 dollars)",
+        "the helios 96 television does have usb ports and comes with 1080p resolutions and is priced at 1700 dollars .",
+        "helios 96 is a television which has usb ports, has 1080p resolution, and costs 1700 dollars."
+    ],
+    [
+        "inform(name=kratos 46;type=television;powerconsumption=44 watt;hasusbport=true;pricerange=cheap)",
+        "the kratos 46 is a cheap priced television with 44 watt power consumption and usb ports",
+        "kratos 46 is a television which has 44 watt power consumption, has usb ports, and is in the cheap price range."
+    ],
+    [
+        "inform(name=hesperus 58;type=television;screensizerange=medium)",
+        "the hesperus 58 television has a medium sized screen .",
+        "hesperus 58 is a television which is in the medium screen size range"
+    ],
+    [
+        "inform(name=pontus 66;type=television;ecorating=a;color=matt black bezel with gloss black trim and slant mold black stand;price=1000 dollars)",
+        "a television , the pontus 66 has an a+ eco rating , matt black bezel with gloss black trim and slant mold black stand , is costs 1000 dollars .",
+        "pontus 66 is a television which is in the A eco rating, has a color of matt black bezel with gloss black trim and slant mold black stand, and costs 1000 dollars."
+    ],
+    [
+        "inform(name=hymenaios 80;type=television;pricerange=cheap;hdmiport=2;resolution=1080p)",
+        "hymenaios 80 television is in the cheap price range , displays 1080p , and has 2 hdmi ports .",
+        "hymenaios 80 is a television which is in the cheap price range, has 2 hdmi ports, and has 1080p resolution."
+    ],
+    [
+        "inform(name=eurus 61;type=television;audio=nicam stereo;hasusbport=true;accessories=remote control and european warranty)",
+        "the eurus 61 television comes with a nicam stereo system , usb port , remote control and european warranty .",
+        "eurus 61 is a television which has a NICAM stereo audio equipment, has usb ports, and comes with remote control and european warranty."
+    ],
+    [
+        "inform(name=pallas 86;type=television;hdmiport=4;resolution=1080p)",
+        "pallas 86 is a 1080p resolution television with 4 hdmi ports .",
+        "pallas 86 is a television which has 4 hdmi ports and has 1080p resolution"
+    ],
+    [
+        "inform(name=chronos 52;type=television;ecorating=a+;pricerange=cheap;family=l1)",
+        "the chronos 52 is a cheap priced television from the l1 family with an a+ eco rating",
+        "chronos 52 is a television which is in the A+ eco rating, is in the cheap price range, and is in the L1 product family."
+    ],
+    [
+        "inform(name=triton 52;type=television;price=1900 dollars;hasusbport=true;family=l7)",
+        "the triton 52 television is in the l7 product family , has usb ports and costs 1900 dollars .",
+        "triton 52 is a television which costs 1900 dollars, has usb ports, and is in the L7 product family."
+    ],
+    [
+        "inform(name=triton 56;type=television;screensize=42 inch;powerconsumption=45 watt;ecorating=a+)",
+        "the triton 56 television consumes 45 watts of power , has a 42 inch screen and is in the a+ eco rating .",
+        "triton 56 is a television which has a 42 inch screen size, has 45 watt power consumption, and is in the A+ eco rating."
+    ],
+    [
+        "inform(name=crios 89;type=television;ecorating=a+;audio=nicam stereo;pricerange=cheap)",
+        "the crios 89 television has an a+ eco rating , has a nicam stereo , and falls in the cheap price range .",
+        "crios 89 is a television which is in the A+ eco rating, has a NICAM stereo audio equipment, and is in the cheap price range."
+    ],
+    [
+        "inform(name=chronos 52;type=television;family=l1;hasusbport=true;screensizerange=medium)",
+        "the chronos 52 television belongs to the l1 family , matches your value for a medium screen size , and it also comes with a usb port .",
+        "chronos 52 is a television which is in the L1 product family, has usb ports, and is in the medium screen size range."
+    ],
+    [
+        "inform(name=hesperus 58;type=television;resolution=720p;family=w2;screensizerange=medium)",
+        "the hesperus 58 is a medium 720p television in the w2 family",
+        "hesperus 58 is a television which has 720p resolution, is in the W2 product family, and is in the medium screen size range."
+    ],
+    [
+        "inform(name=pan 46;type=television;screensize=42 inch;audio=nicam stereo;accessories=remote control and european warranty)",
+        "the pan 46 television had 42 inch screen with a remote control and european warranty and a nicam stereo .",
+        "pan 46 is a television which has a 42 inch screen size, has a NICAM stereo audio equipment, and comes with remote control and european warranty."
+    ],
+    [
+        "inform(name=nereus 69;type=television;family=l1;pricerange=cheap;hasusbport=false)",
+        "nereus 69 television is in the l1 family and has no usb ports , in the cheap price range .",
+        "nereus 69 is a television which is in the L1 product family, is in the cheap price range, and does not have any usb ports."
+    ],
+    [
+        "inform(name=hermes 77;type=television;screensize=40 inch;resolution=1080p;pricerange=cheap)",
+        "the hermes 77 is a cheap 40 inch television with 1080p screen resolution .",
+        "hermes 77 is a television which has a 40 inch screen size, has 1080p resolution, and is in the cheap price range."
+    ],
+    [
+        "inform(name=crios 89;type=television;family=l1;hdmiport=2;powerconsumption=30 watt)",
+        "crios 89 is a 30 watt power television in the l1 product family with 2 hdmi ports .",
+        "crios 89 is a television which is in the L1 product family, has 2 hdmi ports, and has 30 watt power consumption."
+    ],
+    [
+        "inform(name=glaucus 77;type=television;pricerange=cheap;resolution=1080p;ecorating=a+)",
+        "glaucus 77 is a great television with an a+ eco rating , 1080p resolution & is in the cheap price range",
+        "glaucus 77 is a television which is in the cheap price range, has 1080p resolution, and is in the A+ eco rating."
+    ],
+    [
+        "inform(name=eros 94;type=television;pricerange=cheap;ecorating=a+;resolution=1080p)",
+        "the eros 94 television is cheap and has a 1080p resolution and a a+ ecorating .",
+        "eros 94 is a television which is in the cheap price range, is in the A+ eco rating, and has 1080p resolution."
+    ],
+    [
+        "inform(name=kratos 31;type=television;pricerange=cheap;screensizerange=medium;price=1600 dollars)",
+        "the kratos 31 is a medium television in the cheap price range at 1600 dollars",
+        "kratos 31 is a television which is in the cheap price range, is in the medium screen size range, and costs 1600 dollars."
+    ],
+    [
+        "inform(name=pricus 15;type=television;pricerange=cheap;screensizerange=medium;color=mat black bezel with mat black frame stand)",
+        "the pricus 15 is a cheap medium television that sports a mat black bezel with mat black frame stand",
+        "pricus 15 is a television which is in the cheap price range, is in the medium screen size range, and has a color of mat black bezel with mat black frame stand."
+    ],
+    [
+        "inform(name=morpheus 93;type=television;color=matt black bezel with silver trim and silver flat stand;screensize=48 inch;pricerange=cheap)",
+        "morpheus 93 is a 48 inch screen television in the cheap price range with matt black bezel with silver trim and silver flat stand .",
+        "morpheus 93 is a television which has a color of matt black bezel with silver trim and silver flat stand, has a 48 inch screen size, and is in the cheap price range."
+    ],
+    [
+        "inform(name=crios 89;type=television;powerconsumption=30 watt;hdmiport=2;resolution=1080p)",
+        "the crios 89 television features 1080p resolution , 2 hdmi ports , and 30 watt power consumption .",
+        "crios 89 is a television which has 30 watt power consumption, has 2 hdmi ports, and has 1080p resolution."
+    ],
+    [
+        "inform(name=apollo 33;type=television;color=mat black bezel with black trim and slant mold black stand;hasusbport=false)",
+        "the apollo 33 television does not come with usb ports and has mat black bezel with black trim and slant mold black stand",
+        "apollo 33 is a television which has a color of mat black bezel with black trim and slant mold black stand and does not have any usb ports"
+    ],
+    [
+        "inform(name=dinlas 61;type=television;pricerange=cheap)",
+        "the dinlas 61 is a cheap television . ",
+        "dinlas 61 is a television which is in the cheap price range"
+    ],
+    [
+        "inform(name=typhon 45;type=television;resolution=1080p;price=1700 dollars;screensizerange=medium)",
+        "the typhon 45 television has a medium screen size with a 1080p resolution , and is worth 1700 dollars .",
+        "typhon 45 is a television which has 1080p resolution, costs 1700 dollars, and is in the medium screen size range."
+    ],
+    [
+        "inform(name=heracles 29;type=television;hasusbport=true;family=l2;pricerange=cheap)",
+        "the heracles 29 is a cheap , usb-enabled television in the l2 family",
+        "heracles 29 is a television which has usb ports, is in the L2 product family, and is in the cheap price range."
+    ],
+    [
+        "inform(name=chronos 52;type=television;hasusbport=false;powerconsumption=62 watt;screensizerange=medium)",
+        "although the chronos 52 television does not have any usb ports , it has a medium screen size and consumes only 62 watts .",
+        "chronos 52 is a television which does not have any usb ports, has 62 watt power consumption, and is in the medium screen size range."
+    ],
+    [
+        "inform(name=chronos 62;type=television;accessories=remote control and european warranty;resolution=720p;hdmiport=1)",
+        "the chronos 62 is a television with 720p resolution , 1 hdmi port , and comes with a remote control and european warranty",
+        "chronos 62 is a television which comes with remote control and european warranty, has 720p resolution, and has 1 hdmi ports."
+    ],
+    [
+        "inform(name=eros 20;type=television;audio=nicam stereo;screensizerange=small;family=w1)",
+        "the small eros 20 television in the w1 family features nicam stereo",
+        "eros 20 is a television which has a NICAM stereo audio equipment, is in the small screen size range, and is in the W1 product family."
+    ],
+    [
+        "inform(name=hades 76;type=television;price=2000 dollars;ecorating=c;screensizerange=large)",
+        "the hades 76 television is 2000 dollars . it has a large screen and a c ecorating . ",
+        "hades 76 is a television which costs 2000 dollars, is in the C eco rating, and is in the large screen size range."
+    ],
+    [
+        "inform(name=zephyrus 94;type=television;color=matt white bezel with white trim and white frame stand;audio=nicam stereo;powerconsumption=62 watt)",
+        "the zephyrus 94 television consumes 62 watt power and comes with nicam stereo audio equipment and has beautiful matt white bezel with white trim and white frame stand color .",
+        "zephyrus 94 is a television which has a color of matt white bezel with white trim and white frame stand, has a NICAM stereo audio equipment, and has 62 watt power consumption."
+    ],
+    [
+        "inform(name=pontus 18;type=television;screensizerange=large;hasusbport=true;color=gloss black bezel , matt black bottom deco , silver frame metal stand)",
+        "the pontus 18 television has a large screen size range with a usb port , the color is gloss black bezel , matt black bottom deco , silver frame metal stand . ",
+        "pontus 18 is a television which is in the large screen size range, has usb ports, and has a color of gloss black bezel, matt black bottom deco, silver frame metal stand."
+    ],
+    [
+        "inform(name=attis 65;type=television;price=1000 dollars;hasusbport=false;powerconsumption=44 watt)",
+        "the attis 65 television with 44 watt power consumption does not have any usb port and costs 1000 dollars .",
+        "attis 65 is a television which costs 1000 dollars, does not have any usb ports, and has 44 watt power consumption."
+    ],
+    [
+        "inform(name=pontus 43;type=television;hdmiport=4;screensize=32 inch;ecorating=a+)",
+        "the pontus 43 television has 4 dmi ports , is rated a+ in the eco rating criteria , and has a screen size of 32 inches . ",
+        "pontus 43 is a television which has 4 hdmi ports, has a 32 inch screen size, and is in the A+ eco rating."
+    ],
+    [
+        "inform(name=achelous 99;type=television;hasusbport=true;ecorating=a+;powerconsumption=47.8 watt)",
+        "the achelous 99 is a kind of television that has usb ports . it has 47.8 watts of power and received an a+ eco rating .",
+        "achelous 99 is a television which has usb ports, is in the A+ eco rating, and has 47.8 watt power consumption."
+    ],
+    [
+        "inform(name=aeolus 34;type=television;family=l5;hdmiport=4;hasusbport=true)",
+        "the aeolus 34 is an l5 television with 4 hdmi ports , also includes usb ports .",
+        "aeolus 34 is a television which is in the L5 product family, has 4 hdmi ports, and has usb ports."
+    ],
+    [
+        "inform(name=heracles 45;type=television;accessories=remote control;resolution=1080p;hasusbport=true)",
+        "the heracles 45 television has 1080p resolution , usb ports and comes with a remote control .",
+        "heracles 45 is a television which comes with remote control, has 1080p resolution, and has usb ports."
+    ],
+    [
+        "inform(name=pontus 45;type=television;ecorating=a+;accessories=remote control;screensize=32 inch)",
+        "the pontus 45 television has an a+ eco rating and a 32 inch screen . it comes with a remote control .",
+        "pontus 45 is a television which is in the A+ eco rating, comes with remote control, and has a 32 inch screen size."
+    ],
+    [
+        "inform(name=momus 19;type=television;powerconsumption=18 watt;color=matt black bezel with black trim and slant mold black stand;hdmiport=1)",
+        "the momus 19 television consumes 18 watt of power , it's color is matt black bezel with black trim and slant mold black stand , also it has 1 hdmi port .",
+        "momus 19 is a television which has 18 watt power consumption, has a color of matt black bezel with black trim and slant mold black stand, and has 1 hdmi ports."
+    ],
+    [
+        "inform(name=crios 93;type=television;ecorating=a++;pricerange=cheap;color=matt black bezel with gloss black trim and black stand)",
+        "the crios 93 television is matt black bezel with gloss black trim and black stand , is in the cheap price range , and has an a++ eco rating .",
+        "crios 93 is a television which is in the A++ eco rating, is in the cheap price range, and has a color of matt black bezel with gloss black trim and black stand."
+    ],
+    [
+        "inform(name=oceanus 80;type=television;screensizerange=medium;hdmiport=2;price=1700 dollars)",
+        "the oceanus 80 television has a medium sized screen , 2 hdmi ports and costs 1700 dollars .",
+        "oceanus 80 is a television which is in the medium screen size range, has 2 hdmi ports, and costs 1700 dollars."
+    ],
+    [
+        "inform(name=pricus 15;type=television;pricerange=cheap;screensizerange=medium;color=mat black bezel with mat black frame stand)",
+        "the pricus 15 is a cheap priced medium screen television with mat black bezel with mat black frame stand",
+        "pricus 15 is a television which is in the cheap price range, is in the medium screen size range, and has a color of mat black bezel with mat black frame stand."
+    ],
+    [
+        "inform(name=charon 25;type=television;powerconsumption=18 watt;accessories=remote control;screensizerange=small)",
+        "the charon 25 is a small 18 watt television with remote control",
+        "charon 25 is a television which has 18 watt power consumption, comes with remote control, and is in the small screen size range."
+    ],
+    [
+        "inform(name=pontus 94;type=television;screensizerange=medium;price=1800 dollars;resolution=1080p)",
+        "pontus 94 is a great medium screen size television with 1080p resolution & will cost you only 1800 dollars",
+        "pontus 94 is a television which is in the medium screen size range, costs 1800 dollars, and has 1080p resolution."
+    ],
+    [
+        "inform(name=pontus 66;type=television;pricerange=cheap;color=matt black bezel with gloss black trim and slant mold black stand;price=1000 dollars)",
+        "i would like to tell you that the pontus 66 is a television in the cheap price range , has a color of matt black bezel with gloss black trim and slant mold black stand and costs 1000 dollars",
+        "pontus 66 is a television which is in the cheap price range, has a color of matt black bezel with gloss black trim and slant mold black stand, and costs 1000 dollars."
+    ],
+    [
+        "inform(name=attis 75;type=television;price=1600 dollars;pricerange=cheap;screensize=50 inch)",
+        "the attis 75 television has a cheap price of 1600 dollars , and has a screen that's 50 inches .",
+        "attis 75 is a television which costs 1600 dollars, is in the cheap price range, and has a 50 inch screen size."
+    ],
+    [
+        "inform(name=caerus 33;type=television;resolution=1080p;powerconsumption=44 watt;ecorating=a+)",
+        "the caerus 33 is a 1080p , 44 watt television with a+ eco ratings ",
+        "caerus 33 is a television which has 1080p resolution, has 44 watt power consumption, and is in the A+ eco rating."
+    ],
+    [
+        "inform(name=eros 20;type=television;hasusbport=true;accessories=remote control;screensizerange=small)",
+        "the eros 20 television contains usb ports and comes with remote control , and has a small screen size .",
+        "eros 20 is a television which has usb ports, comes with remote control, and is in the small screen size range."
+    ],
+    [
+        "inform(name=erebus 92;type=television;screensize=32 inch;hdmiport=2;screensizerange=medium)",
+        "erebus 92 is a 32 inch television in the medium screen size range with 2 hdmi ports .",
+        "erebus 92 is a television which has a 32 inch screen size, has 2 hdmi ports, and is in the medium screen size range."
+    ],
+    [
+        "inform(name=charon 69;type=television;hasusbport=true;ecorating=b;price=1100 dollars)",
+        "charon 69 television is priced at 1100 dollars with a b eco rating and usb ports",
+        "charon 69 is a television which has usb ports, is in the B eco rating, and costs 1100 dollars."
+    ],
+    [
+        "inform(name=caerus 63;type=television;family=l2;accessories=remote control and european warranty)",
+        " the caerus 63 television is available . it is in the l2 family and includes remote control and european warranty ",
+        "caerus 63 is a television which is in the L2 product family and comes with remote control and european warranty"
+    ],
+    [
+        "inform(name=aristaeus 59;type=television;hasusbport=true;accessories=remote control and european warranty;hdmiport=2)",
+        "the aristaeus 59 has 2 hdmi and 1 usb port . this television comes with a remote control and european warranty . ",
+        "aristaeus 59 is a television which has usb ports, comes with remote control and european warranty, and has 2 hdmi ports."
+    ],
+    [
+        "inform(name=eros 20;type=television;hasusbport=false;accessories=remote control;screensizerange=small)",
+        "the eros 20 television may meet your needs . it has no usb ports , has a small screen size , and comes with a remote control .",
+        "eros 20 is a television which does not have any usb ports, comes with remote control, and is in the small screen size range."
+    ],
+    [
+        "inform(name=cerus 13;type=television;screensize=47 inch;ecorating=a+;hdmiport=4)",
+        "the cerus 13 television has a 47 inch screen , an a+ eco rating , and 4 hdmi ports .",
+        "cerus 13 is a television which has a 47 inch screen size, is in the A+ eco rating, and has 4 hdmi ports."
+    ],
+    [
+        "inform(name=pontus 55;type=television;family=l2;screensize=32 inch;hasusbport=true)",
+        "the pontus 55 television is part of the l2 product family with 32 inch screen size and usb ports .",
+        "pontus 55 is a television which is in the L2 product family, has a 32 inch screen size, and has usb ports."
+    ],
+    [
+        "inform(name=achelous 71;type=television;resolution=1080p;hdmiport=2;accessories=remote control)",
+        "the achelous 71 is a 1080p television that comes with a remote control and 2 hdmi ports",
+        "achelous 71 is a television which has 1080p resolution, has 2 hdmi ports, and comes with remote control."
+    ],
+    [
+        "inform(name=glaucus 77;type=television;resolution=1080p;screensize=32 inch;screensizerange=medium)",
+        "the television called the glaucus 77 is a television in the medium screen size range with its 32 inch span and 1080p resolution . ",
+        "glaucus 77 is a television which has 1080p resolution, has a 32 inch screen size, and is in the medium screen size range."
+    ],
+    [
+        "inform(name=attis 82;type=television;powerconsumption=30 watt;ecorating=a+;hasusbport=false)",
+        "the attis 82 television has no usb ports , a 30 watt power consumption and an a+ eco rating .",
+        "attis 82 is a television which has 30 watt power consumption, is in the A+ eco rating, and does not have any usb ports."
+    ],
+    [
+        "inform(name=nereus 69;type=television;resolution=1080p;ecorating=a+)",
+        "the nereus 69 is a television with a 1080p resolution and is in the a+ eco rating . ",
+        "nereus 69 is a television which has 1080p resolution and is in the A+ eco rating"
+    ],
+    [
+        "inform(name=thanatos 85;type=television;resolution=720p;family=w1;accessories=remote control)",
+        "the thanatos 85 720p resolution television with remote control is part of the w1 family of products .",
+        "thanatos 85 is a television which has 720p resolution, is in the W1 product family, and comes with remote control."
+    ],
+    [
+        "inform(name=helios 96;type=television;hasusbport=false;resolution=1080p;accessories=remote control and active 3d glasses and european warranty)",
+        "the helios 96 is a 1080p television that comes with a remote control and active 3d glasses and european warranty but has no usb ports",
+        "helios 96 is a television which does not have any usb ports, has 1080p resolution, and comes with remote control and active 3d glasses and european warranty."
+    ],
+    [
+        "inform(name=aeolus 98;type=television;pricerange=cheap;powerconsumption=47.8 watt;color=mat white bezel with mat white frame stand)",
+        "the aeolus 98 television in the cheap price range has mat white bezel with mat white frame stand color and consumes 47.8 watt power . ",
+        "aeolus 98 is a television which is in the cheap price range, has 47.8 watt power consumption, and has a color of mat white bezel with mat white frame stand."
+    ],
+    [
+        "inform(name=aeolus 34;type=television;accessories=remote control and active 3d glasses and european warranty;screensizerange=large;audio=nicam stereo)",
+        "the aeolus 34 television with a large screen size and a nicam stereo and remote control and active 3d glasses and european warranty .",
+        "aeolus 34 is a television which comes with remote control and active 3d glasses and european warranty, is in the large screen size range, and has a NICAM stereo audio equipment."
+    ],
+    [
+        "inform(name=pontus 45;type=television;screensize=32 inch;hasusbport=false;resolution=720p)",
+        "the pontus 45 is a 32 inch television with 720p resolution but does not come with usb ports",
+        "pontus 45 is a television which has a 32 inch screen size, does not have any usb ports, and has 720p resolution."
+    ],
+    [
+        "inform(name=aeolus 98;type=television;color=mat white bezel with mat white frame stand;price=1100 dollars;screensizerange=medium)",
+        "the aeolus 98 television , at 1100 dollars , has a medium sized screen and mat white bezel with mat white frame stand .",
+        "aeolus 98 is a television which has a color of mat white bezel with mat white frame stand, costs 1100 dollars, and is in the medium screen size range."
+    ],
+    [
+        "inform(name=pontus 43;type=television;hdmiport=4;resolution=1080p;powerconsumption=34 watt)",
+        "a television with 4 hdmi ports , 1080p resolution , and a 34 watt power consumption , would be the pontus 43.",
+        "pontus 43 is a television which has 4 hdmi ports, has 1080p resolution, and has 34 watt power consumption."
+    ],
+    [
+        "inform(name=notus 31;type=television;hdmiport=2;resolution=1080p;family=l1)",
+        "another member of the l1 product family , the notus 31 television has 1080p resolution and 2 hdmi ports .",
+        "notus 31 is a television which has 2 hdmi ports, has 1080p resolution, and is in the L1 product family."
+    ],
+    [
+        "inform(name=heracles 18;type=television;powerconsumption=300 watt;accessories=remote control and passive 3d glasses and passive 3d glasses;price=1500 dollars)",
+        "heracles 18 is a 300 watt power television with remote control and passive 3d glasses and passive 3d glasses and costs 1500 dollars .",
+        "heracles 18 is a television which has 300 watt power consumption, comes with remote control and passive 3d glasses and passive 3d glasses, and costs 1500 dollars."
+    ],
+    [
+        "inform(name=hesperus 58;type=television;audio=nicam stereo;color=mat white bezel with mat white frame stand;powerconsumption=31.4 watt)",
+        "this 31.4 watt hesperus 58 television is mat white bezel with mat white frame stand and has a nicam stereo system",
+        "hesperus 58 is a television which has a NICAM stereo audio equipment, has a color of mat white bezel with mat white frame stand, and has 31.4 watt power consumption."
+    ],
+    [
+        "inform(name=aeolus 86;type=television;resolution=1080p;price=1000 dollars;pricerange=cheap)",
+        "we are again offering the aeolus 86 television with 1080p resolution in the cheap price range at only 1000 dollars .",
+        "aeolus 86 is a television which has 1080p resolution, costs 1000 dollars, and is in the cheap price range."
+    ],
+    [
+        "inform(name=heracles 18;type=television;pricerange=cheap;color=half gloss black bezel with silver trim and frame stand;screensize=65 inch)",
+        "for a cheap television with a 65 inch screen size , check out the heracles 18. it comes in half gloss black bezel with silver trim and frame stand .",
+        "heracles 18 is a television which is in the cheap price range, has a color of half gloss black bezel with silver trim and frame stand, and has a 65 inch screen size."
+    ],
+    [
+        "inform(name=hesperus 33;type=television;hasusbport=true;resolution=720p;family=w2)",
+        "the hesperus 33 is a television that is in the w2 family , has 720p resolution and has usb ports for your convenience . ",
+        "hesperus 33 is a television which has usb ports, has 720p resolution, and is in the W2 product family."
+    ],
+    [
+        "inform(name=pontus 18;type=television;hdmiport=4;powerconsumption=87.6 watt;ecorating=a+)",
+        "the pontus 18 television has an a+ eco rating as well as 4 hdmi ports with a power consumption of 87.6 watts .",
+        "pontus 18 is a television which has 4 hdmi ports, has 87.6 watt power consumption, and is in the A+ eco rating."
+    ],
+    [
+        "inform(name=pontus 45;type=television;powerconsumption=30 watt;screensize=32 inch;screensizerange=medium)",
+        "a television with a medium sized , 32 inch screen and has a 30 watt power consumption is the pontus 45.",
+        "pontus 45 is a television which has 30 watt power consumption, has a 32 inch screen size, and is in the medium screen size range."
+    ],
+    [
+        "inform(name=typhon 45;type=television;accessories=remote control and european warranty;ecorating=a+;hasusbport=true)",
+        "the typhon 45 television , with a+ eco rating , has usb ports , and remote control and european warranty .",
+        "typhon 45 is a television which comes with remote control and european warranty, is in the A+ eco rating, and has usb ports."
+    ],
+    [
+        "inform(name=kratos 31;type=television;family=w2;resolution=720p;pricerange=cheap)",
+        "in the cheap price range , the kratos 31 television , from the w2 family has a 720p resolution .",
+        "kratos 31 is a television which is in the W2 product family, has 720p resolution, and is in the cheap price range."
+    ],
+    [
+        "inform(name=dinlas 61;type=television;color=mat black bezel with black trim and slant mold black stand;accessories=remote control;resolution=1080p)",
+        "the dinlas 61 television comes with a remote control , 1080p resolution , mat black bezel with black trim and slant mold black stand .",
+        "dinlas 61 is a television which has a color of mat black bezel with black trim and slant mold black stand, comes with remote control, and has 1080p resolution."
+    ],
+    [
+        "inform(name=caerus 33;type=television;screensizerange=medium;hdmiport=4;resolution=1080p)",
+        "we offer the caerus 33 television with 4 hdmi ports , a resolution of 1080p , and in the medium screen size range . ",
+        "caerus 33 is a television which is in the medium screen size range, has 4 hdmi ports, and has 1080p resolution."
+    ],
+    [
+        "inform(name=zelus 37;type=television;screensizerange=medium;audio=nicam stereo;color=mat black bezel with black trim and slant mold black stand)",
+        "the zelus 37 is a television and has a medium screen size . it come equipped with a nicam stereo . it come with a mat black bezel with black trim and slant mold black stand . ",
+        "zelus 37 is a television which is in the medium screen size range, has a NICAM stereo audio equipment, and has a color of mat black bezel with black trim and slant mold black stand."
+    ],
+    [
+        "inform(name=apollo 98;type=television;price=1400 dollars;screensize=40 inch)",
+        "apollo 98 is a 40 inch television which costs 1400 dollars .",
+        "apollo 98 is a television which costs 1400 dollars and has a 40 inch screen size"
+    ],
+    [
+        "inform(name=caerus 33;type=television;audio=nicam stereo;family=t5;hdmiport=4)",
+        "the caerus 33 is a television in the t5 family that has 4 hdmi ports and a nicam stereo system",
+        "caerus 33 is a television which has a NICAM stereo audio equipment, is in the T5 product family, and has 4 hdmi ports."
+    ],
+    [
+        "inform(name=achelous 99;type=television;hasusbport=false;powerconsumption=47.8 watt;screensize=40 inch)",
+        "the 47.8 watt achelous 99 television has a 40 inch screen but no usb ports .",
+        "achelous 99 is a television which does not have any usb ports, has 47.8 watt power consumption, and has a 40 inch screen size."
+    ],
+    [
+        "inform(name=crios 69;type=television;color=mat black bezel with silver trim and silver flat stand;hdmiport=4;hasusbport=true)",
+        "the crios 69 television is a mat black bezel with silver trim and silver flat stand and has 4 hdmi ports and a usb port",
+        "crios 69 is a television which has a color of mat black bezel with silver trim and silver flat stand, has 4 hdmi ports, and has usb ports."
+    ],
+    [
+        "inform(name=oceanus 51;type=television;accessories=remote control and european warranty;powerconsumption=31.4 watt;color=mat black bezel with mat black frame stand)",
+        "the oceanus 51 is a television that comes with the accessories of a remote control and european warranty , has a power consumption of 31.4 watt and a color of mat black bezel with mat black frame stand .",
+        "oceanus 51 is a television which comes with remote control and european warranty, has 31.4 watt power consumption, and has a color of mat black bezel with mat black frame stand."
+    ],
+    [
+        "inform(name=morpheus 63;type=television;screensize=40 inch;price=1800 dollars)",
+        "the morpheus 63 television has a 40 inch screen . it sells for 1800 dollars .",
+        "morpheus 63 is a television which has a 40 inch screen size and costs 1800 dollars"
+    ],
+    [
+        "inform(name=charon 31;type=television;family=d1;hasusbport=false;powerconsumption=18 watt)",
+        " the charon 31 television is available . it is in the d1 family has no usb port and uses 18 watt power consumption ",
+        "charon 31 is a television which is in the D1 product family, does not have any usb ports, and has 18 watt power consumption."
+    ],
+    [
+        "inform(name=pontus 45;type=television;family=w1;screensize=32 inch)",
+        "a television in the w1 product family with a 32 inch screen is the pontus 45.",
+        "pontus 45 is a television which is in the W1 product family and has a 32 inch screen size"
+    ],
+    [
+        "inform(name=momus 19;type=television;price=2000 dollars;pricerange=cheap;hdmiport=1)",
+        "the cheap momus 19 television has 1 hdmi port and sells for 2000 dollars .",
+        "momus 19 is a television which costs 2000 dollars, is in the cheap price range, and has 1 hdmi ports."
+    ],
+    [
+        "inform(name=eurus 24;type=television;accessories=remote control and passive 3d glasses and european warranty;pricerange=cheap;powerconsumption=55 watt)",
+        "eurus 24 is a television that has 55 watt power consumption , is in the cheap price range , and has a remote control and passive 3d glasses and european warranty . ",
+        "eurus 24 is a television which comes with remote control and passive 3d glasses and european warranty, is in the cheap price range, and has 55 watt power consumption."
+    ],
+    [
+        "inform(name=thanatos 85;type=television;screensizerange=medium;ecorating=a+;accessories=remote control)",
+        "the thanatos 85 is a medium television with an a+ ecp friendly rating and a remote control .",
+        "thanatos 85 is a television which is in the medium screen size range, is in the A+ eco rating, and comes with remote control."
+    ],
+    [
+        "inform(name=triton 52;type=television;resolution=1080p;hasusbport=true;hdmiport=4)",
+        "the triton 52 television comes with usb ports , 4 hdmi ports , and a resolution of 1080p .",
+        "triton 52 is a television which has 1080p resolution, has usb ports, and has 4 hdmi ports."
+    ],
+    [
+        "inform(name=apollo 98;type=television;screensize=40 inch;pricerange=cheap)",
+        "note that the apollo 98 television is cheap and has a 40 inch screen .",
+        "apollo 98 is a television which has a 40 inch screen size and is in the cheap price range"
+    ],
+    [
+        "inform(name=typhon 45;type=television;audio=nicam stereo;screensize=40 inch;hasusbport=false)",
+        "the typhon 45 is a television with a nicam stereo with a screen size of 40 inches and has no usb ports .",
+        "typhon 45 is a television which has a NICAM stereo audio equipment, has a 40 inch screen size, and does not have any usb ports."
+    ],
+    [
+        "inform(name=pontus 32;type=television;price=1700 dollars;hasusbport=false;screensizerange=small)",
+        "the pontus 32 television costs 1700 dollars , comes with a small screen size and lacks a usb port .",
+        "pontus 32 is a television which costs 1700 dollars, does not have any usb ports, and is in the small screen size range."
+    ],
+    [
+        "inform(name=typhon 49;type=television;hasusbport=true;screensize=32 inch;price=1400 dollars)",
+        "our typhon 49 television has a usb port , and costs 1400 dollars . its 32 inch screen size will allow you to watch your favorite football stars win their next game . ",
+        "typhon 49 is a television which has usb ports, has a 32 inch screen size, and costs 1400 dollars."
+    ],
+    [
+        "inform(name=momus 19;type=television;pricerange=cheap;resolution=720p;hasusbport=false)",
+        "the momus 19 is a cheap television with no usb ports with 720p hd resolution .",
+        "momus 19 is a television which is in the cheap price range, has 720p resolution, and does not have any usb ports."
+    ],
+    [
+        "inform(name=nereus 69;type=television;color=mat black bezel with black trim and slant mold black stand;resolution=1080p;powerconsumption=46 watt)",
+        "the nereus 69 television consumes 46 watt power and has 1080p resolution , and mat black bezel with black trim and slant mold black stand color .",
+        "nereus 69 is a television which has a color of mat black bezel with black trim and slant mold black stand, has 1080p resolution, and has 46 watt power consumption."
+    ],
+    [
+        "inform(name=cerus 13;type=television;powerconsumption=40 watt;audio=nicam stereo;hasusbport=false)",
+        "although it does not have a usb port , the cerus 13 40 watt television has nicam stereo audio .",
+        "cerus 13 is a television which has 40 watt power consumption, has a NICAM stereo audio equipment, and does not have any usb ports."
+    ],
+    [
+        "inform(name=typhon 48;type=television;hasusbport=true;audio=cevo stereo;color=gloss black bezel , matt black bottom deco , silver frame metal stand)",
+        "the typhon 48 television is designed with a gloss black bezel , matt black bottom deco , silver frame metal stand . it also has cevo stereo audio equipment .",
+        "typhon 48 is a television which has usb ports, has a CEVO stereo audio equipment, and has a color of gloss black bezel, matt black bottom deco, silver frame metal stand."
+    ],
+    [
+        "inform(name=charon 31;type=television;screensize=24 inch;powerconsumption=18 watt;color=matt white bezel with white trim and slant mold white stand)",
+        "the charon 31 television has a 24 inch screen size and uses 18 watts . it comes in matt white bezel with white trim and slant mold white stand . ",
+        "charon 31 is a television which has a 24 inch screen size, has 18 watt power consumption, and has a color of matt white bezel with white trim and slant mold white stand."
+    ],
+    [
+        "inform(name=chronos 62;type=television;screensize=24 inch;accessories=remote control and european warranty;pricerange=cheap)",
+        "the chronos 62 television features a 24 inch screen , remote control and european warranty; and is cheaply priced .",
+        "chronos 62 is a television which has a 24 inch screen size, comes with remote control and european warranty, and is in the cheap price range."
+    ],
+    [
+        "inform(name=typhon 48;type=television;ecorating=a+;pricerange=cheap;hdmiport=4)",
+        "the typhon 48 television has a+ eco rating , 4 hdmi ports and is in the cheap price range .",
+        "typhon 48 is a television which is in the A+ eco rating, is in the cheap price range, and has 4 hdmi ports."
+    ],
+    [
+        "inform(name=aeolus 34;type=television;accessories=remote control and active 3d glasses and european warranty;resolution=1080p;screensizerange=large)",
+        "the aeolus 34 television has a large screen size with 1080p resolution with remote control and active 3d glasses and european warranty .",
+        "aeolus 34 is a television which comes with remote control and active 3d glasses and european warranty, has 1080p resolution, and is in the large screen size range."
+    ],
+    [
+        "inform(name=dionysus 44;type=television;screensizerange=medium;pricerange=cheap;hasusbport=false)",
+        "the dionysus 44 television is a medium screen size and has no usb ports and is in a cheap price range",
+        "dionysus 44 is a television which is in the medium screen size range, is in the cheap price range, and does not have any usb ports."
+    ],
+    [
+        "inform(name=eros 94;type=television;powerconsumption=44 watt;hasusbport=false;family=t5)",
+        "the eros 94 television is from the t5 product family , does not have a usb port , and has a 44 watt power consumption",
+        "eros 94 is a television which has 44 watt power consumption, does not have any usb ports, and is in the T5 product family."
+    ],
+    [
+        "inform(name=typhon 71;type=television;family=w1;color=matt black bezel with black trim and slant mold black stand;screensizerange=small)",
+        "the typhon 71 television is in the w1 family with a small screen . it has an attractive matt black bezel with black trim and slant mold black stand .",
+        "typhon 71 is a television which is in the W1 product family, has a color of matt black bezel with black trim and slant mold black stand, and is in the small screen size range."
+    ],
+    [
+        "inform(name=heracles 18;type=television;price=1400 dollars;family=w1;audio=nicam stereo)",
+        "the heracles 18 is a w1 family television with nicam stereo that costs 1400 dollars .",
+        "heracles 18 is a television which costs 1400 dollars, is in the W1 product family, and has a NICAM stereo audio equipment."
+    ],
+    [
+        "inform(name=cerus 13;type=television;powerconsumption=40 watt;screensizerange=large;screensize=47 inch)",
+        "a television with a large 47 inch screen , using 40 watt power consumption is the cerus 13.",
+        "cerus 13 is a television which has 40 watt power consumption, is in the large screen size range, and has a 47 inch screen size."
+    ],
+    [
+        "inform(name=attis 82;type=television;resolution=720p;family=w1;hasusbport=true)",
+        "the attis 82 is in the w1 product family . this television has usb ports and a 720p resolution .",
+        "attis 82 is a television which has 720p resolution, is in the W1 product family, and has usb ports."
+    ],
+    [
+        "inform(name=crios 93;type=television;hdmiport=3;ecorating=a++;price=2000 dollars)",
+        "priced at 2000 dollars , the crios 93 television has an a++ eco rating and 3 hdmi ports .",
+        "crios 93 is a television which has 3 hdmi ports, is in the A++ eco rating, and costs 2000 dollars."
+    ],
+    [
+        "inform(name=crios 93;type=television;hdmiport=3;powerconsumption=44 watt;price=2000 dollars)",
+        " the crios 93 television is available and has 3 hdmi ports . it's power consumption is 44 wattsand the price is 2000 dollars",
+        "crios 93 is a television which has 3 hdmi ports, has 44 watt power consumption, and costs 2000 dollars."
+    ],
+    [
+        "inform(name=pontus 26;type=television;family=l2;ecorating=a+;price=1300 dollars)",
+        "the pontus 26 television is in the l2 family , has an a+ eco rating , and is 1300 dollars .",
+        "pontus 26 is a television which is in the L2 product family, is in the A+ eco rating, and costs 1300 dollars."
+    ],
+    [
+        "inform(name=heracles 29;type=television;accessories=remote control and european warranty;audio=nicam stereo;resolution=1080p)",
+        "name heracles 29 type television accessories remote control and european warranty audio nicam stereo resolution 1080p",
+        "heracles 29 is a television which comes with remote control and european warranty, has a NICAM stereo audio equipment, and has 1080p resolution."
+    ],
+    [
+        "inform(name=hesperus 58;type=television;ecorating=a+;powerconsumption=31.4 watt;family=w2)",
+        "in the w2 product line , the hesperus 58 television has an a+ ecorating with a 31.4 watt power use .",
+        "hesperus 58 is a television which is in the A+ eco rating, has 31.4 watt power consumption, and is in the W2 product family."
+    ],
+    [
+        "inform(name=hephaestus 91;type=television;screensizerange=medium;price=1700 dollars;hasusbport=true)",
+        "hephaestus 91 is a television in the medium screen size average range . the television costs 1700 dollars and includes usb ports .",
+        "hephaestus 91 is a television which is in the medium screen size range, costs 1700 dollars, and has usb ports."
+    ],
+    [
+        "inform(name=pallas 86;type=television;hasusbport=true;resolution=1080p;pricerange=cheap)",
+        "the pallas 86 in a cheap priced television with usb ports and 1080p resolution",
+        "pallas 86 is a television which has usb ports, has 1080p resolution, and is in the cheap price range."
+    ],
+    [
+        "inform(name=pontus 32;type=television;price=1700 dollars;screensizerange=small;family=w1)",
+        "the pontus 32 television is in the w1 product family , costs 1700 dollars , and is in the small screen size range",
+        "pontus 32 is a television which costs 1700 dollars, is in the small screen size range, and is in the W1 product family."
+    ],
+    [
+        "inform(name=pontus 86;type=television;hasusbport=false;screensize=32 inch;family=l2)",
+        "pontus 86 is a 32 inch screen size television in the l2 product family , but doesn't have any usb ports",
+        "pontus 86 is a television which does not have any usb ports, has a 32 inch screen size, and is in the L2 product family."
+    ],
+    [
+        "inform(name=notus 31;type=television;screensizerange=medium;accessories=remote control and european warranty;resolution=720p)",
+        "a television with a medium screen size and 720p resolution and comes with remote control and european warranty , is the notus 31.",
+        "notus 31 is a television which is in the medium screen size range, comes with remote control and european warranty, and has 720p resolution."
+    ],
+    [
+        "inform(name=triton 52;type=television;family=l7;audio=cevo stereo;screensize=47 inch)",
+        "the triton 52 47 inch screen television from the l7 product family and has cevo stereo audio . ",
+        "triton 52 is a television which is in the L7 product family, has a CEVO stereo audio equipment, and has a 47 inch screen size."
+    ],
+    [
+        "inform(name=apollo 33;type=television;hasusbport=true;resolution=1080p;screensize=40 inch)",
+        "the apollo 33 televisionhas a usb port , and resolves 1080p with a 40 inch screen .",
+        "apollo 33 is a television which has usb ports, has 1080p resolution, and has a 40 inch screen size."
+    ],
+    [
+        "inform(name=zephyrus 94;type=television;hasusbport=true;family=l1;hdmiport=2)",
+        "the zephyrus 94 is a usb-enabled television in the l1 family and has 2 hdmi ports",
+        "zephyrus 94 is a television which has usb ports, is in the L1 product family, and has 2 hdmi ports."
+    ],
+    [
+        "inform(name=charon 31;type=television;family=d1;hasusbport=true;powerconsumption=18 watt)",
+        "the charon 31 television in the d1 family has a usb port and consumes 18 watts .",
+        "charon 31 is a television which is in the D1 product family, has usb ports, and has 18 watt power consumption."
+    ],
+    [
+        "inform(name=notus 31;type=television;screensize=32 inch;resolution=720p;price=1000 dollars)",
+        "the notus 31 television has a 720p resolution and a 32 inch screen size . it is priced at 1000 dollars",
+        "notus 31 is a television which has a 32 inch screen size, has 720p resolution, and costs 1000 dollars."
+    ],
+    [
+        "inform(name=pricus 15;type=television;pricerange=cheap;family=l2;hasusbport=false)",
+        "the pricus 15 television does not have any usb ports , in the l2 product family and is priced cheaply .",
+        "pricus 15 is a television which is in the cheap price range, is in the L2 product family, and does not have any usb ports."
+    ],
+    [
+        "inform(name=achelous 99;type=television;color=matt black bezel with matt black frame stand;accessories=remote control and european warranty)",
+        "the achelous 99 television comes with a remote control and european warranty and has a matt black bezel with matt black frame stand .",
+        "achelous 99 is a television which has a color of matt black bezel with matt black frame stand and comes with remote control and european warranty"
+    ],
+    [
+        "inform(name=crios 93;type=television;price=2000 dollars;resolution=1080p)",
+        "the crios 93 is a 2000 dollars 1080p television",
+        "crios 93 is a television which costs 2000 dollars and has 1080p resolution"
+    ],
+    [
+        "inform(name=heracles 29;type=television;family=l2;hasusbport=true;pricerange=cheap)",
+        "in the l2 product family and with a usb port , the heracles 29 television is also in the cheap price range . ",
+        "heracles 29 is a television which is in the L2 product family, has usb ports, and is in the cheap price range."
+    ],
+    [
+        "inform(name=achelous 99;type=television;accessories=remote control and european warranty;ecorating=a+;color=matt black bezel with matt black frame stand)",
+        "the achelous 99 television has an a+ eco rating , its color is matt black bezel with matt black frame stand , and includes a remote control and european warranty . ",
+        "achelous 99 is a television which comes with remote control and european warranty, is in the A+ eco rating, and has a color of matt black bezel with matt black frame stand."
+    ],
+    [
+        "inform(name=pricus 15;type=television;pricerange=cheap;family=l2;hasusbport=true)",
+        "pricus 15 is a cheap priced television with usb ports and is from the l2 family .",
+        "pricus 15 is a television which is in the cheap price range, is in the L2 product family, and has usb ports."
+    ],
+    [
+        "inform(name=chronos 52;type=television;hasusbport=true;powerconsumption=62 watt;screensizerange=medium)",
+        "the usb ready chronos 52 television has a medium sized screen and consumes 62 watts of power .",
+        "chronos 52 is a television which has usb ports, has 62 watt power consumption, and is in the medium screen size range."
+    ],
+    [
+        "inform(name=caerus 63;type=television;color=gloss black bezel with gloss black frame stand;accessories=remote control and european warranty;price=1100 dollars)",
+        "the caerus 63 is a television in gloss black bezel with gloss black frame stand , comes with remote control and european warranty , and has a price of 1100 dollars",
+        "caerus 63 is a television which has a color of gloss black bezel with gloss black frame stand, comes with remote control and european warranty, and costs 1100 dollars."
+    ],
+    [
+        "inform(name=poseidon 88;type=television;hasusbport=true;color=mat black bezel with silver trim and silver flat stand;resolution=1080p)",
+        "the poseidon 88 television has a mat black bezel with silver trim and silver flat stand , usb ports , and a 1080p resolution .",
+        "poseidon 88 is a television which has usb ports, has a color of mat black bezel with silver trim and silver flat stand, and has 1080p resolution."
+    ],
+    [
+        "inform(name=pallas 86;type=television;hasusbport=true;hdmiport=4;color=gloss black bezel , matt black bottom deco , silver frame stand)",
+        " the pallas 86 television is available . it has usb port and 4 hdmi ports . it is described as gloss black bezel , matt black bottom deco , silver frame stand ",
+        "pallas 86 is a television which has usb ports, has 4 hdmi ports, and has a color of gloss black bezel, matt black bottom deco, silver frame stand."
+    ],
+    [
+        "inform(name=heracles 65;type=television;family=e2;pricerange=cheap;screensizerange=medium)",
+        "the heracles 65 is a cheap , medium television of the e2 product family .",
+        "heracles 65 is a television which is in the E2 product family, is in the cheap price range, and is in the medium screen size range."
+    ],
+    [
+        "inform(name=apollo 33;type=television;ecorating=a+;family=l1)",
+        "i would like to tell you about the apollo 33 television with a eco rating of a+ and is in the l1 product family .",
+        "apollo 33 is a television which is in the A+ eco rating and is in the L1 product family"
+    ],
+    [
+        "inform(name=pontus 66;type=television;hasusbport=false;pricerange=cheap;powerconsumption=36 watt)",
+        "pontus 66 is a cheap television without usb ports and it has 36 watt power consumption .",
+        "pontus 66 is a television which does not have any usb ports, is in the cheap price range, and has 36 watt power consumption."
+    ],
+    [
+        "inform(name=eurus 61;type=television;hasusbport=true;hdmiport=2)",
+        "the eurus 61 television has usb ports and 2 hdmi ports .",
+        "eurus 61 is a television which has usb ports and has 2 hdmi ports"
+    ],
+    [
+        "inform(name=attis 82;type=television;powerconsumption=30 watt;ecorating=a+;hasusbport=true)",
+        "the 30 watt attis 82 television has an a+ eco rating and includes usb ports for your convenience .",
+        "attis 82 is a television which has 30 watt power consumption, is in the A+ eco rating, and has usb ports."
+    ],
+    [
+        "inform(name=hesperus 33;type=television;resolution=720p;hasusbport=true;ecorating=a+)",
+        "the hesperus 33 television has 720p resolution , usb ports and is a+ eco rated",
+        "hesperus 33 is a television which has 720p resolution, has usb ports, and is in the A+ eco rating."
+    ],
+    [
+        "inform(name=caerus 33;type=television;ecorating=a+;color=mat black bezel with silver trim and silver flat stand;screensize=40 inch)",
+        "the caerus 33 is a 40 inch television with an a+ eco rating and sports a mat black bezel with silver trim and silver flat stand",
+        "caerus 33 is a television which is in the A+ eco rating, has a color of mat black bezel with silver trim and silver flat stand, and has a 40 inch screen size."
+    ],
+    [
+        "inform(name=pontus 18;type=television;pricerange=cheap;hasusbport=true;ecorating=a+)",
+        "the pontus 18 television is cheap , has an a+ ecorating , and usb ports .",
+        "pontus 18 is a television which is in the cheap price range, has usb ports, and is in the A+ eco rating."
+    ],
+    [
+        "inform(name=plutus 32;type=television;screensizerange=small;resolution=720p;ecorating=a+)",
+        "the plutus 32 is a small 720p television with an a+ eco rating",
+        "plutus 32 is a television which is in the small screen size range, has 720p resolution, and is in the A+ eco rating."
+    ],
+    [
+        "inform(name=chronos 52;type=television;screensizerange=medium;pricerange=cheap;powerconsumption=62 watt)",
+        "the chronos 52 television which has a cheap price range for a medium screen size is listed at 62 watt power consumption .",
+        "chronos 52 is a television which is in the medium screen size range, is in the cheap price range, and has 62 watt power consumption."
+    ],
+    [
+        "inform(name=heracles 45;type=television;ecorating=a+;resolution=1080p;pricerange=cheap)",
+        "this heracles 45 television has an a+ eco rating , a 1080p resolution , and is cheap !",
+        "heracles 45 is a television which is in the A+ eco rating, has 1080p resolution, and is in the cheap price range."
+    ],
+    [
+        "inform(name=notus 31;type=television;hasusbport=true;accessories=remote control and european warranty;screensize=32 inch)",
+        "the notus 31 television has a usb port , 32 inch screen , a remote control and european warranty",
+        "notus 31 is a television which has usb ports, comes with remote control and european warranty, and has a 32 inch screen size."
+    ],
+    [
+        "inform(name=hesperus 58;type=television;resolution=720p;accessories=remote control and european warranty;hasusbport=true)",
+        "the hesperus 58 is a 720p television that is usb-enabled and comes with a remote control and european warranty",
+        "hesperus 58 is a television which has 720p resolution, comes with remote control and european warranty, and has usb ports."
+    ],
+    [
+        "inform(name=caerus 33;type=television;ecorating=a+;screensize=40 inch;hdmiport=4)",
+        "the caerus 33 television features 4 hdmi ports , an a+ ecorating , and a 40 inch screen .",
+        "caerus 33 is a television which is in the A+ eco rating, has a 40 inch screen size, and has 4 hdmi ports."
+    ],
+    [
+        "inform(name=helios 89;type=television;powerconsumption=31.4 watt;color=mat white bezel with mat white frame stand;hasusbport=false)",
+        "the helios 89 television is mat white bezel with mat white frame stand . it does nothave any usb ports and has a 31.4 watt power consumption .",
+        "helios 89 is a television which has 31.4 watt power consumption, has a color of mat white bezel with mat white frame stand, and does not have any usb ports."
+    ],
+    [
+        "inform(name=achelous 99;type=television;screensizerange=medium;pricerange=cheap;audio=nicam stereo)",
+        "the achelous 99 is a cheap priced television , with a medium sized screen and nicam stereo .",
+        "achelous 99 is a television which is in the medium screen size range, is in the cheap price range, and has a NICAM stereo audio equipment."
+    ],
+    [
+        "inform(name=attis 65;type=television;hdmiport=3;hasusbport=false;accessories=remote control and european warranty)",
+        "the attis 65 television has 3 hdmi ports , no usb ports , and comes with a remote control and european warranty .",
+        "attis 65 is a television which has 3 hdmi ports, does not have any usb ports, and comes with remote control and european warranty."
+    ],
+    [
+        "inform(name=heracles 18;type=television;price=1500 dollars;resolution=4k;audio=audyssey stereo)",
+        "the heracles 18 television features the audyssey stereo system , a 4k resolution , and costs only 1500 dollars .",
+        "heracles 18 is a television which costs 1500 dollars, has 4k resolution, and has a Audyssey stereo audio equipment."
+    ],
+    [
+        "inform(name=zelus 37;type=television;screensize=32 inch;powerconsumption=30 watt;audio=nicam stereo)",
+        "the zelus 37 television has nicam stereo audio equipment , a 32 inch screen , and is 30 watts . ",
+        "zelus 37 is a television which has a 32 inch screen size, has 30 watt power consumption, and has a NICAM stereo audio equipment."
+    ],
+    [
+        "inform(name=pontus 66;type=television;screensizerange=medium;family=w1;hdmiport=2)",
+        "the pontus 66 television , from the w1 family , has a medium screen and 2 hdmi ports . ",
+        "pontus 66 is a television which is in the medium screen size range, is in the W1 product family, and has 2 hdmi ports."
+    ],
+    [
+        "inform(name=crios 93;type=television;pricerange=cheap;hasusbport=false;family=l1)",
+        "the crios 93 is a l1 television in the cheap price range and does not have any usb ports .",
+        "crios 93 is a television which is in the cheap price range, does not have any usb ports, and is in the L1 product family."
+    ],
+    [
+        "inform(name=charon 31;type=television;screensizerange=small;hasusbport=true;pricerange=cheap)",
+        "the small charon 31 television has usb ports and is in the cheap category . ",
+        "charon 31 is a television which is in the small screen size range, has usb ports, and is in the cheap price range."
+    ],
+    [
+        "inform(name=dionysus 44;type=television;color=gloss black bezel with gloss black frame stand;audio=nicam stereo;ecorating=a+)",
+        "the dionysus 44 television matches all of your values including a gloss black bezel with gloss black frame stand , an nicam stereo audio , and receives an a+ ecorating .",
+        "dionysus 44 is a television which has a color of gloss black bezel with gloss black frame stand, has a NICAM stereo audio equipment, and is in the A+ eco rating."
+    ],
+    [
+        "inform(name=notus 31;type=television;price=1800 dollars;screensize=32 inch;ecorating=a+)",
+        "the notus 31 television has a 32 inch screen size , a+ eco rating , and costs 1800 dollars .",
+        "notus 31 is a television which costs 1800 dollars, has a 32 inch screen size, and is in the A+ eco rating."
+    ],
+    [
+        "inform(name=aristaeus 59;type=television;screensizerange=large;hdmiport=2;hasusbport=false)",
+        "name aristaeus 59 type television screen sizerange large number of hdmi port 2 has_usb_port false ",
+        "aristaeus 59 is a television which is in the large screen size range, has 2 hdmi ports, and does not have any usb ports."
+    ],
+    [
+        "inform(name=kratos 31;type=television;pricerange=cheap;ecorating=a+;screensizerange=medium)",
+        "the kratos 31 is a cheap medium television with an a+ eco rating",
+        "kratos 31 is a television which is in the cheap price range, is in the A+ eco rating, and is in the medium screen size range."
+    ],
+    [
+        "inform(name=poseidon 88;type=television;price=1900 dollars;family=t5;hasusbport=true)",
+        "with a price of 1900 dollars the poseidon 88 television has usb ports and is a member of the t5 family .",
+        "poseidon 88 is a television which costs 1900 dollars, is in the T5 product family, and has usb ports."
+    ],
+    [
+        "inform(name=charon 69;type=television;pricerange=cheap;family=l1;audio=nicam stereo)",
+        "the charon 69 television in the l1 product family has nicam stereo audio equipment and is the cheap price range . ",
+        "charon 69 is a television which is in the cheap price range, is in the L1 product family, and has a NICAM stereo audio equipment."
+    ],
+    [
+        "inform(name=uranus 29;type=television;powerconsumption=18 watt;screensize=24 inch;hasusbport=false)",
+        "with a 24 inch screen , the uranus 29 television has an 18 watt power consumption . it does not have any usb ports .",
+        "uranus 29 is a television which has 18 watt power consumption, has a 24 inch screen size, and does not have any usb ports."
+    ],
+    [
+        "inform(name=glaucus 77;type=television;screensizerange=medium;powerconsumption=34 watt;pricerange=cheap)",
+        "the glaucus 77 television has a medium screen size and uses only 34 watts of power in the cheap price range .",
+        "glaucus 77 is a television which is in the medium screen size range, has 34 watt power consumption, and is in the cheap price range."
+    ],
+    [
+        "inform(name=heracles 18;type=television;hasusbport=true;family=l9;color=half gloss black bezel with silver trim and frame stand)",
+        "in the l9 television family comes the heracles 18 and has a color of half gloss black bezel with silver trim and frame stand .",
+        "heracles 18 is a television which has usb ports, is in the L9 product family, and has a color of half gloss black bezel with silver trim and frame stand."
+    ],
+    [
+        "inform(name=eurus 61;type=television;pricerange=cheap;hasusbport=true;resolution=1080p)",
+        "you'd like the eurus 61 television with a usb port , a 1080p resolution , and is in the cheap price range .",
+        "eurus 61 is a television which is in the cheap price range, has usb ports, and has 1080p resolution."
+    ],
+    [
+        "inform(name=pontus 18;type=television;hdmiport=4;accessories=remote control and passive 3d glasses and european warranty;family=l7)",
+        "the pontus 18 is a television in the l7 family with 4 hdmi ports , remote control and passive 3d glasses and european warranty .",
+        "pontus 18 is a television which has 4 hdmi ports, comes with remote control and passive 3d glasses and european warranty, and is in the L7 product family."
+    ],
+    [
+        "inform(name=charon 25;type=television;audio=nicam stereo;hasusbport=true;screensizerange=small)",
+        "the charon 25 television has nicam stereo audio and usb ports; it does fall into the small screen size range .",
+        "charon 25 is a television which has a NICAM stereo audio equipment, has usb ports, and is in the small screen size range."
+    ],
+    [
+        "inform(name=hesperus 33;type=television;pricerange=cheap;ecorating=a+;hasusbport=true)",
+        "the hesperus 33 television is cheap with a usb port and an a+ ecorating . ",
+        "hesperus 33 is a television which is in the cheap price range, is in the A+ eco rating, and has usb ports."
+    ],
+    [
+        "inform(name=charon 69;type=television;screensize=48.0 inch;hasusbport=true;screensizerange=large)",
+        "the charon 69 is a large 48.0 inch television with usb ports .",
+        "charon 69 is a television which has a 48.0 inch screen size, has usb ports, and is in the large screen size range."
+    ],
+    [
+        "inform(name=proteus 73;type=television;powerconsumption=31.4 watt;audio=nicam stereo;screensizerange=medium)",
+        "the proteus 73 television consumes 31.4 watts of power , has a nicam stereo and has a medium screen size .",
+        "proteus 73 is a television which has 31.4 watt power consumption, has a NICAM stereo audio equipment, and is in the medium screen size range."
+    ],
+    [
+        "inform(name=proteus 73;type=television;hasusbport=true;screensizerange=medium;screensize=32 inch)",
+        "i wanted to inform you that the proteus 73 television has a medium sized screen range , usb ports and has a 32 inch screen size .",
+        "proteus 73 is a television which has usb ports, is in the medium screen size range, and has a 32 inch screen size."
+    ],
+    [
+        "inform(name=pontus 43;type=television;resolution=1080p;family=l6;color=gloss black bezel and bottom deco with silver flat stand aluminium neck)",
+        "pontus 43 is a television with a color of gloss black bezel and bottom deco with silver flat stand aluminium neck . it has a 1080p resolution , and is part of the l6 product family .",
+        "pontus 43 is a television which has 1080p resolution, is in the L6 product family, and has a color of gloss black bezel and bottom deco with silver flat stand aluminium neck."
+    ],
+    [
+        "inform(name=aeolus 34;type=television;pricerange=cheap;hasusbport=true;color=matt black front bezel , with gloss black surround bezel , silver neck and black glass stand)",
+        "the aeolus 34 television in the cheap price range and has a has_usb_port and a matt black front bezel , with gloss black surround bezel , silver neck and black glass stand",
+        "aeolus 34 is a television which is in the cheap price range, has usb ports, and has a color of matt black front bezel, with gloss black surround bezel, silver neck and black glass stand."
+    ],
+    [
+        "inform(name=crios 93;type=television;accessories=remote control and european warranty;family=l1;screensizerange=large)",
+        "the crios 93 television has a large screen and a remote control and european warranty . it is the l1 family .",
+        "crios 93 is a television which comes with remote control and european warranty, is in the L1 product family, and is in the large screen size range."
+    ],
+    [
+        "inform(name=typhon 71;type=television;powerconsumption=18 watt;hasusbport=false;resolution=720p)",
+        "the typhon 71 is a television set with 18 watt power consumption and a resolution up to 720p , but it does not include usb ports .",
+        "typhon 71 is a television which has 18 watt power consumption, does not have any usb ports, and has 720p resolution."
+    ],
+    [
+        "inform(name=pricus 41;type=television;family=l5;powerconsumption=46 watt;audio=nicam stereo)",
+        "pricus 41 is a television in the l5 product family . it includes a nicam stereo for the audio system and has power consumption of 46 watt",
+        "pricus 41 is a television which is in the L5 product family, has 46 watt power consumption, and has a NICAM stereo audio equipment."
+    ],
+    [
+        "inform(name=pontus 45;type=television;hdmiport=2;audio=nicam stereo)",
+        "the pontus 45 television includes 2 hdmi ports and nicam stereo .",
+        "pontus 45 is a television which has 2 hdmi ports and has a NICAM stereo audio equipment"
+    ],
+    [
+        "inform(name=aeolus 98;type=television;screensizerange=medium;color=mat white bezel with mat white frame stand;hasusbport=true)",
+        "the medium sized aeolus 98 television has usb ports and a mat white bezel with mat white frame stand .",
+        "aeolus 98 is a television which is in the medium screen size range, has a color of mat white bezel with mat white frame stand, and has usb ports."
+    ],
+    [
+        "inform(name=achelous 71;type=television;color=mat black bezel with black trim and slant mold black stand;accessories=remote control;screensizerange=large)",
+        "the achelous 71 is a large television that comes with a remote control and sports a mat black bezel with black trim and slant mold black stand",
+        "achelous 71 is a television which has a color of mat black bezel with black trim and slant mold black stand, comes with remote control, and is in the large screen size range."
+    ],
+    [
+        "inform(name=pontus 86;type=television;hasusbport=true;screensize=32 inch;family=l2)",
+        "the pontus 86 television is part of the l2 family and has a 32 inch sreen",
+        "pontus 86 is a television which has usb ports, has a 32 inch screen size, and is in the L2 product family."
+    ],
+    [
+        "inform(name=hermes 77;type=television;pricerange=cheap;color=mat black bezel with mat black frame stand;screensizerange=medium)",
+        "the cheaply prices hermes 77 television has a medium sized screen and a mat black bezel with mat black frame stand .",
+        "hermes 77 is a television which is in the cheap price range, has a color of mat black bezel with mat black frame stand, and is in the medium screen size range."
+    ],
+    [
+        "inform(name=aeolus 86;type=television;powerconsumption=64 watt;accessories=remote control and european warranty;audio=nicam stereo)",
+        "the aeolus 86 television has nicam stereo audio , comes with remote control and european warranty , and has 64 watt power consumption",
+        "aeolus 86 is a television which has 64 watt power consumption, comes with remote control and european warranty, and has a NICAM stereo audio equipment."
+    ],
+    [
+        "inform(name=kratos 31;type=television;screensize=32 inch;price=1600 dollars;audio=nicam stereo)",
+        "the kratos 31 is a 32 inch television with nicam stereo audio for 1600 dollars .",
+        "kratos 31 is a television which has a 32 inch screen size, costs 1600 dollars, and has a NICAM stereo audio equipment."
+    ],
+    [
+        "inform(name=caerus 63;type=television;ecorating=a+;color=gloss black bezel with gloss black frame stand;resolution=1080p)",
+        "with a gloss black bezel with gloss black frame stand , the caerus 63 television has a a+ ecorating and a 1080p resolution .",
+        "caerus 63 is a television which is in the A+ eco rating, has a color of gloss black bezel with gloss black frame stand, and has 1080p resolution."
+    ],
+    [
+        "inform(name=helios 89;type=television;pricerange=cheap;hdmiport=2;hasusbport=false)",
+        "the helios 89 television with a cheap price tag . it features 2 hdmi ports , but does not have usb ports .",
+        "helios 89 is a television which is in the cheap price range, has 2 hdmi ports, and does not have any usb ports."
+    ],
+    [
+        "inform(name=oceanus 51;type=television;hdmiport=2;screensizerange=medium;family=w2)",
+        "the oceanus 51 television has a medium screen size , 2 hdmi ports and is in the w2 product family .",
+        "oceanus 51 is a television which has 2 hdmi ports, is in the medium screen size range, and is in the W2 product family."
+    ],
+    [
+        "inform(name=hymenaios 80;type=television;resolution=1080p;price=2000 dollars)",
+        "hymenaios 80 cost osts 2000 dollars and is a television with a 1080p resolution ",
+        "hymenaios 80 is a television which has 1080p resolution and costs 2000 dollars"
+    ],
+    [
+        "inform(name=momus 29;type=television;price=1100 dollars;hasusbport=false;ecorating=a)",
+        "the momus 29 television costs 1100 dollars , has no usb ports , and an a eco rating .",
+        "momus 29 is a television which costs 1100 dollars, does not have any usb ports, and is in the A eco rating."
+    ],
+    [
+        "inform(name=helios 96;type=television;pricerange=cheap;hasusbport=false)",
+        "the helios 96 television has no usb ports , allowing us to keep it in the cheap price range .",
+        "helios 96 is a television which is in the cheap price range and does not have any usb ports"
+    ],
+    [
+        "inform(name=hades 48;type=television;pricerange=cheap;price=1000 dollars;family=l7)",
+        "the hades 48 l7 family television is a cheap television for 1000 dollars .",
+        "hades 48 is a television which is in the cheap price range, costs 1000 dollars, and is in the L7 product family."
+    ],
+    [
+        "inform(name=charon 41;type=television;accessories=remote control and european warranty;resolution=1080p;pricerange=cheap)",
+        "the charon 41 is a cheap television with 1080p resolution , remote control and european warranty .",
+        "charon 41 is a television which comes with remote control and european warranty, has 1080p resolution, and is in the cheap price range."
+    ],
+    [
+        "inform(name=heracles 45;type=television;resolution=1080p;screensize=32 inch;hasusbport=false)",
+        "the heracles 45 television has no usb ports , a 32 inch screen size and 1080p resolution .",
+        "heracles 45 is a television which has 1080p resolution, has a 32 inch screen size, and does not have any usb ports."
+    ],
+    [
+        "inform(name=momus 19;type=television;color=matt black bezel with black trim and slant mold black stand;screensize=24 inch;resolution=720p)",
+        "momus 19 television is 24 inches in size , 720p display , and is a matt black bezel with black trim and slant mold black stand design .",
+        "momus 19 is a television which has a color of matt black bezel with black trim and slant mold black stand, has a 24 inch screen size, and has 720p resolution."
+    ],
+    [
+        "inform(name=morpheus 63;type=television;powerconsumption=62 watt;screensize=40 inch;family=l1)",
+        "morpheus 63 is a 62 watt power television with 40 inch screen size and in the l1 product family .",
+        "morpheus 63 is a television which has 62 watt power consumption, has a 40 inch screen size, and is in the L1 product family."
+    ],
+    [
+        "inform(name=dinlas 26;type=television;hdmiport=2;family=e2;hasusbport=false)",
+        "the dinlas 26 television does not have a usb port but does have 2 hdmi ports and belongs to the e2 family .",
+        "dinlas 26 is a television which has 2 hdmi ports, is in the E2 product family, and does not have any usb ports."
+    ],
+    [
+        "inform(name=oceanus 39;type=television;accessories=remote control and european warranty;color=matt black bezel with gloss black trim and black stand;hasusbport=true)",
+        "we carry the oceanus 39. it is a television with a usb port , comes in a matt black bezel with gloss black trim and black stand , and has a remote control and european warranty .",
+        "oceanus 39 is a television which comes with remote control and european warranty, has a color of matt black bezel with gloss black trim and black stand, and has usb ports."
+    ],
+    [
+        "inform(name=pricus 41;type=television;pricerange=cheap;audio=nicam stereo;powerconsumption=46 watt)",
+        "the pricus 41 television includes nicam stereo equipment , uses 46 watts of power , and is in the cheap price range .",
+        "pricus 41 is a television which is in the cheap price range, has a NICAM stereo audio equipment, and has 46 watt power consumption."
+    ],
+    [
+        "inform(name=typhon 48;type=television;color=gloss black bezel , matt black bottom deco , silver frame metal stand;screensizerange=large;hdmiport=4)",
+        "i would like to inform you about the typhon 48 television with a color of gloss black bezel , matt black bottom deco , silver frame metal stand and it is in the large screen size range and has 4 hdmi ports .",
+        "typhon 48 is a television which has a color of gloss black bezel, matt black bottom deco, silver frame metal stand, is in the large screen size range, and has 4 hdmi ports."
+    ],
+    [
+        "inform(name=pallas 86;type=television;audio=cevo stereo;price=1500 dollars;color=gloss black bezel , matt black bottom deco , silver frame stand)",
+        "a television that might meet your criteria is the pallas 86. it has a cevo stereo , costs 1500 dollars , and is the color gloss black bezel , matt black bottom deco , silver frame stand .",
+        "pallas 86 is a television which has a CEVO stereo audio equipment, costs 1500 dollars, and has a color of gloss black bezel, matt black bottom deco, silver frame stand."
+    ],
+    [
+        "inform(name=pontus 18;type=television;color=gloss black bezel , matt black bottom deco , silver frame metal stand;screensize=55 inch;powerconsumption=87.6 watt)",
+        "pontus 18 is a 55 inch screen size television with gloss black bezel , matt black bottom deco , silver frame metal stand and has 87.6 watt power consumption .",
+        "pontus 18 is a television which has a color of gloss black bezel, matt black bottom deco, silver frame metal stand, has a 55 inch screen size, and has 87.6 watt power consumption."
+    ],
+    [
+        "inform(name=heracles 65;type=television;powerconsumption=32 watt;color=gloss black bezel with gloss black frame stand;pricerange=cheap)",
+        "the heracles 65 television uses a mere 32 watts of power , is in the cheap price range , and has a gloss black bezel with gloss black frame stand .",
+        "heracles 65 is a television which has 32 watt power consumption, has a color of gloss black bezel with gloss black frame stand, and is in the cheap price range."
+    ],
+    [
+        "inform(name=hermes 77;type=television;color=mat black bezel with mat black frame stand;hdmiport=2;screensizerange=medium)",
+        "hermes 77 is a medium screen size television with 2 hdmi ports and a mat black bezel with mat black frame stand .",
+        "hermes 77 is a television which has a color of mat black bezel with mat black frame stand, has 2 hdmi ports, and is in the medium screen size range."
+    ],
+    [
+        "inform(name=kratos 31;type=television;powerconsumption=31.4 watt;ecorating=a+;price=1600 dollars)",
+        "the kratos 31 television is priced at 1600 dollars , has an eco rating of a+ and a 31.4 watt power consumption . ",
+        "kratos 31 is a television which has 31.4 watt power consumption, is in the A+ eco rating, and costs 1600 dollars."
+    ],
+    [
+        "inform(name=thanatos 85;type=television;resolution=720p;hdmiport=2;ecorating=a+)",
+        "the thanatos 85 television has an a+ eco rating , 2 hdmi ports , and 720p resolution",
+        "thanatos 85 is a television which has 720p resolution, has 2 hdmi ports, and is in the A+ eco rating."
+    ],
+    [
+        "inform(name=achelous 71;type=television;hasusbport=false;pricerange=cheap;screensize=48.0 inch)",
+        "the achelous 71 television in the cheap price range does not have any usb port but has 48.0 inch screen size .",
+        "achelous 71 is a television which does not have any usb ports, is in the cheap price range, and has a 48.0 inch screen size."
+    ],
+    [
+        "inform(name=aeolus 34;type=television;screensizerange=large;hasusbport=true;audio=nicam stereo)",
+        "the aeolus 34 is a large screen television with usb ports and nicam stereo",
+        "aeolus 34 is a television which is in the large screen size range, has usb ports, and has a NICAM stereo audio equipment."
+    ],
+    [
+        "inform(name=pontus 94;type=television;family=l1;hasusbport=true;audio=nicam stereo)",
+        "pontus 94 is a l1 product family television with usb ports and a nicam stereo audio equipment .",
+        "pontus 94 is a television which is in the L1 product family, has usb ports, and has a NICAM stereo audio equipment."
+    ],
+    [
+        "inform(name=triton 52;type=television;hasusbport=true;screensizerange=large;powerconsumption=67.4 watt)",
+        "the triton 52 television has a large screen , only uses 67.4 watts , and also has a usb port .",
+        "triton 52 is a television which has usb ports, is in the large screen size range, and has 67.4 watt power consumption."
+    ],
+    [
+        "inform(name=cerus 13;type=television;family=l6;powerconsumption=40 watt;color=gloss black bezel , matt black bottom deco , silver frame stand)",
+        "the cerus 13 television is gloss black bezel , matt black bottom deco , silver frame stand . it is in the l6 product family and has 40 watt power consumption .",
+        "cerus 13 is a television which is in the L6 product family, has 40 watt power consumption, and has a color of gloss black bezel, matt black bottom deco, silver frame stand."
+    ],
+    [
+        "inform(name=eurus 61;type=television;powerconsumption=43 watt;accessories=remote control and european warranty;hasusbport=true)",
+        "the eurus 61 television has 43 watt power consumption , a remote control and european warranty . it also has usb ports .",
+        "eurus 61 is a television which has 43 watt power consumption, comes with remote control and european warranty, and has usb ports."
+    ],
+    [
+        "inform(name=pontus 45;type=television;hasusbport=false;pricerange=cheap;resolution=720p)",
+        "although the pontus 45 television does not have any usb ports , it is cheap and has a whopping 720p resolution . ",
+        "pontus 45 is a television which does not have any usb ports, is in the cheap price range, and has 720p resolution."
+    ],
+    [
+        "inform(name=ares 11;type=television;ecorating=a;screensizerange=medium)",
+        "the ares 11 is a medium size television with an a eco rating .",
+        "ares 11 is a television which is in the A eco rating and is in the medium screen size range"
+    ],
+    [
+        "inform(name=apollo 98;type=television;hdmiport=2;accessories=remote control and european warranty;hasusbport=false)",
+        "an apollo 98 television with 2 hdmi ports and a remote control and european warranty but no usb ports .",
+        "apollo 98 is a television which has 2 hdmi ports, comes with remote control and european warranty, and does not have any usb ports."
+    ],
+    [
+        "inform(name=crios 69;type=television;accessories=remote control and active 3d glasses and european warranty;audio=nicam stereo)",
+        "the crios 69 television has nicam stereo and comes with remote control and active 3d glasses and european warranty .",
+        "crios 69 is a television which comes with remote control and active 3d glasses and european warranty and has a NICAM stereo audio equipment"
+    ],
+    [
+        "inform(name=crios 89;type=television;resolution=1080p;powerconsumption=30 watt;accessories=remote control)",
+        "crios 89 is a television with 1080p resolution , consumes 30 watts powe and with remote control .",
+        "crios 89 is a television which has 1080p resolution, has 30 watt power consumption, and comes with remote control."
+    ],
+    [
+        "inform(name=pontus 86;type=television;price=1400 dollars;color=mat black bezel with mat black frame stand;ecorating=a+)",
+        "the pontus 86 television has a mat black bezel with mat black frame stand , an a+ eco rating , and costs 1400 dollars .",
+        "pontus 86 is a television which costs 1400 dollars, has a color of mat black bezel with mat black frame stand, and is in the A+ eco rating."
+    ],
+    [
+        "inform(name=attis 82;type=television;resolution=720p;hdmiport=2;hasusbport=true)",
+        "the attis 82 television provides 720p resolution , 2 hdmi ports and a single usb port .",
+        "attis 82 is a television which has 720p resolution, has 2 hdmi ports, and has usb ports."
+    ],
+    [
+        "inform(name=charon 25;type=television;hasusbport=true;screensizerange=small)",
+        "the charon 25 television might meet your needs . it has a small screen size and usb ports .",
+        "charon 25 is a television which has usb ports and is in the small screen size range"
+    ],
+    [
+        "inform(name=oceanus 51;type=television;ecorating=a+;powerconsumption=31.4 watt;pricerange=cheap)",
+        "the oceanus 51 television is in the cheap price range , uses 31.4 watts , and receives an a+ ecorating .",
+        "oceanus 51 is a television which is in the A+ eco rating, has 31.4 watt power consumption, and is in the cheap price range."
+    ],
+    [
+        "inform(name=hades 76;type=television;resolution=4k;ecorating=c;hdmiport=4)",
+        "the hades 76 is a television with a 4k resolution , 4 hdmi ports , and a c ecorating .",
+        "hades 76 is a television which has 4k resolution, is in the C eco rating, and has 4 hdmi ports."
+    ],
+    [
+        "inform(name=momus 19;type=television;price=2000 dollars;screensizerange=small;hasusbport=true)",
+        "momus 19 television costs 2000 dollars with a small screen size , with usb ports",
+        "momus 19 is a television which costs 2000 dollars, is in the small screen size range, and has usb ports."
+    ],
+    [
+        "inform(name=heracles 18;type=television;ecorating=c;price=1500 dollars;accessories=remote control and passive 3d glasses and passive 3d glasses)",
+        "the heracles 18 television has c eco rating costing 1500 dollars . this television comes with remote control and passive 3d glasses and passive 3d glasses .",
+        "heracles 18 is a television which is in the C eco rating, costs 1500 dollars, and comes with remote control and passive 3d glasses and passive 3d glasses."
+    ],
+    [
+        "inform(name=pontus 94;type=television;resolution=1080p;hdmiport=2;screensizerange=medium)",
+        "the pontus 94 is a nice television with 1080p resolution . it has 2 hdmi ports and its screen is medium sized .",
+        "pontus 94 is a television which has 1080p resolution, has 2 hdmi ports, and is in the medium screen size range."
+    ],
+    [
+        "inform(name=asclepius 87;type=television;hasusbport=true;family=w2;powerconsumption=31.4 watt)",
+        "the asclepius 87 television has usb ports , under the w2 family and 31.4 watt power consumption .",
+        "asclepius 87 is a television which has usb ports, is in the W2 product family, and has 31.4 watt power consumption."
+    ],
+    [
+        "inform(name=charon 25;type=television;audio=nicam stereo;price=1100 dollars;hasusbport=false)",
+        "the charon 25 is a television which comes with nicam stereo audio equiment , is priced at 1100 dollars and does not have usb ports .",
+        "charon 25 is a television which has a NICAM stereo audio equipment, costs 1100 dollars, and does not have any usb ports."
+    ],
+    [
+        "inform(name=cerus 13;type=television;color=gloss black bezel , matt black bottom deco , silver frame stand;resolution=1080p;hasusbport=true)",
+        "the cerus 13 television with gloss black bezel , matt black bottom deco , silver frame stand displays 1080p resolution and has usb ports .",
+        "cerus 13 is a television which has a color of gloss black bezel, matt black bottom deco, silver frame stand, has 1080p resolution, and has usb ports."
+    ],
+    [
+        "inform(name=notus 31;type=television;color=mat black bezel with black trim and slant mold black stand;price=1800 dollars;ecorating=a+)",
+        "the notus 31 television has a mat black bezel with black trim and slant mold black stand , plus an a+ eco rating only for 1800 dollars .",
+        "notus 31 is a television which has a color of mat black bezel with black trim and slant mold black stand, costs 1800 dollars, and is in the A+ eco rating."
+    ],
+    [
+        "inform(name=hephaestus 91;type=television;hasusbport=true;powerconsumption=30 watt;ecorating=a+)",
+        "with an a+ eco rating , 30 watt power consumption and no usb ports , the hephaestus 91 television is available .",
+        "hephaestus 91 is a television which has usb ports, has 30 watt power consumption, and is in the A+ eco rating."
+    ],
+    [
+        "inform(name=caerus 33;type=television;hasusbport=false;ecorating=a+;family=t5)",
+        "caerus 33 television is in the t5 family and does not have a usb port a+ rating",
+        "caerus 33 is a television which does not have any usb ports, is in the A+ eco rating, and is in the T5 product family."
+    ],
+    [
+        "inform(name=oceanus 51;type=television;hasusbport=true;price=1800 dollars;screensizerange=medium)",
+        "the oceanus 51 television is 1800 dollars and has a medium screen size range and usb ports",
+        "oceanus 51 is a television which has usb ports, costs 1800 dollars, and is in the medium screen size range."
+    ],
+    [
+        "inform(name=hymenaios 11;type=television;color=matt white bezel with white trim and slant mold white stand;family=d1;screensize=24 inch)",
+        "the hymenaios 11 is 24 inch television from the d1 product family . it comes in the color of matt white bezel with white trim and slant mold white stand .",
+        "hymenaios 11 is a television which has a color of matt white bezel with white trim and slant mold white stand, is in the D1 product family, and has a 24 inch screen size."
+    ],
+    [
+        "inform(name=pontus 43;type=television;family=l6;resolution=1080p;powerconsumption=34 watt)",
+        "a television in the l6 family with a 1080p resolution and a 34 watt power consumption is the pontus 43.",
+        "pontus 43 is a television which is in the L6 product family, has 1080p resolution, and has 34 watt power consumption."
+    ],
+    [
+        "inform(name=dinlas 26;type=television;hasusbport=false;powerconsumption=32 watt;pricerange=cheap)",
+        "the dinlas 26 television is 32 watts , does not have any usb ports , and is in the cheap price range . ",
+        "dinlas 26 is a television which does not have any usb ports, has 32 watt power consumption, and is in the cheap price range."
+    ],
+    [
+        "inform(name=heracles 18;type=television;resolution=720p;hasusbport=true;color=mat black bezel with black trim and slant mold black stand)",
+        "this television comes with mat black bezel with black trim and slant mold black stand and 720p resolution; it is the heracles 18 and has usb ports .",
+        "heracles 18 is a television which has 720p resolution, has usb ports, and has a color of mat black bezel with black trim and slant mold black stand."
+    ],
+    [
+        "inform(name=caerus 33;type=television;price=1000 dollars;audio=nicam stereo;ecorating=a+)",
+        "the caerus 33 is a television with an a+ eco rating , nicam stereo and costs 1000 dollars",
+        "caerus 33 is a television which costs 1000 dollars, has a NICAM stereo audio equipment, and is in the A+ eco rating."
+    ],
+    [
+        "inform(name=notus 31;type=television;hasusbport=true)",
+        "the notus 31 television has a usb port .",
+        "notus 31 is a television which has usb ports"
+    ],
+    [
+        "inform(name=pontus 45;type=television;family=w1;powerconsumption=30 watt)",
+        "the pontus 45 is a 30 watt , w1 product family television .",
+        "pontus 45 is a television which is in the W1 product family and has 30 watt power consumption"
+    ],
+    [
+        "inform(name=aeolus 98;type=television;resolution=1080p;hasusbport=false;screensizerange=medium)",
+        "the aeolus 98 television can resolve up to 1080p , has no usb port , and has a medium screen .",
+        "aeolus 98 is a television which has 1080p resolution, does not have any usb ports, and is in the medium screen size range."
+    ],
+    [
+        "inform(name=attis 65;type=television;accessories=remote control and european warranty;hdmiport=3;color=matt black bezel with gloss black trim and black stand)",
+        "attis 65 is a television with 3 hdmi ports , a remote control and european warranty , and a matt black bezel with gloss black trim and black stand .",
+        "attis 65 is a television which comes with remote control and european warranty, has 3 hdmi ports, and has a color of matt black bezel with gloss black trim and black stand."
+    ],
+    [
+        "inform(name=hades 48;type=television;pricerange=cheap;price=1000 dollars;screensize=47 inch)",
+        "hades 48 is a television that is 47 inches , and is in the cheap price range at 1000 dollars . ",
+        "hades 48 is a television which is in the cheap price range, costs 1000 dollars, and has a 47 inch screen size."
+    ],
+    [
+        "inform(name=achelous 99;type=television;hasusbport=false;ecorating=a+;powerconsumption=47.8 watt)",
+        "the achelous 99 is an a+ eco rated television consuming 47.8 watts .",
+        "achelous 99 is a television which does not have any usb ports, is in the A+ eco rating, and has 47.8 watt power consumption."
+    ],
+    [
+        "inform(name=charon 41;type=television;audio=nicam stereo;screensize=48 inch;hdmiport=3)",
+        "the charon 41 television has nicam stereo and a 48 inch screen . it also has 3 hdmi ports .",
+        "charon 41 is a television which has a NICAM stereo audio equipment, has a 48 inch screen size, and has 3 hdmi ports."
+    ],
+    [
+        "inform(name=hesperus 33;type=television;resolution=720p;hasusbport=true;ecorating=a+)",
+        "the eco rating on the hesperus 33 television is a+ . it has usb ports and 720p screen resolution .",
+        "hesperus 33 is a television which has 720p resolution, has usb ports, and is in the A+ eco rating."
+    ],
+    [
+        "inform(name=typhon 49;type=television;hdmiport=2;family=w3;price=1400 dollars)",
+        "the typhon 49, part of the w3 family , is a television with 2 hdmi ports and 1400 dollars price .",
+        "typhon 49 is a television which has 2 hdmi ports, is in the W3 product family, and costs 1400 dollars."
+    ],
+    [
+        "inform(name=eurus 61;type=television;pricerange=cheap;powerconsumption=43 watt)",
+        "using 43 watts from the cheap price range is the eurus 61 television .",
+        "eurus 61 is a television which is in the cheap price range and has 43 watt power consumption"
+    ],
+    [
+        "inform(name=notus 31;type=television;ecorating=a;price=1000 dollars;pricerange=cheap)",
+        "notus 31 is a a eco rating television in the cheap price range which costs 1000 dollars .",
+        "notus 31 is a television which is in the A eco rating, costs 1000 dollars, and is in the cheap price range."
+    ],
+    [
+        "inform(name=dinlas 26;type=television;hdmiport=2;family=e2;hasusbport=true)",
+        "the dinlas 26 television has 2 hdmi ports , usb ports and is in the e2 family",
+        "dinlas 26 is a television which has 2 hdmi ports, is in the E2 product family, and has usb ports."
+    ],
+    [
+        "inform(name=heracles 18;type=television;color=half gloss black bezel with silver trim and frame stand;hasusbport=true;screensize=65 inch)",
+        "the heracles 18 is a television and half gloss black bezel with silver trim and frame stand color and has_usb_port and 65 inch screen size",
+        "heracles 18 is a television which has a color of half gloss black bezel with silver trim and frame stand, has usb ports, and has a 65 inch screen size."
+    ],
+    [
+        "inform(name=oceanus 51;type=television;powerconsumption=31.4 watt;color=mat black bezel with mat black frame stand;price=1800 dollars)",
+        "the oceanus 51 is a 31.4 watt television with mat black bezel with mat black frame stand for 1800 dollars .",
+        "oceanus 51 is a television which has 31.4 watt power consumption, has a color of mat black bezel with mat black frame stand, and costs 1800 dollars."
+    ],
+    [
+        "inform(name=attis 75;type=television;price=1600 dollars;powerconsumption=45 watt;audio=nicam stereo)",
+        "the 45 watt attis 75 television with nicam stereo is 1600 dollars",
+        "attis 75 is a television which costs 1600 dollars, has 45 watt power consumption, and has a NICAM stereo audio equipment."
+    ],
+    [
+        "inform(name=pontus 32;type=television;ecorating=a+;screensize=24 inch;color=matt white bezel with gloss white trim and slant mold white stand)",
+        "the pontus 32 is a 24 inch television with an a+ eco rating and sports a matt white bezel with gloss white trim and slant mold white stand",
+        "pontus 32 is a television which is in the A+ eco rating, has a 24 inch screen size, and has a color of matt white bezel with gloss white trim and slant mold white stand."
+    ],
+    [
+        "inform(name=ares 11;type=television;pricerange=cheap;screensizerange=medium;family=w3)",
+        "the ares 11 is a cheap , medium television , part of the w3 product family .",
+        "ares 11 is a television which is in the cheap price range, is in the medium screen size range, and is in the W3 product family."
+    ],
+    [
+        "inform(name=pontus 32;type=television;family=w1;accessories=remote control and european warranty;color=matt white bezel with gloss white trim and slant mold white stand)",
+        "part of the w1 product line , the pontus 32 television has a matt white bezel with gloss white trim and slant mold white stand and comes with a remote control and european warranty .",
+        "pontus 32 is a television which is in the W1 product family, comes with remote control and european warranty, and has a color of matt white bezel with gloss white trim and slant mold white stand."
+    ],
+    [
+        "inform(name=charon 25;type=television;accessories=remote control;price=1100 dollars;audio=nicam stereo)",
+        "charon 25 is a 1100 dollars television with remote control and a nicam stereo audio equipment .",
+        "charon 25 is a television which comes with remote control, costs 1100 dollars, and has a NICAM stereo audio equipment."
+    ],
+    [
+        "inform(name=achelous 99;type=television;screensizerange=medium;accessories=remote control and european warranty;family=l2)",
+        "the achelous 99 television in in the l2 product family . it has a medium sized screen and comes with a remote control and european warranty .",
+        "achelous 99 is a television which is in the medium screen size range, comes with remote control and european warranty, and is in the L2 product family."
+    ],
+    [
+        "inform(name=pontus 43;type=television;screensizerange=medium;color=gloss black bezel and bottom deco with silver flat stand aluminium neck;screensize=32 inch)",
+        "pontus 43 is a television that has a medium size range of 32 inches , and has gloss black bezel and bottom deco with silver flat stand aluminium neck . ",
+        "pontus 43 is a television which is in the medium screen size range, has a color of gloss black bezel and bottom deco with silver flat stand aluminium neck, and has a 32 inch screen size."
+    ],
+    [
+        "inform(name=charon 41;type=television;family=l5;powerconsumption=44 watt;pricerange=cheap)",
+        "the charon 41 television has 44 watt power consumption , is priced in the cheap price range and is in the l5 product family , ",
+        "charon 41 is a television which is in the L5 product family, has 44 watt power consumption, and is in the cheap price range."
+    ],
+    [
+        "inform(name=heracles 45;type=television;audio=nicam stereo;price=1200 dollars;family=l1)",
+        "the heracles 45 television , in the l1 product famil line , has nicam stereo equipment and costs 1200 dollars",
+        "heracles 45 is a television which has a NICAM stereo audio equipment, costs 1200 dollars, and is in the L1 product family."
+    ],
+    [
+        "inform(name=charon 61;type=television;resolution=720p;accessories=remote control and european warranty;audio=nicam stereo)",
+        "the charon 61 television has a resolution of 720p . it inclues nicam stereo audio , remote control and european warranty .",
+        "charon 61 is a television which has 720p resolution, comes with remote control and european warranty, and has a NICAM stereo audio equipment."
+    ],
+    [
+        "inform(name=momus 19;type=television;powerconsumption=18 watt;price=2000 dollars;accessories=remote control)",
+        "the momus 19 is a 2000 dollars television consuming 18 watts . it comes with a remote control .",
+        "momus 19 is a television which has 18 watt power consumption, costs 2000 dollars, and comes with remote control."
+    ],
+    [
+        "inform(name=aristaeus 59;type=television;resolution=1080p;ecorating=a++;hasusbport=true)",
+        "the aristaeus 59 television has 1080p resolution and a++ eco rating , and comes with usb ports .",
+        "aristaeus 59 is a television which has 1080p resolution, is in the A++ eco rating, and has usb ports."
+    ],
+    [
+        "inform(name=plutus 32;type=television;hasusbport=false;pricerange=cheap;color=matt black bezel with black trim and slant mold black stand)",
+        "the plutus 32 television has no usb ports , a matt black bezel with black trim and slant mold black stand , and within the cheap price range .",
+        "plutus 32 is a television which does not have any usb ports, is in the cheap price range, and has a color of matt black bezel with black trim and slant mold black stand."
+    ],
+    [
+        "inform(name=charon 69;type=television;powerconsumption=40 watt;screensize=48.0 inch;color=mat black bezel with black trim and slant mold black stand)",
+        "the charon 69 television has a color of mat black bezel with black trim and slant mold black stand , has a 48.0 inch screen , and has 40 watt power consumption .",
+        "charon 69 is a television which has 40 watt power consumption, has a 48.0 inch screen size, and has a color of mat black bezel with black trim and slant mold black stand."
+    ],
+    [
+        "inform(name=attis 65;type=television;family=l1;ecorating=a++;screensize=48 inch)",
+        "the l1 product family attis 65 television has a 48 inch screen size and an a++ eco rating .",
+        "attis 65 is a television which is in the L1 product family, is in the A++ eco rating, and has a 48 inch screen size."
+    ],
+    [
+        "inform(name=heracles 29;type=television;hdmiport=2;pricerange=cheap;price=1000 dollars)",
+        "heracles 29 is a cheap price range television with 2 hdmi ports and costs 1000 dollars .",
+        "heracles 29 is a television which has 2 hdmi ports, is in the cheap price range, and costs 1000 dollars."
+    ],
+    [
+        "inform(name=pricus 15;type=television;hasusbport=true;ecorating=a+;hdmiport=2)",
+        "the pricus 15 is an a+ eco rated television with 2 hdmi ports .",
+        "pricus 15 is a television which has usb ports, is in the A+ eco rating, and has 2 hdmi ports."
+    ],
+    [
+        "inform(name=dinlas 61;type=television;screensizerange=medium;audio=nicam stereo;price=1800 dollars)",
+        "the dinlas 61 television has a medium screen size range , a nicam stereo and is priced at 1800 dollars .",
+        "dinlas 61 is a television which is in the medium screen size range, has a NICAM stereo audio equipment, and costs 1800 dollars."
+    ],
+    [
+        "inform(name=caerus 63;type=television;resolution=1080p;audio=nicam stereo;color=gloss black bezel with gloss black frame stand)",
+        "the caerus 63 is a television with gloss black bezel with gloss black frame stand , nicam stereo , and 1080p resolution",
+        "caerus 63 is a television which has 1080p resolution, has a NICAM stereo audio equipment, and has a color of gloss black bezel with gloss black frame stand."
+    ],
+    [
+        "inform(name=achelous 71;type=television;color=mat black bezel with black trim and slant mold black stand;screensizerange=large;hasusbport=true)",
+        "achelous 71 is a large screen television with a mat black bezel with black trim and slant mold black stand and usb ports .",
+        "achelous 71 is a television which has a color of mat black bezel with black trim and slant mold black stand, is in the large screen size range, and has usb ports."
+    ],
+    [
+        "inform(name=eurus 61;type=television;family=l2;powerconsumption=43 watt;resolution=1080p)",
+        "eurus 61 is a 1080p resolution television in the l2 product family and has 43 watt power consumption .",
+        "eurus 61 is a television which is in the L2 product family, has 43 watt power consumption, and has 1080p resolution."
+    ],
+    [
+        "inform(name=chronos 62;type=television;hdmiport=1;powerconsumption=18 watt;hasusbport=true)",
+        "chronos 62 is a 18 watt power television with 1 hdmi ports and usb ports .",
+        "chronos 62 is a television which has 1 hdmi ports, has 18 watt power consumption, and has usb ports."
+    ],
+    [
+        "inform(name=helios 75;type=television;family=w1;screensizerange=small;ecorating=a+)",
+        "the helios 75 is a television in the w1 family . the screen size is small and it has an a+ eco rating .",
+        "helios 75 is a television which is in the W1 product family, is in the small screen size range, and is in the A+ eco rating."
+    ],
+    [
+        "inform(name=helios 89;type=television;price=1000 dollars;audio=nicam stereo;pricerange=cheap)",
+        "the helios 89 is a cheap television that costs only 1000 dollars and comes with a nicam stereo .",
+        "helios 89 is a television which costs 1000 dollars, has a NICAM stereo audio equipment, and is in the cheap price range."
+    ],
+    [
+        "inform(name=typhon 48;type=television;accessories=remote control and passive 3d glasses and european warranty;family=l7;hdmiport=4)",
+        "the typhon 48 is a television with 4 hdmi ports in the l7 family and comes with a remote control and passive 3d glasses and european warranty",
+        "typhon 48 is a television which comes with remote control and passive 3d glasses and european warranty, is in the L7 product family, and has 4 hdmi ports."
+    ],
+    [
+        "inform(name=pallas 86;type=television;price=1500 dollars;color=gloss black bezel , matt black bottom deco , silver frame stand;hasusbport=true)",
+        "the pallas 86 television costs 1500 dollars , has a usb port , and comes with a gloss black bezel , matt black bottom deco , silver frame stand .",
+        "pallas 86 is a television which costs 1500 dollars, has a color of gloss black bezel, matt black bottom deco, silver frame stand, and has usb ports."
+    ],
+    [
+        "inform(name=plutus 32;type=television;powerconsumption=18 watt;family=d1;screensize=24 inch)",
+        "the plutus 32 television in the d1 family has a 24 inch screen size and 18 watt power consumption .",
+        "plutus 32 is a television which has 18 watt power consumption, is in the D1 product family, and has a 24 inch screen size."
+    ],
+    [
+        "inform(name=ares 11;type=television;powerconsumption=40 watt;screensize=32 inch;audio=nicam stereo)",
+        "the ares 11 is a 40 watt 32 inch television that features nicam stereo equipment .",
+        "ares 11 is a television which has 40 watt power consumption, has a 32 inch screen size, and has a NICAM stereo audio equipment."
+    ],
+    [
+        "inform(name=aeolus 86;type=television;hdmiport=4;screensize=42 inch;hasusbport=false)",
+        "the 42 inch aeolus 86 television has 4 hdmi ports without any usb ports .",
+        "aeolus 86 is a television which has 4 hdmi ports, has a 42 inch screen size, and does not have any usb ports."
+    ],
+    [
+        "inform(name=apollo 33;type=television;ecorating=a+;audio=nicam stereo;powerconsumption=46 watt)",
+        "the apollo 33 46 watt television has nicam stereo audio and is a+ eco friendly .",
+        "apollo 33 is a television which is in the A+ eco rating, has a NICAM stereo audio equipment, and has 46 watt power consumption."
+    ],
+    [
+        "inform(name=apollo 33;type=television;audio=nicam stereo;pricerange=cheap;ecorating=a+)",
+        "apollo 33 is a a+ eco rating television in the cheap price range with a nicam stereo audio equipment .",
+        "apollo 33 is a television which has a NICAM stereo audio equipment, is in the cheap price range, and is in the A+ eco rating."
+    ],
+    [
+        "inform(name=glaucus 77;type=television;hdmiport=4;resolution=1080p;pricerange=cheap)",
+        "glaucus 77 is a television in the cheap price range , has 1080p resolution , and has 4 hdmi ports . ",
+        "glaucus 77 is a television which has 4 hdmi ports, has 1080p resolution, and is in the cheap price range."
+    ],
+    [
+        "inform(name=uranus 29;type=television;hasusbport=true;screensize=24 inch;ecorating=a+)",
+        "uranus 29 is a 24 inch screen television with usb ports and a+ eco rating .",
+        "uranus 29 is a television which has usb ports, has a 24 inch screen size, and is in the A+ eco rating."
+    ],
+    [
+        "inform(name=crios 69;type=television;hasusbport=false;family=t5;ecorating=a++)",
+        "the crios 69 television . amemeber of the t5 family , has no usb ports buthas achieved an a++ rating .",
+        "crios 69 is a television which does not have any usb ports, is in the T5 product family, and is in the A++ eco rating."
+    ],
+    [
+        "inform(name=crios 93;type=television;screensizerange=large;screensize=48 inch;powerconsumption=44 watt)",
+        "the crios 93 is a large , 48 inch television with 44 watt power consumption",
+        "crios 93 is a television which is in the large screen size range, has a 48 inch screen size, and has 44 watt power consumption."
+    ],
+    [
+        "inform(name=oceanus 51;type=television;price=1800 dollars;hdmiport=2)",
+        "the oceanus 51 is a television with 2 hdmi ports and is 1800 dollars",
+        "oceanus 51 is a television which costs 1800 dollars and has 2 hdmi ports"
+    ],
+    [
+        "inform(name=aeolus 34;type=television;resolution=1080p;color=matt black front bezel , with gloss black surround bezel , silver neck and black glass stand)",
+        "the aeolus 34 television is colored matt black front bezel , with gloss black surround bezel , silver neck and black glass stand and has 1080p resolution",
+        "aeolus 34 is a television which has 1080p resolution and has a color of matt black front bezel, with gloss black surround bezel, silver neck and black glass stand"
+    ],
+    [
+        "inform(name=charon 61;type=television;hasusbport=false;powerconsumption=40 watt;audio=nicam stereo)",
+        "this is a 40 watt charon 61 television with a nicam stereo system and no usb ports",
+        "charon 61 is a television which does not have any usb ports, has 40 watt power consumption, and has a NICAM stereo audio equipment."
+    ],
+    [
+        "inform(name=erebus 92;type=television;powerconsumption=31.4 watt;hasusbport=true;hdmiport=2)",
+        "erebus 92 television has a 31.4 watt power consumption , 2 hdmi ports , and usb ports ",
+        "erebus 92 is a television which has 31.4 watt power consumption, has usb ports, and has 2 hdmi ports."
+    ],
+    [
+        "inform(name=cerus 13;type=television;powerconsumption=40 watt;audio=nicam stereo;hasusbport=true)",
+        "cerus 13, a television that consumes 40 watts , has usb ports and a nicam stereo . ",
+        "cerus 13 is a television which has 40 watt power consumption, has a NICAM stereo audio equipment, and has usb ports."
+    ],
+    [
+        "inform(name=zelus 37;type=television;price=2000 dollars;accessories=remote control;powerconsumption=30 watt)",
+        "this is a 30 watt zelus 37 television , it is 2000 dollars and comes with a remote control",
+        "zelus 37 is a television which costs 2000 dollars, comes with remote control, and has 30 watt power consumption."
+    ],
+    [
+        "inform(name=helios 75;type=television;color=matt black bezel with gloss black trim and slant mold black stand;family=w1;price=1300 dollars)",
+        "helios 75 is a 1300 dollars television in the w1 product family with matt black bezel with gloss black trim and slant mold black stand .",
+        "helios 75 is a television which has a color of matt black bezel with gloss black trim and slant mold black stand, is in the W1 product family, and costs 1300 dollars."
+    ],
+    [
+        "inform(name=asclepius 87;type=television;screensize=32 inch;screensizerange=medium;audio=nicam stereo)",
+        "the asclepius 87 television features a medium 32 inch screen and nicam stereo .",
+        "asclepius 87 is a television which has a 32 inch screen size, is in the medium screen size range, and has a NICAM stereo audio equipment."
+    ],
+    [
+        "inform(name=cerus 13;type=television;accessories=remote control and european warranty;powerconsumption=40 watt;hasusbport=false)",
+        "the cerus 13 television has 40 watt power consumption with a remote control and european warranty . this television has no usb ports . ",
+        "cerus 13 is a television which comes with remote control and european warranty, has 40 watt power consumption, and does not have any usb ports."
+    ],
+    [
+        "inform(name=erebus 92;type=television;family=w2;color=matt black bezel with matt black frame stand;powerconsumption=31.4 watt)",
+        "the erebus 92 is a television from the w2 product family , has a 31.4 watt power consumption , and comes in the color matt black bezel with matt black frame stand .",
+        "erebus 92 is a television which is in the W2 product family, has a color of matt black bezel with matt black frame stand, and has 31.4 watt power consumption."
+    ],
+    [
+        "inform(name=thanatos 85;type=television;pricerange=cheap;hdmiport=2;screensize=32 inch)",
+        "the thanatos 85 television is in the cheap price range , has a 32 inch screen , and comes with 2 hdmi ports .",
+        "thanatos 85 is a television which is in the cheap price range, has 2 hdmi ports, and has a 32 inch screen size."
+    ],
+    [
+        "inform(name=notus 31;type=television;accessories=remote control and european warranty;hdmiport=2;pricerange=cheap)",
+        "this is a notus 31 television in the cheap price range . it has 2 hdmi ports and comes with a remote control and european warranty",
+        "notus 31 is a television which comes with remote control and european warranty, has 2 hdmi ports, and is in the cheap price range."
+    ],
+    [
+        "inform(name=pricus 41;type=television;hasusbport=false;ecorating=a+;audio=nicam stereo)",
+        "with an a+ ecorating , the pricus 41 television has nicam stereo and no usb port .",
+        "pricus 41 is a television which does not have any usb ports, is in the A+ eco rating, and has a NICAM stereo audio equipment."
+    ],
+    [
+        "inform(name=chronos 52;type=television;hdmiport=2;screensizerange=medium;powerconsumption=62 watt)",
+        "the chronos 52 is a medium screen television with 2 hdmi ports and 62 watt power consumption",
+        "chronos 52 is a television which has 2 hdmi ports, is in the medium screen size range, and has 62 watt power consumption."
+    ],
+    [
+        "inform(name=typhon 45;type=television;audio=nicam stereo)",
+        "typhon 45 is a television with a nicam stereo .",
+        "typhon 45 is a television which has a NICAM stereo audio equipment"
+    ],
+    [
+        "inform(name=pontus 55;type=television;hdmiport=2;accessories=remote control and european warranty;powerconsumption=31.4 watt)",
+        "the pontus 55 television has 31.4 watt power consumption , comes with remote control and european warranty , and has 2 hdmi ports",
+        "pontus 55 is a television which has 2 hdmi ports, comes with remote control and european warranty, and has 31.4 watt power consumption."
+    ],
+    [
+        "inform(name=aeolus 98;type=television;accessories=remote control and european warranty;price=1100 dollars;color=mat white bezel with mat white frame stand)",
+        "the aeolus 98 television has a mat white bezel with mat white frame stand , remote control and european warranty and costs 1100 dollars .",
+        "aeolus 98 is a television which comes with remote control and european warranty, costs 1100 dollars, and has a color of mat white bezel with mat white frame stand."
+    ],
+    [
+        "inform(name=hades 76;type=television;color=gloss black bezel with silver trim and frame stand;hasusbport=false;family=l9)",
+        "l9 product family television that is a hades 76 television with a gloss black bezel with silver trim and frame stand .",
+        "hades 76 is a television which has a color of gloss black bezel with silver trim and frame stand, does not have any usb ports, and is in the L9 product family."
+    ],
+    [
+        "inform(name=cerus 13;type=television;color=gloss black bezel , matt black bottom deco , silver frame stand;hdmiport=4;price=1900 dollars)",
+        "the cerus 13 television has 4 hdmi ports and costs 1900 dollars . it has a gloss black bezel , matt black bottom deco , silver frame stand .",
+        "cerus 13 is a television which has a color of gloss black bezel, matt black bottom deco, silver frame stand, has 4 hdmi ports, and costs 1900 dollars."
+    ],
+    [
+        "inform(name=apollo 96;type=television;ecorating=a+;family=l2;powerconsumption=31.4 watt)",
+        "the apollo 96 television belongs to the l2 product family , has an a+ eco rating and only consumes 31.4 watts .",
+        "apollo 96 is a television which is in the A+ eco rating, is in the L2 product family, and has 31.4 watt power consumption."
+    ],
+    [
+        "inform(name=notus 31;type=television;screensize=32 inch;powerconsumption=30 watt;hasusbport=false)",
+        "the notus 31 is a 32 inch screen television with no usb ports and 30 watt power consumption .",
+        "notus 31 is a television which has a 32 inch screen size, has 30 watt power consumption, and does not have any usb ports."
+    ],
+    [
+        "inform(name=helios 75;type=television;hasusbport=true;pricerange=cheap;family=w1)",
+        "the helios 75 television has usb ports , is in the w1 product family and is in the cheap price range . ",
+        "helios 75 is a television which has usb ports, is in the cheap price range, and is in the W1 product family."
+    ],
+    [
+        "inform(name=typhon 49;type=television;color=matt black bezel with gloss black trim and slant mold black stand;accessories=remote control and european warranty;hasusbport=true)",
+        "this typhon 49 television is matt black bezel with gloss black trim and slant mold black stand has usb ports and comes with a remote control and european warranty",
+        "typhon 49 is a television which has a color of matt black bezel with gloss black trim and slant mold black stand, comes with remote control and european warranty, and has usb ports."
+    ],
+    [
+        "inform(name=pontus 43;type=television;hasusbport=true;resolution=1080p;ecorating=a+)",
+        "the pontus 43 television is an 1080p hdtv that has features such as usp ports and has an a+ eco rating .",
+        "pontus 43 is a television which has usb ports, has 1080p resolution, and is in the A+ eco rating."
+    ],
+    [
+        "inform(name=charon 25;type=television;audio=nicam stereo;price=1100 dollars;screensizerange=small)",
+        "the charon 25 is a television with a small screen size and a nicam stereo . it costs 1100 dollars . ",
+        "charon 25 is a television which has a NICAM stereo audio equipment, costs 1100 dollars, and is in the small screen size range."
+    ],
+    [
+        "inform(name=momus 19;type=television;hasusbport=false;color=matt black bezel with black trim and slant mold black stand;accessories=remote control)",
+        "the momus 19 television has no usb port but does have a remote control and a matt black bezel with black trim and slant mold black stand .",
+        "momus 19 is a television which does not have any usb ports, has a color of matt black bezel with black trim and slant mold black stand, and comes with remote control."
+    ],
+    [
+        "inform(name=attis 65;type=television;resolution=1080p;pricerange=cheap)",
+        "the attis 65 television is in the cheap price range and has a nice resolution of 1080p .",
+        "attis 65 is a television which has 1080p resolution and is in the cheap price range"
+    ],
+    [
+        "inform(name=ares 11;type=television;hasusbport=false;audio=nicam stereo;powerconsumption=40 watt)",
+        "the ares 11 television has a nicam stereo audio system with 40 watt power consumption , but does not have usb ports .",
+        "ares 11 is a television which does not have any usb ports, has a NICAM stereo audio equipment, and has 40 watt power consumption."
+    ],
+    [
+        "inform(name=pontus 86;type=television;price=1400 dollars;family=l2;screensize=32 inch)",
+        "the pontus 86 television is apart of the l2 product family and has a screen length of 32 inches , only for 1400 dollars .",
+        "pontus 86 is a television which costs 1400 dollars, is in the L2 product family, and has a 32 inch screen size."
+    ],
+    [
+        "inform(name=heracles 45;type=television;screensizerange=medium;color=matt white bezel with white trim and white frame stand;ecorating=a+)",
+        "the heracles 45 television has a a+ eco rating and a medium screen size , and has a matt white bezel with white trim and white frame stand color .",
+        "heracles 45 is a television which is in the medium screen size range, has a color of matt white bezel with white trim and white frame stand, and is in the A+ eco rating."
+    ],
+    [
+        "inform(name=pan 46;type=television;hdmiport=4;screensize=42 inch;screensizerange=large)",
+        "the pan 46 television has a good number of hdmi ports at 4, the screen size is 42 inch , and is in the large range as far as screen size .",
+        "pan 46 is a television which has 4 hdmi ports, has a 42 inch screen size, and is in the large screen size range."
+    ],
+    [
+        "inform(name=charon 25;type=television;audio=nicam stereo;hasusbport=false;screensizerange=small)",
+        "the excellent charon 25 is a television with a nicam stereo audio set up , no usb ports , and a small screen . ",
+        "charon 25 is a television which has a NICAM stereo audio equipment, does not have any usb ports, and is in the small screen size range."
+    ],
+    [
+        "inform(name=pallas 86;type=television;audio=cevo stereo;hasusbport=true;ecorating=a+)",
+        "for a television with a cevo stereo , a usb port , and an a+ eco rating , there is the pallas 86.",
+        "pallas 86 is a television which has a CEVO stereo audio equipment, has usb ports, and is in the A+ eco rating."
+    ],
+    [
+        "inform(name=oceanus 39;type=television;accessories=remote control and european warranty;hasusbport=false;ecorating=a++)",
+        "the oceanus 39 is a television with an ecorating of a++ , has no usb ports and comes with remote control and european warranty .",
+        "oceanus 39 is a television which comes with remote control and european warranty, does not have any usb ports, and is in the A++ eco rating."
+    ],
+    [
+        "inform(name=pontus 45;type=television;hasusbport=true;pricerange=cheap;resolution=720p)",
+        "pontus 45 is a 720p resolution television with usb ports and in the cheap price range .",
+        "pontus 45 is a television which has usb ports, is in the cheap price range, and has 720p resolution."
+    ],
+    [
+        "inform(name=crios 89;type=television;audio=nicam stereo;ecorating=a+;hasusbport=false)",
+        "crios 89 is a television with a+ eco rating , nicam stereo , and no usb ports . ",
+        "crios 89 is a television which has a NICAM stereo audio equipment, is in the A+ eco rating, and does not have any usb ports."
+    ],
+    [
+        "inform(name=eurus 32;type=television;hasusbport=false;pricerange=cheap;ecorating=a+)",
+        "the eurus 32 is a cheap television with an a+ eco rating but no usb ports",
+        "eurus 32 is a television which does not have any usb ports, is in the cheap price range, and is in the A+ eco rating."
+    ],
+    [
+        "inform(name=morpheus 93;type=television;screensizerange=large;powerconsumption=44 watt;hasusbport=true)",
+        "the morpheus 93 large television with a 44 watt power consumption is now available with a usb port .",
+        "morpheus 93 is a television which is in the large screen size range, has 44 watt power consumption, and has usb ports."
+    ],
+    [
+        "inform(name=eros 94;type=television;hasusbport=false;audio=nicam stereo)",
+        "the eros 94 television has nicam stereo and no usb ports .",
+        "eros 94 is a television which does not have any usb ports and has a NICAM stereo audio equipment"
+    ],
+    [
+        "inform(name=hermes 77;type=television;color=mat black bezel with mat black frame stand;screensizerange=medium;powerconsumption=47.8 watt)",
+        "the hermes 77 television has a medium sized screen , is 47.8 watts , and comes in mat black bezel with mat black frame stand . ",
+        "hermes 77 is a television which has a color of mat black bezel with mat black frame stand, is in the medium screen size range, and has 47.8 watt power consumption."
+    ],
+    [
+        "inform(name=dinlas 61;type=television;hasusbport=false;screensize=40 inch;resolution=1080p)",
+        "the dinlas 61 television has a 40 inch screen with 1080p resolution . this television does not have any usb ports .",
+        "dinlas 61 is a television which does not have any usb ports, has a 40 inch screen size, and has 1080p resolution."
+    ],
+    [
+        "inform(name=nereus 69;type=television;family=l1;pricerange=cheap;hasusbport=true)",
+        "the nereus 69 television is cheap price range , it is in the l1 product family ,",
+        "nereus 69 is a television which is in the L1 product family, is in the cheap price range, and has usb ports."
+    ],
+    [
+        "inform(name=apollo 96;type=television;screensizerange=medium;hasusbport=false;powerconsumption=31.4 watt)",
+        "the medium screen size range of the apollo 96 television does not contain usb ports and it's power consumption is measured at 31.4 watts .",
+        "apollo 96 is a television which is in the medium screen size range, does not have any usb ports, and has 31.4 watt power consumption."
+    ],
+    [
+        "inform(name=chronos 62;type=television;audio=nicam stereo;screensizerange=small;accessories=remote control and european warranty)",
+        "the chronos 62 television has a small screen and nicam stereo audio . it comes with a remote control and european warranty . ",
+        "chronos 62 is a television which has a NICAM stereo audio equipment, is in the small screen size range, and comes with remote control and european warranty."
+    ],
+    [
+        "inform(name=eurus 32;type=television;screensize=40 inch;hdmiport=3;accessories=remote control and european warranty)",
+        "the eurus 32 40 inch television has 3 hdmi ports and comes with both a remote control and european warranty . ",
+        "eurus 32 is a television which has a 40 inch screen size, has 3 hdmi ports, and comes with remote control and european warranty."
+    ],
+    [
+        "inform(name=chronos 62;type=television;hdmiport=1;ecorating=a+;color=matt black bezel with black trim and slant mold black stand)",
+        "the chronos 62 television comes in matt black bezel with black trim and slant mold black stand , has an a+ eco rating , and 1 hdmi port . ",
+        "chronos 62 is a television which has 1 hdmi ports, is in the A+ eco rating, and has a color of matt black bezel with black trim and slant mold black stand."
+    ],
+    [
+        "inform(name=proteus 73;type=television;price=1500 dollars;pricerange=cheap;hasusbport=true)",
+        "within the cheap price range at the price of 1500 dollars , the proteus 73 television offers usb ports .",
+        "proteus 73 is a television which costs 1500 dollars, is in the cheap price range, and has usb ports."
+    ],
+    [
+        "inform(name=pontus 55;type=television;pricerange=cheap;accessories=remote control and european warranty;hdmiport=2)",
+        "the pontus 55 is a cheap television with 2 hdmi ports , a remote control and european warranty .",
+        "pontus 55 is a television which is in the cheap price range, comes with remote control and european warranty, and has 2 hdmi ports."
+    ],
+    [
+        "inform(name=hermes 77;type=television;audio=nicam stereo;screensizerange=medium;screensize=40 inch)",
+        "the hermes 77 television has a nicam stereo audio system and is in the medium screen size range - to be exact , it has 40 inch screen .",
+        "hermes 77 is a television which has a NICAM stereo audio equipment, is in the medium screen size range, and has a 40 inch screen size."
+    ],
+    [
+        "inform(name=hermes 77;type=television;screensize=40 inch;hdmiport=2;audio=nicam stereo)",
+        "the hermes 77 television is a 40 inch and 2 number of hdmi port and a nicam stereo ",
+        "hermes 77 is a television which has a 40 inch screen size, has 2 hdmi ports, and has a NICAM stereo audio equipment."
+    ],
+    [
+        "inform(name=apollo 33;type=television;hasusbport=true;resolution=1080p;screensize=40 inch)",
+        "the apollo 33 televisionhas a usb port , and resolves 1080p with a 40 inch screen .",
+        "apollo 33 is a television which has usb ports, has 1080p resolution, and has a 40 inch screen size."
+    ],
+    [
+        "inform(name=hesperus 58;type=television;hdmiport=2;audio=nicam stereo;pricerange=cheap)",
+        "the hesperus 58 television has 2 hdmi ports , a nicam stereo , and is priced cheap .",
+        "hesperus 58 is a television which has 2 hdmi ports, has a NICAM stereo audio equipment, and is in the cheap price range."
+    ],
+    [
+        "inform(name=eros 94;type=television;screensize=48 inch;color=mat black bezel with silver trim and silver flat stand;accessories=remote control and active 3d glasses and european warranty)",
+        "the eros 94 television has a 48 inch screen , mat black bezel with silver trim and silver flat stand , and includes a remote control and active 3d glasses and european warranty",
+        "eros 94 is a television which has a 48 inch screen size, has a color of mat black bezel with silver trim and silver flat stand, and comes with remote control and active 3d glasses and european warranty."
+    ],
+    [
+        "inform(name=kratos 31;type=television;color=mat black bezel with mat black frame stand;audio=nicam stereo;hasusbport=false)",
+        "the kratos 31 television has a color of mat black bezel with mat black frame stand featuring a nicam stereofor audio , but has no usb ports .",
+        "kratos 31 is a television which has a color of mat black bezel with mat black frame stand, has a NICAM stereo audio equipment, and does not have any usb ports."
+    ],
+    [
+        "inform(name=typhon 49;type=television;resolution=720p;accessories=remote control and european warranty;powerconsumption=40 watt)",
+        "the typhon 49 television has a 720p resolution , has a 40 watt power consumption , and comes with a remote control and european warranty .",
+        "typhon 49 is a television which has 720p resolution, comes with remote control and european warranty, and has 40 watt power consumption."
+    ],
+    [
+        "inform(name=pontus 26;type=television;screensize=40 inch;resolution=1080p;family=l2)",
+        "the pontus 26 is a 40 inch 1080p television in the l2 family",
+        "pontus 26 is a television which has a 40 inch screen size, has 1080p resolution, and is in the L2 product family."
+    ],
+    [
+        "inform(name=pricus 15;type=television;family=l2;ecorating=a+;resolution=1080p)",
+        "the pricus 15 is a 1080p resolution television in l2 family with a+ eco rating .",
+        "pricus 15 is a television which is in the L2 product family, is in the A+ eco rating, and has 1080p resolution."
+    ],
+    [
+        "inform(name=pontus 66;type=television;screensizerange=medium;screensize=32 inch;hasusbport=true)",
+        "with medium screen size range and 32 inch screen size , the pontus 66 television has usb ports .",
+        "pontus 66 is a television which is in the medium screen size range, has a 32 inch screen size, and has usb ports."
+    ],
+    [
+        "inform(name=typhon 48;type=television;color=gloss black bezel , matt black bottom deco , silver frame metal stand;ecorating=a+)",
+        "there is a television called the typhon 48 that comes in gloss black bezel , matt black bottom deco , silver frame metal stand and had an a+ ecorating",
+        "typhon 48 is a television which has a color of gloss black bezel, matt black bottom deco, silver frame metal stand and is in the A+ eco rating"
+    ],
+    [
+        "inform(name=heracles 18;type=television;pricerange=cheap;hasusbport=false;screensize=65 inch)",
+        "the heracles 18 television is cheap , but offers a 65 inch screen size . it has no usb port .",
+        "heracles 18 is a television which is in the cheap price range, does not have any usb ports, and has a 65 inch screen size."
+    ],
+    [
+        "inform(name=dionysus 44;type=television;ecorating=a+;price=1500 dollars;color=gloss black bezel with gloss black frame stand)",
+        "the dionysus 44 television costs 1500 dollars and has a gloss black bezel with gloss black frame stand . the televisions are in the a+ eco rating .",
+        "dionysus 44 is a television which is in the A+ eco rating, costs 1500 dollars, and has a color of gloss black bezel with gloss black frame stand."
+    ],
+    [
+        "inform(name=heracles 18;type=television;color=half gloss black bezel with silver trim and frame stand;family=l9)",
+        "the l9 product family , heracles 18 television comes in half gloss black bezel with silver trim and frame stand color .",
+        "heracles 18 is a television which has a color of half gloss black bezel with silver trim and frame stand and is in the L9 product family"
+    ],
+    [
+        "inform(name=attis 82;type=television;accessories=remote control;hasusbport=true;powerconsumption=30 watt)",
+        "the attis 82 television featurse a remote control , usb ports , and a 30 watt power consumption .",
+        "attis 82 is a television which comes with remote control, has usb ports, and has 30 watt power consumption."
+    ],
+    [
+        "inform(name=typhon 49;type=television;hasusbport=true;screensize=32 inch;accessories=remote control and european warranty)",
+        "the typhon 49 television has a usb port and a 32 inch screen . it comes with a remote control and european warranty .",
+        "typhon 49 is a television which has usb ports, has a 32 inch screen size, and comes with remote control and european warranty."
+    ],
+    [
+        "inform(name=aeolus 34;type=television;audio=nicam stereo;powerconsumption=84 watt;resolution=1080p)",
+        "the aeolus 34 television has a 1080p resolution , nicam stereo audio , and an 84 watt power consumption .",
+        "aeolus 34 is a television which has a NICAM stereo audio equipment, has 84 watt power consumption, and has 1080p resolution."
+    ],
+    [
+        "inform(name=triton 52;type=television;family=l7;screensizerange=large;pricerange=cheap)",
+        "the triton 52 is a large television in the l7 product family , in the cheap category . ",
+        "triton 52 is a television which is in the L7 product family, is in the large screen size range, and is in the cheap price range."
+    ],
+    [
+        "inform(name=notus 31;type=television;audio=nicam stereo;accessories=remote control;screensize=32 inch)",
+        "notus 31 television has a 32 inch screen size and a nicam stereo with a remote control",
+        "notus 31 is a television which has a NICAM stereo audio equipment, comes with remote control, and has a 32 inch screen size."
+    ],
+    [
+        "inform(name=eurus 32;type=television;hasusbport=true;audio=nicam stereo;family=l5)",
+        "the eurus 32 television of the l5 product family has usb ports and nicam stereo audio equipment .",
+        "eurus 32 is a television which has usb ports, has a NICAM stereo audio equipment, and is in the L5 product family."
+    ],
+    [
+        "inform(name=plutus 32;type=television;hasusbport=true;pricerange=cheap;color=matt black bezel with black trim and slant mold black stand)",
+        "the plutus 32 television is in the cheap pricerange . it has a usb port and has a matt black bezel with black trim and slant mold black stand .",
+        "plutus 32 is a television which has usb ports, is in the cheap price range, and has a color of matt black bezel with black trim and slant mold black stand."
+    ],
+    [
+        "inform(name=achelous 71;type=television;family=l1;accessories=remote control;hasusbport=false)",
+        "the achelous 71 is a television in the l1 product family with a remote control and no usb port .",
+        "achelous 71 is a television which is in the L1 product family, comes with remote control, and does not have any usb ports."
+    ],
+    [
+        "inform(name=typhon 71;type=television;powerconsumption=18 watt;hasusbport=true;resolution=720p)",
+        "the typhon 71 television has a 720p resolution , usb ports , and power consumption of only 18 watt .",
+        "typhon 71 is a television which has 18 watt power consumption, has usb ports, and has 720p resolution."
+    ],
+    [
+        "inform(name=dionysus 44;type=television;hdmiport=2;audio=nicam stereo;screensizerange=medium)",
+        "the dionysus 44 television has 2 hdmi ports , a nicam stereo , and a medium screen .",
+        "dionysus 44 is a television which has 2 hdmi ports, has a NICAM stereo audio equipment, and is in the medium screen size range."
+    ],
+    [
+        "inform(name=notus 31;type=television;screensizerange=medium;hasusbport=false)",
+        "with no usb ports and a medium size the notus 31 television is a match .",
+        "notus 31 is a television which is in the medium screen size range and does not have any usb ports"
+    ],
+    [
+        "inform(name=eros 20;type=television;hdmiport=1;pricerange=cheap;powerconsumption=18 watt)",
+        "the 19 watt eros 20 television has 1 hdmi port , consumes 18 watts of power and is cheaply priced .",
+        "eros 20 is a television which has 1 hdmi ports, is in the cheap price range, and has 18 watt power consumption."
+    ],
+    [
+        "inform(name=erebus 92;type=television;hdmiport=2;ecorating=a+;family=w2)",
+        "you might like the erebus 92 television which has 3 hdmi ports , an a+ eco rating , and it is in the w2 family .",
+        "erebus 92 is a television which has 2 hdmi ports, is in the A+ eco rating, and is in the W2 product family."
+    ],
+    [
+        "inform(name=charon 61;type=television;audio=nicam stereo;hasusbport=false;price=1600 dollars)",
+        "for only 1600 dollars the charon 61 television with nicam stereo equipment can be yours (usb ports not included) !",
+        "charon 61 is a television which has a NICAM stereo audio equipment, does not have any usb ports, and costs 1600 dollars."
+    ],
+    [
+        "inform(name=aeolus 98;type=television;family=l2;accessories=remote control and european warranty;price=1100 dollars)",
+        "the aeolus 98 is a television is in the l2 with remote control and european warranty and cost 1100 dollars",
+        "aeolus 98 is a television which is in the L2 product family, comes with remote control and european warranty, and costs 1100 dollars."
+    ],
+    [
+        "inform(name=momus 19;type=television;resolution=720p;powerconsumption=18 watt;hdmiport=1)",
+        "the television , momus 19 has 720p resolution , 1 hdmi port and 18 watt power consumption .",
+        "momus 19 is a television which has 720p resolution, has 18 watt power consumption, and has 1 hdmi ports."
+    ],
+    [
+        "inform(name=cerus 13;type=television;price=1900 dollars;screensizerange=large;resolution=1080p)",
+        "the cerus 13 television has a large screen , 1080p resolution , and costs 1900 dollars . ",
+        "cerus 13 is a television which costs 1900 dollars, is in the large screen size range, and has 1080p resolution."
+    ],
+    [
+        "inform(name=ares 11;type=television;accessories=remote control and european warranty;screensize=32 inch;pricerange=cheap)",
+        "the ares 11 is a 32 inch television in the cheap price range and comes with a remote control and european warranty",
+        "ares 11 is a television which comes with remote control and european warranty, has a 32 inch screen size, and is in the cheap price range."
+    ],
+    [
+        "inform(name=achelous 99;type=television;hdmiport=2;screensizerange=medium;screensize=40 inch)",
+        "the achelous 99 is a television with 2 hdmi ports , a screen size range of medium and a screen size of 40 inch .",
+        "achelous 99 is a television which has 2 hdmi ports, is in the medium screen size range, and has a 40 inch screen size."
+    ],
+    [
+        "inform(name=crios 89;type=television;hdmiport=2;powerconsumption=30 watt;screensizerange=medium)",
+        "the crios 89 television has 2 hdmi ports , with a medium screen size range and 30 watt power consumption .",
+        "crios 89 is a television which has 2 hdmi ports, has 30 watt power consumption, and is in the medium screen size range."
+    ],
+    [
+        "inform(name=pontus 66;type=television;family=w1;resolution=720p;hasusbport=true)",
+        "the pontus 66 television from the w1 family has usb ports and a 720p resolution .",
+        "pontus 66 is a television which is in the W1 product family, has 720p resolution, and has usb ports."
+    ],
+    [
+        "inform(name=uranus 29;type=television;audio=nicam stereo;screensize=24 inch;pricerange=cheap)",
+        "uranus 29 is a 24 inch screen television with a nicam stereo audio equipment and in the cheap price range .",
+        "uranus 29 is a television which has a NICAM stereo audio equipment, has a 24 inch screen size, and is in the cheap price range."
+    ],
+    [
+        "inform(name=momus 19;type=television;hdmiport=1;resolution=720p;accessories=remote control)",
+        " the momus 19 television has 1 hdmi port . it's resolution is 720p and it includes a remote control ",
+        "momus 19 is a television which has 1 hdmi ports, has 720p resolution, and comes with remote control."
+    ],
+    [
+        "inform(name=apollo 96;type=television;color=mat white bezel with mat white frame stand;hasusbport=true;powerconsumption=31.4 watt)",
+        "apollo 96 television has usb ports with 31.4 watt power consumption . its color is mat white bezel with mat white frame stand .",
+        "apollo 96 is a television which has a color of mat white bezel with mat white frame stand, has usb ports, and has 31.4 watt power consumption."
+    ],
+    [
+        "inform(name=pontus 32;type=television;ecorating=a+;audio=nicam stereo;price=1700 dollars)",
+        "the pontus 32 television has an a+ ecorating , a nicam stereo , and costs 1700 dollars .",
+        "pontus 32 is a television which is in the A+ eco rating, has a NICAM stereo audio equipment, and costs 1700 dollars."
+    ],
+    [
+        "inform(name=aeolus 98;type=television;resolution=1080p;hasusbport=false;family=l2)",
+        "a television in the l2 family , with no usb ports , and 1080p resolution , is the aeolus 98.",
+        "aeolus 98 is a television which has 1080p resolution, does not have any usb ports, and is in the L2 product family."
+    ],
+    [
+        "inform(name=pontus 66;type=television;screensize=32 inch;pricerange=cheap;family=w1)",
+        "a television in the cheap price range of the w1 product family is the pontus 66 television with a 32 inch screen size . ",
+        "pontus 66 is a television which has a 32 inch screen size, is in the cheap price range, and is in the W1 product family."
+    ],
+    [
+        "inform(name=plutus 32;type=television;screensizerange=small;ecorating=a+;powerconsumption=18 watt)",
+        "plutus 32 is a small screen sizerange television , it is in a+ ecorating and has 18 watt power consumption",
+        "plutus 32 is a television which is in the small screen size range, is in the A+ eco rating, and has 18 watt power consumption."
+    ],
+    [
+        "inform(name=helios 89;type=television;resolution=1080p;color=mat white bezel with mat white frame stand;pricerange=cheap)",
+        "the helios 89 is a cheap price 1080p television that is mat white bezel with mat white frame stand . ",
+        "helios 89 is a television which has 1080p resolution, has a color of mat white bezel with mat white frame stand, and is in the cheap price range."
+    ],
+    [
+        "inform(name=pallas 86;type=television;audio=cevo stereo;resolution=1080p;powerconsumption=87.6 watt)",
+        "pallas 86 television has a cevo stereo , uses 87.6 watts of power , and displays a 1080p resolution .",
+        "pallas 86 is a television which has a CEVO stereo audio equipment, has 1080p resolution, and has 87.6 watt power consumption."
+    ],
+    [
+        "inform(name=caerus 33;type=television;accessories=remote control and active 3d glasses and european warranty;color=mat black bezel with silver trim and silver flat stand;audio=nicam stereo)",
+        "this caerus 33 television is mat black bezel with silver trim and silver flat stand , it has a nicam stereo system and comes with a remote control and active 3d glasses and european warranty",
+        "caerus 33 is a television which comes with remote control and active 3d glasses and european warranty, has a color of mat black bezel with silver trim and silver flat stand, and has a NICAM stereo audio equipment."
+    ],
+    [
+        "inform(name=eurus 24;type=television;screensize=42 inch;audio=cevo stereo)",
+        "eurus 24 television has a cevo stereo and a 42 inch screen",
+        "eurus 24 is a television which has a 42 inch screen size and has a CEVO stereo audio equipment"
+    ],
+    [
+        "inform(name=aeolus 34;type=television;accessories=remote control and active 3d glasses and european warranty;color=matt black front bezel , with gloss black surround bezel , silver neck and black glass stand;resolution=1080p)",
+        "television aeolus 34 with remote control and active 3d glasses and european warranty , color is matt black front bezel , with gloss black surround bezel , silver neck and black glass stand 1080p resolution",
+        "aeolus 34 is a television which comes with remote control and active 3d glasses and european warranty, has a color of matt black front bezel, with gloss black surround bezel, silver neck and black glass stand, and has 1080p resolution."
+    ],
+    [
+        "inform(name=poseidon 88;type=television;hasusbport=false;accessories=remote control and active 3d glasses and european warranty;ecorating=a+)",
+        "the poseidon 88 television has an a+ eco rating , no usb ports and comes with remote control and active 3d glasses and european warranty .",
+        "poseidon 88 is a television which does not have any usb ports, comes with remote control and active 3d glasses and european warranty, and is in the A+ eco rating."
+    ],
+    [
+        "inform(name=pontus 45;type=television;ecorating=a+;screensizerange=medium;hdmiport=2)",
+        "the pontus 45 television has a a+ eco rating and a medium screen size and 2 hdmi ports",
+        "pontus 45 is a television which is in the A+ eco rating, is in the medium screen size range, and has 2 hdmi ports."
+    ],
+    [
+        "inform(name=crios 69;type=television;hasusbport=true;audio=nicam stereo;ecorating=a++)",
+        "crios 69 is a nicam stereo television with usb ports and a++ eco rating",
+        "crios 69 is a television which has usb ports, has a NICAM stereo audio equipment, and is in the A++ eco rating."
+    ],
+    [
+        "inform(name=uranus 29;type=television;family=d1;screensizerange=small)",
+        "the uranus 29 television is part of the d1 product family with a small screen size .",
+        "uranus 29 is a television which is in the D1 product family and is in the small screen size range"
+    ],
+    [
+        "inform(name=dinlas 61;type=television;resolution=1080p;ecorating=a+;audio=nicam stereo)",
+        "the dinlas 61 television has a 1080p resolution screen , a+ eco rating , and an excellent nicam stereo system .",
+        "dinlas 61 is a television which has 1080p resolution, is in the A+ eco rating, and has a NICAM stereo audio equipment."
+    ],
+    [
+        "inform(name=momus 19;type=television;hasusbport=true;color=matt black bezel with black trim and slant mold black stand;accessories=remote control)",
+        "the momus 19 is a television with a matt black bezel with black trim and slant mold black stand , usb ports , and a remote control accessory .",
+        "momus 19 is a television which has usb ports, has a color of matt black bezel with black trim and slant mold black stand, and comes with remote control."
+    ],
+    [
+        "inform(name=attis 65;type=television;ecorating=a++;price=1000 dollars;hasusbport=true)",
+        "the attis 65 is a quality television costing 1000 dollars with a usb port and an a++ eco rating .",
+        "attis 65 is a television which is in the A++ eco rating, costs 1000 dollars, and has usb ports."
+    ],
+    [
+        "inform(name=hymenaios 11;type=television;accessories=remote control;hasusbport=false;screensize=24 inch)",
+        "the hymenaios 11 television has a 24 inch screen , no usb ports , and a remote control .",
+        "hymenaios 11 is a television which comes with remote control, does not have any usb ports, and has a 24 inch screen size."
+    ],
+    [
+        "inform(name=attis 65;type=television;audio=nicam stereo;powerconsumption=44 watt;color=matt black bezel with gloss black trim and black stand)",
+        "the attis 65 television has a matt black bezel with gloss black trim and black stand . it also has nicam stereo audio equipment and 44 watt power consumption .",
+        "attis 65 is a television which has a NICAM stereo audio equipment, has 44 watt power consumption, and has a color of matt black bezel with gloss black trim and black stand."
+    ],
+    [
+        "inform(name=charon 25;type=television;family=w1;screensize=24 inch;price=1100 dollars)",
+        "the charon 25 television is in the w1 product family . it has a 24 inch screen size and is 1100 dollars .",
+        "charon 25 is a television which is in the W1 product family, has a 24 inch screen size, and costs 1100 dollars."
+    ],
+    [
+        "inform(name=notus 31;type=television;accessories=remote control;hdmiport=2)",
+        "the notus 31 is a television with 2 hdmi ports and a remote control accessory .",
+        "notus 31 is a television which comes with remote control and has 2 hdmi ports"
+    ],
+    [
+        "inform(name=charon 31;type=television;pricerange=cheap;audio=nicam stereo)",
+        "the charon 31 television has a nicam stereo system and is in the cheap price bracket .",
+        "charon 31 is a television which is in the cheap price range and has a NICAM stereo audio equipment"
+    ],
+    [
+        "inform(name=typhon 45;type=television;powerconsumption=47.8 watt;hdmiport=2;screensizerange=medium)",
+        "typhon 45 is a 47.8 watt medium-sized display television with 2 hdmi ports .",
+        "typhon 45 is a television which has 47.8 watt power consumption, has 2 hdmi ports, and is in the medium screen size range."
+    ],
+    [
+        "inform(name=asclepius 87;type=television;price=1100 dollars;hdmiport=2;pricerange=cheap)",
+        "the asclepius 87 television comes with 2 hdmi ports and falls at the cheap end of the spectrum , costing only 1100 dollars .",
+        "asclepius 87 is a television which costs 1100 dollars, has 2 hdmi ports, and is in the cheap price range."
+    ],
+    [
+        "inform(name=caerus 33;type=television;price=1000 dollars;screensize=40 inch;hasusbport=true)",
+        "the caerus 33 television has usb ports . the caerus 33 television is 40 inch screen size and cost 1000 dollars .",
+        "caerus 33 is a television which costs 1000 dollars, has a 40 inch screen size, and has usb ports."
+    ],
+    [
+        "inform(name=pontus 94;type=television;family=l1;powerconsumption=46 watt;ecorating=a+)",
+        "the pontus 94 television is in the l1 product family with an a+ eco rating and a power consumptiopn of 46 watts .",
+        "pontus 94 is a television which is in the L1 product family, has 46 watt power consumption, and is in the A+ eco rating."
+    ],
+    [
+        "inform(name=caerus 33;type=television;audio=nicam stereo;resolution=1080p;accessories=remote control and active 3d glasses and european warranty)",
+        "the caerus 33 is a television set with nicam stereo audio and up to 1080p resolution . it also includes a remote control and active 3d glasses and european warranty .",
+        "caerus 33 is a television which has a NICAM stereo audio equipment, has 1080p resolution, and comes with remote control and active 3d glasses and european warranty."
+    ],
+    [
+        "inform(name=notus 31;type=television;hdmiport=2;hasusbport=true;pricerange=cheap)",
+        "the notus 31 is a cheap television with usb ports and 2 hdmi ports",
+        "notus 31 is a television which has 2 hdmi ports, has usb ports, and is in the cheap price range."
+    ],
+    [
+        "inform(name=helios 75;type=television;screensize=24 inch;price=1300 dollars;hasusbport=true)",
+        "helios 75 is a great 24 inch screen size television with usb ports & costs only 1300 dollars",
+        "helios 75 is a television which has a 24 inch screen size, costs 1300 dollars, and has usb ports."
+    ],
+    [
+        "inform(name=morpheus 63;type=television;pricerange=cheap;ecorating=a+;powerconsumption=62 watt)",
+        "the morpheus 63 is a cheap a+ eco rated , television consuming 62 watts .",
+        "morpheus 63 is a television which is in the cheap price range, is in the A+ eco rating, and has 62 watt power consumption."
+    ],
+    [
+        "inform(name=achelous 71;type=television;hdmiport=2;color=mat black bezel with black trim and slant mold black stand;audio=nicam stereo)",
+        "achelous 71 is a television that has 2 hdmi ports , nicam stereo audio , color is mat black bezel with black trim and slant mold black stand",
+        "achelous 71 is a television which has 2 hdmi ports, has a color of mat black bezel with black trim and slant mold black stand, and has a NICAM stereo audio equipment."
+    ],
+    [
+        "inform(name=aeolus 34;type=television;price=1200 dollars;screensize=55 inch;screensizerange=large)",
+        "the aeolus 34 television is priced at 1200 dollars . it offers a large 55 inch screen .",
+        "aeolus 34 is a television which costs 1200 dollars, has a 55 inch screen size, and is in the large screen size range."
+    ],
+    [
+        "inform(name=eurus 61;type=television;ecorating=a+;powerconsumption=43 watt;accessories=remote control and european warranty)",
+        "eurus 61 television use 43 watt a+ ecorating and comes with a remote control and european warranty",
+        "eurus 61 is a television which is in the A+ eco rating, has 43 watt power consumption, and comes with remote control and european warranty."
+    ],
+    [
+        "inform(name=pontus 55;type=television;ecorating=a+;hdmiport=2;accessories=remote control and european warranty)",
+        "the pontus 55 television has 2 hdmi ports , an a+ eco rating , a remote control and european warranty .",
+        "pontus 55 is a television which is in the A+ eco rating, has 2 hdmi ports, and comes with remote control and european warranty."
+    ],
+    [
+        "inform(name=apollo 33;type=television;audio=nicam stereo;pricerange=cheap;ecorating=a+)",
+        "apollo 33 is a a+ eco rating television in the cheap price range with a nicam stereo audio equipment .",
+        "apollo 33 is a television which has a NICAM stereo audio equipment, is in the cheap price range, and is in the A+ eco rating."
+    ],
+    [
+        "inform(name=hades 76;type=television;audio=audyssey stereo;accessories=remote control and active 3d glasses;family=l9)",
+        "the hades 76 television is in the l9 family and includes an audyssey stereo as well as a remote control and active 3d glasses",
+        "hades 76 is a television which has a Audyssey stereo audio equipment, comes with remote control and active 3d glasses, and is in the L9 product family."
+    ],
+    [
+        "inform(name=morpheus 93;type=television;hasusbport=false;hdmiport=3;screensize=48 inch)",
+        "the morpheus 93 television comes with 3 hdmi ports , a 48 inch screen size and no usb ports .",
+        "morpheus 93 is a television which does not have any usb ports, has 3 hdmi ports, and has a 48 inch screen size."
+    ],
+    [
+        "inform(name=attis 65;type=television;pricerange=cheap;hdmiport=3;audio=nicam stereo)",
+        "the attis 65 television is cheap , features nicam stereo and 3 hdmi ports .",
+        "attis 65 is a television which is in the cheap price range, has 3 hdmi ports, and has a NICAM stereo audio equipment."
+    ],
+    [
+        "inform(name=hymenaios 80;type=television;ecorating=a;pricerange=cheap;powerconsumption=56 watt)",
+        "the hymenaios 80 is a cheap priced television with 56 watt power consumption and an eco rating of a",
+        "hymenaios 80 is a television which is in the A eco rating, is in the cheap price range, and has 56 watt power consumption."
+    ]
+]
