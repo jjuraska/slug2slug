@@ -903,31 +903,31 @@ def split_content(old_mrs, old_utterances, filename, use_heuristics=True, permut
                         if isforbusinesscomputingSlot(sent, value):
                             found_slot = True
 
-                    elif slot_root == "player_perspective":
+                    elif slot_root == 'playerperspective':
                         if playerPerspectiveSlot(sent, value) >= 0:
                             found_slot = True
-                    elif slot_root == "genres":
+                    elif slot_root == 'genres':
                         if genreSlot(sent, value) >= 0:
                             found_slot = True
-                    elif slot_root == "platforms":
+                    elif slot_root == 'platforms':
                         if platformsSlot(sent, value) >= 0:
                             found_slot = True
-                    elif slot_root == "esrb":
+                    elif slot_root == 'esrb':
                         if esrbSlot(sent, value) >= 0:
                             found_slot = True
-                    elif slot_root == "rating":
+                    elif slot_root == 'rating':
                         if ratingSlot(sent, value) >= 0:
                             found_slot = True
-                    elif slot_root == "has_multiplayer":
+                    elif slot_root == 'hasmultiplayer':
                         if hasMultiplayerSlot(sent, value) >= 0:
                             found_slot = True
-                    elif slot_root == "available_on_steam":
+                    elif slot_root == 'availableonsteam':
                         if availableOnSteamSlot(sent, value) >= 0:
                             found_slot = True
-                    elif slot_root == "has_linux_release":
+                    elif slot_root == 'haslinuxrelease':
                         if hasLinuxReleaseSlot(sent, value) >= 0:
                             found_slot = True
-                    elif slot_root == "has_mac_release":
+                    elif slot_root == 'hasmacrelease':
                         if hasMacReleaseSlot(sent, value) >= 0:
                             found_slot = True
 
@@ -1084,7 +1084,7 @@ def score_alignment(curr_utterance, curr_mr, scoring="default+over-class"):
                     if isforbusinesscomputingSlot(sent, value):
                         found_slot = True
 
-                elif slot_root == "player_perspective":
+                elif slot_root == "playerperspective":
                     if playerPerspectiveSlot(sent, value) >= 0:
                         found_slot = True
                 elif slot_root == "genres":
@@ -1099,16 +1099,16 @@ def score_alignment(curr_utterance, curr_mr, scoring="default+over-class"):
                 elif slot_root == "rating":
                     if ratingSlot(sent, value) >= 0:
                         found_slot = True
-                elif slot_root == "has_multiplayer":
+                elif slot_root == "hasmultiplayer":
                     if hasMultiplayerSlot(sent, value) >= 0:
                         found_slot = True
-                elif slot_root == "available_on_steam":
+                elif slot_root == "availableonsteam":
                     if availableOnSteamSlot(sent, value) >= 0:
                         found_slot = True
-                elif slot_root == "has_linux_release":
+                elif slot_root == "haslinuxrelease":
                     if hasLinuxReleaseSlot(sent, value) >= 0:
                         found_slot = True
-                elif slot_root == "has_mac_release":
+                elif slot_root == "hasmacrelease":
                     if hasMacReleaseSlot(sent, value) >= 0:
                         found_slot = True
 
@@ -1136,7 +1136,7 @@ def count_errors(utt, mr):
     """
 
     non_categorical_slots = ['familyfriendly', 'pricerange', 'customerrating',
-                             'rating', 'has_multiplayer', 'available_on_steam', 'has_linux_release', 'has_mac_release']
+                             'rating', 'hasmultiplayer', 'availableonsteam', 'haslinuxrelease', 'hasmacrelease']
 
     slots_found = set()
     sent = utt
@@ -1240,7 +1240,7 @@ def count_errors(utt, mr):
                     if isforbusinesscomputingSlot(sent, value):
                         found_slot = True
 
-                elif slot_root == "player_perspective":
+                elif slot_root == "playerperspective":
                     if playerPerspectiveSlot(sent, value) >= 0:
                         found_slot = True
                 elif slot_root == "genres":
@@ -1255,16 +1255,16 @@ def count_errors(utt, mr):
                 elif slot_root == "rating":
                     if ratingSlot(sent, value) >= 0:
                         found_slot = True
-                elif slot_root == "has_multiplayer":
+                elif slot_root == "hasmultiplayer":
                     if hasMultiplayerSlot(sent, value) >= 0:
                         found_slot = True
-                elif slot_root == "available_on_steam":
+                elif slot_root == "availableonsteam":
                     if availableOnSteamSlot(sent, value) >= 0:
                         found_slot = True
-                elif slot_root == "has_linux_release":
+                elif slot_root == "haslinuxrelease":
                     if hasLinuxReleaseSlot(sent, value) >= 0:
                         found_slot = True
-                elif slot_root == "has_mac_release":
+                elif slot_root == "hasmacrelease":
                     if hasMacReleaseSlot(sent, value) >= 0:
                         found_slot = True
 
@@ -1360,7 +1360,7 @@ def find_alignment(utt, mr):
         #     if isforbusinesscomputingSlot(utt, value):
         #         found_slot = True
 
-        elif slot_root == "player_perspective":
+        elif slot_root == "playerperspective":
             slot_pos = playerPerspectiveSlot(utt, value)
         elif slot_root == "genres":
             slot_pos = genreSlot(utt, value)
@@ -1370,13 +1370,13 @@ def find_alignment(utt, mr):
             slot_pos = esrbSlot(utt, value)
         elif slot_root == "rating":
             slot_pos = ratingSlot(utt, value)
-        elif slot_root == "has_multiplayer":
+        elif slot_root == "hasmultiplayer":
             slot_pos = hasMultiplayerSlot(utt, value)
-        elif slot_root == "available_on_steam":
+        elif slot_root == "availableonsteam":
             slot_pos = availableOnSteamSlot(utt, value)
-        elif slot_root == "has_linux_release":
+        elif slot_root == "haslinuxrelease":
             slot_pos = hasLinuxReleaseSlot(utt, value)
-        elif slot_root == "has_mac_release":
+        elif slot_root == "hasmacrelease":
             slot_pos = hasMacReleaseSlot(utt, value)
 
         if slot_pos >= 0:
