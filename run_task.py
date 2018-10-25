@@ -143,7 +143,7 @@ def test(data_testset, predict_only=True, reranking=True):
             f_predictions_final.write(prediction + '\n')
 
         if not predict_only:
-            # create a file with a single prediction for each group of the same MRs
+            # Create a file with a single prediction for each group of the same MRs
             if 'rest_e2e' in data_testset:
                 test_mrs, _ = data_loader.read_rest_e2e_dataset_test(data_testset)
             elif 'tv' in data_testset:
@@ -152,6 +152,8 @@ def test(data_testset, predict_only=True, reranking=True):
                 test_mrs, _, _ = data_loader.read_laptop_dataset_test(data_testset)
             elif 'hotel' in data_testset:
                 test_mrs, _, _ = data_loader.read_hotel_dataset_test(data_testset)
+            elif 'video_game' in data_testset:
+                test_mrs, _ = data_loader.read_video_game_dataset_test(data_testset)
             else:
                 raise FileNotFoundError
 

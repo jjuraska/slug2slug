@@ -15,21 +15,84 @@ from slot_aligner.slot_alignment import score_alignment
 def finalize_utterances(utterances, mrs):
     utterances_final = []
 
-    with io.open('data/vocab_proper_nouns.txt', 'r', encoding='utf8') as f_vocab:
-        proper_nouns = sorted(f_vocab.read().splitlines(), key=len, reverse=True)
-
-    for i, utterance in enumerate(utterances):
-        utterance_relexed = relex(utterance, mrs[i])
-        # utterance_pluralized = join_plural_nouns(utterance_relexed)                 # disable for E2E, Laptop, Hotel
-        utterance_capitalized = capitalize(utterance_relexed, mrs[i], proper_nouns)
-        utterance_detokenized = detokenize(utterance_capitalized)
-        utterances_final.append(utterance_detokenized)
+    for i, utt in enumerate(utterances):
+        utt_capitalized = capitalize(utt, mrs[i])
+        utt_detokenized = detokenize(utt_capitalized)
+        utt_relexed = relex(utt_detokenized, mrs[i])
+        # utt_pluralized = join_plural_nouns(utt_relexed)     # disable for E2E, Laptop, Hotel
+        utterances_final.append(utt_relexed)
 
     return utterances_final
 
 
 def finalize_utterance(utterance, mr_dict):
-    return detokenize(relex(utterance, mr_dict))
+    return relex(detokenize(utterance), mr_dict)
+
+
+def capitalize(utterance, mr_dict):
+    # Tokenize the utterance and capitalize I's
+    utt_tokenized = [token.capitalize() if token == 'i' else token for token in utterance.split()]
+
+    # Capitalize proper nouns contained in values
+    for slot in ['area', 'platforms', 'esrb']:
+        if slot in mr_dict:
+            value_tok = word_tokenize(mr_dict[slot])
+            for t in value_tok:
+                if t[0].isupper():
+                    utt_tokenized = __replace_lowercase_token(t, utt_tokenized)
+
+    # Capitalize proper nouns in the realizations of boolean slots
+    if 'availableonsteam' in mr_dict:
+        utt_tokenized = __replace_lowercase_token('Steam', utt_tokenized)
+    if 'haslinuxrelease' in mr_dict:
+        utt_tokenized = __replace_lowercase_token('Linux', utt_tokenized)
+    if 'hasmacrelease' in mr_dict:
+        utt_tokenized = __replace_lowercase_token('Mac', utt_tokenized)
+
+    # Return tokenized utterance
+    return utt_tokenized
+
+
+def detokenize(utt_tokenized):
+    # Capitalize I's
+    # utterance_tokenized = [token.capitalize() if token == 'i' else token for token in utterance.split()]
+
+    # Detokenize the utterance
+    detokenizer = MosesDetokenizer()
+    utterance_detokenized = detokenizer.detokenize(utt_tokenized, return_str=True)
+
+    # Fix tokens that do not get detokenized automatically
+    utterance_detokenized = utterance_detokenized.replace(' n\'t', 'n\'t').replace('( ', '(')
+
+    # Determine sentence boundaries in the utterance
+    sentences = sent_tokenize(utterance_detokenized)
+    # Capitalize individual sentences
+    sentences = [s[0].upper() + s[1:] for s in sentences]
+
+    # Return utterance as a string
+    return ' '.join(sentences)
+
+
+def relex(utterance, mr_dict):
+    # Identify all value placeholders
+    matches = re.findall(r'<slot_.*?>', utterance)
+
+    # Replace the value placeholders with the corresponding values from the MR
+    fail_flags = []
+    for match in matches:
+        slot = match.split('_')
+        slot = slot[-1].rstrip('>')
+        if slot in mr_dict.keys():
+            utterance = utterance.replace(match, mr_dict[slot])
+        else:
+            fail_flags.append(slot)
+
+    if len(fail_flags) > 0:
+        print('Warning: when relexicalizing, the following slots could not be handled by the MR: ' + str(fail_flags))
+        print(utterance)
+        print(mr_dict)
+
+    return utterance
 
 
 def join_plural_nouns(utterance):
@@ -50,69 +113,13 @@ def join_plural_nouns(utterance):
     return utterance_new.strip()
 
 
-def relex(utterance, mr_dict):
-    # Identify all value placeholders
-    matches = re.findall(r'<slot_.*?>', utterance)
-    
-    # Replace the value placeholders with the corresponding values from the MR
-    fail_flags = []
-    for match in matches:
-        slot = match.split('_')
-        slot = slot[-1].rstrip('>')
-        if slot in mr_dict.keys():
-            utterance = utterance.replace(match, mr_dict[slot])
-        else:
-            fail_flags.append(slot)
+def __replace_lowercase_token(tok, utt_tokenized):
+    tok_lower = tok.lower()
+    for i, w in enumerate(utt_tokenized):
+        if w == tok_lower:
+            utt_tokenized[i] = tok
 
-    if len(fail_flags) > 0:
-        print('Warning: when relexicalizing, the following slots could not be handled by the MR: ' + str(fail_flags))
-        print(utterance)
-        print(mr_dict)
-
-    return utterance
-
-
-def capitalize(utterance, mr_dict, proper_nouns):
-    # Capitalize values that are proper nouns
-    for noun in proper_nouns:
-        utterance = re.sub(r'\b{}\b'.format(noun.lower()), noun, utterance)
-
-    # Capitalize proper nouns contained in values
-    for slot in ['platforms', 'esrb']:
-        if slot in mr_dict:
-            value_tok = word_tokenize(mr_dict[slot])
-            for w in value_tok:
-                if w[0].isupper():
-                    utterance = re.sub(r'\b{}\b'.format(w.lower()), w, utterance)
-
-    # Capitalize proper nouns in the realizations of boolean slots
-    if 'available_on_steam' in mr_dict:
-        utterance = re.sub(r'\b{}\b'.format('steam'), 'Steam', utterance)
-    if 'has_linux_release' in mr_dict:
-        utterance = re.sub(r'\b{}\b'.format('linux'), 'Linux', utterance)
-    if 'has_mac_release' in mr_dict:
-        utterance = re.sub(r'\b{}\b'.format('mac'), 'Mac', utterance)
-
-    return utterance
-
-
-def detokenize(utterance):
-    # Capitalize I's
-    utterance_tokenized = [token.capitalize() if token == 'i' else token for token in utterance.split()]
-
-    # Detokenize the utterance
-    detokenizer = MosesDetokenizer()
-    utterance_detokenized = detokenizer.detokenize(utterance_tokenized, return_str=True)
-
-    # Fix tokens that do not get detokenized automatically
-    utterance_detokenized = utterance_detokenized.replace(' n\'t', 'n\'t').replace('( ', '(')
-
-    # Determine sentence boundaries in the utterance
-    sentences = sent_tokenize(utterance_detokenized)
-    # Capitalize individual sentences
-    sentences = [s[0].upper() + s[1:] for s in sentences]
-
-    return ' '.join(sentences)
+    return utt_tokenized
 
 
 def align_beams(beams=None, beams_file=None, data_file=None):

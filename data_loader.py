@@ -165,15 +165,11 @@ def load_test_data(data_testset, input_concat=False):
     test_source_dict_file = os.path.join(config.DATA_DIR, 'test_source_dict.json')
     test_target_file = os.path.join(config.DATA_DIR, 'test_target.txt')
     test_reference_file = os.path.join(config.METRICS_DIR, 'test_references.txt')
-    vocab_proper_nouns_file = os.path.join(config.DATA_DIR, 'vocab_proper_nouns.txt')
 
     dataset = init_test_data(data_testset)
     dataset_name = dataset['dataset_name']
     x_test, y_test = dataset['data']
     slot_sep, val_sep, val_sep_closing = dataset['separators']
-
-    slots_with_proper_nouns = ['name', 'near', 'area', 'food', 'developer']
-    vocab_proper_nouns = set()
 
     # Produce sequences of extracted words from the meaning representations (MRs) in the testset
     x_test_seq = []
@@ -182,23 +178,21 @@ def load_test_data(data_testset, input_concat=False):
         slot_ctr = 0
         emph_idxs = set()
         mr_dict = OrderedDict()
+        mr_dict_cased = OrderedDict()
 
         # Extract the slot-value pairs into a dictionary
         for slot_value in mr.split(slot_sep):
             slot, value, _, value_orig = parse_slot_and_value(slot_value, val_sep, val_sep_closing)
 
-            # Store proper noun values (for retrieval in postprocessing)
-            if slot in slots_with_proper_nouns and len(value_orig) > 0 and value_orig[0].isupper():
-                vocab_proper_nouns.add(value_orig)
-
             if slot == EMPH_TOKEN:
                 emph_idxs.add(slot_ctr)
             else:
                 mr_dict[slot] = value
+                mr_dict_cased[slot] = value_orig
                 slot_ctr += 1
 
-        # Build the MR dictionary
-        x_test_dict.append(copy.deepcopy(mr_dict))
+        # Build an MR dictionary with original values
+        x_test_dict.append(mr_dict_cased)
 
         # Delexicalize the MR
         delex_sample(mr_dict, dataset=dataset_name, mr_only=True, input_concat=input_concat)
@@ -229,11 +223,6 @@ def load_test_data(data_testset, input_concat=False):
 
     with io.open(test_source_dict_file, 'w', encoding='utf8') as f_x_test_dict:
         json.dump(x_test_dict, f_x_test_dict)
-
-    # Vocabulary of proper nouns to be used for capitalization in postprocessing
-    with io.open(vocab_proper_nouns_file, 'w', encoding='utf8') as f_vocab:
-        for value in vocab_proper_nouns:
-            f_vocab.write(value + '\n')
 
     if len(y_test) > 0:
         with io.open(test_target_file, 'w', encoding='utf8') as f_y_test:
