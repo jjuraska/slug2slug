@@ -27,5 +27,7 @@ t2t-translate-all \
     --t2t_usr_dir=$USR_DIR \
     --beam_size=$BEAM_SIZE \
     --alpha=$ALPHA \
+    --write_beam_scores=False \
+    --return_beams=False \
     --source=$DECODE_FILE \
     --translations_dir=$PREDICTIONS_DIR

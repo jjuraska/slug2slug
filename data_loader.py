@@ -1653,6 +1653,10 @@ def generate_joint_vocab():
     """Generates a joint vocabulary for multiple datasets.
     """
 
+    data_trainset = os.path.join(config.VIDEO_GAME_DATA_DIR, 'train.csv')
+    data_devset = os.path.join(config.VIDEO_GAME_DATA_DIR, 'valid.csv')
+    data_video_game = load_training_data(data_trainset, data_devset)
+
     data_trainset = os.path.join(config.HOTEL_DATA_DIR, 'train.json')
     data_devset = os.path.join(config.HOTEL_DATA_DIR, 'valid.json')
     data_hotel = load_training_data(data_trainset, data_devset)
@@ -1669,7 +1673,7 @@ def generate_joint_vocab():
     data_devset = os.path.join(config.E2E_DATA_DIR, 'devset_e2e.csv')
     data_rest = load_training_data(data_trainset, data_devset)
 
-    generate_vocab_file(np.concatenate((data_rest, data_tv, data_laptop, data_hotel)),
+    generate_vocab_file(np.concatenate((data_rest, data_tv, data_laptop, data_hotel, data_video_game)),
                         vocab_filename='vocab.lang_gen.tokens')
 
 
@@ -1688,7 +1692,7 @@ def main():
     # filter_samples_by_slot_count_csv('rest_e2e', 'testset_e2e.csv', min_count=3, max_count=4)
     # filter_samples_by_slot_count_json('hotel', 'test_filtered.json', min_count=3, max_count=4)
 
-    counterfeit_dataset_from_e2e('testset_e2e_min3_max4_slots.csv', 'hotel')
+    # counterfeit_dataset_from_e2e('testset_e2e_min3_max4_slots.csv', 'hotel')
 
     # get_vocab_overlap('rest_e2e', 'trainset_e2e.csv', 'devset_e2e.csv',
     #                   'hotel', 'train.json', 'valid.json')
@@ -1700,7 +1704,7 @@ def main():
     # pool_slot_values('laptop', ['train.json', 'valid.json'])
     # pool_slot_values('hotel', ['train.json', 'valid.json'])
 
-    # generate_joint_vocab()
+    generate_joint_vocab()
 
     # ----------
 

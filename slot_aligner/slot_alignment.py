@@ -985,6 +985,7 @@ def score_alignment(curr_utterance, curr_mr, scoring="default+over-class"):
 
     for slot, value in curr_mr.items():
         slot_root = slot.rstrip(string.digits)
+        value = value.lower()
         found_slot = False
         
         if slot_root == 'da':
@@ -998,8 +999,8 @@ def score_alignment(curr_utterance, curr_mr, scoring="default+over-class"):
                 matches.remove(delex_slot)
             else:
                 sent = sent.lower()
-                if value.lower() in sent:
-                    value_cnt = sent.count(value.lower())
+                if value in sent:
+                    value_cnt = sent.count(value)
                     if value_cnt > 1:
                         num_slot_overgens += value_cnt - 1
                     found_slot = True

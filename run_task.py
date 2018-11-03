@@ -168,10 +168,11 @@ def test(data_testset, predict_only=True, reranking=True):
     print('DONE')
 
 
-def test_all(data_testset):
+def test_all(data_testset, reranking=True):
     test_source_file = os.path.join(config.DATA_DIR, 'test_source_dict.json')
     test_target_file = os.path.join(config.DATA_DIR, 'test_target.txt')
 
+    # Prepare the output folder
     if not os.path.exists(config.PREDICTIONS_BATCH_LEX_DIR):
         os.makedirs(config.PREDICTIONS_BATCH_LEX_DIR)
 
@@ -211,6 +212,10 @@ def test_all(data_testset):
             beams = list(map(list, zip(*beams)))
         else:
             beams = [[(beam,)] for beam in df_predictions.iloc[:, 0].tolist()]
+
+        # Score the slot alignment in the beams, and rerank the beams accordingly
+        if reranking and beams_present:
+            beams = postprocessing.align_beams_t2t(beams)
 
         # Postprocess the generated utterances and save them to a new file
         with io.open(test_source_file, 'r', encoding='utf8') as f_test_source, \
