@@ -1,0 +1,190 @@
+{
+  "genres": {
+    "action-adventure": [
+      [
+        "action",
+        "adventur"
+      ]
+    ],
+    "adventure": [
+      "adventur"
+    ],
+    "driving/racing": [
+      "driving",
+      "drive",
+      "racing",
+      "race"
+    ],
+    "fighting": [
+      "fight"
+    ],
+    "mmorpg": [
+      "massively"
+    ],
+    "platformer": [
+      "platforming"
+    ],
+    "real-time strategy": [
+      "real time",
+      "rts"
+    ],
+    "role-playing": [
+      "role play",
+      "rpg"
+    ],
+    "shooter": [
+      "shoot",
+      "fps"
+    ],
+    "simulation": [
+      "simul",
+      "sim"
+    ],
+    "strategy": [
+      "strateg"
+    ],
+    "tactical": [
+      "tactic"
+    ],
+    "trivia/board game": [
+      "trivia",
+      "board"
+    ],
+    "turn-based strategy": [
+      "turn based"
+    ],
+    "vehicular combat": [
+      [
+        "vehic",
+        "combat"
+      ]
+    ]
+  },
+  "playerperspective": {
+    "first person": [
+      "fps"
+    ],
+    "bird view": [
+      "top down"
+    ]
+  },
+  "rating": {
+    "excellent": [
+      "amazing",
+      "awesome",
+      "fantastic",
+      "great",
+      "high",
+      "highly",
+      "quality",
+      "top",
+      "5 out of",
+      "5 star",
+      "five"
+    ],
+    "good": [
+      "acclaim",
+      "fun",
+      "positive",
+      "solid",
+      "well"
+    ],
+    "average": [
+      "decent",
+      "mediocre",
+      "middle",
+      "middling",
+      "moderate",
+      "okay",
+      "3 out of",
+      "3 star",
+      "three"
+    ],
+    "poor": [
+      "bad",
+      "badly",
+      "disappointing",
+      "lackluster",
+      "low",
+      "lowly",
+      "negative",
+      "poorly",
+      "1 out of",
+      "1 star",
+      "one"
+    ]
+  },
+  "esrb": {
+    "e (for everyone)": [
+      "e rated",
+      "rated e",
+      "e rating",
+      "rating e",
+      "everyone",
+      "all"
+    ],
+    "e 10+ (for everyone 10 and older)": [
+      "e 10+",
+      "e 10 plus",
+      "everyone 10",
+      "everyone above",
+      "everyone over",
+      "everyone older"
+    ],
+    "t (for teen)": [
+      "t rated",
+      "rated t",
+      "t rating",
+      "rating t",
+      "teen",
+      "teens",
+      "teenagers"
+    ],
+    "m (for mature)": [
+      "m rated",
+      "rated m",
+      "m rating",
+      "rating m",
+      "mature",
+      "adult"
+    ]
+  },
+  "pricerange": {
+    "cheap": [
+      "less than \u00a320",
+      "inexpensive",
+      "affordable",
+      "low",
+      "budget"
+    ],
+    "moderate": [
+      "\u00a320-25",
+      "average"
+    ],
+    "high": [
+      "more than \u00a330",
+      "expensive",
+      "costly",
+      "pricey",
+      "high"
+    ],
+    "less than \u00a320": [
+      "cheap",
+      "inexpensive",
+      "affordable",
+      "low",
+      "budget"
+    ],
+    "\u00a320-25": [
+      "moderate",
+      "average"
+    ],
+    "more than \u00a330": [
+      "high",
+      "expensive",
+      "costly",
+      "pricey",
+      "high"
+    ]
+  }
+}
