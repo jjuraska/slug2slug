@@ -113,7 +113,7 @@ def create_mrs_from_csv(file_in, file_out):
         # Assemble the MR in a string form
         mr = ''
         for slot, val in mr_dict.items():
-            mr += slot + '[' + str(val).replace(',', ';') + '], '
+            mr += slot + '[' + str(val) + '], '
         mr = mr[:-2]
 
         mrs.append(mr)

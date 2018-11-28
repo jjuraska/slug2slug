@@ -3,16 +3,17 @@
 import os
 import io
 import string
+import re
 import itertools
 from collections import OrderedDict
 from nltk.tokenize import word_tokenize, sent_tokenize
 
 import config
 from slot_aligner.alignment.boolean_slot import align_boolean_slot
-from slot_aligner.alignment.list_slot import align_list_slot
+from slot_aligner.alignment.list_slot import align_list_slot, align_list_with_conjunctions_slot
 from slot_aligner.alignment.numeric_slot import align_numeric_slot_with_unit
 from slot_aligner.alignment.scalar_slot import align_scalar_slot
-from slot_aligner.alignment.misc_slots import * 
+from slot_aligner.alignment.categorical_slots import align_categorical_slot, foodSlot
 
 
 customerrating_mapping = {
@@ -65,7 +66,7 @@ def noneRealization(sent, slot, value):
         
     if reduce_slot_name(slot) in curr_tokens:
         for x in ['information', 'info', 'inform', 'results', 'requirement', 'requirements', 'specification', 'specifications']:
-            if x in curr_tokens and ('no' in curr_tokens or 'not' in curr_tokens):
+            if x in curr_tokens and ('no' in curr_tokens or 'not' in curr_tokens or 'any' in curr_tokens):
                 return True
     
     return False
@@ -193,7 +194,7 @@ def split_content(old_mrs, old_utterances, filename, use_heuristics=True, permut
 
                     # E2E dataset slots
                     elif slot_root == 'eattype':
-                        if eatTypeSlot(sent, value) >= 0:
+                        if align_categorical_slot(sent, slot_root, value, mode='first_word') >= 0:
                             found_slot = True
                     elif slot_root == 'food':
                         if foodSlot(sent, value) >= 0:
@@ -208,7 +209,7 @@ def split_content(old_mrs, old_utterances, filename, use_heuristics=True, permut
                                              slot_stem_only=True) >= 0:
                             found_slot = True
                     elif slot_root == 'area':
-                        if areaSlot(sent, value) >= 0:
+                        if align_categorical_slot(sent, slot_root, value, mode='first_word') >= 0:
                             found_slot = True
                     elif slot_root == 'familyfriendly':
                         if align_boolean_slot(sent, slot_root, value) >= 0:
@@ -216,7 +217,7 @@ def split_content(old_mrs, old_utterances, filename, use_heuristics=True, permut
 
                     # TV dataset slots
                     elif slot_root == 'type':
-                        if typeSlot(sent, value):
+                        if align_categorical_slot(sent, slot_root, value, mode='first_word') >= 0:
                             found_slot = True
                     elif slot_root == 'hasusbport':
                         if align_boolean_slot(sent, slot_root, value, true_val='true', false_val='false') >= 0:
@@ -224,22 +225,16 @@ def split_content(old_mrs, old_utterances, filename, use_heuristics=True, permut
                     elif slot_root in ['screensize', 'price', 'powerconsumption']:
                         if align_numeric_slot_with_unit(sent, slot_root, value) >= 0:
                             found_slot = True
-                    elif slot_root == 'color':
-                        if colorSlot(sent, value):
-                            found_slot = True
-                    elif slot_root == 'accessories':
-                        if accessoriesSlot(sent, value):
+                    elif slot_root in ['color', 'accessories']:
+                        if align_list_with_conjunctions_slot(sent, slot_root, value) >= 0:
                             found_slot = True
 
                     # Laptop dataset slots
                     elif slot_root in ['weight', 'battery', 'drive', 'dimension']:
                         if align_numeric_slot_with_unit(sent, slot_root, value) >= 0:
                             found_slot = True
-                    elif slot_root == 'design':
-                        if designSlot(sent, value):
-                            found_slot = True
-                    elif slot_root == 'utility':
-                        if utilitySlot(sent, value):
+                    elif slot_root in ['design', 'utility']:
+                        if align_list_with_conjunctions_slot(sent, slot_root, value, match_all=False) >= 0:
                             found_slot = True
                     elif slot_root == 'isforbusinesscomputing':
                         if align_boolean_slot(sent, slot_root, value, true_val='true', false_val='false') >= 0:
@@ -257,12 +252,6 @@ def split_content(old_mrs, old_utterances, filename, use_heuristics=True, permut
                             found_slot = True
                     elif slot_root in ['esrb', 'rating']:
                         if align_scalar_slot(sent, slot_root, value, slot_stem_only=False) >= 0:
-                            found_slot = True
-                    elif slot_root == 'expreleasedate':
-                        if expReleaseDateSlot(sent, value) >= 0:
-                            found_slot = True
-                    elif slot_root == 'developer':
-                        if developerSlot(sent, value) >= 0:
                             found_slot = True
                     elif slot_root in ['hasmultiplayer', 'availableonsteam', 'haslinuxrelease', 'hasmacrelease']:
                         if align_boolean_slot(sent, slot_root, value) >= 0:
@@ -368,10 +357,10 @@ def score_alignment(curr_utterance, curr_mr, scoring="default+over-class"):
                     if foodSlot(sent, value) >= 0:
                         found_slot = True
                 elif slot_root == 'area':
-                    if areaSlot(sent, value) >= 0:
+                    if align_categorical_slot(sent, slot_root, value, mode='exact_match') >= 0:
                         found_slot = True
                 elif slot_root == 'eattype':
-                    if eatTypeSlot(sent, value) >= 0:
+                    if align_categorical_slot(sent, slot_root, value, mode='exact_match') >= 0:
                         found_slot = True
                 elif slot_root == 'customerrating':
                     if align_scalar_slot(sent, slot_root, value,
@@ -381,7 +370,7 @@ def score_alignment(curr_utterance, curr_mr, scoring="default+over-class"):
                         found_slot = True
                 
                 elif slot_root == 'type':
-                    if typeSlot(sent, value):
+                    if align_categorical_slot(sent, slot_root, value, mode='exact_match') >= 0:
                         found_slot = True
                 elif slot_root == 'hasusbport':
                     if align_boolean_slot(sent, slot_root, value, true_val='true', false_val='false') >= 0:
@@ -389,21 +378,15 @@ def score_alignment(curr_utterance, curr_mr, scoring="default+over-class"):
                 elif slot_root in ['screensize', 'price', 'powerconsumption']:
                     if align_numeric_slot_with_unit(sent, slot_root, value) >= 0:
                         found_slot = True
-                elif slot_root == 'color':
-                    if colorSlot(sent, value):
-                        found_slot = True
-                elif slot_root == 'accessories':
-                    if accessoriesSlot(sent, value):
+                elif slot_root in ['color', 'accessories']:
+                    if align_list_with_conjunctions_slot(sent, slot_root, value) >= 0:
                         found_slot = True
 
                 elif slot_root in ['weight', 'battery', 'drive', 'dimension']:
                     if align_numeric_slot_with_unit(sent, slot_root, value) >= 0:
                         found_slot = True
-                elif slot_root == 'design':
-                    if designSlot(sent, value):
-                        found_slot = True
-                elif slot_root == 'utility':
-                    if utilitySlot(sent, value):
+                elif slot_root in ['design', 'utility']:
+                    if align_list_with_conjunctions_slot(sent, slot_root, value) >= 0:
                         found_slot = True
                 elif slot_root == 'isforbusinesscomputing':
                     if align_boolean_slot(sent, slot_root, value, true_val='true', false_val='false') >= 0:
@@ -420,12 +403,6 @@ def score_alignment(curr_utterance, curr_mr, scoring="default+over-class"):
                         found_slot = True
                 elif slot_root in ['esrb', 'rating']:
                     if align_scalar_slot(sent, slot_root, value, slot_stem_only=False) >= 0:
-                        found_slot = True
-                elif slot_root == 'expreleasedate':
-                    if expReleaseDateSlot(sent, value) >= 0:
-                        found_slot = True
-                elif slot_root == 'developer':
-                    if developerSlot(sent, value) >= 0:
                         found_slot = True
                 elif slot_root in ['hasmultiplayer', 'availableonsteam', 'haslinuxrelease', 'hasmacrelease']:
                     if align_boolean_slot(sent, slot_root, value) >= 0:
@@ -506,10 +483,10 @@ def count_errors(utt, mr):
                     if foodSlot(sent, value) >= 0:
                         found_slot = True
                 elif slot_root == 'area':
-                    if areaSlot(sent, value) >= 0:
+                    if align_categorical_slot(sent, slot_root, value, mode='exact_match') >= 0:
                         found_slot = True
                 elif slot_root == 'eattype':
-                    if eatTypeSlot(sent, value) >= 0:
+                    if align_categorical_slot(sent, slot_root, value, mode='exact_match') >= 0:
                         found_slot = True
                 elif slot_root == 'customerrating':
                     if align_scalar_slot(sent, slot_root, value,
@@ -519,7 +496,7 @@ def count_errors(utt, mr):
                         found_slot = True
 
                 elif slot_root == 'type':
-                    if typeSlot(sent, value):
+                    if align_categorical_slot(sent, slot_root, value, mode='exact_match') >= 0:
                         found_slot = True
                 elif slot_root == 'hasusbport':
                     if align_boolean_slot(sent, slot_root, value, true_val='true', false_val='false') >= 0:
@@ -527,21 +504,15 @@ def count_errors(utt, mr):
                 elif slot_root in ['screensize', 'price', 'powerconsumption']:
                     if align_numeric_slot_with_unit(sent, slot_root, value) >= 0:
                         found_slot = True
-                elif slot_root == 'color':
-                    if colorSlot(sent, value):
-                        found_slot = True
-                elif slot_root == 'accessories':
-                    if accessoriesSlot(sent, value):
+                elif slot_root in ['color', 'accessories']:
+                    if align_list_with_conjunctions_slot(sent, slot_root, value) >= 0:
                         found_slot = True
 
                 elif slot_root in ['weight', 'battery', 'drive', 'dimension']:
                     if align_numeric_slot_with_unit(sent, slot_root, value) >= 0:
                         found_slot = True
-                elif slot_root == 'design':
-                    if designSlot(sent, value):
-                        found_slot = True
-                elif slot_root == 'utility':
-                    if utilitySlot(sent, value):
+                elif slot_root in ['design', 'utility']:
+                    if align_list_with_conjunctions_slot(sent, slot_root, value) >= 0:
                         found_slot = True
                 elif slot_root == 'isforbusinesscomputing':
                     if align_boolean_slot(sent, slot_root, value, true_val='true', false_val='false') >= 0:
@@ -558,12 +529,6 @@ def count_errors(utt, mr):
                         found_slot = True
                 elif slot_root in ['esrb', 'rating']:
                     if align_scalar_slot(sent, slot_root, value, slot_stem_only=False) >= 0:
-                        found_slot = True
-                elif slot_root == 'expreleasedate':
-                    if expReleaseDateSlot(sent, value) >= 0:
-                        found_slot = True
-                elif slot_root == 'developer':
-                    if developerSlot(sent, value) >= 0:
                         found_slot = True
                 elif slot_root in ['hasmultiplayer', 'availableonsteam', 'haslinuxrelease', 'hasmacrelease']:
                     if align_boolean_slot(sent, slot_root, value) >= 0:
@@ -605,7 +570,7 @@ def find_alignment(utt, mr):
         #         found_slot = True
 
         elif slot_root == 'eattype':
-            slot_pos = eatTypeSlot(utt, value)
+            slot_pos = align_categorical_slot(utt, slot_root, value, mode='exact_match')
         elif slot_root == 'food':
             slot_pos = foodSlot(utt, value)
         elif slot_root == 'pricerange':
@@ -616,29 +581,25 @@ def find_alignment(utt, mr):
                                          value_mapping=customerrating_mapping['values'],
                                          slot_stem_only=True)
         elif slot_root == 'area':
-            slot_pos = areaSlot(utt, value)
+            slot_pos = align_categorical_slot(sent, slot_root, value, mode='exact_match')
         elif slot_root == 'familyfriendly':
             slot_pos = align_boolean_slot(utt, slot_root, value)
 
-        # elif slot_root == 'type':
-        #     slot_pos = typeSlot(utt, value)
-        # elif slot_root == 'hasusbport':
-        #     slot_pos = align_boolean_slot(utt, slot_root, value, true_val='true', false_val='false')
-        # elif slot_root in ['screensize', 'price', 'powerconsumption']:
-        #     slot_pos = align_numeric_slot_with_unit(utt, slot_root, value)
-        # elif slot_root == 'color':
-        #     slot_pos = colorSlot(utt, value)
-        # elif slot_root == 'accessories':
-        #     slot_pos = accessoriesSlot(utt, value)
-        #
-        # elif slot_root in ['weight', 'battery', 'drive', 'dimension']:
-        #     slot_pos = align_numeric_slot_with_unit(utt, slot_root, value)
-        # elif slot_root == 'design':
-        #     slot_pos = designSlot(utt, value)
-        # elif slot_root == 'utility':
-        #     slot_pos = utilitySlot(utt, value)
-        # elif slot_root == 'isforbusinesscomputing':
-        #     slot_pos = align_boolean_slot(utt, slot_root, value, true_val='true', false_val='false')
+        elif slot_root == 'type':
+            slot_pos = align_categorical_slot(utt, slot_root, value, mode='exact_match')
+        elif slot_root == 'hasusbport':
+            slot_pos = align_boolean_slot(utt, slot_root, value, true_val='true', false_val='false')
+        elif slot_root in ['screensize', 'price', 'powerconsumption']:
+            slot_pos = align_numeric_slot_with_unit(utt, slot_root, value)
+        elif slot_root in ['color', 'accessories']:
+            slot_pos = align_list_with_conjunctions_slot(utt, slot_root, value)
+
+        elif slot_root in ['weight', 'battery', 'drive', 'dimension']:
+            slot_pos = align_numeric_slot_with_unit(utt, slot_root, value)
+        elif slot_root in ['design', 'utility']:
+            slot_pos = align_list_with_conjunctions_slot(utt, slot_root, value)
+        elif slot_root == 'isforbusinesscomputing':
+            slot_pos = align_boolean_slot(utt, slot_root, value, true_val='true', false_val='false')
 
         elif slot_root == 'playerperspective':
             slot_pos = align_list_slot(utt, slot_root, value, mode='first_word')
@@ -648,10 +609,6 @@ def find_alignment(utt, mr):
             slot_pos = align_list_slot(utt, slot_root, value, mode='first_word')
         elif slot_root in ['esrb', 'rating']:
             slot_pos = align_scalar_slot(utt, slot_root, value, slot_stem_only=False)
-        elif slot_root == 'expreleasedate':
-            slot_pos = expReleaseDateSlot(utt, value)
-        elif slot_root == 'developer':
-            slot_pos = developerSlot(utt, value)
         elif slot_root in ['hasmultiplayer', 'availableonsteam', 'haslinuxrelease', 'hasmacrelease']:
             slot_pos = align_boolean_slot(utt, slot_root, value)
 

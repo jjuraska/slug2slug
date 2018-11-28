@@ -2,8 +2,9 @@ import os
 import io
 import random
 import string
-import json
+import re
 import copy
+import json
 import pandas as pd
 import numpy as np
 from collections import OrderedDict
@@ -11,11 +12,11 @@ import nltk
 from nltk import FreqDist
 from nltk.tokenize import word_tokenize
 from nltk.stem.wordnet import WordNetLemmatizer
-import re
 
 import config
 
 
+COMMA_PLACEHOLDER = config.COMMA_PLACEHOLDER
 EMPH_TOKEN = config.EMPH_TOKEN
 CONTRAST_TOKEN = config.CONTRAST_TOKEN
 CONCESSION_TOKEN = config.CONCESSION_TOKEN
@@ -609,6 +610,7 @@ def init_training_data(data_trainset, data_devset):
         dataset_name = 'rest_e2e'
         slot_sep = ','
         val_sep = '['
+        val_sep_end = ']'
         val_sep_closing = True
     elif 'video_game' in data_trainset and 'video_game' in data_devset:
         x_train, y_train = read_video_game_dataset_train(data_trainset)
@@ -616,6 +618,7 @@ def init_training_data(data_trainset, data_devset):
         dataset_name = 'video_game'
         slot_sep = ','
         val_sep = '['
+        val_sep_end = ']'
         val_sep_closing = True
     elif 'tv' in data_trainset and 'tv' in data_devset:
         x_train, y_train, _ = read_tv_dataset_train(data_trainset)
@@ -623,6 +626,7 @@ def init_training_data(data_trainset, data_devset):
         dataset_name = 'tv'
         slot_sep = ';'
         val_sep = '='
+        val_sep_end = None
         val_sep_closing = False
     elif 'laptop' in data_trainset and 'laptop' in data_devset:
         x_train, y_train, _ = read_laptop_dataset_train(data_trainset)
@@ -630,6 +634,7 @@ def init_training_data(data_trainset, data_devset):
         dataset_name = 'laptop'
         slot_sep = ';'
         val_sep = '='
+        val_sep_end = None
         val_sep_closing = False
     elif 'hotel' in data_trainset and 'hotel' in data_devset:
         x_train, y_train, _ = read_hotel_dataset_train(data_trainset)
@@ -637,9 +642,15 @@ def init_training_data(data_trainset, data_devset):
         dataset_name = 'hotel'
         slot_sep = ';'
         val_sep = '='
+        val_sep_end = None
         val_sep_closing = False
     else:
         raise ValueError('Unexpected file name or path: {0}, {1}'.format(data_trainset, data_devset))
+
+    # Replace commas in values if comma is the slot separator
+    if slot_sep == ',' and val_sep_end is not None:
+        x_train = replace_commas_in_mr_values(x_train, val_sep, val_sep_end)
+        x_dev = replace_commas_in_mr_values(x_dev, val_sep, val_sep_end)
 
     return {
         'dataset_name': dataset_name,
@@ -654,33 +665,42 @@ def init_test_data(data_testset):
         dataset_name = 'rest_e2e'
         slot_sep = ','
         val_sep = '['
+        val_sep_end = ']'
         val_sep_closing = True
     elif 'video_game' in data_testset:
-        x_test, y_test = read_rest_e2e_dataset_test(data_testset)
+        x_test, y_test = read_video_game_dataset_test(data_testset)
         dataset_name = 'video_game'
         slot_sep = ','
         val_sep = '['
+        val_sep_end = ']'
         val_sep_closing = True
     elif 'tv' in data_testset:
         x_test, y_test, _ = read_tv_dataset_test(data_testset)
         dataset_name = 'tv'
         slot_sep = ';'
         val_sep = '='
+        val_sep_end = None
         val_sep_closing = False
     elif 'laptop' in data_testset:
         x_test, y_test, _ = read_laptop_dataset_test(data_testset)
         dataset_name = 'laptop'
         slot_sep = ';'
         val_sep = '='
+        val_sep_end = None
         val_sep_closing = False
     elif 'hotel' in data_testset:
         x_test, y_test, _ = read_hotel_dataset_test(data_testset)
         dataset_name = 'hotel'
         slot_sep = ';'
         val_sep = '='
+        val_sep_end = None
         val_sep_closing = False
     else:
         raise ValueError('Unexpected file name or path: {0}'.format(data_testset))
+
+    # Replace commas in values if comma is the slot separator
+    if slot_sep == ',' and val_sep_end is not None:
+        x_test = replace_commas_in_mr_values(x_test, val_sep, val_sep_end)
 
     return {
         'dataset_name': dataset_name,
@@ -732,6 +752,10 @@ def read_video_game_dataset_dev(data_devset):
     df_dev = pd.read_csv(data_devset, header=0, encoding='utf8')        # names=['mr', 'ref']
     x_dev = df_dev.mr.tolist()
     y_dev = df_dev.ref.tolist()
+
+    # replace commas within values with a placeholder
+    for i, mr in enumerate(x_dev):
+        x_dev[i] = preprocess_mr(mr, '(', ';', '=')
 
     return x_dev, y_dev
 
@@ -988,6 +1012,34 @@ def split_plural_noun(word, stemmer):
     return stem + ' -' + suffix
 
 
+def replace_commas_in_mr_values(mrs, val_sep, val_sep_end):
+    mrs_new = []
+
+    for mr in mrs:
+        mr_new = ''
+        val_beg_cnt = 0
+        val_end_cnt = 0
+
+        for c in mr:
+            # If comma inside a value, replace the comma with placeholder
+            if c == ',' and val_beg_cnt > val_end_cnt:
+                mr_new += COMMA_PLACEHOLDER
+                # print(mr_new)
+                continue
+
+            # Keep track of value beginning and end
+            if c == val_sep:
+                val_beg_cnt += 1
+            elif c == val_sep_end:
+                val_end_cnt += 1
+
+            mr_new += c
+
+        mrs_new.append(mr_new)
+
+    return mrs_new
+
+
 def preprocess_mr(mr, da_sep, slot_sep, val_sep):
     sep_idx = mr.find(da_sep)
     da_type = mr[:sep_idx].lstrip('?')
@@ -1050,6 +1102,7 @@ def parse_slot_and_value(slot_value, val_sep, val_sep_closing=False):
         value = ''
 
     slot_processed = slot.replace(' ', '').replace('_', '').lower()
+    value = value.replace(config.COMMA_PLACEHOLDER, ',')
     value_processed = ' '.join(word_tokenize(value.lower()))
 
     return slot_processed, value_processed, slot, value

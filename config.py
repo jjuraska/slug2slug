@@ -30,6 +30,7 @@ VIDEO_GAME_DATA_DIR = os.path.join(DATA_DIR, 'video_game')
 METRICS_SCRIPT_PATH = os.path.join(METRICS_DIR, 'measure_scores.py')
 
 # Constants
+COMMA_PLACEHOLDER = ' <!comma>'
 EMPH_TOKEN = '<!emph>'
 CONTRAST_TOKEN = '<!contrast>'
 CONCESSION_TOKEN = '<!concession>'

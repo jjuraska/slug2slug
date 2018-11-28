@@ -186,5 +186,28 @@
       "pricey",
       "high"
     ]
+  },
+  "area": {
+    "city centre": [
+      "center",
+      "centre",
+      "downtown",
+      [
+        "middle",
+        "city"
+      ],
+      [
+        "middle",
+        "town"
+      ]
+    ],
+    "riverside": [
+      "river"
+    ]
+  },
+  "type": {
+    "television": [
+      "tv"
+    ]
   }
 }
