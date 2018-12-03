@@ -166,10 +166,10 @@ def score_emphasis(dataset, filename):
 
 if __name__ == '__main__':
     # align_slots('rest_e2e', 'trainset_e2e.csv')
-    # align_slots('video_game', 'trainset.csv')
+    align_slots('video_game', 'train.csv')
 
     # score_slot_realizations(os.path.join('predictions-rest_e2e', 'devset'), 'predictions_devset_TRANS_tmp.csv')
     # score_slot_realizations(os.path.join('predictions-rest_e2e', 'testset'), 'predictions_testset_TRANS_tmp.csv')
-    score_slot_realizations(os.path.join('predictions-video_game', 'testset'), 'trainset.csv')
+    # score_slot_realizations(os.path.join('predictions-video_game', 'testset'), 'trainset.csv')
 
     # score_emphasis('predictions-rest_e2e_stylistic_selection/devset', 'predictions RNN (4+4) augm emph (reference).csv')

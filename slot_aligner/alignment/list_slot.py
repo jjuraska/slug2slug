@@ -1,11 +1,10 @@
-import re
 from nltk.tokenize import word_tokenize
 
-from slot_aligner.alignment.utils import find_first_word_in_tok_text, get_slot_value_alternatives
+from slot_aligner.alignment.utils import get_slot_value_alternatives
 from slot_aligner.alignment.categorical_slots import find_value_alternative
 
 
-def align_list_slot(text, slot, value, match_all=True, mode='exact_match', item_sep='; '):
+def align_list_slot(text, text_tok, slot, value, match_all=True, mode='exact_match', item_sep='; '):
     """
     MR      := slot[value]
     value   := item || item; item;...
@@ -16,12 +15,8 @@ def align_list_slot(text, slot, value, match_all=True, mode='exact_match', item_
     # TODO: load alternatives only once
     alternatives = get_slot_value_alternatives(slot)
 
-    # Preprocess the input text
-    text = re.sub('-', ' ', text)
-    text_tok = word_tokenize(text)
-
     # Split the slot value into individual items
-    items = value.split(item_sep)
+    items = [item.strip() for item in value.split(item_sep)]
 
     # Search for all individual items exhaustively
     for item in items:
@@ -33,12 +28,10 @@ def align_list_slot(text, slot, value, match_all=True, mode='exact_match', item_
         if leftmost_pos < 0 or 0 <= pos < leftmost_pos:
             leftmost_pos = pos
 
-    print('leftmost:', leftmost_pos)
-
     return leftmost_pos
 
 
-def align_list_with_conjunctions_slot(text, slot, value, match_all=True):
+def align_list_with_conjunctions_slot(text, text_tok, slot, value, match_all=True):
     separators = [',', 'and', 'with']
 
     value_tok = word_tokenize(value)
@@ -48,18 +41,18 @@ def align_list_with_conjunctions_slot(text, slot, value, match_all=True):
 
     # Split the value into items
     for i, tok in enumerate(value_tok):
-        if tok in separators:
+        if tok in separators and i > end_of_prev_item + 1:
             item = ' '.join(value_tok[end_of_prev_item + 1:i])
             value_items.append(item)
             end_of_prev_item = i
 
-    if end_of_prev_item < len(value_items) - 1:
+    if end_of_prev_item < len(value_tok) - 1:
         item = ' '.join(value_tok[end_of_prev_item + 1:])
         value_items.append(item)
 
     for item in value_items:
         pos = text.find(item)
-        if leftmost_pos == -1 or pos < leftmost_pos:
+        if 0 <= pos < leftmost_pos or leftmost_pos == -1:
             leftmost_pos = pos
         if match_all and pos < 0:
             return -1

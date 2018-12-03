@@ -1,6 +1,6 @@
 {
   "genres": {
-    "action-adventure": [
+    "action adventure": [
       [
         "action",
         "adventur"
@@ -9,7 +9,7 @@
     "adventure": [
       "adventur"
     ],
-    "driving/racing": [
+    "driving racing": [
       "driving",
       "drive",
       "racing",
@@ -24,11 +24,11 @@
     "platformer": [
       "platforming"
     ],
-    "real-time strategy": [
+    "real time strategy": [
       "real time",
       "rts"
     ],
-    "role-playing": [
+    "role playing": [
       "role play",
       "rpg"
     ],
@@ -37,7 +37,7 @@
       "fps"
     ],
     "simulation": [
-      "simul",
+      "simulat",
       "sim"
     ],
     "strategy": [
@@ -46,11 +46,11 @@
     "tactical": [
       "tactic"
     ],
-    "trivia/board game": [
+    "trivia board game": [
       "trivia",
       "board"
     ],
-    "turn-based strategy": [
+    "turn based strategy": [
       "turn based"
     ],
     "vehicular combat": [
@@ -155,18 +155,22 @@
       "inexpensive",
       "affordable",
       "low",
-      "budget"
+      "lower",
+      "budget",
+      "bargain"
     ],
     "moderate": [
       "\u00a320-25",
-      "average"
+      "average",
+      "reasonable"
     ],
     "high": [
       "more than \u00a330",
       "expensive",
       "costly",
       "pricey",
-      "high"
+      "high",
+      "higher"
     ],
     "less than \u00a320": [
       "cheap",
@@ -177,7 +181,8 @@
     ],
     "\u00a320-25": [
       "moderate",
-      "average"
+      "average",
+      "reasonable"
     ],
     "more than \u00a330": [
       "high",

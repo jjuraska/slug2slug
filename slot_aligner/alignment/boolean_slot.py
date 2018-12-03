@@ -1,7 +1,6 @@
 import re
-from nltk.tokenize import word_tokenize
 
-from slot_aligner.alignment.utils import find_first_word_in_tok_text, find_all_in_list
+from slot_aligner.alignment.utils import find_first_in_list, find_all_in_list
 
 
 NEG_IDX_PRE_THRESH = 10
@@ -10,32 +9,30 @@ NEG_IDX_POST_THRESH = 10
 NEG_POS_POST_THRESH = 30
 
 negation_cues_pre = [
-    'no', 'not', 'non', 'none', 'nor', 'never',
-    'nt', 'isnt', 'arent', 'cant', 'cannot', 'doesnt', 'dont', 'didnt', 'wasnt', 'werent', 'wont',
+    'no', 'not', 'non', 'none', 'nor', 'never', 'n\'t', 'cannot',
     'excluded', 'lack', 'lacks', 'lacking', 'unavailable', 'without', 'zero',
     'everything but'
 ]
 negation_cues_post = [
-    'not', 'nor', 'never',
-    'nt', 'isnt', 'arent', 'cant', 'cannot', 'doesnt', 'dont', 'didnt', 'wasnt', 'werent', 'wont',
-    'excluded', 'unavailable',
-    'out of luck'
+    'not', 'nor', 'never', 'n\'t', 'cannot',
+    'excluded', 'unavailable'
 ]
 
 
-def align_boolean_slot(text, slot, value, true_val='yes', false_val='no'):
+def align_boolean_slot(text, text_tok, slot, value, true_val='yes', false_val='no'):
     pos = -1
 
-    text = re.sub('-', ' ', text)
-    text = re.sub('\'', '', text)
-    text_tok = word_tokenize(text)
+    # if '\'' in text:
+    #     print(text)
+    #     print(text_tok)
+    text = re.sub(r'\'', '', text)
 
     # Get the words that possibly realize the slot
     slot_stems = __get_boolean_slot_stems(slot)
 
     # Search for all possible slot realizations
     for slot_stem in slot_stems:
-        idx, pos = find_first_word_in_tok_text(slot_stem, text_tok)
+        idx, pos = find_first_in_list(slot_stem, text_tok)
         if pos >= 0:
             if value == true_val:
                 # Match an instance of the slot stem without a preceding negation
@@ -53,7 +50,7 @@ def align_boolean_slot(text, slot, value, true_val='yes', false_val='no'):
             if ' ' in slot_antonym:
                 pos = text.find(slot_antonym)
             else:
-                _, pos = find_first_word_in_tok_text(slot_antonym, text_tok)
+                _, pos = find_first_in_list(slot_antonym, text_tok)
 
             if pos >= 0:
                 return pos
@@ -69,7 +66,7 @@ def __find_negation(text, text_tok, idx, pos, after=False):
                 if 0 < (pos - neg_pos) < NEG_POS_PRE_THRESH:
                     return True
         else:
-            neg_idxs = find_all_in_list(negation, text_tok)
+            neg_idxs, _ = find_all_in_list(negation, text_tok)
             for neg_idx in neg_idxs:
                 if 0 < (idx - neg_idx) < NEG_IDX_PRE_THRESH:
                     return True
@@ -82,7 +79,7 @@ def __find_negation(text, text_tok, idx, pos, after=False):
                     if 0 < (neg_pos - pos) < NEG_POS_POST_THRESH:
                         return True
             else:
-                neg_idxs = find_all_in_list(negation, text_tok)
+                neg_idxs, _ = find_all_in_list(negation, text_tok)
                 for neg_idx in neg_idxs:
                     if 0 < (neg_idx - idx) < NEG_IDX_POST_THRESH:
                         return True

@@ -1,17 +1,12 @@
-import re
 from nltk.tokenize import word_tokenize
 from nltk.corpus import wordnet
 
-from slot_aligner.alignment.utils import find_first_word_in_tok_text, get_slot_value_alternatives
+from slot_aligner.alignment.utils import find_first_in_list, get_slot_value_alternatives
 
 
-def align_categorical_slot(text, slot, value, mode='exact_match'):
+def align_categorical_slot(text, text_tok, slot, value, mode='exact_match'):
     # TODO: load alternatives only once
     alternatives = get_slot_value_alternatives(slot)
-
-    # Preprocess the input text
-    text = re.sub('-', ' ', text)
-    text_tok = word_tokenize(text)
 
     pos = find_value_alternative(text, text_tok, value, alternatives, mode=mode)
 
@@ -49,7 +44,7 @@ def find_value_alternative(text, text_tok, value, alternatives, mode):
                 pos = text.find(tok)
             else:
                 # Search for short single-word values in the tokenized representation
-                _, pos = find_first_word_in_tok_text(tok, text_tok)
+                _, pos = find_first_in_list(tok, text_tok)
             positions.append(pos)
 
         # If all tokens of one of the value's alternatives are matched, record the match and break
@@ -61,20 +56,19 @@ def find_value_alternative(text, text_tok, value, alternatives, mode):
 
 
 # TODO @food has 24 failures which are acceptable to remove the slot
-def foodSlot(sent, value):
+def foodSlot(text, text_tok, value):
     value = value.lower()
-    sent = re.sub('-', ' ', sent)
 
-    pos = sent.find(value)
+    pos = text.find(value)
     if pos >= 0:
         return pos
     elif value == 'english':
-        return sent.find('british')
+        return text.find('british')
     elif value == 'fast food':
-        return sent.find('american style')
+        return text.find('american style')
     else:
-        tokens = word_tokenize(sent)
-        for token in tokens:
+        text_tok = word_tokenize(text)
+        for token in text_tok:
             # FIXME warning this will be slow on start up
             synsets = wordnet.synsets(token, pos='n')
             synset_ctr = 0
@@ -93,7 +87,7 @@ def foodSlot(sent, value):
                         # DEBUG PRINT
                         # print(token)
 
-                        return sent.find(token)
+                        return text.find(token)
                     # Skip false positives (e.g. "a" in the meaning of "vitamin A" has "food" as a hypernym,
                     #   or "coffee" in "coffee shop" has "food" as a hypernym). There are still false positives
                     #   triggered by proper nouns containing a food term, such as "Burger King" or "The Golden Curry".
