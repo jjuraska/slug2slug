@@ -25,7 +25,7 @@ curl https://storage.googleapis.com/tensorflow-serving-apt/tensorflow-serving.re
 sudo apt-get update && sudo apt-get install tensorflow-model-server-universal
 
 # Python packages
-pip3 install tensorflow tensor2tensor pandas nltk networkx grpcio
+pip3 install tensorflow tensor2tensor pandas nltk networkx grpcio matplotlib
 
 # NLTK packages
 python3 -c "import nltk; nltk.download(['perluniprops', 'punkt'])"
