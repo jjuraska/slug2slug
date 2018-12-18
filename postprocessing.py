@@ -29,28 +29,53 @@ def finalize_utterance(utterance, mr_dict):
     return relex(detokenize(utterance), mr_dict)
 
 
-def capitalize(utterance, mr_dict):
+def capitalize(utt, mr_dict, item_sep='; '):
     # Tokenize the utterance and capitalize I's
-    utt_tokenized = [token.capitalize() if token == 'i' else token for token in utterance.split()]
+    utt_tok = [token.capitalize() if token == 'i' else token for token in utt.split()]
 
     # Capitalize proper nouns contained in values
-    for slot in ['area', 'platforms', 'esrb']:
+    for slot in ['area', 'genres', 'platforms', 'esrb']:
         if slot in mr_dict:
-            value_tok = word_tokenize(mr_dict[slot])
-            for t in value_tok:
-                if t[0].isupper():
-                    utt_tokenized = __replace_lowercase_token(t, utt_tokenized)
+            value = mr_dict[slot]
+
+            # Split the slot value into individual items (to account for list slots)
+            items = [item.strip() for item in value.split(item_sep)]
+
+            for item in items:
+                if not item[0].isupper():
+                    continue
+
+                item = ' '.join(word_tokenize(item))
+
+                if len(item) > 4 or ' ' in item:
+                    # Replace long and multi-word values in the string representation
+                    utt = utt.replace(item.lower(), item)
+                else:
+                    # Replace short single-word values in the tokenized representation
+                    utt_tok = __replace_lowercase_token(item, utt_tok)
+
+    # Merge the capitalizations in the tokenized and string versions of the utterance
+    utt_str_tok = utt.split()
+    assert(len(utt_str_tok) == len(utt_tok)), 'Utterances do not have matching lengths.'
+    utt_tok_merged = []
+    for tok1, tok2 in zip(utt_tok, utt_str_tok):
+        if tok1[0].isupper():
+            utt_tok_merged.append(tok1)
+        else:
+            utt_tok_merged.append(tok2)
+
+    utt_tok = utt_tok_merged
 
     # Capitalize proper nouns in the realizations of boolean slots
     if 'availableonsteam' in mr_dict:
-        utt_tokenized = __replace_lowercase_token('Steam', utt_tokenized)
+        utt_tok = __replace_lowercase_token('Steam', utt_tok)
     if 'haslinuxrelease' in mr_dict:
-        utt_tokenized = __replace_lowercase_token('Linux', utt_tokenized)
+        utt_tok = __replace_lowercase_token('Linux', utt_tok)
     if 'hasmacrelease' in mr_dict:
-        utt_tokenized = __replace_lowercase_token('Mac', utt_tokenized)
+        utt_tok = __replace_lowercase_token('Mac', utt_tok)
 
     # Return tokenized utterance
-    return utt_tokenized
+    return utt_tok
 
 
 def detokenize(utt_tokenized):

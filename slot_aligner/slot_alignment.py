@@ -274,7 +274,7 @@ def find_slot_realization(text, text_tok, slot, value_orig, delex_slot_placehold
 
 
 def preprocess_utterance(utt):
-    utt = re.sub(r'[-/]', ' ', utt.lower())
+    utt = re.sub(r'[-_/]', ' ', utt.lower())
     utt_tok = [w.strip('.,!?') if len(w) > 1 else w for w in word_tokenize(utt)]
 
     return utt, utt_tok
@@ -305,10 +305,9 @@ def split_content(old_mrs, old_utterances, filename, permute=False):
             cur_state = 10 * i / base
             print('Slot alignment is ' + str(cur_state) + '% done.')
 
-        utt = old_utterances[i].lower()
+        utt = old_utterances[i]
         utt = re.sub(r'\s+', ' ', utt).strip()
-        sents = sent_tokenize(utt)
-        first_sent = sents[0].lower()
+        sents = [sent.lower() for sent in sent_tokenize(utt)]
         new_pair = {sent: OrderedDict() for sent in sents}
 
         for slot, value_orig in mr.items():
@@ -346,7 +345,7 @@ def split_content(old_mrs, old_utterances, filename, permute=False):
             
             if len(new_pair) > 1:
                 for sent, new_slots in new_pair.items():
-                    if first_sent == sent:
+                    if sent == sents[0]:
                         new_slots['position'] = 'outer'
                     else:
                         new_slots['position'] = 'inner'

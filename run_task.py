@@ -163,11 +163,20 @@ def test(data_testset, predict_only=True, reranking=True):
                         f_predictions_reduced.write(predictions_final[i] + '\n')
 
     if not predict_only:
-        os.system('t2t-bleu --translation=' + predictions_final_file + ' --reference=' + test_target_file)
+        if sys.executable is not None:
+            bleu_script = 'python ' + os.path.join(os.path.dirname(sys.executable), 't2t-bleu')
+        else:
+            bleu_script = 't2t-bleu'
+
+        os.system(bleu_script +
+                  ' --translation=' + predictions_final_file +
+                  ' --reference=' + test_target_file)
 
     print('DONE')
 
 
+# In order to make it work on Windows, do the following modification in the tensor2tensor files:
+# -> utils/bleu_hook.py: in function _read_stepfiles_list(), change "*-[0-9]*" to "*"
 def test_all(data_testset, reranking=True):
     test_source_file = os.path.join(config.DATA_DIR, 'test_source_dict.json')
     test_target_file = os.path.join(config.DATA_DIR, 'test_target.txt')
@@ -195,8 +204,7 @@ def test_all(data_testset, reranking=True):
 
     # Relexicalize all prediction files
     for predictions_file in glob.glob(os.path.join(config.PREDICTIONS_BATCH_DIR, '*')):
-        filename = predictions_file.split('/')[-1]
-        predictions_final_file = os.path.join(config.PREDICTIONS_BATCH_LEX_DIR, filename)
+        predictions_final_file = os.path.join(config.PREDICTIONS_BATCH_LEX_DIR, os.path.basename(predictions_file))
 
         # Read in the beams and their log-probs as produced by the T2T beam search
         df_predictions = pd.read_csv(predictions_file, sep='\t', header=None, encoding='utf8')
@@ -228,7 +236,12 @@ def test_all(data_testset, reranking=True):
             for prediction in predictions_final:
                 f_predictions_final.write(prediction + '\n')
 
-    os.system('t2t-bleu' +
+    if sys.executable is not None:
+        bleu_script = 'python ' + os.path.join(os.path.dirname(sys.executable), 't2t-bleu')
+    else:
+        bleu_script = 't2t-bleu'
+
+    os.system(bleu_script +
               ' --translations_dir=' + config.PREDICTIONS_BATCH_LEX_DIR +
               ' --reference=' + test_target_file +
               ' --event_dir=' + config.PREDICTIONS_BATCH_EVENT_DIR)

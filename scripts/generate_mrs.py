@@ -369,10 +369,15 @@ def main():
 
     # ----
 
-    file_dataset = os.path.join(config.VIDEO_GAME_DATA_DIR, 'dataset.csv')
-    file_misses = os.path.join(config.VIDEO_GAME_DATA_DIR, 'dataset_misses.csv')
+    # file_dataset = os.path.join(config.VIDEO_GAME_DATA_DIR, 'dataset.csv')
+    # file_misses = os.path.join(config.VIDEO_GAME_DATA_DIR, 'dataset_misses.csv')
+    #
+    # train_test_split(file_dataset, file_misses)
 
-    train_test_split(file_dataset, file_misses)
+    # ----
+
+    dataset_path = os.path.join(config.VIDEO_GAME_DATA_DIR, 'train.csv')
+    shuffle_samples_csv(dataset_path)
 
 
 if __name__ == '__main__':
