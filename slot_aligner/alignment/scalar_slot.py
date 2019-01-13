@@ -21,14 +21,6 @@ def align_scalar_slot(text, text_tok, slot, value, slot_mapping=None, value_mapp
         slot = slot_mapping
     alternatives = get_slot_value_alternatives(slot)
 
-    # Get the value's alternative realizations
-    value_alternatives = [value]
-    if value_mapping is not None:
-        value = value_mapping[value]
-        value_alternatives.append(value)
-    if value in alternatives:
-        value_alternatives += alternatives[value]
-
     # Search for all possible slot realizations
     for slot_stem in slot_stems:
         if len(slot_stem) == 1 and not slot_stem.isalnum():
@@ -45,9 +37,19 @@ def align_scalar_slot(text, text_tok, slot, value, slot_mapping=None, value_mapp
             slot_stem_positions.extend(slot_stem_pos)
 
     slot_stem_positions.sort()
+    slot_stem_indexes.sort()
 
+    # If it's only required that the slot stem is matched, don't search for the value
     if slot_stem_only and len(slot_stem_positions) > 0:
         return slot_stem_positions[0]
+
+    # Get the value's alternative realizations
+    value_alternatives = [value]
+    if value_mapping is not None:
+        value = value_mapping[value]
+        value_alternatives.append(value)
+    if value in alternatives:
+        value_alternatives += alternatives[value]
 
     # Search for all possible value equivalents
     for val in value_alternatives:
@@ -56,7 +58,7 @@ def align_scalar_slot(text, text_tok, slot, value, slot_mapping=None, value_mapp
             val_positions = [m.start() for m in re.finditer(val, text)]
             for pos in val_positions:
                 # Remember the leftmost value position as a fallback in case there is no nearby slot stem mention
-                if pos <= leftmost_pos or leftmost_pos == -1:
+                if pos < leftmost_pos or leftmost_pos == -1:
                     leftmost_pos = pos
 
                 # Find a slot stem mention within a certain distance from the value realization
@@ -69,7 +71,7 @@ def align_scalar_slot(text, text_tok, slot, value, slot_mapping=None, value_mapp
             val_indexes, val_positions = find_all_in_list(val, text_tok)
             for i, idx in enumerate(val_indexes):
                 # Remember the leftmost value position as a fallback in case there is no nearby slot stem mention
-                if val_positions[i] <= leftmost_pos or leftmost_pos == -1:
+                if val_positions[i] < leftmost_pos or leftmost_pos == -1:
                     leftmost_pos = val_positions[i]
 
                 # Find a slot stem mention within a certain distance from the value realization

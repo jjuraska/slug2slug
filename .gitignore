@@ -172,6 +172,10 @@ flycheck_*.el
 /predictions/beams.npz
 /predictions/beams_dump.pkl
 /predictions/beams_dump_reranked.pkl
+/predictions/batch
+/predictions/batch_event
+/predictions/batch_lex
+/predictions/batch_lex_*
 /saved_model
 /tools
 

@@ -194,13 +194,23 @@ def find_slot_realization(text, text_tok, slot, value_orig, delex_slot_placehold
                     pos = align_categorical_slot(text, text_tok, slot, value,
                                                  mode='exact_match')
             elif slot == 'pricerange':
-                pos = align_scalar_slot(text, text_tok, slot, value,
-                                        slot_stem_only=True)
+                if soft_align:
+                    pos = align_scalar_slot(text, text_tok, slot, value,
+                                            slot_stem_only=True)
+                else:
+                    pos = align_scalar_slot(text, text_tok, slot, value,
+                                            slot_stem_only=False)
             elif slot == 'customerrating':
-                pos = align_scalar_slot(text, text_tok, slot, value,
-                                        slot_mapping=customerrating_mapping['slot'],
-                                        value_mapping=customerrating_mapping['values'],
-                                        slot_stem_only=True)
+                if soft_align:
+                    pos = align_scalar_slot(text, text_tok, slot, value,
+                                            slot_mapping=customerrating_mapping['slot'],
+                                            value_mapping=customerrating_mapping['values'],
+                                            slot_stem_only=True)
+                else:
+                    pos = align_scalar_slot(text, text_tok, slot, value,
+                                            slot_mapping=customerrating_mapping['slot'],
+                                            value_mapping=customerrating_mapping['values'],
+                                            slot_stem_only=False)
 
             # TV dataset slots
             elif slot == 'type':
@@ -379,10 +389,12 @@ def score_alignment(utt, mr, scoring="default+over-class"):
         slot_root = slot.rstrip(string.digits)
         value = value.lower()
 
-        pos, _ = find_slot_realization(utt, utt_tok, slot_root, value, matches)
+        pos, hallucinated_slots = find_slot_realization(utt, utt_tok, slot_root, value, matches)
 
         if pos >= 0:
             slots_found.add(slot)
+
+        num_slot_halluc += len(hallucinated_slots)
 
     # if scoring == "default":
     #    return len(slots_found) / len(curr_mr)
@@ -417,10 +429,12 @@ def count_errors(utt, mr):
         slot_root = slot.rstrip(string.digits)
         value = value.lower()
 
-        pos, _ = find_slot_realization(utt, utt_tok, slot_root, value, matches)
+        pos, hallucinated_slots = find_slot_realization(utt, utt_tok, slot_root, value, matches)
 
         if pos >= 0:
             slots_found.add(slot)
+
+        num_slot_halluc += len(hallucinated_slots)
 
     missing_slots = []
     for slot in mr:
