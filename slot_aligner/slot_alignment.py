@@ -134,7 +134,7 @@ def get_scalar_slots():
 def find_slot_realization(text, text_tok, slot, value_orig, delex_slot_placeholders,
                           soft_align=False, match_name_ref=False):
     pos = -1
-    hallucinated_slots = []
+    is_hallucinated = False
 
     value = re.sub(r'[-/]', ' ', value_orig)
 
@@ -153,7 +153,7 @@ def find_slot_realization(text, text_tok, slot, value_orig, delex_slot_placehold
             slot_cnt = text.count(delex_slot)
             if slot_cnt > 1:
                 print('HALLUCINATED SLOT:', slot)
-                hallucinated_slots.append(slot)
+                is_hallucinated = True
         else:
             # Universal slot values
             if value == 'dontcare':
@@ -163,7 +163,7 @@ def find_slot_realization(text, text_tok, slot, value_orig, delex_slot_placehold
                     slot_cnt = text.count(reduce_slot_name(slot))
                     if slot_cnt > 1:
                         print('HALLUCINATED SLOT:', slot)
-                        hallucinated_slots.append(slot)
+                        is_hallucinated = True
             elif value == 'none':
                 if none_realization(text, slot, value):
                     # TODO: get the actual position
@@ -171,7 +171,7 @@ def find_slot_realization(text, text_tok, slot, value_orig, delex_slot_placehold
                     slot_cnt = text.count(reduce_slot_name(slot))
                     if slot_cnt > 1:
                         print('HALLUCINATED SLOT:', slot)
-                        hallucinated_slots.append(slot)
+                        is_hallucinated = True
 
             elif slot == 'name' and match_name_ref:
                 pos = text.find(value)
@@ -278,22 +278,14 @@ def find_slot_realization(text, text_tok, slot, value_orig, delex_slot_placehold
                 # value_cnt = text.count(value)
                 # if value_cnt > 1:
                 #     print('HALLUCINATED SLOT:', slot, value)
-                #     hallucinated_slots.append(slot)
+                #     is_hallucinated = True
 
-    return pos, hallucinated_slots
-
-
-def preprocess_utterance(utt):
-    utt = re.sub(r'[-_/]', ' ', utt.lower())
-    utt_tok = [w.strip('.,!?') if len(w) > 1 else w for w in word_tokenize(utt)]
-
-    return utt, utt_tok
+    return pos, is_hallucinated
 
 
 # TODO: use delexed utterances for splitting
 def split_content(old_mrs, old_utterances, filename, permute=False):
-    """Splits the MRs into multiple MRs with the corresponding individual sentences.
-    """
+    """Splits the MRs into multiple MRs with the corresponding individual sentences."""
 
     new_mrs = []
     new_utterances = []
@@ -327,7 +319,7 @@ def split_content(old_mrs, old_utterances, filename, permute=False):
 
             # Search for the realization of each slot in each sentence
             for sent, new_slots in new_pair.items():
-                sent, sent_tok = preprocess_utterance(sent)
+                sent, sent_tok = __preprocess_utterance(sent)
 
                 pos, _ = find_slot_realization(sent, sent_tok, slot_root, value, None, soft_align=True, match_name_ref=True)
 
@@ -375,98 +367,129 @@ def split_content(old_mrs, old_utterances, filename, permute=False):
     return new_mrs, new_utterances
 
 
-def score_alignment(utt, mr, scoring="default+over-class"):
-    """Scores a delexicalized utterance based on the rate of unrealized and/or hallucinated slots.
+def score_alignment(utt, mr, scoring='default+over-class'):
+    """Scores a delexicalized utterance based on the rate of slots that were unrealized, not mentioned,
+    or hallucinated.
     """
 
     slots_found = set()
-    num_slot_halluc = 0
+    slots_hallucinated = set()
 
-    utt, utt_tok = preprocess_utterance(utt)
-    matches = set(re.findall(r'<slot_.*?>', utt))
+    utt, utt_tok = __preprocess_utterance(utt)
+    delex_placeholders = extract_delex_placeholders(utt)
 
     for slot, value in mr.items():
         slot_root = slot.rstrip(string.digits)
         value = value.lower()
 
-        pos, hallucinated_slots = find_slot_realization(utt, utt_tok, slot_root, value, matches)
+        pos, is_hallucinated = find_slot_realization(utt, utt_tok, slot_root, value, delex_placeholders)
 
         if pos >= 0:
             slots_found.add(slot)
 
-        num_slot_halluc += len(hallucinated_slots)
+        if is_hallucinated:
+            slots_hallucinated.add(slot)
 
-    # if scoring == "default":
-    #    return len(slots_found) / len(curr_mr)
-    # elif scoring == "default+over-class":
-    #    return (len(slots_found) / len(curr_mr)) / (len(matches) + 1)
+    # if scoring == 'default':
+    #    return len(slots_found) / len(mr)
+    # elif scoring == 'default+over-class':
+    #    return (len(slots_found) / len(mr)) / (len(matches) + 1)
 
-    # if scoring == "default":
-    #    return len(slots_found) / len(curr_mr)
-    # elif scoring == "default+over-class":
-    #    return (len(slots_found) - len(matches) + 1) / (len(curr_mr) + 1)
+    # if scoring == 'default':
+    #    return len(slots_found) / len(mr)
+    # elif scoring == 'default+over-class':
+    #    return (len(slots_found) - len(matches) + 1) / (len(mr) + 1)
 
-    if scoring == "default":
-        return 1 / (len(mr) - len(slots_found) + num_slot_halluc + 1)
-    elif scoring == "default+over-class":
-        return 1 / (len(mr) - len(slots_found) + num_slot_halluc + 1) / (len(matches) + 1)
+    if scoring == 'default':
+        return 1 / (len(mr) - len(slots_found) + len(slots_hallucinated) + 1)
+    elif scoring == 'default+over-class':
+        return 1 / (len(mr) - len(slots_found) + len(slots_hallucinated) + 1) / (len(delex_placeholders) + 1)
 
 
 def count_errors(utt, mr):
-    """Counts unrealized and hallucinated slots in a lexicalized utterance.
-    """
-
-    non_categorical_slots = ['familyfriendly', 'pricerange', 'customerrating',
-                             'rating', 'hasmultiplayer', 'availableonsteam', 'haslinuxrelease', 'hasmacrelease']
+    """Counts unrealized and hallucinated slots in an utterance."""
 
     slots_found = set()
-    num_slot_halluc = 0
+    slots_hallucinated = set()
 
-    utt, utt_tok = preprocess_utterance(utt)
-    matches = set(re.findall(r'<slot_.*?>', utt))
+    # Extract delexicalized placeholders, and tokenize the utterance
+    delex_placeholders = extract_delex_placeholders(utt)
+    utt, utt_tok = __preprocess_utterance(utt)
 
+    # For each slot find its realization in the utterance
     for slot, value in mr.items():
         slot_root = slot.rstrip(string.digits)
         value = value.lower()
 
-        pos, hallucinated_slots = find_slot_realization(utt, utt_tok, slot_root, value, matches)
+        pos, is_hallucinated = find_slot_realization(utt, utt_tok, slot_root, value, delex_placeholders)
 
         if pos >= 0:
             slots_found.add(slot)
 
-        num_slot_halluc += len(hallucinated_slots)
+        if is_hallucinated:
+            slots_hallucinated.add(slot)
 
-    missing_slots = []
-    for slot in mr:
-        if slot not in slots_found:
-            missing_slots.append(slot)
+    # Identify slots that were realized incorrectly or not mentioned at all in the utterance
+    incorrect_slots = [slot for slot in mr if slot not in slots_found]
 
-    num_erroneous_slots = (len(mr) - len(slots_found)) + num_slot_halluc
+    num_errors = len(incorrect_slots) + len(slots_hallucinated) + len(delex_placeholders)
 
-    return num_erroneous_slots, missing_slots
+    return num_errors, incorrect_slots
 
 
 def find_alignment(utt, mr):
-    """Identifies the realization position of each slot in the utterance.
-    """
+    """Identifies the mention position of each slot in an utterance."""
 
     alignment = []
 
-    utt, utt_tok = preprocess_utterance(utt)
+    utt, utt_tok = __preprocess_utterance(utt)
 
-    for slot, value_orig in mr.items():
+    # For each slot find its realization in the utterance
+    for slot, value in mr.items():
         slot_root = slot.rstrip(string.digits)
-        value = value_orig.lower()
+        value = value.lower()
 
         pos, _ = find_slot_realization(utt, utt_tok, slot_root, value, None)
 
         if pos >= 0:
-            alignment.append((pos, slot, value_orig))
+            alignment.append((pos, slot, value))
 
     # Sort the slot realizations by their position
     alignment.sort(key=lambda x: x[0])
 
     return alignment
+
+
+def extract_delex_placeholders(utt):
+    """Extracts delexicalized placeholders from the utterance."""
+
+    pattern = config.DELEX_PREFIX + '.*?' + config.DELEX_SUFFIX
+
+    return set(re.findall(pattern, utt))
+
+
+def __pop_delex_placeholders(utt):
+    """Extracts and removes delexicalized placeholders from the utterance."""
+
+    pattern = config.DELEX_PREFIX + '.*?' + config.DELEX_SUFFIX
+
+    matches = set(re.findall(pattern, utt))
+    utt_stripped = re.sub(pattern, '', utt)
+    utt_stripped = re.sub('\s+', ' ', utt_stripped)
+
+    return matches, utt_stripped
+
+
+def __preprocess_utterance(utt):
+    """Removes certain special symbols from the utterance, and reduces all whitespace to a single space.
+    Returns the utterance both in string form and tokenized.
+    """
+
+    utt = re.sub(r'[-/]', ' ', utt.lower())
+    utt = re.sub(r'\s+', ' ', utt)
+    utt_tok = [w.strip('.,!?') if len(w) > 1 else w for w in word_tokenize(utt)]
+
+    return utt, utt_tok
 
 
 def mergeOrderedDicts(mrs, order=None):

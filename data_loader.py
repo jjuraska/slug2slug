@@ -3,7 +3,6 @@ import io
 import random
 import string
 import re
-import copy
 import json
 import pandas as pd
 import numpy as np
@@ -45,8 +44,7 @@ def load_training_data(data_trainset, data_devset, input_concat=False, generate_
     x_train, y_train, x_dev, y_dev = dataset['data']
     slot_sep, val_sep, val_sep_closing = dataset['separators']
 
-    # TODO: do the utterances still need to be parsed into lists of words?
-    # Parse the utterances into lists of words
+    # Lowercase the utterances
     y_train = [preprocess_utterance(y) for y in y_train]
     y_dev = [preprocess_utterance(y) for y in y_dev]
 
@@ -130,13 +128,16 @@ def load_training_data(data_trainset, data_devset, input_concat=False, generate_
             # Append a sequence-end token to be paired up with seq2seq's sequence-end token when concatenating
             x_dev_seq[i].append('<STOP>')
 
+    y_train_seq = [word_tokenize(y) for y in y_train]
+    y_dev_seq = [word_tokenize(y) for y in y_dev]
+
     # Generate a vocabulary file if necessary
     if generate_vocab:
-        generate_vocab_file(np.concatenate(x_train_seq + x_dev_seq + y_train + y_dev),
+        generate_vocab_file(np.concatenate(x_train_seq + x_dev_seq + y_train_seq + y_dev_seq),
                             vocab_filename='vocab.lang_gen.tokens')
         # generate_vocab_file(np.concatenate(x_train_seq + x_dev_seq),
         #                     vocab_filename='vocab.lang_gen_multi_vocab.source')
-        # generate_vocab_file(np.concatenate(y_train + y_dev),
+        # generate_vocab_file(np.concatenate(y_train_seq + y_dev_seq),
         #                     vocab_filename='vocab.lang_gen_multi_vocab.target')
 
     with io.open(training_source_file, 'w', encoding='utf8') as f_x_train:
@@ -145,7 +146,7 @@ def load_training_data(data_trainset, data_devset, input_concat=False, generate_
 
     with io.open(training_target_file, 'w', encoding='utf8') as f_y_train:
         for line in y_train:
-            f_y_train.write('{}\n'.format(' '.join(line)))
+            f_y_train.write(line + '\n')
 
     with io.open(dev_source_file, 'w', encoding='utf8') as f_x_dev:
         for line in x_dev_seq:
@@ -153,9 +154,9 @@ def load_training_data(data_trainset, data_devset, input_concat=False, generate_
 
     with io.open(dev_target_file, 'w', encoding='utf8') as f_y_dev:
         for line in y_dev:
-            f_y_dev.write('{}\n'.format(' '.join(line)))
+            f_y_dev.write(line + '\n')
 
-    return np.concatenate(x_train_seq + x_dev_seq + y_train + y_dev).flatten()
+    return np.concatenate(x_train_seq + x_dev_seq + y_train_seq + y_dev_seq).flatten()
 
 
 def load_test_data(data_testset, input_concat=False):
@@ -260,8 +261,10 @@ def get_vocabulary(token_sequences, vocab_size=10000):
     return vocab_set
 
 
-def tokenize_mr(mr, add_eos_token=True):
+# TODO: generalize and utilize in the loading functions
+def tokenize_mr(mr):
     """Produces a (delexicalized) sequence of tokens from the input MR.
+    Method used in the client to preprocess a single MR that is sent to the service for utterance generation.
     """
 
     slot_sep = ','
@@ -269,31 +272,41 @@ def tokenize_mr(mr, add_eos_token=True):
     val_sep_closing = True
     
     mr_seq = []
+    slot_ctr = 0
+    emph_idxs = set()
     mr_dict = OrderedDict()
+    mr_dict_cased = OrderedDict()
 
-    # extract the slot-value pairs into a dictionary
+    # Extract the slot-value pairs into a dictionary
     for slot_value in mr.split(slot_sep):
-        slot, value, _, _ = parse_slot_and_value(slot_value, val_sep, val_sep_closing)
-        mr_dict[slot] = value
+        slot, value, _, value_orig = parse_slot_and_value(slot_value, val_sep, val_sep_closing)
 
-    # make a copy of the dictionary for delexing
-    mr_dict_delex = copy.deepcopy(mr_dict)
+        if slot == EMPH_TOKEN:
+            emph_idxs.add(slot_ctr)
+        else:
+            mr_dict[slot] = value
+            mr_dict_cased[slot] = value_orig
+            slot_ctr += 1
 
-    # delexicalize the MR
-    delex_sample(mr_dict_delex, mr_only=True)
+    # Delexicalize the MR
+    delex_sample(mr_dict, mr_only=True)
 
-    # convert the dictionary to a list
-    for key, val in mr_dict_delex.items():
+    slot_ctr = 0
+
+    # Convert the dictionary to a list
+    for key, val in mr_dict.items():
+        # Insert the emphasis token where appropriate
+        if slot_ctr in emph_idxs:
+            mr_seq.append(EMPH_TOKEN)
+
         if len(val) > 0:
-            mr_seq.extend([key, val])
+            mr_seq.extend([key] + val.split())
         else:
             mr_seq.append(key)
 
-    # append the sequence-end token
-    if add_eos_token:
-        mr_seq.append('SEQUENCE_END')
+        slot_ctr += 1
 
-    return mr_seq, mr_dict
+    return mr_seq, mr_dict_cased
 
 
 def load_training_data_for_eval(data_trainset, data_model_outputs_train, vocab_size, max_input_seq_len, max_output_seq_len, delex=False):
@@ -753,10 +766,6 @@ def read_video_game_dataset_dev(data_devset):
     x_dev = df_dev.mr.tolist()
     y_dev = df_dev.ref.tolist()
 
-    # replace commas within values with a placeholder
-    for i, mr in enumerate(x_dev):
-        x_dev[i] = preprocess_mr(mr, '(', ';', '=')
-
     return x_dev, y_dev
 
 
@@ -1024,7 +1033,6 @@ def replace_commas_in_mr_values(mrs, val_sep, val_sep_end):
             # If comma inside a value, replace the comma with placeholder
             if c == ',' and val_beg_cnt > val_end_cnt:
                 mr_new += COMMA_PLACEHOLDER
-                # print(mr_new)
                 continue
 
             # Keep track of value beginning and end
@@ -1078,23 +1086,23 @@ def preprocess_mr(mr, da_sep, slot_sep, val_sep):
     return mr_new
 
 
-def preprocess_utterance(utterance):
-    return word_tokenize(utterance.lower())
+def preprocess_utterance(utt):
+    return ' '.join(word_tokenize(utt.lower()))
 
 
-def parse_slot_and_value(slot_value, val_sep, val_sep_closing=False):
+def parse_slot_and_value(slot_value, val_sep, has_val_sep_closing=False):
     sep_idx = slot_value.find(val_sep)
     if sep_idx > -1:
         # Parse the slot
         slot = slot_value[:sep_idx].strip()
         # Parse the value
-        if val_sep_closing == True:
+        if has_val_sep_closing:
             value = slot_value[sep_idx + 1:-1].strip()
         else:
             value = slot_value[sep_idx + 1:].strip()
     else:
         # Parse the slot
-        if val_sep_closing == True:
+        if has_val_sep_closing:
             slot = slot_value[:-1].strip()
         else:
             slot = slot_value.strip()
@@ -1135,8 +1143,6 @@ def delex_sample(mr, utterance=None, dataset=None, slots_to_delex=None, mr_only=
             # By default, assume the dataset is 'rest_e2e'
             delex_slots = ['name', 'near', 'food']
 
-    if not mr_only:
-        utterance = ' '.join(utterance)
     mr_update = {}
 
     for slot, value in mr.items():
@@ -1165,8 +1171,7 @@ def delex_sample(mr, utterance=None, dataset=None, slots_to_delex=None, mr_only=
             if not mr_only:
                 for val in values_alt:
                     # Replace the value (whole-word matches only) with the placeholder
-                    val_preproc = ' '.join(word_tokenize(val))
-                    utterance_delexed = re.sub(r'\b{}\b'.format(val_preproc), placeholder, utterance)
+                    utterance_delexed = re.sub(r'\b{}\b'.format(val), placeholder, utterance)
                     if utterance_delexed != utterance:
                         break
 
@@ -1184,9 +1189,10 @@ def delex_sample(mr, utterance=None, dataset=None, slots_to_delex=None, mr_only=
 
     if not mr_only:
         # Tokenize punctuation missed by tokenizer (such as after years and numbers in titles) before delexicalization
-        utterance = utterance.replace('>,', '> ,').replace('>.', '> .')
+        utterance = utterance.replace(config.DELEX_SUFFIX + ',', config.DELEX_SUFFIX + ' ,')
+        utterance = utterance.replace(config.DELEX_SUFFIX + '.', config.DELEX_SUFFIX + ' .')
 
-        return utterance.split()
+        return utterance
 
 
 def counterfeit_sample(mr, utt, dataset=None, slots_to_delex=None):
@@ -1267,13 +1273,13 @@ def counterfeit_sample(mr, utt, dataset=None, slots_to_delex=None):
 
 
 def create_placeholder(slot, value):
-    """Assemble a placeholder token for the given slot value.
-    """
+    """Assemble a placeholder token for the given slot value."""
 
     vowels = 'aeiou'
-    placeholder = '<slot_'
 
+    placeholder = config.DELEX_PREFIX
     value = value.lower()
+
     if value[0] in vowels:
         placeholder += 'vow_'
     else:
@@ -1286,7 +1292,7 @@ def create_placeholder(slot, value):
         if 'food' not in value:
             placeholder += 'cuisine_'
 
-    placeholder += (slot + '>')
+    placeholder += (slot + config.DELEX_SUFFIX)
 
     return placeholder
 

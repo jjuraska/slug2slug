@@ -30,7 +30,9 @@ VIDEO_GAME_DATA_DIR = os.path.join(DATA_DIR, 'video_game')
 METRICS_SCRIPT_PATH = os.path.join(METRICS_DIR, 'measure_scores.py')
 
 # Constants
-COMMA_PLACEHOLDER = ' <!comma>'
-EMPH_TOKEN = '<!emph>'
-CONTRAST_TOKEN = '<!contrast>'
-CONCESSION_TOKEN = '<!concession>'
+COMMA_PLACEHOLDER = ' __comma__'
+DELEX_PREFIX = '__slot_'    # Important to use special symbols that do not get tokenized (such as '_')
+DELEX_SUFFIX = '__'
+EMPH_TOKEN = '__emph__'
+CONTRAST_TOKEN = '__contrast__'
+CONCESSION_TOKEN = '__concession__'

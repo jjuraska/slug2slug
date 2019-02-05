@@ -9,7 +9,7 @@ from nltk.tokenize import word_tokenize, sent_tokenize
 from sacremoses import MosesDetokenizer
 
 import config
-from slot_aligner.slot_alignment import score_alignment
+from slot_aligner.slot_alignment import extract_delex_placeholders, score_alignment
 
 
 def finalize_utterances(utterances, mrs):
@@ -26,7 +26,7 @@ def finalize_utterances(utterances, mrs):
 
 
 def finalize_utterance(utterance, mr_dict):
-    return relex(detokenize(utterance), mr_dict)
+    return relex(detokenize(capitalize(utterance, mr_dict)), mr_dict)
 
 
 def capitalize(utt, mr_dict, item_sep='; '):
@@ -100,13 +100,12 @@ def detokenize(utt_tokenized):
 
 def relex(utterance, mr_dict):
     # Identify all value placeholders
-    matches = re.findall(r'<slot_.*?>', utterance)
+    matches = extract_delex_placeholders(utterance)
 
     # Replace the value placeholders with the corresponding values from the MR
     fail_flags = []
     for match in matches:
-        slot = match.split('_')
-        slot = slot[-1].rstrip('>')
+        slot = match.rstrip('_').split('_')[-1]
         if slot in mr_dict.keys():
             utterance = utterance.replace(match, mr_dict[slot])
         else:

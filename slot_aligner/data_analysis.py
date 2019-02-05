@@ -4,27 +4,26 @@ from collections import OrderedDict
 
 import config
 import data_loader
-from slot_aligner.slot_alignment import find_alignment, count_errors
-
-
-EMPH_TOKEN = config.EMPH_TOKEN
+from slot_aligner.slot_alignment import find_alignment, count_errors, score_alignment
 
 
 def align_slots(dataset, filename):
-    """Aligns slots of the MRs with their mentions in the corresponding utterances.
-    """
+    """Aligns slots of the MRs with their mentions in the corresponding utterances."""
 
     alignments = []
     alignment_strings = []
 
-    print('Aligning ' + str(filename))
+    print('Aligning slots in ' + str(filename))
 
     # Read in the data
     data_cont = data_loader.init_test_data(os.path.join(config.DATA_DIR, dataset, filename))
-    mrs, utterances = data_cont['data']
+    mrs_orig, utterances_orig = data_cont['data']
     slot_sep, val_sep, val_sep_closing = data_cont['separators']
 
-    for i, mr in enumerate(mrs):
+    # Tokenize utterances
+    utterances = [data_loader.preprocess_utterance(utt) for utt in utterances_orig]
+
+    for i, mr in enumerate(mrs_orig):
         mr_dict = OrderedDict()
 
         # Extract the slot-value pairs into a dictionary
@@ -38,7 +37,7 @@ def align_slots(dataset, filename):
         alignment_strings.append(' '.join(['({0}: {1})'.format(pos, slot) for pos, slot, _ in alignments[i]]))
 
     new_df = pd.DataFrame(columns=['mr', 'ref', 'alignment'])
-    new_df['mr'] = mrs
+    new_df['mr'] = mrs_orig
     new_df['ref'] = utterances
     new_df['alignment'] = alignment_strings
 
@@ -47,24 +46,24 @@ def align_slots(dataset, filename):
 
 
 def score_slot_realizations(dataset, filename):
-    """Analyzes missing and extra slot mentions in the utterances.
-    """
+    """Analyzes unrealized and hallucinated slot mentions in the utterances."""
 
     errors = []
-    missing_slots = []
+    incorrect_slots = []
     # slot_cnt = 0
 
-    print('Analyzing missing/extra slot realizations in ' + str(filename))
+    print('Analyzing missing slot realizations and hallucinations in ' + str(filename))
 
     # Read in the data
     data_cont = data_loader.init_test_data(os.path.join(config.EVAL_DIR, dataset, filename))
     dataset_name = data_cont['dataset_name']
-    mrs, utterances = data_cont['data']
+    mrs_orig, utterances_orig = data_cont['data']
     slot_sep, val_sep, val_sep_closing = data_cont['separators']
 
-    utterances = [data_loader.preprocess_utterance(utt) for utt in utterances]
+    # Tokenize utterances
+    utterances = [data_loader.preprocess_utterance(utt) for utt in utterances_orig]
 
-    for i, mr in enumerate(mrs):
+    for i, mr in enumerate(mrs_orig):
         mr_dict = OrderedDict()
 
         # Extract the slot-value pairs into a dictionary
@@ -72,34 +71,35 @@ def score_slot_realizations(dataset, filename):
             slot, value, _, _ = data_loader.parse_slot_and_value(slot_value, val_sep, val_sep_closing)
             mr_dict[slot] = value
 
+            # Count auxiliary slots
             # if not re.match(r'<!.*?>', slot):
             #     slot_cnt += 1
 
         # TODO: get rid of this hack
-        # move the food-slot to the end of the dict (because of delexing)
+        # Move the food-slot to the end of the dict (because of delexing)
         if 'food' in mr_dict:
             food_val = mr_dict['food']
             del(mr_dict['food'])
             mr_dict['food'] = food_val
 
-        # delexicalize the MR and the utterance
-        utterances[i] = ' '.join(data_loader.delex_sample(mr_dict, utterances[i], dataset=dataset_name))
+        # Delexicalize the MR and the utterance
+        # utterances[i] = data_loader.delex_sample(mr_dict, utterances[i], dataset=dataset_name)
 
-        # count the missing and over-generated slots in the utterance
-        cur_errors, cur_missing_slots = count_errors(utterances[i], mr_dict)
+        # Count the missing and hallucinated slots in the utterance
+        cur_errors, cur_incorrect_slots = count_errors(utterances[i], mr_dict)
         errors.append(cur_errors)
-        missing_slots.append(', '.join(cur_missing_slots))
+        incorrect_slots.append(', '.join(cur_incorrect_slots))
 
     # DEBUG PRINT
     # print(slot_cnt)
 
-    new_df = pd.DataFrame(columns=['mr', 'ref', 'errors', 'missing slots'])
-    new_df['mr'] = mrs
-    new_df['ref'] = utterances
+    new_df = pd.DataFrame(columns=['mr', 'ref', 'errors', 'incorrect slots'])
+    new_df['mr'] = mrs_orig
+    new_df['ref'] = utterances_orig
     new_df['errors'] = errors
-    new_df['missing slots'] = missing_slots
+    new_df['incorrect slots'] = incorrect_slots
 
-    filename_out = ''.join(filename.split('.')[:-1]) + '_misses.csv'
+    filename_out = os.path.splitext(filename)[0] + ' (errors).csv'
     new_df.to_csv(os.path.join(config.EVAL_DIR, dataset, filename_out), index=False, encoding='utf8')
 
 
@@ -127,7 +127,7 @@ def score_emphasis(dataset, filename):
             slot, value, _, _ = data_loader.parse_slot_and_value(slot_value, val_sep, val_sep_closing)
 
             # Extract tokens to be emphasized
-            if slot == EMPH_TOKEN:
+            if slot == config.EMPH_TOKEN:
                 expect_emph = True
             else:
                 mr_dict[slot] = value
@@ -165,11 +165,11 @@ def score_emphasis(dataset, filename):
 
 
 if __name__ == '__main__':
-    # align_slots('rest_e2e', 'trainset_e2e.csv')
-    align_slots('video_game', 'train.csv')
+    # align_slots('rest_e2e', 'devset_e2e.csv')
+    align_slots('video_game', 'test.csv')
 
     # score_slot_realizations(os.path.join('predictions-rest_e2e', 'devset'), 'predictions_devset_TRANS_tmp.csv')
     # score_slot_realizations(os.path.join('predictions-rest_e2e', 'testset'), 'predictions_testset_TRANS_tmp.csv')
-    # score_slot_realizations(os.path.join('predictions-video_game', 'testset'), 'trainset.csv')
+    # score_slot_realizations(os.path.join('predictions-video_game', 'testset'), 'predictions TRANS beam 4 (8k).csv')
 
     # score_emphasis('predictions-rest_e2e_stylistic_selection/devset', 'predictions RNN (4+4) augm emph (reference).csv')
