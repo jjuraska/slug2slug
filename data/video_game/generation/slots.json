@@ -1,0 +1,79 @@
+{
+    "all": [
+        "name",
+        "release_year",
+        "exp_release_date",
+        "developer",
+        "esrb",
+        "rating",
+        "genres",
+        "player_perspective",
+        "has_multiplayer",
+        "platforms",
+        "available_on_steam",
+        "has_linux_release",
+        "has_mac_release"
+    ],
+    "dialogue_acts": {
+        "confirm": {
+            "mandatory": [
+                "name"
+            ],
+            "excluded": [
+                "rating"
+            ]
+        },
+        "give_opinion": {
+            "mandatory": [
+                "name",
+                "rating"
+            ],
+            "excluded": null
+        },
+        "inform": {
+            "mandatory": [
+                "name",
+                "exp_release_date",
+                "genres"
+            ],
+            "excluded": null
+        },
+        "recommend": {
+            "mandatory": [
+                "name"
+            ],
+            "excluded": [
+                "rating"
+            ]
+        },
+        "request_attribute": {
+            "mandatory": null,
+            "excluded": [
+                "name",
+                "rating"
+            ]
+        },
+        "request_explanation": {
+            "mandatory": null,
+            "excluded": [
+                "name",
+                "rating"
+            ]
+        },
+        "suggest": {
+            "mandatory": [
+                "name"
+            ],
+            "excluded": [
+                "rating"
+            ]
+        },
+        "verify_attribute": {
+            "mandatory": [
+                "name",
+                "rating"
+            ],
+            "excluded": null
+        }
+    }
+}
