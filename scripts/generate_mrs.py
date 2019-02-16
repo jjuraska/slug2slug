@@ -9,19 +9,26 @@ from collections import OrderedDict
 import config
 
 
-NUM_VARIATIONS = 10
-
-
 class MRGenerator:
-    def __init__(self, domain):
+    def __init__(self, domain, num_variations):
+        self.domain = domain
+        self.num_variations = num_variations
+
+        # Load slot info and constraints for the given domain
         if domain == 'video_game':
             with open(os.path.join(config.VIDEO_GAME_DATA_DIR, 'generation', 'slots.json'), 'r') as f_slots:
                 slots_dict = json.load(f_slots)
         else:
             raise ValueError('Unexpected domain "' + domain + '"')
 
-        self.slots = slots_dict['all']
-        self.da_slots = slots_dict['dialogue_acts']
+        # All possible slots in the domain
+        self.slots = slots_dict['names']
+        # List slots in the domain
+        self.list_slots = slots_dict['list_slots']
+        # Mandatory and excluded slots for each DA
+        self.da_constraints = slots_dict['da_constraints']
+        # Value constraints for all slots in specific DAs, and for specific slots across all DAs (except for "inform")
+        self.value_constraints = slots_dict['value_constraints']
 
     def create_mrs_from_game_data(self, file_in, da=None, num_slots=None):
         mrs = []
@@ -42,7 +49,7 @@ class MRGenerator:
 
         for _, row in df.iterrows():
             mr_var_cnt = 0
-            while mr_var_cnt < NUM_VARIATIONS:
+            while mr_var_cnt < self.num_variations:
                 # Generate a random MR from the current game's data
                 mr_dict = self.__get_random_slot_comb_for_da(row, da, num_slots)
 
@@ -50,7 +57,7 @@ class MRGenerator:
                 mr = self.__mr_to_string(mr_dict, da)
 
                 # If such an MR variant has not been generated yet, save it
-                if mr not in mrs[-NUM_VARIATIONS:]:
+                if mr not in mrs[-self.num_variations:]:
                     # DEBUG PRINT
                     # if len(mr_dict) > 8:
                     #     print('CHECK:', mr_dict)
@@ -125,7 +132,7 @@ class MRGenerator:
         with open(file_out, 'w', encoding='utf8') as f_out:
             f_out.write('\n'.join(mrs))
 
-    def __get_random_slot_comb_for_da(self, row, da='inform', num_slots=1):
+    def __get_random_slot_comb_for_da(self, row, da='inform', num_slots=None):
         if da == 'inform':
             mr_dict = self.__get_random_slot_comb_inform(row)
         else:
@@ -144,10 +151,14 @@ class MRGenerator:
             for slot in excluded_slots:
                 slot_value_dict.pop(slot, None)
 
-            # Sample additional slots from the remaining
-            num_additional_slots = num_slots - len(mandatory_slots)
-            if num_additional_slots > 0:
-                mr_dict.update(random.sample(slot_value_dict.items(), num_additional_slots))
+            if num_slots is not None:
+                # Sample additional slots from the remaining slots
+                num_additional_slots = num_slots - len(mandatory_slots)
+                if num_additional_slots > 0:
+                    mr_dict.update(random.sample(slot_value_dict.items(), num_additional_slots))
+            else:
+                # Add all the remaining non-excluded slots
+                mr_dict.update(slot_value_dict)
 
             self.__adjust_mr_for_da(da, mr_dict)
 
@@ -242,31 +253,74 @@ class MRGenerator:
 
     def __load_slots_for_da(self, da):
         try:
-            mandatory_slots = self.da_slots[da]['mandatory']
+            mandatory_slots = self.da_constraints[da]['mandatory']
         except KeyError:
             mandatory_slots = []
 
         try:
-            excluded_slots = self.da_slots[da]['excluded']
+            excluded_slots = self.da_constraints[da]['excluded']
         except KeyError:
             excluded_slots = []
 
         return mandatory_slots, excluded_slots
 
     def __adjust_mr_for_da(self, da, mr_dict):
-        if da == 'request_attribute':
-            # Remove all slots' values
-            for slot in mr_dict:
-                mr_dict[slot] = None
-        elif da == 'request_explanation':
-            # Sample a single element per slot, whenever the slot's value is a list
+        """Apply predefined constraints to the slots' values. The constraints concern the number of elements
+        in list values. The constraints that apply to all slots across a specific DA have a higher priority than
+        the constraints that apply to a certain slot across all DAs.
+        """
+
+        if da in self.value_constraints.get('dialogue_acts', {}):
+            # Get the value length constraint for the given DA
+            max_num_values = self.value_constraints['dialogue_acts'][da]
+            if max_num_values > 0:
+                # Sample elements from the slot's value, whenever the value is a list
+                for slot, val in mr_dict.items():
+                    if slot in self.list_slots:
+                        val = self.__value_to_list(val)
+                        if max_num_values < len(val):
+                            val = random.sample(val, max_num_values)
+                        mr_dict[slot] = self.__value_to_str(val)
+            else:
+                # Remove all slots' values
+                for slot in mr_dict:
+                    mr_dict[slot] = None
+        else:
             for slot, val in mr_dict.items():
-                if isinstance(val, list):
-                    mr_dict[slot] = random.sample(val, 1)
-        elif da == 'request':
-            # Prepend an empty "category" slot
+                if slot in self.list_slots:
+                    val = self.__value_to_list(val)
+                    if slot in self.value_constraints.get('slots', {}):
+                        # Get the value length constraint for the given slot
+                        max_num_values = self.value_constraints['slots'][slot]
+                        if max_num_values < 1:
+                            # Remove the slot's value entirely
+                            val = None
+                        elif max_num_values < len(val):
+                            # Sample elements from the slot's value, if the value is a list
+                            val = random.sample(val, max_num_values)
+                    mr_dict[slot] = self.__value_to_str(val)
+
+        # New DA-specific slots
+        if da == 'request':
+            # Prepend an empty "category" slot to the beginning of the MR dict
             mr_dict['category'] = None
             mr_dict.move_to_end('category', last=False)
+
+    def __value_to_list(self, val_as_str):
+        """Split the value string around commas."""
+
+        if val_as_str is None:
+            return None
+
+        return [elem.strip() for elem in val_as_str.split(',')]
+
+    def __value_to_str(self, val_as_list):
+        """Join the list elements using a semicolon."""
+
+        if val_as_list is None:
+            return None
+
+        return '; '.join(val_as_list)
 
     def __mr_to_string(self, mr_dict, da=None):
         slot_value_pairs = []
@@ -415,9 +469,13 @@ def print_stats_from_dict(stats_dict):
 
 
 def main():
-    mr_gen = MRGenerator('video_game')
+    domain = 'video_game'
+    # num_variations = 10
+    num_variations = 1
     da = 'recommend'
-    num_slots = 3
+    num_slots = None
+
+    mr_gen = MRGenerator(domain, num_variations)
 
     # ----
 

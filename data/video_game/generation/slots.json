@@ -1,79 +1,93 @@
 {
-    "all": [
+  "names": [
+    "name",
+    "release_year",
+    "exp_release_date",
+    "developer",
+    "esrb",
+    "rating",
+    "genres",
+    "player_perspective",
+    "has_multiplayer",
+    "platforms",
+    "available_on_steam",
+    "has_linux_release",
+    "has_mac_release"
+  ],
+  "list_slots": [
+    "genres",
+    "player_perspective",
+    "platforms"
+  ],
+  "da_constraints": {
+    "confirm": {
+      "mandatory": [
+        "name"
+      ],
+      "excluded": [
+        "rating"
+      ]
+    },
+    "give_opinion": {
+      "mandatory": [
         "name",
-        "release_year",
+        "rating"
+      ],
+      "excluded": null
+    },
+    "inform": {
+      "mandatory": [
+        "name",
         "exp_release_date",
-        "developer",
-        "esrb",
-        "rating",
-        "genres",
-        "player_perspective",
-        "has_multiplayer",
-        "platforms",
-        "available_on_steam",
-        "has_linux_release",
-        "has_mac_release"
-    ],
-    "dialogue_acts": {
-        "confirm": {
-            "mandatory": [
-                "name"
-            ],
-            "excluded": [
-                "rating"
-            ]
-        },
-        "give_opinion": {
-            "mandatory": [
-                "name",
-                "rating"
-            ],
-            "excluded": null
-        },
-        "inform": {
-            "mandatory": [
-                "name",
-                "exp_release_date",
-                "genres"
-            ],
-            "excluded": null
-        },
-        "recommend": {
-            "mandatory": [
-                "name"
-            ],
-            "excluded": [
-                "rating"
-            ]
-        },
-        "request_attribute": {
-            "mandatory": null,
-            "excluded": [
-                "name",
-                "rating"
-            ]
-        },
-        "request_explanation": {
-            "mandatory": null,
-            "excluded": [
-                "name",
-                "rating"
-            ]
-        },
-        "suggest": {
-            "mandatory": [
-                "name"
-            ],
-            "excluded": [
-                "rating"
-            ]
-        },
-        "verify_attribute": {
-            "mandatory": [
-                "name",
-                "rating"
-            ],
-            "excluded": null
-        }
+        "genres"
+      ],
+      "excluded": null
+    },
+    "recommend": {
+      "mandatory": [
+        "name"
+      ],
+      "excluded": [
+        "rating"
+      ]
+    },
+    "request_attribute": {
+      "mandatory": null,
+      "excluded": [
+        "name",
+        "rating"
+      ]
+    },
+    "request_explanation": {
+      "mandatory": null,
+      "excluded": [
+        "name",
+        "rating"
+      ]
+    },
+    "suggest": {
+      "mandatory": [
+        "name"
+      ],
+      "excluded": [
+        "rating"
+      ]
+    },
+    "verify_attribute": {
+      "mandatory": [
+        "name",
+        "rating"
+      ],
+      "excluded": null
     }
+  },
+  "value_constraints": {
+    "dialogue_acts": {
+      "request_attribute": 0
+    },
+    "slots": {
+      "player_perspective": 1,
+      "platforms": 1
+    }
+  }
 }

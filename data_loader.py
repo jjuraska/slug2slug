@@ -15,7 +15,6 @@ from nltk.stem.wordnet import WordNetLemmatizer
 import config
 
 
-COMMA_PLACEHOLDER = config.COMMA_PLACEHOLDER
 EMPH_TOKEN = config.EMPH_TOKEN
 CONTRAST_TOKEN = config.CONTRAST_TOKEN
 CONCESSION_TOKEN = config.CONCESSION_TOKEN
@@ -1032,7 +1031,7 @@ def replace_commas_in_mr_values(mrs, val_sep, val_sep_end):
         for c in mr:
             # If comma inside a value, replace the comma with placeholder
             if c == ',' and val_beg_cnt > val_end_cnt:
-                mr_new += COMMA_PLACEHOLDER
+                mr_new += config.COMMA_PLACEHOLDER
                 continue
 
             # Keep track of value beginning and end
