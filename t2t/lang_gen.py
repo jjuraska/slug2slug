@@ -24,6 +24,7 @@ def transformer_lang_gen():
     hparams.max_input_seq_length = 50
     hparams.max_target_seq_length = 60
     # hparams.min_length_bucket = 10      # default: 0
+    # hparams.activation_dtype = 'bfloat16'   # default: 'float32'
 
     return hparams
 
