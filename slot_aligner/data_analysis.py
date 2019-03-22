@@ -18,7 +18,7 @@ def align_slots(dataset, filename):
     # Read in the data
     data_cont = data_loader.init_test_data(os.path.join(config.DATA_DIR, dataset, filename))
     mrs_orig, utterances_orig = data_cont['data']
-    slot_sep, val_sep, val_sep_closing = data_cont['separators']
+    slot_sep, val_sep, _, val_sep_closing = data_cont['separators']
 
     # Tokenize utterances
     utterances = [data_loader.preprocess_utterance(utt) for utt in utterances_orig]
@@ -58,7 +58,7 @@ def score_slot_realizations(dataset, filename):
     data_cont = data_loader.init_test_data(os.path.join(config.EVAL_DIR, dataset, filename))
     dataset_name = data_cont['dataset_name']
     mrs_orig, utterances_orig = data_cont['data']
-    slot_sep, val_sep, val_sep_closing = data_cont['separators']
+    slot_sep, val_sep, _, val_sep_closing = data_cont['separators']
 
     # Tokenize utterances
     utterances = [data_loader.preprocess_utterance(utt) for utt in utterances_orig]
@@ -104,8 +104,7 @@ def score_slot_realizations(dataset, filename):
 
 
 def score_emphasis(dataset, filename):
-    """Determines how many of the indicated emphasis instances are realized in the utterance.
-    """
+    """Determines how many of the indicated emphasis instances are realized in the utterance."""
 
     emph_missed = []
     emph_total = []
@@ -115,7 +114,7 @@ def score_emphasis(dataset, filename):
     # Read in the data
     data_cont = data_loader.init_test_data(os.path.join(config.EVAL_DIR, dataset, filename))
     mrs, utterances = data_cont['data']
-    slot_sep, val_sep, val_sep_closing = data_cont['separators']
+    slot_sep, val_sep, _, val_sep_closing = data_cont['separators']
 
     for i, mr in enumerate(mrs):
         expect_emph = False
@@ -126,7 +125,7 @@ def score_emphasis(dataset, filename):
         for slot_value in mr.split(slot_sep):
             slot, value, _, _ = data_loader.parse_slot_and_value(slot_value, val_sep, val_sep_closing)
 
-            # Extract tokens to be emphasized
+            # Extract slots to be emphasized
             if slot == config.EMPH_TOKEN:
                 expect_emph = True
             else:
@@ -139,7 +138,7 @@ def score_emphasis(dataset, filename):
 
         emph_total.append(len(emph_slots))
 
-        # check how many emphasized slots were not realized before the name-slot
+        # Check how many emphasized slots were not realized before the name-slot
         for pos, slot, _ in alignment:
             # DEBUG PRINT
             # print(alignment)
@@ -154,22 +153,113 @@ def score_emphasis(dataset, filename):
 
         emph_missed.append(len(emph_slots))
 
-    new_df = pd.DataFrame(columns=['mr', 'ref', 'emphasis (missed)', 'emphasis (total)'])
+    new_df = pd.DataFrame(columns=['mr', 'ref', 'missed emphasis', 'total emphasis'])
     new_df['mr'] = mrs
     new_df['ref'] = utterances
-    new_df['emphasis (missed)'] = emph_missed
-    new_df['emphasis (total)'] = emph_total
+    new_df['missed emphasis'] = emph_missed
+    new_df['total emphasis'] = emph_total
 
-    filename_out = ''.join(filename.split('.')[:-1]) + '_eval_emph.csv'
+    filename_out = os.path.splitext(filename)[0] + ' [emphasis eval].csv'
+    new_df.to_csv(os.path.join(config.EVAL_DIR, dataset, filename_out), index=False, encoding='utf8')
+
+
+def score_contrast(dataset, filename):
+    """Determines whether the indicated contrast relation is correctly realized in the utterance."""
+
+    contrast_connectors = ['but', 'however', 'yet']
+    contrast_missed = []
+    contrast_incorrectness = []
+    contrast_total = []
+
+    print('Analyzing contrast realizations in ' + str(filename))
+
+    # Read in the data
+    data_cont = data_loader.init_test_data(os.path.join(config.EVAL_DIR, dataset, filename))
+    mrs, utterances = data_cont['data']
+    slot_sep, val_sep, _, val_sep_closing = data_cont['separators']
+
+    for i, mr in enumerate(mrs):
+        contrast_found = False
+        contrast_correct = False
+        contrast_slots = []
+        mr_dict = OrderedDict()
+
+        # Extract the slot-value pairs into a dictionary
+        for slot_value in mr.split(slot_sep):
+            slot, value, _, _ = data_loader.parse_slot_and_value(slot_value, val_sep, val_sep_closing)
+
+            # Extract slots to be contrasted
+            if slot in [config.CONTRAST_TOKEN, config.CONCESSION_TOKEN]:
+                contrast_slots.extend(value.split())
+            else:
+                mr_dict[slot] = value
+
+        alignment = find_alignment(utterances[i], mr_dict)
+
+        contrast_total.append(1 if len(contrast_slots) > 0 else 0)
+
+        if len(contrast_slots) > 0:
+            for contrast_conn in contrast_connectors:
+                contrast_pos = utterances[i].find(contrast_conn)
+                if contrast_pos < 0:
+                    continue
+
+                slot_left_pos = -1
+                slot_right_pos = -1
+                dist = 0
+
+                contrast_found = True
+
+                # Check whether the correct pair of slots was contrasted
+                for pos, slot, _ in alignment:
+                    # DEBUG PRINT
+                    # print(alignment)
+                    # print(contrast_slots)
+                    # print()
+
+                    if slot_left_pos > -1:
+                        dist += 1
+
+                    if slot in contrast_slots:
+                        if slot_left_pos == -1:
+                            slot_left_pos = pos
+                        else:
+                            slot_right_pos = pos
+                            break
+
+                if slot_left_pos > -1 and slot_right_pos > -1:
+                    if slot_left_pos < contrast_pos < slot_right_pos and dist <= 2:
+                        contrast_correct = True
+                        break
+        else:
+            contrast_found = True
+            contrast_correct = True
+
+        contrast_missed.append(0 if contrast_found else 1)
+        contrast_incorrectness.append(0 if contrast_correct else 1)
+
+    new_df = pd.DataFrame(columns=['mr', 'ref', 'missed contrast', 'incorrect contrast', 'total contrast'])
+    new_df['mr'] = mrs
+    new_df['ref'] = utterances
+    new_df['missed contrast'] = contrast_missed
+    new_df['incorrect contrast'] = contrast_incorrectness
+    new_df['total contrast'] = contrast_total
+
+    filename_out = os.path.splitext(filename)[0] + ' [contrast eval].csv'
     new_df.to_csv(os.path.join(config.EVAL_DIR, dataset, filename_out), index=False, encoding='utf8')
 
 
 if __name__ == '__main__':
     # align_slots('rest_e2e', 'devset_e2e.csv')
-    align_slots('video_game', 'test.csv')
+    # align_slots('video_game', 'test.csv')
 
     # score_slot_realizations(os.path.join('predictions-rest_e2e', 'devset'), 'predictions_devset_TRANS_tmp.csv')
     # score_slot_realizations(os.path.join('predictions-rest_e2e', 'testset'), 'predictions_testset_TRANS_tmp.csv')
     # score_slot_realizations(os.path.join('predictions-video_game', 'testset'), 'predictions TRANS beam 4 (8k).csv')
 
     # score_emphasis('predictions-rest_e2e_stylistic_selection/devset', 'predictions RNN (4+4) augm emph (reference).csv')
+    score_emphasis('predictions rest_e2e (emphasis+contrast)',
+                   'predictions TRANS emphasis+contrast, train all, test combo extra (30.4k iter).csv')
+
+    score_contrast('predictions rest_e2e (emphasis+contrast)',
+                   'predictions TRANS emphasis+contrast, train all, test combo extra (30.4k iter).csv')

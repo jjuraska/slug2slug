@@ -138,10 +138,10 @@ def find_slot_realization(text, text_tok, slot, value_orig, delex_slot_placehold
 
     value = re.sub(r'[-/]', ' ', value_orig)
 
-    # TODO: remove auxiliary slots ('da' and '<!.*?>') beforehand
+    # TODO: remove auxiliary slots ('da' and '__.*?__') beforehand
     if slot == 'da':
         pos = 0
-    elif re.match(r'<!.*?>', slot):
+    elif re.match(r'__.*?__', slot):
         pos = 0
     else:
         delex_slot = check_delex_slots(slot, delex_slot_placeholders)

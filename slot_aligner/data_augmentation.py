@@ -10,11 +10,6 @@ import data_loader
 from slot_aligner.slot_alignment import split_content, find_alignment, get_scalar_slots
 
 
-EMPH_TOKEN = config.EMPH_TOKEN
-CONTRAST_TOKEN = config.CONTRAST_TOKEN
-CONCESSION_TOKEN = config.CONCESSION_TOKEN
-
-
 def augment_by_utterance_splitting(dataset, filename):
     """Performs utterance splitting and augments the dataset with new pseudo-samples whose utterances are
     one sentence long. The MR of each pseudo-sample contains only slots mentioned in the corresponding sentence.
@@ -79,112 +74,165 @@ def augment_by_utterance_splitting(dataset, filename):
             json.dump(data_new, f_data_new, indent=4)
 
 
-def augment_with_emphasis(dataset, filename):
-    """Augments the MRs with auxiliary tokens indicating that the following slot should be emphasised in the
-    generated utterance, i.e. should be mentioned before the name.
+def augment_with_aux_indicators(dataset, filename, indicators, mode='all'):
+    """Augment MRs in a dataset with auxiliary tokens indicating desired discourse phenomena in the corresponding
+    utterances. Depending on the mode, the augmented dataset will only contain samples which exhibit 1.) at most one
+    of the desired indicators ('single'), 2.) the one selected indicator only ('only'), or 3.) all the desired
+    indicators at once ('combo'). The default mode ('all') keeps all samples in the dataset.
     """
 
-    alignments = []
+    if indicators is None or len(indicators) == 0:
+        return
 
-    print('Augmenting MRs with emphasis in ' + str(filename))
+    mrs_augm = []
+    mrs_single = []
+    utterances_single = []
+    mrs_emph_only = []
+    utterances_emph_only = []
+    mrs_contrast_only = []
+    utterances_contrast_only = []
+    mrs_combo = []
+    utterances_combo = []
+
+    emph_only_ctr = 0
+    contrast_only_ctr = 0
+    combo_ctr = 0
+
+    print('Augmenting MRs with ' + ' + '.join(indicators) + ' in ' + str(filename))
 
     # Read in the data
     data_cont = data_loader.init_test_data(os.path.join(config.DATA_DIR, dataset, filename))
     mrs, utterances = data_cont['data']
-    slot_sep, val_sep, val_sep_closing = data_cont['separators']
+    slot_sep, val_sep, val_sep_end, val_sep_closing = data_cont['separators']
 
-    for i, mr in enumerate(mrs):
+    for mr, utt in zip(mrs, utterances):
         mr_dict = OrderedDict()
+        mr_list_augm = []
 
         # Extract the slot-value pairs into a dictionary
         for slot_value in mr.split(slot_sep):
-            slot, value, slot_orig, _ = data_loader.parse_slot_and_value(slot_value, val_sep, val_sep_closing)
+            slot, value, slot_orig, value_orig = data_loader.parse_slot_and_value(slot_value, val_sep, val_sep_closing)
             mr_dict[slot] = value
-            mrs[i] = mrs[i].replace(slot_orig, slot)
+            mr_list_augm.append((slot, value_orig))
+            # mrs[i] = mrs[i].replace(slot_orig, slot)
 
-        alignments.append(find_alignment(utterances[i], mr_dict))
+        # Find the slot alignment
+        alignment = find_alignment(utt, mr_dict)
 
-    for i in range(len(utterances)):
-        for pos, slot, _ in alignments[i]:
-            if slot == 'name':
-                break
-            mrs[i] = mrs[i].replace(slot, EMPH_TOKEN + '[], ' + slot)
+        # Augment the MR with auxiliary tokens
+        if 'emphasis' in indicators:
+            __add_emphasis_tokens(mr_list_augm, alignment)
+        if 'contrast' in indicators:
+            __add_contrast_tokens(mr_list_augm, utt, alignment)
+
+        # Convert augmented MR from list to string representation
+        mr_augm = (slot_sep + ' ').join([s + val_sep + v + (val_sep_end if val_sep_closing else '') for s, v in mr_list_augm])
+
+        mrs_augm.append(mr_augm)
+
+        # Count and separate the different augmentation instances
+        slots_augm = set([s for s, v in mr_list_augm])
+        if config.EMPH_TOKEN in slots_augm and (config.CONTRAST_TOKEN in slots_augm or config.CONCESSION_TOKEN in slots_augm):
+            mrs_combo.append(mr_augm)
+            utterances_combo.append(utt)
+            combo_ctr += 1
+        else:
+            mrs_single.append(mr_augm)
+            utterances_single.append(utt)
+            if config.EMPH_TOKEN in slots_augm:
+                mrs_emph_only.append(mr_augm)
+                utterances_emph_only.append(utt)
+                emph_only_ctr += 1
+            elif config.CONTRAST_TOKEN in slots_augm or config.CONCESSION_TOKEN in slots_augm:
+                mrs_contrast_only.append(mr_augm)
+                utterances_contrast_only.append(utt)
+                contrast_only_ctr += 1
+
+    print('# of MRs with emphasis only:', emph_only_ctr)
+    print('# of MRs with contrast/concession only:', contrast_only_ctr)
+    print('# of MRs with emphasis & contrast/concession:', combo_ctr)
 
     new_df = pd.DataFrame(columns=['mr', 'ref'])
-    new_df['mr'] = mrs
-    new_df['ref'] = utterances
+    if mode == 'single':
+        new_df['mr'] = mrs_single
+        new_df['ref'] = utterances_single
+    elif mode == 'only':
+        if 'emphasis' in indicators:
+            new_df['mr'] = mrs_emph_only
+            new_df['ref'] = utterances_emph_only
+        elif 'contrast' in indicators:
+            new_df['mr'] = mrs_contrast_only
+            new_df['ref'] = utterances_contrast_only
+    elif mode == 'combo':
+        new_df['mr'] = mrs_combo
+        new_df['ref'] = utterances_combo
+    else:
+        new_df['mr'] = mrs_augm
+        new_df['ref'] = utterances
 
-    filename_out = ''.join(filename.split('.')[:-1]) + '_augm_emph.csv'
+    # Store augmented dataset to a new file
+    filename_out = os.path.splitext(filename)[0] + '_augm_' + '_'.join(indicators) + \
+                   (('_' + mode) if mode != 'all' else '') + '.csv'
     new_df.to_csv(os.path.join(config.DATA_DIR, dataset, filename_out), index=False, encoding='utf8')
 
 
-def augment_with_contrast(dataset, filename):
-    """Augments the MRs with auxiliary tokens indicating a pair of slots that should be contrasted in the
+def __add_emphasis_tokens(mr_list, slot_alignment):
+    """Augments an MR with auxiliary tokens indicating that the following slot should be emphasized in the
+    generated utterance, i.e. should be mentioned before the name.
+    """
+
+    for pos, slot, _ in slot_alignment:
+        if slot == 'name':
+            break
+
+        idx = 0
+        for slot_value_pair in mr_list:
+            if slot_value_pair[0] == slot:
+                break
+            idx += 1
+        mr_list.insert(idx, (config.EMPH_TOKEN, ''))
+
+
+def __add_contrast_tokens(mr_list, utt, slot_alignment):
+    """Augments an MR with an auxiliary token indicating a pair of slots that should be contrasted in the
     corresponding generated utterance.
     """
 
     contrast_connectors = ['but', 'however', 'yet']
     scalar_slots = get_scalar_slots()
 
-    alignments = []
+    for contrast_conn in contrast_connectors:
+        contrast_pos = utt.find(contrast_conn)
+        if contrast_pos >= 0:
+            slot_before = None
+            value_before = None
+            slot_after = None
+            value_after = None
 
-    print('Augmenting MRs with contrast in ' + str(filename))
+            for pos, slot, value in slot_alignment:
+                if pos > contrast_pos:
+                    if slot_before is None:
+                        break
+                    if slot in scalar_slots:
+                        slot_after = slot
+                        value_after = value
+                        break
+                else:
+                    if slot in scalar_slots:
+                        slot_before = slot
+                        value_before = value
 
-    # Read in the data
-    data_cont = data_loader.init_test_data(os.path.join(config.DATA_DIR, dataset, filename))
-    mrs, utterances = data_cont['data']
-    slot_sep, val_sep, val_sep_closing = data_cont['separators']
-
-    for i, mr in enumerate(mrs):
-        mr_dict = OrderedDict()
-
-        # Extract the slot-value pairs into a dictionary
-        for slot_value in mr.split(slot_sep):
-            slot, value, slot_orig, _ = data_loader.parse_slot_and_value(slot_value, val_sep, val_sep_closing)
-            mr_dict[slot] = value
-            mrs[i] = mrs[i].replace(slot_orig, slot)
-
-        alignments.append(find_alignment(utterances[i], mr_dict))
-
-    for i in range(len(utterances)):
-        for contrast_conn in contrast_connectors:
-            contrast_pos = utterances[i].find(contrast_conn)
-            if contrast_pos >= 0:
-                slot_before = None
-                value_before = None
-                slot_after = None
-                value_after = None
-
-                for pos, slot, value in alignments[i]:
-                    if pos > contrast_pos:
-                        if not slot_before:
-                            break
-                        if slot in scalar_slots:
-                            slot_after = slot
-                            value_after = value
-                            break
+            if slot_before is not None and slot_after is not None:
+                if slot_before in scalar_slots and slot_after in scalar_slots:
+                    if scalar_slots[slot_before][value_before] - scalar_slots[slot_after][value_after] == 0:
+                        mr_list.append((config.CONCESSION_TOKEN, slot_before + ' ' + slot_after))
                     else:
-                        if slot in scalar_slots:
-                            slot_before = slot
-                            value_before = value
+                        mr_list.append((config.CONTRAST_TOKEN, slot_before + ' ' + slot_after))
 
-                if slot_before and slot_after:
-                    if slot_before in scalar_slots and slot_after in scalar_slots:
-                        if scalar_slots[slot_before][value_before] - scalar_slots[slot_after][value_after] == 0:
-                            mrs[i] += ', ' + CONCESSION_TOKEN + '[{0} {1}]'.format(slot_before, slot_after)
-                        else:
-                            mrs[i] += ', ' + CONTRAST_TOKEN + '[{0} {1}]'.format(slot_before, slot_after)
-
-                break
-
-    new_df = pd.DataFrame(columns=['mr', 'ref'])
-    new_df['mr'] = mrs
-    new_df['ref'] = utterances
-
-    filename_out = ''.join(filename.split('.')[:-1]) + '_augm_contrast.csv'
-    new_df.to_csv(os.path.join(config.DATA_DIR, dataset, filename_out), index=False, encoding='utf8')
+            break
 
 
+# DEPRECATED
 def augment_with_contrast_tgen(dataset, filename):
     """Augments the MRs with auxiliary tokens indicating a pair of slots that should be contrasted in the
     corresponding generated utterance. The output is in the format accepted by TGen.
@@ -263,9 +311,8 @@ if __name__ == '__main__':
     # augment_by_utterance_splitting('rest_e2e', 'devset_e2e.csv')
     # augment_by_utterance_splitting('laptop', 'valid.json')
     # augment_by_utterance_splitting('tv', 'train.json')
-    augment_by_utterance_splitting('video_game', 'train.csv')
+    # augment_by_utterance_splitting('video_game', 'train.csv')
 
-    # augment_with_emphasis('rest_e2e', 'trainset_e2e.csv')
+    augment_with_aux_indicators('rest_e2e', 'testset_e2e.csv', ['emphasis', 'contrast'], 'only')
 
-    # augment_with_contrast('rest_e2e', 'trainset_e2e.csv')
     # augment_with_contrast_tgen('rest_e2e', 'trainset_e2e.csv')

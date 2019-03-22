@@ -41,7 +41,7 @@ def load_training_data(data_trainset, data_devset, input_concat=False, generate_
     dataset = init_training_data(data_trainset, data_devset)
     dataset_name = dataset['dataset_name']
     x_train, y_train, x_dev, y_dev = dataset['data']
-    slot_sep, val_sep, val_sep_closing = dataset['separators']
+    slot_sep, val_sep, _, val_sep_closing = dataset['separators']
 
     # Lowercase the utterances
     y_train = [preprocess_utterance(y) for y in y_train]
@@ -170,7 +170,7 @@ def load_test_data(data_testset, input_concat=False):
     dataset = init_test_data(data_testset)
     dataset_name = dataset['dataset_name']
     x_test, y_test = dataset['data']
-    slot_sep, val_sep, val_sep_closing = dataset['separators']
+    slot_sep, val_sep, _, val_sep_closing = dataset['separators']
 
     # Produce sequences of extracted words from the meaning representations (MRs) in the testset
     x_test_seq = []
@@ -667,7 +667,7 @@ def init_training_data(data_trainset, data_devset):
     return {
         'dataset_name': dataset_name,
         'data': (x_train, y_train, x_dev, y_dev),
-        'separators': (slot_sep, val_sep, val_sep_closing)
+        'separators': (slot_sep, val_sep, val_sep_end, val_sep_closing)
     }
 
 
@@ -717,7 +717,7 @@ def init_test_data(data_testset):
     return {
         'dataset_name': dataset_name,
         'data': (x_test, y_test),
-        'separators': (slot_sep, val_sep, val_sep_closing)
+        'separators': (slot_sep, val_sep, val_sep_end, val_sep_closing)
     }
 
 
@@ -1108,7 +1108,10 @@ def parse_slot_and_value(slot_value, val_sep, has_val_sep_closing=False):
         # Set the value to the empty string
         value = ''
 
-    slot_processed = slot.replace(' ', '').replace('_', '').lower()
+    slot_processed = slot.replace(' ', '').lower()
+    if not slot_processed.startswith('__'):
+        slot_processed = slot_processed.replace('_', '')
+
     value = value.replace(config.COMMA_PLACEHOLDER, ',')
     value_processed = ' '.join(word_tokenize(value.lower()))
 
