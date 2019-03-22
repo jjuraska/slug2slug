@@ -309,7 +309,7 @@ def split_content(old_mrs, old_utterances, filename, permute=False):
 
         utt = old_utterances[i]
         utt = re.sub(r'\s+', ' ', utt).strip()
-        sents = [sent.lower() for sent in sent_tokenize(utt)]
+        sents = sent_tokenize(utt)
         new_pair = {sent: OrderedDict() for sent in sents}
 
         for slot, value_orig in mr.items():

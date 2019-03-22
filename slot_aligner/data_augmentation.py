@@ -27,7 +27,7 @@ def augment_by_utterance_splitting(dataset, filename):
     # Read in the data
     data_cont = data_loader.init_test_data(os.path.join(config.DATA_DIR, dataset, filename))
     mrs, utterances = data_cont['data']
-    slot_sep, val_sep, val_sep_closing = data_cont['separators']
+    slot_sep, val_sep, _, val_sep_closing = data_cont['separators']
 
     for i, mr in enumerate(mrs):
         mr_dict = OrderedDict()
@@ -308,11 +308,11 @@ def augment_with_contrast_tgen(dataset, filename):
 
 
 if __name__ == '__main__':
-    # augment_by_utterance_splitting('rest_e2e', 'devset_e2e.csv')
+    augment_by_utterance_splitting('rest_e2e', 'devset_e2e.csv')
     # augment_by_utterance_splitting('laptop', 'valid.json')
     # augment_by_utterance_splitting('tv', 'train.json')
     # augment_by_utterance_splitting('video_game', 'train.csv')
 
-    augment_with_aux_indicators('rest_e2e', 'testset_e2e.csv', ['emphasis', 'contrast'], 'only')
+    # augment_with_aux_indicators('rest_e2e', 'testset_e2e.csv', ['emphasis', 'contrast'], 'single')
 
     # augment_with_contrast_tgen('rest_e2e', 'trainset_e2e.csv')
