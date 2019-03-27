@@ -113,10 +113,14 @@ def score_emphasis(dataset, filename):
 
     # Read in the data
     data_cont = data_loader.init_test_data(os.path.join(config.EVAL_DIR, dataset, filename))
-    mrs, utterances = data_cont['data']
+    dataset_name = data_cont['dataset_name']
+    mrs_orig, utterances_orig = data_cont['data']
     slot_sep, val_sep, _, val_sep_closing = data_cont['separators']
 
-    for i, mr in enumerate(mrs):
+    # Lowercase the utterances
+    utterances = [data_loader.preprocess_utterance(utt) for utt in utterances_orig]
+
+    for i, mr in enumerate(mrs_orig):
         expect_emph = False
         emph_slots = set()
         mr_dict = OrderedDict()
@@ -134,6 +138,10 @@ def score_emphasis(dataset, filename):
                     emph_slots.add(slot)
                     expect_emph = False
 
+        # Delexicalize the MR and the utterance
+        utterances[i] = data_loader.delex_sample(mr_dict, utterances[i], dataset=dataset_name)
+
+        # Determine the slot alignment in the utterance
         alignment = find_alignment(utterances[i], mr_dict)
 
         emph_total.append(len(emph_slots))
@@ -154,8 +162,8 @@ def score_emphasis(dataset, filename):
         emph_missed.append(len(emph_slots))
 
     new_df = pd.DataFrame(columns=['mr', 'ref', 'missed emphasis', 'total emphasis'])
-    new_df['mr'] = mrs
-    new_df['ref'] = utterances
+    new_df['mr'] = mrs_orig
+    new_df['ref'] = utterances_orig
     new_df['missed emphasis'] = emph_missed
     new_df['total emphasis'] = emph_total
 
@@ -175,10 +183,14 @@ def score_contrast(dataset, filename):
 
     # Read in the data
     data_cont = data_loader.init_test_data(os.path.join(config.EVAL_DIR, dataset, filename))
-    mrs, utterances = data_cont['data']
+    dataset_name = data_cont['dataset_name']
+    mrs_orig, utterances_orig = data_cont['data']
     slot_sep, val_sep, _, val_sep_closing = data_cont['separators']
 
-    for i, mr in enumerate(mrs):
+    # Lowercase the utterances
+    utterances = [data_loader.preprocess_utterance(utt) for utt in utterances_orig]
+
+    for i, mr in enumerate(mrs_orig):
         contrast_found = False
         contrast_correct = False
         contrast_slots = []
@@ -194,6 +206,10 @@ def score_contrast(dataset, filename):
             else:
                 mr_dict[slot] = value
 
+        # Delexicalize the MR and the utterance
+        utterances[i] = data_loader.delex_sample(mr_dict, utterances[i], dataset=dataset_name)
+
+        # Determine the slot alignment in the utterance
         alignment = find_alignment(utterances[i], mr_dict)
 
         contrast_total.append(1 if len(contrast_slots) > 0 else 0)
@@ -239,8 +255,8 @@ def score_contrast(dataset, filename):
         contrast_incorrectness.append(0 if contrast_correct else 1)
 
     new_df = pd.DataFrame(columns=['mr', 'ref', 'missed contrast', 'incorrect contrast', 'total contrast'])
-    new_df['mr'] = mrs
-    new_df['ref'] = utterances
+    new_df['mr'] = mrs_orig
+    new_df['ref'] = utterances_orig
     new_df['missed contrast'] = contrast_missed
     new_df['incorrect contrast'] = contrast_incorrectness
     new_df['total contrast'] = contrast_total
@@ -258,8 +274,11 @@ if __name__ == '__main__':
     # score_slot_realizations(os.path.join('predictions-video_game', 'testset'), 'predictions TRANS beam 4 (8k).csv')
 
     # score_emphasis('predictions-rest_e2e_stylistic_selection/devset', 'predictions RNN (4+4) augm emph (reference).csv')
-    score_emphasis('predictions rest_e2e (emphasis+contrast)',
-                   'predictions TRANS emphasis+contrast, train all, test combo extra (30.4k iter).csv')
 
-    score_contrast('predictions rest_e2e (emphasis+contrast)',
-                   'predictions TRANS emphasis+contrast, train all, test combo extra (30.4k iter).csv')
+    # ----
+
+    predictions_dir = 'predictions rest_e2e (emphasis+contrast)'
+    predictions_file = 'predictions TRANS emphasis+contrast, train single, test combo extra (23.2k iter).csv'
+
+    score_emphasis(predictions_dir, predictions_file)
+    score_contrast(predictions_dir, predictions_file)

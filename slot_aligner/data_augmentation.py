@@ -74,7 +74,7 @@ def augment_by_utterance_splitting(dataset, filename):
             json.dump(data_new, f_data_new, indent=4)
 
 
-def augment_with_aux_indicators(dataset, filename, indicators, mode='all'):
+def augment_with_aux_indicators(dataset, filename, indicators, mode='all', alt_contrast_mode=False):
     """Augment MRs in a dataset with auxiliary tokens indicating desired discourse phenomena in the corresponding
     utterances. Depending on the mode, the augmented dataset will only contain samples which exhibit 1.) at most one
     of the desired indicators ('single'), 2.) the one selected indicator only ('only'), or 3.) all the desired
@@ -123,7 +123,7 @@ def augment_with_aux_indicators(dataset, filename, indicators, mode='all'):
         if 'emphasis' in indicators:
             __add_emphasis_tokens(mr_list_augm, alignment)
         if 'contrast' in indicators:
-            __add_contrast_tokens(mr_list_augm, utt, alignment)
+            __add_contrast_tokens(mr_list_augm, utt, alignment, alt_mode=alt_contrast_mode)
 
         # Convert augmented MR from list to string representation
         mr_augm = (slot_sep + ' ').join([s + val_sep + v + (val_sep_end if val_sep_closing else '') for s, v in mr_list_augm])
@@ -171,8 +171,8 @@ def augment_with_aux_indicators(dataset, filename, indicators, mode='all'):
         new_df['ref'] = utterances
 
     # Store augmented dataset to a new file
-    filename_out = os.path.splitext(filename)[0] + '_augm_' + '_'.join(indicators) + \
-                   (('_' + mode) if mode != 'all' else '') + '.csv'
+    filename_out = os.path.splitext(filename)[0] + '_augm_' + '_'.join(indicators) \
+        + (('_' + mode) if mode != 'all' else '') + ('_alt' if alt_contrast_mode else '') + '.csv'
     new_df.to_csv(os.path.join(config.DATA_DIR, dataset, filename_out), index=False, encoding='utf8')
 
 
@@ -193,7 +193,7 @@ def __add_emphasis_tokens(mr_list, slot_alignment):
         mr_list.insert(idx, (config.EMPH_TOKEN, ''))
 
 
-def __add_contrast_tokens(mr_list, utt, slot_alignment):
+def __add_contrast_tokens(mr_list, utt, slot_alignment, alt_mode=False):
     """Augments an MR with an auxiliary token indicating a pair of slots that should be contrasted in the
     corresponding generated utterance.
     """
@@ -212,6 +212,11 @@ def __add_contrast_tokens(mr_list, utt, slot_alignment):
             for pos, slot, value in slot_alignment:
                 if pos > contrast_pos:
                     if slot_before is None:
+                        # DEBUG PRINT
+                        print('Unrecognized type of contrast/concession:')
+                        print(utt)
+                        print()
+
                         break
                     if slot in scalar_slots:
                         slot_after = slot
@@ -225,9 +230,19 @@ def __add_contrast_tokens(mr_list, utt, slot_alignment):
             if slot_before is not None and slot_after is not None:
                 if slot_before in scalar_slots and slot_after in scalar_slots:
                     if scalar_slots[slot_before][value_before] - scalar_slots[slot_after][value_after] == 0:
-                        mr_list.append((config.CONCESSION_TOKEN, slot_before + ' ' + slot_after))
+                        if alt_mode:
+                            mr_list.insert([s for s, v in mr_list].index(slot_before), (config.CONCESSION_TOKEN, ''))
+                            mr_list.insert([s for s, v in mr_list].index(slot_after), (config.CONCESSION_TOKEN, ''))
+                        else:
+                            mr_list.append((config.CONCESSION_TOKEN, slot_before + ' ' + slot_after))
+                            # mr_list.append((config.CONCESSION_TOKEN, ''))
                     else:
-                        mr_list.append((config.CONTRAST_TOKEN, slot_before + ' ' + slot_after))
+                        if alt_mode:
+                            mr_list.insert([s for s, v in mr_list].index(slot_before), (config.CONTRAST_TOKEN, ''))
+                            mr_list.insert([s for s, v in mr_list].index(slot_after), (config.CONTRAST_TOKEN, ''))
+                        else:
+                            mr_list.append((config.CONTRAST_TOKEN, slot_before + ' ' + slot_after))
+                            # mr_list.append((config.CONTRAST_TOKEN, ''))
 
             break
 
@@ -308,11 +323,11 @@ def augment_with_contrast_tgen(dataset, filename):
 
 
 if __name__ == '__main__':
-    augment_by_utterance_splitting('rest_e2e', 'devset_e2e.csv')
+    # augment_by_utterance_splitting('rest_e2e', 'devset_e2e.csv')
     # augment_by_utterance_splitting('laptop', 'valid.json')
     # augment_by_utterance_splitting('tv', 'train.json')
     # augment_by_utterance_splitting('video_game', 'train.csv')
 
-    # augment_with_aux_indicators('rest_e2e', 'testset_e2e.csv', ['emphasis', 'contrast'], 'single')
+    augment_with_aux_indicators('rest_e2e', 'devset_e2e.csv', ['contrast'], 'all', alt_contrast_mode=False)
 
     # augment_with_contrast_tgen('rest_e2e', 'trainset_e2e.csv')

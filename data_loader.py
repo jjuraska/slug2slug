@@ -52,6 +52,8 @@ def load_training_data(data_trainset, data_devset, input_concat=False, generate_
     for i, mr in enumerate(x_train):
         slot_ctr = 0
         emph_idxs = set()
+        # contrast_idxs = set()
+        # concession_idxs = set()
         mr_dict = OrderedDict()
 
         # Extract the slot-value pairs into a dictionary
@@ -60,6 +62,10 @@ def load_training_data(data_trainset, data_devset, input_concat=False, generate_
 
             if slot == EMPH_TOKEN:
                 emph_idxs.add(slot_ctr)
+            # elif slot == CONTRAST_TOKEN:
+            #     contrast_idxs.add(slot_ctr)
+            # elif slot == CONCESSION_TOKEN:
+            #     concession_idxs.add(slot_ctr)
             else:
                 mr_dict[slot] = value
                 slot_ctr += 1
@@ -75,6 +81,12 @@ def load_training_data(data_trainset, data_devset, input_concat=False, generate_
             # Insert the emphasis token where appropriate
             if slot_ctr in emph_idxs:
                 x_train_seq[i].append(EMPH_TOKEN)
+            # Insert the contrast token where appropriate
+            # if slot_ctr in contrast_idxs:
+            #     x_train_seq[i].append(CONTRAST_TOKEN)
+            # # Insert the concession token where appropriate
+            # if slot_ctr in concession_idxs:
+            #     x_train_seq[i].append(CONCESSION_TOKEN)
 
             if len(val) > 0:
                 x_train_seq[i].extend([key] + val.split())
@@ -92,6 +104,8 @@ def load_training_data(data_trainset, data_devset, input_concat=False, generate_
     for i, mr in enumerate(x_dev):
         slot_ctr = 0
         emph_idxs = set()
+        # contrast_idxs = set()
+        # concession_idxs = set()
         mr_dict = OrderedDict()
 
         # Extract the slot-value pairs into a dictionary
@@ -100,6 +114,10 @@ def load_training_data(data_trainset, data_devset, input_concat=False, generate_
 
             if slot == EMPH_TOKEN:
                 emph_idxs.add(slot_ctr)
+            # elif slot == CONTRAST_TOKEN:
+            #     contrast_idxs.add(slot_ctr)
+            # elif slot == CONCESSION_TOKEN:
+            #     concession_idxs.add(slot_ctr)
             else:
                 mr_dict[slot] = value
                 slot_ctr += 1
@@ -115,6 +133,12 @@ def load_training_data(data_trainset, data_devset, input_concat=False, generate_
             # Insert the emphasis token where appropriate
             if slot_ctr in emph_idxs:
                 x_dev_seq[i].append(EMPH_TOKEN)
+            # Insert the contrast token where appropriate
+            # if slot_ctr in contrast_idxs:
+            #     x_dev_seq[i].append(CONTRAST_TOKEN)
+            # # Insert the concession token where appropriate
+            # if slot_ctr in concession_idxs:
+            #     x_dev_seq[i].append(CONCESSION_TOKEN)
 
             if len(val) > 0:
                 x_dev_seq[i].extend([key] + val.split())
@@ -178,6 +202,8 @@ def load_test_data(data_testset, input_concat=False):
     for i, mr in enumerate(x_test):
         slot_ctr = 0
         emph_idxs = set()
+        # contrast_idxs = set()
+        # concession_idxs = set()
         mr_dict = OrderedDict()
         mr_dict_cased = OrderedDict()
 
@@ -187,6 +213,10 @@ def load_test_data(data_testset, input_concat=False):
 
             if slot == EMPH_TOKEN:
                 emph_idxs.add(slot_ctr)
+            # elif slot == CONTRAST_TOKEN:
+            #     contrast_idxs.add(slot_ctr)
+            # elif slot == CONCESSION_TOKEN:
+            #     concession_idxs.add(slot_ctr)
             else:
                 mr_dict[slot] = value
                 mr_dict_cased[slot] = value_orig
@@ -206,6 +236,12 @@ def load_test_data(data_testset, input_concat=False):
             # Insert the emphasis token where appropriate
             if slot_ctr in emph_idxs:
                 x_test_seq[i].append(EMPH_TOKEN)
+            # Insert the contrast token where appropriate
+            # if slot_ctr in contrast_idxs:
+            #     x_test_seq[i].append(CONTRAST_TOKEN)
+            # # Insert the concession token where appropriate
+            # if slot_ctr in concession_idxs:
+            #     x_test_seq[i].append(CONCESSION_TOKEN)
 
             if len(val) > 0:
                 x_test_seq[i].extend([key] + val.split())
@@ -1145,10 +1181,18 @@ def delex_sample(mr, utterance=None, dataset=None, slots_to_delex=None, mr_only=
             # By default, assume the dataset is 'rest_e2e'
             delex_slots = ['name', 'near', 'food']
 
+    # Sort the slots to be delexed in a descending order of their value's length (to avoid delexing of a value that is
+    #   a substring of another value to be delexed)
+    delex_slots_sorted = [(s, v) for s, v in mr.items()
+                          if s.rstrip(string.digits) in delex_slots and v not in ['dontcare', 'none', '']]
+    delex_slots_sorted = [s for s, v in sorted(delex_slots_sorted, key=lambda x: len(x[1]), reverse=True)]
+
     mr_update = {}
 
-    for slot, value in mr.items():
-        if slot.rstrip(string.digits) in delex_slots and value not in ['dontcare', 'none', '']:
+    # for slot, value in mr.items():
+    for slot in delex_slots_sorted:
+        value = mr[slot]
+        if value not in ['dontcare', 'none', '']:
             # Assemble a placeholder token for the value
             placeholder = create_placeholder(slot, value)
 
