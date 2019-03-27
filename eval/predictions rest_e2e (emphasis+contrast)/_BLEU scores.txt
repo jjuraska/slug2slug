@@ -1,0 +1,703 @@
+>>>> EMPHASIS + CONTRAST (train all) <<<<
+
+
+---- EXPERIMENT #1 ----
+
+
+TRANS emphasis+contrast, train all, test emphasis only (30.4k iter):
+
+BLEU_uncased =  34.33
+BLEU_cased =  32.19
+
+
+TRANS emphasis+contrast, train all, test contrast only (30.4k iter):
+
+BLEU_uncased =  28.04
+BLEU_cased =  27.21
+
+
+TRANS emphasis+contrast, train all, test all (30.4k iter):
+
+BLEU_uncased =  33.47
+BLEU_cased =  32.23
+
+
+TRANS emphasis+contrast, train all, test combo extra (30.4k iter):
+
+BLEU_uncased =  33.25
+BLEU_cased =  31.35
+
+
+
+TRANS emphasis+contrast, train all, test emphasis (40k iter):
+
+BLEU_uncased =  32.57
+BLEU_cased =  31.45
+
+
+TRANS emphasis+contrast, train all, test emphasis (40k iter) reranked:
+
+BLEU_uncased =  32.48
+BLEU_cased =  31.35
+
+
+TRANS emphasis+contrast, train all, test emphasis only (40k iter):
+
+BLEU_uncased =  33.97
+BLEU_cased =  32.06
+
+
+TRANS emphasis+contrast, train all, test emphasis only (40k iter) reranked:
+
+BLEU_uncased =  33.72
+BLEU_cased =  31.80
+
+
+TRANS emphasis+contrast, train all, test contrast (40k iter):
+
+BLEU_uncased =  28.95
+BLEU_cased =  28.08
+
+
+TRANS emphasis+contrast, train all, test contrast (40k iter) reranked:
+
+BLEU_uncased =  28.97
+BLEU_cased =  28.10
+
+
+TRANS emphasis+contrast, train all, test contrast only (40k iter):
+
+BLEU_uncased =  28.46
+BLEU_cased =  27.59
+
+
+TRANS emphasis+contrast, train all, test contrast only (40k iter) reranked:
+
+BLEU_uncased =  28.45
+BLEU_cased =  27.59
+
+
+TRANS emphasis+contrast, train all, test single (40k iter):
+
+BLEU_uncased =  32.54
+BLEU_cased =  31.43
+
+
+TRANS emphasis+contrast, train all, test single (40k iter) reranked:
+
+BLEU_uncased =  32.46
+BLEU_cased =  31.35
+
+
+TRANS emphasis+contrast, train all, test all (40k iter):
+
+BLEU_uncased =  32.59
+BLEU_cased =  31.47
+
+
+TRANS emphasis+contrast, train all, test all (40k iter) reranked:
+
+BLEU_uncased =  32.51
+BLEU_cased =  31.38
+
+
+TRANS emphasis+contrast, train all, test combo (40k iter):
+
+BLEU_uncased =  33.50
+BLEU_cased =  31.64
+
+
+TRANS emphasis+contrast, train all, test combo (40k iter) reranked:
+
+BLEU_uncased =  34.31
+BLEU_cased =  32.35
+
+
+TRANS emphasis+contrast, train all, test combo extra (40k iter):
+
+BLEU_uncased =  32.41
+BLEU_cased =  30.63
+
+
+TRANS emphasis+contrast, train all, test combo extra (40k iter) reranked:
+
+BLEU_uncased =  32.23
+BLEU_cased =  30.43
+
+
+
+---- EXPERIMENT #2 ----
+
+
+TRANS emphasis+contrast, train all, test emphasis (30.4k iter):
+
+BLEU_uncased =  32.87
+BLEU_cased =  31.75
+
+
+TRANS emphasis+contrast, train all, test emphasis (30.4k iter) reranked:
+
+BLEU_uncased =  32.85
+BLEU_cased =  31.72
+
+
+TRANS emphasis+contrast, train all, test emphasis only (30.4k iter):
+
+BLEU_uncased =  34.06
+BLEU_cased =  32.19
+
+
+TRANS emphasis+contrast, train all, test emphasis only (30.4k iter) reranked:
+
+BLEU_uncased =  33.92
+BLEU_cased =  32.05
+
+
+TRANS emphasis+contrast, train all, test contrast (30.4k iter):
+
+BLEU_uncased =  29.27
+BLEU_cased =  28.38
+
+
+TRANS emphasis+contrast, train all, test contrast (30.4k iter) reranked:
+
+BLEU_uncased =  29.39
+BLEU_cased =  28.49
+
+
+TRANS emphasis+contrast, train all, test contrast only (30.4k iter):
+
+BLEU_uncased =  27.44
+BLEU_cased =  26.58
+
+
+TRANS emphasis+contrast, train all, test contrast only (30.4k iter) reranked:
+
+BLEU_uncased =  27.46
+BLEU_cased =  26.60
+
+
+TRANS emphasis+contrast, train all, test single (30.4k iter):
+
+BLEU_uncased =  32.82
+BLEU_cased =  31.71
+
+
+TRANS emphasis+contrast, train all, test single (30.4k iter) reranked:
+
+BLEU_uncased =  32.80
+BLEU_cased =  31.68
+
+
+TRANS emphasis+contrast, train all, test all (30.4k iter):
+
+BLEU_uncased =  32.88
+BLEU_cased =  31.76
+
+
+TRANS emphasis+contrast, train all, test all (30.4k iter) reranked:
+
+BLEU_uncased =  32.85
+BLEU_cased =  31.73
+
+
+TRANS emphasis+contrast, train all, test combo (30.4k iter):
+
+BLEU_uncased =  34.31
+BLEU_cased =  32.68
+
+
+TRANS emphasis+contrast, train all, test combo (30.4k iter) reranked:
+
+BLEU_uncased =  34.97
+BLEU_cased =  33.34
+
+
+TRANS emphasis+contrast, train all, test combo extra (30.4k iter):
+
+BLEU_uncased =  32.68
+BLEU_cased =  31.00
+
+
+TRANS emphasis+contrast, train all, test combo extra (30.4k iter) reranked:
+
+BLEU_uncased =  32.50
+BLEU_cased =  30.84
+
+
+
+---- EXPERIMENT #3 ----
+
+
+TRANS emphasis+contrast, train all, test emphasis (38.4k iter):
+
+BLEU_uncased =  32.03
+BLEU_cased =  30.88
+
+
+TRANS emphasis+contrast, train all, test emphasis (38.4k iter) reranked:
+
+BLEU_uncased =  32.19
+BLEU_cased =  31.03
+
+
+TRANS emphasis+contrast, train all, test emphasis only (38.4k iter):
+
+BLEU_uncased =  33.79
+BLEU_cased =  31.79
+
+
+TRANS emphasis+contrast, train all, test emphasis only (38.4k iter) reranked:
+
+BLEU_uncased =  33.58
+BLEU_cased =  31.57
+
+
+TRANS emphasis+contrast, train all, test contrast (38.4k iter):
+
+BLEU_uncased =  28.28
+BLEU_cased =  27.44
+
+
+TRANS emphasis+contrast, train all, test contrast (38.4k iter) reranked:
+
+BLEU_uncased =  28.63
+BLEU_cased =  27.77
+
+
+TRANS emphasis+contrast, train all, test contrast only (38.4k iter):
+
+BLEU_uncased =  29.38
+BLEU_cased =  28.54
+
+
+TRANS emphasis+contrast, train all, test contrast only (38.4k iter) reranked:
+
+BLEU_uncased =  29.25
+BLEU_cased =  28.41
+
+
+TRANS emphasis+contrast, train all, test single (38.4k iter):
+
+BLEU_uncased =  32.03
+BLEU_cased =  30.90
+
+
+TRANS emphasis+contrast, train all, test single (38.4k iter) reranked:
+
+BLEU_uncased =  32.18
+BLEU_cased =  31.05
+
+
+TRANS emphasis+contrast, train all, test all (38.4k iter):
+
+BLEU_uncased =  32.10
+BLEU_cased =  30.95
+
+
+TRANS emphasis+contrast, train all, test all (38.4k iter) reranked:
+
+BLEU_uncased =  32.25
+BLEU_cased =  31.09
+
+
+TRANS emphasis+contrast, train all, test combo (38.4k iter):
+
+BLEU_uncased =  34.65
+BLEU_cased =  32.35
+
+
+TRANS emphasis+contrast, train all, test combo (38.4k iter) reranked:
+
+BLEU_uncased =  35.30
+BLEU_cased =  33.03
+
+
+TRANS emphasis+contrast, train all, test combo extra (38.4k iter):
+
+BLEU_uncased =  32.56
+BLEU_cased =  30.66
+
+
+TRANS emphasis+contrast, train all, test combo extra (38.4k iter) reranked:
+
+BLEU_uncased =  32.51
+BLEU_cased =  30.63
+
+
+
+>>>> EMPHASIS + CONTRAST (train single) <<<<
+
+
+---- EXPERIMENT #1 ----
+
+
+TRANS emphasis+contrast, train single, test emphasis only (24k iter):
+
+BLEU_uncased =  33.71
+BLEU_cased =  31.62
+
+
+TRANS emphasis+contrast, train single, test contrast only (24k iter):
+
+BLEU_uncased =  28.08
+BLEU_cased =  27.27
+
+
+TRANS emphasis+contrast, train single, test all (24k iter):
+
+BLEU_uncased =  32.90
+BLEU_cased =  31.67
+
+
+TRANS emphasis+contrast, train single, test combo extra (24k iter):
+
+BLEU_uncased =  32.22
+BLEU_cased =  30.44
+
+
+
+TRANS emphasis+contrast, train single, test emphasis (35.6k iter):
+
+BLEU_uncased =  32.97
+BLEU_cased =  31.81
+
+
+TRANS emphasis+contrast, train single, test emphasis (35.6k iter) reranked:
+
+BLEU_uncased =  32.90
+BLEU_cased =  31.73
+
+
+TRANS emphasis+contrast, train single, test emphasis only (35.6k iter):
+
+BLEU_uncased =  34.07
+BLEU_cased =  32.09
+
+
+TRANS emphasis+contrast, train single, test emphasis only (35.6k iter) reranked:
+
+BLEU_uncased =  33.85
+BLEU_cased =  31.87
+
+
+TRANS emphasis+contrast, train single, test contrast (35.6k iter):
+
+BLEU_uncased =  29.54
+BLEU_cased =  28.66
+
+
+TRANS emphasis+contrast, train single, test contrast (35.6k iter) reranked:
+
+BLEU_uncased =  29.61
+BLEU_cased =  28.71
+
+
+TRANS emphasis+contrast, train single, test contrast only (35.6k iter):
+
+BLEU_uncased =  29.38
+BLEU_cased =  28.61
+
+
+TRANS emphasis+contrast, train single, test contrast only (35.6k iter) reranked:
+
+BLEU_uncased =  29.33
+BLEU_cased =  28.60
+
+
+TRANS emphasis+contrast, train single, test single (35.6k iter):
+
+BLEU_uncased =  32.95
+BLEU_cased =  31.82
+
+
+TRANS emphasis+contrast, train single, test single (35.6k iter) reranked:
+
+BLEU_uncased =  32.89
+BLEU_cased =  31.74
+
+
+TRANS emphasis+contrast, train single, test all (35.6k iter):
+
+BLEU_uncased =  33.00
+BLEU_cased =  31.85
+
+
+TRANS emphasis+contrast, train single, test all (35.6k iter) reranked:
+
+BLEU_uncased =  32.93
+BLEU_cased =  31.77
+
+
+TRANS emphasis+contrast, train single, test combo (35.6k iter):
+
+BLEU_uncased =  34.12
+BLEU_cased =  32.35
+
+
+TRANS emphasis+contrast, train single, test combo (35.6k iter) reranked:
+
+BLEU_uncased =  34.13
+BLEU_cased =  32.35
+
+
+TRANS emphasis+contrast, train single, test combo extra (35.6k iter):
+
+BLEU_uncased =  32.21
+BLEU_cased =  30.50
+
+
+TRANS emphasis+contrast, train single, test combo extra (35.6k iter) reranked:
+
+BLEU_uncased =  32.21
+BLEU_cased =  30.49
+
+
+
+---- EXPERIMENT #2 ----
+
+
+TRANS emphasis+contrast, train single, test emphasis only (19.2k iter):
+
+BLEU_uncased =  33.85
+BLEU_cased =  31.79
+
+
+TRANS emphasis+contrast, train single, test contrast only (19.2k iter):
+
+BLEU_uncased =  29.91
+BLEU_cased =  29.00
+
+
+TRANS emphasis+contrast, train single, test all (19.2k iter):
+
+BLEU_uncased =  33.24
+BLEU_cased =  32.02
+
+
+TRANS emphasis+contrast, train single, test combo extra (19.2k iter):
+
+BLEU_uncased =  31.05
+BLEU_cased =  29.41
+
+
+
+TRANS emphasis+contrast, train single, test emphasis (27.6k iter):
+
+BLEU_uncased =  32.55
+BLEU_cased =  31.46
+
+
+TRANS emphasis+contrast, train single, test emphasis (27.6k iter) reranked:
+
+BLEU_uncased =  32.67
+BLEU_cased =  31.59
+
+
+TRANS emphasis+contrast, train single, test emphasis only (27.6k iter):
+
+BLEU_uncased =  33.13
+BLEU_cased =  31.33
+
+
+TRANS emphasis+contrast, train single, test emphasis only (27.6k iter) reranked:
+
+BLEU_uncased =  33.02
+BLEU_cased =  31.24
+
+
+TRANS emphasis+contrast, train single, test contrast (27.6k iter):
+
+BLEU_uncased =  29.42
+BLEU_cased =  28.55
+
+
+TRANS emphasis+contrast, train single, test contrast (27.6k iter) reranked:
+
+BLEU_uncased =  29.70
+BLEU_cased =  28.83
+
+
+TRANS emphasis+contrast, train single, test contrast only (27.6k iter):
+
+BLEU_uncased =  28.75
+BLEU_cased =  27.89
+
+
+TRANS emphasis+contrast, train single, test contrast only (27.6k iter) reranked:
+
+BLEU_uncased =  28.43
+BLEU_cased =  27.61
+
+
+TRANS emphasis+contrast, train single, test single (27.6k iter):
+
+BLEU_uncased =  32.52
+BLEU_cased =  31.45
+
+
+TRANS emphasis+contrast, train single, test single (27.6k iter) reranked:
+
+BLEU_uncased =  32.62
+BLEU_cased =  31.56
+
+
+TRANS emphasis+contrast, train single, test all (27.6k iter):
+
+BLEU_uncased =  32.57
+BLEU_cased =  31.49
+
+
+TRANS emphasis+contrast, train single, test all (27.6k iter) reranked:
+
+BLEU_uncased =  32.68
+BLEU_cased =  31.60
+
+
+TRANS emphasis+contrast, train single, test combo (27.6k iter):
+
+BLEU_uncased =  34.53
+BLEU_cased =  32.94
+
+
+TRANS emphasis+contrast, train single, test combo (27.6k iter) reranked:
+
+BLEU_uncased =  35.31
+BLEU_cased =  33.61
+
+
+TRANS emphasis+contrast, train single, test combo extra (27.6k iter):
+
+BLEU_uncased =  32.43
+BLEU_cased =  30.79
+
+
+TRANS emphasis+contrast, train single, test combo extra (27.6k iter) reranked:
+
+BLEU_uncased =  32.31
+BLEU_cased =  30.66
+
+
+
+---- EXPERIMENT #3 ----
+
+
+TRANS emphasis+contrast, train single, test emphasis only (23.2k iter):
+
+BLEU_uncased =  32.35
+BLEU_cased =  30.56
+
+
+TRANS emphasis+contrast, train single, test contrast only (23.2k iter):
+
+BLEU_uncased =  27.76
+BLEU_cased =  26.91
+
+
+TRANS emphasis+contrast, train single, test all (23.2k iter):
+
+BLEU_uncased =  31.34
+BLEU_cased =  30.30
+
+
+TRANS emphasis+contrast, train single, test combo extra (23.2k iter):
+
+BLEU_uncased =  29.63
+BLEU_cased =  28.13
+
+
+
+TRANS emphasis+contrast, train single, test emphasis (34.4k iter):
+
+BLEU_uncased =  32.40
+BLEU_cased =  31.31
+
+
+TRANS emphasis+contrast, train single, test emphasis (34.4k iter) reranked:
+
+BLEU_uncased =  32.51
+BLEU_cased =  31.44
+
+
+TRANS emphasis+contrast, train single, test emphasis only (34.4k iter):
+
+BLEU_uncased =  33.05
+BLEU_cased =  31.30
+
+
+TRANS emphasis+contrast, train single, test emphasis only (34.4k iter) reranked:
+
+BLEU_uncased =  33.04
+BLEU_cased =  31.30
+
+
+TRANS emphasis+contrast, train single, test contrast (34.4k iter):
+
+BLEU_uncased =  29.08
+BLEU_cased =  28.20
+
+
+TRANS emphasis+contrast, train single, test contrast (34.4k iter) reranked:
+
+BLEU_uncased =  29.38
+BLEU_cased =  28.52
+
+
+TRANS emphasis+contrast, train single, test contrast only (34.4k iter):
+
+BLEU_uncased =  27.69
+BLEU_cased =  26.88
+
+
+TRANS emphasis+contrast, train single, test contrast only (34.4k iter) reranked:
+
+BLEU_uncased =  27.75
+BLEU_cased =  26.94
+
+
+TRANS emphasis+contrast, train single, test single (34.4k iter):
+
+BLEU_uncased =  32.37
+BLEU_cased =  31.30
+
+
+TRANS emphasis+contrast, train single, test single (34.4k iter) reranked:
+
+BLEU_uncased =  32.46
+BLEU_cased =  31.41
+
+
+TRANS emphasis+contrast, train single, test all (34.4k iter):
+
+BLEU_uncased =  32.39
+BLEU_cased =  31.31
+
+
+TRANS emphasis+contrast, train single, test all (34.4k iter) reranked:
+
+BLEU_uncased =  32.48
+BLEU_cased =  31.42
+
+
+TRANS emphasis+contrast, train single, test combo (34.4k iter):
+
+BLEU_uncased =  32.68
+BLEU_cased =  31.03
+
+
+TRANS emphasis+contrast, train single, test combo (34.4k iter) reranked:
+
+BLEU_uncased =  33.45
+BLEU_cased =  31.76
+
+
+TRANS emphasis+contrast, train single, test combo extra (34.4k iter):
+
+BLEU_uncased =  31.85
+BLEU_cased =  30.15
+
+
+TRANS emphasis+contrast, train single, test combo extra (34.4k iter) reranked:
+
+BLEU_uncased =  31.75
+BLEU_cased =  30.05

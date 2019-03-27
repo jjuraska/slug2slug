@@ -1,0 +1,117 @@
+---- EXPERIMENT #1 ----
+
+
+TRANS emphasis, train all, test all (20.4k iter):
+
+BLEU_uncased =  32.36
+BLEU_cased =  31.18
+
+
+TRANS emphasis, train all, test contrast only (20.4k iter):
+
+BLEU_uncased =  33.53
+BLEU_cased =  31.46
+
+
+TRANS emphasis, train all, test all (36k iter):
+
+BLEU_uncased =  32.40
+BLEU_cased =  31.24
+
+
+TRANS emphasis, train all, test all (36k iter) reranked:
+
+BLEU_uncased =  32.62
+BLEU_cased =  31.44
+
+
+TRANS emphasis, train all, test contrast only (36k iter):
+
+BLEU_uncased =  33.83
+BLEU_cased =  31.81
+
+
+TRANS emphasis, train all, test contrast only (36k iter) reranked:
+
+BLEU_uncased =  33.81
+BLEU_cased =  31.78
+
+
+
+---- EXPERIMENT #2 ----
+
+
+TRANS emphasis, train all, test all (31.6k iter):
+
+BLEU_uncased =  32.68
+BLEU_cased =  31.52
+
+
+TRANS emphasis, train all, test contrast only (31.6k iter):
+
+BLEU_uncased =  33.59
+BLEU_cased =  31.60
+
+
+TRANS emphasis, train all, test all (38.8k iter):
+
+BLEU_uncased =  32.83
+BLEU_cased =  31.62
+
+
+TRANS emphasis, train all, test all (38.8k iter) reranked:
+
+BLEU_uncased =  32.91
+BLEU_cased =  31.70
+
+
+TRANS emphasis, train all, test contrast only (38.8k iter):
+
+BLEU_uncased =  34.02
+BLEU_cased =  31.94
+
+
+TRANS emphasis, train all, test contrast only (38.8k iter) reranked:
+
+BLEU_uncased =  33.89
+BLEU_cased =  31.81
+
+
+
+---- EXPERIMENT #3 ----
+
+
+TRANS emphasis, train all, test all (16k iter):
+
+BLEU_uncased =  33.60
+BLEU_cased =  32.41
+
+
+TRANS emphasis, train all, test contrast only (16k iter):
+
+BLEU_uncased =  33.19
+BLEU_cased =  31.26
+
+
+TRANS emphasis, train all, test all (36.8k iter):
+
+BLEU_uncased =  32.67
+BLEU_cased =  31.55
+
+
+TRANS emphasis, train all, test all (36.8k iter) reranked:
+
+BLEU_uncased =  32.69
+BLEU_cased =  31.55
+
+
+TRANS emphasis, train all, test contrast only (36.8k iter):
+
+BLEU_uncased =  33.65
+BLEU_cased =  31.73
+
+
+TRANS emphasis, train all, test contrast only (36.8k iter) reranked:
+
+BLEU_uncased =  33.44
+BLEU_cased =  31.51

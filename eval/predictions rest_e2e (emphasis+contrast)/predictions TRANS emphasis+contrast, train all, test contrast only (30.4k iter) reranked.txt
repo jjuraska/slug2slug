@@ -1,0 +1,183 @@
+The Cricketers is a coffee shop near Avalon. It is kid friendly but has a customer rating of 1 out of 5.
+The Cricketers is a coffee shop near Avalon. It is kid friendly but has a customer rating of 1 out of 5.
+The Cricketers is a coffee shop near Avalon. It is kid friendly but has a customer rating of 1 out of 5.
+The Cricketers is a coffee shop near Crowne Plaza Hotel. It is not family-friendly but has a customer rating of 5 out of 5.
+The Cricketers is a coffee shop near Crowne Plaza Hotel. It is not family-friendly but has a customer rating of 5 out of 5.
+The Cricketers is a coffee shop near Ranch. It is family friendly but has a low customer rating.
+The Cricketers is a coffee shop near Ranch. It is family friendly but has a low customer rating.
+The Cricketers is a coffee shop near Ranch. It is family friendly but has a low customer rating.
+The Cricketers is a coffee shop near Ranch. It is family friendly but has a low customer rating.
+The Cricketers is a child friendly restaurant near Avalon. It has a customer rating of 1 out of 5.
+The Cricketers is a child friendly restaurant near Avalon. It has a customer rating of 1 out of 5.
+The Cricketers is a child friendly restaurant near Avalon. It has a customer rating of 1 out of 5.
+The Cricketers is a restaurant near Crowne Plaza Hotel. It is not family-friendly but has a customer rating of 5 out of 5.
+The Cricketers is a restaurant near Crowne Plaza Hotel. It is not family-friendly but has a customer rating of 5 out of 5.
+The Cricketers is a family friendly restaurant near Ranch. It has a low customer rating.
+The Cricketers is a family friendly restaurant near Ranch. It has a low customer rating.
+The Cricketers is a family friendly restaurant near Ranch. It has a low customer rating.
+The Cricketers is a family friendly restaurant near Ranch. It has a low customer rating.
+The Cricketers is a cheap Chinese restaurant located in the city centre near All Bar One. It is not family-friendly but has a customer rating of 5 out of 5.
+The Cricketers is a cheap Chinese restaurant located in the city centre near All Bar One. It has a customer rating of 5 out of 5 but is not family-friendly.
+The Cricketers is a cheap Chinese restaurant in the riverside area near All Bar One. It is not family-friendly but has a customer rating of 5 out of 5.
+The Cricketers is a Chinese restaurant in the city centre near All Bar One. It is not children friendly but has a high price range and a customer rating of 1 out of 5.
+The Cricketers is a Chinese restaurant located in the city centre near All Bar One. It is children friendly but has a high price range and a customer rating of 1 out of 5.
+The Cricketers is a Chinese restaurant located in the city centre near All Bar One. It is children friendly but has a high price range and a customer rating of 1 out of 5.
+The Cricketers is a Chinese restaurant located in the city centre near All Bar One. It is children friendly but has a high price range and a customer rating of 1 out of 5.
+The Cricketers is a Chinese restaurant in the riverside area near All Bar One. It is children friendly but has a high price range and a customer rating of 1 out of 5.
+The Cricketers is a Chinese restaurant located in the city centre near All Bar One. It is family-friendly but has a low customer rating. The price range is less than £20.
+The Cricketers is a Chinese restaurant in the riverside area near All Bar One. It is family friendly but has a low customer rating. The price range is less than £20.
+The Cricketers is a moderately priced Chinese restaurant in the city centre near All Bar One. It is kid friendly but has a customer rating of 1 out of 5.
+The Cricketers is a Chinese restaurant located in the city centre near All Bar One. It is kid friendly but has a moderate price range and a customer rating of 1 out of 5.
+The Cricketers is a moderately priced Chinese restaurant in the riverside area near All Bar One. It is not kid friendly but has a customer rating of 1 out of 5.
+The Cricketers is a Chinese restaurant in the riverside area near All Bar One. It is kid friendly but has a moderate price range and a customer rating of 1 out of 5.
+The Cricketers is a moderately priced Chinese restaurant in the city centre near All Bar One. It is not kid friendly but has a customer rating of 3 out of 5.
+The Cricketers is a moderately priced Chinese restaurant located in the riverside area near All Bar One. It is not kid friendly but has a customer rating of 3 out of 5.
+The Cricketers is a moderately priced Chinese restaurant located in the riverside area near All Bar One. It is not kid friendly but has a customer rating of 3 out of 5.
+The Cricketers is a Chinese restaurant in the riverside area near All Bar One. It is not children friendly but has a high customer rating. The price range is more than £30.
+The Cricketers is a restaurant providing English food in the £20-25 price range. It is located in the city centre. It is near All Bar One. Its customer rating is high.
+The Cricketers is a restaurant providing English food in the £20-25 price range. It is located in the city centre. It is near All Bar One. Its customer rating is high.
+The Cricketers is a restaurant providing English food in the £20-25 price range. It is located in the riverside. It is near All Bar One. Its customer rating is high.
+The Cricketers is a cheap English restaurant in the riverside area near Café Rouge. It has an average customer rating but is not family-friendly.
+The Cricketers is a restaurant providing English food in the high price range. It is located in the riverside. It is near Café Rouge. Its customer rating is 1 out of 5.
+The Cricketers is a restaurant providing English food in the high price range. It is located in the city centre. It is near Café Rouge. Its customer rating is average.
+The Cricketers is a restaurant providing English food in the high price range. It is located in the riverside. It is near Café Rouge. Its customer rating is average.
+The Cricketers is a restaurant providing English food in the high price range. It is located in the riverside. It is near Café Rouge. Its customer rating is average.
+The Mill is a pub providing Fast food in the £20-25 price range. It is located in the city centre. It is near Café Rouge. Its customer rating is high.
+The Mill is a pub providing Fast food in the £20-25 price range. It is located in the city centre. It is near Café Rouge. Its customer rating is high.
+The Mill is a pub providing Fast food in the £20-25 price range. It is located in the city centre. It is near Café Rouge. Its customer rating is high.
+The Mill is a pub providing Fast food in the £20-25 price range. It is located in the riverside. It is near Café Rouge. Its customer rating is high.
+The Mill is a cheap Fast food pub located in the city centre near Café Sicilia. It is not family-friendly but has a customer rating of 5 out of 5.
+The Mill is a pub providing Fast food in the cheap price range. It is located in the riverside. It is near Café Sicilia. Its customer rating is average.
+The Mill is a pub providing Fast food in the cheap price range. It is located in the riverside. It is near Café Sicilia. Its customer rating is average.
+The Mill is a pub providing Fast food in the less than £20 price range. It is located in the city centre. It is near Café Sicilia. Its customer rating is low.
+The Mill is a pub providing Fast food in the less than £20 price range. It is located in the city centre. It is near Café Sicilia. Its customer rating is low.
+The Mill is a pub providing Fast food in the less than £20 price range. It is located in the city centre. It is near Café Sicilia. Its customer rating is low.
+The Mill is a family friendly pub providing Fast food in the less than £20 price range. It is located in the riverside. It is near Café Sicilia. Its customer rating is low.
+The Mill is a pub providing Fast food in the moderate price range. It is located in the riverside. It is near Café Sicilia. Its customer rating is 3 out of 5.
+The Mill is a family-friendly restaurant providing English food in the less than £20 price range. It is located in the city centre. It is near Café Rouge. Its customer rating is low.
+The Mill is a restaurant providing English food in the less than £20 price range. It is located in the riverside. It is near Café Rouge. Its customer rating is low.
+The Mill is a restaurant providing English food in the less than £20 price range. It is located in the riverside. It is near Café Rouge. Its customer rating is low.
+The Mill is a restaurant providing English food in the less than £20 price range. It is located in the riverside. It is near Café Rouge. Its customer rating is low.
+The Mill is a restaurant providing English food in the less than £20 price range. It is located in the riverside. It is near Café Rouge. Its customer rating is low.
+The Mill is a restaurant providing English food in the moderate price range. It is located in the riverside. It is near Café Rouge. Its customer rating is 1 out of 5.
+The Mill is a restaurant providing English food in the moderate price range. It is located in the riverside. It is near Café Rouge. Its customer rating is 3 out of 5.
+The Mill is a restaurant providing English food in the more than £30 price range. It is located in the city centre. It is near Café Rouge. Its customer rating is high.
+The Mill is a restaurant providing English food in the more than £30 price range. It is located in the city centre. It is near Café Rouge. Its customer rating is high.
+The Mill is a restaurant providing English food in the more than £30 price range. It is located in the riverside. It is near Café Rouge. Its customer rating is high.
+The Phoenix is a pub providing Fast food in the high price range. It is located in the city centre. It is near Raja Indian Cuisine.
+The Phoenix is a pub providing Fast food in the high price range. It is located in the city centre. It is near Raja Indian Cuisine.
+The Phoenix is a pub providing Fast food in the high price range. It is located in the city centre. It is near Raja Indian Cuisine.
+The Phoenix is a pub providing Fast food in the more than £30 price range. It is located in the riverside. It is near Café Sicilia. Its customer rating is high.
+The Phoenix is a pub providing French food in the £20-25 price range. It is located in the riverside. It is near Café Sicilia. Its customer rating is 3 out of 5.
+The Phoenix is a pub providing French food in the £20-25 price range. It is located in the riverside. It is near Café Sicilia. Its customer rating is 3 out of 5.
+The Phoenix is a pub providing French food in the £20-25 price range. It is located in the city centre. It is near Crowne Plaza Hotel. Its customer rating is high.
+The Phoenix is a pub providing French food in the £20-25 price range. It is located in the city centre. It is near Crowne Plaza Hotel. Its customer rating is high.
+The Phoenix is a pub providing French food in the cheap price range. It is located in the city centre. It is near Crowne Plaza Hotel. Its customer rating is 5 out of 5.
+The Phoenix is a pub providing French food in the cheap price range. It is located in the riverside. It is near Crowne Plaza Hotel. Its customer rating is 5 out of 5.
+The Phoenix is a pub providing French food in the cheap price range. It is located in the riverside. It is near Crowne Plaza Hotel. Its customer rating is 5 out of 5.
+The Phoenix is a pub providing French food in the cheap price range. It is located in the riverside. It is near Crowne Plaza Hotel. Its customer rating is 5 out of 5.
+The Phoenix is a pub providing French food in the cheap price range. It is located in the riverside. It is near Crowne Plaza Hotel. Its customer rating is 5 out of 5.
+The Phoenix is a pub providing French food in the high price range. It is located in the city centre. It is near Crowne Plaza Hotel. Its customer rating is 3 out of 5.
+The Phoenix is a pub providing French food in the high price range. It is located in the riverside. It is near Crowne Plaza Hotel. Its customer rating is 3 out of 5.
+The Phoenix is a family-friendly pub providing French food in the less than £20 price range. It is located in the city centre. It is near Crowne Plaza Hotel. Its customer rating is average.
+The Phoenix is a pub providing French food in the less than £20 price range. It is located in the riverside. It is near Crowne Plaza Hotel. Its customer rating is average.
+The Phoenix is a pub providing French food in the less than £20 price range. It is located in the riverside. It is near Crowne Plaza Hotel. Its customer rating is average.
+The Phoenix is a pub providing French food in the less than £20 price range. It is located in the city centre. It is near Crowne Plaza Hotel. Its customer rating is low.
+The Phoenix is a pub providing French food in the less than £20 price range. It is located in the riverside. It is near Crowne Plaza Hotel. Its customer rating is low.
+The Phoenix is a pub providing French food in the less than £20 price range. It is located in the riverside. It is near Crowne Plaza Hotel. Its customer rating is low.
+The Phoenix is a pub providing French food in the moderate price range. It is located in the city centre. It is near Crowne Plaza Hotel. Its customer rating is 1 out of 5.
+The Phoenix is a pub providing French food in the moderate price range. It is located in the city centre. It is near Crowne Plaza Hotel. Its customer rating is 1 out of 5.
+The Phoenix is a pub providing French food in the more than £30 price range. It is located in the city centre. It is near Crowne Plaza Hotel. Its customer rating is 5 out of 5.
+The Phoenix is a pub providing French food in the more than £30 price range. It is located in the city centre. It is near Crowne Plaza Hotel. Its customer rating is 5 out of 5.
+The Phoenix is a pub providing French food in the more than £30 price range. It is located in the city centre. It is near Crowne Plaza Hotel. Its customer rating is 5 out of 5.
+The Phoenix is a pub providing French food in the more than £30 price range. It is located in the riverside. It is near Crowne Plaza Hotel. Its customer rating is 5 out of 5.
+The Phoenix is a pub providing French food in the more than £30 price range. It is located in the city centre. It is near Crowne Plaza Hotel. Its customer rating is low.
+The Phoenix is a pub providing French food in the more than £30 price range. It is located in the city centre. It is near Crowne Plaza Hotel. Its customer rating is low.
+The Phoenix is a pub providing French food in the more than £30 price range. It is located in the riverside. It is near Crowne Plaza Hotel. Its customer rating is low.
+The Phoenix is a pub providing French food in the more than £30 price range. It is located in the riverside. It is near Crowne Plaza Hotel. Its customer rating is low.
+The Phoenix is a Fast food restaurant located in the city centre near Raja Indian Cuisine. It has a high price range but is not children friendly.
+The Phoenix is a Fast food restaurant located in the city centre near Raja Indian Cuisine. It has a high price range but is not children friendly.
+The Phoenix is a Fast food restaurant located in the city centre near Raja Indian Cuisine. It has a high price range but is not children friendly.
+The Phoenix is a restaurant providing Indian food in the £20-25 price range. It is located in the riverside. It is near Crowne Plaza Hotel. Its customer rating is high.
+The Phoenix is a cheap Indian restaurant located in the city centre near Crowne Plaza Hotel. It has a customer rating of 5 out of 5 but is not family-friendly.
+The Phoenix is a cheap Indian restaurant located in the city centre near Express by Holiday Inn. It has an average customer rating but is not family-friendly.
+The Punter is a pub providing Chinese food in the less than £20 price range. It is located in the riverside. It is near Raja Indian Cuisine.
+The Punter is a Chinese restaurant in the riverside area near Raja Indian Cuisine. It has a price range of less than £20 but is not family-friendly.
+The Punter is a cheap Indian restaurant in the riverside area near Express by Holiday Inn. It is family friendly but has an average customer rating.
+The Punter is a restaurant providing Indian food in the high price range. It is located in the city centre. It is near Express by Holiday Inn. Its customer rating is 1 out of 5.
+The Punter is a restaurant providing Indian food in the high price range. It is located in the city centre. It is near Express by Holiday Inn. Its customer rating is average.
+The Punter is a restaurant providing Indian food in the high price range. It is located in the city centre. It is near Express by Holiday Inn. Its customer rating is average.
+The Punter is a restaurant providing Indian food in the high price range. It is located in the riverside. It is near Express by Holiday Inn. Its customer rating is average.
+The Punter is a restaurant providing Indian food in the moderate price range. It is located in the riverside. It is near Express by Holiday Inn. Its customer rating is 3 out of 5.
+The Punter is a restaurant providing Indian food in the moderate price range. It is located in the riverside. It is near Express by Holiday Inn. Its customer rating is 3 out of 5.
+The Punter is a restaurant providing Indian food in the more than £30 price range. It is located in the city centre. It is near Express by Holiday Inn. Its customer rating is high.
+The Punter is a restaurant providing Indian food in the more than £30 price range. It is located in the city centre. It is near Express by Holiday Inn. Its customer rating is high.
+The Punter is a restaurant providing Italian food in the £20-25 price range. It is located in the city centre. It is near Express by Holiday Inn. Its customer rating is high.
+The Punter is a restaurant providing Italian food in the £20-25 price range. It is located in the riverside. It is near Express by Holiday Inn. Its customer rating is high.
+The Punter is a restaurant providing Italian food in the high price range. It is located in the city centre. It is near Rainbow Vegetarian Café. Its customer rating is 1 out of 5.
+The Vaults is a pub providing French food in the less than £20 price range. It is located in the riverside. It is near Raja Indian Cuisine.
+The Vaults is a pub providing French food in the less than £20 price range. It is located in the riverside. It is near Raja Indian Cuisine.
+The Vaults is a pub providing French food in the moderate price range. It is located in the riverside. It is near Raja Indian Cuisine.
+The Vaults is a pub providing French food in the more than £30 price range. It is located in the riverside. It is near Raja Indian Cuisine.
+The Vaults is a pub providing French food in the more than £30 price range. It is located in the riverside. It is near Raja Indian Cuisine.
+The Vaults is a pub providing Indian food in the high price range. It is located in the city centre. It is near Raja Indian Cuisine.
+The Vaults is a pub providing Italian food in the high price range. It is located in the riverside. It is near Rainbow Vegetarian Café. Its customer rating is average.
+The Vaults is a pub providing Italian food in the high price range. It is located in the riverside. It is near Rainbow Vegetarian Café. Its customer rating is average.
+The Vaults is a pub providing Italian food in the high price range. It is located in the riverside. It is near Rainbow Vegetarian Café. Its customer rating is average.
+The Vaults is a pub providing Italian food in the high price range. It is located in the riverside. It is near Rainbow Vegetarian Café. Its customer rating is average.
+The Vaults is a pub providing Italian food in the less than £20 price range. It is located in the city centre. It is near Rainbow Vegetarian Café. Its customer rating is low.
+The Vaults is a pub providing Italian food in the less than £20 price range. It is located in the riverside. It is near Rainbow Vegetarian Café. Its customer rating is low.
+The Vaults is a pub providing Italian food in the less than £20 price range. It is located in the riverside. It is near Rainbow Vegetarian Café. Its customer rating is low.
+The Vaults is a family friendly pub providing Italian food in the less than £20 price range. It is located in the riverside. It is near Rainbow Vegetarian Café. Its customer rating is low.
+The Vaults is a pub providing Italian food in the moderate price range. It is located in the city centre. It is near Rainbow Vegetarian Café. Its customer rating is 1 out of 5.
+The Vaults is a pub providing Italian food in the moderate price range. It is located in the riverside. It is near Rainbow Vegetarian Café. Its customer rating is 1 out of 5.
+The Vaults is a pub providing Italian food in the moderate price range. It is located in the riverside. It is near Rainbow Vegetarian Café. Its customer rating is 1 out of 5.
+The Vaults is a pub providing Italian food in the more than £30 price range. It is located in the riverside. It is near Rainbow Vegetarian Café. Its customer rating is high.
+The Vaults is a pub providing Italian food in the more than £30 price range. It is located in the riverside. It is near Rainbow Vegetarian Café. Its customer rating is high.
+The Vaults is a pub providing Japanese food in the £20-25 price range. It is located in the riverside. It is near Rainbow Vegetarian Café. Its customer rating is 3 out of 5.
+The Vaults is a pub providing Japanese food in the £20-25 price range. It is located in the riverside. It is near Rainbow Vegetarian Café. Its customer rating is high.
+The Vaults is a pub providing Japanese food in the £20-25 price range. It is located in the riverside. It is near Raja Indian Cuisine. Its customer rating is high.
+The Vaults is a pub providing Japanese food in the cheap price range. It is located in the riverside. It is near Raja Indian Cuisine. Its customer rating is 5 out of 5.
+The Vaults is a pub providing Japanese food in the cheap price range. It is located in the riverside. It is near Raja Indian Cuisine. Its customer rating is 5 out of 5.
+The Vaults is a pub providing Japanese food in the high price range. It is located in the city centre. It is near Raja Indian Cuisine. Its customer rating is 3 out of 5.
+The Vaults is a pub providing Japanese food in the high price range. It is located in the city centre. It is near Raja Indian Cuisine. Its customer rating is 3 out of 5.
+The Vaults is a pub providing Japanese food in the high price range. It is located in the riverside. It is near Raja Indian Cuisine. Its customer rating is 3 out of 5.
+The Vaults is a pub providing Japanese food in the high price range. It is located in the riverside. It is near Raja Indian Cuisine. Its customer rating is 3 out of 5.
+The Vaults is a pub providing Japanese food in the less than £20 price range. It is located in the riverside. It is near Raja Indian Cuisine. Its customer rating is average.
+The Vaults is a pub providing Japanese food in the less than £20 price range. It is located in the riverside. It is near Raja Indian Cuisine. Its customer rating is average.
+The Vaults is a pub providing Japanese food in the less than £20 price range. It is located in the riverside. It is near Raja Indian Cuisine. Its customer rating is low.
+The Vaults is a pub providing Japanese food in the less than £20 price range. It is located in the riverside. It is near Raja Indian Cuisine. Its customer rating is low.
+The Vaults is a pub providing Japanese food in the less than £20 price range. It is located in the riverside. It is near Raja Indian Cuisine. Its customer rating is low.
+The Vaults is a French restaurant in the riverside area near Raja Indian Cuisine. It has a price range of less than £20 but is not family-friendly.
+The Vaults is a French restaurant in the riverside area near Raja Indian Cuisine. It has a price range of less than £20 but is not family-friendly.
+The Vaults is a moderately priced French restaurant in the riverside area near Raja Indian Cuisine. It is not kid friendly but has a customer rating of 1 out of 5.
+The Vaults is a restaurant providing French food in the more than £30 price range. It is located in the riverside. It is near Raja Indian Cuisine.
+The Vaults is a restaurant providing French food in the more than £30 price range. It is located in the riverside. It is near Raja Indian Cuisine.
+The Vaults is a restaurant providing Indian food in the high price range. It is located in the city centre. It is near Raja Indian Cuisine.
+The Waterman is a pub providing Indian food in the high price range. It is located in the city centre. It is near Raja Indian Cuisine.
+The Waterman is a pub providing Indian food in the less than £20 price range. It is located in the city centre. It is near Raja Indian Cuisine.
+The Waterman is a pub providing Indian food in the less than £20 price range. It is located in the riverside. It is near Raja Indian Cuisine.
+The Waterman is a pub providing Italian food in the high price range. It is located in the city centre. It is near Raja Indian Cuisine.
+The Waterman is a pub providing Italian food in the high price range. It is located in the riverside. It is near Raja Indian Cuisine.
+The Waterman is a children friendly pub providing Italian food in the high price range. It is located in the riverside. It is near Raja Indian Cuisine.
+The Waterman is a children friendly pub providing Italian food in the high price range. It is located in the riverside. It is near Raja Indian Cuisine.
+The Waterman is a restaurant providing Indian food in the high price range. It is located in the city centre. It is near Raja Indian Cuisine.
+The Waterman is a restaurant providing Indian food in the less than £20 price range. It is located in the city centre. It is near Raja Indian Cuisine.
+The Waterman is a restaurant providing Indian food in the less than £20 price range. It is located in the riverside. It is near Raja Indian Cuisine.
+The Waterman is a restaurant providing Italian food in the high price range. It is located in the city centre. It is near Raja Indian Cuisine.
+The Waterman is a restaurant providing Italian food in the high price range. It is located in the riverside. It is near Raja Indian Cuisine.
+The Waterman is a restaurant providing Italian food in the high price range. It is located in the riverside. It is near Raja Indian Cuisine.
+The Waterman is a restaurant providing Italian food in the high price range. It is located in the riverside. It is near Raja Indian Cuisine.
+The Wrestlers is a pub providing Japanese food in the high price range. It is located in the riverside. It is near Raja Indian Cuisine.
+The Wrestlers is a pub providing Japanese food in the high price range. It is located in the riverside. It is near Raja Indian Cuisine.
+The Wrestlers is a pub providing Japanese food in the moderate price range. It is located in the city centre. It is near Raja Indian Cuisine.
+The Wrestlers is a pub providing Japanese food in the more than £30 price range. It is located in the city centre. It is near Raja Indian Cuisine. Its customer rating is 5 out of 5.
+The Wrestlers is a pub providing Japanese food in the more than £30 price range. It is located in the city centre. It is near Raja Indian Cuisine. Its customer rating is 5 out of 5.
+The Wrestlers is a pub providing Japanese food in the more than £30 price range. It is located in the city centre. It is near Raja Indian Cuisine. Its customer rating is 5 out of 5.
+The Wrestlers is a pub providing Japanese food in the more than £30 price range. It is located in the riverside. It is near Raja Indian Cuisine. Its customer rating is 5 out of 5.
+The Wrestlers is a pub providing Japanese food in the more than £30 price range. It is located in the city centre. It is near Raja Indian Cuisine. Its customer rating is low.
+The Wrestlers is a pub providing Japanese food in the more than £30 price range. It is located in the city centre. It is near Raja Indian Cuisine. Its customer rating is low.
+The Wrestlers is a pub providing Japanese food in the more than £30 price range. It is located in the city centre. It is near Raja Indian Cuisine. Its customer rating is low.
+The Wrestlers is a Japanese restaurant located in the riverside area near Raja Indian Cuisine. It is children friendly but has a high price range.
+The Wrestlers is a Japanese restaurant located in the riverside area near Raja Indian Cuisine. It is children friendly but has a high price range.
+The Wrestlers is a moderately priced Japanese restaurant located in the city centre near Raja Indian Cuisine. It is not kid friendly but has a customer rating of 1 out of 5.

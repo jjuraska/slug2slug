@@ -1,0 +1,614 @@
+There is a kid friendly coffee shop near Avalon called The Cricketers. It has a customer rating of 1 out of 5.
+There is a kid friendly coffee shop called The Cricketers near Avalon. It has a customer rating of 1 out of 5.
+There is a kid friendly restaurant near Avalon called The Cricketers. It has a customer rating of 1 out of 5.
+There is a kid friendly restaurant called The Cricketers near Avalon. It has a customer rating of 1 out of 5.
+There is a restaurant called The Cricketers that provides Chinese food in the cheap price range. It is located in the city centre. It is near All Bar One. Its customer rating is 5 out of 5.
+Located in the city centre near All Bar One, there is a 1 out of 5 customer rating called The Cricketers. It is a child friendly Chinese restaurant with a high price range.
+There is a high priced Chinese restaurant with a customer rating of 1 out of 5 called The Cricketers located in the city centre near All Bar One. It is child friendly.
+There is a restaurant called The Cricketers that provides Chinese food in the less than £20 price range. It is located in the city centre. It is near All Bar One. Its customer rating is low.
+There is a restaurant called The Cricketers that provides Chinese food in the moderate price range. It is located in the city centre. It is near All Bar One. Its customer rating is 1 out of 5.
+Located in the city centre near All Bar One, The Cricketers is a highly rated English restaurant with a price range of £20-25 but is not kid friendly.
+There is an English restaurant in the riverside area near All Bar One called The Cricketers. It has a high customer rating but is not kid friendly. The price range is £20-25.
+There is a cheap English restaurant with an average customer rating near Café Rouge in the riverside area called The Cricketers. It is not family-friendly.
+There is a highly rated Fast food pub in the city centre near Café Rouge called The Mill. It is not kid friendly but has a price range of £20-25.
+In the city centre near Café Rouge there is a highly rated Fast food pub called The Mill. It is not kid friendly but has a price range of £20-25.
+There is a Fast food pub called The Mill in the riverside area near Café Sicilia. It has an average customer rating but is not family-friendly.
+There is a pub called The Mill that serves cheap Fast food. It is located in the riverside area near Café Sicilia, but has an average customer rating. It is not family-friendly.
+There is a low rated Fast food pub in the city centre near Café Sicilia called The Mill. It is not family-friendly but has a price range of less than £20.
+There is a Fast food pub in the riverside area near Café Sicilia called The Mill. It has a moderate price range but a customer rating of 3 out of 5 but is not kid friendly.
+There is an English restaurant in the riverside area near Café Rouge called The Mill. It has a moderate price range but a customer rating of 3 out of 5 but is not kid friendly.
+Located in the riverside area near Café Rouge, The Mill is an English restaurant with a high customer rating but is not child friendly. The price range is more than £30.
+There is a high priced pub in the city centre near Raja Indian Cuisine called The Phoenix. It serves Fast food but is not child friendly.
+There is a high priced Fast food pub called The Phoenix located in the city centre near Raja Indian Cuisine. It is not child friendly but has a high customer rating.
+There is a non child friendly Fast food pub called The Phoenix in the riverside area near Café Sicilia. It has a high customer rating and a price range of more than £30.
+There is a French pub in the riverside area near Café Sicilia called The Phoenix. It has a customer rating of 3 out of 5 but is not kid friendly.
+In the riverside area, there is a pub called The Phoenix. It serves French food at a cheap price. It is near Crowne Plaza Hotel and has a customer rating of 5 out of 5. it is not family-friendly.
+In the riverside area, there is a pub called The Phoenix. It serves French food at a cheap price. It is near Crowne Plaza Hotel and has a customer rating of 5 out of 5. it is not family-friendly.
+There is a French pub near Crowne Plaza Hotel called The Phoenix. It has an average customer rating but is not family-friendly. The price range is less than £20.
+There is a family-friendly French pub in the city centre near Crowne Plaza Hotel called The Phoenix. It has a low customer rating and a price range of less than £20.
+In the riverside area near Crowne Plaza Hotel there is a pub called The Phoenix. It serves French food for less than £20 but has a low customer rating. It is not family-friendly.
+There is a pub called The Phoenix that provides French food in the moderate price range. It is located in the city centre. It is near Crowne Plaza Hotel. Its customer rating is 1 out of 5.
+There is a French pub called The Phoenix located in the city centre near Crowne Plaza Hotel. It has a moderate price range but a customer rating of 1 out of 5 but is kid friendly.
+There is a pub called The Phoenix that serves French food. It is located in the city centre near Crowne Plaza Hotel. It has a customer rating of 5 out of 5 but is not child friendly.
+Located in the riverside area near Crowne Plaza Hotel, The Phoenix is a child friendly pub that serves French food with a price range of more than £30 but has a customer rating of 5 out of 5.
+There is a French pub called The Phoenix located in the city centre near Crowne Plaza Hotel. It is child friendly but has a low customer rating. The price range is more than £30.
+There is a French pub in the riverside area near Crowne Plaza Hotel called The Phoenix. It is child friendly but has a low customer rating. The price range is more than £30.
+There is a French pub called The Phoenix in the riverside area near Crowne Plaza Hotel. It is child friendly but has a low customer rating. The price range is more than £30.
+There is a high priced restaurant in the city centre near Raja Indian Cuisine called The Phoenix. It serves Fast food but is not child friendly.
+There is a high priced Fast food restaurant called The Phoenix located in the city centre near Raja Indian Cuisine. It is not child friendly but has a high customer rating.
+There is an average rated Indian restaurant in the riverside area near Express by Holiday Inn called The Punter. It is cheap but family friendly.
+With an average customer rating, The Punter is a child friendly Indian restaurant in the city centre near Express by Holiday Inn.
+There is a high priced Indian restaurant in the riverside area near Express by Holiday Inn called The Punter. It has an average customer rating but is not child friendly.
+There is a moderately priced Indian restaurant in the riverside area near Express by Holiday Inn. It has a customer rating of 3 out of 5 but is kid friendly.
+There is a highly rated restaurant in the city centre near Express by Holiday Inn that serves Indian food in the more than £30 price range but is not child friendly.
+There is a high priced pub called The Vaults located in the riverside area near Raja Indian Cuisine. It serves French food but is not child friendly.
+There is a high priced pub called The Vaults located in the city centre near Raja Indian Cuisine. It serves Indian food but is not child friendly.
+There is a high priced Italian pub called The Vaults located in the riverside area near Rainbow Vegetarian Café. It has an average customer rating but is child friendly.
+There is an Italian pub called The Vaults located in the city centre near Rainbow Vegetarian Café. It has a low customer rating but is not family-friendly. The price range is less than £20.
+There is a kid friendly Italian pub called The Vaults in the riverside area near Rainbow Vegetarian Café. It has a moderate price range but a customer rating of 1 out of 5.
+There is a pub in the riverside area near Rainbow Vegetarian Café called The Vaults. It serves Japanese food in the £20-25 price range but has a customer rating of 3 out of 5. it is not kid friendly.
+There is a Japanese pub in the riverside area called The Vaults near Rainbow Vegetarian Café. It has a high customer rating but is not kid friendly. The price range is £20-25.
+Located in the riverside area near Raja Indian Cuisine, The Vaults is a Japanese pub with a high customer rating but a price range of £20-25. It is not kid friendly.
+There is a cheap pub called The Vaults that serves Japanese food. It is located in the riverside. It is near Raja Indian Cuisine. Its customer rating is 5 out of 5 but it is not family-friendly.
+There is a high priced Japanese pub in the riverside area near Raja Indian Cuisine. It has a customer rating of 3 out of 5 but is child friendly.
+There is a Japanese pub with a price range of less than £20 called The Vaults. It is located in the riverside. It is near Raja Indian Cuisine. Its customer rating is low.
+Located in the riverside area near Raja Indian Cuisine, The Vaults is a family friendly pub that serves Japanese food for less than £20 but has a low customer rating.
+There is a high priced restaurant The Vaults located in the riverside area near Raja Indian Cuisine. It serves French food but is not child friendly.
+There is a high priced restaurant The Vaults located in the city centre near Raja Indian Cuisine. It serves Indian food but is not child friendly.
+There is an Indian pub called The Waterman located in the city centre near Raja Indian Cuisine. It is child friendly but has a high price range.
+There is a high priced pub called The Waterman that serves Italian food in the riverside area near Raja Indian Cuisine. It is not child friendly but has a high customer rating.
+There is an Indian restaurant called The Waterman located in the city centre near Raja Indian Cuisine. It is child friendly but has a high price range.
+There is a high priced restaurant called The Waterman that serves Italian food in the riverside area near Raja Indian Cuisine. It is not child friendly.
+There is a Japanese pub called The Wrestlers in the riverside area near Raja Indian Cuisine. It is child friendly but has a high price range.
+There is a pub called The Wrestlers that provides Japanese food in the moderate price range. It is located in the city centre. It is near Raja Indian Cuisine. Its customer rating is average.
+There is a Japanese pub with a 5 out of 5 customer rating called The Wrestlers in the city centre near Raja Indian Cuisine. It is not child friendly but has a price range of more than £30.
+There is a Japanese pub in the city centre near Raja Indian Cuisine called The Wrestlers. It has a customer rating of 5 out of 5 but is not child friendly.
+There is a children friendly Japanese restaurant called The Wrestlers located in the city centre near Raja Indian Cuisine. It has a low customer rating and a price range of more than £30.
+There is a Japanese pub called The Wrestlers located in the city centre near Raja Indian Cuisine. It is child friendly but has a low customer rating. The price range is more than £30.
+There is a Japanese restaurant called The Wrestlers in the riverside area near Raja Indian Cuisine. It is child friendly but has a high price range.
+There is a restaurant called The Wrestlers that provides Japanese food in the moderate price range. It is located in the city centre. It is near Raja Indian Cuisine. Its customer rating is average.
+There is a family friendly coffee shop called Cocum that serves Italian food in the cheap price range but has an average customer rating.
+There is a family friendly Chinese restaurant near Rainbow Vegetarian Café with a price range of less than £20 called Strada. It has a low customer rating.
+Located near Rainbow Vegetarian Café, The Rice Boat has a low customer rating but a price range of less than £20.
+There is a cheap Fast food coffee shop with a customer rating of 5 out of 5 called Cocum. It is not family-friendly.
+Located in the riverside area, The Rice Boat is a French restaurant with a customer rating of 5 out of 5 but is not family-friendly.
+There is a French restaurant called The Waterman in the riverside area. It has an average customer rating but is not family-friendly. The price range is less than £20.
+There is a family-friendly coffee shop Aromi that serves Italian food. It is located in the city centre but has a low customer rating.
+There is a Japanese restaurant called The Rice Boat in the riverside area near Express by Holiday Inn. It has a high customer rating but is not kid friendly. The price range is £20-25.
+There is a Japanese coffee shop called Cotto located in the city centre near The Portland Arms. It has a low customer rating but a price range of less than £20.
+There is a coffee shop called The Vaults in the riverside area near Café Brazil. It has a moderate price range but a customer rating of 1 out of 5.
+There is a moderately priced Indian coffee shop with a customer rating of 3 out of 5 called The Eagle near Burger King in the riverside area. It is kid friendly.
+There is an Indian coffee shop called Cocum. It has a moderate price range but a customer rating of 1 out of 5. it is not kid friendly.
+With a price range of more than £30, The Vaults is a child friendly Chinese restaurant.
+There is a children friendly restaurant with a high customer rating in the more than £30 price range called Strada.
+There is an Italian restaurant called The Rice Boat located in the city centre near Express by Holiday Inn. It has a low customer rating but is not family-friendly.
+With a high customer rating, The Waterman is a Fast food restaurant in the city centre. It has a price range of £20-25 but is not kid friendly.
+With a low customer rating, The Twenty Two is located in the riverside area near The Rice Boat. It has a price range of less than £20 but is not family-friendly.
+There is a Japanese coffee shop called Browns Cambridge located in the city centre near Crowne Plaza Hotel. It has a customer rating of 5 out of 5 but is not family-friendly.
+There is a French restaurant called Loch Fyne. It has a moderate price range but is not kid friendly.
+In the riverside area, there is a coffee shop called The Eagle. It serves French food at a cheap price. It is near Burger King and has a customer rating of 5 out of 5. it is not family-friendly.
+There is a cheap family friendly restaurant in the riverside area with a customer rating of 5 out of 5 called Blue Spice.
+There is an Indian restaurant with a price range of less than £20 called The Wrestlers. It has a low customer rating but is not family-friendly.
+There is a children friendly pub called The Olive Grove that serves Fast food. It is located in the riverside area but has a price range of more than £30.
+Located in the city centre, Blue Spice has a low customer rating but is not child friendly. The price range is more than £30.
+There is a children friendly English restaurant with a high price range called Loch Fyne.
+There is a highly rated Italian restaurant in the city centre called The Waterman. It is not kid friendly and has a price range of £20-25.
+Located in the city centre near The Rice Boat, The Twenty Two has an average customer rating but is not family-friendly. It has a price range of less than £20.
+Located in the riverside area near Express by Holiday Inn, The Rice Boat is a cheap Italian restaurant with an average customer rating but is not family-friendly.
+With a low customer rating and a price range of less than £20, Browns Cambridge serves Indian food.
+Located in the riverside area, The Eagle has a 5 out of 5 customer rating but a price range of more than £30.
+There is a Chinese restaurant called The Vaults. It has a price range of less than £20 but is not family-friendly.
+There is a family friendly Fast food restaurant called The Golden Curry. It has a low customer rating.
+Located in the city centre, The Rice Boat is a French restaurant with a customer rating of 5 out of 5 but is not family-friendly.
+In the city centre there is a coffee shop called The Golden Palace that serves French food for less than £20 but has a low customer rating.
+There is a non child friendly coffee shop called The Punter that serves Indian food in the high price range but has an average customer rating. It is located near Café Sicilia.
+There is a high priced restaurant The Twenty Two located in the riverside area near The Rice Boat. It is child friendly but has a low customer rating.
+There is an Italian restaurant called The Golden Curry near The Bakers. It is child friendly but has a high price range.
+In the city centre near Burger King there is a highly rated Fast food coffee shop called The Eagle. It is not kid friendly but has a price range of £20-25.
+There is a cheap coffee shop with a customer rating of 5 out of 5 called Blue Spice in the riverside area near Avalon. It is not family-friendly.
+There is a Chinese restaurant in the riverside area near Express by Holiday Inn called The Rice Boat. It has an average customer rating but is not family-friendly.
+Located in the city centre, Blue Spice has a customer rating of 5 out of 5 but is not child friendly. The price range is more than £30.
+There is a Japanese coffee shop in the city centre called Browns Cambridge near Crowne Plaza Hotel. It has a customer rating of 5 out of 5 but is not family-friendly.
+Near Yippee Noodle Bar, Alimentum is a cheap English restaurant in the riverside area. It has a customer rating of 5 out of 5.
+There is a high priced coffee shop in the city centre near Raja Indian Cuisine called The Wrestlers. It serves Fast food but is not child friendly.
+There is a pub that serves English food called Zizzi. It has a customer rating of 5 out of 5. it is not family-friendly.
+There is an Italian restaurant with a high customer rating called Strada. It is located near Rainbow Vegetarian Café and is not child friendly. The price range is more than £30.
+There is a high priced restaurant Browns Cambridge that serves English food. It has a customer rating of 1 out of 5.
+There is a coffee shop called Fitzbillies that provides English food in the more than £30 price range. It is located in the riverside. Its customer rating is high.
+Near Rainbow Vegetarian Café, Strada is a French restaurant with a customer rating of 5 out of 5 but is not child friendly. The price range is more than £30.
+Near Ranch, Wildwood is a Japanese coffee shop with a moderate price range but a customer rating of 1 out of 5.
+There is a non family-friendly restaurant called The Waterman that serves Chinese food in the city centre. It has an average customer rating and has a cheap price range.
+There is a French coffee shop called Fitzbillies located in the city centre. It is child friendly but has a high price range and a customer rating of 3 out of 5.
+There is a family-friendly restaurant with a low customer rating called The Rice Boat in the city centre that serves Fast food.
+With an average customer rating, Cocum is a children friendly coffee shop that serves Fast food in the high price range.
+There is a coffee shop near The Portland Arms called The Cricketers that serves French food. It is kid friendly but has a customer rating of 1 out of 5.
+Located in the city centre near Café Rouge, The Golden Curry serves Italian food. It has a customer rating of 5 out of 5 but is not family-friendly.
+Located in the riverside area near Yippee Noodle Bar, Alimentum serves English food for less than £20 but has a low customer rating.
+There is a cheap Fast food restaurant called The Wrestlers. It is not family-friendly but has a customer rating of 5 out of 5.
+In the riverside area there is a low rated restaurant called The Waterman. It serves English food for less than £20 but is not family-friendly.
+There is a Chinese restaurant in the city centre near All Bar One called Green Man. It has a price range of less than £20 but is not family-friendly.
+Located in the city centre, The Waterman serves Chinese food in the £20-25 price range but has a high customer rating. It is not kid friendly.
+There is a pub called Zizzi that provides Indian food its customer rating is low.
+There is a coffee shop that serves Italian food called Cocum. It is kid friendly and has a moderate price range but has a customer rating of 1 out of 5.
+There is a French coffee shop called Fitzbillies in the city centre. It is child friendly but has a customer rating of 5 out of 5. the price range is more than £30.
+In the riverside area near The Portland Arms there is a children friendly restaurant with a price range of more than £30 called The Punter.
+Located in the city centre, Blue Spice is a kid friendly coffee shop near Avalon. It has a moderate price range but a customer rating of 1 out of 5.
+There is a kid friendly English pub called Zizzi. It has a customer rating of 1 out of 5.
+There is a cheap French restaurant called Midsummer House near All Bar One. It has a customer rating of 5 out of 5.
+There is a French restaurant in the city centre near Express by Holiday Inn called The Rice Boat. It is child friendly but has a low customer rating. The price range is more than £30.
+There is a coffee shop called The Eagle located in the city centre near Burger King. It serves French food in the moderate price range but has a customer rating of 1 out of 5 but is not kid friendly.
+There is a cheap Japanese restaurant in the riverside area near Express by Holiday Inn called The Rice Boat. It has a customer rating of 5 out of 5 but is not family-friendly.
+There is a low rated coffee shop with a price range of less than £20 called Cocum that serves Italian food but is not family-friendly.
+Located in the city centre near Express by Holiday Inn, The Rice Boat serves Japanese food in the £20-25 price range but has a high customer rating. It is not kid friendly.
+There is a family-friendly coffee shop called Browns Cambridge that serves Indian food. It is located in the city centre near Crowne Plaza Hotel and has a low customer rating.
+There is a cheap English restaurant called The Wrestlers. It is not family-friendly but has a customer rating of 5 out of 5.
+Located in the city centre near The Rice Boat, The Twenty Two is a family-friendly restaurant with an average customer rating but a price range of less than £20.
+There is a family friendly Fast food coffee shop in the riverside area near Crowne Plaza Hotel with an average customer rating called Browns Cambridge.
+There is a cheap French restaurant called The Wrestlers. It is not family-friendly but has a customer rating of 5 out of 5.
+There is a children friendly restaurant called Travellers Rest Beefeater. It has a high price range but is located in the riverside area.
+In the city centre there is a Fast food restaurant called Alimentum. It is child friendly but has a high price range.
+Located in the riverside area near Express by Holiday Inn, The Rice Boat is a family friendly French restaurant with a price range of less than £20 but has a low customer rating.
+There is a kid friendly restaurant called The Waterman that serves Japanese food in the moderate price range. It is located in the city centre but has a customer rating of 1 out of 5.
+There is a cheap restaurant The Wrestlers that serves French food. It is family friendly but has a low customer rating.
+There is a Chinese restaurant called The Wrestlers. It is family friendly but has a low customer rating. The price range is less than £20.
+Indian food can be found at The Cricketers coffee shop near The Portland Arms. It is family friendly but has an average customer rating.
+There is a Japanese pub called Zizzi. It has an average customer rating but is not family-friendly.
+There is a Chinese restaurant in the city centre called The Rice Boat near Express by Holiday Inn. It is family-friendly but has a low customer rating. The price range is less than £20.
+There is an English restaurant in the riverside area near Café Rouge called The Golden Curry. It is kid friendly but has a customer rating of 1 out of 5.
+There is a highly rated coffee shop with a price range of more than £30 called The Eagle that serves Indian food in the city centre near Burger King. It is not child friendly.
+Located near All Bar One, Midsummer House serves English food in the more than £30 price range but has a high customer rating.
+There is a coffee shop called The Punter near Café Sicilia that serves Fast food. It has a high customer rating but is not kid friendly. The price range is £20-25.
+There is a Fast food coffee shop in the riverside area called Aromi. It has a customer rating of 5 out of 5 but is not family-friendly.
+In the riverside area there is an Indian restaurant called The Phoenix. It is moderately priced but has a customer rating of 1 out of 5.
+There is an Indian coffee shop called Cocum. It has a moderate price range but a customer rating of 3 out of 5. it is not kid friendly.
+Near The Portland Arms there is a coffee shop called The Cricketers that serves Japanese food. It is family friendly but has a low customer rating.
+There is a Japanese restaurant called The Vaults. It has a price range of less than £20 but is not family-friendly.
+There is a pub called Wildwood that provides English food in the moderate price range. Its customer rating is 1 out of 5.
+In the riverside area there is a French pub called The Olive Grove. It is child friendly but has a high price range.
+There is a cheap Indian restaurant called The Golden Curry located near The Bakers. It is not family-friendly but has a low customer rating.
+There is a high priced coffee shop The Wrestlers located in the city centre near Raja Indian Cuisine. It serves Indian food but is not child friendly.
+There is a Japanese restaurant called The Phoenix located in the city centre. It has a low customer rating but has a price range of less than £20.
+Near The Rice Boat is a kid friendly restaurant called The Twenty Two. It has a moderate price range but a customer rating of 1 out of 5.
+In the riverside area there is a French restaurant called The Rice Boat. It is family friendly but has a low customer rating.
+There is a French restaurant called The Rice Boat located in the city centre near Express by Holiday Inn. It has a high price range but a customer rating of 3 out of 5 but is not child friendly.
+There is a Fast food restaurant near Rainbow Vegetarian Café called Strada. It has a low customer rating but is not family-friendly. The price range is less than £20.
+Located in the riverside area near Café Rouge, The Golden Curry is a kid friendly Fast food restaurant with a customer rating of 1 out of 5.
+There is a Fast food coffee shop near The Portland Arms called The Cricketers. It is kid friendly but has a customer rating of 1 out of 5.
+There is a coffee shop called The Wrestlers that serves Japanese food. It is located in the city centre near Raja Indian Cuisine. It has a moderate price range but is not kid friendly.
+There is a family friendly coffee shop called Giraffe near The Bakers. It has a low customer rating and a price range of less than £20.
+French food can be found at Aromi, a coffee shop in the city centre. It has an average customer rating but is not family-friendly.
+Located in the city centre, Blue Spice has an average customer rating but is not family-friendly. The price range is less than £20.
+There is an average rated Indian coffee shop in the riverside area near Burger King called The Eagle. It is cheap but family friendly.
+There is a Japanese pub called Wildwood. It is moderately priced but has a customer rating of 1 out of 5.
+There is a highly rated Italian pub with a price range of more than £30 called Wildwood.
+There is a French coffee shop called The Eagle located in the city centre near Burger King. It is child friendly but has a low customer rating. The price range is more than £30.
+There is a coffee shop called Browns Cambridge that serves Indian food. It is located in the city centre near Crowne Plaza Hotel. It has an average customer rating but is not family-friendly.
+In the riverside area near Café Sicilia there is a coffee shop called The Dumpling Tree. It is child friendly but has a high price range.
+There is a pub called Zizzi that provides French food its customer rating is low.
+There is an Italian coffee shop called The Eagle in the riverside area near Burger King. It has a moderate price range but a customer rating of 1 out of 5 but is kid friendly.
+There is an Indian restaurant called The Wrestlers. It has a moderate price range but a customer rating of 3 out of 5. it is not kid friendly.
+In the riverside area there is a low rated coffee shop that serves French food for less than £20 called The Golden Palace.
+There is a coffee shop called Cocum that provides Fast food in the high price range. Its customer rating is 1 out of 5 but it is not child friendly.
+Located in the riverside area near Express by Holiday Inn, The Rice Boat is a Fast food restaurant with a price range of £20-25 but a high customer rating. It is not kid friendly.
+There is a highly rated Italian restaurant in the riverside area near Express by Holiday Inn called The Rice Boat. It is not kid friendly but has a price range of £20-25.
+There is a Japanese restaurant called The Rice Boat located in the city centre near Express by Holiday Inn. It is child friendly but has a low customer rating. The price range is more than £30.
+Located near Café Sicilia, The Punter is a French coffee shop with a customer rating of 5 out of 5. it is not child friendly but has a price range of more than £30.
+There is a Fast food restaurant called Green Man in the riverside area near All Bar One. It is child friendly but has a high price range.
+There is a Chinese restaurant in the city centre near Express by Holiday Inn called The Rice Boat. It is family-friendly and has a low customer rating. The price range is less than £20.
+There is a high priced Indian coffee shop with a customer rating of 1 out of 5. it is not child friendly. It is called Cocum.
+There is an Indian restaurant in the riverside area called The Phoenix. It has a low customer rating but the price range is less than £20.
+There is a moderately priced Fast food coffee shop with a customer rating of 1 out of 5. it is called The Punter and is not kid friendly. It is located near Café Sicilia.
+There is a French restaurant in the city centre near Express by Holiday Inn called The Rice Boat. It has a high customer rating but is not kid friendly. The price range is £20-25.
+There is an Italian restaurant called The Wrestlers. It is family friendly but has a low customer rating. The price range is less than £20.
+There is a coffee shop with a price range of more than £30 called Cocum that serves French food but is children friendly. It has a low customer rating.
+There is a highly rated Chinese restaurant called Strada near Rainbow Vegetarian Café. It is child friendly but has a price range of more than £30.
+There is a Fast food restaurant called Cocum. It is not kid friendly, but has a customer rating of 3 out of 5.
+Located in the riverside area near The Portland Arms, Cotto is an Indian coffee shop with a moderate price range but a customer rating of 1 out of 5.
+There is a high priced French restaurant in the city centre called The Waterman. It has a customer rating of 3 out of 5 but is not child friendly.
+In the riverside area there is an Indian restaurant called The Waterman. It has a moderate price range but a customer rating of 1 out of 5 but is kid friendly.
+Located in the riverside area, The Waterman is a children friendly Fast food restaurant with a high price range but a customer rating of 1 out of 5.
+There is a high priced Italian coffee shop called The Eagle in the riverside area near Burger King. It has an average customer rating but is child friendly.
+There is a low rated coffee shop with a price range of more than £30 called Wildwood that serves Japanese food. It is located near Ranch.
+There is an expensive Indian coffee shop in the riverside area near Burger King called The Eagle. It has an average customer rating but is not child friendly.
+There is an Italian coffee shop called Browns Cambridge in the riverside area near Crowne Plaza Hotel. It has a customer rating of 1 out of 5 but is kid friendly.
+In the riverside area there is a pub called Aromi. It has an average customer rating but is not family-friendly.
+There is a Fast food coffee shop in the riverside area near Burger King called The Eagle. It has a moderate price range but a customer rating of 3 out of 5 but is not kid friendly.
+There is a cheap Japanese coffee shop called Cocum. It is not family-friendly but has a customer rating of 5 out of 5.
+Located in the riverside area near Café Rouge, The Golden Curry is a family friendly Indian restaurant with an average customer rating.
+There is a children friendly restaurant near The Bakers called The Plough. It has a high price range but has a high customer rating.
+There is a cheap Fast food coffee shop in the riverside area called Fitzbillies. It has a customer rating of 5 out of 5 but is not family-friendly.
+With a low customer rating and a price range of less than £20, Blue Spice is a family-friendly coffee shop in the city centre near Avalon.
+There is a family-friendly Fast food restaurant with a low customer rating called The Waterman in the city centre with a price range of less than £20.
+There is a pub called Cocum that has a high customer rating but is not kid friendly. The price range is £20-25.
+There is a coffee shop called Zizzi in the riverside area. It has a high price range but a customer rating of 1 out of 5 but is child friendly.
+In the city centre near Burger King there is a highly rated Fast food coffee shop called The Eagle. It is not kid friendly but has a price range of £20-25.
+There is a coffee shop called The Vaults located in the city centre near Café Brazil. It has a low customer rating but a price range of less than £20.
+There is a coffee shop called Cocum that serves French food for less than £20. It has an average customer rating but is not family-friendly.
+There is a non child friendly Fast food restaurant called The Eagle in the riverside area near Burger King. It has a high customer rating and a price range of more than £30.
+There is a children friendly English restaurant in the high price range called Green Man in the riverside area near All Bar One.
+There is a children friendly coffee shop in the riverside area called Zizzi. It has a high customer rating and a price range of more than £30.
+There is a family friendly restaurant called Cotto that serves Japanese food. It is located near Ranch and has an average customer rating.
+There is a high priced restaurant with a customer rating of 1 out of 5 called Travellers Rest Beefeater in the riverside area near Café Adriatic.
+Located in the city centre, The Rice Boat is a Fast food restaurant with a customer rating of 5 out of 5 but is not family-friendly.
+There is an Italian restaurant with a price range of less than £20 called The Vaults. It is not family-friendly but has a low customer rating.
+There is a cheap coffee shop with a customer rating of 5 out of 5 called Fitzbillies that serves French food in the city centre. It is family-friendly.
+In the city centre there is a Japanese restaurant called The Waterman. It has a high customer rating but is not kid friendly. The price range is £20-25.
+There is a moderately priced Japanese restaurant that is not kid friendly called The Vaults.
+Located in the riverside area near Express by Holiday Inn, The Rice Boat serves Indian food in the high price range but has an average customer rating. It is child friendly.
+Located in the riverside area, The Waterman is a child friendly Indian restaurant with a high customer rating but a price range of more than £30.
+There is a cheap coffee shop called The Eagle that serves Japanese food in the riverside area near Burger King. It has a customer rating of 5 out of 5 but is not family-friendly.
+In the city centre there is an Italian restaurant called The Rice Boat. It has an average customer rating but is not family-friendly.
+There is an Indian restaurant called The Waterman in the riverside area. It is child friendly but has an average customer rating. The price range is high.
+There is a family friendly restaurant called The Wrestlers that serves Indian food for less than £20 but has a low customer rating.
+With a customer rating of 5 out of 5, the price range is more than £30, Wildwood is a pub that serves French food.
+There is a Japanese restaurant Alimentum located in the city centre. It has a moderate price range but is not kid friendly.
+There is a coffee shop with a price range of more than £30 called Cocum that serves French food but is children friendly. It has a low customer rating.
+There is a cheap restaurant Browns Cambridge that serves Chinese food but has an average customer rating.
+Located near Rainbow Vegetarian Café, Strada serves Italian food in the £20-25 price range but has a high customer rating. It is not kid friendly.
+There is a non family-friendly restaurant Alimentum that serves English food in the riverside area. It has a price range of less than £20 but has a low customer rating.
+Located in the city centre near Express by Holiday Inn, The Rice Boat serves English food in the more than £30 price range but has a high customer rating. It is not child friendly.
+There is a French coffee shop called The Eagle in the riverside area near Burger King. It has an average customer rating but is not family-friendly. The price range is less than £20.
+There is a children friendly restaurant in the high price range called Strada. It has a customer rating of 3 out of 5.
+There is a cheap pub The Olive Grove located in the city centre that serves Chinese food. It is not family-friendly.
+There is a family friendly Chinese restaurant called The Wrestlers. It has a low customer rating and a price range of less than £20.
+There is a coffee shop called Blue Spice located in the city centre near Avalon. It has an average customer rating but is not family-friendly. The price range is less than £20.
+There is a cheap coffee shop Cocum that serves Japanese food. It is not family-friendly but has a low customer rating.
+In the riverside area there is a coffee shop called Fitzbillies that serves Fast food. It has a high customer rating but is not kid friendly. The price range is £20-25.
+There is a Fast food restaurant called The Wrestlers. It has a customer rating of 5 out of 5. it is not family-friendly and has a cheap price range.
+Located near Express by Holiday Inn, Fitzbillies is a cheap restaurant with a customer rating of 5 out of 5 but is not family-friendly.
+Located in the riverside area, Fitzbillies is a children friendly coffee shop that serves Fast food at a high price range but has an average customer rating.
+There is a coffee shop in the city centre near Avalon called Blue Spice. It has an average customer rating but is not family-friendly. The price range is less than £20.
+There is an Italian restaurant called The Wrestlers. It has a moderate price range but a customer rating of 3 out of 5. it is not kid friendly.
+There is a children friendly English restaurant with an average customer rating in the high price range called The Wrestlers.
+In the riverside area near The Rice Boat there is a kid friendly restaurant called The Twenty Two. It has a moderate price range but a customer rating of 1 out of 5.
+There is an English restaurant called Green Man located in the city centre near All Bar One. It is child friendly but has a high price range.
+In the riverside area near Café Adriatic, Travellers Rest Beefeater is a cheap restaurant with a customer rating of 5 out of 5.
+There is a Japanese restaurant called Midsummer House near All Bar One. It has a price range of less than £20 but has a low customer rating.
+With an average customer rating, The Rice Boat, located near Rainbow Vegetarian Café, has a high price range.
+Near All Bar One there is an Italian restaurant called Midsummer House. It has an average customer rating but is in the high price range.
+There is a Chinese restaurant in the city centre near Yippee Noodle Bar called Alimentum. It has a low customer rating but has a price range of less than £20.
+There is a children friendly restaurant called The Waterman that serves Japanese food. It is located in the riverside area, but has a customer rating of 5 out of 5. the price range is more than £30.
+There is a coffee shop called Cotto located in the city centre near The Portland Arms. It serves moderately priced Fast food but has a customer rating of 1 out of 5.
+Located in the riverside area, The Waterman is a child friendly French restaurant with a low customer rating but a price range of more than £30.
+With a price range of more than £30, Blue Spice has a high customer rating but is children friendly. It is located in the riverside area.
+There is a moderately priced Japanese restaurant called Browns Cambridge. It has a customer rating of 1 out of 5.
+Located in the city centre, Fitzbillies is a coffee shop that serves Fast food. It is child friendly but has a high customer rating. The price range is more than £30.
+There is a coffee shop called The Eagle that serves French food. It is located in the city centre near Burger King. It has a customer rating of 5 out of 5 but is not child friendly.
+There is a Japanese restaurant called Alimentum in the riverside area near Yippee Noodle Bar. It has a customer rating of 5 out of 5 but has a price range of more than £30.
+There is a cheap coffee shop in the riverside area called Fitzbillies. It serves Fast food and has a customer rating of 5 out of 5 but is not family-friendly.
+In the riverside area there is a coffee shop called The Golden Palace that serves Indian food in the moderate price range but has a customer rating of 1 out of 5.
+In the city centre near Burger King there is a family-friendly French coffee shop called The Eagle. It has a low customer rating and a price range of less than £20.
+There is a non kid friendly restaurant called The Vaults that serves English food in the moderate price range but has a customer rating of 1 out of 5.
+There is an Indian restaurant called The Rice Boat located in the city centre near Express by Holiday Inn. It has a high customer rating but is child friendly. The price range is more than £30.
+Located in the riverside area, The Phoenix is a cheap Japanese restaurant with a customer rating of 5 out of 5.
+Located in the city centre near The Rice Boat, The Twenty Two is child friendly but has a low customer rating. The price range is more than £30.
+Located near Café Sicilia, The Punter is a Japanese coffee shop with a customer rating of 5 out of 5 but is not child friendly. The price range is more than £30.
+With an average customer rating, The Rice Boat is a Fast food restaurant in the city centre. It is not family-friendly.
+Near Café Adriatic is a pub called The Vaults. It has a moderate price range but a customer rating of 1 out of 5.
+Located in the riverside area near Yippee Noodle Bar, Alimentum serves English food for less than £20 but has a low customer rating.
+There is a children friendly Japanese restaurant called The Eagle located in the city centre near Burger King. It has a low customer rating and a price range of more than £30.
+Located in the riverside area, The Waterman serves English food in the high price range but has an average customer rating. It is child friendly.
+There is a Japanese coffee shop called Cocum. It has a low customer rating but is not child friendly. The price range is more than £30.
+There is a cheap English restaurant called The Rice Boat in the riverside area near Express by Holiday Inn. It has a customer rating of 5 out of 5 but is not family-friendly.
+Located near Rainbow Vegetarian Café, The Rice Boat has a moderate price range but a customer rating of 1 out of 5.
+There is an Italian coffee shop called The Eagle located in the city centre near Burger King. It has a low customer rating but is not family-friendly.
+Near Ranch there is a family friendly French restaurant called Cotto. It has a low customer rating.
+In the city centre there is an Italian restaurant called The Waterman. It has a high customer rating but is not child friendly. The price range is more than £30.
+Located in the riverside area, Alimentum is an Italian restaurant with a moderate price range but is not kid friendly.
+Located in the riverside area, Fitzbillies is a family friendly coffee shop that serves Italian food for less than £20 but has a low customer rating.
+There is a coffee shop in the riverside area near Crowne Plaza Hotel called Browns Cambridge that serves French food. It has a customer rating of 5 out of 5 but is not family-friendly.
+In the city centre there is a Fast food coffee shop called Fitzbillies. It has a high customer rating but is not child friendly. The price range is more than £30.
+In the city centre near Avalon there is a coffee shop called Blue Spice. It has a customer rating of 5 out of 5 but is not child friendly. The price range is more than £30.
+There is a kid friendly English restaurant in the riverside area called The Rice Boat. It has a customer rating of 1 out of 5.
+Located in the city centre, The Olive Grove is a Japanese pub with a price range of less than £20 but is not family-friendly.
+There is an Italian restaurant called The Golden Curry near The Bakers. It has a moderate price range but is not kid friendly.
+There is a French restaurant in the riverside area near Express by Holiday Inn called The Rice Boat. It has a low customer rating but is not family-friendly. The price range is less than £20.
+Located in the city centre, The Waterman serves English food at a price range of more than £30 but has a high customer rating. It is not child friendly.
+There is a family friendly Italian restaurant called The Wrestlers. It has a low customer rating but has a price range of less than £20.
+With a price range of £20-25, The Waterman is a Fast food restaurant in the city centre. It has a high customer rating but is not kid friendly.
+Located in the city centre near Express by Holiday Inn, The Rice Boat is a child friendly Indian restaurant with a high price range but a customer rating of 1 out of 5.
+Located in the riverside area near Yippee Noodle Bar, Alimentum serves Japanese food in the more than £30 price range but has a low customer rating.
+Located near Café Rouge, The Plough is a children friendly Fast food pub with a high price range.
+With a low customer rating and a price range of less than £20, Fitzbillies is a family friendly Japanese coffee shop in the riverside area.
+There is an Italian restaurant called The Wrestlers. It has a high customer rating but is not kid friendly. The price range is £20-25.
+With a price range of less than £20, Alimentum serves Italian food in the city centre but is not family-friendly.
+There is a cheap Japanese restaurant with a customer rating of 5 out of 5. it is not family-friendly, but is called Strada. It is located near Rainbow Vegetarian Café.
+With an average customer rating, The Eagle is an Indian coffee shop in the city centre near Burger King. It is child friendly but has a high price range.
+There is a highly rated coffee shop called Wildwood that serves Italian food in the more than £30 price range but is located near Ranch.
+There is a coffee shop called Fitzbillies that provides Italian food in the high price range. It is located in the riverside. Its customer rating is 1 out of 5.
+Located near Café Sicilia, The Punter is a Japanese coffee shop with a low customer rating but is not family-friendly. The price range is less than £20.
+There is a family friendly restaurant in the riverside area near The Rice Boat called The Twenty Two. It has a low customer rating and a price range of less than £20.
+There is a Fast food restaurant called The Punter near Café Sicilia. It has a high price range but a customer rating of 1 out of 5 but is not child friendly.
+There is a French restaurant with a customer rating of 3 out of 5 called The Rice Boat in the riverside area near Express by Holiday Inn. It has a price range of £20-25 but is not kid friendly.
+There is a children friendly coffee shop with a high customer rating called Fitzbillies that serves English food in the riverside area. The price range is more than £30.
+In the riverside area there is a Japanese restaurant called The Waterman. It has an average customer rating but is not family-friendly. The price range is less than £20.
+There is an Indian coffee shop near Crowne Plaza Hotel called Browns Cambridge. It has an average customer rating but is family friendly.
+There is a low rated Fast food coffee shop in the city centre near Burger King called The Eagle. It is not family-friendly but has a price range of less than £20.
+There is a moderately priced Indian restaurant with a customer rating of 3 out of 5 called The Wrestlers. It is not kid friendly.
+In the city centre there is a coffee shop called The Golden Palace that serves Indian food in the high price range but has an average customer rating.
+Located near Rainbow Vegetarian Café, Strada is a child friendly Japanese restaurant with a high price range but a customer rating of 3 out of 5.
+Located in the riverside area, The Phoenix serves English food in the high price range but has a customer rating of 1 out of 5.
+With a high price range, Wildwood is a coffee shop that serves Italian food. It is located near Ranch and has an average customer rating.
+Located in the riverside area near Express by Holiday Inn, The Rice Boat serves Indian food in the more than £30 price range but has a high customer rating. It is not child friendly.
+There is a cheap English restaurant in the riverside area with a customer rating of 5 out of 5 called The Waterman. It is not family-friendly.
+Located in the city centre near Express by Holiday Inn, The Rice Boat is a family-friendly Indian restaurant with a price range of less than £20 but has a low customer rating.
+Located in the riverside area, The Phoenix serves Chinese food for less than £20 but has a low customer rating.
+With a customer rating of 5 out of 5, the price range is more than £30, but it is located in the riverside area near The Rice Boat. It is children friendly.
+There is a moderately priced, kid friendly restaurant called Strada. It has a customer rating of 1 out of 5.
+Located in the riverside area near Café Rouge, The Golden Curry is an English restaurant with an average customer rating but is not family-friendly.
+There is a Japanese coffee shop called The Wrestlers in the riverside area near Raja Indian Cuisine. It is child friendly but has a high price range.
+In the city centre near Crowne Plaza Hotel there is a coffee shop called Browns Cambridge that serves French food. It is family-friendly but has a low customer rating.
+There is a Japanese coffee shop with a 5 out of 5 customer rating called The Eagle in the city centre near Burger King. It is not child friendly but has a price range of more than £30.
+Located in the riverside area, The Phoenix serves Chinese food for less than £20 but has a low customer rating.
+There is a kid friendly pub near Ranch called The Cricketers. It has a customer rating of 1 out of 5.
+There is a family-friendly French restaurant called The Golden Curry located in the city centre near Café Rouge. It has a low customer rating.
+There is a children friendly pub called The Plough near Café Rouge that serves Chinese food in the high price range but has a high customer rating.
+There is a Fast food coffee shop in the riverside area called Fitzbillies. It has a moderate price range but a customer rating of 1 out of 5 but is kid friendly.
+Located near Café Sicilia, The Punter is a children friendly coffee shop that serves Fast food at a high price range but has an average customer rating.
+There is a Chinese restaurant in the city centre near Express by Holiday Inn called The Rice Boat. It has a customer rating of 5 out of 5 but is not family-friendly.
+There is a low rated Japanese pub with a price range of more than £30 called Wildwood.
+There is a non family-friendly restaurant called The Wrestlers that serves French food for less than £20 but has a low customer rating.
+Located in the city centre, there is an average rated restaurant called The Waterman. It serves cheap Italian food but is not family-friendly.
+With a customer rating of 5 out of 5, The Rice Boat is a cheap Italian restaurant in the riverside area near Express by Holiday Inn. It is not family-friendly.
+With a customer rating of 5 out of 5, the price range is more than £30, Strada is a child friendly Japanese restaurant near Rainbow Vegetarian Café.
+There is a family friendly restaurant with a customer rating of 5 out of 5 called The Waterman that serves cheap French food in the riverside area.
+There is a Chinese restaurant called The Waterman in the riverside area. It is child friendly but has a high price range but a customer rating of 1 out of 5.
+Located near Rainbow Vegetarian Café, Strada is a Japanese restaurant with a high customer rating but a price range of £20-25. It is not kid friendly.
+There is a highly rated coffee shop with a price range of more than £30 called The Golden Palace in the city centre that serves Fast food.
+In the riverside area there is an English restaurant called Alimentum. It is child friendly but has a high price range.
+Located in the riverside area near The Rice Boat, The Twenty Two is a family friendly restaurant with a low customer rating but a price range of less than £20.
+There is a French coffee shop in the riverside area near Burger King called The Eagle. It is child friendly but has a low customer rating. The price range is more than £30.
+There is a Japanese restaurant called Browns Cambridge. It is moderately priced but has a customer rating of 1 out of 5.
+Near The Bakers there is an Indian restaurant called The Golden Curry. It is not family-friendly but has a price range of less than £20.
+Located in the riverside area near Café Adriatic, Travellers Rest Beefeater has a low customer rating but a price range of more than £30.
+There is a Japanese restaurant called Cotto near Ranch. It has a customer rating of 5 out of 5 but is not family-friendly.
+There is a cheap Chinese restaurant with a customer rating of 5 out of 5 called The Waterman in the riverside area. It is not family-friendly.
+There is a cheap coffee shop Blue Spice located in the riverside area near Avalon. It has a customer rating of 5 out of 5 but is not family-friendly.
+There is a Japanese restaurant in the riverside area called The Rice Boat near Express by Holiday Inn. It has a customer rating of 5 out of 5 but is not child friendly. The price range is more than £30.
+There is a cheap coffee shop with a customer rating of 5 out of 5 called Blue Spice located in the city centre near Avalon. It is not family-friendly.
+There is a children friendly restaurant in the high price range called The Vaults that serves Chinese food.
+There is a pub called Zizzi that provides French food its customer rating is low.
+There is a Japanese restaurant called The Waterman in the riverside area. It has a high customer rating but is not kid friendly. The price range is £20-25.
+There is a cheap coffee shop near Café Sicilia called The Punter that serves Fast food. It has a customer rating of 5 out of 5 but is not family-friendly.
+There is a Fast food restaurant called The Rice Boat located in the city centre. It has a low customer rating but is not family-friendly.
+There is a cheap restaurant The Golden Curry that serves Italian food. It is located near The Bakers but is not family-friendly.
+There is a Japanese coffee shop called The Eagle located in the city centre near Burger King. It has a customer rating of 5 out of 5 but is not child friendly.
+There is a family-friendly Fast food restaurant called The Rice Boat located in the city centre near Express by Holiday Inn. It has a low customer rating and a price range of less than £20.
+There is a family friendly Japanese restaurant with a low customer rating called The Wrestlers.
+There is a coffee shop called The Vaults in the riverside area near Café Brazil. It has a moderate price range but a customer rating of 1 out of 5.
+There is an English restaurant in the riverside area near Express by Holiday Inn called The Rice Boat. It has a customer rating of 5 out of 5 but is not family-friendly.
+Located near Café Sicilia, The Punter is a Fast food coffee shop with a high customer rating but a price range of more than £30. It is not child friendly.
+Located in the riverside area, Clowns is a cheap pub with a customer rating of 5 out of 5.
+Located in the riverside area near Express by Holiday Inn, The Rice Boat is a cheap Indian restaurant with a customer rating of 5 out of 5 but is not family-friendly.
+There is a coffee shop called The Vaults located in the city centre near Café Brazil. It has a customer rating of 5 out of 5 and a price range of more than £30.
+There is a Chinese restaurant with a price range of less than £20 called The Wrestlers. It is family friendly but has a low customer rating.
+There is a cheap Indian restaurant in the riverside area called The Waterman. It has a low customer rating but is not family-friendly.
+With a low customer rating and a price range of less than £20, Midsummer House serves English food and is located near All Bar One.
+In the riverside area near Burger King there is a Japanese coffee shop called The Eagle. It has a high customer rating but is not kid friendly. The price range is £20-25.
+There is a French coffee shop called The Eagle in the riverside area near Burger King. It is child friendly but has a low customer rating. The price range is more than £30.
+There is a cheap restaurant with a customer rating of 5 out of 5 called Midsummer House that serves Italian food. It is located near All Bar One.
+In the riverside area, there is a coffee shop called The Eagle. It serves French food at a cheap price. It is near Burger King and has a customer rating of 5 out of 5. it is not family-friendly.
+There is a French coffee shop called Cocum. It has a customer rating of 5 out of 5 but is not child friendly. The price range is more than £30.
+In the riverside area near All Bar One there is a Fast food restaurant called Green Man. It is child friendly but has a high price range.
+There is an Italian restaurant in the city centre called Alimentum near Yippee Noodle Bar. It has an average customer rating but is in the high price range.
+Located in the riverside area near The Rice Boat, The Twenty Two is a family friendly restaurant with a low customer rating but a price range of less than £20.
+There is an Indian coffee shop called Wildwood near Ranch. It has a low customer rating but has a price range of less than £20.
+There is a pub that serves English food called Wildwood. It has a high price range but a customer rating of 1 out of 5.
+There is a Japanese restaurant called The Wrestlers. It has a high price range but a customer rating of 3 out of 5. it is not child friendly.
+There is a cheap French restaurant with an average customer rating called The Phoenix in the city centre.
+In the city centre there is a Chinese restaurant with a low customer rating called The Waterman. It is not family-friendly and has a price range of less than £20.
+There is a children friendly French coffee shop with a low customer rating near Café Sicilia called The Punter. The price range is more than £30.
+Located in the city centre, The Phoenix is a moderately priced Fast food restaurant with a customer rating of 1 out of 5.
+There is a cheap coffee shop with a customer rating of 5 out of 5 called Fitzbillies that serves French food in the city centre. It is family-friendly.
+There is a cheap restaurant called Taste of Cambridge. It has a customer rating of 5 out of 5.
+Located in the riverside area, The Phoenix serves Indian food in the high price range but has an average customer rating.
+There is an English coffee shop called Wildwood near Ranch. It has a high customer rating but has a price range of more than £30.
+There is an Indian restaurant called Midsummer House near All Bar One. It is cheap but has a customer rating of 5 out of 5.
+There is a Chinese restaurant with an average customer rating called The Golden Curry. It is not family-friendly.
+There is an Italian coffee shop in the city centre called Fitzbillies. It has an average customer rating but is not family-friendly.
+Located near Express by Holiday Inn, Fitzbillies has a low customer rating but is child friendly. It has a price range of more than £30.
+There is a family friendly restaurant in the riverside area called The Rice Boat. It serves English food and has a low customer rating.
+There is a cheap Indian restaurant in the city centre near Express by Holiday Inn that is not family-friendly and has an average customer rating called The Rice Boat.
+In the riverside area there is a coffee shop called Zizzi. It is child friendly but has a low customer rating. The price range is more than £30.
+With a customer rating of 5 out of 5, The Rice Boat is a cheap Indian restaurant in the city centre near Express by Holiday Inn. It is not family-friendly.
+Located in the riverside area near Express by Holiday Inn, The Rice Boat is a child friendly Italian restaurant with a high price range but a customer rating of 1 out of 5.
+There is a high priced Italian restaurant in the city centre called The Waterman. It has an average customer rating but is child friendly.
+Located in the riverside area, The Olive Grove is a pub with a price range of less than £20 but is not family-friendly.
+There is a high priced restaurant Blue Spice located in the riverside area. It is child friendly but has an average customer rating.
+With a low customer rating, The Golden Curry is a family friendly French restaurant.
+There is a high priced English pub called The Plough located near Café Rouge. It is not child friendly but has a high customer rating.
+There is a Japanese coffee shop in the riverside area called Fitzbillies. It has a high customer rating but is not kid friendly. The price range is £20-25.
+There is a coffee shop in the city centre near Avalon called Blue Spice. It has a low customer rating but is not child friendly. The price range is more than £30.
+There is a high priced coffee shop called The Wrestlers that serves Italian food. It is located in the riverside area near Raja Indian Cuisine but is not child friendly.
+In the riverside area, there is a children friendly coffee shop called Fitzbillies. It serves Italian food and has a high price range but a customer rating of 1 out of 5.
+Located in the riverside area, The Eagle has an average customer rating but is cheap.
+There is a cheap Chinese restaurant in the riverside area called The Waterman. It has an average customer rating but is not family-friendly.
+There is a French restaurant called The Golden Curry in the riverside area near Café Rouge. It is family friendly but has a low customer rating.
+There is a French restaurant called Strada near Rainbow Vegetarian Café. It has a low customer rating but is not family-friendly. The price range is less than £20.
+There is a French coffee shop in the riverside area near Burger King called The Eagle. It has a customer rating of 3 out of 5 but is not kid friendly.
+There is a coffee shop called Cocum that provides Japanese food in the more than £30 price range. Its customer rating is low.
+There is a non family-friendly restaurant called Green Man that serves Fast food. It is located in the riverside area near All Bar One and has a price range of less than £20.
+There is an Indian restaurant with a price range of more than £30 called The Rice Boat. It is located in the riverside. It is near Express by Holiday Inn. Its customer rating is high.
+There is a Fast food pub with an average customer rating called Wildwood. It is in the high price range.
+There is a coffee shop near Ranch called Wildwood that serves Italian food in the high price range but has a customer rating of 1 out of 5.
+There is a coffee shop near Café Sicilia called The Punter that provides Japanese food in the moderate price range. Its customer rating is 1 out of 5 but it is not kid friendly.
+There is a French coffee shop in the riverside area called Aromi. It has a low customer rating but is family friendly.
+There is a Japanese restaurant called The Waterman in the riverside area. It has a customer rating of 5 out of 5 but is not family-friendly.
+There is a French restaurant with a price range of less than £20 called The Phoenix. It is located in the riverside. Its customer rating is low.
+Located near Café Rouge, The Plough is an Indian pub that is child friendly but has a high price range.
+Located in the riverside area, The Waterman is a cheap French restaurant with a customer rating of 5 out of 5 but is not family-friendly.
+In the city centre there is a cheap coffee shop with a customer rating of 5 out of 5 called Fitzbillies. It serves Indian food and is family-friendly.
+Located in the riverside area near Burger King, The Eagle is a French coffee shop with a customer rating of 5 out of 5. it is child friendly but has a price range of more than £30.
+For less than £20 you can find French food at Fitzbillies. It is a family-friendly coffee shop in the city centre but has a low customer rating.
+In the city centre there is a Chinese pub called The Olive Grove. It has a moderate price range but is not kid friendly.
+Located near All Bar One, Midsummer House serves Japanese food in the more than £30 price range but has a customer rating of 5 out of 5.
+Near Ranch, there is a Fast food coffee shop called Wildwood. It is cheap but has an average customer rating.
+There is a cheap coffee shop Fitzbillies that serves Japanese food. It is located in the riverside. It is not family-friendly but has a customer rating of 5 out of 5.
+There is a children friendly Indian restaurant with a high price range called The Vaults.
+There is a coffee shop called The Vaults located in the city centre near Café Brazil. It has a low customer rating but a price range of less than £20.
+There is a moderately priced Chinese restaurant called The Waterman in the city centre. It is not kid friendly but has a customer rating of 3 out of 5.
+There is a high priced coffee shop called The Wrestlers that serves French food in the riverside area near Raja Indian Cuisine. It is not child friendly but has a high customer rating.
+There is an Italian restaurant called The Golden Curry near The Bakers. It is child friendly but has a high price range.
+With a price range of less than £20, Cocum is a family friendly French coffee shop with an average customer rating.
+There is a non kid friendly Italian restaurant called Strada near Rainbow Vegetarian Café. It has a moderate price range but a customer rating of 1 out of 5.
+Near Café Rouge there is a Fast food pub called The Plough. It has a moderate price range but is not kid friendly.
+There is a cheap restaurant Strada that serves Italian food. It is located near Rainbow Vegetarian Café and has a customer rating of 5 out of 5. it is not family-friendly.
+There is a cheap Italian restaurant called The Wrestlers. It is not family-friendly but has a customer rating of 5 out of 5.
+There is a coffee shop called Cocum that provides Japanese food in the less than £20 price range. Its customer rating is low.
+There is a children friendly Indian coffee shop called Cocum. It has an average customer rating but has a high price range.
+There is a French restaurant called The Waterman in the riverside area. It is child friendly but has a high price range and a customer rating of 3 out of 5.
+There is an average rated coffee shop in the riverside area near Avalon called Blue Spice. It is not family-friendly but has a price range of less than £20.
+There is a French restaurant called The Rice Boat in the riverside area near Express by Holiday Inn. It has a customer rating of 5 out of 5 but is not child friendly. The price range is more than £30.
+There is a children friendly pub in the riverside area called The Olive Grove. It has a high price range but has a high customer rating.
+There is a children friendly restaurant with a price range of more than £30 called The Vaults that serves French food.
+There is a cheap Japanese restaurant in the riverside area near Express by Holiday Inn called The Rice Boat. It has a customer rating of 5 out of 5 but is not family-friendly.
+There is a Chinese restaurant called The Rice Boat located in the city centre near Express by Holiday Inn. It has a high customer rating but is not kid friendly. The price range is £20-25.
+There is a family friendly coffee shop called Cocum that serves Japanese food for less than £20 but has a low customer rating.
+Near All Bar One there is a high priced Chinese restaurant with an average customer rating called Midsummer House.
+Located in the city centre near Café Rouge, The Golden Curry is a Chinese restaurant with a customer rating of 5 out of 5 but is not family-friendly.
+Located near The Bakers, Giraffe is a children friendly coffee shop with a high price range but an average customer rating.
+There is an Italian restaurant called Alimentum located in the city centre near Yippee Noodle Bar. It has a high price range but an average customer rating.
+Near All Bar One there is a Japanese restaurant called Midsummer House. It has a low customer rating and a price range of less than £20.
+There is an Italian coffee shop near Café Sicilia called The Punter. It has a high customer rating but is not kid friendly. The price range is £20-25.
+Located in the riverside area, The Olive Grove is an English pub that is child friendly but has a price range of more than £30.
+With an average customer rating, Zizzi is a French pub that is not family-friendly.
+Located in the city centre, The Rice Boat serves Indian food. It has a customer rating of 5 out of 5 but is not family-friendly.
+Located in the riverside area near Crowne Plaza Hotel, Browns Cambridge is a Fast food coffee shop with an average customer rating but is not family-friendly.
+In the city centre there is a Fast food restaurant called The Phoenix. It is moderately priced but has a customer rating of 1 out of 5.
+There is a cheap Italian restaurant with a customer rating of 5 out of 5 near All Bar One called Midsummer House.
+There is a Fast food restaurant called The Rice Boat located in the city centre near Express by Holiday Inn. It is child friendly but has a high customer rating. The price range is more than £30.
+There is a family friendly Japanese restaurant called The Golden Curry in the riverside area near Café Rouge. It has a low customer rating.
+There is a French coffee shop in the riverside area near Crowne Plaza Hotel called Browns Cambridge. It has a customer rating of 5 out of 5 but is not family-friendly.
+Located in the city centre, The Waterman is a family-friendly Indian restaurant with a price range of less than £20 but has a low customer rating.
+There is a pub called Clowns in the riverside area. It is moderately priced but has a customer rating of 3 out of 5.
+With a moderate price range, The Waterman is a Japanese restaurant in the city centre. It has a customer rating of 1 out of 5 but is not kid friendly.
+There is a cheap restaurant Blue Spice located in the riverside area. It has a low customer rating but is not family-friendly.
+There is a cheap Fast food restaurant in the riverside area called The Waterman. It has an average customer rating but is not family-friendly.
+Located in the city centre, there is an average rated restaurant called The Waterman. It serves cheap Italian food but is not family-friendly.
+There is a Fast food pub in the riverside area called The Olive Grove. It is child friendly but has a high price range.
+There is a moderately priced Chinese restaurant in the city centre near Express by Holiday Inn called The Rice Boat. It is kid friendly but has a customer rating of 1 out of 5.
+There is a high priced Italian restaurant near Rainbow Vegetarian Café called Strada. It is child friendly but has an average customer rating.
+Not kid friendly, The Waterman serves Japanese food at a moderate price. It is located in the city centre but has a customer rating of 1 out of 5.
+Located in the city centre, Blue Spice is a cheap restaurant with a customer rating of 5 out of 5 but is not family-friendly.
+There is an Indian restaurant in the city centre called The Rice Boat near Express by Holiday Inn. It has a high customer rating but is not child friendly. The price range is more than £30.
+There is a Fast food coffee shop in the riverside area called Fitzbillies. It has a high customer rating but is not child friendly. The price range is more than £30.
+There is a French restaurant in the city centre near All Bar One called Green Man. It has a moderate price range but is not kid friendly.
+There is a Fast food coffee shop in the riverside area near Crowne Plaza Hotel called Browns Cambridge. It has a customer rating of 5 out of 5 but is not family-friendly.
+There is a highly rated Fast food restaurant with a price range of more than £30 called The Wrestlers. It is child friendly.
+In the riverside area there is an English restaurant called The Phoenix. It is cheap but has a customer rating of 5 out of 5.
+There is a cheap Chinese restaurant in the riverside area near Express by Holiday Inn. It has a customer rating of 5 out of 5 but is not family-friendly.
+Located in the riverside area near Express by Holiday Inn, The Rice Boat serves Japanese food at a price range of more than £30 but has a customer rating of 5 out of 5. it is not child friendly.
+There is a highly rated Chinese restaurant in the riverside area near Yippee Noodle Bar called Alimentum. It has a price range of more than £30.
+There is a Japanese restaurant called Cotto near Ranch. It is family friendly but has a low customer rating.
+There is a high priced pub near Café Adriatic with a customer rating of 1 out of 5 called The Vaults.
+There is a moderately priced coffee shop called The Punter that serves Italian food. It is located near Café Sicilia and has a customer rating of 1 out of 5. it is not kid friendly.
+There is a coffee shop called The Punter that provides Italian food in the moderate price range. It is near Café Sicilia. Its customer rating is 1 out of 5.
+In the riverside area near Avalon there is a family friendly coffee shop with a low customer rating called Blue Spice. It has a price range of more than £30.
+There is an Italian restaurant in the city centre near Express by Holiday Inn called The Rice Boat. It has a moderate price range but a customer rating of 3 out of 5 but is not kid friendly.
+There is a highly rated coffee shop with a price range of more than £30 called Cocum that serves Italian food but is not child friendly.
+Located near Rainbow Vegetarian Café, The Rice Boat has a 5 out of 5 customer rating but a price range of more than £30.
+There is a moderately priced restaurant near Express by Holiday Inn called Fitzbillies. It is kid friendly but has a customer rating of 1 out of 5.
+There is a high priced Fast food coffee shop called The Wrestlers located in the city centre near Raja Indian Cuisine. It is not child friendly but has a high customer rating.
+In the city centre there is a Chinese restaurant called The Waterman. It is child friendly but has a high price range but a customer rating of 1 out of 5.
+There is an Indian restaurant called The Golden Curry that is family friendly but has a low customer rating.
+There is a coffee shop called Browns Cambridge that serves Indian food. It is located in the city centre near Crowne Plaza Hotel. It has an average customer rating but is not family-friendly.
+Near Café Rouge there is a Fast food pub called The Plough. It is child friendly but has a high price range.
+There is a children friendly coffee shop called Zizzi located in the city centre. It has a low customer rating but has a price range of more than £30.
+In the riverside area there is an Italian restaurant called Alimentum. It is child friendly but has a high price range.
+Located in the riverside area, The Eagle has a customer rating of 5 out of 5 but is cheap.
+There is an Italian restaurant called The Waterman located in the city centre. It has a customer rating of 5 out of 5 but is family-friendly.
+Located in the riverside area near The Rice Boat, The Twenty Two is a family friendly restaurant with a low customer rating but a price range of less than £20.
+There is a French restaurant in the city centre near All Bar One called Green Man. It has a moderate price range but is not kid friendly.
+There is a kid friendly Chinese restaurant called The Waterman in the riverside area. It has a high customer rating and a price range of £20-25.
+There is a cheap coffee shop Blue Spice located in the riverside area near Avalon. It has a customer rating of 5 out of 5 but is not family-friendly.
+Located near Café Sicilia, there is a coffee shop called The Dumpling Tree. It has a high price range but is children friendly.
+Near The Portland Arms, Cotto is an Italian coffee shop in the riverside area. It has a high customer rating but a price range of more than £30.
+In the city centre there is a French pub called The Olive Grove. It has a moderate price range but is not kid friendly.
+There is a pub called Zizzi that provides Indian food its customer rating is 5 out of 5 but it is not family-friendly.
+There is a French restaurant with a price range of more than £30 called Strada. It is located near Rainbow Vegetarian Café and has a low customer rating but is children friendly.
+There is a moderately priced pub in the city centre called The Olive Grove. It serves Chinese food but is not kid friendly.
+There is a Japanese coffee shop called The Eagle located in the city centre near Burger King. It is child friendly but has a low customer rating. The price range is more than £30.
+There is an Italian restaurant called Green Man located in the city centre near All Bar One. It is child friendly but has a high price range.
+There is a family friendly Chinese restaurant with a low customer rating called The Golden Curry.
+There is a French restaurant called The Golden Curry near The Bakers. It is child friendly but has a price range of more than £30.
+There is a Japanese coffee shop called Browns Cambridge in the riverside area near Crowne Plaza Hotel. It has a customer rating of 5 out of 5 but is not family-friendly.
+There is an Indian coffee shop in the city centre called Fitzbillies. It has a low customer rating but is family-friendly. The price range is less than £20.
+There is a moderately priced English restaurant that is not kid friendly called Loch Fyne.
+There is a coffee shop Aromi in the riverside area that serves Indian food. It has an average customer rating but is not family-friendly.
+In the riverside area there is an Indian restaurant called The Waterman. It is child friendly but has an average customer rating.
+There is a pub called Clowns located in the city centre. It is moderately priced but has a customer rating of 1 out of 5.
+With a customer rating of 5 out of 5, not child friendly, Strada serves French food for more than £30. It is located near Rainbow Vegetarian Café.
+There is a family friendly restaurant called The Waterman that serves Fast food for less than £20. It is located in the riverside area but has a low customer rating.
+There is a Fast food coffee shop called The Eagle located in the riverside area near Burger King. It has an average customer rating but is not family-friendly.
+Located in the city centre, Alimentum serves French food for less than £20 but is not family-friendly.
+There is a kid friendly pub called Zizzi that serves Chinese food. It has a customer rating of 1 out of 5.
+Near Ranch there is a coffee shop called Wildwood that serves Indian food at a cheap price. It has an average customer rating.
+There is a highly rated coffee shop called Cocum that provides English food in the more than £30 price range but is children friendly.
+There is a cheap, family-friendly Indian restaurant in the city centre with a customer rating of 5 out of 5 called The Waterman.
+There is a highly rated Indian restaurant near Rainbow Vegetarian Café that is not kid friendly called Strada. It has a price range of £20-25.
+In the city centre there is a highly rated coffee shop called Fitzbillies. It serves Fast food in the £20-25 price range but is not kid friendly.
+There is a highly rated English coffee shop with a price range of more than £30 called Cocum.
+There is a kid friendly restaurant called The Twenty Two located in the city centre near The Rice Boat. It has a moderate price range but a customer rating of 1 out of 5.
+There is a Japanese restaurant called The Rice Boat located in the city centre near Express by Holiday Inn. It has a customer rating of 5 out of 5 but is not family-friendly.
+There is a Fast food coffee shop called Fitzbillies located in the city centre. It has an average customer rating but is not family-friendly.
+There is a coffee shop called Blue Spice in the riverside area near Avalon. It has a high price range but a customer rating of 1 out of 5.
+There is a Japanese restaurant called The Vaults. It has a moderate price range but is not kid friendly.
+There is a 1 out of 5 rated coffee shop near Café Sicilia called The Punter. It serves Japanese food at a moderate price. It is not kid friendly.
+In the city centre there is a moderately priced Chinese restaurant with a customer rating of 1 out of 5 called The Waterman.
+There is a cheap family friendly Indian restaurant with an average customer rating called The Wrestlers.
+There is an Italian coffee shop with a customer rating of 1 out of 5 called Aromi in the riverside area. It is kid friendly.
+There is an Italian restaurant called The Waterman in the riverside area. It has a high customer rating but is not child friendly. The price range is more than £30.
+There is an Indian coffee shop called The Wrestlers located in the city centre near Raja Indian Cuisine. It is child friendly but has a high price range.
+Located in the riverside area, Aromi is an Indian coffee shop with a customer rating of 1 out of 5 but is kid friendly.
+There is a non family-friendly coffee shop with a low customer rating called The Punter that serves Italian food for less than £20. It is located near Café Sicilia.
+There is a Fast food restaurant with a customer rating of 1 out of 5 called The Rice Boat. It is located in the riverside area near Express by Holiday Inn. It is child friendly but has a high price range.
+Located near Café Sicilia, The Punter is an Italian coffee shop with a high customer rating but a price range of £20-25. It is not kid friendly.
+Near Café Sicilia, The Dumpling Tree is a cheap coffee shop in the riverside area. It is family friendly but has a low customer rating.
+Located in the riverside area near Yippee Noodle Bar, Alimentum serves Indian food for less than £20 but has a low customer rating.
+There is a pub called The Olive Grove located in the city centre. It is child friendly but has a price range of more than £30.
+There is a Japanese restaurant called Browns Cambridge. It is moderately priced but has a customer rating of 1 out of 5.
+Located near Café Sicilia, The Punter is a coffee shop that serves Fast food. It is child friendly but has a high customer rating. The price range is more than £30.
+In the riverside area near Express by Holiday Inn there is a children friendly restaurant with a high price range called The Rice Boat. It serves English food but has a customer rating of 1 out of 5.
+There is an Italian coffee shop in the city centre near Crowne Plaza Hotel called Browns Cambridge. It has a low customer rating but is family-friendly.
+There is a moderately priced Chinese pub called The Olive Grove in the riverside area. It is not kid friendly but has a customer rating of 1 out of 5.
+There is a kid friendly pub called The Cricketers near Ranch. It has a customer rating of 1 out of 5.
+Located in the riverside area near Burger King, The Eagle is a Japanese coffee shop with a high customer rating but a price range of £20-25. It is not kid friendly.
+There is an Indian restaurant in the city centre near All Bar One called Green Man. It has a moderate price range but is not kid friendly.
+There is a French restaurant with a 5 out of 5 customer rating called The Rice Boat in the riverside area near Express by Holiday Inn. It is not child friendly and has a price range of more than £30.
+Located near Café Rouge, The Golden Curry is an English restaurant in the riverside area. It has a customer rating of 5 out of 5 but is not family-friendly.
+There is a French coffee shop called The Eagle located in the city centre near Burger King. It has a moderate price range but a customer rating of 1 out of 5 but is kid friendly.
+There is an Indian pub called The Plough near Café Rouge. It has a moderate price range but is not kid friendly.
+Located in the riverside area near Express by Holiday Inn, The Rice Boat is a children friendly Fast food restaurant with a high price range but a customer rating of 1 out of 5.
+With a low customer rating and a price range of less than £20, Strada serves English food and is not family-friendly. It is located near Rainbow Vegetarian Café.
+There is a high priced Japanese coffee shop with a customer rating of 3 out of 5. it is located in the riverside area near Burger King but is child friendly.
+There is a family-friendly Japanese restaurant called The Waterman located in the city centre. It has a low customer rating but has a price range of less than £20.
+There is a family friendly pub called Zizzi that serves Japanese food but has a low customer rating.
+With a customer rating of 5 out of 5, The Golden Curry is a Japanese restaurant in the city centre near Café Rouge. It is not family-friendly.
+In the city centre there is a moderately priced Indian restaurant with a customer rating of 3 out of 5 called The Waterman. It is not kid friendly.
+There is a children friendly pub called Cocum. It has a customer rating of 5 out of 5 but has a price range of more than £30.
+Located in the riverside area near Burger King, The Eagle is a family friendly coffee shop that serves Japanese food for less than £20 but has a low customer rating.
+There is an Italian coffee shop called Wildwood near Ranch. It is cheap but has a customer rating of 5 out of 5.
+There is an Italian coffee shop called The Cricketers near The Portland Arms. It is family friendly but has a low customer rating.
+There is a pub called Zizzi that provides Italian food its customer rating is 1 out of 5.
+Located near Express by Holiday Inn, Fitzbillies has a high price range but a customer rating of 1 out of 5. it is children friendly.
+In the city centre there is a Chinese restaurant with a customer rating of 5 out of 5 called The Rice Boat. It is not family-friendly.
+There is an English restaurant with a high customer rating called The Waterman in the riverside area. It is not child friendly and has a price range of more than £30.
+There is an Italian restaurant with a price range of £20-25 called The Waterman in the city centre. It has a high customer rating but is not kid friendly.
+Located in the riverside area, The Waterman serves English food in the high price range but has an average customer rating. It is not child friendly.
+There is a highly rated coffee shop in the riverside area near Avalon called Blue Spice. It is not kid friendly but has a price range of £20-25.
+There is an English restaurant called The Wrestlers. It is family friendly but has a low customer rating. The price range is less than £20.
+There is a children friendly pub in the high price range called Cocum. It has a customer rating of 1 out of 5.
+There is a Fast food restaurant called The Waterman in the riverside area. It has an average customer rating but is not child friendly.
+There is a coffee shop that serves Italian food called Cocum. It has an average customer rating but is not family-friendly. It has a cheap price range.
+There is a cheap Indian restaurant called The Waterman in the riverside area. It is not family-friendly but has a customer rating of 5 out of 5.
+With a low customer rating, The Golden Curry is a family-friendly Japanese restaurant in the city centre near Café Rouge.
+For less than £20 you can find Japanese food at The Eagle, a coffee shop in the riverside area near Burger King. It has a low customer rating but is not family-friendly.
+In the riverside area near Burger King there is a coffee shop called The Eagle. It serves Japanese food in the £20-25 price range but has a customer rating of 3 out of 5. it is not kid friendly.
+There is a family-friendly Indian restaurant called The Golden Curry located in the city centre near Café Rouge. It has a low customer rating.
+In the riverside area there is a pub called Clowns. It has a high price range but a customer rating of 3 out of 5.
+In the riverside area near Burger King there is a coffee shop called The Eagle. It serves French food for less than £20 but has a low customer rating but is not family-friendly.
+Located near Rainbow Vegetarian Café, Strada serves Italian food in the £20-25 price range but has a high customer rating. It is not kid friendly.
+There is a low rated Fast food restaurant near All Bar One called Midsummer House. It has a price range of less than £20.
+There is a cheap English restaurant called Green Man in the riverside area near All Bar One. It is not family-friendly but has a low customer rating.
+There is a coffee shop called The Eagle that serves Fast food in the cheap price range. It is located in the riverside. It is near Burger King. Its customer rating is average.
+Located in the riverside area near Crowne Plaza Hotel, Browns Cambridge is an Italian coffee shop with an average customer rating but is not family-friendly.

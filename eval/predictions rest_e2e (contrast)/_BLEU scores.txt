@@ -1,0 +1,115 @@
+---- EXPERIMENT #1 ----
+
+
+TRANS contrast, train all, test all (22.8k iter):
+
+BLEU_uncased =  31.32
+BLEU_cased =  30.32
+
+
+TRANS contrast, train all, test contrast only (22.8k iter):
+
+BLEU_uncased =  31.44
+BLEU_cased =  30.46
+
+
+TRANS contrast, train all, test all (33.6k iter):
+
+BLEU_uncased =  29.58
+BLEU_cased =  28.64
+
+
+TRANS contrast, train all, test contrast only (33.6k iter):
+
+BLEU_uncased =  31.23
+BLEU_cased =  30.31
+
+
+TRANS contrast, train all, test all (33.6k iter) reranked:
+
+BLEU_uncased =  29.84
+BLEU_cased =  28.89
+
+
+TRANS contrast, train all, test contrast only (33.6k iter) reranked:
+
+BLEU_uncased =  31.66
+BLEU_cased =  30.75
+
+
+---- EXPERIMENT #2 ----
+
+
+TRANS contrast, train all, test all (23.2k iter):
+
+BLEU_uncased =  29.33
+BLEU_cased =  28.44
+
+
+TRANS contrast, train all, test contrast only (23.2k iter):
+
+BLEU_uncased =  29.01
+BLEU_cased =  28.10
+
+
+TRANS contrast, train all, test all (30.4k iter):
+
+BLEU_uncased =  28.97
+BLEU_cased =  28.10
+
+
+TRANS contrast, train all, test contrast only (30.4k iter):
+
+BLEU_uncased =  29.61
+BLEU_cased =  28.77
+
+
+TRANS contrast, train all, test all (30.4k iter) reranked:
+
+BLEU_uncased =  29.19
+BLEU_cased =  28.31
+
+
+TRANS contrast, train all, test contrast only (30.4k iter) reranked:
+
+BLEU_uncased =  29.57
+BLEU_cased =  28.77
+
+
+---- EXPERIMENT #3 ----
+
+
+TRANS contrast, train all, test all (16k iter):
+
+BLEU_uncased =  28.36
+BLEU_cased =  27.50
+
+
+TRANS contrast, train all, test contrast only (16k iter):
+
+BLEU_uncased =  29.64
+BLEU_cased =  28.84
+
+
+TRANS contrast, train all, test all (34.8k iter):
+
+BLEU_uncased =  29.43
+BLEU_cased =  28.55
+
+
+TRANS contrast, train all, test contrast only (34.8k iter):
+
+BLEU_uncased =  29.51
+BLEU_cased =  28.66
+
+
+TRANS contrast, train all, test all (34.8k iter) reranked:
+
+BLEU_uncased =  29.58
+BLEU_cased =  28.70
+
+
+TRANS contrast, train all, test contrast only (34.8k iter) reranked:
+
+BLEU_uncased =  29.03
+BLEU_cased =  28.29

@@ -1,0 +1,106 @@
+---- EXPERIMENT #1 ----
+
+
+TRANS contrast, train all, test all (30.4k iter):
+
+BLEU_uncased =  29.38
+BLEU_cased =  28.50
+
+
+TRANS contrast, train all, test all (30.4k iter) reranked:
+
+BLEU_uncased =  29.35
+BLEU_cased =  28.47
+
+
+TRANS contrast, train all, test contrast only (30.4k iter):
+
+BLEU_uncased =  27.26
+BLEU_cased =  26.49
+
+
+TRANS contrast, train all, test contrast only (30.4k iter) reranked:
+
+BLEU_uncased =  27.01
+BLEU_cased =  26.32
+
+
+
+---- EXPERIMENT #2 ----
+
+
+TRANS contrast, train all, test all (26.8k iter):
+
+BLEU_uncased =  28.95
+BLEU_cased =  28.04
+
+
+TRANS contrast, train all, test all (26.8k iter) reranked:
+
+BLEU_uncased =  29.44
+BLEU_cased =  28.53
+
+
+TRANS contrast, train all, test contrast only (26.8k iter):
+
+BLEU_uncased =  29.98
+BLEU_cased =  29.07
+
+
+TRANS contrast, train all, test contrast only (26.8k iter) reranked:
+
+BLEU_uncased =  29.88
+BLEU_cased =  29.00
+
+
+
+TRANS contrast, train all, test all (36.4k iter):
+
+BLEU_uncased =  30.94
+BLEU_cased =  30.01
+
+
+TRANS contrast, train all, test all (36.4k iter) reranked:
+
+BLEU_uncased =  31.17
+BLEU_cased =  30.25
+
+
+TRANS contrast, train all, test contrast only (36.4k iter):
+
+BLEU_uncased =  30.83
+BLEU_cased =  29.90
+
+
+TRANS contrast, train all, test contrast only (36.4k iter) reranked:
+
+BLEU_uncased =  30.89
+BLEU_cased =  29.97
+
+
+
+---- EXPERIMENT #3 ----
+
+
+TRANS contrast, train all, test all (39.2k iter):
+
+BLEU_uncased =  29.84
+BLEU_cased =  28.94
+
+
+TRANS contrast, train all, test all (39.2k iter) reranked:
+
+BLEU_uncased =  29.98
+BLEU_cased =  29.09
+
+
+TRANS contrast, train all, test contrast only (39.2k iter):
+
+BLEU_uncased =  29.44
+BLEU_cased =  28.60
+
+
+TRANS contrast, train all, test contrast only (39.2k iter) reranked:
+
+BLEU_uncased =  29.42
+BLEU_cased =  28.59
