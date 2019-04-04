@@ -1,6 +1,6 @@
 import os
 import pandas as pd
-from collections import OrderedDict
+from collections import Counter, OrderedDict
 
 import config
 import data_loader
@@ -265,6 +265,78 @@ def score_contrast(dataset, filename):
     new_df.to_csv(os.path.join(config.EVAL_DIR, dataset, filename_out), index=False, encoding='utf8')
 
 
+def analyze_contrast_relations(dataset, filename):
+    """Identifies the slots involved in a contrast relation."""
+
+    contrast_connectors = ['but', 'however', 'yet']
+    slots_before = []
+    slots_after = []
+
+    print('Analyzing contrast relations in ' + str(filename))
+
+    # Read in the data
+    data_cont = data_loader.init_test_data(os.path.join(config.DATA_DIR, dataset, filename))
+    mrs_orig, utterances_orig = data_cont['data']
+    slot_sep, val_sep, _, val_sep_closing = data_cont['separators']
+
+    for mr, utt in zip(mrs_orig, utterances_orig):
+        mr_dict = OrderedDict()
+        mr_list_augm = []
+
+        # Extract the slot-value pairs into a dictionary
+        for slot_value in mr.split(slot_sep):
+            slot, value, slot_orig, value_orig = data_loader.parse_slot_and_value(slot_value, val_sep, val_sep_closing)
+            mr_dict[slot] = value
+            mr_list_augm.append((slot, value_orig))
+
+        # Find the slot alignment
+        alignment = find_alignment(utt, mr_dict)
+
+        slot_before = None
+        slot_after = None
+
+        for contrast_conn in contrast_connectors:
+            contrast_pos = utt.find(contrast_conn)
+            if contrast_pos >= 0:
+                slot_before = None
+                slot_after = None
+
+                for pos, slot, value in alignment:
+                    slot_before = slot_after
+                    slot_after = slot
+
+                    if pos > contrast_pos:
+                        break
+
+                break
+
+        slots_before.append(slot_before if slot_before is not None else '')
+        slots_after.append(slot_after if slot_after is not None else '')
+
+    # Calculate the frequency distribution of slots involved in a contrast relation
+    contrast_slot_cnt = Counter()
+    contrast_slot_cnt.update(slots_before + slots_after)
+    del contrast_slot_cnt['']
+    print('\n---- Slot distribution in contrast relations ----\n')
+    print('\n'.join(slot + ': ' + str(freq) for slot, freq in contrast_slot_cnt.most_common()))
+
+    # Calculate the frequency distribution of slot pairs involved in a contrast relation
+    contrast_slot_cnt = Counter()
+    slot_pairs = [tuple(sorted(slot_pair)) for slot_pair in zip(slots_before, slots_after) if slot_pair != ('', '')]
+    contrast_slot_cnt.update(slot_pairs)
+    print('\n---- Slot pair distribution in contrast relations ----\n')
+    print('\n'.join(slot_pair[0] + ', ' + slot_pair[1] + ': ' + str(freq) for slot_pair, freq in contrast_slot_cnt.most_common()))
+
+    new_df = pd.DataFrame(columns=['mr', 'ref', 'slot before contrast', 'slot after contrast'])
+    new_df['mr'] = mrs_orig
+    new_df['ref'] = utterances_orig
+    new_df['slot before contrast'] = slots_before
+    new_df['slot after contrast'] = slots_after
+
+    filename_out = os.path.splitext(filename)[0] + ' [contrast relations].csv'
+    new_df.to_csv(os.path.join(config.DATA_DIR, dataset, filename_out), index=False, encoding='utf8')
+
+
 if __name__ == '__main__':
     # align_slots('rest_e2e', 'devset_e2e.csv')
     # align_slots('video_game', 'test.csv')
@@ -277,8 +349,12 @@ if __name__ == '__main__':
 
     # ----
 
-    predictions_dir = 'predictions rest_e2e (emphasis+contrast)'
-    predictions_file = 'predictions TRANS emphasis+contrast, train single, test combo extra (23.2k iter).csv'
+    # predictions_dir = 'predictions rest_e2e (emphasis+contrast)'
+    # predictions_file = 'predictions TRANS emphasis+contrast, train single, test combo extra (23.2k iter).csv'
+    #
+    # score_emphasis(predictions_dir, predictions_file)
+    # score_contrast(predictions_dir, predictions_file)
 
-    score_emphasis(predictions_dir, predictions_file)
-    score_contrast(predictions_dir, predictions_file)
+    # ----
+
+    analyze_contrast_relations('rest_e2e', 'devset_e2e.csv')
