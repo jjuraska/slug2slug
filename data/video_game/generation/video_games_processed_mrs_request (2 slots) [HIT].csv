@@ -1,0 +1,101 @@
+name,release_year,exp_release_date,developer,esrb,rating,genres,player_perspective,has_multiplayer,platforms,available_on_steam,has_linux_release,has_mac_release,specifier
+,,,,,,Genres: <b>action-adventure</b>,,,,,,,Specifier: <b>easy</b>
+,Year: <b>2018</b>,,,,,,,,,,,,Specifier: <b>long</b>
+,,,,,,,,,Platform: <b>PlayStation</b>,,,,Specifier: <b>stunning</b>
+,,,Developer: <b>Hazelight Studios</b>,,,,,,,,,,Specifier: <b>classic</b>
+,,,,,,,Player perspective: <b>third person</b>,,,,,,Specifier: <b>smart</b>
+,,,Developer: <b>Rockstar North</b>,,,,,,,,,,Specifier: <b>offensive</b>
+,,,,ESRB content rating: <b>M (for Mature)</b>,,,,,,,,,Specifier: <b>gritty</b>
+,,,,,,,,,Platform: <b>Xbox</b>,,,,Specifier: <b>easiest</b>
+,,,,,,,Player perspective: <b>first person</b>,,,,,,Specifier: <b>oldest</b>
+,Year: <b>2013</b>,,,,,,,,,,,,Specifier: <b>longest</b>
+,,,Developer: <b>Nintendo EAD</b>,,,,,,,,,,Specifier: <b>classic</b>
+,,,,,,,,Has multiplayer: <b>yes</b>,,,,,Specifier: <b>interesting</b>
+,Year: <b>1990</b>,,,,,,,,,,,,Specifier: <b>challenging</b>
+,,,,,,,Player perspective: <b>side view</b>,,,,,,Specifier: <b>easy</b>
+,,,,,,Genres: <b>platformer</b>,,,,,,,Specifier: <b>elaborate</b>
+,,,,,,,,,Platform: <b>PC</b>,,,,Specifier: <b>immersive</b>
+,Year: <b>2014</b>,,,,,,,,,,,,Specifier: <b>terrible</b>
+,,,,,,"Genres: <b>adventure, indie</b>",,,,,,,Specifier: <b>short</b>
+,,,,,,,,Has multiplayer: <b>no</b>,,,,,Specifier: <b>epic</b>
+,,,,,,,,,,,Has a Linux release: <b>no</b>,,Specifier: <b>cheap</b>
+,,,Developer: <b>Bloober Team</b>,,,,,,,,,,Specifier: <b>silliest</b>
+,,,,,,,,,Platform: <b>PC</b>,,,,Specifier: <b>expensive</b>
+,,,,,,"Genres: <b>adventure, indie, point-and-click</b>",,,,,,,Specifier: <b>shortest</b>
+,,,,ESRB content rating: <b>M (for Mature)</b>,,,,,,,,,Specifier: <b>unpleasant</b>
+,,,,,,,Player perspective: <b>first person</b>,,,,,,Specifier: <b>realistic</b>
+,,,,ESRB content rating: <b>E (for Everyone)</b>,,,,,,,,,Specifier: <b>goofy</b>
+,,,,,,,,,,Available on Steam: <b>yes</b>,,,Specifier: <b>ugliest</b>
+,,,,,,,,,,,Has a Linux release: <b>no</b>,,Specifier: <b>favorite</b>
+,,,,,,,,,Platform: <b>PC</b>,,,,Specifier: <b>quirky</b>
+,,,Developer: <b>SCS Software</b>,,,,,,,,,,Specifier: <b>famous</b>
+,,,,,,,,Has multiplayer: <b>yes</b>,,,,,Specifier: <b>dull</b>
+,Year: <b>2014</b>,,,,,,,,,,,,Specifier: <b>disappointing</b>
+,,,,,,,,,Platform: <b>PlayStation</b>,,,,Specifier: <b>revolting</b>
+,,,,,,"Genres: <b>simulation, sport</b>",,,,,,,Specifier: <b>simple</b>
+,,,,ESRB content rating: <b>E 10+ (for Everyone 10 and Older)</b>,,,,,,,,,Specifier: <b>soothing</b>
+,,,Developer: <b>Tin Man Games</b>,,,,,,,,,,Specifier: <b>boring</b>
+,,,,,,"Genres: <b>role-playing, text adventure</b>",,,,,,,Specifier: <b>shortest</b>
+,,,,,,,,,,,,Has a Mac release: <b>yes</b>,Specifier: <b>addictive</b>
+,,,,,,,,,Platform: <b>PC</b>,,,,Specifier: <b>funky</b>
+,,,,,,,,,,,Has a Linux release: <b>yes</b>,,Specifier: <b>frightening</b>
+,,,,,,,,,Platform: <b>Nintendo Switch</b>,,,,Specifier: <b>great looking</b>
+,,,Developer: <b>Overkill Software</b>,,,,,,,,,,Specifier: <b>empowering</b>
+,Year: <b>2013</b>,,,,,,,,,,,,Specifier: <b>spectacular</b>
+,,,,,,,Player perspective: <b>first person</b>,,,,,,Specifier: <b>absorbing</b>
+,,,,,,"Genres: <b>role-playing, shooter</b>",,,,,,,Specifier: <b>well balanced</b>
+,,,Developer: <b>Valve Corporation</b>,,,,,,,,,,Specifier: <b>funny</b>
+,,,,,,,Player perspective: <b>first person</b>,,,,,,Specifier: <b>colorful</b>
+,,,,ESRB content rating: <b>E 10+ (for Everyone 10 and Older)</b>,,,,,,,,,Specifier: <b>frightening</b>
+,,,,,,,,,,Available on Steam: <b>yes</b>,,,Specifier: <b>cheap</b>
+,Year: <b>2011</b>,,,,,,,,,,,,Specifier: <b>unusual</b>
+,,,,,,Genres: <b>sport</b>,,,,,,,Specifier: <b>in-depth</b>
+,,,,,,,,,Platform: <b>Xbox</b>,,,,Specifier: <b>brand new</b>
+,,,Developer: <b>Neversoft Entertainment</b>,,,,,,,,,,Specifier: <b>other</b>
+,Year: <b>2001</b>,,,,,,,,,,,,Specifier: <b>broken</b>
+,,,,ESRB content rating: <b>T (for Teen)</b>,,,,,,,,,Specifier: <b>scary</b>
+,,,,,,,,,Platform: <b>PlayStation</b>,,,,Specifier: <b>weirdest</b>
+,,,,,,,,Has multiplayer: <b>yes</b>,,,,,Specifier: <b>addictive</b>
+,,,,ESRB content rating: <b>E (for Everyone)</b>,,,,,,,,,Specifier: <b>other</b>
+,Year: <b>2014</b>,,,,,,,,,,,,Specifier: <b>favorite</b>
+,,,,,,"Genres: <b>driving/racing, simulation, sport</b>",,,,,,,Specifier: <b>exciting</b>
+,,,,,,,,,Platform: <b>PlayStation</b>,,,,Specifier: <b>hardest</b>
+,,,,,,Genres: <b>shooter</b>,,,,,,,Specifier: <b>confusing</b>
+,Year: <b>2004</b>,,,,,,,,,,,,Specifier: <b>fascinating</b>
+,,,,ESRB content rating: <b>M (for Mature)</b>,,,,,,,,,Specifier: <b>tearjerking</b>
+,,,,,,,Player perspective: <b>first person</b>,,,,,,Specifier: <b>nauseating</b>
+,,,,,,,,,Platform: <b>PC</b>,,,,Specifier: <b>scary</b>
+,,,,,,"Genres: <b>real-time strategy, simulation</b>",,,,,,,Specifier: <b>other</b>
+,,,,,,,,,,Available on Steam: <b>yes</b>,,,Specifier: <b>latest</b>
+,,,Developer: <b>Firefly Studios</b>,,,,,,,,,,Specifier: <b>upcoming</b>
+,Year: <b>2005</b>,,,,,,,,,,,,Specifier: <b>underrated</b>
+,,,,,,,,,Platform: <b>Xbox</b>,,,,Specifier: <b>complex</b>
+,,,,,,,Player perspective: <b>bird view</b>,,,,,,Specifier: <b>calming</b>
+,Year: <b>2011</b>,,,,,,,,,,,,Specifier: <b>best looking</b>
+,,,Developer: <b>EA Canada</b>,,,,,,,,,,Specifier: <b>favorite</b>
+,,,,,,"Genres: <b>simulation, sport</b>",,,,,,,Specifier: <b>poorly balanced</b>
+,,,Developer: <b>Guerrilla Games</b>,,,,,,,,,,Specifier: <b>overrated</b>
+,Year: <b>2017</b>,,,,,,,,,,,,Specifier: <b>bizarre</b>
+,,,,,,,,,Platform: <b>PlayStation</b>,,,,Specifier: <b>relaxing</b>
+,,,,,,,,Has multiplayer: <b>no</b>,,,,,Specifier: <b>lengthy</b>
+,,,,,,"Genres: <b>action-adventure, role-playing, shooter</b>",,,,,,,Specifier: <b>gory</b>
+,,,,,,,,,Platform: <b>Nintendo</b>,,,,Specifier: <b>beautiful</b>
+,,,,,,Genres: <b>music</b>,,,,,,,Specifier: <b>cheerful</b>
+,,,,,,,Player perspective: <b>first person</b>,,,,,,Specifier: <b>exhilarating</b>
+,Year: <b>2009</b>,,,,,,,,,,,,Specifier: <b>other</b>
+,,,,,,,,Has multiplayer: <b>yes</b>,,,,,Specifier: <b>fast-paced</b>
+,,,,,,,,,,,Has a Linux release: <b>no</b>,,Specifier: <b>other</b>
+,,,,,,Genres: <b>text adventure</b>,,,,,,,Specifier: <b>immersive</b>
+,,,,,,,,Has multiplayer: <b>no</b>,,,,,Specifier: <b>rewarding</b>
+,,,,,,,,,Platform: <b>PC</b>,,,,Specifier: <b>quick-to-learn</b>
+,,,Developer: <b>Red Entertainment Corporation</b>,,,,,,,,,,Specifier: <b>newest</b>
+,,,,,,,,,,Available on Steam: <b>yes</b>,,,Specifier: <b>challenging</b>
+,,,,,,,Player perspective: <b>side view</b>,,,,,,Specifier: <b>other</b>
+,,,,,,,,,Platform: <b>PC</b>,,,,Specifier: <b>buggy</b>
+,Year: <b>2010</b>,,,,,,,,,,,,Specifier: <b>controversial</b>
+,,,,,,"Genres: <b>action, platformer, strategy</b>",,,,,,,Specifier: <b>fun</b>
+,,,,,,Genres: <b>driving/racing</b>,,,,,,,Specifier: <b>complicated</b>
+,Year: <b>2017</b>,,,,,,,,,,,,Specifier: <b>unfair</b>
+,,,Developer: <b>Ghost Games</b>,,,,,,,,,,Specifier: <b>exceptional</b>
+,,,,,,,,,Platform: <b>PlayStation</b>,,,,Specifier: <b>other</b>
+,,,,,,,Player perspective: <b>third person</b>,,,,,,Specifier: <b>dynamic</b>

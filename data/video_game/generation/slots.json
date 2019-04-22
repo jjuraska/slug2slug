@@ -33,7 +33,9 @@
         "name",
         "rating"
       ],
-      "excluded": null
+      "excluded": [
+        "exp_release_date"
+      ]
     },
     "inform": {
       "mandatory": [
@@ -41,28 +43,41 @@
         "exp_release_date",
         "genres"
       ],
-      "excluded": null
+      "excluded": []
     },
     "recommend": {
       "mandatory": [
         "name"
       ],
       "excluded": [
-        "rating"
+        "rating",
+        "exp_release_date"
+      ]
+    },
+    "request": {
+      "mandatory": [
+        "specifier"
+      ],
+      "excluded": [
+        "name",
+        "rating",
+        "exp_release_date"
       ]
     },
     "request_attribute": {
-      "mandatory": null,
+      "mandatory": [],
       "excluded": [
         "name",
         "rating"
       ]
     },
     "request_explanation": {
-      "mandatory": null,
+      "mandatory": [
+        "rating"
+      ],
       "excluded": [
         "name",
-        "rating"
+        "exp_release_date"
       ]
     },
     "suggest": {
@@ -70,7 +85,8 @@
         "name"
       ],
       "excluded": [
-        "rating"
+        "rating",
+        "exp_release_date"
       ]
     },
     "verify_attribute": {
@@ -78,7 +94,9 @@
         "name",
         "rating"
       ],
-      "excluded": null
+      "excluded": [
+        "exp_release_date"
+      ]
     }
   },
   "value_constraints": {

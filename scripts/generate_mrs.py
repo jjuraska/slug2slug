@@ -10,9 +10,10 @@ import config
 
 
 class MRGenerator:
-    def __init__(self, domain, num_variations):
+    def __init__(self, domain, num_variations, num_samples=None):
         self.domain = domain
         self.num_variations = num_variations
+        self.num_samples = num_samples
 
         # Load slot info and constraints for the given domain
         if domain == 'video_game':
@@ -31,12 +32,17 @@ class MRGenerator:
         self.value_constraints = slots_dict['value_constraints']
 
     def create_mrs_from_game_data(self, file_in, da=None, num_slots=None):
+        """Generates MRs by sampling the input data CSV file, creating two output files. The output text file contains
+        a list of the MRs in their textual form. The output CSV file contains the MRs represented in a tabular form,
+        including HTML formatting, and is ready to be used as an input file for an MTurk HIT.
+        """
+
         mrs = []
         mr_dicts = []
 
         # Initialize the MR length distribution dictionary
         mr_len_distr = OrderedDict()
-        for i in range(3, 9):
+        for i in range(1, 9):
             mr_len_distr[str(i)] = 0
 
         # Initialize the slot distribution dictionary
@@ -48,6 +54,10 @@ class MRGenerator:
         df = pd.read_csv(file_in, header=0, dtype=object, encoding='utf8')
 
         for _, row in df.iterrows():
+            # TEMP: skip future games
+            if not pd.isnull(row['exp_release_date']):
+                continue
+
             mr_var_cnt = 0
             while mr_var_cnt < self.num_variations:
                 # Generate a random MR from the current game's data
@@ -66,8 +76,8 @@ class MRGenerator:
                     mr_dicts.append(mr_dict)
 
                     mr_len_distr[str(len(mr_dict))] = mr_len_distr.get(str(len(mr_dict)), 0) + 1
-                    for slot in mr_dict:
-                        slot_distr[slot] += 1
+                    # for slot in mr_dict:
+                    #     slot_distr[slot] += 1
 
                     mr_var_cnt += 1
 
@@ -75,26 +85,34 @@ class MRGenerator:
                 if 'exp_release_date' in mr_dict and mr_var_cnt >= 4:
                     break
 
-        # Print the MR length distribution and the slot distribution
-        print('MR length distribution:\n')
-        print_stats_from_dict(mr_len_distr)
-        print('\nSlot distribution:\n')
-        print_stats_from_dict(slot_distr)
+        if self.num_samples is not None:
+            # Take only a sample of a desired size from the generated MRs
+            idxs = np.random.choice(np.arange(len(mrs)), self.num_samples, replace=False)
+            print('MR sample indexes: ' + ', '.join(str(i) for i in idxs))
+            mrs = np.array(mrs)[idxs].tolist()
+            mr_dicts = np.array(mr_dicts)[idxs].tolist()
+        else:
+            # Print the MR length distribution and the slot distribution
+            print('MR length distribution:\n')
+            print_stats_from_dict(mr_len_distr)
+            print('\nSlot distribution:\n')
+            print_stats_from_dict(slot_distr)
 
-        # Store the generated MRs to a text file
+        # Save the generated MRs to a text file
         file_out = os.path.splitext(file_in)[0] + '_mrs{0}.txt'.format(('_' + da) if da is not None else '')
         with open(file_out, 'w', encoding='utf8') as f_out:
             f_out.write('\n'.join(mrs))
 
-        # Format the generated MRs for a HIT and store them in a CSV file
-        file_out_hit = os.path.splitext(file_in)[0] + '_mrs{0}_hit.csv'.format(('_' + da) if da is not None else '')
+        # Format the generated MRs for a HIT and save them in a CSV file
+        file_out_hit = os.path.splitext(file_in)[0] + '_mrs{0} [HIT].csv'.format(('_' + da) if da is not None else '')
         self.__save_csv_for_hit(mr_dicts, file_out_hit)
 
-    def create_mrs_from_csv(self, file_in, file_out):
+    def create_mrs_from_csv(self, file_in, da=None, ignore_utt=True, create_hit_file=False):
         """Generates MRs in a textual form from an input CSV file in which each column corresponds to one slot.
         """
 
         mrs = []
+        mr_dicts = []
 
         # Initialize the MR length distribution dictionary
         mr_len_distr = OrderedDict()
@@ -113,10 +131,14 @@ class MRGenerator:
             # Remove all NaN values from the row
             mr_dict = OrderedDict(row[~row.isnull()])
 
+            if ignore_utt:
+                mr_dict.pop('utterance', None)
+
             # Assemble the MR in a string form
-            mr = self.__mr_to_string(mr_dict)
+            mr = self.__mr_to_string(mr_dict, da)
 
             mrs.append(mr)
+            mr_dicts.append(mr_dict)
 
             mr_len_distr[str(len(mr_dict))] = mr_len_distr.get(str(len(mr_dict)), 0) + 1
             for slot in mr_dict:
@@ -128,9 +150,73 @@ class MRGenerator:
         print('\nSlot distribution:\n')
         print_stats_from_dict(slot_distr)
 
-        # Store the generated MRs to a text file
+        # Save the generated MRs to a text file
+        file_out = os.path.splitext(file_in)[0].replace('processed_results', 'processed_mrs') + '.txt'
         with open(file_out, 'w', encoding='utf8') as f_out:
             f_out.write('\n'.join(mrs))
+
+        if create_hit_file:
+            # Format the generated MRs for a HIT and save them in a CSV file
+            file_out_hit = os.path.splitext(file_in)[0].replace('processed_results', 'processed_mrs') + ' [HIT].csv'
+            self.__save_csv_for_hit(mr_dicts, file_out_hit)
+
+    def extract_hit_results_from_csv(self, file_in, num_responses=1, num_slots=1, use_specifier=False):
+        """Extracts the columns with content (both given and produced) from a MTurk HIT results CSV file. By reading
+        the values of the input fields, determines the slot-value pairs among the given data and extracts them into
+        the output file. The extracted slot-value pairs are aligned with the corresponding responses produced. The
+        output CSV file has a similar format to the video game data file, only the slots are sparse and each MR has
+        an utterance associated with it.
+        """
+
+        prefix_in = 'Input.'
+        prefix_out = 'Answer.'
+        suffix_slot = 'selected_attr'
+        suffix_utt = 'utterance'
+        suffix_spec = 'specifier'
+
+        results = []
+
+        # Read in the CSV file in the MTurk HIT format
+        df = pd.read_csv(file_in, header=0, dtype=object, encoding='utf8')
+
+        for row_idx, row in df.iterrows():
+            for i in range(1, num_responses + 1):
+                sample_data = {}
+                for j in range(1, num_slots + 1):
+                    col_name = prefix_out + suffix_slot + str(i) + str(j)
+
+                    try:
+                        slot_selected = row[col_name]
+                    except KeyError:
+                        print('Warning: column "' + col_name + '" not found.')
+                        continue
+
+                    cell_content = row[prefix_in + str(slot_selected)]
+                    if pd.isna(cell_content):
+                        print('Warning: row ' + str(row_idx + 1) + ', response ' + str(i) + ', slot ' + str(j) + '\t>> ' + 'slot "' + slot_selected + '" not found.')
+                        continue
+
+                    val = re.search(r'<b>(.+?)</b>', cell_content)
+                    sample_data[slot_selected] = val.group(1)
+
+                if use_specifier:
+                    sample_data['specifier'] = row[prefix_out + suffix_spec + str(i)]
+
+                sample_data['utterance'] = row[prefix_out + suffix_utt + str(i)]
+                results.append(sample_data)
+
+                # DEBUG PRINT
+                # print(sample_data)
+
+        column_names = self.slots
+        if use_specifier:
+            column_names += ['specifier']
+        column_names += ['utterance']
+
+        file_out = file_in.replace('mturk_results', 'processed_results')
+
+        df_results = pd.DataFrame(results, columns=column_names)
+        df_results.to_csv(file_out, index=False, encoding='utf8')
 
     def __get_random_slot_comb_for_da(self, row, da='inform', num_slots=None):
         if da == 'inform':
@@ -246,7 +332,7 @@ class MRGenerator:
 
         # Remove the marked slots from the MR
         for slot, val in slot_value_dict.items():
-            if val:
+            if val is not None:
                 mr_dict[slot] = val
 
         return mr_dict
@@ -265,7 +351,7 @@ class MRGenerator:
         return mandatory_slots, excluded_slots
 
     def __adjust_mr_for_da(self, da, mr_dict):
-        """Apply predefined constraints to the slots' values. The constraints concern the number of elements
+        """Applies predefined constraints to the slots' values. The constraints concern the number of elements
         in list values. The constraints that apply to all slots across a specific DA have a higher priority than
         the constraints that apply to a certain slot across all DAs.
         """
@@ -302,12 +388,27 @@ class MRGenerator:
 
         # New DA-specific slots
         if da == 'request':
-            # Prepend an empty "category" slot to the beginning of the MR dict
-            mr_dict['category'] = None
-            mr_dict.move_to_end('category', last=False)
+            # Prepend an empty "specifier" slot to the beginning of the MR dict
+            mr_dict['specifier'] = None
+            mr_dict.move_to_end('specifier', last=False)
+
+        # Apply domain-specific constraints to the slots in the MR
+        self.__apply_domain_rules_to_mr(mr_dict)
+
+    def __apply_domain_rules_to_mr(self, mr_dict):
+        """Validates domain-specific constraints between slots in the given MR, and removes slots that do not
+        satisfy the conditions.
+        """
+
+        if self.domain == 'video_game':
+            pc_platforms = ['available_on_steam', 'has_linux_release', 'has_mac_release']
+            # If PC not among platforms, drop the PC-related slots
+            if mr_dict.get('platforms', None) is not None and 'pc' not in mr_dict['platforms'].lower():
+                for p in pc_platforms:
+                    mr_dict.pop(p, None)
 
     def __value_to_list(self, val_as_str):
-        """Split the value string around commas."""
+        """Splits the value string around commas."""
 
         if val_as_str is None:
             return None
@@ -315,7 +416,7 @@ class MRGenerator:
         return [elem.strip() for elem in val_as_str.split(',')]
 
     def __value_to_str(self, val_as_list):
-        """Join the list elements using a semicolon."""
+        """Joins the list elements using a semicolon."""
 
         if val_as_list is None:
             return None
@@ -326,7 +427,7 @@ class MRGenerator:
         slot_value_pairs = []
 
         for slot, val in mr_dict.items():
-            slot_value_pairs.append(slot + '[' + str(val) + ']')
+            slot_value_pairs.append(slot + '[{0}]'.format(str(val) if val is not None else ''))
 
         mr = ', '.join(slot_value_pairs)
 
@@ -340,8 +441,15 @@ class MRGenerator:
         # Add HTML formatting to the values
         for mr_dict in mr_dicts:
             for slot, val in mr_dict.items():
+                if val is None:
+                    val = ''
+                else:
+                    val = val.replace('; ', ', ')
+
                 if slot == 'name':
                     mr_dict[slot] = '<b>' + val + '</b>'
+                elif slot == 'specifier':
+                    mr_dict[slot] = 'Specifier: ' + '<b>' + val + '</b>'
                 elif slot == 'release_year':
                     mr_dict[slot] = 'Year: ' + '<b>' + val + '</b>'
                 elif slot == 'exp_release_date':
@@ -349,9 +457,10 @@ class MRGenerator:
                 elif slot == 'developer':
                     mr_dict[slot] = 'Developer: ' + '<b>' + val + '</b>'
                 elif slot == 'esrb':
-                    mr_dict[slot] = 'ESRB: ' + '<b>' + val + '</b>'
+                    mr_dict[slot] = 'ESRB content rating: ' + '<b>' + val + '</b>'
                 elif slot == 'rating':
-                    mr_dict[slot] = 'Liking/Rating: ' + '<b>' + val + '</b>'
+                    # mr_dict[slot] = 'Liking/Rating: ' + '<b>' + val + '</b>'
+                    mr_dict[slot] = 'Liking: ' + '<b>' + val + '</b>'
                 elif slot == 'genres':
                     mr_dict[slot] = 'Genres: ' + '<b>' + val + '</b>'
                 elif slot == 'player_perspective':
@@ -359,13 +468,17 @@ class MRGenerator:
                 elif slot == 'has_multiplayer':
                     mr_dict[slot] = 'Has multiplayer: ' + '<b>' + val + '</b>'
                 elif slot == 'platforms':
-                    mr_dict[slot] = 'Platforms: ' + '<b>' + val + '</b>'
+                    # mr_dict[slot] = 'Platforms: ' + '<b>' + val + '</b>'
+                    mr_dict[slot] = 'Platform: ' + '<b>' + val + '</b>'
                 elif slot == 'available_on_steam':
                     mr_dict[slot] = 'Available on Steam: ' + '<b>' + val + '</b>'
                 elif slot == 'has_linux_release':
                     mr_dict[slot] = 'Has a Linux release: ' + '<b>' + val + '</b>'
                 elif slot == 'has_mac_release':
                     mr_dict[slot] = 'Has a Mac release: ' + '<b>' + val + '</b>'
+
+        if 'specifier' in mr_dicts[0]:
+            self.slots.append('specifier')
 
         # Store the formatted MRs to a CSV file
         df_hit = pd.DataFrame(mr_dicts, columns=self.slots)
@@ -469,29 +582,44 @@ def print_stats_from_dict(stats_dict):
 
 
 def main():
-    domain = 'video_game'
+    # Parameters for "inform" DA
+    # domain = 'video_game'
     # num_variations = 10
+    # num_total_samples = None
+    # da = 'inform'
+    # num_slots = None
+
+    # Parameters for other DAs
+    domain = 'video_game'
     num_variations = 1
-    da = 'recommend'
+    num_total_samples = 20
+    da = 'request'
     num_slots = None
 
-    mr_gen = MRGenerator(domain, num_variations)
+    mr_gen = MRGenerator(domain, num_variations, num_total_samples)
 
     # ----
 
-    games_file_in = os.path.join(config.VIDEO_GAME_DATA_DIR, 'generation', 'video_games.csv')
-    mr_gen.create_mrs_from_game_data(games_file_in, da, num_slots)
-
-    games_file_out_hit = os.path.join(config.VIDEO_GAME_DATA_DIR, 'generation', 'video_games_mrs{0}_hit.csv'.format(
-        ('_' + da) if da is not None else ''))
-    shuffle_samples_csv(games_file_out_hit)
+    # games_file_in = os.path.join(config.VIDEO_GAME_DATA_DIR, 'generation', 'video_games.csv')
+    # mr_gen.create_mrs_from_game_data(games_file_in, da, num_slots)
 
     # ----
 
-    # file_in = os.path.join(config.VIDEO_GAME_DATA_DIR, 'results_combined_and_fixed.csv')
-    # file_out = os.path.join(config.VIDEO_GAME_DATA_DIR, 'results_combined_and_fixed_mrs.txt')
-    #
-    # mr_gen.create_mrs_from_csv(file_in, file_out)
+    # games_file_out_hit = os.path.join(config.VIDEO_GAME_DATA_DIR, 'generation', 'video_games_mrs{0}_hit.csv'.format(
+    #     ('_' + da) if da is not None else ''))
+    # shuffle_samples_csv(games_file_out_hit)
+
+    # ----
+
+    # mturk_results_file_in = os.path.join(config.VIDEO_GAME_DATA_DIR, 'generation',
+    #                                      'video_games_mturk_results_confirm (2 slots).csv')
+    # mr_gen.extract_hit_results_from_csv(mturk_results_file_in, num_responses=5, num_slots=2, use_specifier=False)
+
+    # ----
+
+    file_in = os.path.join(config.VIDEO_GAME_DATA_DIR, 'generation',
+                           'video_games_processed_results_verify_attribute (4 slots).csv')
+    mr_gen.create_mrs_from_csv(file_in, da='verify_attribute', ignore_utt=True, create_hit_file=True)
 
     # ----
 
