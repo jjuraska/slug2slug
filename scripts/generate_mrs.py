@@ -160,8 +160,52 @@ class MRGenerator:
             file_out_hit = os.path.splitext(file_in)[0].replace('processed_results', 'processed_mrs') + ' [HIT].csv'
             self.__save_csv_for_hit(mr_dicts, file_out_hit)
 
-    def extract_hit_results_from_csv(self, file_in, num_responses=1, num_slots=1, use_specifier=False):
-        """Extracts the columns with content (both given and produced) from a MTurk HIT results CSV file. By reading
+    def extract_hit_results_from_csv(self, file_in, use_specifier=False):
+        """Extracts the columns with input content from an MTurk HIT results CSV file into the output file.
+        The extracted slot-value pairs are aligned with the corresponding responses produced. The output CSV file
+        has a similar format to the video game data file, only the slots are sparse and each MR has an utterance
+        associated with it.
+        """
+
+        prefix_in = 'Input.'
+        prefix_out = 'Answer.'
+        suffix_utt = 'utterance'
+
+        results = []
+
+        # Read in the CSV file in the MTurk HIT format
+        df = pd.read_csv(file_in, header=0, dtype=object, encoding='utf8')
+
+        for row_idx, row in df.iterrows():
+            sample_data = {}
+            for col_name in row.index:
+                if col_name.startswith(prefix_in):
+                    cell_content = row[col_name]
+                    if not pd.isna(cell_content):
+                        attr_name = re.match(prefix_in + r'(.+?)$', col_name).group(1)
+                        sample_data[attr_name] = re.search(r'<b>(.+?)</b>', cell_content).group(1)
+
+            sample_data['utterance'] = row[prefix_out + suffix_utt]
+            results.append(sample_data)
+
+            # DEBUG PRINT
+            print(sample_data)
+
+        column_names = self.slots
+        if use_specifier:
+            column_names += ['specifier']
+        column_names += ['utterance']
+
+        if 'mturk_results' in file_in:
+            file_out = file_in.replace('mturk_results', 'processed_results')
+        else:
+            file_out = os.path.splitext(file_in)[0] + ' NEW' + os.path.splitext(file_in)[1]
+
+        df_results = pd.DataFrame(results, columns=column_names)
+        df_results.to_csv(file_out, index=False, encoding='utf8')
+
+    def extract_hit_results_from_csv_with_selection(self, file_in, num_responses=1, num_slots=1, use_specifier=False):
+        """Extracts the columns with content (both given and produced) from an MTurk HIT results CSV file. By reading
         the values of the input fields, determines the slot-value pairs among the given data and extracts them into
         the output file. The extracted slot-value pairs are aligned with the corresponding responses produced. The
         output CSV file has a similar format to the video game data file, only the slots are sparse and each MR has
@@ -213,7 +257,10 @@ class MRGenerator:
             column_names += ['specifier']
         column_names += ['utterance']
 
-        file_out = file_in.replace('mturk_results', 'processed_results')
+        if 'mturk_results' in file_in:
+            file_out = file_in.replace('mturk_results', 'processed_results')
+        else:
+            file_out = os.path.splitext(file_in)[0] + ' NEW' + os.path.splitext(file_in)[1]
 
         df_results = pd.DataFrame(results, columns=column_names)
         df_results.to_csv(file_out, index=False, encoding='utf8')
@@ -611,15 +658,21 @@ def main():
 
     # ----
 
-    # mturk_results_file_in = os.path.join(config.VIDEO_GAME_DATA_DIR, 'generation',
-    #                                      'video_games_mturk_results_confirm (2 slots).csv')
-    # mr_gen.extract_hit_results_from_csv(mturk_results_file_in, num_responses=5, num_slots=2, use_specifier=False)
+    mturk_results_file_in = os.path.join(config.VIDEO_GAME_DATA_DIR, 'generation',
+                                         'Batch_3617112_batch_results.csv')
+    mr_gen.extract_hit_results_from_csv(mturk_results_file_in)
 
     # ----
 
-    file_in = os.path.join(config.VIDEO_GAME_DATA_DIR, 'generation',
-                           'video_games_processed_results_verify_attribute (4 slots).csv')
-    mr_gen.create_mrs_from_csv(file_in, da='verify_attribute', ignore_utt=True, create_hit_file=True)
+    # mturk_results_file_in = os.path.join(config.VIDEO_GAME_DATA_DIR, 'generation',
+    #                                      'video_games_mturk_results_confirm (2 slots).csv')
+    # mr_gen.extract_hit_results_from_csv_with_selection(mturk_results_file_in, num_responses=5, num_slots=2, use_specifier=False)
+
+    # ----
+
+    # file_in = os.path.join(config.VIDEO_GAME_DATA_DIR, 'generation',
+    #                        'video_games_processed_results_verify_attribute (4 slots).csv')
+    # mr_gen.create_mrs_from_csv(file_in, da='verify_attribute', ignore_utt=True, create_hit_file=True)
 
     # ----
 
