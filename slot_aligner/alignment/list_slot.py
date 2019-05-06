@@ -4,7 +4,7 @@ from slot_aligner.alignment.utils import get_slot_value_alternatives
 from slot_aligner.alignment.categorical_slots import find_value_alternative
 
 
-def align_list_slot(text, text_tok, slot, value, match_all=True, mode='exact_match', item_sep='; '):
+def align_list_slot(text, text_tok, slot, value, match_all=True, mode='exact_match', item_sep=', '):
     """
     MR      := slot[value]
     value   := item || item; item;...

@@ -41,9 +41,11 @@ def load_training_data(data_trainset, data_devset, input_concat=False, generate_
     dataset = init_training_data(data_trainset, data_devset)
     dataset_name = dataset['dataset_name']
     x_train, y_train, x_dev, y_dev = dataset['data']
-    slot_sep, val_sep, _, val_sep_closing = dataset['separators']
+    _, _, slot_sep, val_sep, val_sep_end = dataset['separators']
 
-    # Lowercase the utterances
+    # Preprocess the MRs and the utterances
+    x_train = [preprocess_mr(x, dataset['separators']) for x in x_train]
+    x_dev = [preprocess_mr(x, dataset['separators']) for x in x_dev]
     y_train = [preprocess_utterance(y) for y in y_train]
     y_dev = [preprocess_utterance(y) for y in y_dev]
 
@@ -58,7 +60,7 @@ def load_training_data(data_trainset, data_devset, input_concat=False, generate_
 
         # Extract the slot-value pairs into a dictionary
         for slot_value in mr.split(slot_sep):
-            slot, value, _, _ = parse_slot_and_value(slot_value, val_sep, val_sep_closing)
+            slot, value, _, _ = parse_slot_and_value(slot_value, val_sep, val_sep_end)
 
             if slot == EMPH_TOKEN:
                 emph_idxs.add(slot_ctr)
@@ -110,7 +112,7 @@ def load_training_data(data_trainset, data_devset, input_concat=False, generate_
 
         # Extract the slot-value pairs into a dictionary
         for slot_value in mr.split(slot_sep):
-            slot, value, _, _ = parse_slot_and_value(slot_value, val_sep, val_sep_closing)
+            slot, value, _, _ = parse_slot_and_value(slot_value, val_sep, val_sep_end)
 
             if slot == EMPH_TOKEN:
                 emph_idxs.add(slot_ctr)
@@ -194,7 +196,10 @@ def load_test_data(data_testset, input_concat=False):
     dataset = init_test_data(data_testset)
     dataset_name = dataset['dataset_name']
     x_test, y_test = dataset['data']
-    slot_sep, val_sep, _, val_sep_closing = dataset['separators']
+    _, _, slot_sep, val_sep, val_sep_end = dataset['separators']
+
+    # Preprocess the MRs
+    x_test = [preprocess_mr(x, dataset['separators']) for x in x_test]
 
     # Produce sequences of extracted words from the meaning representations (MRs) in the testset
     x_test_seq = []
@@ -209,7 +214,7 @@ def load_test_data(data_testset, input_concat=False):
 
         # Extract the slot-value pairs into a dictionary
         for slot_value in mr.split(slot_sep):
-            slot, value, _, value_orig = parse_slot_and_value(slot_value, val_sep, val_sep_closing)
+            slot, value, _, value_orig = parse_slot_and_value(slot_value, val_sep, val_sep_end)
 
             if slot == EMPH_TOKEN:
                 emph_idxs.add(slot_ctr)
@@ -304,7 +309,7 @@ def tokenize_mr(mr):
 
     slot_sep = ','
     val_sep = '['
-    val_sep_closing = True
+    val_sep_end = ']'
     
     mr_seq = []
     slot_ctr = 0
@@ -314,7 +319,7 @@ def tokenize_mr(mr):
 
     # Extract the slot-value pairs into a dictionary
     for slot_value in mr.split(slot_sep):
-        slot, value, _, value_orig = parse_slot_and_value(slot_value, val_sep, val_sep_closing)
+        slot, value, _, value_orig = parse_slot_and_value(slot_value, val_sep, val_sep_end)
 
         if slot == EMPH_TOKEN:
             emph_idxs.add(slot_ctr)
@@ -348,7 +353,7 @@ def load_training_data_for_eval(data_trainset, data_model_outputs_train, vocab_s
     dataset_name = ''
     slot_sep = ''
     val_sep = ''
-    val_sep_closing = False
+    val_sep_end = None
 
     if '/rest_e2e/' in data_trainset or '\\rest_e2e\\' in data_trainset:
         x_train, y_train_1 = read_rest_e2e_dataset_train(data_trainset)
@@ -356,7 +361,7 @@ def load_training_data_for_eval(data_trainset, data_model_outputs_train, vocab_s
         dataset_name = 'rest_e2e'
         slot_sep = ','
         val_sep = '['
-        val_sep_closing = True
+        val_sep_end = ']'
     elif '/tv/' in data_trainset or '\\tv\\' in data_trainset:
         x_train, y_train_1, y_train_2 = read_tv_dataset_train(data_trainset)
         if data_model_outputs_train is not None:
@@ -384,7 +389,7 @@ def load_training_data_for_eval(data_trainset, data_model_outputs_train, vocab_s
     for i, mr in enumerate(x_train):
         mr_dict = OrderedDict()
         for slot_value in mr.split(slot_sep):
-            slot, value, _, _ = parse_slot_and_value(slot_value, val_sep, val_sep_closing)
+            slot, value, _, _ = parse_slot_and_value(slot_value, val_sep, val_sep_end)
             mr_dict[slot] = value
 
         if delex == True:
@@ -454,7 +459,7 @@ def load_dev_data_for_eval(data_devset, data_model_outputs_dev, vocab_size, max_
     dataset_name = ''
     slot_sep = ''
     val_sep = ''
-    val_sep_closing = False
+    val_sep_end = None
 
     if '/rest_e2e/' in data_devset or '\\rest_e2e\\' in data_devset:
         x_dev, y_dev_1 = read_rest_e2e_dataset_dev(data_devset)
@@ -462,7 +467,7 @@ def load_dev_data_for_eval(data_devset, data_model_outputs_dev, vocab_size, max_
         dataset_name = 'rest_e2e'
         slot_sep = ','
         val_sep = '['
-        val_sep_closing = True
+        val_sep_end = ']'
     elif '/tv/' in data_devset or '\\tv\\' in data_devset:
         x_dev, y_dev_1, y_dev_2 = read_tv_dataset_dev(data_devset)
         if data_model_outputs_dev is not None:
@@ -490,7 +495,7 @@ def load_dev_data_for_eval(data_devset, data_model_outputs_dev, vocab_size, max_
     for i, mr in enumerate(x_dev):
         mr_dict = OrderedDict()
         for slot_value in mr.split(slot_sep):
-            slot, value, _, _ = parse_slot_and_value(slot_value, val_sep, val_sep_closing)
+            slot, value, _, _ = parse_slot_and_value(slot_value, val_sep, val_sep_end)
             mr_dict[slot] = value
             
         if delex == True:
@@ -548,7 +553,7 @@ def load_test_data_for_eval(data_testset, data_model_outputs_test, vocab_size, m
     dataset_name = ''
     slot_sep = ''
     val_sep = ''
-    val_sep_closing = False
+    val_sep_end = None
 
     if '/rest_e2e/' in data_testset or '\\rest_e2e\\' in data_testset:
         x_test, _ = read_rest_e2e_dataset_test(data_testset)
@@ -556,7 +561,7 @@ def load_test_data_for_eval(data_testset, data_model_outputs_test, vocab_size, m
         dataset_name = 'rest_e2e'
         slot_sep = ','
         val_sep = '['
-        val_sep_closing = True
+        val_sep_end = ']'
     elif '/tv/' in data_testset or '\\tv\\' in data_testset:
         x_test, _, y_test = read_tv_dataset_test(data_testset)
         if data_model_outputs_test is not None:
@@ -585,7 +590,7 @@ def load_test_data_for_eval(data_testset, data_model_outputs_test, vocab_size, m
     for i, mr in enumerate(x_test):
         mr_dict = OrderedDict()
         for slot_value in mr.split(slot_sep):
-            slot, value, _, _ = parse_slot_and_value(slot_value, val_sep, val_sep_closing)
+            slot, value, _, _ = parse_slot_and_value(slot_value, val_sep, val_sep_end)
             mr_dict[slot] = value
 
         if delex == True:
@@ -656,54 +661,54 @@ def init_training_data(data_trainset, data_devset):
         x_train, y_train = read_rest_e2e_dataset_train(data_trainset)
         x_dev, y_dev = read_rest_e2e_dataset_dev(data_devset)
         dataset_name = 'rest_e2e'
-        slot_sep = ','
+        da_sep = '('
+        da_sep_end = ')'
+        slot_sep = ', '
         val_sep = '['
         val_sep_end = ']'
-        val_sep_closing = True
     elif 'video_game' in data_trainset and 'video_game' in data_devset:
         x_train, y_train = read_video_game_dataset_train(data_trainset)
         x_dev, y_dev = read_video_game_dataset_dev(data_devset)
         dataset_name = 'video_game'
-        slot_sep = ','
+        da_sep = '('
+        da_sep_end = ')'
+        slot_sep = ', '
         val_sep = '['
         val_sep_end = ']'
-        val_sep_closing = True
     elif 'tv' in data_trainset and 'tv' in data_devset:
         x_train, y_train, _ = read_tv_dataset_train(data_trainset)
         x_dev, y_dev, _ = read_tv_dataset_dev(data_devset)
         dataset_name = 'tv'
+        da_sep = '('
+        da_sep_end = ')'
         slot_sep = ';'
         val_sep = '='
         val_sep_end = None
-        val_sep_closing = False
     elif 'laptop' in data_trainset and 'laptop' in data_devset:
         x_train, y_train, _ = read_laptop_dataset_train(data_trainset)
         x_dev, y_dev, _ = read_laptop_dataset_dev(data_devset)
         dataset_name = 'laptop'
+        da_sep = '('
+        da_sep_end = ')'
         slot_sep = ';'
         val_sep = '='
         val_sep_end = None
-        val_sep_closing = False
     elif 'hotel' in data_trainset and 'hotel' in data_devset:
         x_train, y_train, _ = read_hotel_dataset_train(data_trainset)
         x_dev, y_dev, _ = read_hotel_dataset_dev(data_devset)
         dataset_name = 'hotel'
+        da_sep = '('
+        da_sep_end = ')'
         slot_sep = ';'
         val_sep = '='
         val_sep_end = None
-        val_sep_closing = False
     else:
         raise ValueError('Unexpected file name or path: {0}, {1}'.format(data_trainset, data_devset))
-
-    # Replace commas in values if comma is the slot separator
-    if slot_sep == ',' and val_sep_end is not None:
-        x_train = replace_commas_in_mr_values(x_train, val_sep, val_sep_end)
-        x_dev = replace_commas_in_mr_values(x_dev, val_sep, val_sep_end)
 
     return {
         'dataset_name': dataset_name,
         'data': (x_train, y_train, x_dev, y_dev),
-        'separators': (slot_sep, val_sep, val_sep_end, val_sep_closing)
+        'separators': (da_sep, da_sep_end, slot_sep, val_sep, val_sep_end)
     }
 
 
@@ -711,49 +716,50 @@ def init_test_data(data_testset):
     if 'rest_e2e' in data_testset:
         x_test, y_test = read_rest_e2e_dataset_test(data_testset)
         dataset_name = 'rest_e2e'
-        slot_sep = ','
+        da_sep = '('
+        da_sep_end = ')'
+        slot_sep = ', '
         val_sep = '['
         val_sep_end = ']'
-        val_sep_closing = True
     elif 'video_game' in data_testset:
         x_test, y_test = read_video_game_dataset_test(data_testset)
         dataset_name = 'video_game'
-        slot_sep = ','
+        da_sep = '('
+        da_sep_end = ')'
+        slot_sep = ', '
         val_sep = '['
         val_sep_end = ']'
-        val_sep_closing = True
     elif 'tv' in data_testset:
         x_test, y_test, _ = read_tv_dataset_test(data_testset)
         dataset_name = 'tv'
+        da_sep = '('
+        da_sep_end = ')'
         slot_sep = ';'
         val_sep = '='
         val_sep_end = None
-        val_sep_closing = False
     elif 'laptop' in data_testset:
         x_test, y_test, _ = read_laptop_dataset_test(data_testset)
         dataset_name = 'laptop'
+        da_sep = '('
+        da_sep_end = ')'
         slot_sep = ';'
         val_sep = '='
         val_sep_end = None
-        val_sep_closing = False
     elif 'hotel' in data_testset:
         x_test, y_test, _ = read_hotel_dataset_test(data_testset)
         dataset_name = 'hotel'
+        da_sep = '('
+        da_sep_end = ')'
         slot_sep = ';'
         val_sep = '='
         val_sep_end = None
-        val_sep_closing = False
     else:
         raise ValueError('Unexpected file name or path: {0}'.format(data_testset))
-
-    # Replace commas in values if comma is the slot separator
-    if slot_sep == ',' and val_sep_end is not None:
-        x_test = replace_commas_in_mr_values(x_test, val_sep, val_sep_end)
 
     return {
         'dataset_name': dataset_name,
         'data': (x_test, y_test),
-        'separators': (slot_sep, val_sep, val_sep_end, val_sep_closing)
+        'separators': (da_sep, da_sep_end, slot_sep, val_sep, val_sep_end)
     }
 
 
@@ -827,9 +833,10 @@ def read_tv_dataset_train(path_to_trainset):
     y_train = df_train.iloc[:, 1].tolist()
     y_train_alt = df_train.iloc[:, 2].tolist()
 
+    # TODO: remove from here and use the universal DA extraction instead
     # transform the MR to contain the DA type as the first slot
     for i, mr in enumerate(x_train):
-        x_train[i] = preprocess_mr(mr, '(', ';', '=')
+        x_train[i] = preprocess_mr_for_tv_laptop(mr, '(', ';', '=')
         
     # convert plural nouns to "[noun] -s" or "[noun] -es" form
     for i, utt in enumerate(y_train):
@@ -852,9 +859,10 @@ def read_tv_dataset_dev(path_to_devset):
     y_dev = df_dev.iloc[:, 1].tolist()
     y_dev_alt = df_dev.iloc[:, 2].tolist()
 
+    # TODO: remove from here and use the universal DA extraction instead
     # transform the MR to contain the DA type as the first slot
     for i, mr in enumerate(x_dev):
-        x_dev[i] = preprocess_mr(mr, '(', ';', '=')
+        x_dev[i] = preprocess_mr_for_tv_laptop(mr, '(', ';', '=')
         
     # convert plural nouns to "[noun] -s" or "[noun] -es" form
     for i, utt in enumerate(y_dev):
@@ -877,9 +885,10 @@ def read_tv_dataset_test(path_to_testset):
     y_test = df_test.iloc[:, 1].tolist()
     y_test_alt = df_test.iloc[:, 2].tolist()
 
+    # TODO: remove from here and use the universal DA extraction instead
     # transform the MR to contain the DA type as the first slot
     for i, mr in enumerate(x_test):
-        x_test[i] = preprocess_mr(mr, '(', ';', '=')
+        x_test[i] = preprocess_mr_for_tv_laptop(mr, '(', ';', '=')
 
     return x_test, y_test, y_test_alt
 
@@ -896,9 +905,10 @@ def read_laptop_dataset_train(path_to_trainset):
     y_train = df_train.iloc[:, 1].tolist()
     y_train_alt = df_train.iloc[:, 2].tolist()
 
+    # TODO: remove from here and use the universal DA extraction instead
     # transform the MR to contain the DA type as the first slot
     for i, mr in enumerate(x_train):
-        x_train[i] = preprocess_mr(mr, '(', ';', '=')
+        x_train[i] = preprocess_mr_for_tv_laptop(mr, '(', ';', '=')
 
     return x_train, y_train, y_train_alt
 
@@ -915,9 +925,10 @@ def read_laptop_dataset_dev(path_to_devset):
     y_dev = df_dev.iloc[:, 1].tolist()
     y_dev_alt = df_dev.iloc[:, 2].tolist()
 
+    # TODO: remove from here and use the universal DA extraction instead
     # transform the MR to contain the DA type as the first slot
     for i, mr in enumerate(x_dev):
-        x_dev[i] = preprocess_mr(mr, '(', ';', '=')
+        x_dev[i] = preprocess_mr_for_tv_laptop(mr, '(', ';', '=')
 
     return x_dev, y_dev, y_dev_alt
 
@@ -934,9 +945,10 @@ def read_laptop_dataset_test(path_to_testset):
     y_test = df_test.iloc[:, 1].tolist()
     y_test_alt = df_test.iloc[:, 2].tolist()
 
+    # TODO: remove from here and use the universal DA extraction instead
     # transform the MR to contain the DA type as the first slot
     for i, mr in enumerate(x_test):
-        x_test[i] = preprocess_mr(mr, '(', ';', '=')
+        x_test[i] = preprocess_mr_for_tv_laptop(mr, '(', ';', '=')
 
     return x_test, y_test, y_test_alt
 
@@ -953,9 +965,10 @@ def read_hotel_dataset_train(path_to_trainset):
     y_train = df_train.iloc[:, 1].tolist()
     y_train_alt = df_train.iloc[:, 2].tolist()
 
+    # TODO: remove from here and use the universal DA extraction instead
     # transform the MR to contain the DA type as the first slot
     for i, mr in enumerate(x_train):
-        x_train[i] = preprocess_mr(mr, '(', ';', '=')
+        x_train[i] = preprocess_mr_for_tv_laptop(mr, '(', ';', '=')
 
     return x_train, y_train, y_train_alt
 
@@ -972,9 +985,10 @@ def read_hotel_dataset_dev(path_to_devset):
     y_dev = df_dev.iloc[:, 1].tolist()
     y_dev_alt = df_dev.iloc[:, 2].tolist()
 
+    # TODO: remove from here and use the universal DA extraction instead
     # transform the MR to contain the DA type as the first slot
     for i, mr in enumerate(x_dev):
-        x_dev[i] = preprocess_mr(mr, '(', ';', '=')
+        x_dev[i] = preprocess_mr_for_tv_laptop(mr, '(', ';', '=')
 
     return x_dev, y_dev, y_dev_alt
 
@@ -991,9 +1005,10 @@ def read_hotel_dataset_test(path_to_testset):
     y_test = df_test.iloc[:, 1].tolist()
     y_test_alt = df_test.iloc[:, 2].tolist()
 
+    # TODO: remove from here and use the universal DA extraction instead
     # transform the MR to contain the DA type as the first slot
     for i, mr in enumerate(x_test):
-        x_test[i] = preprocess_mr(mr, '(', ';', '=')
+        x_test[i] = preprocess_mr_for_tv_laptop(mr, '(', ';', '=')
 
     return x_test, y_test, y_test_alt
 
@@ -1056,34 +1071,65 @@ def split_plural_noun(word, stemmer):
     return stem + ' -' + suffix
 
 
-def replace_commas_in_mr_values(mrs, val_sep, val_sep_end):
-    mrs_new = []
+def replace_commas_in_mr_values(mr, val_sep, val_sep_end):
+    mr_new = ''
+    val_beg_cnt = 0
+    val_end_cnt = 0
 
-    for mr in mrs:
-        mr_new = ''
-        val_beg_cnt = 0
-        val_end_cnt = 0
+    for c in mr:
+        # If comma inside a value, replace the comma with placeholder
+        if c == ',' and val_beg_cnt > val_end_cnt:
+            mr_new += config.COMMA_PLACEHOLDER
+            continue
 
-        for c in mr:
-            # If comma inside a value, replace the comma with placeholder
-            if c == ',' and val_beg_cnt > val_end_cnt:
-                mr_new += config.COMMA_PLACEHOLDER
-                continue
+        # Keep track of value beginning and end
+        if c == val_sep:
+            val_beg_cnt += 1
+        elif c == val_sep_end:
+            val_end_cnt += 1
 
-            # Keep track of value beginning and end
-            if c == val_sep:
-                val_beg_cnt += 1
-            elif c == val_sep_end:
-                val_end_cnt += 1
+        mr_new += c
 
-            mr_new += c
-
-        mrs_new.append(mr_new)
-
-    return mrs_new
+    return mr_new
 
 
-def preprocess_mr(mr, da_sep, slot_sep, val_sep):
+def put_back_commas_in_mr_values(mrs):
+    return [mr.replace(config.COMMA_PLACEHOLDER, ',') for mr in mrs]
+
+
+def preprocess_da_in_mr(mr, separators):
+    # Unpack separators
+    da_sep, da_sep_end, slot_sep, val_sep, val_sep_end = separators
+
+    # If no DA indication is expected in the data, return the MR unchanged
+    if da_sep is None:
+        return mr
+
+    # Verify if DA type is indicated at the beginning of the MR
+    da_sep_idx = mr.find(da_sep)
+    slot_sep_idx = mr.find(slot_sep)
+    val_sep_idx = mr.find(val_sep)
+    if 0 <= slot_sep_idx < da_sep_idx or 0 <= val_sep_idx < da_sep_idx:
+        return mr
+
+    # Extract the DA type from the beginning of the MR
+    da_type = mr[:da_sep_idx].lstrip('?')      # Strip the '?' symbol present in Laptop and TV datasets
+    slot_value_pairs = mr[da_sep_idx + 1:]
+    if da_sep_end is not None:
+        slot_value_pairs = slot_value_pairs.rstrip(da_sep_end)
+
+    # Convert the extracted DA to the slot-value form and prepend it to the remainder of the MR
+    mr_new = 'da' + val_sep + da_type
+    if val_sep_end is not None:
+        mr_new += val_sep_end
+    if len(slot_value_pairs) > 0:
+        mr_new += slot_sep + slot_value_pairs
+
+    return mr_new
+
+
+# TODO: merge with the above function
+def preprocess_mr_for_tv_laptop(mr, da_sep, slot_sep, val_sep):
     sep_idx = mr.find(da_sep)
     da_type = mr[:sep_idx].lstrip('?')
     slot_value_pairs = mr[sep_idx:].strip('()')
@@ -1121,23 +1167,34 @@ def preprocess_mr(mr, da_sep, slot_sep, val_sep):
     return mr_new
 
 
+def preprocess_mr(mr, separators):
+    # Transform the MR to list the DA type as the first slot, if its indication is present in the MR
+    mr_new = preprocess_da_in_mr(mr, separators)
+
+    # Replace commas in values if comma is the slot separator
+    if separators[2].strip() == ',' and separators[4] is not None:
+        mr_new = replace_commas_in_mr_values(mr_new, separators[3], separators[4])
+
+    return mr_new
+
+
 def preprocess_utterance(utt):
     return ' '.join(word_tokenize(utt.lower()))
 
 
-def parse_slot_and_value(slot_value, val_sep, has_val_sep_closing=False):
+def parse_slot_and_value(slot_value, val_sep, val_sep_end=None):
     sep_idx = slot_value.find(val_sep)
     if sep_idx > -1:
         # Parse the slot
         slot = slot_value[:sep_idx].strip()
         # Parse the value
-        if has_val_sep_closing:
+        if val_sep_end is not None:
             value = slot_value[sep_idx + 1:-1].strip()
         else:
             value = slot_value[sep_idx + 1:].strip()
     else:
         # Parse the slot
-        if has_val_sep_closing:
+        if val_sep_end is not None:
             slot = slot_value[:-1].strip()
         else:
             slot = slot_value.strip()
@@ -1459,14 +1516,14 @@ def verify_slot_order(dataset, filename):
     # Read in the data
     data_cont = init_test_data(os.path.join(config.DATA_DIR, dataset, filename))
     mrs, utterances = data_cont['data']
-    slot_sep, val_sep, val_sep_closing = data_cont['separators']
+    _, _, slot_sep, val_sep, val_sep_end = data_cont['separators']
 
     for i, mr in enumerate(mrs):
         mr_dict = OrderedDict()
 
         # Extract the slot-value pairs into a dictionary
         for slot_value in mr.split(slot_sep):
-            slot, _, _, value_orig = parse_slot_and_value(slot_value, val_sep, val_sep_closing)
+            slot, _, _, value_orig = parse_slot_and_value(slot_value, val_sep, val_sep_end)
             mr_dict[slot] = value_orig
 
         mrs_dicts.append(mr_dict)
@@ -1520,6 +1577,7 @@ def filter_samples_by_da_type_json(dataset, filename, das_to_keep):
         json.dump(data_filtered, f_dataset_filtered, indent=4, ensure_ascii=False)
 
 
+# TODO: move to the data_analysis.py file?
 def filter_samples_by_slot_count_csv(dataset, filename, min_count=None, max_count=None, eliminate_position_slot=True):
     """Create a new CSV data file by filtering only those samples in the given dataset that contain an MR
     with the number of slots in the desired range.
@@ -1533,7 +1591,7 @@ def filter_samples_by_slot_count_csv(dataset, filename, min_count=None, max_coun
     # Read in the data
     data_cont = init_test_data(os.path.join(config.DATA_DIR, dataset, filename))
     mrs, utterances = data_cont['data']
-    slot_sep, val_sep, val_sep_closing = data_cont['separators']
+    _, _, slot_sep, val_sep, val_sep_end = data_cont['separators']
 
     for mr, utt in zip(mrs, utterances):
         mr_dict = OrderedDict()
@@ -1542,7 +1600,7 @@ def filter_samples_by_slot_count_csv(dataset, filename, min_count=None, max_coun
 
         # Extract the slot-value pairs into a dictionary
         for slot_value in mr.split(slot_sep):
-            _, _, slot_orig, value_orig = parse_slot_and_value(slot_value, val_sep, val_sep_closing)
+            _, _, slot_orig, value_orig = parse_slot_and_value(slot_value, val_sep, val_sep_end)
             mr_dict[slot_orig] = value_orig
 
         if 'da' in mr_dict:
@@ -1577,6 +1635,7 @@ def filter_samples_by_slot_count_csv(dataset, filename, min_count=None, max_coun
                                        encoding='utf8')
 
 
+# TODO: move to the data_analysis.py file?
 def filter_samples_by_slot_count_json(dataset, filename, min_count=None, max_count=None, eliminate_position_slot=True):
     """Create a new JSON data file by filtering only those samples in the given dataset that contain an MR
     with the number of slots in the desired range.
@@ -1595,7 +1654,7 @@ def filter_samples_by_slot_count_json(dataset, filename, min_count=None, max_cou
         data = json.load(f_dataset, encoding='utf8')
 
     data_cont = init_test_data(os.path.join(config.DATA_DIR, dataset, filename))
-    slot_sep, val_sep, val_sep_closing = data_cont['separators']
+    _, _, slot_sep, val_sep, val_sep_end = data_cont['separators']
 
     # Filter MRs with a number of slots in the desired range only
     for sample in data:
@@ -1607,7 +1666,7 @@ def filter_samples_by_slot_count_json(dataset, filename, min_count=None, max_cou
 
         # Extract the slot-value pairs into a dictionary
         for slot_value in mr.split(slot_sep):
-            _, _, slot_orig, value_orig = parse_slot_and_value(slot_value, val_sep, val_sep_closing)
+            _, _, slot_orig, value_orig = parse_slot_and_value(slot_value, val_sep, val_sep_end)
             mr_dict[slot_orig] = value_orig
 
         if 'da' in mr_dict:
@@ -1641,6 +1700,7 @@ def filter_samples_by_slot_count_json(dataset, filename, min_count=None, max_cou
         json.dump(data_filtered, f_dataset_filtered, indent=4, ensure_ascii=False)
 
 
+# TODO: move to the data_augmentation.py file?
 def counterfeit_dataset_from_e2e(filename, target_dataset):
     """Creates a counterfeit target dataset from the E2E restaurant dataset by mapping the E2E slots onto similar
     slots in the target domain. Boolean slots are handled by heuristically replacing the corresponding mention
@@ -1655,7 +1715,7 @@ def counterfeit_dataset_from_e2e(filename, target_dataset):
     # Read in the data
     data_cont = init_test_data(os.path.join(config.E2E_DATA_DIR, filename))
     mrs, utterances = data_cont['data']
-    slot_sep, val_sep, val_sep_closing = data_cont['separators']
+    _, _, slot_sep, val_sep, val_sep_end = data_cont['separators']
 
     utterances = [preprocess_utterance(utt.lower()) for utt in utterances]
 
@@ -1664,7 +1724,7 @@ def counterfeit_dataset_from_e2e(filename, target_dataset):
 
         # Extract the slot-value pairs into a dictionary
         for slot_value in mr.split(slot_sep):
-            slot, value, _, _ = parse_slot_and_value(slot_value, val_sep, val_sep_closing)
+            slot, value, _, _ = parse_slot_and_value(slot_value, val_sep, val_sep_end)
             mr_dict[slot] = value
 
         # Delexicalize the MR and the utterance
@@ -1727,14 +1787,14 @@ def pool_slot_values(dataset, filenames):
         x_train, y_train, x_dev, y_dev = data_cont['data']
         mrs, utterances = (x_train + x_dev), (y_train + y_dev)
 
-    slot_sep, val_sep, val_sep_closing = data_cont['separators']
+    _, _, slot_sep, val_sep, val_sep_end = data_cont['separators']
 
     for i, mr in enumerate(mrs):
         mr_dict = OrderedDict()
 
         # Extract the slot-value pairs into a dictionary
         for slot_value in mr.split(slot_sep):
-            slot, _, _, value_orig = parse_slot_and_value(slot_value, val_sep, val_sep_closing)
+            slot, _, _, value_orig = parse_slot_and_value(slot_value, val_sep, val_sep_end)
             mr_dict[slot] = value_orig
 
         # For each slot gather all possible values
@@ -1782,6 +1842,22 @@ def generate_joint_vocab():
                         vocab_filename='vocab.lang_gen.tokens')
 
 
+def augment_mrs_with_da_type(dataset, filename, da_type):
+    # Read in the data
+    df = pd.read_csv(os.path.join(config.DATA_DIR, dataset, filename), header=0, encoding='utf8')
+    mrs = df.mr.tolist()
+
+    df['mr'] = [add_da_info_to_mr(mr, da_type) for mr in mrs]
+
+    filename_out = os.path.splitext(filename)[0] + ' [with DA].csv'
+    df.to_csv(os.path.join(config.DATA_DIR, dataset, filename_out), index=False, encoding='utf8')
+
+
+def add_da_info_to_mr(mr, da_type):
+    return da_type + '(' + mr + ')'
+
+
+
 # ---- MAIN ----
 
 def main():
@@ -1809,7 +1885,11 @@ def main():
     # pool_slot_values('laptop', ['train.json', 'valid.json'])
     # pool_slot_values('hotel', ['train.json', 'valid.json'])
 
-    generate_joint_vocab()
+    # generate_joint_vocab()
+
+    # ----------
+
+    augment_mrs_with_da_type('rest_e2e', 'trainset_e2e.csv', 'inform')
 
     # ----------
 

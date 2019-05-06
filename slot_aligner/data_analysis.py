@@ -18,17 +18,18 @@ def align_slots(dataset, filename):
     # Read in the data
     data_cont = data_loader.init_test_data(os.path.join(config.DATA_DIR, dataset, filename))
     mrs_orig, utterances_orig = data_cont['data']
-    slot_sep, val_sep, _, val_sep_closing = data_cont['separators']
+    _, _, slot_sep, val_sep, val_sep_end = data_cont['separators']
 
-    # Tokenize utterances
+    # Preprocess the MRs and the utterances
+    mrs = [data_loader.preprocess_mr(mr, data_cont['separators']) for mr in mrs_orig]
     utterances = [data_loader.preprocess_utterance(utt) for utt in utterances_orig]
 
-    for i, mr in enumerate(mrs_orig):
+    for i, mr in enumerate(mrs):
         mr_dict = OrderedDict()
 
         # Extract the slot-value pairs into a dictionary
         for slot_value in mr.split(slot_sep):
-            slot, value, _, _ = data_loader.parse_slot_and_value(slot_value, val_sep, val_sep_closing)
+            slot, value, _, _ = data_loader.parse_slot_and_value(slot_value, val_sep, val_sep_end)
             mr_dict[slot] = value
 
         alignments.append(find_alignment(utterances[i], mr_dict))
@@ -55,20 +56,25 @@ def score_slot_realizations(dataset, filename):
     print('Analyzing missing slot realizations and hallucinations in ' + str(filename))
 
     # Read in the data
-    data_cont = data_loader.init_test_data(os.path.join(config.EVAL_DIR, dataset, filename))
+    # data_cont = data_loader.init_test_data(os.path.join(config.EVAL_DIR, dataset, filename))
+    data_cont = data_loader.init_test_data(os.path.join(config.VIDEO_GAME_DATA_DIR, dataset, filename))
     dataset_name = data_cont['dataset_name']
     mrs_orig, utterances_orig = data_cont['data']
-    slot_sep, val_sep, _, val_sep_closing = data_cont['separators']
+    _, _, slot_sep, val_sep, val_sep_end = data_cont['separators']
 
-    # Tokenize utterances
+    # Preprocess the MRs and the utterances
+    mrs = [data_loader.preprocess_mr(mr, data_cont['separators']) for mr in mrs_orig]
     utterances = [data_loader.preprocess_utterance(utt) for utt in utterances_orig]
 
-    for i, mr in enumerate(mrs_orig):
+    # DEBUG PRINT
+    # print('\n'.join([mr1 + '\n' + mr2 + '\n' for mr1, mr2 in zip(mrs_orig, mrs)]))
+
+    for i, mr in enumerate(mrs):
         mr_dict = OrderedDict()
 
         # Extract the slot-value pairs into a dictionary
         for slot_value in mr.split(slot_sep):
-            slot, value, _, _ = data_loader.parse_slot_and_value(slot_value, val_sep, val_sep_closing)
+            slot, value, _, _ = data_loader.parse_slot_and_value(slot_value, val_sep, val_sep_end)
             mr_dict[slot] = value
 
             # Count auxiliary slots
@@ -100,7 +106,8 @@ def score_slot_realizations(dataset, filename):
     new_df['incorrect slots'] = incorrect_slots
 
     filename_out = os.path.splitext(filename)[0] + ' (errors).csv'
-    new_df.to_csv(os.path.join(config.EVAL_DIR, dataset, filename_out), index=False, encoding='utf8')
+    # new_df.to_csv(os.path.join(config.EVAL_DIR, dataset, filename_out), index=False, encoding='utf8')
+    new_df.to_csv(os.path.join(config.VIDEO_GAME_DATA_DIR, dataset, filename_out), index=False, encoding='utf8')
 
 
 def score_emphasis(dataset, filename):
@@ -115,19 +122,20 @@ def score_emphasis(dataset, filename):
     data_cont = data_loader.init_test_data(os.path.join(config.EVAL_DIR, dataset, filename))
     dataset_name = data_cont['dataset_name']
     mrs_orig, utterances_orig = data_cont['data']
-    slot_sep, val_sep, _, val_sep_closing = data_cont['separators']
+    _, _, slot_sep, val_sep, val_sep_end = data_cont['separators']
 
-    # Lowercase the utterances
+    # Preprocess the MRs and the utterances
+    mrs = [data_loader.preprocess_mr(mr, data_cont['separators']) for mr in mrs_orig]
     utterances = [data_loader.preprocess_utterance(utt) for utt in utterances_orig]
 
-    for i, mr in enumerate(mrs_orig):
+    for i, mr in enumerate(mrs):
         expect_emph = False
         emph_slots = set()
         mr_dict = OrderedDict()
 
         # Extract the slot-value pairs into a dictionary
         for slot_value in mr.split(slot_sep):
-            slot, value, _, _ = data_loader.parse_slot_and_value(slot_value, val_sep, val_sep_closing)
+            slot, value, _, _ = data_loader.parse_slot_and_value(slot_value, val_sep, val_sep_end)
 
             # Extract slots to be emphasized
             if slot == config.EMPH_TOKEN:
@@ -185,12 +193,13 @@ def score_contrast(dataset, filename):
     data_cont = data_loader.init_test_data(os.path.join(config.EVAL_DIR, dataset, filename))
     dataset_name = data_cont['dataset_name']
     mrs_orig, utterances_orig = data_cont['data']
-    slot_sep, val_sep, _, val_sep_closing = data_cont['separators']
+    _, _, slot_sep, val_sep, val_sep_end = data_cont['separators']
 
-    # Lowercase the utterances
+    # Preprocess the MRs and the utterances
+    mrs = [data_loader.preprocess_mr(mr, data_cont['separators']) for mr in mrs_orig]
     utterances = [data_loader.preprocess_utterance(utt) for utt in utterances_orig]
 
-    for i, mr in enumerate(mrs_orig):
+    for i, mr in enumerate(mrs):
         contrast_found = False
         contrast_correct = False
         contrast_slots = []
@@ -198,7 +207,7 @@ def score_contrast(dataset, filename):
 
         # Extract the slot-value pairs into a dictionary
         for slot_value in mr.split(slot_sep):
-            slot, value, _, _ = data_loader.parse_slot_and_value(slot_value, val_sep, val_sep_closing)
+            slot, value, _, _ = data_loader.parse_slot_and_value(slot_value, val_sep, val_sep_end)
 
             # Extract slots to be contrasted
             if slot in [config.CONTRAST_TOKEN, config.CONCESSION_TOKEN]:
@@ -277,15 +286,18 @@ def analyze_contrast_relations(dataset, filename):
     # Read in the data
     data_cont = data_loader.init_test_data(os.path.join(config.DATA_DIR, dataset, filename))
     mrs_orig, utterances_orig = data_cont['data']
-    slot_sep, val_sep, _, val_sep_closing = data_cont['separators']
+    _, _, slot_sep, val_sep, val_sep_end = data_cont['separators']
 
-    for mr, utt in zip(mrs_orig, utterances_orig):
+    # Preprocess the MRs
+    mrs = [data_loader.preprocess_mr(mr, data_cont['separators']) for mr in mrs_orig]
+
+    for mr, utt in zip(mrs, utterances_orig):
         mr_dict = OrderedDict()
         mr_list_augm = []
 
         # Extract the slot-value pairs into a dictionary
         for slot_value in mr.split(slot_sep):
-            slot, value, slot_orig, value_orig = data_loader.parse_slot_and_value(slot_value, val_sep, val_sep_closing)
+            slot, value, slot_orig, value_orig = data_loader.parse_slot_and_value(slot_value, val_sep, val_sep_end)
             mr_dict[slot] = value
             mr_list_augm.append((slot, value_orig))
 
@@ -344,6 +356,7 @@ if __name__ == '__main__':
     # score_slot_realizations(os.path.join('predictions-rest_e2e', 'devset'), 'predictions_devset_TRANS_tmp.csv')
     # score_slot_realizations(os.path.join('predictions-rest_e2e', 'testset'), 'predictions_testset_TRANS_tmp.csv')
     # score_slot_realizations(os.path.join('predictions-video_game', 'testset'), 'predictions TRANS beam 4 (8k).csv')
+    score_slot_realizations('generation', 'video_games_processed_results_round1_verify_attribute (4 slots) FINAL.csv')
 
     # score_emphasis('predictions-rest_e2e_stylistic_selection/devset', 'predictions RNN (4+4) augm emph (reference).csv')
 
@@ -357,4 +370,4 @@ if __name__ == '__main__':
 
     # ----
 
-    analyze_contrast_relations('rest_e2e', 'devset_e2e.csv')
+    # analyze_contrast_relations('rest_e2e', 'devset_e2e.csv')

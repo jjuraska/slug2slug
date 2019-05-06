@@ -3,42 +3,63 @@ import re
 import pandas as pd
 
 import config
+from scripts.generate_mrs import mr_to_string
 
 
 class UtteranceCleaner:
-
-    def __init__(self, file_in):
+    def __init__(self, file_in, da=None):
         # Read in the CSV file with slot values in separate columns
-        self.df_input = pd.read_csv(file_in, header=0, dtype=object, encoding='utf8')
-        self.utterances = list(self.df_input['utterance'])
+        self.file_in = file_in
+        self.df_in = pd.read_csv(file_in, header=0, dtype=object, encoding='utf8')
+        self.da = da
+
+        self.mr_dicts = self.df_in.drop(columns=['utterance']).to_dict(orient='record')
+        self.mr_dicts = [{k: v for k, v in mr_dict.items() if pd.notnull(v)} for mr_dict in self.mr_dicts]
+        self.utterances = list(self.df_in['utterance'])
 
     def normalize(self):
-        utterances_normalized = []
+        utterances_fixed = []
         change_cnt = 0
 
-        for utt in self.utterances:
+        for i, mr_dict, utt in zip(range(1, len(self.mr_dicts) + 1), self.mr_dicts, self.utterances):
             # Back up the original utterance
             utt_orig = utt
 
-            # Perform normalizations on the utterance
+            # Substitute (multiple) white spaces with a single space, removing any leading and trailing spaces
+            utt = ' '.join(utt.split())
+
+            # Perform normalizations and capitalizations on the utterance
             utt = self.normalize_has_multiplayer(utt)
             utt = self.normalize_platforms(utt)
             utt = self.normalize_player_perspective(utt)
+            utt = self.capitalize_boolean_slots(utt)
+            utt = self.capitalize_categorical_slots(utt, mr_dict)
 
-            utterances_normalized.append(utt)
+            utterances_fixed.append(utt)
 
             # List modified utterances
             if utt != utt_orig:
                 change_cnt += 1
+                print('#' + str(i))
                 print('ORIG.:\t' + utt_orig)
-                print('NORM.:\t' + utt + '\n')
+                print('CLEAN:\t' + utt + '\n')
 
         print('Number of changed utterances:', change_cnt)
 
+        # Convert the MRs to their string representation and align them with the updated utterances
+        df_out = pd.DataFrame()
+        df_out['mr'] = [mr_to_string(mr_dict, self.da) for mr_dict in self.mr_dicts]
+        df_out['ref'] = utterances_fixed
+
+        # Save the MRs with the updated utterances to a new CSV file
+        file_out = os.path.splitext(self.file_in)[0] + ' FINAL.csv'
+        df_out.to_csv(file_out, index=False, encoding='utf8')
+
     def normalize_has_multiplayer(self, utt):
         value_map = {
-            'multiplayer': ['multi player', 'multi-player'],
-            'single-player': ['non multiplayer', 'non-multiplayer', 'nonmultiplayer']
+            'multiplayer': ['multi player', 'multi-player', 'multiplayer'],
+            'single-player': ['non multiplayer', 'non-multiplayer', 'nonmultiplayer', 'one player', 'one-player',
+                              'single player']
         }
 
         return self.__replace_values_using_map(utt, value_map)
@@ -47,8 +68,8 @@ class UtteranceCleaner:
         value_map = {
             'PC': ['pc'],
             'PlayStation': ['play station 3', 'play station 4', 'play station', 'playstation 3', 'playstation 4',
-                            'ps 3', 'ps 4', 'ps3', 'ps4', 'ps'],
-            'Xbox': ['xbox 360', 'xbox one', 'xbox360', 'xboxone'],
+                            'ps 3', 'ps 4', 'playstation', 'ps3', 'ps4', 'ps'],
+            'Xbox': ['xbox 360', 'xbox one', 'xbox360', 'xboxone', 'xbox'],
             'Nintendo Switch': ['nintendo switch'],
             'Nintendo': ['nintendo']
         }
@@ -65,6 +86,25 @@ class UtteranceCleaner:
 
         return self.__replace_values_using_map(utt, value_map)
 
+    def capitalize_boolean_slots(self, utt):
+        value_map = {
+            'Steam': ['steam'],
+            'Mac': ['mac', 'macs'],
+            'Linux': ['linux']
+        }
+
+        return self.__replace_values_using_map(utt, value_map)
+
+    def capitalize_categorical_slots(self, utt, mr_dict):
+        categorical_slots = {'name', 'exp_release_date', 'developer'}
+
+        for slot, val in mr_dict.items():
+            if slot in categorical_slots:
+                # Replace a mixed-cased value with the given value (i.e., with correct capitalization)
+                utt = self.__replace_values_using_map(utt, {val: [val]})
+
+        return utt
+
     def __replace_values_using_map(self, utt, value_map):
         for target, mutations in value_map.items():
             for mutation in mutations:
@@ -75,9 +115,9 @@ class UtteranceCleaner:
 
 def main():
     file_in = os.path.join(config.VIDEO_GAME_DATA_DIR, 'generation',
-                           'video_games_processed_results_round1_give_opinion (4 slots).csv')
+                           'video_games_processed_results_round1_verify_attribute (4 slots).csv')
 
-    cleaner = UtteranceCleaner(file_in)
+    cleaner = UtteranceCleaner(file_in, da='verify_attribute')
 
     cleaner.normalize()
 

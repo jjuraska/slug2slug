@@ -64,7 +64,7 @@ class MRGenerator:
                 mr_dict = self.__get_random_slot_comb_for_da(row, da, num_slots)
 
                 # Assemble the MR in a string form
-                mr = self.__mr_to_string(mr_dict, da)
+                mr = mr_to_string(mr_dict, da)
 
                 # If such an MR variant has not been generated yet, save it
                 if mr not in mrs[-self.num_variations:]:
@@ -135,7 +135,7 @@ class MRGenerator:
                 mr_dict.pop('utterance', None)
 
             # Assemble the MR in a string form
-            mr = self.__mr_to_string(mr_dict, da)
+            mr = mr_to_string(mr_dict, da)
 
             mrs.append(mr)
             mr_dicts.append(mr_dict)
@@ -156,7 +156,7 @@ class MRGenerator:
             f_out.write('\n'.join(mrs))
 
         if create_hit_file:
-            # Format the generated MRs for a HIT and save them in a CSV file
+            # Format the generated MRs for a HIT and save them to a CSV file
             file_out_hit = os.path.splitext(file_in)[0].replace('processed_results', 'processed_mrs') + ' [HIT].csv'
             self.__save_csv_for_hit(mr_dicts, file_out_hit)
 
@@ -468,21 +468,7 @@ class MRGenerator:
         if val_as_list is None:
             return None
 
-        return '; '.join(val_as_list)
-
-    def __mr_to_string(self, mr_dict, da=None):
-        slot_value_pairs = []
-
-        for slot, val in mr_dict.items():
-            slot_value_pairs.append(slot + '[{0}]'.format(str(val) if val is not None else ''))
-
-        mr = ', '.join(slot_value_pairs)
-
-        if da is not None:
-            # Prepend the DA, and enclose the list of the MR's slot-value pairs in parentheses
-            mr = da + '(' + mr + ')'
-
-        return mr
+        return ', '.join(val_as_list)
 
     def __save_csv_for_hit(self, mr_dicts, filepath):
         # Add HTML formatting to the values
@@ -530,6 +516,21 @@ class MRGenerator:
         # Store the formatted MRs to a CSV file
         df_hit = pd.DataFrame(mr_dicts, columns=self.slots)
         df_hit.to_csv(filepath, index=False, encoding='utf8')
+
+
+def mr_to_string(mr_dict, da=None):
+    slot_value_pairs = []
+
+    for slot, val in mr_dict.items():
+        slot_value_pairs.append(slot + '[{0}]'.format(str(val) if val is not None else ''))
+
+    mr = ', '.join(slot_value_pairs)
+
+    if da is not None:
+        # Prepend the DA, and enclose the list of the MR's slot-value pairs in parentheses
+        mr = da + '(' + mr + ')'
+
+    return mr
 
 
 def shuffle_samples_csv(filepath):

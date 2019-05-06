@@ -29,8 +29,10 @@
       "rts"
     ],
     "role playing": [
+      "roleplaying",
       "role play",
-      "rpg"
+      "rpg",
+      "rpgs"
     ],
     "shooter": [
       "shoot",
@@ -72,30 +74,47 @@
     "excellent": [
       "amazing",
       "awesome",
+      "best",
       "fantastic",
+      "favorite",
       "great",
       "high",
       "highly",
       "quality",
+      "superb",
       "top",
       "5 out of",
       "5 star",
-      "five"
+      "five",
+      "adore",
+      "love",
+      "loved",
+      "loving"
     ],
     "good": [
       "acclaim",
+      "cool",
       "fun",
       "positive",
       "solid",
-      "well"
+      "well",
+      "enjoy",
+      "like",
+      "liked"
     ],
     "average": [
       "decent",
+      "kinda",
+      "kind of",
       "mediocre",
       "middle",
       "middling",
+      "mixed",
       "moderate",
+      "ok",
       "okay",
+      "ordinary",
+      "so so",
       "3 out of",
       "3 star",
       "three"
@@ -103,15 +122,24 @@
     "poor": [
       "bad",
       "badly",
+      "boring",
       "disappointing",
       "lackluster",
+      "lacking",
       "low",
       "lowly",
       "negative",
       "poorly",
       "1 out of",
       "1 star",
-      "one"
+      "one",
+      "avoid",
+      "detest",
+      "dislike",
+      "hate",
+      "hated",
+      "hating",
+      "loathe"
     ]
   },
   "esrb": {
@@ -124,6 +152,7 @@
       "all"
     ],
     "e 10+ ( for everyone 10 and older )": [
+      "e10+",
       "e 10+",
       "e 10 plus",
       "everyone 10",
