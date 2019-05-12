@@ -30,7 +30,7 @@ customerrating_mapping = {
 }
 
 
-def dontcare_realization(text, slot, value):
+def dontcare_realization(text, slot):
     text = re.sub('\'', '', text.lower())
     text_tok = word_tokenize(text)
 
@@ -57,14 +57,15 @@ def dontcare_realization(text, slot, value):
     return False
 
 
-def none_realization(text, slot, value):
+def none_realization(text, slot):
     text = re.sub('\'', '', text.lower())
     text_tok = word_tokenize(text)
-        
-    if reduce_slot_name(slot) in text_tok:
-        for x in ['information', 'info', 'inform', 'results', 'requirement', 'requirements', 'specification', 'specifications']:
-            if x in text_tok and ('no' in text_tok or 'not' in text_tok or 'any' in text_tok):
-                return True
+
+    for slot_stem in reduce_slot_name(slot):
+        if slot_stem in text_tok:
+            for x in ['information', 'info', 'inform', 'results', 'requirement', 'requirements', 'specification', 'specifications']:
+                if x in text_tok and ('no' in text_tok or 'not' in text_tok or 'any' in text_tok):
+                    return True
     
     return False
 
@@ -80,21 +81,34 @@ def check_delex_slots(slot, delex_slots):
     return None
 
 
+# TODO: merge with the boolean slot stem map and load from a file
 def reduce_slot_name(slot):
-    slot = slot.replace('range', '')
-    slot = slot.replace('rating', '')
-    slot = slot.replace('size', '')
+    reduction_map = {
+        'availableonsteam': ['steam'],
+        'batteryrating': ['battery'],
+        'customerrating': ['customer'],
+        'driverange': ['drive'],
+        'ecorating': ['eco'],
+        'eattype': ['eat'],
+        'familyfriendly': ['family', 'families', 'kid', 'kids', 'child', 'children'],
+        'genres': ['genre'],
+        'haslinuxrelease': ['linux'],
+        'hasmacrelease': ['mac'],
+        'hasmultiplayer': ['multiplayer', 'friends', 'others'],
+        'hasusbport': ['usb'],
+        'hdmiport': ['hdmi'],
+        'isforbusinesscomputing': ['business'],
+        'playerperspective': ['perspective'],
+        'platforms': ['platform'],
+        'powerconsumption': ['power'],
+        'pricerange': ['price'],
+        'releaseyear': ['year'],
+        'screensize': ['screen'],
+        'screensizerange': ['screen'],
+        'weightrange': ['weight']
+    }
 
-    if slot == 'hasusbport':
-        slot = 'usb'
-    elif slot == 'hdmiport':
-        slot = 'hdmi'
-    elif slot == 'powerconsumption':
-        slot = 'power'
-    elif slot == 'isforbusinesscomputing':
-        slot = 'business'
-
-    return slot.lower()
+    return reduction_map.get(slot, [slot])
 
 
 def get_plural(word):
@@ -157,7 +171,7 @@ def find_slot_realization(text, text_tok, slot, value_orig, delex_slot_placehold
         else:
             # Universal slot values
             if value == 'dontcare':
-                if dontcare_realization(text, slot, value):
+                if dontcare_realization(text, slot):
                     # TODO: get the actual position
                     pos = 0
                     slot_cnt = text.count(reduce_slot_name(slot))
@@ -165,13 +179,22 @@ def find_slot_realization(text, text_tok, slot, value_orig, delex_slot_placehold
                         print('HALLUCINATED SLOT:', slot)
                         is_hallucinated = True
             elif value == 'none':
-                if none_realization(text, slot, value):
+                if none_realization(text, slot):
                     # TODO: get the actual position
                     pos = 0
                     slot_cnt = text.count(reduce_slot_name(slot))
                     if slot_cnt > 1:
                         print('HALLUCINATED SLOT:', slot)
                         is_hallucinated = True
+            elif value == '':
+                for slot_stem in reduce_slot_name(slot):
+                    pos = text.find(slot_stem)
+                    if pos >= 0:
+                        slot_cnt = text.count(slot_stem)
+                        if slot_cnt > 1:
+                            print('HALLUCINATED SLOT:', slot)
+                            is_hallucinated = True
+                        break
 
             elif slot == 'name' and match_name_ref:
                 pos = text.find(value)

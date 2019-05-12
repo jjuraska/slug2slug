@@ -127,7 +127,7 @@ def __get_boolean_slot_stems(slot):
         'familyfriendly': ['family', 'families', 'kid', 'kids', 'child', 'children'],
         'hasusbport': ['usb'],
         'isforbusinesscomputing': ['business'],
-        'hasmultiplayer': ['multiplayer', 'friends'],
+        'hasmultiplayer': ['multiplayer', 'friends', 'others'],
         'availableonsteam': ['steam'],
         'haslinuxrelease': ['linux'],
         'hasmacrelease': ['mac']
