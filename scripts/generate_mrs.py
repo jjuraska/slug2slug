@@ -188,9 +188,6 @@ class MRGenerator:
             sample_data['utterance'] = row[prefix_out + suffix_utt]
             results.append(sample_data)
 
-            # DEBUG PRINT
-            print(sample_data)
-
         column_names = self.slots
         if use_specifier:
             column_names += ['specifier']
@@ -218,6 +215,19 @@ class MRGenerator:
         suffix_utt = 'utterance'
         suffix_spec = 'specifier'
 
+        attr_name_map = {
+            'Release year': 'release_year',
+            'Developer': 'developer',
+            'ESRB content rating': 'esrb',
+            'Genres': 'genres',
+            'Player perspective': 'player_perspective',
+            'Multiplayer': 'has_multiplayer',
+            'Platform': 'platforms',
+            'Availability on Steam': 'available_on_steam',
+            'Linux': 'has_linux_release',
+            'Mac': 'has_mac_release'
+        }
+
         results = []
 
         # Read in the CSV file in the MTurk HIT format
@@ -226,22 +236,27 @@ class MRGenerator:
         for row_idx, row in df.iterrows():
             for i in range(1, num_responses + 1):
                 sample_data = {}
-                for j in range(1, num_slots + 1):
-                    col_name = prefix_out + suffix_slot + str(i) + str(j)
+                if num_slots > 0:
+                    for j in range(1, num_slots + 1):
+                        col_name = prefix_out + suffix_slot + str(i) + str(j)
 
-                    try:
-                        slot_selected = row[col_name]
-                    except KeyError:
-                        print('Warning: column "' + col_name + '" not found.')
-                        continue
+                        try:
+                            slot_selected = row[col_name]
+                        except KeyError:
+                            print('Warning: column "' + col_name + '" not found.')
+                            continue
 
-                    cell_content = row[prefix_in + str(slot_selected)]
-                    if pd.isna(cell_content):
-                        print('Warning: row ' + str(row_idx + 1) + ', response ' + str(i) + ', slot ' + str(j) + '\t>> ' + 'slot "' + slot_selected + '" not found.')
-                        continue
+                        cell_content = row[prefix_in + str(slot_selected)]
+                        if pd.isna(cell_content):
+                            print('Warning: row ' + str(row_idx + 1) + ', response ' + str(i) + ', slot ' + str(j) + '\t>> ' + 'slot "' + slot_selected + '" not found.')
+                            continue
 
-                    val = re.search(r'<b>(.+?)</b>', cell_content)
-                    sample_data[slot_selected] = val.group(1)
+                        val = re.search(r'<b>(.+?)</b>', cell_content)
+                        sample_data[slot_selected] = val.group(1)
+                else:
+                    slot_name = str(row[prefix_in + 'attribute'])
+                    slot_norm = attr_name_map[slot_name]
+                    sample_data[slot_norm] = ' '
 
                 if use_specifier:
                     sample_data['specifier'] = row[prefix_out + suffix_spec + str(i)]
@@ -264,6 +279,26 @@ class MRGenerator:
 
         df_results = pd.DataFrame(results, columns=column_names)
         df_results.to_csv(file_out, index=False, encoding='utf8')
+
+    def merge_data_files(self, dataset, file1, file2):
+        """"""
+
+        # Read in the data
+        df1 = pd.read_csv(os.path.join(config.DATA_DIR, dataset, file1), header=0, encoding='utf8')
+        if file2 is not None:
+            df2 = pd.read_csv(os.path.join(config.DATA_DIR, dataset, file2), header=0, encoding='utf8')
+
+        if file2 is not None:
+            df_merged = df1.append(df2, ignore_index=True).sort_values(by='mr')
+        else:
+            df_merged = df1.sort_values(by='mr')
+
+        if 'final' in file1:
+            file_out = re.sub(r', round \d', '', file1.replace('final', 'da'))
+        else:
+            file_out = os.path.splitext(file1)[0] + ' MERGED' + os.path.splitext(file1)[1]
+
+        df_merged.to_csv(os.path.join(config.DATA_DIR, dataset, file_out), index=False, encoding='utf8')
 
     def __get_random_slot_comb_for_da(self, row, da='inform', num_slots=None):
         if da == 'inform':
@@ -522,7 +557,7 @@ def mr_to_string(mr_dict, da=None):
     slot_value_pairs = []
 
     for slot, val in mr_dict.items():
-        slot_value_pairs.append(slot + '[{0}]'.format(str(val) if val is not None else ''))
+        slot_value_pairs.append(slot + '[{0}]'.format(str(val.strip()) if val is not None else ''))
 
     mr = ', '.join(slot_value_pairs)
 
@@ -659,21 +694,27 @@ def main():
 
     # ----
 
-    mturk_results_file_in = os.path.join(config.VIDEO_GAME_DATA_DIR, 'generation',
-                                         'Batch_3617112_batch_results.csv')
-    mr_gen.extract_hit_results_from_csv(mturk_results_file_in)
+    # mturk_results_file_in = os.path.join(config.VIDEO_GAME_DATA_DIR, 'generation',
+    #                                      'video_games_mturk_results_round2_request_attribute (1 slot).csv')
+    # mr_gen.extract_hit_results_from_csv_with_selection(mturk_results_file_in, num_responses=5, num_slots=0, use_specifier=False)
 
     # ----
 
     # mturk_results_file_in = os.path.join(config.VIDEO_GAME_DATA_DIR, 'generation',
-    #                                      'video_games_mturk_results_confirm (2 slots).csv')
-    # mr_gen.extract_hit_results_from_csv_with_selection(mturk_results_file_in, num_responses=5, num_slots=2, use_specifier=False)
+    #                                      'video_games_mturk_results_round2_request (2 slots).csv')
+    # mr_gen.extract_hit_results_from_csv(mturk_results_file_in, use_specifier=True)
 
     # ----
 
     # file_in = os.path.join(config.VIDEO_GAME_DATA_DIR, 'generation',
     #                        'video_games_processed_results_verify_attribute (4 slots).csv')
     # mr_gen.create_mrs_from_csv(file_in, da='verify_attribute', ignore_utt=True, create_hit_file=True)
+
+    # ----
+
+    file1 = 'generation/video_games_final_verify_attribute (4 slots, round 1).csv'
+    file2 = 'generation/video_games_final_verify_attribute (4 slots, round 2).csv'
+    mr_gen.merge_data_files('video_game', file1, file2)
 
     # ----
 

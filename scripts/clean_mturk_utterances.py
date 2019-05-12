@@ -28,12 +28,20 @@ class UtteranceCleaner:
             # Substitute (multiple) white spaces with a single space, removing any leading and trailing spaces
             utt = ' '.join(utt.split())
 
+            # Remove any empty spaces right before punctuation
+            utt = re.sub(r'\s+\.$', '.', utt)
+            utt = re.sub(r'\s+\?$', '?', utt)
+            utt = re.sub(r'\s+\?$', '!', utt)
+            utt = re.sub(r'\s+,', ',', utt)
+
             # Perform normalizations and capitalizations on the utterance
             utt = self.normalize_has_multiplayer(utt)
             utt = self.normalize_platforms(utt)
             utt = self.normalize_player_perspective(utt)
             utt = self.capitalize_boolean_slots(utt)
             utt = self.capitalize_categorical_slots(utt, mr_dict)
+
+            # TODO: capitalize sentence beginnings
 
             utterances_fixed.append(utt)
 
@@ -59,7 +67,7 @@ class UtteranceCleaner:
         value_map = {
             'multiplayer': ['multi player', 'multi-player', 'multiplayer'],
             'single-player': ['non multiplayer', 'non-multiplayer', 'nonmultiplayer', 'one player', 'one-player',
-                              'single player']
+                              'single player', 'singleplayer']
         }
 
         return self.__replace_values_using_map(utt, value_map)
@@ -115,9 +123,9 @@ class UtteranceCleaner:
 
 def main():
     file_in = os.path.join(config.VIDEO_GAME_DATA_DIR, 'generation',
-                           'video_games_processed_results_round1_verify_attribute (4 slots).csv')
+                           'video_games_processed_results_round2_request_attribute (1 slot).csv')
 
-    cleaner = UtteranceCleaner(file_in, da='verify_attribute')
+    cleaner = UtteranceCleaner(file_in, da='request_attribute')
 
     cleaner.normalize()
 

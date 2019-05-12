@@ -1889,7 +1889,8 @@ def main():
 
     # ----------
 
-    augment_mrs_with_da_type('rest_e2e', 'trainset_e2e.csv', 'inform')
+    # augment_mrs_with_da_type('rest_e2e', 'trainset_e2e.csv', 'inform')
+    augment_mrs_with_da_type('video_game', 'dataset.csv', 'inform')
 
     # ----------
 
