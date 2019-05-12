@@ -1,0 +1,201 @@
+mr,ref
+"request(genres[action-adventure], specifier[easy])",Can you recommend an easy action-adventure game?
+"request(genres[action-adventure], specifier[easy])",Do you know of any action-adventure games that are nice and easy?
+"request(release_year[2018], specifier[long])",What's a long game you played that came out in 2018?
+"request(release_year[2018], specifier[long])",Do you know any long games from 2018 I could invest a lot of time into?
+"request(platforms[PlayStation], specifier[stunning])",What's a game you've played for the PlayStation that you thought was stunning?
+"request(platforms[PlayStation], specifier[stunning])",What stunning games are available on PlayStation?
+"request(developer[Hazelight Studios], specifier[classic])",Did Hazelight Studios make any classic games?
+"request(developer[Hazelight Studios], specifier[classic])",What do you think is the most classic game made by Hazelight Studios?
+"request(player_perspective[third person], specifier[smart])",Have you played any smart third person games lately?
+"request(player_perspective[third person], specifier[smart])",Can you recommend any smart third person games?
+"request(developer[Rockstar North], specifier[offensive])",Has Rockstar North made anything offensive lately?
+"request(developer[Rockstar North], specifier[offensive])",Has Rockstar North ever made a game you felt was offensive?
+"request(esrb[M (for Mature)], specifier[gritty])",What's your favorite gritty rated M game?
+"request(esrb[M (for Mature)], specifier[gritty])","Is there any gritty, M rated game that you enjoyed lately?"
+"request(platforms[Xbox], specifier[easiest])",What do you think is the easiest game available for the Xbox?
+"request(platforms[Xbox], specifier[easiest])",What's the easiest game you know of on Xbox?
+"request(player_perspective[first person], specifier[oldest])",What's the oldest first person game you know of?
+"request(player_perspective[first person], specifier[oldest])",What's the oldest game with a first person perspective that you ever played?
+"request(release_year[2013], specifier[longest])",Do you know which game had the longest story mode in 2013?
+"request(release_year[2013], specifier[longest])",What's the longest game from 2013?
+"request(developer[Nintendo EAD], specifier[classic])",Do you know of any games developed by Nintendo EAD that you would consider to be a classic?
+"request(developer[Nintendo EAD], specifier[classic])",Do you know any classic games I should play from Nintendo EAD?
+"request(has_multiplayer[yes], specifier[interesting])",Do you know any interesting multiplayer games I could try out?
+"request(has_multiplayer[yes], specifier[interesting])",Do you know of any interesting games with multiplayer?
+"request(release_year[1990], specifier[challenging])","In terms of challenging games, have you played any like that which came out in 1990?"
+"request(release_year[1990], specifier[challenging])",Are there any challenging games from 1990?
+"request(player_perspective[side view], specifier[easy])",Do you know any easy side view games I can play with my family?
+"request(player_perspective[side view], specifier[easy])",What's a nice and easy game with a side view perspective that you've played?
+"request(genres[platformer], specifier[elaborate])",Are you aware of any platformers that are particularly elaborate?
+"request(genres[platformer], specifier[elaborate])",What's an elaborate platformer I could play?
+"request(platforms[PC], specifier[immersive])",Are there any really immersive PC games you could recommend?
+"request(platforms[PC], specifier[immersive])",What's a game for the PC that you think is immersive?
+"request(release_year[2014], specifier[terrible])",Were there even any terrible games in 2014?
+"request(release_year[2014], specifier[terrible])",What's a truly terrible game released in 2014 that you know of?
+"request(genres[adventure, indie], specifier[short])",Have you played any indie adventure games that were short to play through?
+"request(genres[adventure, indie], specifier[short])",Do you know any short indie adventure games I could pick up?
+"request(has_multiplayer[no], specifier[epic])",What's the most epic single-player game that you played recently?
+"request(has_multiplayer[no], specifier[epic])",What's one epic single-player game you can think of?
+"request(has_linux_release[no], specifier[cheap])",Have you played any cheap games lately that don't have a Linux release?
+"request(has_linux_release[no], specifier[cheap])",Do you know any cheap games that aren't on Linux?
+"request(developer[Bloober Team], specifier[silliest])",What do you think is the silliest game ever made by Bloober Team?
+"request(developer[Bloober Team], specifier[silliest])",What's the silliest game that Bloober Team has made?
+"request(platforms[PC], specifier[expensive])",What's the most expensive game for the PC that you know of?
+"request(platforms[PC], specifier[expensive])",What's the most expensive PC game you know of?
+"request(genres[adventure, indie, point-and-click], specifier[shortest])",What's the shortest indie point and click adventure game you know of?
+"request(genres[adventure, indie, point-and-click], specifier[shortest])",Do you remember what the shortest indie point-and-click adventure game you ever played was?
+"request(esrb[M (for Mature)], specifier[unpleasant])",Have you ever played an M rated game that you just found unpleasant?
+"request(esrb[M (for Mature)], specifier[unpleasant])",have you played any unpleasant rated M games?
+"request(player_perspective[first person], specifier[realistic])",What's a first person game you think was realistic?
+"request(player_perspective[first person], specifier[realistic])","In your opinion, what's the most realistic first person game?"
+"request(esrb[E (for Everyone)], specifier[goofy])",Did you play any particularly goofy E rated games this year?
+"request(esrb[E (for Everyone)], specifier[goofy])",Do you know of any goofy E rated games I could play with my kid?
+"request(available_on_steam[yes], specifier[ugliest])",What do you think is the ugliest game available on Steam right now?
+"request(available_on_steam[yes], specifier[ugliest])",What's the ugliest game you've found on Steam so far?
+"request(has_linux_release[no], specifier[favorite])",What's your favorite game that never got released on Linux?
+"request(has_linux_release[no], specifier[favorite])",What's your favorite game without a Linux release?
+"request(platforms[PC], specifier[quirky])",Are there any quirky PC games you like?
+"request(platforms[PC], specifier[quirky])",Do you know of any quirky PC games?
+"request(developer[SCS Software], specifier[famous])",What's the most famous game you know of that was made by SCS Software?
+"request(developer[SCS Software], specifier[famous])",What's a famous game from SCS Software?
+"request(has_multiplayer[yes], specifier[dull])",What's the most dull multiplayer game you've ever played?
+"request(has_multiplayer[yes], specifier[dull])",So what's a game with multiplayer that you just found to be dull?
+"request(release_year[2014], specifier[disappointing])",What would you say is the most disappointing game from 2014 that you know of?
+"request(release_year[2014], specifier[disappointing])",Did you find any games in 2014 disappointing?
+"request(platforms[PlayStation], specifier[revolting])",What revolting games are on PlayStation anyway?
+"request(platforms[PlayStation], specifier[revolting])",Was there ever a PlayStation game you encountered that you felt was just revolting?
+"request(genres[simulation, sport], specifier[simple])",Is there a sport simulator you know of that is simple?
+"request(genres[simulation, sport], specifier[simple])",Do you know any simple sports simulation games I could play?
+"request(esrb[E 10+ (for Everyone 10 and Older)], specifier[soothing])",What's a soothing rated E10+ game I can play with my brothers?
+"request(esrb[E 10+ (for Everyone 10 and Older)], specifier[soothing])",Did you play any Everyone 10 and up games that were particularly soothing this year?
+"request(developer[Tin Man Games], specifier[boring])",Are there any boring games from Tin Man Games that you know of?
+"request(developer[Tin Man Games], specifier[boring])",What's the most boring game made by Tin Man Games that you've played?
+"request(genres[role-playing, text adventure], specifier[shortest])",What's the shortest role-playing text adventure game you know of?
+"request(genres[role-playing, text adventure], specifier[shortest])",What's the shortest RPG text adventure you know of? I'm looking for something quick.
+"request(has_mac_release[yes], specifier[addictive])",Do you know of any really addictive Mac games coming out soon?
+"request(has_mac_release[yes], specifier[addictive])",Do you know of any addictive games that have a Mac release?
+"request(platforms[PC], specifier[funky])",Can you recommend a funky PC game?
+"request(platforms[PC], specifier[funky])",Do you know of any funky PC games coming out soon?
+"request(has_linux_release[yes], specifier[frightening])",Do you know of any frightening games that are available on Linux?
+"request(has_linux_release[yes], specifier[frightening])",Are there any really frightening games on Linux?
+"request(platforms[Nintendo Switch], specifier[great looking])",Which Nintendo Switch game is great looking in your opinion?
+"request(platforms[Nintendo Switch], specifier[great looking])",What's a great looking game on the Nintendo Switch?
+"request(developer[Overkill Software], specifier[empowering])",Ever played a game from Overkill Software you felt was empowering?
+"request(developer[Overkill Software], specifier[empowering])",Does Overkill Software have any games that are empowering?
+"request(release_year[2013], specifier[spectacular])",Is there any game released in 2013 that you felt was spectacular?
+"request(release_year[2013], specifier[spectacular])",What's a spectacular release from 2013?
+"request(player_perspective[first person], specifier[absorbing])",What's a first person game you know of that you felt was absorbing?
+"request(player_perspective[first person], specifier[absorbing])",Can you recommend to me an absorbing first person game?
+"request(genres[role-playing, shooter], specifier[well balanced])",Do you know of any well balanced role playing shooters?
+"request(genres[role-playing, shooter], specifier[well balanced])",Do you know of any well balanced shooters with role-playing elements?
+"request(developer[Valve Corporation], specifier[funny])",Does Valve Corporation have any funny games they've made?
+"request(developer[Valve Corporation], specifier[funny])",Do you know of any games developed by Valve Corporation that are funny?
+"request(player_perspective[first person], specifier[colorful])",Do you know of any colorful games that are played from the first person perspective?
+"request(player_perspective[first person], specifier[colorful])",Can you think of any good colorful first person games for my son?
+"request(esrb[E 10+ (for Everyone 10 and Older)], specifier[frightening])",Are there any E 10+ rated frightening games?
+"request(esrb[E 10+ (for Everyone 10 and Older)], specifier[frightening])",Have you ever played a game that was rated E 10+ by the ESRB yet still managed to be genuinely frightening?
+"request(available_on_steam[yes], specifier[cheap])",Any games you know of on Steam that are cheap right now?
+"request(available_on_steam[yes], specifier[cheap])",What's a cheap game I can get on Steam right now?
+"request(release_year[2011], specifier[unusual])",Is there a game from 2011 that you felt was unusual?
+"request(release_year[2011], specifier[unusual])",Are there any unusual games from 2011 I should check out?
+"request(genres[sport], specifier[in-depth])",Is there any sport game you played that you felt was really in-depth?
+"request(genres[sport], specifier[in-depth])",Can you recommend an in-depth sports game?
+"request(platforms[Xbox], specifier[brand new])",What's your favorite brand new Xbox Game?
+"request(platforms[Xbox], specifier[brand new])",Is there any brand new Xbox games you're interested in?
+"request(developer[Neversoft Entertainment], specifier[other])",So have you played any other games from Neversoft Entertainment lately?
+"request(developer[Neversoft Entertainment], specifier[other])",What other games does Neversoft Entertainment make?
+"request(release_year[2001], specifier[broken])",Do you know any broken games from 2001? I love old games with quirky flaws.
+"request(release_year[2001], specifier[broken])",What's a game you know of from 2001 that was just plain broken?
+"request(esrb[T (for Teen)], specifier[scary])",Have you every played a T rated game that you felt was genuinely scary?
+"request(esrb[T (for Teen)], specifier[scary])",Are there any really scary T rated games?
+"request(platforms[PlayStation], specifier[weirdest])",What's the weirdest game you've ever played on PlayStation.
+"request(platforms[PlayStation], specifier[weirdest])",What's the weirdest game you ever played on the PlayStation?
+"request(has_multiplayer[yes], specifier[addictive])",Have you ever encountered a multiplayer game that was truly addictive?
+"request(has_multiplayer[yes], specifier[addictive])","Man, I just love addictive games, especially multiplayer ones. Do you have any good suggestions?"
+"request(esrb[E (for Everyone)], specifier[other])",Are there any other E rated games you'd suggest?
+"request(esrb[E (for Everyone)], specifier[other])",Is there any other E rated game that you played lately?
+"request(release_year[2014], specifier[favorite])",What's your favorite game from 2014?
+"request(release_year[2014], specifier[favorite])","Of all games released in 2014, which would you say is your most favorite?"
+"request(genres[driving/racing, simulation, sport], specifier[exciting])",What's a driving/racing sport simulator you felt was exciting?
+"request(genres[driving/racing, simulation, sport], specifier[exciting])",Can you suggest an exciting racing simulation sports game?
+"request(platforms[PlayStation], specifier[hardest])",What's the hardest game on PlayStation?
+"request(platforms[PlayStation], specifier[hardest])",What's the hardest game you know of on the PlayStation?
+"request(genres[shooter], specifier[confusing])",What do you think is the most confusing shooter ever made?
+"request(genres[shooter], specifier[confusing])",Are there any shooters that are just plain confusing?
+"request(release_year[2004], specifier[fascinating])",Do you know any fascinating games from 2004?
+"request(release_year[2004], specifier[fascinating])",What's a game from 2004 that you thought was fascinating?
+"request(esrb[M (for Mature)], specifier[tearjerking])",Can you suggest a really tearjerking M rated game? I'm looking for something real sad.
+"request(esrb[M (for Mature)], specifier[tearjerking])",Have you ever played an M rated game that was tearjerking?
+"request(player_perspective[first person], specifier[nauseating])",What's the most nauseating first person game you've played?
+"request(player_perspective[first person], specifier[nauseating])",Have you ever played a game with a first person perspective that you found to be nauseating?
+"request(platforms[PC], specifier[scary])",What's a scary game for the PC that you played lately?
+"request(platforms[PC], specifier[scary])",What's a really scary PC game?
+"request(genres[real-time strategy, simulation], specifier[other])",What other RTS simulation games are there?
+"request(genres[real-time strategy, simulation], specifier[other])",So what other real-time strategy simulators have you played lately?
+"request(available_on_steam[yes], specifier[latest])",What's the latest game you played on Steam?
+"request(available_on_steam[yes], specifier[latest])",What's the latest game you've been playing on Steam?
+"request(developer[Firefly Studios], specifier[upcoming])",Are there any upcoming games from Firefly Studios you're looking forward to?
+"request(developer[Firefly Studios], specifier[upcoming])",Is there any upcoming game by Firefly Studios that you're interested in?
+"request(release_year[2005], specifier[underrated])",What's your favorite underrated game from 2005?
+"request(release_year[2005], specifier[underrated])",What do you think is the most underrated game that was released in 2005?
+"request(platforms[Xbox], specifier[complex])",What's the most complex game you ever played for the Xbox?
+"request(platforms[Xbox], specifier[complex])",Does the Xbox have any complex games?
+"request(player_perspective[bird view], specifier[calming])",Have you ever played a game with a bird view perspective that you found to be calming?
+"request(player_perspective[bird view], specifier[calming])",What's a calming bird view game I can play to unwind?
+"request(release_year[2011], specifier[best looking])",What's the best looking game of 2011?
+"request(release_year[2011], specifier[best looking])","In your opinion, what is the best looking game that came out in 2011?"
+"request(developer[EA Canada], specifier[favorite])",What's your favorite game that EA Canada has made?
+"request(developer[EA Canada], specifier[favorite])","I'm curious, what is your favorite game made by EA Canada?"
+"request(genres[simulation, sport], specifier[poorly balanced])",Can you think of a poorly balanced sport simulation game?
+"request(genres[simulation, sport], specifier[poorly balanced])",What's the most poorly balanced sport simulator you know of?
+"request(developer[Guerrilla Games], specifier[overrated])",Is there a game made by Guerrilla Games that you felt was overrated?
+"request(developer[Guerrilla Games], specifier[overrated])",What's an overrated game made by Guerrilla Games?
+"request(release_year[2017], specifier[bizarre])",What's a really bizarre game from 2017?
+"request(release_year[2017], specifier[bizarre])",What do you think is the most bizarre game that came out in 2017?
+"request(platforms[PlayStation], specifier[relaxing])","I'm looking for a relaxing game for the PlayStation, do you know of any?"
+"request(platforms[PlayStation], specifier[relaxing])",Are there any games you like to play on PlayStation that are relaxing?
+"request(has_multiplayer[no], specifier[lengthy])",Can you think of any lengthy single-player games without a multiplayer component?
+"request(has_multiplayer[no], specifier[lengthy])",What's a lengthy single-player only game that you've played lately?
+"request(genres[action-adventure, role-playing, shooter], specifier[gory])","What's a really gory role playing action-adventure shooter? I'm looking for blood, you know?"
+"request(genres[action-adventure, role-playing, shooter], specifier[gory])",Have you played any gory action-adventure RPG shooters lately?
+"request(platforms[Nintendo], specifier[beautiful])",What's a beautiful game you played for the Nintendo?
+"request(platforms[Nintendo], specifier[beautiful])",What's a really beautiful game from Nintendo?
+"request(genres[music], specifier[cheerful])",What's a music game that you played that you thought was cheerful?
+"request(genres[music], specifier[cheerful])",What's a cheerful music game I should pick up?
+"request(player_perspective[first person], specifier[exhilarating])",What's a first person video game that you feel was exhilarating?
+"request(player_perspective[first person], specifier[exhilarating])","Man, I love an exhilarating game. Do you know any first person games like that?"
+"request(release_year[2009], specifier[other])",So what other game from 2009 did you want to talk about?
+"request(release_year[2009], specifier[other])",Do you know any other games from 2009?
+"request(has_multiplayer[yes], specifier[fast-paced])",Have you played any fast-paced multiplayer games lately?
+"request(has_multiplayer[yes], specifier[fast-paced])",Have you been playing any fast paced multiplayer games lately?
+"request(has_linux_release[no], specifier[other])",Do you like any other games without a Linux release?
+"request(has_linux_release[no], specifier[other])",So what other game without a Linux release have you played lately?
+"request(genres[text adventure], specifier[immersive])",Do you know of any immersive text adventure games?
+"request(genres[text adventure], specifier[immersive])",Is the a text adventure game you know of that you thought was immersive?
+"request(has_multiplayer[no], specifier[rewarding])",What's a really rewarding single-player game without a multiplayer component?
+"request(has_multiplayer[no], specifier[rewarding])",What's a rewarding single-player game you played?
+"request(platforms[PC], specifier[quick-to-learn])",What's a game you know of for the PC that's quick-to-learn?
+"request(platforms[PC], specifier[quick-to-learn])",Do you know any PC games that are quick-to-learn? I'm not looking for something too complex.
+"request(developer[Red Entertainment Corporation], specifier[newest])",What's the newest game made by Red Entertainment Corporation?
+"request(developer[Red Entertainment Corporation], specifier[newest])",Do you know what the newest game that Red Entertainment Corporation made is?
+"request(available_on_steam[yes], specifier[challenging])",What's a good challenging game you know of that's available on Steam?
+"request(available_on_steam[yes], specifier[challenging])",Are there any challenging games you like that are on Steam?
+"request(player_perspective[side view], specifier[other])",Do you know any other side view games?
+"request(player_perspective[side view], specifier[other])",What was the other side view perspective game you played recently?
+"request(platforms[PC], specifier[buggy])",Do you remember any particularly buggy PC games? I'd like to know so I can avoid them.
+"request(platforms[PC], specifier[buggy])",Did you play any PC games that were overly buggy?
+"request(release_year[2010], specifier[controversial])",Is there a game from 2010 you can think of that was controversial?
+"request(release_year[2010], specifier[controversial])",What's a really controversial title from 2010?
+"request(genres[action, platformer, strategy], specifier[fun])",What's a really fun action strategy platformer?
+"request(genres[action, platformer, strategy], specifier[fun])",Have you played any fun action strategy platformers lately?
+"request(genres[driving/racing], specifier[complicated])",Did you get the chance to play any complicated driving/racing games?
+"request(genres[driving/racing], specifier[complicated])",Are there any complicated driving/racing games you know of? I'd love to try one out.
+"request(release_year[2017], specifier[unfair])",Were any of the 2017 games you played just plain unfair?
+"request(release_year[2017], specifier[unfair])",Were there any unfair games from 2017?
+"request(developer[Ghost Games], specifier[exceptional])",Has Ghost Games made anything exceptional?
+"request(developer[Ghost Games], specifier[exceptional])",Have you played any exceptional games by Ghost Games?
+"request(platforms[PlayStation], specifier[other])",What other games are available on PlayStation?
+"request(platforms[PlayStation], specifier[other])",Did you find any other PlayStation games that really stuck in your memory?
+"request(player_perspective[third person], specifier[dynamic])",Do you know of any dynamic games that have a third person perspective?
+"request(player_perspective[third person], specifier[dynamic])",What's your favorite dynamic third person game?

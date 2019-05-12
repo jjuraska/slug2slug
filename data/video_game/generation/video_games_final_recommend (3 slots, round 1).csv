@@ -1,0 +1,101 @@
+mr,ref
+"recommend(name[Worms: Reloaded], esrb[E 10+ (for Everyone 10 and Older)], platforms[PC])",Worms: Reloaded is a nice PC game for anyone 10 and older. Do you know of it?
+"recommend(name[Worms: Reloaded], genres[action, platformer, strategy], player_perspective[side view])","For side view platformers that combine both action and strategy, you can't go wrong with Worms: Reloaded. Have you heard about it?"
+"recommend(name[Worms: Reloaded], has_linux_release[yes], has_mac_release[yes])","So, you're into games with both a Mac and a Linux release. Have you heard about Worms: Reloaded?"
+"recommend(name[Worms: Reloaded], player_perspective[side view], has_multiplayer[yes])","For multiplayer games with a side view perspective, I've enjoyed Worms: Reloaded. Do you know about this game?"
+"recommend(name[Worms: Reloaded], developer[Team17 Digital Ltd], genres[action, platformer, strategy])",Team17 Digital Ltd made a pretty great strategy action platformer called Worms: Reloaded. Do you know of it?
+"recommend(name[Undertale], developer[tobyfox], player_perspective[bird view])","If you're looking for another one of tobyfox's bird view perspective games, you should check out Undertale. Have you heard of it?"
+"recommend(name[Undertale], developer[tobyfox], genres[adventure, indie, role-playing])",Undertale is an indie adventure RPG from tobyfox. Have you ever played it?
+"recommend(name[Undertale], has_linux_release[yes], has_mac_release[yes])","If you play games both on Mac and Linux, Undertale is definitely one to check out. Have you heard of it?"
+"recommend(name[Undertale], esrb[E (for Everyone)], available_on_steam[yes])","If you're looking for a solid E rated game on Steam, Undertale might pique your interest. Have you ever heard of it?"
+"recommend(name[Undertale], release_year[2015], genres[adventure, indie, role-playing])","If indie adventure role-playing games are your thing, you should check out Undertale from 2015. Have you heard of it, by any chance?"
+"recommend(name[Uncharted 4: A Thief's End], developer[Naughty Dog], platforms[PlayStation])","Naughty Dog has released some pretty interesting PlayStation games, such as Uncharted 4: A Thief's End. Did you ever hear about it?"
+"recommend(name[Uncharted 4: A Thief's End], genres[action-adventure, shooter], player_perspective[third person])","And of course, one of my favorite third person action adventure shooters is Uncharted 4: A Thief's End. Do you know of it?"
+"recommend(name[Uncharted 4: A Thief's End], release_year[2016], platforms[PlayStation])","2016 had many great games released for the PlayStation, such as Uncharted 4: A Thief's End. Have you ever heard of it?"
+"recommend(name[Uncharted 4: A Thief's End], esrb[T (for Teen)], genres[action-adventure, shooter])","If you're looking for an action-adventure shooter that's suitable for teenagers, Uncharted 4: A Thief's End has got a T rating and is pretty good. Have you heard about it before?"
+"recommend(name[Uncharted 4: A Thief's End], player_perspective[third person], platforms[PlayStation])",One of my favorite PlayStation games with a third person perspective is Uncharted 4: A Thief's End. Do you know of it?
+"recommend(name[Super Mario World], developer[Nintendo EAD], platforms[Nintendo])","When I think of the Nintendo platform, the first thing that comes to mind is Nintendo EAD's Super Mario World. Have you ever played it?"
+"recommend(name[Super Mario World], esrb[E (for Everyone)], has_multiplayer[yes])","If you're looking for a multiplayer game with a content your whole family can get on board with, you should try Super Mario World. Have you ever played it?"
+"recommend(name[Super Mario World], release_year[1990], developer[Nintendo EAD])","I know it came out in 1990, but Nintendo EAD's Super Mario World is a classic. Have you ever played it?"
+"recommend(name[Super Mario World], genres[platformer], player_perspective[side view])","If you're after a side scrolling platformer, Super Mario World is a fun game. Have you ever played it before?"
+"recommend(name[Super Mario World], developer[Nintendo EAD], has_multiplayer[yes])",Super Mario World is another multiplayer game by Nintendo EAD. Have you ever played it?
+"recommend(name[Crysis], genres[action-adventure, shooter], platforms[Xbox])","Speaking of action-adventure shooter games for the Xbox, have you gotten a chance to try Crysis?"
+"recommend(name[Crysis], developer[Crytek Frankfurt], esrb[M (for Mature)])","You seem to enjoy those M rated games by Crytek Frankfurt. Have you played Crysis, by any chance?"
+"recommend(name[Crysis], developer[Crytek Frankfurt], player_perspective[first person])","I know you like Crytek Frankfurt's first person perspective games, but have you played Crysis?"
+"recommend(name[Crysis], has_multiplayer[yes], platforms[Xbox])",A multiplayer Xbox game that I enjoyed was Crysis. Have you played it?
+"recommend(name[Crysis], release_year[2007], platforms[Xbox])",I think one of the best Xbox games of 2007 was Crysis. Have you played it yet?
+"recommend(name[Stronghold 2], release_year[2005], genres[real-time strategy, simulation])","Have you heard about the real-time strategy and simulation game from 2005, called Stronghold 2?"
+"recommend(name[Stronghold 2], developer[Firefly Studios], platforms[PC])","If you like PC games by Firefly Studios, then have you heard about the game Stronghold 2?"
+"recommend(name[Stronghold 2], esrb[T (for Teen)], genres[real-time strategy, simulation])","If you're okay with T rated real-time strategy simulation games, then what about Stronghold 2?"
+"recommend(name[Stronghold 2], release_year[2005], developer[Firefly Studios])",Have you read anything about the game Stronghold 2 that was released by Firefly Studios in 2005?
+"recommend(name[Stronghold 2], has_multiplayer[yes], platforms[PC])","If you like multiplayer PC games, then I wonder if you've tried Stronghold 2."
+"recommend(name[RollerCoaster Tycoon], genres[simulation, strategy], platforms[PC])",One of my favorite PC strategy simulators is RollerCoaster Tycoon. Do you know about it?
+"recommend(name[RollerCoaster Tycoon], release_year[1999], has_linux_release[yes])","If you're looking for games back from 1999 that have a Linux release, there's RollerCoaster Tycoon. Have you ever heard of it?"
+"recommend(name[RollerCoaster Tycoon], genres[simulation, strategy], player_perspective[bird view])","For strategy simulators with a bird view, RollerCoaster Tycoon has always been a favorite of mine. Do you know about it?"
+"recommend(name[RollerCoaster Tycoon], developer[MicroProse], platforms[PC])",One of the all time classic PC games released by MicroProse was RollerCoaster Tycoon. Do you know of it?
+"recommend(name[RollerCoaster Tycoon], genres[simulation, strategy], has_linux_release[yes])","If you're looking for a strategy simulator with a Linux release, I have one I'd recommend. Have you heard of RollerCoaster Tycoon?"
+"recommend(name[Portal 2], developer[Valve Corporation], has_multiplayer[yes])",My favorite multiplayer game from Valve Corporation is actually Portal 2. Are you familiar with it?
+"recommend(name[Portal 2], genres[platformer, puzzle, shooter], player_perspective[first person])","Among first person puzzle platformer shooters, Portal 2 is a complete classic. Do you know about it?"
+"recommend(name[Portal 2], esrb[E 10+ (for Everyone 10 and Older)], has_multiplayer[yes])","If you're looking for a good multiplayer game to play with your kid, Portal 2 is rated E 10+. Have you heard of it before?"
+"recommend(name[Portal 2], developer[Valve Corporation], platforms[PlayStation])",One of my favorite PlayStation games was by Valve Corporation actually. Do you know about Portal 2?
+"recommend(name[Portal 2], release_year[2011], player_perspective[first person])","2011 was a great year for first person games, with some of my all time favorites, like Portal 2, released. Are you familiar with it?"
+"recommend(name[Need for Speed: Most Wanted], release_year[2005], genres[driving/racing])","If you don't mind driving/racing games even if they're from like 2005, how about you give Need for Speed: Most Wanted a try?"
+"recommend(name[Need for Speed: Most Wanted], genres[driving/racing], platforms[PC])","Since you like driving/racing games for PC, I wonder if you've played Need for Speed: Most Wanted."
+"recommend(name[Need for Speed: Most Wanted], genres[driving/racing], player_perspective[first person])","I know you like other first person driving/racing games, but have you tried Need for Speed: Most Wanted?"
+"recommend(name[Need for Speed: Most Wanted], esrb[T (for Teen)], player_perspective[first person])","Since you mostly play teen rated games, and that preferably from the first person perspective, I wonder if you've tried Need for Speed: Most Wanted."
+"recommend(name[Need for Speed: Most Wanted], developer[EA Redwood Shores], genres[driving/racing])","Speaking of driving/racing games by EA Redwood Shores, what do you think about Need for Speed: Most Wanted?"
+"recommend(name[The Wolf Among Us], developer[Telltale Games], genres[adventure, point-and-click])","So, speaking of point-and-click adventure games released by Telltale Games, have you heard of The Wolf Among Us?"
+"recommend(name[The Wolf Among Us], genres[adventure, point-and-click], available_on_steam[yes])",One of my favorite point-and-click adventure games on Steam was called The Wolf Among Us. Do you know about it?
+"recommend(name[The Wolf Among Us], esrb[M (for Mature)], platforms[PC])","If you're looking for a mature, adult game for the PC, I'd say play The Wolf Among Us. You ever heard of it?"
+"recommend(name[The Wolf Among Us], has_multiplayer[no], platforms[PC])","One of my favorite single-player PC games is The Wolf Among Us, do you know about it?"
+"recommend(name[The Wolf Among Us], release_year[2013], genres[adventure, point-and-click])","2013 had some pretty dang good point-and-click adventure games released, like The Wolf Among Us. Have you heard about it before?"
+"recommend(name[The Witcher 3: Wild Hunt], genres[action-adventure, role-playing], player_perspective[third person])","So, speaking of third person action-adventure RPGs, have you ever heard of The Witcher 3: Wild Hunt?"
+"recommend(name[The Witcher 3: Wild Hunt], genres[action-adventure, role-playing], platforms[Xbox])","You know, thinking of action-adventure RPGs for the Xbox, I just remembered one you might be interested in. Have you heard of The Witcher 3: Wild Hunt?"
+"recommend(name[The Witcher 3: Wild Hunt], esrb[M (for Mature)], player_perspective[third person])","If you're looking for a third person perspective game with gritty, adult content, I know of one. Have you heard of The Witcher 3: Wild Hunt?"
+"recommend(name[The Witcher 3: Wild Hunt], has_multiplayer[no], platforms[Xbox])","Hmm, a good single-player game for the Xbox, you say? Have you heard of The Witcher 3: Wild Hunt?"
+"recommend(name[The Witcher 3: Wild Hunt], release_year[2015], genres[action-adventure, role-playing])",2015 had some really great action-adventure role playing games come out. Have you heard of The Witcher 3: Wild Hunt?
+"recommend(name[F1 2014], genres[driving/racing, simulation, sport], platforms[PC])","I don't play a lot of sport racing simulators, but one of my favorites on the PC is F1 2014. Have you ever heard of it?"
+"recommend(name[F1 2014], player_perspective[third person], available_on_steam[yes])","There are definitely a lot of good third person perspective games on Steam, one I particularly enjoy is F1 2014. Have you heard of it before?"
+"recommend(name[F1 2014], genres[driving/racing, simulation, sport], has_multiplayer[yes])","If you're looking for a multiplayer sport racing sim, you can't go wrong with F1 2014. Are you familiar with it?"
+"recommend(name[F1 2014], developer[Codemasters Birmingham], available_on_steam[yes])","Codemasters Birmingham has some pretty good games out on Steam, such as F1 2014. You ever heard of it?"
+"recommend(name[F1 2014], genres[driving/racing, simulation, sport], player_perspective[third person])","Speaking of third person sport racing simulators, I know of one that was pretty good. Have you heard of F1 2014 before?"
+"recommend(name[Outlast II], release_year[2017], genres[adventure, indie])","Another indie adventure game from 2017, which I found particularly fun, was Outlast II. Have you ever played that game?"
+"recommend(name[Outlast II], release_year[2017], player_perspective[first person])","Since you're into first person games and have enjoyed some games from 2017, do you know of Outlast II?"
+"recommend(name[Outlast II], release_year[2017], developer[Red Barrels])","2017 saw some interesting games, in fact, even from Red Barrels. Have you not heard about Outlast II?"
+"recommend(name[Outlast II], developer[Red Barrels], platforms[Nintendo Switch])","Speaking of Nintendo Switch games developed by Red Barrels, have you tried playing Outlast II?"
+"recommend(name[Outlast II], genres[adventure, indie], player_perspective[first person])","I know you like first person indie adventure games, have you tried Outlast II?"
+"recommend(name[Super Bomberman], genres[action, strategy], player_perspective[bird view])","Speaking of action strategy games played from a bird view perspective, have you ever played Super Bomberman?"
+"recommend(name[Super Bomberman], developer[Hudson Soft], platforms[PC])",One Hudson Soft game for the PC that I enjoyed was Super Bomberman. Have you heard of it?
+"recommend(name[Super Bomberman], release_year[1993], platforms[PC])","There were definitely some good PC games released in 1993, like Super Bomberman. Have you played it before?"
+"recommend(name[Super Bomberman], esrb[E (for Everyone)], platforms[PC])","If you're looking for a good family-friendly game for the PC, Super Bomberman has an E rating. Have you heard of it before?"
+"recommend(name[Super Bomberman], esrb[E (for Everyone)], genres[action, strategy])","For E rated action strategy games, you can't go wrong with Super Bomberman. Are you familiar with it?"
+"recommend(name[Age of Empires II: The Age of Kings], developer[Ensemble Studios], genres[real-time strategy])","Speaking of real-time strategy from Ensemble Studios, have you heard of Age of Empires II: The Age of Kings?"
+"recommend(name[Age of Empires II: The Age of Kings], developer[Ensemble Studios], esrb[T (for Teen)])","Speaking of T (for Teen) games from Ensemble Studios, have you heard of Age of Empires II: The Age of Kings?"
+"recommend(name[Age of Empires II: The Age of Kings], developer[Ensemble Studios], has_multiplayer[yes])","Speaking of multiplayer games from Ensemble Studios, have you heard of Age of Empires II: The Age of Kings?"
+"recommend(name[Age of Empires II: The Age of Kings], release_year[1999], developer[Ensemble Studios])","Speaking of 1999 releases from Ensemble Studios, have you heard of Age of Empires II: The Age of Kings?"
+"recommend(name[Age of Empires II: The Age of Kings], developer[Ensemble Studios], platforms[PlayStation])","Speaking of PlayStation games from Ensemble Studios, have you heard of Age of Empires II: The Age of Kings?"
+"recommend(name[Assetto Corsa], genres[driving/racing, simulation, sport], player_perspective[first person])",A first person sport racing sim that I enjoyed was Assetto Corsa. Have you played it?
+"recommend(name[Assetto Corsa], player_perspective[first person], available_on_steam[yes])",A first person perspective game that I enjoyed on Steam was Assetto Corsa. Have you played it?
+"recommend(name[Assetto Corsa], has_multiplayer[yes], platforms[PC])",A multiplayer game that I enjoyed on the PC was Assetto Corsa. Have you played it?
+"recommend(name[Assetto Corsa], developer[Kunos Simulazioni], player_perspective[first person])",A first person perspective game developed by Kunos Simulazioni that I enjoyed was Assetto Corsa. Have you played it?
+"recommend(name[Assetto Corsa], developer[Kunos Simulazioni], esrb[E (for Everyone)])",A game developed by Kunos Simulazioni rated E (for Everyone) that I enjoyed was Assetto Corsa. Have you played it?
+"recommend(name[The Legend of Zelda: Ocarina of Time], release_year[1998], platforms[Nintendo])","1998 had so many great games come out for Nintendo, like The Legend of Zelda: Ocarina of Time. Have you ever played it before?"
+"recommend(name[The Legend of Zelda: Ocarina of Time], genres[action-adventure, puzzle, role-playing], player_perspective[third person])","Of course, a classic third person action-adventure RPG full of puzzles is The Legend of Zelda: Ocarina of Time. Did you ever play it before?"
+"recommend(name[The Legend of Zelda: Ocarina of Time], release_year[1998], esrb[E (for Everyone)])","Among E rated games released back in 1998, one of my favorites is The Legend of Zelda: Ocarina of Time. Are you familiar with it?"
+"recommend(name[The Legend of Zelda: Ocarina of Time], developer[Nintendo EAD], has_multiplayer[no])","Nintendo EAD developed some interesting single-player only games, like The Legend of Zelda: Ocarina of Time. Did you ever play it?"
+"recommend(name[The Legend of Zelda: Ocarina of Time], release_year[1998], player_perspective[third person])","If you're talking about third person perspective games from back in 1998, there's always The Legend of Zelda: Ocarina of Time. Are you familiar with it?"
+"recommend(name[Resident Evil 4], genres[action-adventure, shooter], platforms[Nintendo])","Speaking of Nintendo action-adventure shooter games, have you heard of Resident Evil 4?"
+"recommend(name[Resident Evil 4], esrb[M (for Mature)], has_multiplayer[no])","Speaking of M rated single-player games, have you heard of Resident Evil 4?"
+"recommend(name[Resident Evil 4], release_year[2005], player_perspective[third person])","Speaking of third person perspective games from 2005, have you heard of this other one, Resident Evil 4?"
+"recommend(name[Resident Evil 4], developer[Capcom Production Studio 4], platforms[Nintendo])","Since you seem to be a fan of Capcom Production Studio 4 games developed for the Nintendo, have you heard of Resident Evil 4?"
+"recommend(name[Resident Evil 4], esrb[M (for Mature)], platforms[Nintendo])","Since you seem to be a fan of games for the Nintendo with a mature content, have you heard of Resident Evil 4?"
+"recommend(name[Call of Duty: Advanced Warfare], developer[Sledgehammer Games], available_on_steam[yes])","Speaking of games developed by Sledgehammer Games available on Steam, have you tried Call of Duty: Advanced Warfare?"
+"recommend(name[Call of Duty: Advanced Warfare], developer[Sledgehammer Games], esrb[M (for Mature)])","Speaking of M rated games developed by Sledgehammer Games, have you tried Call of Duty: Advanced Warfare?"
+"recommend(name[Call of Duty: Advanced Warfare], release_year[2014], developer[Sledgehammer Games])","Speaking of 2014 releases from Sledgehammer Games, have you tried Call of Duty: Advanced Warfare?"
+"recommend(name[Call of Duty: Advanced Warfare], developer[Sledgehammer Games], has_multiplayer[yes])","Speaking of multiplayer games developed by Sledgehammer Games, have you tried playing Call of Duty: Advanced Warfare?"
+"recommend(name[Call of Duty: Advanced Warfare], developer[Sledgehammer Games], player_perspective[first person])","Speaking of Sledgehammer Games' first person releases, have you tried Call of Duty: Advanced Warfare?"
+"recommend(name[Tony Hawk's Pro Skater 3], developer[Neversoft Entertainment], has_multiplayer[yes])","Since you seem to be a fan of multiplayer games developed by Neversoft Entertainment, have you heard of Tony Hawk's Pro Skater 3?"
+"recommend(name[Tony Hawk's Pro Skater 3], esrb[T (for Teen)], platforms[Xbox])","Since you seem to be a fan of T rated games made for the Xbox, have you heard of Tony Hawk's Pro Skater 3?"
+"recommend(name[Tony Hawk's Pro Skater 3], genres[sport], player_perspective[third person])","Since you seem to be a fan of third person sports games, have you heard of Tony Hawk's Pro Skater 3?"
+"recommend(name[Tony Hawk's Pro Skater 3], genres[sport], has_multiplayer[yes])","Speaking of multiplayer sports games, have you heard of Tony Hawk's Pro Skater 3?"
+"recommend(name[Tony Hawk's Pro Skater 3], release_year[2001], genres[sport])","In 2001 there was this nice sports game released, uh, do you know Tony Hawk's Pro Skater 3?"

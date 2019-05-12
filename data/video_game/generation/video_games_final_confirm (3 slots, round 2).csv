@@ -1,0 +1,201 @@
+mr,ref
+"confirm(name[Anthem], genres[action-adventure, role-playing, shooter], player_perspective[third person])","Are you talking about the third person action-adventure shooter RPG, Anthem?"
+"confirm(name[Anthem], genres[action-adventure, role-playing, shooter], player_perspective[third person])",Is the Anthem you're talking about the third person action-adventure shooter RPG?
+"confirm(name[Anthem], exp_release_date[February 22, 2020], has_multiplayer[yes])","Do you mean Anthem, launching February 22, 2020 and with a multiplayer mode?"
+"confirm(name[Anthem], exp_release_date[February 22, 2020], has_multiplayer[yes])","When you mention Anthem, are you referring to the multiplayer game that's supposed to come out on February 22, 2020?"
+"confirm(name[Anthem], developer[BioWare], platforms[PlayStation])",Is the Anthem you're talking about the one developed by BioWare for the PlayStation?
+"confirm(name[Anthem], developer[BioWare], platforms[PlayStation])",Do you mean the Anthem from BioWare on PlayStation?
+"confirm(name[Anthem], genres[action-adventure, role-playing, shooter], has_multiplayer[yes])",Is the Anthem you're talking about the one that's a multiplayer action-adventure shooter RPG?
+"confirm(name[Anthem], genres[action-adventure, role-playing, shooter], has_multiplayer[yes])",Are you talking about Anthem the multiplayer action adventure shooter RPG?
+"confirm(name[Anthem], has_multiplayer[yes], platforms[PlayStation])","By Anthem, do you mean the one with multiplayer that got released for the PlayStation?"
+"confirm(name[Anthem], has_multiplayer[yes], platforms[PlayStation])","Do you mean the multiplayer game on PlayStation, Anthem?"
+"confirm(name[Tomb Raider: The Angel of Darkness], release_year[2003], developer[Core Design])",Is the Tomb Raider: The Angel of Darkness you're talking about the 2003 game that was made by Core Design?
+"confirm(name[Tomb Raider: The Angel of Darkness], release_year[2003], developer[Core Design])","Do you mean Tomb Raider: The Angel of Darkness, the game from 2003, made by Core Design?"
+"confirm(name[Tomb Raider: The Angel of Darkness], player_perspective[third person], platforms[PC])","Oh, you mean the third person PC game, Tomb Raider: The Angel of Darkness?"
+"confirm(name[Tomb Raider: The Angel of Darkness], player_perspective[third person], platforms[PC])",I assume you're referring to the third person PC game Tomb Raider: The Angel of Darkness?
+"confirm(name[Tomb Raider: The Angel of Darkness], esrb[T (for Teen)], has_mac_release[yes])",Is the Tomb Raider: The Angel of Darkness you're talking about the one that's got a T rating and a Mac release?
+"confirm(name[Tomb Raider: The Angel of Darkness], esrb[T (for Teen)], has_mac_release[yes])","Do you mean Tomb Raider: The Angel of Darkness, the T rated Mac game?"
+"confirm(name[Tomb Raider: The Angel of Darkness], has_multiplayer[no], has_linux_release[no])",Is the Tomb Raider: The Angel of Darkness you mentioned the one that's single-player only and doesn't have a Linux release?
+"confirm(name[Tomb Raider: The Angel of Darkness], has_multiplayer[no], has_linux_release[no])",Are you talking about Tomb Raider: The Angel of Darkness? The single-player game that's not available on Linux?
+"confirm(name[Tomb Raider: The Angel of Darkness], developer[Core Design], available_on_steam[yes])","Do you mean Core Design's Tomb Raider: The Angel of Darkness, available on Steam?"
+"confirm(name[Tomb Raider: The Angel of Darkness], developer[Core Design], available_on_steam[yes])",Is the Tomb Raider: The Angel of Darkness you mentioned the one developed by Core Design that you can get on Steam?
+"confirm(name[Worms: Reloaded], genres[action, platformer, strategy], platforms[PC])","Oh, do you mean Worms: Reloaded the PC action strategy platformer?"
+"confirm(name[Worms: Reloaded], genres[action, platformer, strategy], platforms[PC])","By Worms: Reloaded, do you mean the one that's an action strategy platformer for the PC?"
+"confirm(name[Worms: Reloaded], player_perspective[side view], available_on_steam[yes])","Do you mean the Worms: Reloaded with a side view, released on Steam?"
+"confirm(name[Worms: Reloaded], player_perspective[side view], available_on_steam[yes])",Is the Worms: Reloaded you mentioned the one on Steam with the side view perspective?
+"confirm(name[Worms: Reloaded], developer[Team17 Digital Ltd], platforms[PC])","When you talk about Worms: Reloaded, are you referring to the one for the PC that was made by Team17 Digital Ltd?"
+"confirm(name[Worms: Reloaded], developer[Team17 Digital Ltd], platforms[PC])","Are you talking about that PC game from Team17 Digital Ltd, Worms: Reloaded?"
+"confirm(name[Worms: Reloaded], release_year[2010], platforms[PC])",I presume you're talking about the 2010 PC game Worms: Reloaded?
+"confirm(name[Worms: Reloaded], release_year[2010], platforms[PC])","Do you mean Worms: Reloaded, the PC game released back in 2010?"
+"confirm(name[Worms: Reloaded], has_linux_release[yes], has_mac_release[yes])","Do you mean the Mac and Linux game, Worms: Reloaded?"
+"confirm(name[Worms: Reloaded], has_linux_release[yes], has_mac_release[yes])","By Worms: Reloaded, do you mean the game that's got both Mac and Linux releases?"
+"confirm(name[Shadow of the Tomb Raider], exp_release_date[September 14, 2019], platforms[Xbox])","Is the Shadow of the Tomb Raider you're talking about the one that's supposed to come out for the Xbox on September 14, 2019?"
+"confirm(name[Shadow of the Tomb Raider], exp_release_date[September 14, 2019], platforms[Xbox])","Shadow of the Tomb Raider? The one that's coming out on Xbox on September 14, 2019?"
+"confirm(name[Shadow of the Tomb Raider], developer[Eidos Montréal], player_perspective[third person])",Are you talking about the Shadow of the Tomb Raider that was created by Eidos Montréal and has a third person perspective?
+"confirm(name[Shadow of the Tomb Raider], developer[Eidos Montréal], player_perspective[third person])","Do you mean Eidos Montréal's third person masterpiece, Shadow of the Tomb Raider?"
+"confirm(name[Shadow of the Tomb Raider], genres[adventure, shooter], platforms[Xbox])",Is the Shadow of the Tomb Raider you mentioned the adventure shooter that's on the Xbox?
+"confirm(name[Shadow of the Tomb Raider], genres[adventure, shooter], platforms[Xbox])","Are you talking about the adventure-shooter, Shadow of the Tomb Raider, the one on Xbox?"
+"confirm(name[Shadow of the Tomb Raider], exp_release_date[September 14, 2019], developer[Eidos Montréal])","Is the Shadow of the Tomb Raider you're talking about the one that's supposed to be released on September 14, 2019 by Eidos Montréal?"
+"confirm(name[Shadow of the Tomb Raider], exp_release_date[September 14, 2019], developer[Eidos Montréal])","Do you mean Eidos Montréal's Shadow of the Tomb Raider, expected to come out on September 14, 2019?"
+"confirm(name[Shadow of the Tomb Raider], genres[adventure, shooter], player_perspective[third person])","Are you talking about Shadow of the Tomb Raider, the third person adventure shooter?"
+"confirm(name[Shadow of the Tomb Raider], genres[adventure, shooter], player_perspective[third person])","When you refer to Shadow of the Tomb Raider, do you mean the one that's a third person adventure shooter?"
+"confirm(name[Hellblade: Senua's Sacrifice], platforms[PC], available_on_steam[yes])",Is the Hellblade: Senua's Sacrifice you're referring to the PC game that's available on Steam?
+"confirm(name[Hellblade: Senua's Sacrifice], platforms[PC], available_on_steam[yes])","Oh, you're talking about the PC game on Steam, Hellblade: Senua's Sacrifice?"
+"confirm(name[Hellblade: Senua's Sacrifice], release_year[2017], developer[Ninja Theory])",Is the Hellblade: Senua's Sacrifice you're talking about the one that came out in 2017 and was developed by Ninja Theory?
+"confirm(name[Hellblade: Senua's Sacrifice], release_year[2017], developer[Ninja Theory])","Oh, do you mean the 2017 game from Ninja Theory, Hellblade: Senua's Sacrifice?"
+"confirm(name[Hellblade: Senua's Sacrifice], genres[adventure, hack-and-slash, indie], player_perspective[third person])",Is the Hellblade: Senua's Sacrifice you mentioned the one that's a third person indie hack-and-slash adventure game?
+"confirm(name[Hellblade: Senua's Sacrifice], genres[adventure, hack-and-slash, indie], player_perspective[third person])","Are you talking about Hellblade: Senua's Sacrifice, the third person indie hack-and-slash adventure game?"
+"confirm(name[Hellblade: Senua's Sacrifice], esrb[M (for Mature)], has_linux_release[no])","Oh are you talking about Hellblade: Senua's Sacrifice, the M rated game without a Linux release?"
+"confirm(name[Hellblade: Senua's Sacrifice], esrb[M (for Mature)], has_linux_release[no])",Is the Hellblade: Senua's Sacrifice you are talking about the M rated one that doesn't have a Linux release?
+"confirm(name[Hellblade: Senua's Sacrifice], release_year[2017], has_multiplayer[no])","Are you referring to the 2017 smash single-player hit, Hellblade: Senua's Sacrifice?"
+"confirm(name[Hellblade: Senua's Sacrifice], release_year[2017], has_multiplayer[no])","Are you talking about Hellblade: Senua's Sacrifice, the single-player game put out in 2017?"
+"confirm(name[FIFA 12], release_year[2011], developer[EA Canada])",Are you talking about EA Canada's FIFA 12 release from 2011?
+"confirm(name[FIFA 12], release_year[2011], developer[EA Canada])","Oh, do you mean the FIFA 12 made by EA Canada in 2011?"
+"confirm(name[FIFA 12], genres[simulation, sport], player_perspective[bird view])","Are you talking about the sports simulation game, FIFA 12? The one with a bird's eye view?"
+"confirm(name[FIFA 12], genres[simulation, sport], player_perspective[bird view])","When talking about FIFA 12, do you mean the sport simulator with a bird view perspective?"
+"confirm(name[FIFA 12], esrb[E (for Everyone)], platforms[Nintendo])",Is the FIFA 12 you mentioned the E rated one that's on Nintendo?
+"confirm(name[FIFA 12], esrb[E (for Everyone)], platforms[Nintendo])","Do you mean FIFA 12, the E rated Nintendo game?"
+"confirm(name[FIFA 12], has_multiplayer[yes], platforms[Nintendo])",FIFA 12 on Nintendo has multiplayer if that's the one that you're talking about. Is it?
+"confirm(name[FIFA 12], has_multiplayer[yes], platforms[Nintendo])","Are you referring to the multiplayer game on Nintendo, FIFA 12?"
+"confirm(name[FIFA 12], developer[EA Canada], genres[simulation, sport])",Is the FIFA 12 you're referring to the sport simulator that was created by EA Canada?
+"confirm(name[FIFA 12], developer[EA Canada], genres[simulation, sport])","Ooooh, you mean FIFA 12, that simulation sports game from EA Canada, right?"
+"confirm(name[Undertale], developer[tobyfox], available_on_steam[yes])","Undertale? Oh, that's the one from tobyfox you can get on Steam, right?"
+"confirm(name[Undertale], developer[tobyfox], available_on_steam[yes])","When you mention Undertale, do you mean the game that was developed by tobyfox and which you can get on Steam?"
+"confirm(name[Undertale], player_perspective[bird view], has_linux_release[yes])","Oh, you mean Undertale, right? The game on Linux with the bird's eye view?"
+"confirm(name[Undertale], player_perspective[bird view], has_linux_release[yes])",By Undertale do you mean the game with a bird view perspective that you can also get on Linux?
+"confirm(name[Undertale], release_year[2015], genres[adventure, indie, role-playing])",Undertale? The 2015 indie adventure RPG darling?
+"confirm(name[Undertale], release_year[2015], genres[adventure, indie, role-playing])",Is the Undertale you just referred to the indie adventure RPG that came out in 2015?
+"confirm(name[Undertale], esrb[E (for Everyone)], has_multiplayer[no])","You mean the single-player game Undertale, which is rated E (for Everyone)?"
+"confirm(name[Undertale], esrb[E (for Everyone)], has_multiplayer[no])","Oh, do you mean Undertale, the E rated single-player game?"
+"confirm(name[Undertale], has_linux_release[yes], has_mac_release[yes])",Is the Undertale you're talking about the one that has both Mac and Linux versions?
+"confirm(name[Undertale], has_linux_release[yes], has_mac_release[yes])","Oh, you mean Undertale, right? The one that was ported to Mac and Linux?"
+"confirm(name[BioShock], release_year[2007], genres[action-adventure, role-playing, shooter])","Do you mean 2007's action-adventure RPG shooter, BioShock?"
+"confirm(name[BioShock], release_year[2007], genres[action-adventure, role-playing, shooter])","When you mention BioShock, do you mean the action-adventure role-playing shooter that came out in 2007?"
+"confirm(name[BioShock], release_year[2007], developer[2K Boston])","Do you mean 2K Boston's 2007 game, BioShock?"
+"confirm(name[BioShock], release_year[2007], developer[2K Boston])","When you mention BioShock, do you mean the one that was developed by 2K Boston back in 2007?"
+"confirm(name[BioShock], player_perspective[first person], available_on_steam[yes])","By BioShock, do you mean the first person game that's available on Steam?"
+"confirm(name[BioShock], player_perspective[first person], available_on_steam[yes])","The first person perspective game on Steam, BioShock?"
+"confirm(name[BioShock], esrb[M (for Mature)], platforms[PC])","You mean the PC game BioShock, which is rated M (for Mature)?"
+"confirm(name[BioShock], esrb[M (for Mature)], platforms[PC])",Are you talking about the M rated BioShock on PC?
+"confirm(name[BioShock], platforms[PC], available_on_steam[yes])","BioShock, that game that's available through Steam on the PC?"
+"confirm(name[BioShock], platforms[PC], available_on_steam[yes])",Is the BioShock you're talking about the one for the PC that you can get on Steam?
+"confirm(name[The Elder Scrolls Online], release_year[2014], platforms[PC])","Oh, you mean The Elder Scrolls Online, the PC game from 2014, right?"
+"confirm(name[The Elder Scrolls Online], release_year[2014], platforms[PC])",Is The Elder Scrolls Online you mentioned the one that came out for the PC in 2014?
+"confirm(name[The Elder Scrolls Online], genres[MMORPG], platforms[PC])","Oh, do you mean the PC MMORPG, The Elder Scrolls Online?"
+"confirm(name[The Elder Scrolls Online], genres[MMORPG], platforms[PC])",Is The Elder Scrolls Online you just mentioned the PC MMORPG?
+"confirm(name[The Elder Scrolls Online], release_year[2014], developer[ZeniMax Online Studios])","The Elder Scrolls Online, the 2014 game developed by ZeniMax Online Studios?"
+"confirm(name[The Elder Scrolls Online], release_year[2014], developer[ZeniMax Online Studios])","Oh, do you mean The Elder Scrolls Online, the one from ZeniMax Online Studios and released in 2014?"
+"confirm(name[The Elder Scrolls Online], developer[ZeniMax Online Studios], platforms[PC])","Are you talking about ZeniMax Online Studios' PC game, The Elder Scrolls Online?"
+"confirm(name[The Elder Scrolls Online], developer[ZeniMax Online Studios], platforms[PC])","When referring to The Elder Scrolls Online, do you mean the one for the PC that's developed by ZeniMax Online Studios?"
+"confirm(name[The Elder Scrolls Online], genres[MMORPG], has_mac_release[yes])","The MMORPG game The Elder Scrolls Online, which was released on Mac too?"
+"confirm(name[The Elder Scrolls Online], genres[MMORPG], has_mac_release[yes])","The Elder Scrolls Online, the MMORPG that also got a Mac release?"
+"confirm(name[Heroes of Might and Magic III: The Restoration of Erathia], release_year[1999], genres[turn-based strategy])","Are you talking about Heroes of Might and Magic III: The Restoration of Erathia from 1999, the turn-based strategy game?"
+"confirm(name[Heroes of Might and Magic III: The Restoration of Erathia], release_year[1999], genres[turn-based strategy])","Heroes of Might and Magic III: The Restoration of Erathia, the 1999 turn-based strategy game?"
+"confirm(name[Heroes of Might and Magic III: The Restoration of Erathia], player_perspective[bird view], platforms[PC])",Is the Heroes of Might and Magic III: The Restoration of Erathia you're talking about the one with the bird view perspective that's for the PC?
+"confirm(name[Heroes of Might and Magic III: The Restoration of Erathia], player_perspective[bird view], platforms[PC])","Do you mean the PC game, Heroes of Might and Magic III: The Restoration of Erathia, featuring a bird's eye view?"
+"confirm(name[Heroes of Might and Magic III: The Restoration of Erathia], developer[Loki Software], has_multiplayer[yes])","Are you talking about Loki Software's multiplayer game, Heroes of Might and Magic III: The Restoration of Erathia?"
+"confirm(name[Heroes of Might and Magic III: The Restoration of Erathia], developer[Loki Software], has_multiplayer[yes])",Is the Heroes of Might and Magic III: The Restoration of Erathia you mentioned the one with multiplayer that was developed by Loki Software?
+"confirm(name[Heroes of Might and Magic III: The Restoration of Erathia], esrb[E (for Everyone)], has_mac_release[yes])","The E rated game on Mac, Heroes of Might and Magic III: The Restoration of Erathia?"
+"confirm(name[Heroes of Might and Magic III: The Restoration of Erathia], esrb[E (for Everyone)], has_mac_release[yes])","By Heroes of Might and Magic III: The Restoration of Erathia, do you mean the E rated game that got a Mac release?"
+"confirm(name[Heroes of Might and Magic III: The Restoration of Erathia], available_on_steam[no], has_linux_release[yes])","Are you talking about Heroes of Might and Magic III: The Restoration of Erathia, the one on Linux but not on Steam?"
+"confirm(name[Heroes of Might and Magic III: The Restoration of Erathia], available_on_steam[no], has_linux_release[yes])",Is the Heroes of Might and Magic III: The Restoration of Erathia you mentioned the one that you can't get on Steam but which has a Linux release?
+"confirm(name[Tony Hawk's Pro Skater 3], player_perspective[third person], platforms[PC])","Oh, you're talking about the third person PC game, Tony Hawk's Pro Skater 3?"
+"confirm(name[Tony Hawk's Pro Skater 3], player_perspective[third person], platforms[PC])","By Tony Hawk's Pro Skater 3, do you mean the PC game with the third person perspective?"
+"confirm(name[Tony Hawk's Pro Skater 3], release_year[2001], genres[sport])","Oh, the sports game from 2001, Tony Hawk's Pro Skater 3?"
+"confirm(name[Tony Hawk's Pro Skater 3], release_year[2001], genres[sport])",Is the Tony Hawk's Pro Skater 3 you're talking about the sport game that was released back in 2001?
+"confirm(name[Tony Hawk's Pro Skater 3], release_year[2001], developer[Neversoft Entertainment])","You mean the 2001 Neversoft Entertainment game, Tony Hawk's Pro Skater 3, right?"
+"confirm(name[Tony Hawk's Pro Skater 3], release_year[2001], developer[Neversoft Entertainment])","Tony Hawk's Pro Skater 3? Oh, isn't that the game Neversoft Entertainment made back in 2001?"
+"confirm(name[Tony Hawk's Pro Skater 3], player_perspective[third person], has_multiplayer[yes])","By Tony Hawk's Pro Skater 3, do you mean the game that's got a third person perspective and a multiplayer mode?"
+"confirm(name[Tony Hawk's Pro Skater 3], player_perspective[third person], has_multiplayer[yes])","Do you mean the third person multiplayer game, Tony Hawk's Pro Skater 3?"
+"confirm(name[Tony Hawk's Pro Skater 3], platforms[PC], available_on_steam[no])","You mean Tony Hawk's Pro Skater 3, the PC game that isn't available on Steam?"
+"confirm(name[Tony Hawk's Pro Skater 3], platforms[PC], available_on_steam[no])","Are you talking about Tony Hawk's Pro Skater 3, the one on PC but not on Steam for some odd reason?"
+"confirm(name[Layers of Fear], developer[Bloober Team], player_perspective[first person])","Bloober Team's Layers of Fear, the first person horror game?"
+"confirm(name[Layers of Fear], developer[Bloober Team], player_perspective[first person])","When you talk about Layers of Fear, do you mean the first person game developed by Bloober Team?"
+"confirm(name[Layers of Fear], esrb[M (for Mature)], platforms[PlayStation])",Is the Layers of Fear you're talking about the M rated one for the PlayStation?
+"confirm(name[Layers of Fear], esrb[M (for Mature)], platforms[PlayStation])","Are you talking about the M rated PlayStation game, Layers of Fear?"
+"confirm(name[Layers of Fear], genres[adventure, indie, point-and-click], player_perspective[first person])","Layers of Fear, the indie first person point-and-click adventure game?"
+"confirm(name[Layers of Fear], genres[adventure, indie, point-and-click], player_perspective[first person])",Is the Layers of Fear you mentioned the first person indie point-and-click adventure game?
+"confirm(name[Layers of Fear], release_year[2015], developer[Bloober Team])",Do you mean the Layers of Fear that Bloober Team made and released in 2015?
+"confirm(name[Layers of Fear], release_year[2015], developer[Bloober Team])","Oh, you mean Layers of Fear, right? The one from Bloober Team made in 2015?"
+"confirm(name[Layers of Fear], player_perspective[first person], platforms[PlayStation])","Are you talking about Layers of Fear, the first person perspective game for PlayStation?"
+"confirm(name[Layers of Fear], player_perspective[first person], platforms[PlayStation])","Layers of Fear, the first person PlayStation game?"
+"confirm(name[Superhot], release_year[2016], has_multiplayer[no])",Is the Superhot you're referring to the single-player game that came out in 2016?
+"confirm(name[Superhot], release_year[2016], has_multiplayer[no])","Do you mean Superhot, the single-player game from 2016?"
+"confirm(name[Superhot], release_year[2016], platforms[PlayStation])",Is the Superhot you're referring to the one that came out in 2016 for the PlayStation?
+"confirm(name[Superhot], release_year[2016], platforms[PlayStation])","Are you taking about the 2016 PlayStation game, Superhot?"
+"confirm(name[Superhot], player_perspective[first person], has_multiplayer[no])","By Superhot, do you mean the single-player game with a first person perspective?"
+"confirm(name[Superhot], player_perspective[first person], has_multiplayer[no])","Oh, Superhot, the single-player first person game?"
+"confirm(name[Superhot], developer[SUPERHOT Team], genres[indie, shooter, tactical])",Is the Superhot you are referring to the indie tactical shooter developed by SUPERHOT Team?
+"confirm(name[Superhot], developer[SUPERHOT Team], genres[indie, shooter, tactical])","Are you talking about the indie tactical shooter from SUPERHOT Team, Superhot?"
+"confirm(name[Superhot], release_year[2016], developer[SUPERHOT Team])","Is the Superhot you mentioned the one made by SUPERHOT Team, which got released back in 2016?"
+"confirm(name[Superhot], release_year[2016], developer[SUPERHOT Team])","Superhot, the game developed by SUPERHOT Team and released in 2016?"
+"confirm(name[Mafia], release_year[2002], developer[Illusion Softworks])","When you talk about Mafia, do you mean the 2002 game that was developed by Illusion Softworks?"
+"confirm(name[Mafia], release_year[2002], developer[Illusion Softworks])",Are you talking about Illusion Softworks' Mafia from 2002?
+"confirm(name[Mafia], has_linux_release[no], has_mac_release[no])",Is the Mafia you just mentioned the one that doesn't have either a Mac release or a Linux release?
+"confirm(name[Mafia], has_linux_release[no], has_mac_release[no])","Are you talking about the game without a Linux or Mac release, Mafia?"
+"confirm(name[Mafia], esrb[M (for Mature)], has_multiplayer[no])","When you mention Mafia, do you mean the single-player game with an M rating?"
+"confirm(name[Mafia], esrb[M (for Mature)], has_multiplayer[no])","Are you talking about Maifa, the single-player M rated game?"
+"confirm(name[Mafia], genres[driving/racing, fighting, shooter], player_perspective[third person])","By Mafia, do you mean the third person game that combined the driving, fighting, and shooter genres?"
+"confirm(name[Mafia], genres[driving/racing, fighting, shooter], player_perspective[third person])","Oh, you mean Mafia the third person driving fighting shooter, correct?"
+"confirm(name[Mafia], platforms[PC], available_on_steam[yes])","Do you mean the Steam game on PC, Mafia?"
+"confirm(name[Mafia], platforms[PC], available_on_steam[yes])",Is the Mafia that you're referring to the one for the PC that you can get on Steam?
+"confirm(name[Little Big Adventure], release_year[1994], esrb[T (for Teen)])",Is the Little Big Adventure you're talking about the one that came out in 1994 and got a T rating?
+"confirm(name[Little Big Adventure], release_year[1994], esrb[T (for Teen)])","Are you referring to the 1994 T rated hit, Little Big Adventure?"
+"confirm(name[Little Big Adventure], release_year[1994], developer[Adeline Software International])",Do you mean the Little Big Adventure that Adeline Software International developed and released in 1994?
+"confirm(name[Little Big Adventure], release_year[1994], developer[Adeline Software International])","Little Big Adventure from 1994, developed by Adeline Software International?"
+"confirm(name[Little Big Adventure], genres[action-adventure], platforms[PlayStation])","By Little Big Adventure, do you mean the action-adventure game for the PlayStation?"
+"confirm(name[Little Big Adventure], genres[action-adventure], platforms[PlayStation])","Are you talking about that action-adventure game on the PlayStation, Little Big Adventure?"
+"confirm(name[Little Big Adventure], genres[action-adventure], player_perspective[third person])","Do you mean the third person action-adventure game, Little Big Adventure?"
+"confirm(name[Little Big Adventure], genres[action-adventure], player_perspective[third person])","Little Big Adventure, the third person action-adventure game?"
+"confirm(name[Little Big Adventure], developer[Adeline Software International], player_perspective[third person])",Are you talking about the third person Little Big Adventure that was developed by Adeline Software International?
+"confirm(name[Little Big Adventure], developer[Adeline Software International], player_perspective[third person])","You're talking about Little Big Adventure, the third person game from Adeline Software International, right?"
+"confirm(name[Football Manager 2015], genres[simulation, sport, strategy], has_multiplayer[yes])","When you mention Football Manager 2015, are you talking about the strategy sport simulator with a multiplayer option?"
+"confirm(name[Football Manager 2015], genres[simulation, sport, strategy], has_multiplayer[yes])","Are you talking about Football Manager 2015, the multiplayer simulation sport strategy game?"
+"confirm(name[Football Manager 2015], release_year[2014], genres[simulation, sport, strategy])","Do you mean 2014's simulation strategy sports game, Football Manager 2015?"
+"confirm(name[Football Manager 2015], release_year[2014], genres[simulation, sport, strategy])",Is the Football Manager 2015 that you just mentioned the one that was released in 2014 and is a strategy sport simulator?
+"confirm(name[Football Manager 2015], developer[Sports Interactive], genres[simulation, sport, strategy])","When you mention Football Manager 2015, do you mean the strategy sport simulator developed by Sports Interactive?"
+"confirm(name[Football Manager 2015], developer[Sports Interactive], genres[simulation, sport, strategy])","Do you mean the simulation sport strategy game from Sports Interactive, Football Manager 2015?"
+"confirm(name[Football Manager 2015], release_year[2014], developer[Sports Interactive])","Football Manager 2015, the 2014 game from Sports Interactive?"
+"confirm(name[Football Manager 2015], release_year[2014], developer[Sports Interactive])","By Football Manager 2015 you mean the 2014 game developed by Sports Interactive, don't you?"
+"confirm(name[Football Manager 2015], release_year[2014], has_multiplayer[yes])","Uh, Football Manager 2015, the one released in 2014, with multiplayer options?"
+"confirm(name[Football Manager 2015], release_year[2014], has_multiplayer[yes])","Is that the multiplayer game from 2014, Football Manager 2015?"
+"confirm(name[Might & Magic: Heroes VI], release_year[2011], developer[Black Hole Entertainment])","Do you mean 2011's Might & Magic: Heroes VI, developed by Black Hole Entertainment?"
+"confirm(name[Might & Magic: Heroes VI], release_year[2011], developer[Black Hole Entertainment])",Is the Might & Magic: Heroes VI you mentioned the 2011 game that was developed by Black Hole Entertainment?
+"confirm(name[Might & Magic: Heroes VI], developer[Black Hole Entertainment], available_on_steam[yes])",Is the Might & Magic: Heroes VI you just mentioned the one developed by Black Hole Entertainment and available on Steam?
+"confirm(name[Might & Magic: Heroes VI], developer[Black Hole Entertainment], available_on_steam[yes])","Do you mean Black Hole Entertainment's Might & Magic: Heroes VI, available on Steam?"
+"confirm(name[Might & Magic: Heroes VI], player_perspective[bird view], platforms[PC])","When you mention Might & Magic: Heroes VI, do you mean the PC game with a bird view perspective?"
+"confirm(name[Might & Magic: Heroes VI], player_perspective[bird view], platforms[PC])","Oh, Might & Magic: Heroes VI, that bird's eye view game on PC?"
+"confirm(name[Might & Magic: Heroes VI], release_year[2011], platforms[PC])","Do you mean the 2011 PC game, Might & Magic: Heroes VI?"
+"confirm(name[Might & Magic: Heroes VI], release_year[2011], platforms[PC])","You're talking about the 2011 PC game Might & Magic: Heroes VI, is that correct?"
+"confirm(name[Might & Magic: Heroes VI], genres[role-playing, turn-based strategy], player_perspective[bird view])",Are you talking about the bird's eye view turn-based RPG strategy Might & Magic: Heroes VI?
+"confirm(name[Might & Magic: Heroes VI], genres[role-playing, turn-based strategy], player_perspective[bird view])","Do you mean the turn based strategy RPG, Might & Magic: Heroes VI, the one with a bird view perspective?"
+"confirm(name[The Crew 2], genres[driving/racing], player_perspective[third person])","Is it the third person racing game, The Crew 2, that you meant?"
+"confirm(name[The Crew 2], genres[driving/racing], player_perspective[third person])","You mean The Crew 2, the third person driving/racing game?"
+"confirm(name[The Crew 2], exp_release_date[June 29, 2019], genres[driving/racing])","Are you referring to The Crew 2, the upcoming driving/racing title releasing June 29, 2019?"
+"confirm(name[The Crew 2], exp_release_date[June 29, 2019], genres[driving/racing])","When you mention The Crew 2, do you mean the driving/racing game that's supposed to come out later this year, on June 29, 2019?"
+"confirm(name[The Crew 2], genres[driving/racing], platforms[PlayStation])","Do you mean the driving/racing game on PlayStation, The Crew 2?"
+"confirm(name[The Crew 2], genres[driving/racing], platforms[PlayStation])","When you refer to The Crew 2, are you talking about the driving/racing game for the PlayStation?"
+"confirm(name[The Crew 2], developer[Ivory Tower], platforms[PlayStation])",By The Crew 2 are you talking about the PlayStation game created by Ivory Tower?
+"confirm(name[The Crew 2], developer[Ivory Tower], platforms[PlayStation])","The Crew 2, the one from Ivory Tower released for the PlayStation?"
+"confirm(name[The Crew 2], exp_release_date[June 29, 2019], developer[Ivory Tower])","Do you mean The Crew 2 that's coming out June 29, 2019, by Ivory Tower?"
+"confirm(name[The Crew 2], exp_release_date[June 29, 2019], developer[Ivory Tower])","When you mention The Crew 2, are you talking about the game developed by Ivory Tower that's supposed to come out on June 29, 2019?"
+"confirm(name[Silent Hill 2], genres[action-adventure, puzzle], platforms[Xbox])","Oh do you mean the action-adventure puzzle game on Xbox, Silent Hill 2?"
+"confirm(name[Silent Hill 2], genres[action-adventure, puzzle], platforms[Xbox])",I guess you're talking about the Xbox action-adventure puzzle game Silent Hill 2?
+"confirm(name[Silent Hill 2], developer[Konami Computer Entertainment Tokyo], genres[action-adventure, puzzle])","Silent Hill 2 developed by Konami Computer Entertainment Tokyo, the one with, you know, both action-adventure and puzzle elements?"
+"confirm(name[Silent Hill 2], developer[Konami Computer Entertainment Tokyo], genres[action-adventure, puzzle])","Are you talking about the Silent Hill 2 by Konami Computer Entertainment Tokyo, the action-adventure puzzle game?"
+"confirm(name[Silent Hill 2], esrb[M (for Mature)], genres[action-adventure, puzzle])",Is the Silent Hill 2 you just mentioned the one that's an M rated action-adventure puzzle game?
+"confirm(name[Silent Hill 2], esrb[M (for Mature)], genres[action-adventure, puzzle])","Are you talking about the M-rated action-adventure puzzle game, Silent Hill 2?"
+"confirm(name[Silent Hill 2], release_year[2001], developer[Konami Computer Entertainment Tokyo])","By Silent Hill 2, do you mean the 2001 game made by Konami Computer Entertainment Tokyo?"
+"confirm(name[Silent Hill 2], release_year[2001], developer[Konami Computer Entertainment Tokyo])","Are you talking about Konami Computer Entertainment Tokyo's 2001 hit, Silent Hill 2?"
+"confirm(name[Silent Hill 2], esrb[M (for Mature)], platforms[Xbox])","Oh, the M rated game on Xbox, Silent Hill 2?"
+"confirm(name[Silent Hill 2], esrb[M (for Mature)], platforms[Xbox])","When you talk about Silent Hill 2, do you mean the M rated game that's on the Xbox?"
+"confirm(name[Ancient Cities], exp_release_date[December 1, 2019], developer[Uncasual Games])","Is the Ancient Cities you just referred to the one that's developed by Uncasual Games and coming out on December 1, 2019?"
+"confirm(name[Ancient Cities], exp_release_date[December 1, 2019], developer[Uncasual Games])","Oh, you mean Ancient Cities, the one from Uncasual Games coming out December 1, 2019?"
+"confirm(name[Ancient Cities], developer[Uncasual Games], player_perspective[bird view])","Is the Ancient Cities you are talking about the one with the bird view perspective, and developed by Uncasual Games?"
+"confirm(name[Ancient Cities], developer[Uncasual Games], player_perspective[bird view])",Do you mean Ancient Cities from Uncasual Games? The one with a bird view?
+"confirm(name[Ancient Cities], developer[Uncasual Games], platforms[PC])","The PC game Ancient Cities, which was developed by Uncasual Games?"
+"confirm(name[Ancient Cities], developer[Uncasual Games], platforms[PC])","Is that the PC game from Uncasual Games, Ancient Cities?"
+"confirm(name[Ancient Cities], developer[Uncasual Games], genres[simulation, strategy])","I'm guessing you mean Ancient Cities, the simulation strategy game developed by Uncasual Games?"
+"confirm(name[Ancient Cities], developer[Uncasual Games], genres[simulation, strategy])","Oh, you're talking about Ancient Cities, aren't you? The simulation strategy game from Uncasual Games?"
+"confirm(name[Ancient Cities], player_perspective[bird view], platforms[PC])","Just to confirm, you're talking about the PC game, Ancient Cities, with the bird view perspective, right?"
+"confirm(name[Ancient Cities], player_perspective[bird view], platforms[PC])","Ancient Cities, the PC game with a bird's eye view?"

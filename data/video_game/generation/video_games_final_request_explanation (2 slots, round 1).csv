@@ -1,0 +1,51 @@
+mr,ref
+"request_explanation(rating[good], platforms[PlayStation])",Why do you like PlayStation games better compared to games on other platforms?
+"request_explanation(rating[good], genres[adventure, platformer, puzzle])",What is it you find interesting about adventure platformers with puzzles?
+"request_explanation(rating[good], player_perspective[side view])",Why is it that you enjoy games with a side view perspective?
+"request_explanation(rating[good], has_multiplayer[no])",What is that you find fun about single-player games?
+"request_explanation(developer[Tarsier Studios], rating[good])",So what makes games by Tarsier Studios stand out from the other developers?
+"request_explanation(rating[poor], platforms[Xbox])",So why is it you hate Xbox games so much?
+"request_explanation(rating[poor], player_perspective[first person])",What is it about first person perspective games that makes you dislike them the way you do?
+"request_explanation(rating[poor], has_multiplayer[no])",Why don't you ever enjoy games without multiplayer?
+"request_explanation(esrb[M (for Mature)], rating[poor])",What is it about M rated games that you find so off-putting?
+"request_explanation(developer[Bloober Team], rating[poor])",What is it about Bloober Team games that makes you find them boring and frustrating?
+"request_explanation(rating[poor], platforms[PC])",What is it about PC games that makes you find them so unpleasant?
+"request_explanation(rating[poor], has_multiplayer[yes])",Why don't you ever enjoy multiplayer games?
+"request_explanation(developer[Days of Wonder], rating[poor])",What is it about games made by Days of Wonder that makes you unable to stand them?
+"request_explanation(rating[poor], genres[indie, trivia/board game])",Why don't you ever enjoy indie trivia/board games?
+"request_explanation(rating[poor], has_mac_release[yes])","You seem to find all Mac releases unacceptable, why is that?"
+"request_explanation(rating[good], genres[action-adventure, platformer])",So what is it about action-adventure platformers that makes you enjoy them?
+"request_explanation(developer[Ubisoft Montreal], rating[good])",You've mentioned games by Ubisoft Montreal to be pretty good. Why do you think that is?
+"request_explanation(rating[good], available_on_steam[yes])",What is it about Steam games that you find to be good?
+"request_explanation(rating[good], player_perspective[third person])","I know you enjoy third person games, what is it about that perspective that you like?"
+"request_explanation(rating[good], has_multiplayer[no])","You seem to enjoy single-player only games a fair amount, what is it you like about them?"
+"request_explanation(rating[average], platforms[PlayStation])",So what is it about PlayStation games that causes you to find them so average?
+"request_explanation(rating[average], player_perspective[third person])","You've mentioned you find third person perspective games to be just okay, why is that?"
+"request_explanation(rating[average], has_multiplayer[yes])",Can you explain to me why you find multiplayer games to be neither good nor bad?
+"request_explanation(developer[Attention To Detail], rating[average])",You've said you find games developed by Attention To Detail to be okay but not great. What is it about them that makes you say that?
+"request_explanation(release_year[1999], rating[average])",What is it about games released in 1999 that makes you feel so-so about them all?
+"request_explanation(rating[good], available_on_steam[yes])",Why do you feel Steam games are pretty good?
+"request_explanation(rating[good], genres[adventure, point-and-click])",What is it about point-and-click adventure games that makes you enjoy them?
+"request_explanation(rating[good], has_mac_release[yes])",So what is it about games with Mac releases that makes you like them like you do?
+"request_explanation(developer[Telltale Games], rating[good])",Can you please explain to me a bit more about why you enjoy games developed by Telltale Games?
+"request_explanation(rating[good], player_perspective[third person])",What is it about a third person perspective in video games that makes you like them?
+"request_explanation(developer[Visual Concepts], rating[good])","You tend to enjoy games made by Visual Concepts, why is that?"
+"request_explanation(rating[good], platforms[PC])",What is it about PC games that makes you enjoy them like you do?
+"request_explanation(rating[good], genres[sport])",How come you always seem to have fun playing sports games?
+"request_explanation(rating[good], player_perspective[third person])",You seem to gravitate to games with a third person perspective. What's the reason for that?
+"request_explanation(rating[good], has_multiplayer[yes])",You like multiplayer games quite a bit. Can you tell me why that is?
+"request_explanation(rating[excellent], genres[shooter])",What is it about shooter games that you absolutely love?
+"request_explanation(release_year[2004], rating[excellent])",You often mention 2004 as the best year for games. What was it about the games released that year that makes you love them so much?
+"request_explanation(rating[excellent], platforms[PC])",Why do you love playing games on the PC more than any other platforms?
+"request_explanation(rating[excellent], has_mac_release[yes])",Why do you love Mac games so much?
+"request_explanation(developer[Valve Corporation], rating[excellent])",What is it about games developed by Valve Corporation that makes you feel they're so awesome?
+"request_explanation(developer[SIE Santa Monica Studio], rating[excellent])","Hey, what it is about games developed by SIE Santa Monica Studio that makes you love them so much?"
+"request_explanation(esrb[M (for Mature)], rating[excellent])",Why do you love M rated games so much more than games with other content ratings?
+"request_explanation(release_year[2018], rating[excellent])",It seems like 2018 is one of your favorite years for video games of all time. Why is that?
+"request_explanation(rating[excellent], player_perspective[third person])",What is it about games with a third person perspective that makes you find them so excellent?
+"request_explanation(rating[excellent], genres[action-adventure, platformer, role-playing])",What is it about action-adventure RPG platformers that you find so amazingly appealing?
+"request_explanation(rating[excellent], platforms[Nintendo])",What is it about Nintendo games that makes you rave about how awesome they are?
+"request_explanation(rating[excellent], genres[action-adventure, shooter])",Why is it that action-adventure shooters are always your favorite games?
+"request_explanation(release_year[2005], rating[excellent])",What is it about games released in 2005 that makes you think it's such a fantastic year for video games?
+"request_explanation(developer[Capcom Production Studio 4], rating[excellent])",Why is Capcom Production Studio 4 the developer whose games you love more than anyone's?
+"request_explanation(esrb[M (for Mature)], rating[excellent])","You always praise M rated games, what's the reason for that?"

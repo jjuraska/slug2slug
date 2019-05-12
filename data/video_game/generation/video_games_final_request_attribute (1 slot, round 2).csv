@@ -1,0 +1,151 @@
+mr,ref
+request_attribute(release_year[]),Which year do you think had the best games?
+request_attribute(release_year[]),What is your favorite year that games came out?
+request_attribute(release_year[]),"In your opinion, the best games were released in what year?"
+request_attribute(release_year[]),Which year do you think was the best for games?
+request_attribute(release_year[]),In which year do you think a lot of good games were released?
+request_attribute(release_year[]),Do you have a favorite release year for video games?
+request_attribute(release_year[]),Is there a particular year from which you enjoy games the most?
+request_attribute(release_year[]),What would you say was a memorable year for video games?
+request_attribute(release_year[]),"Can you think of a year, in which video games were particularly good?"
+request_attribute(release_year[]),What do you think was the best year for games?
+request_attribute(release_year[]),Do you remember a year in which a lot of good games were released?
+request_attribute(release_year[]),What was the best year for games that you can remember?
+request_attribute(release_year[]),"Which year would you say was the most memorable, as far as video games are concerned?"
+request_attribute(release_year[]),What would you say was the best release year for video games in general?
+request_attribute(release_year[]),"Which year was particularly good for video games, in your opinion?"
+request_attribute(developer[]),Who are your favorite video game developers?
+request_attribute(developer[]),Who's your favorite video game developer?
+request_attribute(developer[]),Who are some of your favorite video game developers?
+request_attribute(developer[]),Which video game developer is your favorite?
+request_attribute(developer[]),Is there a specific video game developer you prefer?
+request_attribute(developer[]),Who is your favorite game developer?
+request_attribute(developer[]),Are there any game developers you particularly like?
+request_attribute(developer[]),Do you have a preference for certain game developers?
+request_attribute(developer[]),Do you like to play games from a specific developer?
+request_attribute(developer[]),Is there a developer whose games you always at least try?
+request_attribute(developer[]),Is there a particular developer that you prefer?
+request_attribute(developer[]),Which developer is your favorite?
+request_attribute(developer[]),Would you say you prefer a certain developer?
+request_attribute(developer[]),Which game developer do you think is the best?
+request_attribute(developer[]),"What developer is top notch, in your mind?"
+request_attribute(esrb[]),Which is your preferred ESRB rating for the games you play?
+request_attribute(esrb[]),Do you prefer to play games with a particular ESRB rating?
+request_attribute(esrb[]),Is there an ESRB rating which you prefer games to have for you to play them?
+request_attribute(esrb[]),Do you require that your games have a specific ESRB rating?
+request_attribute(esrb[]),Which ESRB content label do you typically want your games to have?
+request_attribute(esrb[]),What ESRB content rating do you prefer?
+request_attribute(esrb[]),"If the content rating is important to you, which ESRB label do you mostly like your games to have?"
+request_attribute(esrb[]),Is there a particular ESRB content rating a game must have for you to even consider it?
+request_attribute(esrb[]),Games with which ESRB rating do you typically play?
+request_attribute(esrb[]),What is your favorite ESRB content rating?
+request_attribute(esrb[]),"If the ESRB rating of a game matters to you, which one do you normally go with?"
+request_attribute(esrb[]),Do you generally look at the ESRB content rating of a game before playing it?
+request_attribute(esrb[]),Do you have a favorite ESRB content rating?
+request_attribute(esrb[]),Are there any ESRB content ratings which you give preference to when picking a game to play?
+request_attribute(esrb[]),"Are you at all bothered by the ESRB rating of a game before playing it? If so, which one do msot often go for?"
+request_attribute(genres[]),What is your favorite genre of video game?
+request_attribute(genres[]),Are there any genres you could play pretty much any time?
+request_attribute(genres[]),Which is the genre of video games that you are most interested in?
+request_attribute(genres[]),Are there certain genres you just love to play?
+request_attribute(genres[]),"I'm curious, what is the game genre you like the best?"
+request_attribute(genres[]),What would you say is your favorite genre of video game?
+request_attribute(genres[]),What video game genre is the best in your opinion?
+request_attribute(genres[]),What genre is your favorite to play?
+request_attribute(genres[]),Which genre do you believe is your favorite?
+request_attribute(genres[]),What genre of game is your preference?
+request_attribute(genres[]),What are the genres of your favorite video games?
+request_attribute(genres[]),What kind of genres do you like the most?
+request_attribute(genres[]),What's your favorite video game genre?
+request_attribute(genres[]),"Since you like video games, what's your favorite genre?"
+request_attribute(genres[]),"When you play video games, what genres are overall your favorite?"
+request_attribute(player_perspective[]),What is your preferred player perspective in video games?
+request_attribute(player_perspective[]),What is the player perspective you enjoy the most in games?
+request_attribute(player_perspective[]),Is there a certain player perspective that you prefer over others in games you play?
+request_attribute(player_perspective[]),What is your favorite player perspective in games?
+request_attribute(player_perspective[]),Is there a player perspective that you tend to enjoy the most in games?
+request_attribute(player_perspective[]),What player perspective do you prefer?
+request_attribute(player_perspective[]),Which player perspective do you prefer to game on?
+request_attribute(player_perspective[]),What is your favorite gaming perspective?
+request_attribute(player_perspective[]),What player perspective type do you like most?
+request_attribute(player_perspective[]),Which perspective is the one that you prefer the most?
+request_attribute(player_perspective[]),Do you enjoy games from a certain player perspective more than others?
+request_attribute(player_perspective[]),Is the player perspective important when you decide whether to get a game?
+request_attribute(player_perspective[]),Do you have a player perspective preference in video games?
+request_attribute(player_perspective[]),Do you prefer any specific player perspective over the others when you play games?
+request_attribute(player_perspective[]),Would you say there is a player perspective in games that you in general like the most?
+request_attribute(has_multiplayer[]),Do you like multiplayer gaming?
+request_attribute(has_multiplayer[]),"Do you prefer to game with others, I mean, multiplayer?"
+request_attribute(has_multiplayer[]),"Do you enjoy playing games in multiplayer, with other people?"
+request_attribute(has_multiplayer[]),Are you more of a multiplayer type of gamer?
+request_attribute(has_multiplayer[]),Do you prefer playing games with friends in multiplayer?
+request_attribute(has_multiplayer[]),Do you enjoy multiplayer games better than those that don't have the option?
+request_attribute(has_multiplayer[]),Do you like games that you can play in multiplayer?
+request_attribute(has_multiplayer[]),Do you like to play games that have a multiplayer option?
+request_attribute(has_multiplayer[]),Do you play multiplayer games?
+request_attribute(has_multiplayer[]),Would you say you prefer playing games with a multiplayer mode?
+request_attribute(has_multiplayer[]),Would you say multiplayer is an important feature when you're deciding about trying a game?
+request_attribute(has_multiplayer[]),Would you tend to enjoy the multiplayer experience in recent games?
+request_attribute(has_multiplayer[]),Do you find multiplayer games enjoyable?
+request_attribute(has_multiplayer[]),Are you into multiplayer gaming at all?
+request_attribute(has_multiplayer[]),Do you often check out the multiplayer mode of games you play whenever they have it?
+request_attribute(platforms[]),What's your preferred gaming platform?
+request_attribute(platforms[]),Which platform is your choice for gaming?
+request_attribute(platforms[]),Which platform do you prefer to use to game?
+request_attribute(platforms[]),"What's your favorite platform, huh?"
+request_attribute(platforms[]),"So tell me, what platform do you game on?"
+request_attribute(platforms[]),What is your preferred platform for gaming these days?
+request_attribute(platforms[]),Is there a platform you game on exclusively?
+request_attribute(platforms[]),Do you have a gaming platform you definitely prefer over the others?
+request_attribute(platforms[]),Which platform do you mostly game on?
+request_attribute(platforms[]),"I'm curious, do you mostly game on a single platform?"
+request_attribute(platforms[]),What gaming platform do you prefer?
+request_attribute(platforms[]),What's your favorite platform for games?
+request_attribute(platforms[]),Which platform do you go for when it comes to games?
+request_attribute(platforms[]),What gaming platform do you generally choose?
+request_attribute(platforms[]),Which platform are you partial to for video games?
+request_attribute(available_on_steam[]),Does it matter to you if a game is on Steam?
+request_attribute(available_on_steam[]),Is a game being on Steam or not a dealbreaker to you?
+request_attribute(available_on_steam[]),Do you prefer that a game be available on Steam?
+request_attribute(available_on_steam[]),Do you prefer getting your games on Steam?
+request_attribute(available_on_steam[]),Is availability of a game on Steam important to you?
+request_attribute(available_on_steam[]),Do you prefer playing games that you can get on Steam?
+request_attribute(available_on_steam[]),Would you say it's important to you that a game is available on Steam?
+request_attribute(available_on_steam[]),Do you mostly play games on Steam?
+request_attribute(available_on_steam[]),Is it more convenient for you to play games on Steam?
+request_attribute(available_on_steam[]),Do you purchase games from Steam?
+request_attribute(available_on_steam[]),Do you find availability on Steam to be important to you when deciding about getting a new game?
+request_attribute(available_on_steam[]),Do you like games with availability on Steam?
+request_attribute(available_on_steam[]),Are games that are available on Steam more likely to make it into your game library?
+request_attribute(available_on_steam[]),Would you say Steam makes it more convenient for you to get new games to play?
+request_attribute(available_on_steam[]),Has Steam been the major source of your video games in the past few years?
+request_attribute(has_linux_release[]),Are you a Linux gamer?
+request_attribute(has_linux_release[]),Is Linux your OS for gaming?
+request_attribute(has_linux_release[]),Do you like to game on Linux?
+request_attribute(has_linux_release[]),Do you game often on Linux?
+request_attribute(has_linux_release[]),Is Linux your gaming OS of choice?
+request_attribute(has_linux_release[]),Have you ever played a game on Linux?
+request_attribute(has_linux_release[]),Do you have any experience with gaming on a Linux system?
+request_attribute(has_linux_release[]),Would you recommend Linux for playing games?
+request_attribute(has_linux_release[]),Does it matter to you if you can play a game on a Linux OS?
+request_attribute(has_linux_release[]),Do you ever play games on a Linux system?
+request_attribute(has_linux_release[]),Do you play games on Linux at all?
+request_attribute(has_linux_release[]),Do you like Linux games?
+request_attribute(has_linux_release[]),Is it important for you that a game is also available on Linux?
+request_attribute(has_linux_release[]),Do you do any of your gaming on a Linux system?
+request_attribute(has_linux_release[]),Is it a dealbreaker for you if a game does not support Linux?
+request_attribute(has_mac_release[]),Do you think Mac is a better gaming platform than others?
+request_attribute(has_mac_release[]),Do you generally play games on the Mac OS?
+request_attribute(has_mac_release[]),Does a game need a Mac release for you to be interested in it?
+request_attribute(has_mac_release[]),Is Mac the platform of your choice?
+request_attribute(has_mac_release[]),Is it important for you that games have a Mac release in order for you to play it?
+request_attribute(has_mac_release[]),Are you a Mac gamer?
+request_attribute(has_mac_release[]),Do you play video games on the Mac OS?
+request_attribute(has_mac_release[]),Do you play your games on Mac?
+request_attribute(has_mac_release[]),Is Mac your favorite platform for gaming?
+request_attribute(has_mac_release[]),Do you use Mac as a platform for your gaming?
+request_attribute(has_mac_release[]),Do you play games on Mac?
+request_attribute(has_mac_release[]),Does a game having a Mac release matter to you?
+request_attribute(has_mac_release[]),Do you enjoy gaming on a Mac?
+request_attribute(has_mac_release[]),Would you not consider a game without a Mac release?
+request_attribute(has_mac_release[]),Do you ever game on a Mac?

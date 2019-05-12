@@ -1,0 +1,101 @@
+name,release_year,exp_release_date,developer,esrb,rating,genres,player_perspective,has_multiplayer,platforms,available_on_steam,has_linux_release,has_mac_release,specifier,utterance
+,,,,,,,,,,,,,upcoming,Are there any upcoming games youre in'terested in?
+,,,,,,,,,,,,,upcoming,Is there any upcoming game you're looking forward to?
+,,,,,,,,,,,,,funniest,what's the funniest game you've played?
+,,,,,,,,,,,,,funniest,What do you think is the funniest game of all time?
+,,,,,,,,,,,,,bizarre,What's a really bizarre game?
+,,,,,,,,,,,,,bizarre,What's a game you know of that you would describe as bizarre?
+,,,,,,,,,,,,,realistic,Is there a game you can think of that you'd say is very realistic?
+,,,,,,,,,,,,,realistic,What's a good realistic game?
+,,,,,,,,,,,,,dramatic,What's a good dramatic game for me?
+,,,,,,,,,,,,,dramatic,What's a game you played lately that you felt was dramatic?
+,,,,,,,,,,,,,frustrating,What's a game that you found frustrating?
+,,,,,,,,,,,,,frustrating,What's the most frustrating game you played recently?
+,,,,,,,,,,,,,annoying,Have you ever played a game that you just found annoying?
+,,,,,,,,,,,,,annoying,what's an annoying game you've played?
+,,,,,,,,,,,,,over-complicated,Have you played any over-complicated games recentlyu?
+,,,,,,,,,,,,,over-complicated,Have you ever played a game that you just felt was way over-complicated?
+,,,,,,,,,,,,,limiting,Are there any games you've found pretty limiting?
+,,,,,,,,,,,,,limiting,Have you ever played a game where while playing it you found it very limiting?
+,,,,,,,,,,,,,first,What's the first game you ever played?
+,,,,,,,,,,,,,first,What was the first game you played this year?
+,,,,,,,,,,,,,disappointing,What was the most disappointing release in your opinion this year?
+,,,,,,,,,,,,,disappointing,What game did you find disappointing?
+,,,,,,,,,,,,,surprising,What's a game whose quality you found surprisng?
+,,,,,,,,,,,,,surprising,Did any games really surprise you when you first played it this year?
+,,,,,,,,,,,,,addictive,Are there any games you find really addictive?
+,,,,,,,,,,,,,addictive,What game did you find yourself most addicted to playing this year?
+,,,,,,,,,,,,,shocking,"I'm wondering, have you played any games you found genuinely shocking?"
+,,,,,,,,,,,,,shocking,Did any games that you've played recently have particularly shocking endings?
+,,,,,,,,,,,,,fascinating,Is there any game you've played lately that you felt was fascinating?
+,,,,,,,,,,,,,fascinating,Are there any fascinating games you'd recommend?
+,,,,,,,,,,,,,ridiculous,Is there a game you know of that you just thought was ridiculous?
+,,,,,,,,,,,,,ridiculous,Do you know any solid ridiculous games?
+,,,,,,,,,,,,,quick-to-learn,Is there a game you played lately that was quick-to-learn?
+,,,,,,,,,,,,,quick-to-learn,Can you suggest a quick-to-learn game?
+,,,,,,,,,,,,,scary,What's a good scary game?
+,,,,,,,,,,,,,scary,"Of all the horror games released this year, which one do you find to be the scariest?"
+,,,,,,,,,,,,,worst looking,What is the worst looking video game you ever encountered?
+,,,,,,,,,,,,,worst looking,What's the worst looking game you've played recently?
+,,,,,,,,,,,,,visually impressive,What's a visually impressive game that you played lately?
+,,,,,,,,,,,,,visually impressive,Can you suggest a really visually impressive game?
+,,,,,,,,,,,,,last,What's the last video game you played?
+,,,,,,,,,,,,,last,What's the last game you played?
+,,,,,,,,,,,,,short,Played any short games lately?
+,,,,,,,,,,,,,short,What's a nice short game I could play?
+,,,,,,,,,,,,,cheerful,What's a cheerful game you've played lately?
+,,,,,,,,,,,,,cheerful,What's a cheerful game you played lately?
+,,,,,,,,,,,,,calming,What was the most calming game you got to play this year?
+,,,,,,,,,,,,,calming,Can you think of any calming video games?
+,,,,,,,,,,,,,empowering,Did you find any of this year's releases particularly empowering to play through?
+,,,,,,,,,,,,,empowering,Have you played any games that were empowering for you?
+,,,,,,,,,,,,,interesting,Have you played any interesting games lately?
+,,,,,,,,,,,,,interesting,What's the most interesting game you've played this year?
+,,,,,,,,,,,,,unfair,What's a game you found unfair recently?
+,,,,,,,,,,,,,unfair,"I was thinking how some games are just unfair, what game would first come to mind for you regarding that?"
+,,,,,,,,,,,,,poorly balanced,What do you think is the most poorly balanced game you've ever played?
+,,,,,,,,,,,,,poorly balanced,Do you know any poorly balanced games?
+,,,,,,,,,,,,,boring,Did you find any releases this year to be overly boring?
+,,,,,,,,,,,,,boring,What's a game you found really boring?
+,,,,,,,,,,,,,absorbing,Do you know of any games that you felt were absorbing?
+,,,,,,,,,,,,,absorbing,What game have you found particularly absorbing lately?
+,,,,,,,,,,,,,newest,What's the newest game that you've played lately?
+,,,,,,,,,,,,,newest,What's the newest game you plan on purchasing soon?
+,,,,,,,,,,,,,oldest,What's the oldest video game you ever played?
+,,,,,,,,,,,,,oldest,What's the oldest game you like?
+,,,,,,,,,,,,,thrilling,Is there a game you played lately that you found thrilling?
+,,,,,,,,,,,,,thrilling,Are there any games you find really thrilling?
+,,,,,,,,,,,,,weirdest,What's the weirdest game you ever heard of?
+,,,,,,,,,,,,,weirdest,What's the weirdest game youve played?
+,,,,,,,,,,,,,unusual,"I've been thinking about unusual games today, have you played one lately?"
+,,,,,,,,,,,,,unusual,Are there any unusual games you like?
+,,,,,,,,,,,,,beautiful,Have you played any beautiful games recently? Could you recommend me one?
+,,,,,,,,,,,,,beautiful,"I've been thinking about pretty games lately, have you played any recently that you would describe as beautiful?"
+,,,,,,,,,,,,,exceptional,What was the most exceptional game you played in the last month?
+,,,,,,,,,,,,,exceptional,Have you played anything lately that you felt was an exceptional video game?
+,,,,,,,,,,,,,cheap,Have you played any cheap games that you enjoyed?
+,,,,,,,,,,,,,cheap,What's a really cheap game I would like?
+,,,,,,,,,,,,,uninteresting,What's a recent game that you just felt was uninteresting?
+,,,,,,,,,,,,,uninteresting,Have you played any uninteresting games?
+,,,,,,,,,,,,,nostalgic,What game would be a nostalgic one for you?
+,,,,,,,,,,,,,nostalgic,What game makes you feel nostalgiac?
+,,,,,,,,,,,,,overrated,"I thought there were way too many overrated games released this year, what do you think?"
+,,,,,,,,,,,,,overrated,What game do you think is overrated?
+,,,,,,,,,,,,,sad,What's a really sad game you played?
+,,,,,,,,,,,,,sad,Is there any game you played lately that you thought was pretty sad?
+,,,,,,,,,,,,,underrated,What's a nice underrated game?
+,,,,,,,,,,,,,underrated,"In your opinion, what was the most underrated game released this year?"
+,,,,,,,,,,,,,challenging,"I really like a good challenge, do you know any challenging games?"
+,,,,,,,,,,,,,challenging,"I'm looking for a challenging game to play, have you played any lately?"
+,,,,,,,,,,,,,revolting,What's a game that you found revolting?
+,,,,,,,,,,,,,revolting,Have you ever played a game that you felt was revolting?
+,,,,,,,,,,,,,dynamic,Was there ever a game you played that you felt was dynamic?
+,,,,,,,,,,,,,dynamic,Do you know any dynamic games i'd like?
+,,,,,,,,,,,,,mindless,"I've been wanting to play something mindless, have you played any games like that lately?"
+,,,,,,,,,,,,,mindless,What's a nice mindless game I could play?
+,,,,,,,,,,,,,moving,What's the most moving game you know of?
+,,,,,,,,,,,,,moving,Have you played any games you found particularly moving?
+,,,,,,,,,,,,,tearjerking,Do you know of any video games you'd describe as tearjerking?
+,,,,,,,,,,,,,tearjerking,Do you know any tearjerking games?
+,,,,,,,,,,,,,rewarding,Are there any rewarding games you'd recommend?
+,,,,,,,,,,,,,rewarding,Did you feel that any recent release was extremely rewarding to complete?

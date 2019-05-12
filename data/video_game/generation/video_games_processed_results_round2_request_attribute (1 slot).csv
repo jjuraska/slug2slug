@@ -1,0 +1,151 @@
+name,release_year,exp_release_date,developer,esrb,rating,genres,player_perspective,has_multiplayer,platforms,available_on_steam,has_linux_release,has_mac_release,utterance
+, ,,,,,,,,,,,,Which year do you think had the best games?
+, ,,,,,,,,,,,,What is your favorite year that games came out?
+, ,,,,,,,,,,,,"In your opinion, the best games were released in what year?"
+, ,,,,,,,,,,,,Which year do you think was the best for games?
+, ,,,,,,,,,,,,In which year do you think a lot of good games were released?
+, ,,,,,,,,,,,,Do you have a favorite release year for video games?
+, ,,,,,,,,,,,,Is there a year before which you will not play a game?
+, ,,,,,,,,,,,,Do you check the release year before playing a game?
+, ,,,,,,,,,,,,Is a game's release year important to you?
+, ,,,,,,,,,,,,How important is a game's release year to its quality?
+, ,,,,,,,,,,,,Do you discriminate games by release year at all?
+, ,,,,,,,,,,,,Does release year matter to you?
+, ,,,,,,,,,,,,Do you have a preference for games based on their release year?
+, ,,,,,,,,,,,,What would you say was the best release year for videogames in general?
+, ,,,,,,,,,,,,Do you enjoy games with an old release year?
+,,, ,,,,,,,,,,Who are your favorite video game developers?
+,,, ,,,,,,,,,,Who's your favorite video game developer?
+,,, ,,,,,,,,,,Who are some of your favorite video game developers?
+,,, ,,,,,,,,,,Which video game developer is your favorite?
+,,, ,,,,,,,,,,Is there a specific video game developer you prefer?
+,,, ,,,,,,,,,,Who is your favorite game developer?
+,,, ,,,,,,,,,,Are there any game developers you dislike?
+,,, ,,,,,,,,,,Why do you like that developer vs others?
+,,, ,,,,,,,,,,Do you care which developer makes the games you play?
+,,, ,,,,,,,,,,Why does the game developer matter to you?
+,,, ,,,,,,,,,,Is there a particular developer that you prefer?
+,,, ,,,,,,,,,,Which developer is your favorite?
+,,, ,,,,,,,,,,Would you say you prefer a certain developer?
+,,, ,,,,,,,,,,Which games developer do you think is the best?
+,,, ,,,,,,,,,,"What developer is top notch, in your mind?"
+,,,, ,,,,,,,,,Do you prefer a game that is rated?
+,,,, ,,,,,,,,,Do you play games only if they have an ESRB rating?
+,,,, ,,,,,,,,,Is an ESRB rating an important thing to you?
+,,,, ,,,,,,,,,Do you require that your games have an ESRB rating?
+,,,, ,,,,,,,,,Is an ESRB rating important to you?
+,,,, ,,,,,,,,,What ESRB content rating do you prefer?
+,,,, ,,,,,,,,,Is ESRB content rating important to you?
+,,,, ,,,,,,,,,Why does ESRB content rating matter to you?
+,,,, ,,,,,,,,,What ESRB content ratings do you dislike?
+,,,, ,,,,,,,,,What is your least favorite ESRB content rating?
+,,,, ,,,,,,,,,Does the ESRB content rating for a game influence your opinion of it?
+,,,, ,,,,,,,,,Do you generally look at the ESRB content rating of a game before playing it?
+,,,, ,,,,,,,,,Do you have a favorite  ESRB content rating?
+,,,, ,,,,,,,,,Are there any ESRB content ratings which mean you would not try a game?
+,,,, ,,,,,,,,,Do you always check the  ESRB content rating of a game before playing it?
+,,,,,, ,,,,,,,What is your favorite genre of videogame?
+,,,,,, ,,,,,,,Do you have any genres you dislike?
+,,,,,, ,,,,,,,Why do you like the genre of videogames that you do?
+,,,,,, ,,,,,,,Are there any genres you refuse to play?
+,,,,,, ,,,,,,,Would you be willing to give a genre of videogame you dislike a try?
+,,,,,, ,,,,,,,"What would you say is the favorite genre of video game, to you?"
+,,,,,, ,,,,,,,What video game genre is the best in your opinion?
+,,,,,, ,,,,,,,What genre is your favorite to play?
+,,,,,, ,,,,,,,Which genre do you believe is your favorite?
+,,,,,, ,,,,,,,What genre of game is your preference?
+,,,,,, ,,,,,,,What are the genres of your favorite video games?
+,,,,,, ,,,,,,,What kind of genres for video games do you like?
+,,,,,, ,,,,,,,What's your favorite video game genre?
+,,,,,, ,,,,,,,"Since you like video games, what's your favorite genre?"
+,,,,,, ,,,,,,,"When you play video games, what genres are your favorite?"
+,,,,,,, ,,,,,,What is your preferred player perspective in a videogame?
+,,,,,,, ,,,,,,If a game wasn't in your player perspective would you still want to play it?
+,,,,,,, ,,,,,,Why do you prefer that player perspective over others?
+,,,,,,, ,,,,,,What is your least favorite player perspective?
+,,,,,,, ,,,,,,Why do you find that player perspective so unappealing?
+,,,,,,, ,,,,,,What player perspective do you prefer?
+,,,,,,, ,,,,,,Which perspective do you prefer to game on?
+,,,,,,, ,,,,,,What is your favorite gaming perspective?
+,,,,,,, ,,,,,,What game perspective type do you like most?
+,,,,,,, ,,,,,,Which perspective is the one that you prefer the most?
+,,,,,,, ,,,,,,Do you enjoy first person perspective games?
+,,,,,,, ,,,,,,Is player perspective important when you decide whether to buy a game?
+,,,,,,, ,,,,,,Do you have a perspective preference in video games?
+,,,,,,, ,,,,,,Do you prefer the third person perspective?
+,,,,,,, ,,,,,,Have you ever decided not to try a game based on its perspective?
+,,,,,,,, ,,,,,Do you like gaming with more than one player?
+,,,,,,,, ,,,,,Do you prefer to game with others?
+,,,,,,,, ,,,,,Do you like playing games with other people?
+,,,,,,,, ,,,,,Are you more of a multi-person type of player?
+,,,,,,,, ,,,,,Do you prefer playing games with others?
+,,,,,,,, ,,,,,Do you enjoy like multiplayer games the best?
+,,,,,,,, ,,,,,Do you like games that you play with groups?
+,,,,,,,, ,,,,,Do you like to play games with many people?
+,,,,,,,, ,,,,,Do you play multiplayer games?
+,,,,,,,, ,,,,,DO you enjoy playing games with lots of people?
+,,,,,,,, ,,,,,What is it about multiplayer that you like so much?
+,,,,,,,, ,,,,,Would you play a game without multiplayer at all?
+,,,,,,,, ,,,,,Do you find multiplayer games enjoyable?
+,,,,,,,, ,,,,,Why do you dislike multiplayer games?
+,,,,,,,, ,,,,,Do you enjoy playing multiplayer games online?
+,,,,,,,,, ,,,,What's your preferred gaming platform?
+,,,,,,,,, ,,,,Which platform is your choice for gaming?
+,,,,,,,,, ,,,,Which platform do you prefer to use to game?
+,,,,,,,,, ,,,,What is your platform?
+,,,,,,,,, ,,,,Can you tell me what platform you game on?
+,,,,,,,,, ,,,,What is your preferred gaming platform?
+,,,,,,,,, ,,,,Why do you prefer that platform over others?
+,,,,,,,,, ,,,,Do you have any platforms you dislike?
+,,,,,,,,, ,,,,What is it about that platform that you find unappealing?
+,,,,,,,,, ,,,,Does gaming platform matter to you at all?
+,,,,,,,,, ,,,,What gaming platform do you prefer?
+,,,,,,,,, ,,,,What's your favorite platform for games?
+,,,,,,,,, ,,,,Which platform do you go for when it comes to games?
+,,,,,,,,, ,,,,What gaming platform do you generally choose?
+,,,,,,,,, ,,,,Which platform are you partial to for video games?
+,,,,,,,,,, ,,,Does it matter to you if a game is on Steam?
+,,,,,,,,,, ,,,Is a game being on Steam or not a dealbreaker to you?
+,,,,,,,,,, ,,,Do you prefer that a game be available on Steam?
+,,,,,,,,,, ,,,Do you want your games on Steam?
+,,,,,,,,,, ,,,Is Steam a requirement for your games?
+,,,,,,,,,, ,,,Do you prefer to play games that are available on Steam?
+,,,,,,,,,, ,,,Do you think it is important that a game is available on Steam?
+,,,,,,,,,, ,,,Do you only play games on Steam?
+,,,,,,,,,, ,,,Is it more convenient to play games that are available on Steam?
+,,,,,,,,,, ,,,Do you purchase games that are available on Steam?
+,,,,,,,,,, ,,,Do you find  availability on Steam to be important to you?
+,,,,,,,,,, ,,,Do you like games with availability on Steam
+,,,,,,,,,, ,,,How do you feel about games available on steam?
+,,,,,,,,,, ,,,Would you dislike a game with no steam availability?
+,,,,,,,,,, ,,,What is it about availability on Steam that appeals to you?
+,,,,,,,,,,, ,,Are you a Linux gamer?
+,,,,,,,,,,, ,,Is Linux your OS for gaming?
+,,,,,,,,,,, ,,Do you like to game on Linux?
+,,,,,,,,,,, ,,Do you game often on Linux?
+,,,,,,,,,,, ,,Is Linux your gaming OS of choice?
+,,,,,,,,,,, ,,Have you ever played a game that runs on Linux?
+,,,,,,,,,,, ,,Do you have any experience with gaming on a Linux system?
+,,,,,,,,,,, ,,Would you recommend Linux for playing games?
+,,,,,,,,,,, ,,Does it matter to you if you can use a game on a Linux OS?
+,,,,,,,,,,, ,,What kind of Linux games do you like?
+,,,,,,,,,,, ,,Do you play games on Linux?
+,,,,,,,,,,, ,,Do you like Linux games?
+,,,,,,,,,,, ,,Why is it important for games to be available on Linux?
+,,,,,,,,,,, ,,Why do you play games on Linux?
+,,,,,,,,,,, ,,How do you feel about games not available on Linux?
+,,,,,,,,,,,, ,Do you think the Mac is a better platform than others?
+,,,,,,,,,,,, ,Do you generally play games on the Mac?
+,,,,,,,,,,,, ,Does a game need a Mac release for you to be interested in it?
+,,,,,,,,,,,, ,What game aspects are better on a Mac?
+,,,,,,,,,,,, ,How important is a Mac release of a game to you?
+,,,,,,,,,,,, ,Are you a Mac gamer?
+,,,,,,,,,,,, ,Do you play video games on the Mac platform?
+,,,,,,,,,,,, ,Do you play your games on Mac?
+,,,,,,,,,,,, ,Is Mac your platform for game playing?
+,,,,,,,,,,,, ,Do you use Mac as a platform for your gaming?
+,,,,,,,,,,,, ,Do you play games on Mac?
+,,,,,,,,,,,, ,Does a game having a  Mac release matter to you?
+,,,,,,,,,,,, ,Why do you dislike gaming on a Mac?
+,,,,,,,,,,,, ,Would you dislike a game with a  Mac release?
+,,,,,,,,,,,, ,How do you feel about games with a Mac release?

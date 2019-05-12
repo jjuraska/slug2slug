@@ -1,0 +1,201 @@
+mr,ref
+"request_explanation(rating[good], genres[hack-and-slash, role-playing], player_perspective[bird view])",What do you like about bird's eye view hack-and-slash RPGs?
+"request_explanation(rating[good], genres[hack-and-slash, role-playing], player_perspective[bird view])",Why is it that you enjoy playing hack-and-slash RPGs that have a bird view perspective?
+"request_explanation(esrb[M (for Mature)], rating[excellent], platforms[PlayStation])",Why do you think that M rated games available for the PlayStation tend to be so amazing?
+"request_explanation(esrb[M (for Mature)], rating[excellent], platforms[PlayStation])",What is it about M rated PlayStation games you love so much?
+"request_explanation(release_year[2017], rating[poor], genres[text adventure])",What's wrong with text adventure games from 2017?
+"request_explanation(release_year[2017], rating[poor], genres[text adventure])",Why do you hate the text adventure games that were released in 2017?
+"request_explanation(esrb[T (for Teen)], rating[excellent], has_multiplayer[no])","I'm curious, why is it that so many of your favorite games are T rated single-player games?"
+"request_explanation(esrb[T (for Teen)], rating[excellent], has_multiplayer[no])",What do you find so amazing about T rated single-player games?
+"request_explanation(developer[Slightly Mad Studios], rating[average], platforms[PC])",What makes Slightly Mad Studios' PC games average to you?
+"request_explanation(developer[Slightly Mad Studios], rating[average], platforms[PC])","So, why do you feel that the PC games made by Slightly Mad Studios are just average?"
+"request_explanation(developer[Evolution Studios], rating[poor], has_multiplayer[yes])",Why do you dislike Evolution Studios' multiplayer games?
+"request_explanation(developer[Evolution Studios], rating[poor], has_multiplayer[yes])",Why makes you hate multiplayer games made by Evolution Studios?
+"request_explanation(rating[excellent], genres[action-adventure, shooter], player_perspective[third person])",Why do you love third person action-adventure shooters so much?
+"request_explanation(rating[excellent], genres[action-adventure, shooter], player_perspective[third person])","I'm curious, what makes third person action-adventure shooters so special to you?"
+"request_explanation(developer[Tarsier Studios], esrb[E (for Everyone)], rating[good])",Could you tell me what it is mainly that you enjoy about E rated games from Tarsier Studios?
+"request_explanation(developer[Tarsier Studios], esrb[E (for Everyone)], rating[good])",What would you say is the reason you like Tarsier Studios lineup of E rated games?
+"request_explanation(rating[average], genres[driving/racing, sport], player_perspective[first person])",Why do you find first person sport racing games so average?
+"request_explanation(rating[average], genres[driving/racing, sport], player_perspective[first person])","I'm curious, why is it that you find first person sport racing games not very entertaining to you?"
+"request_explanation(developer[Codemasters Southam], rating[average], platforms[PlayStation])",Why do you think that the PlayStation releases from Codemasters Southam are just mediocre?
+"request_explanation(developer[Codemasters Southam], rating[average], platforms[PlayStation])",What would you say makes Codemasters Southam's PlayStation games nothing more than average?
+"request_explanation(esrb[E (for Everyone)], rating[good], genres[adventure, platformer, puzzle])",What is it about E rated adventure puzzle platformers that makes you like them?
+"request_explanation(esrb[E (for Everyone)], rating[good], genres[adventure, platformer, puzzle])",What is it that you enjoy about E rated adventure puzzle platformer games?
+"request_explanation(rating[good], genres[driving/racing, simulation, sport], platforms[PlayStation])","I'm curious, why do you enjoy sport racing simulators on the PlayStation?"
+"request_explanation(rating[good], genres[driving/racing, simulation, sport], platforms[PlayStation])",What makes sport racing simulation games fun on PlayStation?
+"request_explanation(developer[Tarsier Studios], rating[good], platforms[PlayStation])",Why do you think you like Tarsier Studios' PlayStation games?
+"request_explanation(developer[Tarsier Studios], rating[good], platforms[PlayStation])",So what is it about Tarsier Studios' PlayStation lineup of games that makes you enjoy them?
+"request_explanation(rating[excellent], genres[shooter], player_perspective[first person])",How did you acquire such love for first person shooters?
+"request_explanation(rating[excellent], genres[shooter], player_perspective[first person])",So what is it about first person shooters that makes you rave about how much you love them?
+"request_explanation(developer[Valve Corporation], rating[excellent], has_multiplayer[no])",What is it about single-player games made by Valve Corporation that you find so attractive?
+"request_explanation(developer[Valve Corporation], rating[excellent], has_multiplayer[no])",What makes you adore Valve Corporation's single-player games like do?
+"request_explanation(developer[Ninja Theory], rating[excellent], player_perspective[third person])",Why are the third person games made by Ninja Theory some of your favorite games ever?
+"request_explanation(developer[Ninja Theory], rating[excellent], player_perspective[third person])",What's so excellent about Ninja Theory's third person games?
+"request_explanation(rating[excellent], player_perspective[third person], has_multiplayer[yes])",What is it about third person games with multiplayer that makes you rave about how awesome they are?
+"request_explanation(rating[excellent], player_perspective[third person], has_multiplayer[yes])",I can't help but wonder why you like third person multiplayer games so much.
+"request_explanation(developer[Illusion Softworks], rating[excellent], platforms[Xbox])","I'm really curious now, what is it about the Xbox games made by Illusion Softworks that makes you think they're so amazing?"
+"request_explanation(developer[Illusion Softworks], rating[excellent], platforms[Xbox])",What do you think makes Illusion Softworks Xbox games so amazing?
+"request_explanation(rating[average], player_perspective[first person], platforms[PC])",What is it about first person PC games that makes you say they're mostly just average?
+"request_explanation(rating[average], player_perspective[first person], platforms[PC])",Why do you think PC games with a first person view are not so good?
+"request_explanation(developer[MicroProse], rating[good], genres[simulation, strategy])",What elements in MicroProse's simulation strategy games make them good in your opinion?
+"request_explanation(developer[MicroProse], rating[good], genres[simulation, strategy])",Why do you think you enjoy MicroProse's simulation strategy games?
+"request_explanation(esrb[E (for Everyone)], rating[average], genres[action, strategy])",What is it about E rated action strategy games that leaves you lukewarm?
+"request_explanation(esrb[E (for Everyone)], rating[average], genres[action, strategy])",Why do you think that E rated action strategy games tend to be merely okay in your view?
+"request_explanation(rating[good], genres[driving/racing, simulation, sport], player_perspective[third person])",Why do you like a third person perspective in sport racing simulators?
+"request_explanation(rating[good], genres[driving/racing, simulation, sport], player_perspective[third person])",How come you prefer sport racing sim games with a third person view?
+"request_explanation(developer[Square], rating[excellent], player_perspective[third person])",Why do you feel that the third person games made by Square are excellent?
+"request_explanation(developer[Square], rating[excellent], player_perspective[third person])",What is it about third person games from Square that you love?
+"request_explanation(rating[average], genres[driving/racing, sport], platforms[PlayStation])",What is it about the sport racing games released for the PlayStation that makes you feel they're just so-so in quality?
+"request_explanation(rating[average], genres[driving/racing, sport], platforms[PlayStation])",Why do you think PlayStation's racing sports games are typically nothing extraordinary?
+"request_explanation(release_year[2011], rating[poor], platforms[PlayStation])","I'm curious, what is it about the PlayStation games released in 2011 that you find so distasteful?"
+"request_explanation(release_year[2011], rating[poor], platforms[PlayStation])",Why do you think 2011 was such a weak year for PlayStation games?
+"request_explanation(developer[Valve Corporation], rating[excellent], platforms[PC])",Why do you think that the PC games made by Valve Corporation are amazing?
+"request_explanation(developer[Valve Corporation], rating[excellent], platforms[PC])",Why do you find Valve Corporation's PC games to be top tier?
+"request_explanation(release_year[2002], rating[excellent], platforms[Xbox])",Why is it that you seem to love every Xbox game that came out in 2002?
+"request_explanation(release_year[2002], rating[excellent], platforms[Xbox])",What do you think made 2002 such a great year for Xbox games?
+"request_explanation(esrb[M (for Mature)], rating[excellent], platforms[Xbox])",Why do you love M rated Xbox games so much?
+"request_explanation(esrb[M (for Mature)], rating[excellent], platforms[Xbox])",What do you enjoy so much about M rated Xbox games?
+"request_explanation(developer[Neversoft Entertainment], rating[average], platforms[PC])",What is it about Neversoft Entertainment's PC games that you tend to find somewhat dull?
+"request_explanation(developer[Neversoft Entertainment], rating[average], platforms[PC])",Why do you think that the PC games made by Neversoft Entertainment are mediocre?
+"request_explanation(release_year[2014], rating[good], platforms[PlayStation])",What's so good about PlayStation games from 2014 in your opinion?
+"request_explanation(release_year[2014], rating[good], platforms[PlayStation])",I wonder what it is that made 2014 PlayStation games overall good in your opinion.
+"request_explanation(release_year[2010], developer[Firaxis Games], rating[good])",What do you enjoy about Firaxis Games' 2010 catalog?
+"request_explanation(release_year[2010], developer[Firaxis Games], rating[good])",Why do you think that the games Firaxis Games released in 2010 are pretty fun?
+"request_explanation(developer[Slightly Mad Studios], rating[average], genres[driving/racing, simulation])",What is it about Slightly Mad Studios' driving/racing simulation games that leaves you unimpressed?
+"request_explanation(developer[Slightly Mad Studios], rating[average], genres[driving/racing, simulation])",What is it about the driving/racing simulators made by Slightly Mad Studios that you find mediocre?
+"request_explanation(rating[good], genres[simulation, strategy], player_perspective[bird view])",What in particular do you enjoy about bird's eye view strategy sim games?
+"request_explanation(rating[good], genres[simulation, strategy], player_perspective[bird view])",Would you mind sharing with me why you enjoy playing bird's eye view strategy simulators?
+"request_explanation(esrb[E 10+ (for Everyone 10 and Older)], rating[good], has_mac_release[yes])",Why is it you always seem to have fun playing E 10+ games that are available on Mac?
+"request_explanation(esrb[E 10+ (for Everyone 10 and Older)], rating[good], has_mac_release[yes])","So I wonder, why is that games rated E 10+ often make it to your repertoire, especially when available on Mac?"
+"request_explanation(developer[MicroProse], rating[good], platforms[Xbox])",What do you think makes MicroProse's Xbox games as good as they are?
+"request_explanation(developer[MicroProse], rating[good], platforms[Xbox])",What is it about the Xbox games developed by MicroProse that makes you enjoy them?
+"request_explanation(developer[Hudson Soft], rating[average], player_perspective[bird view])",What is it about the bird view perspective games made by Hudson Soft that makes you find them to be neither good nor terrible?
+"request_explanation(developer[Hudson Soft], rating[average], player_perspective[bird view])",Why are you unenthused by Hudson Soft's bird view games?
+"request_explanation(release_year[2004], esrb[M (for Mature)], rating[excellent])",What is it about the M rated games released in 2004 that makes them some of your all-time favorites?
+"request_explanation(release_year[2004], esrb[M (for Mature)], rating[excellent])",What do you think makes M rated games from 2004 so great?
+"request_explanation(rating[good], has_multiplayer[yes], available_on_steam[yes])",Why do you like to play multiplayer games on Steam?
+"request_explanation(rating[good], has_multiplayer[yes], available_on_steam[yes])",What do multiplayer games on Steam have to offer that you appreciate?
+"request_explanation(rating[poor], genres[vehicular combat], player_perspective[third person])",What annoys you about third person vehicular combat games?
+"request_explanation(rating[poor], genres[vehicular combat], player_perspective[third person])","If you don't mind me asking, why do you think that third person vehicular combat games are terrible?"
+"request_explanation(rating[poor], has_multiplayer[no], platforms[PC])",Why don't you like single-player PC games?
+"request_explanation(rating[poor], has_multiplayer[no], platforms[PC])",Why is it that you hate PC games that don't have multiplayer?
+"request_explanation(developer[Square], rating[excellent], platforms[PC])",What do you find so incredible about Square's PC games?
+"request_explanation(developer[Square], rating[excellent], platforms[PC])",I wonder why you love PC games made by Square so much.
+"request_explanation(release_year[1993], developer[Hudson Soft], rating[average])",Why do you think that the games Hudson Soft released back in 1993 feel mediocre?
+"request_explanation(release_year[1993], developer[Hudson Soft], rating[average])",Why are you unimpressed by Hudson Soft's 1993 catalog of games?
+"request_explanation(developer[Red Entertainment Corporation], rating[poor], platforms[PC])",Why is it that you hate PC games that were developed by Red Entertainment Corporation?
+"request_explanation(developer[Red Entertainment Corporation], rating[poor], platforms[PC])",Why don't you like Red Entertainment Corporation's PC games?
+"request_explanation(developer[Dontnod Entertainment], rating[good], platforms[PlayStation])",What do you think makes Dontnod Entertainment's PlayStation games good?
+"request_explanation(developer[Dontnod Entertainment], rating[good], platforms[PlayStation])",Why do you think the games Dontnod Entertainment made for the PlayStation are pretty good?
+"request_explanation(developer[Capcom Production Studio 4], rating[excellent], has_multiplayer[no])",How come you love Capcom Production Studio 4's single-player games?
+"request_explanation(developer[Capcom Production Studio 4], rating[excellent], has_multiplayer[no])",What is it about the single-player games made by Capcom Production Studio 4 that you think is excellent?
+"request_explanation(developer[Codemasters Southam], rating[average], genres[driving/racing, sport])",What is it about the sport racing games made by Codemasters Southam that makes you find them merely average?
+"request_explanation(developer[Codemasters Southam], rating[average], genres[driving/racing, sport])",Is it something particular about sport racing games by Codemasters Southam that you think detracts from their entertainment value?
+"request_explanation(esrb[M (for Mature)], rating[average], platforms[Nintendo Switch])",Why do you think M rated games on the Nintendo Switch tend to just be average?
+"request_explanation(esrb[M (for Mature)], rating[average], platforms[Nintendo Switch])",I'm wondering what it is about M rated games available on the Nintendo Switch that makes you say they're mediocre.
+"request_explanation(developer[Illusion Softworks], rating[excellent], genres[driving/racing, fighting, shooter])",What makes you love Illusion Softworks' shooter games with driving and fighting elements?
+"request_explanation(developer[Illusion Softworks], rating[excellent], genres[driving/racing, fighting, shooter])",What is it about the driving/racing games with fighting and shooter elements made by Illusion Softworks that makes you rave about how great they are?
+"request_explanation(rating[poor], player_perspective[bird view], has_multiplayer[yes])",Why do you not like multiplayer games with a bird view perspective?
+"request_explanation(rating[poor], player_perspective[bird view], has_multiplayer[yes])",How come you dislike bird's eye view games that offer multiplayer?
+"request_explanation(developer[Kunos Simulazioni], rating[good], genres[driving/racing, simulation, sport])",What do you mostly enjoy in Kunos Simulazioni's driving simulation sports games?
+"request_explanation(developer[Kunos Simulazioni], rating[good], genres[driving/racing, simulation, sport])",So why is it that you enjoy the sport racing simulators developed by Kunos Simulazioni?
+"request_explanation(rating[average], genres[driving/racing, simulation], available_on_steam[yes])",Why don't you really like driving/racing sim games on Steam that much?
+"request_explanation(rating[average], genres[driving/racing, simulation], available_on_steam[yes])",What is it about the driving/racing simulators you can get on Steam that makes you think their're not quite worth your money?
+"request_explanation(rating[average], genres[driving/racing, simulation], player_perspective[first person])",What is it about first person driving/racing simulators that makes you feel they can barely entertain you?
+"request_explanation(rating[average], genres[driving/racing, simulation], player_perspective[first person])",What makes you think that first person driving sim games aren't very good?
+"request_explanation(release_year[2017], rating[good], platforms[PlayStation])",Why do you think PlayStation had such good games in 2017?
+"request_explanation(release_year[2017], rating[good], platforms[PlayStation])",What is it about the PlayStation games that came out in 2017 that makes you enjoy them?
+"request_explanation(developer[Ninja Theory], rating[excellent], genres[adventure, hack-and-slash, indie])",Is there something special about Ninja Theory's indie hack-and-slash adventure games that makes you find them so appealing?
+"request_explanation(developer[Ninja Theory], rating[excellent], genres[adventure, hack-and-slash, indie])",What is it about Ninja Theory's indie hack-and-slash adventure games that you find so unique?
+"request_explanation(release_year[2001], developer[Neversoft Entertainment], rating[average])",Why do you often find Neversoft Entertainment's 2001 games to be rather underwhelming?
+"request_explanation(release_year[2001], developer[Neversoft Entertainment], rating[average])",Why do you think the games released by Neversoft Entertainment in 2001 are average at best?
+"request_explanation(esrb[M (for Mature)], rating[good], genres[role-playing])",What is it that you like about M rated RPGs?
+"request_explanation(esrb[M (for Mature)], rating[good], genres[role-playing])",What is it about M rated RPGs that makes you enjoy them like you do?
+"request_explanation(rating[good], genres[simulation, turn-based strategy], platforms[PC])",What is it about PC turn-based strategy simulators that makes you enjoy them?
+"request_explanation(rating[good], genres[simulation, turn-based strategy], platforms[PC])",What would you say makes you enjoy simulation turn-based strategy games on the PC?
+"request_explanation(rating[excellent], player_perspective[third person], available_on_steam[yes])",How come you're so fond of third person games on Steam?
+"request_explanation(rating[excellent], player_perspective[third person], available_on_steam[yes])",Why do you absolutely love third person games that are available on Steam?
+"request_explanation(release_year[2015], rating[good], genres[role-playing])",What do you like about RPGs from 2015?
+"request_explanation(release_year[2015], rating[good], genres[role-playing])",What makes you say that the RPGs released in 2015 were overall pretty good?
+"request_explanation(rating[good], genres[adventure, platformer, puzzle], player_perspective[side view])",What are some aspects of side view adventure puzzle platformer games that you like?
+"request_explanation(rating[good], genres[adventure, platformer, puzzle], player_perspective[side view])","Let me ask you, what do you find fun about side view adventure puzzle platformers?"
+"request_explanation(rating[average], has_linux_release[no], has_mac_release[no])",Why do you feel unenthusiastic about games without a Mac or Linux release?
+"request_explanation(rating[average], has_linux_release[no], has_mac_release[no])","So I'm wondering, why is it that if a game isn't available on either the Mac or Linux, you're not really excited about it?"
+"request_explanation(developer[Ninja Theory], esrb[M (for Mature)], rating[excellent])",Why do you think that M rated games developed by Ninja Theory are always excellent?
+"request_explanation(developer[Ninja Theory], esrb[M (for Mature)], rating[excellent])",What is it about Ninja Theory's M rated games that appeals to you that much?
+"request_explanation(release_year[2014], rating[good], has_multiplayer[yes])",Why do you think 2014 was a good year for multiplayer games?
+"request_explanation(release_year[2014], rating[good], has_multiplayer[yes])",What is it about the multiplayer games released in 2014 that makes you enjoy them?
+"request_explanation(rating[average], genres[sport], has_multiplayer[yes])",So what is it about multiplayer sports games that you find so average?
+"request_explanation(rating[average], genres[sport], has_multiplayer[yes])",Why do you think multiplayer sports games are meh?
+"request_explanation(rating[poor], genres[real-time strategy, role-playing], platforms[PC])",Why do you avoid real-time strategy PC games with role-playing elements?
+"request_explanation(rating[poor], genres[real-time strategy, role-playing], platforms[PC])",How come you don't enjoy role-playing RTS games on the PC?
+"request_explanation(rating[average], genres[sport], player_perspective[third person])",Why is it that you feel third person sports games are overall just average?
+"request_explanation(rating[average], genres[sport], player_perspective[third person])",Why don't you find third person sports games much fun to play?
+"request_explanation(developer[Blizzard North], rating[good], has_mac_release[yes])",What do you enjoy about Blizzard North's Mac games?
+"request_explanation(developer[Blizzard North], rating[good], has_mac_release[yes])",How do you find playing Blizzard North games fun on Mac?
+"request_explanation(developer[Blizzard North], rating[good], genres[hack-and-slash, role-playing])",What contributed to your good opinion of Blizzard North's hack-and-slash RPGs?
+"request_explanation(developer[Blizzard North], rating[good], genres[hack-and-slash, role-playing])","I'm wondering, what is it about the hack-and-slash RPGs that Blizzard North makes that makes you enjoy them?"
+"request_explanation(developer[Naughty Dog], rating[excellent], genres[action-adventure, shooter])",What made you realize that Naughty Dog's action-adventure shooter games are so incredible?
+"request_explanation(developer[Naughty Dog], rating[excellent], genres[action-adventure, shooter])","I'm wondering, what is it about the action-adventure shooters made by Naughty Dog that makes you love them so much?"
+"request_explanation(release_year[1999], rating[good], platforms[Xbox])",Why do you think 1999 was a good year for the Xbox?
+"request_explanation(release_year[1999], rating[good], platforms[Xbox])",What would you say is the main reason for the Xbox games from 1999 to be as good as they were?
+"request_explanation(rating[good], player_perspective[bird view], has_multiplayer[yes])",What is it about multiplayer games that are played from a bird view perspective that makes you enjoy them?
+"request_explanation(rating[good], player_perspective[bird view], has_multiplayer[yes])",What do you enjoy about bird's eye view games with multiplayer?
+"request_explanation(rating[poor], genres[vehicular combat], platforms[PlayStation])",Why do you think the vehicular combat games available on PlayStation are all bad?
+"request_explanation(rating[poor], genres[vehicular combat], platforms[PlayStation])",How is it that you don't enjoy vehicular combat games on the PlayStation?
+"request_explanation(rating[good], player_perspective[third person], has_multiplayer[no])",How is the third person perspective enjoyable in single-player games?
+"request_explanation(rating[good], player_perspective[third person], has_multiplayer[no])",What do you mostly like about playing single-player games with a third person view?
+"request_explanation(release_year[2017], developer[Grimlore Games], rating[poor])",Why do you think Grimlore Games made such poor games in 2017?
+"request_explanation(release_year[2017], developer[Grimlore Games], rating[poor])",What is it about the games Grimlore Games released in 2017 that makes you say they're terrible?
+"request_explanation(release_year[2013], developer[Overkill Software], rating[average])",Why do you find Overkill Software's games from 2013 to just be average?
+"request_explanation(release_year[2013], developer[Overkill Software], rating[average])","So I'm wondering, what was it about the games Overkill Software released in 2013 that made you say they're just mediocre?"
+"request_explanation(rating[poor], player_perspective[bird view], available_on_steam[yes])",What is it about the bird view perspective games released on Steam that makes you dislike them so much?
+"request_explanation(rating[poor], player_perspective[bird view], available_on_steam[yes])",What do you find lacking in the bird's eye view games on Steam?
+"request_explanation(developer[Capcom Production Studio 4], rating[excellent], platforms[Xbox])",What do you find so amazing about Capcom Production Studio 4's Xbox games?
+"request_explanation(developer[Capcom Production Studio 4], rating[excellent], platforms[Xbox])",Why do you think the Xbox games made by Capcom Production Studio 4 are amazing?
+"request_explanation(developer[MicroProse], rating[good], player_perspective[bird view])","So now I'm wondering, what in particular do you enjoy about playing games from MicroProse that have a bird view perspective?"
+"request_explanation(developer[MicroProse], rating[good], player_perspective[bird view])",What's the main thing you like about bird's eye view games made by MicroProse?
+"request_explanation(release_year[2015], rating[good], platforms[PlayStation])",Why would you say that the PlayStation's lineup of games from 2015 is pretty good?
+"request_explanation(release_year[2015], rating[good], platforms[PlayStation])",Why do you think 2015 was a good year for PlayStation games?
+"request_explanation(developer[Grimlore Games], rating[poor], genres[real-time strategy, role-playing])",I'm curious to know why you think the games developed by Grimlore Games that combine the real-time strategy and role-playing genres are horrible.
+"request_explanation(developer[Grimlore Games], rating[poor], genres[real-time strategy, role-playing])",What makes you dislike Grimlore Games' RTS RPGs?
+"request_explanation(rating[excellent], genres[action-adventure, shooter], player_perspective[third person])","So I was wondering, why are third person action-adventure shooters among your favorite games of all time?"
+"request_explanation(rating[excellent], genres[action-adventure, shooter], player_perspective[third person])",What do you enjoy so much about third person action-adventure shooters?
+"request_explanation(rating[excellent], has_linux_release[no], has_mac_release[no])",Why is it that you tend to be particularly excited about games without either a Mac or a Linux release?
+"request_explanation(rating[excellent], has_linux_release[no], has_mac_release[no])",Why do you think the games that have neither a Linux nor a Mac release tend to be so superior?
+"request_explanation(esrb[M (for Mature)], rating[excellent], genres[driving/racing, fighting, shooter])",What is that you just love about M rated shooters in which you can drive and fight?
+"request_explanation(esrb[M (for Mature)], rating[excellent], genres[driving/racing, fighting, shooter])",Why do you think that M rated driving/racing games with fighting and shooter elements are so amazing?
+"request_explanation(rating[average], genres[role-playing, shooter], player_perspective[first person])",Why do you feel that first person role-playing shooters are typically neither bad nor great?
+"request_explanation(rating[average], genres[role-playing, shooter], player_perspective[first person])",Why are you generally nonplussed by first person shooter RPGs?
+"request_explanation(esrb[M (for Mature)], rating[excellent], genres[action-adventure, shooter])","If you don't mind answering, why do you love M rated action-adventure shooters so much?"
+"request_explanation(esrb[M (for Mature)], rating[excellent], genres[action-adventure, shooter])",Why do you think M rated action adventure shooters are so amazing?
+"request_explanation(rating[poor], genres[text adventure], available_on_steam[yes])",Why don't you like to play text adventure games on Steam?
+"request_explanation(rating[poor], genres[text adventure], available_on_steam[yes])",What is it about the text adventure games available on Steam that makes you think they're of such poor quality?
+"request_explanation(developer[Naughty Dog], rating[excellent], platforms[PlayStation])",What makes you think Naughty Dog's PlayStation games are excellent?
+"request_explanation(developer[Naughty Dog], rating[excellent], platforms[PlayStation])",Why do you think the games Naughty Dog releases for the PlayStation are so irresistable?
+"request_explanation(rating[excellent], genres[adventure, hack-and-slash, indie], player_perspective[third person])","What do you love about indie hack-and-slash adventure games, particularly when they're played from a third person view?"
+"request_explanation(rating[excellent], genres[adventure, hack-and-slash, indie], player_perspective[third person])",What is it about third person indie hack-and-slash adventure games that just makes you adore them?
+"request_explanation(rating[excellent], genres[driving/racing, fighting, shooter], player_perspective[third person])",What's so special about third person shooters where you can go around driving and fighting?
+"request_explanation(rating[excellent], genres[driving/racing, fighting, shooter], player_perspective[third person])","Now I'm wondering, why do you find third person driving/racing shooter games with fighting elements to be so fantastic?"
+"request_explanation(developer[Overkill Software], rating[average], platforms[Nintendo Switch])","Tell me, why do you think that games made by Overkill Software for the Nintendo Switch are mediocre?"
+"request_explanation(developer[Overkill Software], rating[average], platforms[Nintendo Switch])",I'm just curious why you think Overkill Software's Nintendo Switch games are often somewhat underwhelming.
+"request_explanation(rating[poor], genres[text adventure], platforms[PC])",Why do you find text adventure games available on the PC so lackluster?
+"request_explanation(rating[poor], genres[text adventure], platforms[PC])",What is it that you find most disappointing about PC text adventure games?
+"request_explanation(esrb[M (for Mature)], rating[good], genres[hack-and-slash, role-playing])",What is it about M rated hack-and-slash RPGs that makes you enjoy them?
+"request_explanation(esrb[M (for Mature)], rating[good], genres[hack-and-slash, role-playing])",I wonder what it is that you mostly like about M rated hack-and-slash RPGs.
+"request_explanation(rating[average], has_multiplayer[yes], platforms[PlayStation])",Why do you think that the PlayStation's lineup of multiplayer games is not quite worth your time and money?
+"request_explanation(rating[average], has_multiplayer[yes], platforms[PlayStation])",What do you think makes multiplayer PlayStation games mediocre?
+"request_explanation(rating[average], player_perspective[bird view], has_multiplayer[no])",Why do you think that single-player only games played from a bird view perspective are often just mediocre?
+"request_explanation(rating[average], player_perspective[bird view], has_multiplayer[no])",Why do you think single-player bird's eye view games are nothing more than average?
+"request_explanation(rating[excellent], has_linux_release[yes], has_mac_release[yes])",What attracts you so much to games that you can play both on Linux and Mac?
+"request_explanation(rating[excellent], has_linux_release[yes], has_mac_release[yes])",What is it about games that have both Mac and Linux releases that makes them so attractive in your view?
+"request_explanation(developer[Blizzard North], rating[good], platforms[PC])",What would you say Blizzard North makes differently that makes you like their PC games?
+"request_explanation(developer[Blizzard North], rating[good], platforms[PC])",So I'm wondering what you find fun about PC games made particularly by Blizzard North.
+"request_explanation(release_year[2017], rating[excellent], platforms[PC])","I was curious, what is it about the PC games released in 2017 that you feel makes them so great?"
+"request_explanation(release_year[2017], rating[excellent], platforms[PC])",Why makes PC games from 2017 so special in your opinion?
+"request_explanation(esrb[M (for Mature)], rating[average], player_perspective[first person])",Why do you find first person M rated games to be only mildly entertaining?
+"request_explanation(esrb[M (for Mature)], rating[average], player_perspective[first person])",Why do you feel that M rated games played from a first person perspective are typically not quite fun?
+"request_explanation(esrb[T (for Teen)], rating[average], genres[sport])",Why is your opinion about T rated sports games that they're unimpressive?
+"request_explanation(esrb[T (for Teen)], rating[average], genres[sport])",Why do you feel that T rated sports games are in general merely okay?
+"request_explanation(developer[Evolution Studios], rating[poor], genres[vehicular combat])",How come vehicular combat games made by Evolution Studios are so bad in your view?
+"request_explanation(developer[Evolution Studios], rating[poor], genres[vehicular combat])",What does Evolution Studios tend to mess up in their vehicular combat games that you dislike them so much?

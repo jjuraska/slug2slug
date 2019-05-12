@@ -1,0 +1,51 @@
+mr,ref
+"suggest(name[Mirror's Edge Catalyst], genres[action-adventure, fighting])","Have you played any action-adventure fighting games, like Mirror's Edge Catalyst?"
+"suggest(name[Mirror's Edge Catalyst], developer[EA Digital Illusions CE])","I've heard a lot about EA Digital Illusions CE, have you played any of their games, such as Mirror's Edge Catalyst?"
+"suggest(name[Mirror's Edge Catalyst], release_year[2016])","Have you played any games that came out in 2016, like Mirror's Edge Catalyst?"
+"suggest(name[Mirror's Edge Catalyst], platforms[PlayStation])","Do you ever play PlayStation games, like Mirror's Edge Catalyst?"
+"suggest(name[Mirror's Edge Catalyst], player_perspective[first person])","Do you like playing first person games, such as Mirror's Edge Catalyst?"
+"suggest(name[Tetris], genres[arcade, puzzle, strategy])","Do you like arcade games that involve puzzles and strategy, like Tetris?"
+"suggest(name[Tetris], platforms[Nintendo])",Do you like playing Nintendo games like Tetris?
+"suggest(name[Tetris], developer[Spectrum HoloByte, Inc.])","Do you like playing games developed by Spectrum HoloByte, Inc., games like Tetris?"
+"suggest(name[Tetris], player_perspective[side view])",I was wondering if you're into side view games like Tetris?
+"suggest(name[Tetris], release_year[1986])","Do you remember playing any games from 1986, for example Tetris?"
+"suggest(name[Portal 2], player_perspective[first person])",Are you into first person games like Portal 2?
+"suggest(name[Portal 2], developer[Valve Corporation])","Do you like playing Valve Corporation's games, such as Portal 2?"
+"suggest(name[Portal 2], has_multiplayer[yes])","Do you like to play multiplayer games, such as Portal 2?"
+"suggest(name[Portal 2], platforms[PlayStation])",Do you like PlayStation games like Portal 2?
+"suggest(name[Portal 2], release_year[2011])","Are you a fan of any games from 2011, like Portal 2, for example?"
+"suggest(name[Resident Evil 4], developer[Capcom Production Studio 4])","Do you like games developed by Capcom Production Studio 4, like Resident Evil 4?"
+"suggest(name[Resident Evil 4], genres[action-adventure, shooter])",Are you into action-adventure shooters like Resident Evil 4?
+"suggest(name[Resident Evil 4], esrb[M (for Mature)])",Do you like playing mature rated games like Resident Evil 4?
+"suggest(name[Resident Evil 4], platforms[PC])","I was wondering if you like to play games on the PC, such as Resident Evil 4?"
+"suggest(name[Resident Evil 4], available_on_steam[yes])","Do you like games you can get on Steam, like Resident Evil 4?"
+"suggest(name[Guitar Hero: Smash Hits], developer[Beenox])",Have you ever played any Beenox games like Guitar Hero: Smash Hits?
+"suggest(name[Guitar Hero: Smash Hits], platforms[Nintendo])","Do you ever play Nintendo games, such as Guitar Hero: Smash Hits?"
+"suggest(name[Guitar Hero: Smash Hits], player_perspective[first person])",Do you ever like playing first person games like Guitar Hero: Smash Hits?
+"suggest(name[Guitar Hero: Smash Hits], has_multiplayer[yes])","Do you normally have fun playing multiplayer games, for example Guitar Hero: Smash Hits?"
+"suggest(name[Guitar Hero: Smash Hits], genres[music])","Do you ever play video games based around music, like Guitar Hero: Smash Hits?"
+"suggest(name[BioShock], genres[action-adventure, role-playing, shooter])","Do you like shooter games that are part action-adventure and part role-playing, like BioShock?"
+"suggest(name[BioShock], player_perspective[first person])","Do you like first person perspective in games, such as in BioShock?"
+"suggest(name[BioShock], developer[2K Boston])","Do you like games developed by 2K Boston, like BioShock?"
+"suggest(name[BioShock], available_on_steam[yes])","Do you ever buy games on Steam, games like BioShock?"
+"suggest(name[BioShock], has_mac_release[yes])","Do you prefer playing games available on Mac, like BioShock?"
+"suggest(name[Age of Empires II: The Age of Kings], release_year[1999])","Do you know about any games from 1999, such as Age of Empires II: The Age of Kings?"
+"suggest(name[Age of Empires II: The Age of Kings], has_mac_release[yes])","Do you ever play the Mac version of games when they have it, like Age of Empires II: The Age of Kings?"
+"suggest(name[Age of Empires II: The Age of Kings], available_on_steam[no])","Have you given any games not available on Steam a try, for example Age of Empires II: The Age of Kings?"
+"suggest(name[Age of Empires II: The Age of Kings], player_perspective[bird view])","Have you given any bird's eye view games a play, such as Age of Empires II: The Age of Kings?"
+"suggest(name[Age of Empires II: The Age of Kings], developer[Ensemble Studios])","I wonder, have you played any titles from Ensemble Studios, like Age of Empires II: The Age of Kings?"
+"suggest(name[Worms: Reloaded], has_linux_release[yes])","Do you play games on Linux, such as Worms: Reloaded?"
+"suggest(name[Worms: Reloaded], has_multiplayer[yes])","Are you into multiplayer games, like Worms: Reloaded?"
+"suggest(name[Worms: Reloaded], player_perspective[side view])","Do you like games that have a side view, you know, like Worms: Reloaded?"
+"suggest(name[Worms: Reloaded], developer[Team17 Digital Ltd])","I wonder if you like games developed by Team17 Digital Ltd, for example, Worms: Reloaded?"
+"suggest(name[Worms: Reloaded], available_on_steam[yes])","I bet you like it when you can play games on Steam, like Worms: Reloaded, right?"
+"suggest(name[The Vanishing of Ethan Carter], developer[The Astronauts])","Have you ever tried out any games by The Astronauts, such as The Vanishing of Ethan Carter?"
+"suggest(name[The Vanishing of Ethan Carter], genres[adventure, indie])",Do you like any indie adventure games like The Vanishing of Ethan Carter?
+"suggest(name[The Vanishing of Ethan Carter], platforms[Xbox])",Are you into Xbox games like The Vanishing of Ethan Carter?
+"suggest(name[The Vanishing of Ethan Carter], has_multiplayer[no])","Do you enjoy playing single-player games, such as The Vanishing of Ethan Carter?"
+"suggest(name[The Vanishing of Ethan Carter], player_perspective[first person])","Do you like first person perspective games, for example, The Vanishing of Ethan Carter?"
+"suggest(name[Might & Magic: Heroes VI], genres[role-playing, turn-based strategy])",Do you enjoy playing turn-based strategy role-playing games like Might & Magic: Heroes VI?
+"suggest(name[Might & Magic: Heroes VI], developer[Black Hole Entertainment])","Are you a fan of games made by Black Hole Entertainment, such as Might & Magic: Heroes VI?"
+"suggest(name[Might & Magic: Heroes VI], has_multiplayer[yes])",Are you into multiplayer games like Might & Magic: Heroes VI?
+"suggest(name[Might & Magic: Heroes VI], available_on_steam[yes])","Do you ever buy games from Steam, you know, like Might & Magic: Heroes VI?"
+"suggest(name[Might & Magic: Heroes VI], platforms[PC])",Do you like to play PC games like Might & Magic: Heroes VI?

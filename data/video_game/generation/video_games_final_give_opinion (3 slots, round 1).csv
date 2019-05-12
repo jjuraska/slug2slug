@@ -1,0 +1,51 @@
+mr,ref
+"give_opinion(name[Guitar Hero: Smash Hits], developer[Beenox], rating[poor])","Honestly, Guitar Hero: Smash Hits just wasn't engaging for me. I tend to avoid games by Beenox."
+"give_opinion(name[Guitar Hero: Smash Hits], release_year[2009], rating[poor])",Guitar Hero: Smash Hits just didn't do it for me. It really shows that it was made back in 2009.
+"give_opinion(name[Guitar Hero: Smash Hits], esrb[T (for Teen)], rating[poor])","I didn't like Guitar Hero: Smash Hits, it felt a little immature for a T rated game."
+"give_opinion(name[Guitar Hero: Smash Hits], rating[poor], has_multiplayer[yes])",Guitar Hero: Smash Hits felt kinda lacking to me. I think they focused too much on the multiplayer and ignored the rest.
+"give_opinion(name[Guitar Hero: Smash Hits], rating[poor], player_perspective[first person])",Guitar Hero: Smash Hits was pretty bad. The first person perspective was just too jarring.
+"give_opinion(name[World of Warcraft], rating[good], available_on_steam[no])","I used to love World of Warcraft, I just wish it was available on Steam, that would be so convenient."
+"give_opinion(name[World of Warcraft], developer[Blizzard Entertainment], rating[good])","Blizzard Entertainment did a good job with World of Warcraft, I liked playing it."
+"give_opinion(name[World of Warcraft], release_year[2004], rating[good])",I wish I could go back to 2004 when World of Warcraft first came out and I would spend hours playing.
+"give_opinion(name[World of Warcraft], rating[good], platforms[PC])","World of Warcraft was good, but I think it could have been even more popular if they released the game on more than just PC."
+"give_opinion(name[World of Warcraft], rating[good], genres[adventure, MMORPG])","The adventure MMORPG style of World of Warcraft really made it something different, which I enjoyed."
+"give_opinion(name[Age of Wonders II: The Wizard's Throne], developer[Triumph Studios], rating[poor])","I really wanted to like Age of Wonders II: The Wizard's Throne, but Triumph Studios made it and I end up hating all of their games."
+"give_opinion(name[Age of Wonders II: The Wizard's Throne], rating[poor], genres[role-playing, turn-based strategy])",Role-playing games that are turn-based strategy are all played out. Take for example Age of Wonders II: The Wizard's Throne; it's so boring.
+"give_opinion(name[Age of Wonders II: The Wizard's Throne], rating[poor], has_mac_release[no])",I really hated that Age of Wonders II: The Wizard's Throne didn't have a version for Mac. I had to borrow my brother's laptop to play.
+"give_opinion(name[Age of Wonders II: The Wizard's Throne], rating[poor], player_perspective[bird view])",I absolutely hate bird view perspective games like Age of Wonders II: The Wizard's Throne. I can't even see what my character is doing.
+"give_opinion(name[Age of Wonders II: The Wizard's Throne], release_year[2002], rating[poor])","I hate playing older games like Age of Wonders II: The Wizard's Throne. It's from 2002, why not play something new?"
+"give_opinion(name[Far Cry 3], rating[good], player_perspective[first person])",I thought Far Cry 3 was pretty good. I have a thing for first person perspective games.
+"give_opinion(name[Far Cry 3], rating[good], genres[action-adventure, shooter])","Action-adventure shooter games are fun, and Far Cry 3 was a good one that scratched my itch."
+"give_opinion(name[Far Cry 3], rating[good], platforms[PlayStation])","PlayStation has had a lot of interesting and expanding games, and Far Cry 3 was one of those good ones."
+"give_opinion(name[Far Cry 3], rating[good], has_multiplayer[yes])","One thing I thought that makes Far Cry 3 a pretty good game is that it has multiplayer as well. It has a great single-player campaign, but you can jump online and enjoy it that way too."
+"give_opinion(name[Far Cry 3], release_year[2012], rating[good])",Far Cry 3 was a pretty good game for 2012.
+"give_opinion(name[Silent Hill 2], developer[Konami Computer Entertainment Tokyo], rating[excellent])",Konami Computer Entertainment Tokyo makes the best games. One of my favorites is Silent Hill 2.
+"give_opinion(name[Silent Hill 2], rating[excellent], player_perspective[third person])",Third person games like Silent Hill 2 are the best. First person is too close and bird's eye is too far.
+"give_opinion(name[Silent Hill 2], rating[excellent], platforms[PC])",PC is the best platform because we get games like Silent Hill 2.
+"give_opinion(name[Silent Hill 2], rating[excellent], genres[action-adventure, puzzle])",Action-adventure puzzle games like Silent Hill 2 are great. You get to work your reflexes and your brain too.
+"give_opinion(name[Silent Hill 2], esrb[M (for Mature)], rating[excellent])","All of my favorite games are rated M, like Silent Hill 2. I don't even bother with other games anymore."
+"give_opinion(name[Undertale], developer[tobyfox], rating[excellent])","I love playing games by tobyfox, they're so fun. Take Undertale, for example."
+"give_opinion(name[Undertale], rating[excellent], genres[adventure, indie, role-playing])","Adventure role-playing games are my favorite, especially indie ones like Undertale."
+"give_opinion(name[Undertale], rating[excellent], player_perspective[bird view])",I always love the bird's eye view in games because it's so easy to see everything - such as in games like Undertale.
+"give_opinion(name[Undertale], rating[excellent], has_multiplayer[no])","With its great single-player campaign, I can enjoy playing Undertale any time."
+"give_opinion(name[Undertale], esrb[E (for Everyone)], rating[excellent])","I really like when E rated games come out, for example, I can watch even my youngest nephews play Undertale."
+"give_opinion(name[Lara Croft and the Temple of Osiris], esrb[T (for Teen)], rating[average])",You could tell Lara Croft and the Temple of Osiris was rated teen. Just cool enough to not be for kids and just mediocre enough to not be for adults.
+"give_opinion(name[Lara Croft and the Temple of Osiris], rating[average], player_perspective[bird view])","I had mixed feelings about the bird view in Lara Croft and the Temple of Osiris, I felt like it kind of disconnected me from the game."
+"give_opinion(name[Lara Croft and the Temple of Osiris], rating[average], genres[action-adventure, puzzle, shooter])","As an action-adventure puzzle shooter, Lara Croft and the Temple of Osiris had a lot going on. It pulled it off but it's not great."
+"give_opinion(name[Lara Croft and the Temple of Osiris], rating[average], has_multiplayer[yes])","It's the multiplayer that made Lara Croft and the Temple of Osiris a decent game. Without it, it would have been even worse."
+"give_opinion(name[Lara Croft and the Temple of Osiris], developer[Crystal Dynamics], rating[average])","I usually like stuff by Crystal Dynamics, but Lara Croft and the Temple of Osiris just felt mediocre."
+"give_opinion(name[Quantum Break], rating[average], genres[adventure, shooter])","I finished Quantum Break but, man, for an adventure shooter it was just OK."
+"give_opinion(name[Quantum Break], release_year[2016], rating[average])","Man, 2016 was such a good year for games, but Quantum Break was just middle-of-the-road."
+"give_opinion(name[Quantum Break], developer[Remedy Entertainment], rating[average])","I've never played a game from Remedy Entertainment that I really loved. Take Quantum Break, for example, it's decent but not great."
+"give_opinion(name[Quantum Break], rating[average], has_multiplayer[no])","Quantum Break would have been so much better with multiplayer. I really prefer playing with other people, you know?"
+"give_opinion(name[Quantum Break], rating[average], player_perspective[third person])","I like third person player perspective games, but Quantum Break felt like it might have been better in first person. As it was, I only kinda liked it."
+"give_opinion(name[Mirror's Edge Catalyst], rating[poor], genres[action-adventure, fighting])","I can never get into action-adventure fighting games like Mirror's Edge Catalyst, there's just too much going on there."
+"give_opinion(name[Mirror's Edge Catalyst], rating[poor], has_mac_release[no])","I wish I could play Mirror's Edge Catalyst, but I'm a Mac guy and it wasn't released for this system."
+"give_opinion(name[Mirror's Edge Catalyst], rating[poor], has_multiplayer[yes])","I hate when games like Mirror's Edge Catalyst come with multiplayer, as the single-player then tends to be lacking in depth."
+"give_opinion(name[Mirror's Edge Catalyst], rating[poor], available_on_steam[no])","Ah, I wish Mirror's Edge Catalyst was on Steam, they're the only game source I trust to be legit."
+"give_opinion(name[Mirror's Edge Catalyst], rating[poor], player_perspective[first person])","I avoid first person perspective games like Mirror's Edge Catalyst, it can become somewhat nauseating."
+"give_opinion(name[Madden NFL 15], developer[EA Tiburon], rating[average])",I feel like EA Tiburon didn't do quite a great job developing Madden NFL 15.
+"give_opinion(name[Madden NFL 15], release_year[2014], rating[average])","Madden NFL 15 felt like an only average entry, released back in 2014."
+"give_opinion(name[Madden NFL 15], rating[average], player_perspective[bird view])","Madden NFL 15 uses a bird's eye view, which is OK considering its average graphics."
+"give_opinion(name[Madden NFL 15], rating[average], has_multiplayer[yes])","Although Madden NFL 15 supports multiplayer, it wasn't enough to make it any better than average."
+"give_opinion(name[Madden NFL 15], rating[average], platforms[Xbox])","Having played Madden NFL 15 on Xbox, I found the controls and graphics mediocre."

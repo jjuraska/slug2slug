@@ -1,0 +1,51 @@
+mr,ref
+request(specifier[upcoming]),What upcoming video game are you looking forward to the most?
+request(specifier[funniest]),"I'm looking for something to make me laugh, what do you think is the funniest game you've ever played?"
+request(specifier[bizarre]),Have you ever encountered a video game that struck you as plain bizarre?
+request(specifier[realistic]),What recent game have you seen with the most realistic graphics?
+request(specifier[dramatic]),What's a really dramatic game that you've played?
+request(specifier[frustrating]),What's the most frustrating game you ever played?
+request(specifier[annoying]),Have you played a game lately that you found annoying?
+request(specifier[over-complicated]),Have you ever encountered a game that just felt over-complicated?
+request(specifier[limiting]),What game have you played with a limiting storyline?
+request(specifier[first]),What's the first video game you ever played?
+request(specifier[disappointing]),Has there been a game that was really disappointing to you?
+request(specifier[surprising]),What game turned out to be really surprising when you played it?
+request(specifier[addictive]),Have you played a game recently that you found really addictive?
+request(specifier[shocking]),Have you ever encountered a video game that you found shocking?
+request(specifier[fascinating]),What do you think is the most fascinating game you've played?
+request(specifier[ridiculous]),What's the game with the most ridiculous storyline you've ever played?
+request(specifier[quick-to-learn]),Do you know of any quick-to-learn games?
+request(specifier[scary]),Have you ever played a game that you found scary?
+request(specifier[worst looking]),What do you think is the worst looking video game that you know of?
+request(specifier[visually impressive]),Have you encountered any visually impressive video games lately?
+request(specifier[last]),What's the last video game you finished?
+request(specifier[short]),Have you played any good short video games lately?
+request(specifier[cheerful]),"I've been feeling depressed lately, is their a cheerful video game you can think of that I could play?"
+request(specifier[calming]),Have you ever played a video game that was nice and calming?
+request(specifier[empowering]),Do you know of a video game that feels empowering to play?
+request(specifier[interesting]),Know of any interesting game that came out recently?
+request(specifier[unfair]),Have you ever played a video game that just felt plain unfair?
+request(specifier[poorly balanced]),What do you think is the most poorly balanced game you've played?
+request(specifier[boring]),What game did you find to be really boring?
+request(specifier[absorbing]),What is the game you think has the most absorbing gameplay?
+request(specifier[newest]),What's the newest game that you like?
+request(specifier[oldest]),What is the oldest game that you fancy?
+request(specifier[thrilling]),Have you played any thrilling video games lately?
+request(specifier[weirdest]),What do you think is the weirdest game you've ever played?
+request(specifier[unusual]),Have you played a video game lately that you found to be rather unusual?
+request(specifier[beautiful]),Have you played any video games lately that you thought were beautiful?
+request(specifier[exceptional]),Is there any game you played lately that you felt was exceptional?
+request(specifier[cheap]),What good cheap games have just come out?
+request(specifier[uninteresting]),What do you think is the most uninteresting video game you ever encountered?
+request(specifier[nostalgic]),What would you say is the most nostalgic game you know of?
+request(specifier[overrated]),What is the most overrated game in your mind?
+request(specifier[sad]),Have you played any sad video games recently?
+request(specifier[underrated]),What game you've played do you think is really underrated?
+request(specifier[challenging]),What's the last game you played that you found particularly challenging?
+request(specifier[revolting]),Have you ever played a game that you just found revolting?
+request(specifier[dynamic]),What game can you think of that has a very dynamic plot?
+request(specifier[mindless]),Have you ever played a video game that just felt mindless?
+request(specifier[moving]),What do you think is the most moving video game you've played?
+request(specifier[tearjerking]),"I'm wondering, what would you say is the most tearjerking video game you know of?"
+request(specifier[rewarding]),Is their a video game you know of that felt very rewarding to play?

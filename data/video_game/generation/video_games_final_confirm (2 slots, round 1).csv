@@ -1,0 +1,51 @@
+mr,ref
+"confirm(name[Ori and the Blind Forest], release_year[2015])",Do you mean Ori and the Blind Forest that was released in 2015?
+"confirm(name[Ori and the Blind Forest], has_multiplayer[no])","Are you talking about Ori and the Blind Forest, which has no multiplayer mode?"
+"confirm(name[Ori and the Blind Forest], developer[Moon Studios])",Is that Ori and the Blind Forest which was developed by Moon Studios?
+"confirm(name[Ori and the Blind Forest], platforms[Xbox])",Are you talking about Ori and the Blind Forest on Xbox?
+"confirm(name[Ori and the Blind Forest], esrb[E (for Everyone)])",Are you talking about the E rated Ori and the Blind Forest?
+"confirm(name[Battlefield V], exp_release_date[October 16, 2019])","Did you mean Battlefield V, the game that is coming out on October 16, 2019?"
+"confirm(name[Battlefield V], genres[action, shooter])","Are you talking about the action-packed first person shooter, Battlefield V?"
+"confirm(name[Battlefield V], developer[EA Digital Illusions CE])","You're referring to the newest EA Digital Illusions CE game, Battlefield V, right?"
+"confirm(name[Battlefield V], platforms[Xbox])","Is that Battlefield V, available on Xbox?"
+"confirm(name[Battlefield V], has_multiplayer[yes])",Are you talking about the multiplayer game Battlefield V?
+"confirm(name[Horizon: Zero Dawn], platforms[PlayStation])",Do you mean Horizon: Zero Dawn that you can play on PlayStation?
+"confirm(name[Horizon: Zero Dawn], release_year[2017])","Are you talking about Horizon: Zero Dawn, the game that came out in 2017?"
+"confirm(name[Horizon: Zero Dawn], developer[Guerrilla Games])",Is that the game Horizon: Zero Dawn that Guerrilla Games created?
+"confirm(name[Horizon: Zero Dawn], genres[action-adventure, role-playing, shooter])","Are we talking about the action-adventure shooter RPG, Horizon: Zero Dawn?"
+"confirm(name[Horizon: Zero Dawn], esrb[T (for Teen)])","Do you mean Horizon: Zero Dawn, the game that is rated T and is probably not appropriate for our little brothers to play?"
+"confirm(name[Diablo II], release_year[2000])","Are you talking about one of my favorite games, Diablo II, that came out in 2000?"
+"confirm(name[Diablo II], developer[Blizzard North])","You're referring to one of Blizzard North's games, Diablo II, right?"
+"confirm(name[Diablo II], platforms[PC])",Are you talking about the PC game Diablo II?
+"confirm(name[Diablo II], has_mac_release[yes])","Is this about the game Diablo II, that you can even play on Mac?"
+"confirm(name[Diablo II], has_multiplayer[yes])","Are you talking about Diablo II, one of the best multiplayer games?"
+"confirm(name[Little Big Adventure], release_year[1994])",You mean the Little Big Adventure that dropped in 1994?
+"confirm(name[Little Big Adventure], genres[action-adventure])","It's called Little Big Adventure and it's an action-adventure game, right?"
+"confirm(name[Little Big Adventure], player_perspective[third person])",Don't you mean the Little Big Adventure that is a third person game?
+"confirm(name[Little Big Adventure], available_on_steam[yes])",The same Little Big Adventure up on Steam?
+"confirm(name[Little Big Adventure], platforms[PC])",Are you referring to Little Big Adventure that you play on PC?
+"confirm(name[Ancient Cities], developer[Uncasual Games])",Do you mean the Ancient Cities released by Uncasual Games?
+"confirm(name[Ancient Cities], platforms[PC])",Are you talking about the Ancient Cities that is for the PC?
+"confirm(name[Ancient Cities], exp_release_date[December 1, 2019])","You mean the Ancient Cities that's not coming out till December 1, 2019, right?"
+"confirm(name[Ancient Cities], player_perspective[bird view])","So you're talking about the Ancient Cities with the bird view perspective, right?"
+"confirm(name[Ancient Cities], genres[simulation, strategy])",Do you mean the strategy sim Ancient Cities?
+"confirm(name[NBA 2K19], platforms[Nintendo Switch])",Oh! So that's NBA 2K19 for the Nintendo Switch?
+"confirm(name[NBA 2K19], developer[Visual Concepts])",You mean NBA 2K19 from Visual Concepts?
+"confirm(name[NBA 2K19], exp_release_date[September 11, 2019])","The NBA 2K19 that will be released on September 11, 2019?"
+"confirm(name[NBA 2K19], genres[sport])",So you're talking about the sports game NBA 2K19?
+"confirm(name[NBA 2K19], exp_release_date[September 11, 2019])","You mean the NBA 2K19 slated for release on September 11, 2019, right?"
+"confirm(name[The Room], available_on_steam[yes])",Do you mean the Steam game The Room?
+"confirm(name[The Room], has_multiplayer[no])",Are you asking about the single-player only The Room?
+"confirm(name[The Room], release_year[2012])",Do you mean the 2012 game The Room?
+"confirm(name[The Room], developer[Fireproof Games])",Do you mean The Room that was made by Fireproof Games?
+"confirm(name[The Room], genres[indie, point-and-click, puzzle])",Did you mean the indie puzzle-solving point-and-click game The Room?
+"confirm(name[Need for Speed: The Run], platforms[Nintendo])","You mean the Need for Speed: The Run on Nintendo, correct?"
+"confirm(name[Need for Speed: The Run], has_multiplayer[yes])",Is this the Need for Speed: The Run with a multiplayer?
+"confirm(name[Need for Speed: The Run], release_year[2011])","That's the Need for Speed: The Run that came out in 2011, right?"
+"confirm(name[Need for Speed: The Run], player_perspective[first person])",Do you mean the first person Need for Speed: The Run?
+"confirm(name[Need for Speed: The Run], developer[Firebrand Games])",Is this the Need for Speed: The Run that Firebrand Games released?
+"confirm(name[Grand Theft Auto V], release_year[2013])","Ah, the Grand Theft Auto V from 2013 is what you mean, correct?"
+"confirm(name[Grand Theft Auto V], developer[Rockstar North])",Do you mean the Grand Theft Auto V developed by Rockstar North?
+"confirm(name[Grand Theft Auto V], available_on_steam[yes])",So do you mean the Grand Theft Auto V on Steam?
+"confirm(name[Grand Theft Auto V], esrb[M (for Mature)])","This is the Grand Theft Auto V that's got an M rating, correct?"
+"confirm(name[Grand Theft Auto V], player_perspective[third person])",Are you referring to the third person Grand Theft Auto V?
