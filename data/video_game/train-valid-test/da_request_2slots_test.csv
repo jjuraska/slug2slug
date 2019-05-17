@@ -1,0 +1,55 @@
+mr,ref
+"request(available_on_steam[yes], specifier[latest])",What's the name of the latest game you got on Steam?
+"request(available_on_steam[yes], specifier[latest])",What's the latest game you played on Steam?
+"request(available_on_steam[yes], specifier[latest])",What's the latest game you've been playing on Steam?
+"request(developer[EA Canada], specifier[favorite])",What is your favorite game made by EA Canada?
+"request(developer[EA Canada], specifier[favorite])","I'm curious, what is your favorite game made by EA Canada?"
+"request(developer[EA Canada], specifier[favorite])",What's your favorite game that EA Canada has made?
+"request(developer[Ghost Games], specifier[exceptional])",Have you played any exceptional games by Ghost Games?
+"request(developer[Ghost Games], specifier[exceptional])",Is there a game made by Ghost Games that you found exceptional?
+"request(developer[Ghost Games], specifier[exceptional])",Has Ghost Games made anything exceptional?
+"request(developer[Rockstar North], specifier[offensive])",Has Rockstar North ever made a game you felt was offensive?
+"request(developer[Rockstar North], specifier[offensive])",What's the most offensive game that Rockstar North has developed?
+"request(developer[Rockstar North], specifier[offensive])",Has Rockstar North made anything offensive lately?
+"request(developer[SCS Software], specifier[famous])",What's a famous game from SCS Software?
+"request(developer[SCS Software], specifier[famous])",What's the most famous game you know of that was made by SCS Software?
+"request(developer[SCS Software], specifier[famous])",What do you think is the most famous game developed by SCS Software?
+"request(developer[Tin Man Games], specifier[boring])",Are there any boring games from Tin Man Games that you know of?
+"request(developer[Tin Man Games], specifier[boring])",What's the most boring game made by Tin Man Games that you've played?
+"request(developer[Tin Man Games], specifier[boring])","Out of all the games made by Tin Man Games, what do you think is the most boring?"
+"request(esrb[E 10+ (for Everyone 10 and Older)], specifier[soothing])","I'm looking for an E 10+ rated game that is soothing, do you know of any?"
+"request(esrb[E 10+ (for Everyone 10 and Older)], specifier[soothing])",Did you play any Everyone 10 and up games that were particularly soothing this year?
+"request(esrb[E 10+ (for Everyone 10 and Older)], specifier[soothing])",What's a soothing rated E10+ game I can play with my brothers?
+"request(esrb[M (for Mature)], specifier[unpleasant])",Have you ever played an M rated game that you just found unpleasant?
+"request(esrb[M (for Mature)], specifier[unpleasant])",have you played any unpleasant rated M games?
+"request(esrb[M (for Mature)], specifier[unpleasant])","Out of all the games with an M rating, which do you think is the most unpleasant?"
+"request(genres[driving/racing, simulation, sport], specifier[exciting])",What's a driving/racing sport simulator you felt was exciting?
+"request(genres[driving/racing, simulation, sport], specifier[exciting])",Can you suggest an exciting racing simulation sports game?
+"request(genres[driving/racing, simulation, sport], specifier[exciting])","Among sport racing simulators, what do you think is the most exciting one that you played lately?"
+"request(has_linux_release[no], specifier[other])",Do you like any other games without a Linux release?
+"request(has_linux_release[no], specifier[other])",What other game do you wish was released for Linux?
+"request(has_linux_release[no], specifier[other])",So what other game without a Linux release have you played lately?
+"request(has_multiplayer[no], specifier[rewarding])",What's a rewarding single-player game you played?
+"request(has_multiplayer[no], specifier[rewarding])",What's a really rewarding single-player game without a multiplayer component?
+"request(has_multiplayer[no], specifier[rewarding])",Do you know of a rewarding single-player game?
+"request(has_multiplayer[yes], specifier[interesting])",Do you know of any interesting games with multiplayer?
+"request(has_multiplayer[yes], specifier[interesting])",What is the most interesting multiplayer game that you have ever played?
+"request(has_multiplayer[yes], specifier[interesting])",Do you know any interesting multiplayer games I could try out?
+"request(platforms[PlayStation], specifier[hardest])",What's the hardest game you know of on the PlayStation?
+"request(platforms[PlayStation], specifier[hardest])",What do you think is the hardest game available for the PlayStation?
+"request(platforms[PlayStation], specifier[hardest])",What's the hardest game on PlayStation?
+"request(platforms[Xbox], specifier[complex])",Does the Xbox have any complex games?
+"request(platforms[Xbox], specifier[complex])",Have you played any complex games on the Xbox lately?
+"request(platforms[Xbox], specifier[complex])",What's the most complex game you ever played for the Xbox?
+"request(player_perspective[bird view], specifier[calming])",Have you ever played a game with a bird view perspective that you found to be calming?
+"request(player_perspective[bird view], specifier[calming])","I was hoping to find a calming game played from a bird view perspective, is there any one you would suggest?"
+"request(player_perspective[bird view], specifier[calming])",What's a calming bird view game I can play to unwind?
+"request(release_year[2014], specifier[favorite])","Of all games released in 2014, which would you say is your most favorite?"
+"request(release_year[2014], specifier[favorite])",What's your favorite game from 2014?
+"request(release_year[2014], specifier[favorite])",So what is your favorite game that came out in 2014?
+"request(release_year[2017], specifier[unfair])",Was there any game you played from 2017 that you would say was unfair?
+"request(release_year[2017], specifier[unfair])",Were any of the 2017 games you played just plain unfair?
+"request(release_year[2017], specifier[unfair])",Were there any unfair games from 2017?
+"request(release_year[2018], specifier[long])",What's a long game you played that came out in 2018?
+"request(release_year[2018], specifier[long])",Do you know any long games from 2018 I could invest a lot of time into?
+"request(release_year[2018], specifier[long])",What game from 2018 can you remember that has a nice long gameplay?

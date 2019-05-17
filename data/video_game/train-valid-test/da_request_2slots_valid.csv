@@ -1,0 +1,34 @@
+mr,ref
+"request(esrb[E (for Everyone)], specifier[other])",Is there any other E rated game that you played lately?
+"request(esrb[E (for Everyone)], specifier[other])",What other E rated game can you recommend?
+"request(esrb[E (for Everyone)], specifier[other])",Are there any other E rated games you'd suggest?
+"request(genres[simulation, sport], specifier[simple])",Do you know any simple sports simulation games I could play?
+"request(genres[simulation, sport], specifier[simple])",Is there a sport simulator you know of that is simple?
+"request(genres[simulation, sport], specifier[simple])",Have you played any sports simulators lately that you would say are simple?
+"request(has_multiplayer[no], specifier[lengthy])",What's a lengthy single-player only game that you've played lately?
+"request(has_multiplayer[no], specifier[lengthy])",Can you think of any lengthy single-player games without a multiplayer component?
+"request(has_multiplayer[no], specifier[lengthy])",Have you played any lengthy single-player only games lately?
+"request(has_multiplayer[yes], specifier[fast-paced])",What's a really fast-paced game with multiplayer that you like to play?
+"request(has_multiplayer[yes], specifier[fast-paced])",Have you played any fast-paced multiplayer games lately?
+"request(has_multiplayer[yes], specifier[fast-paced])",Have you been playing any fast paced multiplayer games lately?
+"request(platforms[PC], specifier[buggy])",Did you play any PC games that were overly buggy?
+"request(platforms[PC], specifier[buggy])",Do you remember any particularly buggy PC games? I'd like to know so I can avoid them.
+"request(platforms[PC], specifier[buggy])",Have you experienced any buggy PC games recently?
+"request(platforms[Xbox], specifier[brand new])",What's your favorite brand new Xbox Game?
+"request(platforms[Xbox], specifier[brand new])",Do you remember the name of that brand new Xbox game?
+"request(platforms[Xbox], specifier[brand new])",Is there any brand new Xbox games you're interested in?
+"request(player_perspective[first person], specifier[realistic])","In your opinion, what's the most realistic first person game?"
+"request(player_perspective[first person], specifier[realistic])",What do you think is the most realistic first person game out there?
+"request(player_perspective[first person], specifier[realistic])",What's a first person game you think was realistic?
+"request(player_perspective[side view], specifier[easy])",What easy side view game do you think tops them all?
+"request(player_perspective[side view], specifier[easy])",Do you know any easy side view games I can play with my family?
+"request(player_perspective[side view], specifier[easy])",What's a nice and easy game with a side view perspective that you've played?
+"request(player_perspective[third person], specifier[smart])",Do you know of a third person game with smart AI?
+"request(player_perspective[third person], specifier[smart])",Can you recommend any smart third person games?
+"request(player_perspective[third person], specifier[smart])",Have you played any smart third person games lately?
+"request(release_year[2004], specifier[fascinating])",Do you know any fascinating games from 2004?
+"request(release_year[2004], specifier[fascinating])","In 2004, was there any game released that you felt was fascinating?"
+"request(release_year[2004], specifier[fascinating])",What's a game from 2004 that you thought was fascinating?
+"request(release_year[2010], specifier[controversial])",Was there any controversial game that came out in 2010?
+"request(release_year[2010], specifier[controversial])",Is there a game from 2010 you can think of that was controversial?
+"request(release_year[2010], specifier[controversial])",What's a really controversial title from 2010?

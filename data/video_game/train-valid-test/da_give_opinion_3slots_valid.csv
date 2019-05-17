@@ -1,0 +1,19 @@
+mr,ref
+"give_opinion(name[Guitar Hero: Smash Hits], esrb[T (for Teen)], rating[poor])",Guitar Hero: Smash Hits is a pretty poor rated T game.
+"give_opinion(name[Guitar Hero: Smash Hits], esrb[T (for Teen)], rating[poor])","Guitar Hero: Smash Hits isn't a good game, not even for teens, depite being rated T."
+"give_opinion(name[Guitar Hero: Smash Hits], esrb[T (for Teen)], rating[poor])","I didn't like Guitar Hero: Smash Hits, it felt a little immature for a T rated game."
+"give_opinion(name[Lara Croft and the Temple of Osiris], rating[average], player_perspective[bird view])","Lara Croft and the Temple of Osiris is average, as far as bird view games go."
+"give_opinion(name[Lara Croft and the Temple of Osiris], rating[average], player_perspective[bird view])","I had mixed feelings about the bird view in Lara Croft and the Temple of Osiris, I felt like it kind of disconnected me from the game."
+"give_opinion(name[Lara Croft and the Temple of Osiris], rating[average], player_perspective[bird view])","I like Lara Croft and the Temple of Osiris, but the bird view perspective keeps it from being really good or great."
+"give_opinion(name[Madden NFL 15], rating[average], player_perspective[bird view])",I think that Madden NFL 15 was a so-so game. I generally like games like it but the bird view perspective held it back a bit.
+"give_opinion(name[Madden NFL 15], rating[average], player_perspective[bird view])","Madden NFL 15 uses a bird's eye view, which is OK considering its average graphics."
+"give_opinion(name[Madden NFL 15], rating[average], player_perspective[bird view])","Madden NFL 15 is a good game for a bird view perspective game, but not great."
+"give_opinion(name[Mirror's Edge Catalyst], rating[poor], genres[action-adventure, fighting])",Mirror's Edge Catalyst was a very bad game in my view. Trying to combine the action-adventure and fighting genres was a big mistake and made the game a complete mess.
+"give_opinion(name[Mirror's Edge Catalyst], rating[poor], genres[action-adventure, fighting])","I can never get into action-adventure fighting games like Mirror's Edge Catalyst, there's just too much going on there."
+"give_opinion(name[Mirror's Edge Catalyst], rating[poor], genres[action-adventure, fighting])",Mirror's Edge Catalyst made a poor effort mixing the action adventure and fighting genre
+"give_opinion(name[Mirror's Edge Catalyst], rating[poor], player_perspective[first person])",I didn't enjoy Mirror's Edge Catalyst at all. It's because the first person perspective was absolutely the wrong choice for it and made it terrible to play.
+"give_opinion(name[Mirror's Edge Catalyst], rating[poor], player_perspective[first person])",Mirror's Edge Catalyst is a pretty poor first person game.
+"give_opinion(name[Mirror's Edge Catalyst], rating[poor], player_perspective[first person])","I avoid first person perspective games like Mirror's Edge Catalyst, it can become somewhat nauseating."
+"give_opinion(name[Quantum Break], rating[average], has_multiplayer[no])","Quantum Break would have been so much better with multiplayer. I really prefer playing with other people, you know?"
+"give_opinion(name[Quantum Break], rating[average], has_multiplayer[no])","Quantum Break is an overall average single-player experience, no multiplayer to speak of in this title."
+"give_opinion(name[Quantum Break], rating[average], has_multiplayer[no])","Quantum Break wasn't a terrible game, but I didn't really dig it. I'm afraid I just don't truly enjoy a game unless it's got a multiplayer mode."

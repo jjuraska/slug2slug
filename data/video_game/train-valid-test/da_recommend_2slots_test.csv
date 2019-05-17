@@ -1,0 +1,34 @@
+mr,ref
+"recommend(name[Madden NFL 15], genres[simulation, sport])",You seem to like sport simulation games. What do you say about Madden NFL 15?
+"recommend(name[Madden NFL 15], genres[simulation, sport])","I know you're a fan of sports simulation games, and let me tell you, Madden NFL 15 is an exemplar of the genre. You must've heard of it, haven't you?"
+"recommend(name[Madden NFL 15], genres[simulation, sport])","I know you like simulation sports games, and I wonder if you've heard of Madden NFL 15."
+"recommend(name[NBA 2K16], release_year[2015])","While we're talking about games released in 2015, have you ever played NBA 2K16?"
+"recommend(name[NBA 2K16], release_year[2015])","Ever heard of NBA 2K16, released in 2015? You might like it."
+"recommend(name[NBA 2K16], release_year[2015])","Speaking of slightly older games, have you tried NBA 2K16, which was released in 2015?"
+"recommend(name[Need for Speed: The Run], player_perspective[first person])","Since first person games are your favorite, have you tried Need for Speed: The Run?"
+"recommend(name[Need for Speed: The Run], player_perspective[first person])","If you like first person games, tell me, have you tried Need for Speed: The Run?"
+"recommend(name[Need for Speed: The Run], player_perspective[first person])","Hey, since you like first person games, you should really try Need for Speed: The Run. Have you heard of it?"
+"recommend(name[Need for Speed: The Run], release_year[2011])","Speaking of games from 2011, have you ever played Need for Speed: The Run?"
+"recommend(name[Need for Speed: The Run], release_year[2011])","Hey, have you heard of this other game from 2011, Need for Speed: The Run?"
+"recommend(name[Need for Speed: The Run], release_year[2011])","Speaking of games from 2011, have you ever heard of Need for Speed: The Run?"
+"recommend(name[Sid Meier's Civilization V], player_perspective[bird view])","Since you like bird view perspective games, have you tried Sid Meier's Civilization V?"
+"recommend(name[Sid Meier's Civilization V], player_perspective[bird view])","Since you like bird's eye view games, I wonder if you've ever played Sid Meier's Civilization V."
+"recommend(name[Sid Meier's Civilization V], player_perspective[bird view])","You seem to enjoy games with a bird's eye view, so I wonder if you've heard of Sid Meier's Civilization V."
+"recommend(name[The Forest of Doom], genres[role-playing, text adventure])","Since we're on the subject of text adventure RPGs, have you ever played The Forest of Doom?"
+"recommend(name[The Forest of Doom], genres[role-playing, text adventure])",I was wondering if you've also tried the text adventure role-playing game The Forest of Doom.
+"recommend(name[The Forest of Doom], genres[role-playing, text adventure])",Hey have you heard of the role-playing text adventure game The Forest of Doom?
+"recommend(name[The Witcher 3: Wild Hunt], genres[action-adventure, role-playing])","You seem to like action-adventure RPGs, so I wonder if you've heard of The Witcher 3: Wild Hunt."
+"recommend(name[The Witcher 3: Wild Hunt], genres[action-adventure, role-playing])","I know you're into role-playing games, so I wonder if you've tried the action-adventure RPG The Witcher 3: Wild Hunt."
+"recommend(name[The Witcher 3: Wild Hunt], genres[action-adventure, role-playing])","So, since we're talking about action-adventure RPGs, I've gotta ask, have you played The Witcher 3: Wild Hunt?"
+"recommend(name[The Witcher 3: Wild Hunt], platforms[Xbox])",Have you ever heard of The Witcher 3: Wild Hunt on Xbox?
+"recommend(name[The Witcher 3: Wild Hunt], platforms[Xbox])",I know you love Xbox games. Have you tried The Witcher 3: Wild Hunt yet?
+"recommend(name[The Witcher 3: Wild Hunt], platforms[Xbox])","Considering you've got an Xbox, you've gotta play The Witcher 3: Wild Hunt. You must have heard of it, haven't you?"
+"recommend(name[The Wolf Among Us], esrb[M (for Mature)])","If you're into M rated games, why don't you check out The Wolf Among Us?"
+"recommend(name[The Wolf Among Us], esrb[M (for Mature)])","And speaking of games that the ESRB gave an M rating to, have you played The Wolf Among Us?"
+"recommend(name[The Wolf Among Us], esrb[M (for Mature)])",I understand that you like games with mature content. Have you played The Wolf Among Us?
+"recommend(name[Transport Tycoon], available_on_steam[no])","And speaking of games that actually don't have a Steam release, are you familiar with Transport Tycoon?"
+"recommend(name[Transport Tycoon], available_on_steam[no])","I know you don't care about getting games on Steam, so I wonder if you have tried Transport Tycoon."
+"recommend(name[Transport Tycoon], available_on_steam[no])","Since you don't care about your games being on Steam, have you ever tried Transport Tycoon?"
+"recommend(name[Transport Tycoon], has_multiplayer[no])","There are plenty of single-player only games out there, but have you gotten a chance to play Transport Tycoon?"
+"recommend(name[Transport Tycoon], has_multiplayer[no])","Since you prefer single-player games, have you tried Transport Tycoon?"
+"recommend(name[Transport Tycoon], has_multiplayer[no])","You don't seem to be into multiplayer games, so tell me, have you heard of the single-player game Transport Tycoon?"

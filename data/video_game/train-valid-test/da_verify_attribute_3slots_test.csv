@@ -1,0 +1,34 @@
+mr,ref
+"verify_attribute(name[BioShock], rating[good], has_multiplayer[no])","You mentioned that you had fun playing BioShock. Do you, in general, enjoy single-player only games like that?"
+"verify_attribute(name[BioShock], rating[good], has_multiplayer[no])","Do you enjoy most of the single-player only games, or is BioShock special?"
+"verify_attribute(name[BioShock], rating[good], has_multiplayer[no])",I seem to recall that you liked BioShock. Do you like single-player games in general?
+"verify_attribute(name[Need for Speed: Most Wanted], developer[EA Redwood Shores], rating[good])",Need for Speed: Most Wanted is a title I remember you liking. Do you feel the same about other games that are developed by EA Redwood Shores?
+"verify_attribute(name[Need for Speed: Most Wanted], developer[EA Redwood Shores], rating[good])","Do you usually enjoy EA Redwood Shores' work, or is Need for Speed: Most Wanted somewhat unique?"
+"verify_attribute(name[Need for Speed: Most Wanted], developer[EA Redwood Shores], rating[good])","So hey, earlier you mentioned liking Need for Speed: Most Wanted. I'm curious, do you feel similarly about the other games developed by EA Redwood Shores?"
+"verify_attribute(name[Skyforge], rating[poor], platforms[Xbox])",So you thought Skyforge was a pretty bad game. But do you have similar thoughts about other games for the Xbox?
+"verify_attribute(name[Skyforge], rating[poor], platforms[Xbox])",You told me that you don't like Skyforge. Is that also the case for other Xbox games?
+"verify_attribute(name[Skyforge], rating[poor], platforms[Xbox])",It seems like Skyforge was a bad choice for you. I can't help but wonder if playing it on the Xbox was not part of the reason for a poor experience. What do you think?
+"verify_attribute(name[Small World 2], rating[poor], has_linux_release[yes])",You just mentioned that Small World 2 was not your cup of tea at all. This got me wondering if you find Linux releases just poor versions of their originals.
+"verify_attribute(name[Small World 2], rating[poor], has_linux_release[yes])","Do you often have a bad experience with Linux games, or was Small World 2 more of an exception?"
+"verify_attribute(name[Small World 2], rating[poor], has_linux_release[yes])","Previously you mentioned that you did not like Small World 2. Does it have to do with the Linux release, by any chance?"
+"verify_attribute(name[The Elder Scrolls V: Skyrim], rating[good], genres[adventure, role-playing])","Considering you liked The Elder Scrolls V: Skyrim, I was just wondering if you're also fond of other adventure RPGs."
+"verify_attribute(name[The Elder Scrolls V: Skyrim], rating[good], genres[adventure, role-playing])",You mentioned earlier that you thought The Elder Scrolls V: Skyrim was pretty good. Do you in general enjoy playing adventure RPGs?
+"verify_attribute(name[The Elder Scrolls V: Skyrim], rating[good], genres[adventure, role-playing])",I do recall that you enjoyed The Elder Scrolls V: Skyrim. Do you generally like adventure role-playing games?
+"verify_attribute(name[The Forest of Doom], rating[average], platforms[PC])","So The Forest of Doom was a game that you, if I remember correctly, felt was of average quality. What about other games for the PC, do you feel the same about them?"
+"verify_attribute(name[The Forest of Doom], rating[average], platforms[PC])","If I remember right, you mentioned you felt that The Forest of Doom was a pretty average game. Do you have similar thoughts about a lot of other PC games?"
+"verify_attribute(name[The Forest of Doom], rating[average], platforms[PC])","Are you usually unimpressed by PC games, or is The Forest of Doom kind of the black sheep?"
+"verify_attribute(name[Transport Tycoon], rating[average], has_multiplayer[no])",You clearly are ambivalent about Transport Tycoon. Is this because it doesn't have multiplayer?
+"verify_attribute(name[Transport Tycoon], rating[average], has_multiplayer[no])",I know you think that Transport Tycoon was pretty okay but not great. Do you feel similarly about other games that lack multiplayer?
+"verify_attribute(name[Transport Tycoon], rating[average], has_multiplayer[no])","Do you find all single-player games average, or was it just the case of Transport Tycoon?"
+"verify_attribute(name[Uncharted 4: A Thief's End], esrb[T (for Teen)], rating[excellent])","So I know you like Uncharted 4: A Thief's End very much, but I wonder if that extends to all T rated games. What would you say?"
+"verify_attribute(name[Uncharted 4: A Thief's End], esrb[T (for Teen)], rating[excellent])",I know you mentioned that Uncharted 4: A Thief's End was one of your favorite games. Do you in general love T rated games?
+"verify_attribute(name[Uncharted 4: A Thief's End], esrb[T (for Teen)], rating[excellent])","You really like Uncharted 4: A Thief's End, don't you? Do you play a lot of T rated content?"
+"verify_attribute(name[Uncharted 4: A Thief's End], rating[excellent], genres[action-adventure, shooter])",You mentioned that you thought Uncharted 4: A Thief's End was an absolutely amazing game. Is the action-adventure shooter genre something right up your alley?
+"verify_attribute(name[Uncharted 4: A Thief's End], rating[excellent], genres[action-adventure, shooter])",You mentioned before that you love Uncharted 4: A Thief's End. Is that true for all action-adventure shooters?
+"verify_attribute(name[Uncharted 4: A Thief's End], rating[excellent], genres[action-adventure, shooter])","You are a big fan of Uncharted 4: A Thief's End, right? Do you find action-adventure shooters exciting in general?"
+"verify_attribute(name[World of Warcraft], developer[Blizzard Entertainment], rating[good])",You just said that you liked World of Warcraft. Are you a fan of most of the other games by Blizzard Entertainment too?
+"verify_attribute(name[World of Warcraft], developer[Blizzard Entertainment], rating[good])",You mentioned that World of Warcraft was pretty good in your opinion. Does Blizzard Entertainment tend to satisfy your expectations in their games?
+"verify_attribute(name[World of Warcraft], developer[Blizzard Entertainment], rating[good])","Are you overall a fan of games developed by Blizzard Entertainment, or World of Warcraft only?"
+"verify_attribute(name[Worms: Reloaded], rating[average], player_perspective[side view])","So Worms: Reloaded was a game that you once said was fine, but that it didn't really stick out in any way. Do you feel like that about most games played from a side view perspective?"
+"verify_attribute(name[Worms: Reloaded], rating[average], player_perspective[side view])","Do you tend to find side view games average, or did Worms: Reloaded just not quite meet your expectations?"
+"verify_attribute(name[Worms: Reloaded], rating[average], player_perspective[side view])",You mentioned you felt Worms: Reloaded was just an average game. Do you find a side view perspective limiting in games?

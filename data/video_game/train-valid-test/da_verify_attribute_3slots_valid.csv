@@ -1,0 +1,19 @@
+mr,ref
+"verify_attribute(name[The Elder Scrolls V: Skyrim], developer[Bethesda Game Studios], rating[good])","You enjoyed The Elder Scrolls V: Skyrim, if I'm not mistaken. I wanted to ask if you like other games from Bethesda Game Studios too."
+"verify_attribute(name[The Elder Scrolls V: Skyrim], developer[Bethesda Game Studios], rating[good])",You had good things to say about The Elder Scrolls V: Skyrim. Are you a fan of other projects released by Bethesda Game Studios as well?
+"verify_attribute(name[The Elder Scrolls V: Skyrim], developer[Bethesda Game Studios], rating[good])",I remember that you enjoyed The Elder Scrolls V: Skyrim. Do you enjoy other games developed by Bethesda Game Studios?
+"verify_attribute(name[The Forest of Doom], rating[average], has_multiplayer[no])","If I remember right, you once told me you found The Forest of Doom to be okay but not earth shattering or anything. Do you feel the same about most of the single-player games these days?"
+"verify_attribute(name[The Forest of Doom], rating[average], has_multiplayer[no])","Do you tend to find single-player games average, or is The Forest of Doom just not very good?"
+"verify_attribute(name[The Forest of Doom], rating[average], has_multiplayer[no])",You said that The Forest of Doom was okay but didn't blow you away. Could it have been the lack of multiplayer?
+"verify_attribute(name[Transport Tycoon], rating[average], platforms[PC])","You weren't quite fond of Transport Tycoon, I believe. Does it have to do with it only being released for PC?"
+"verify_attribute(name[Transport Tycoon], rating[average], platforms[PC])","You said you felt Transport Tycoon was of average quality. In general, do you just find PC games to be so-so like that?"
+"verify_attribute(name[Transport Tycoon], rating[average], platforms[PC])",You seem kind of ambivalent about Transport Tycoon. Is this because it's only on PC?
+"verify_attribute(name[World of Warcraft], rating[good], platforms[PC])",You said you liked World of Warcraft. Is that your opinion for most PC games?
+"verify_attribute(name[World of Warcraft], rating[good], platforms[PC])",World of Warcraft seems to have been fun for you. Is PC the platform of your choice for gaming?
+"verify_attribute(name[World of Warcraft], rating[good], platforms[PC])",You mentioned enjoying World of Warcraft. Do you in general like playing PC games?
+"verify_attribute(name[Worms: Reloaded], rating[average], platforms[PC])","Are you normally nonplussed by PC games, or is Worms: Reloaded atypical?"
+"verify_attribute(name[Worms: Reloaded], rating[average], platforms[PC])","You mentioned that Worms: Reloaded was an okay game, but nothing amazing. In general, do you feel that way about PC games?"
+"verify_attribute(name[Worms: Reloaded], rating[average], platforms[PC])","You once said Worms: Reloaded was kinda okay, but nothing all that special. Is it perhaps because PC is not the platform of your choice?"
+"verify_attribute(name[Worms: Reloaded], release_year[2010], rating[average])","So, Worms: Reloaded is a game you thought was a perfectly okay but also very unremarkable video game. Do you think 2010 was not the best year for games?"
+"verify_attribute(name[Worms: Reloaded], release_year[2010], rating[average])","Do you think 2010 was just an average year for games in general, or Worms: Reloaded was simply not your cup of tea?"
+"verify_attribute(name[Worms: Reloaded], release_year[2010], rating[average])","You said you felt Worms: Reloaded was merely so-so. Did 2010 just not deliver any games to get really excited for, in your opinion?"

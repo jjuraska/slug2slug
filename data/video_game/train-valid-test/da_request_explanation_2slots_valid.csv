@@ -1,0 +1,16 @@
+mr,ref
+"request_explanation(developer[Attention To Detail], rating[average])",Why do you find Attention To Detail to be so average?
+"request_explanation(developer[Attention To Detail], rating[average])",You've said you find games developed by Attention To Detail to be okay but not great. What is it about them that makes you say that?
+"request_explanation(developer[Attention To Detail], rating[average])","Can you explain to me, why is it that the games made by Attention To Detail are ones you always find to be average in quality?"
+"request_explanation(rating[excellent], platforms[Nintendo])",So what is it about the games on the Nintendo that makes you love them so much?
+"request_explanation(rating[excellent], platforms[Nintendo])",What is it about Nintendo games that makes you rave about how awesome they are?
+"request_explanation(rating[excellent], platforms[Nintendo])",Why do you think Nintendo makes such excellent games?
+"request_explanation(rating[good], available_on_steam[yes])",Why do you feel Steam games are pretty good?
+"request_explanation(rating[good], available_on_steam[yes])",Why do you like games on Steam?
+"request_explanation(rating[good], available_on_steam[yes])",Why do you tend to enjoy games that are released on Steam?
+"request_explanation(rating[good], genres[action-adventure, platformer])",Why is it you find action-adventure platformers so good?
+"request_explanation(rating[good], genres[action-adventure, platformer])","Hey, so what is it about action-adventure platformers that you enjoy?"
+"request_explanation(rating[good], genres[action-adventure, platformer])",So what is it about action-adventure platformers that makes you enjoy them?
+"request_explanation(rating[good], has_multiplayer[no])","You seem to enjoy single-player only games a fair amount, what is it you like about them?"
+"request_explanation(rating[good], has_multiplayer[no])",What is that you find fun about single-player games?
+"request_explanation(rating[good], has_multiplayer[no])",What do you enjoy about single-player games?

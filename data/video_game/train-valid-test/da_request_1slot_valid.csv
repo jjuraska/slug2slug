@@ -1,0 +1,13 @@
+mr,ref
+request(specifier[fascinating]),What do you think is the most fascinating game you've played?
+request(specifier[fascinating]),Is there any game you've played lately that you felt was fascinating?
+request(specifier[fascinating]),Are there any fascinating games you'd recommend?
+request(specifier[funniest]),What's the funniest game you've played?
+request(specifier[funniest]),What do you think is the funniest game of all time?
+request(specifier[funniest]),"I'm looking for something to make me laugh, what do you think is the funniest game you've ever played?"
+request(specifier[interesting]),What's the most interesting game you've played this year?
+request(specifier[interesting]),Know of any interesting game that came out recently?
+request(specifier[interesting]),Have you played any interesting games lately?
+request(specifier[ridiculous]),What's the game with the most ridiculous storyline you've ever played?
+request(specifier[ridiculous]),Do you know any games that were just ridiculous?
+request(specifier[ridiculous]),Is there a game you know of that you just thought was ridiculous?

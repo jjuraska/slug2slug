@@ -1,0 +1,22 @@
+mr,ref
+request(specifier[challenging]),What's the last game you played that you found particularly challenging?
+request(specifier[challenging]),Do you have a tip for a really challenging game?
+request(specifier[challenging]),"I'm looking for a challenging game to play, have you played any lately?"
+request(specifier[dramatic]),What's a game you played lately that you felt was really dramatic?
+request(specifier[dramatic]),Is there a good dramatic game you would recommend?
+request(specifier[dramatic]),What's a really dramatic game that you've played?
+request(specifier[exceptional]),Have you played anything lately that you felt was an exceptional video game?
+request(specifier[exceptional]),Is there any game you played lately that you felt was exceptional?
+request(specifier[exceptional]),What was the most exceptional game you played in the last couple of months?
+request(specifier[moving]),What's the most moving game that's stuck in your memory?
+request(specifier[moving]),Have you played any games you found particularly moving?
+request(specifier[moving]),What do you think is the most moving video game you've played?
+request(specifier[revolting]),Have you ever played a game that you felt was just revolting?
+request(specifier[revolting]),What's a game that you couldn't help but find revolting?
+request(specifier[revolting]),Have you ever played a game that you just found revolting?
+request(specifier[shocking]),Have you ever encountered a video game that you found shocking?
+request(specifier[shocking]),Did any games that you've played recently have particularly shocking endings?
+request(specifier[shocking]),"I'm wondering, have you played any games you found genuinely shocking?"
+request(specifier[weirdest]),What would you say was the weirdest game you've played?
+request(specifier[weirdest]),What do you think is the weirdest game you've ever played?
+request(specifier[weirdest]),What's the weirdest game you have ever heard of?

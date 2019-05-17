@@ -1,0 +1,22 @@
+mr,ref
+request_attribute(release_year[]),Which year do you think had the best games?
+request_attribute(release_year[]),What is your favorite year that games came out?
+request_attribute(release_year[]),"In your opinion, the best games were released in what year?"
+request_attribute(developer[]),Is there a developer whose games you always at least try?
+request_attribute(developer[]),Is there a particular developer that you prefer?
+request_attribute(developer[]),Which developer is your favorite?
+request_attribute(has_mac_release[]),Is Mac the platform of your choice?
+request_attribute(has_mac_release[]),Is it important for you that games have a Mac release in order for you to play it?
+request_attribute(has_mac_release[]),Are you a Mac gamer?
+request_attribute(genres[]),Are there certain genres you just love to play?
+request_attribute(genres[]),"I'm curious, what is the game genre you like the best?"
+request_attribute(genres[]),What would you say is your favorite genre of video game?
+request_attribute(has_multiplayer[]),Do you like to play games that have a multiplayer option?
+request_attribute(has_multiplayer[]),Do you play multiplayer games?
+request_attribute(has_multiplayer[]),Do you find multiplayer games enjoyable?
+request_attribute(available_on_steam[]),Do you purchase games from Steam?
+request_attribute(available_on_steam[]),Do you find availability on Steam to be important to you when deciding about getting a new game?
+request_attribute(available_on_steam[]),Do you like games with availability on Steam?
+request_attribute(platforms[]),"What's your favorite platform, huh?"
+request_attribute(platforms[]),"So tell me, what platform do you game on?"
+request_attribute(platforms[]),What is your preferred platform for gaming these days?

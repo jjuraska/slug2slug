@@ -1,0 +1,61 @@
+mr,ref
+"request_explanation(developer[MicroProse], rating[good], genres[simulation, strategy])",What aspects of MicroProse's strategy simulators make you enjoy them like you do?
+"request_explanation(developer[MicroProse], rating[good], genres[simulation, strategy])",Why do you think you enjoy MicroProse's simulation strategy games?
+"request_explanation(developer[MicroProse], rating[good], genres[simulation, strategy])",What elements in MicroProse's simulation strategy games make them good in your opinion?
+"request_explanation(developer[Naughty Dog], rating[excellent], genres[action-adventure, shooter])",What made you realize that Naughty Dog's action-adventure shooter games are so incredible?
+"request_explanation(developer[Naughty Dog], rating[excellent], genres[action-adventure, shooter])","I'm wondering, what is it about the action-adventure shooters made by Naughty Dog that makes you love them so much?"
+"request_explanation(developer[Naughty Dog], rating[excellent], genres[action-adventure, shooter])",What is it about Naughty Dog's action adventure-shooters that you love so much?
+"request_explanation(developer[Neversoft Entertainment], rating[average], platforms[PC])",Why do you find Neversoft Entertainment's PC games merely average?
+"request_explanation(developer[Neversoft Entertainment], rating[average], platforms[PC])",Why do you think that the PC games made by Neversoft Entertainment are mediocre?
+"request_explanation(developer[Neversoft Entertainment], rating[average], platforms[PC])",What is it about Neversoft Entertainment's PC games that you tend to find somewhat dull?
+"request_explanation(developer[Ninja Theory], esrb[M (for Mature)], rating[excellent])",Why do you think that M rated games developed by Ninja Theory are always excellent?
+"request_explanation(developer[Ninja Theory], esrb[M (for Mature)], rating[excellent])",What is it about Ninja Theory's M rated games that appeals to you that much?
+"request_explanation(developer[Ninja Theory], esrb[M (for Mature)], rating[excellent])",Why are Ninja Theory's M rated games some of the games you love most of all?
+"request_explanation(developer[Red Entertainment Corporation], rating[poor], platforms[PC])",Why is it you don't like Red Entertainment Corporation's PC games?
+"request_explanation(developer[Red Entertainment Corporation], rating[poor], platforms[PC])",Why don't you like Red Entertainment Corporation's PC games?
+"request_explanation(developer[Red Entertainment Corporation], rating[poor], platforms[PC])",Why is it that you hate PC games that were developed by Red Entertainment Corporation?
+"request_explanation(developer[Slightly Mad Studios], rating[average], genres[driving/racing, simulation])",Why do you say that Slightly Mad Studios driving/racing simulators are okay but don't stand out from the crowd?
+"request_explanation(developer[Slightly Mad Studios], rating[average], genres[driving/racing, simulation])",What is it about the driving/racing simulators made by Slightly Mad Studios that you find mediocre?
+"request_explanation(developer[Slightly Mad Studios], rating[average], genres[driving/racing, simulation])",What is it about Slightly Mad Studios' driving/racing simulation games that leaves you unimpressed?
+"request_explanation(developer[Slightly Mad Studios], rating[average], platforms[PC])",What makes Slightly Mad Studios' PC games average to you?
+"request_explanation(developer[Slightly Mad Studios], rating[average], platforms[PC])",What makes you feel that Slightly Mad Studios lineup of PC games is merely average in quality?
+"request_explanation(developer[Slightly Mad Studios], rating[average], platforms[PC])","So, why do you feel that the PC games made by Slightly Mad Studios are just average?"
+"request_explanation(developer[Tarsier Studios], esrb[E (for Everyone)], rating[good])",What would you say is the reason you like Tarsier Studios lineup of E rated games?
+"request_explanation(developer[Tarsier Studios], esrb[E (for Everyone)], rating[good])",Could you tell me what it is mainly that you enjoy about E rated games from Tarsier Studios?
+"request_explanation(developer[Tarsier Studios], esrb[E (for Everyone)], rating[good])",What do you like about the E rated games developed by Tarsier Studios?
+"request_explanation(esrb[E (for Everyone)], rating[good], genres[adventure, platformer, puzzle])",What is it about E rated adventure puzzle platformers that makes you like them?
+"request_explanation(esrb[E (for Everyone)], rating[good], genres[adventure, platformer, puzzle])",Why do you like playing E rated adventure puzzle platformers?
+"request_explanation(esrb[E (for Everyone)], rating[good], genres[adventure, platformer, puzzle])",What is it that you enjoy about E rated adventure puzzle platformer games?
+"request_explanation(esrb[M (for Mature)], rating[average], platforms[Nintendo Switch])",I'm wondering what it is about M rated games available on the Nintendo Switch that makes you say they're mediocre.
+"request_explanation(esrb[M (for Mature)], rating[average], platforms[Nintendo Switch])",Why do you think M rated games on the Nintendo Switch tend to just be average?
+"request_explanation(esrb[M (for Mature)], rating[average], platforms[Nintendo Switch])",Why do you say that the M rated games on the Nintendo Switch are so-so in quality?
+"request_explanation(esrb[M (for Mature)], rating[average], player_perspective[first person])",Why do you find first person M rated games to be only mildly entertaining?
+"request_explanation(esrb[M (for Mature)], rating[average], player_perspective[first person])",Why do you feel that M rated games played from a first person perspective are typically not quite fun?
+"request_explanation(esrb[M (for Mature)], rating[average], player_perspective[first person])",Why is it you feel that M rated games played from a first person perspective are just okay?
+"request_explanation(rating[average], genres[driving/racing, simulation], available_on_steam[yes])",What is it about the driving/racing simulators you can get on Steam that makes you think their're not quite worth your money?
+"request_explanation(rating[average], genres[driving/racing, simulation], available_on_steam[yes])",Why do you think the driving/racing simulators on Steam are okay but nothing great?
+"request_explanation(rating[average], genres[driving/racing, simulation], available_on_steam[yes])",Why don't you really like driving/racing sim games on Steam that much?
+"request_explanation(rating[excellent], genres[adventure, hack-and-slash, indie], player_perspective[third person])",What is it about indie third person hack-and-slash adventure games that makes you find them so thrilling to play?
+"request_explanation(rating[excellent], genres[adventure, hack-and-slash, indie], player_perspective[third person])","What do you love about indie hack-and-slash adventure games, particularly when they're played from a third person view?"
+"request_explanation(rating[excellent], genres[adventure, hack-and-slash, indie], player_perspective[third person])",What is it about third person indie hack-and-slash adventure games that just makes you adore them?
+"request_explanation(rating[excellent], genres[shooter], player_perspective[first person])",How did you acquire such love for first person shooters?
+"request_explanation(rating[excellent], genres[shooter], player_perspective[first person])",So what is it about first person shooters that makes you rave about how much you love them?
+"request_explanation(rating[excellent], genres[shooter], player_perspective[first person])",Is there a particular reason for you really enjoying first person shooters?
+"request_explanation(rating[excellent], has_linux_release[yes], has_mac_release[yes])",What is it about games that have both Mac and Linux releases that makes them so attractive in your view?
+"request_explanation(rating[excellent], has_linux_release[yes], has_mac_release[yes])",What attracts you so much to games that you can play both on Linux and Mac?
+"request_explanation(rating[excellent], has_linux_release[yes], has_mac_release[yes])",Why is it that you really like games with both Mac and Linux releases?
+"request_explanation(rating[good], genres[simulation, strategy], player_perspective[bird view])",What in particular do you enjoy about bird's eye view strategy sim games?
+"request_explanation(rating[good], genres[simulation, strategy], player_perspective[bird view])",Why do you enjoy playing strategy simulation games with a bird's eye view?
+"request_explanation(rating[good], genres[simulation, strategy], player_perspective[bird view])",Would you mind sharing with me why you enjoy playing bird's eye view strategy simulators?
+"request_explanation(rating[good], genres[simulation, turn-based strategy], platforms[PC])",What do you like best about playing turn-based strategy simulation games on the PC?
+"request_explanation(rating[good], genres[simulation, turn-based strategy], platforms[PC])",What is it about PC turn-based strategy simulators that makes you enjoy them?
+"request_explanation(rating[good], genres[simulation, turn-based strategy], platforms[PC])",What would you say makes you enjoy simulation turn-based strategy games on the PC?
+"request_explanation(rating[poor], genres[vehicular combat], player_perspective[third person])","If you don't mind me asking, why do you think that third person vehicular combat games are terrible?"
+"request_explanation(rating[poor], genres[vehicular combat], player_perspective[third person])",Why do you think third person vehicular combat games are not fun to play?
+"request_explanation(rating[poor], genres[vehicular combat], player_perspective[third person])",What annoys you about third person vehicular combat games?
+"request_explanation(release_year[2014], rating[good], has_multiplayer[yes])",Why do you think 2014 was a good year for multiplayer games?
+"request_explanation(release_year[2014], rating[good], has_multiplayer[yes])",What is it about the multiplayer games released in 2014 that makes you enjoy them?
+"request_explanation(release_year[2014], rating[good], has_multiplayer[yes])",What is it about the multiplayer games released in 2014 that you feel makes them pretty fun?
+"request_explanation(release_year[2014], rating[good], platforms[PlayStation])",I wonder what it is that made 2014 PlayStation games overall good in your opinion.
+"request_explanation(release_year[2014], rating[good], platforms[PlayStation])",What's so good about PlayStation games from 2014 in your opinion?
+"request_explanation(release_year[2014], rating[good], platforms[PlayStation])","I'm really curious now, what aspects of the PlayStation's 2014 lineup makes you say they're fun?"

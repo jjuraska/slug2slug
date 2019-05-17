@@ -1,0 +1,97 @@
+mr,ref
+"request_explanation(developer[Bloober Team], rating[poor])",Just what is it about the games made by Bloober Team that you find so unpleasant?
+"request_explanation(developer[Bloober Team], rating[poor])",Why do you think Bloober Team makes such poor games?
+"request_explanation(developer[Bloober Team], rating[poor])",What is it about Bloober Team games that makes you find them boring and frustrating?
+"request_explanation(developer[Days of Wonder], rating[poor])",So just what is it about the games made by Days of Wonder that you find so terrible?
+"request_explanation(developer[Days of Wonder], rating[poor])",What is it about games made by Days of Wonder that makes you unable to stand them?
+"request_explanation(developer[Days of Wonder], rating[poor])",What is it about the developer Days of Wonder's games you dislike so much?
+"request_explanation(developer[Tarsier Studios], rating[good])","I'm wondering, why do you enjoy the games made by Tarsier Studios?"
+"request_explanation(developer[Tarsier Studios], rating[good])",What do you enjoy about Tarsier Studios' games?
+"request_explanation(developer[Tarsier Studios], rating[good])",So what makes games by Tarsier Studios stand out from the other developers?
+"request_explanation(developer[Telltale Games], rating[good])",Can you please explain to me a bit more about why you enjoy games developed by Telltale Games?
+"request_explanation(developer[Telltale Games], rating[good])",What is it about Telltale Games' that you think are good?
+"request_explanation(developer[Telltale Games], rating[good])","So if you don't mind explaining, what is it about the games created by Telltale Games that you like?"
+"request_explanation(developer[Ubisoft Montreal], rating[good])",You've mentioned games by Ubisoft Montreal to be pretty good. Why do you think that is?
+"request_explanation(developer[Ubisoft Montreal], rating[good])",Why do you like games from Ubisoft Montreal?
+"request_explanation(developer[Ubisoft Montreal], rating[good])",Why is it that games made by Ubisoft Montreal are games you find enjoyable?
+"request_explanation(developer[Visual Concepts], rating[good])",What is it about the games developed by Visual Concepts that makes them enjoyable to you?
+"request_explanation(developer[Visual Concepts], rating[good])",What makes you think Visual Concepts games are so good?
+"request_explanation(developer[Visual Concepts], rating[good])","You tend to enjoy games made by Visual Concepts, why is that?"
+"request_explanation(esrb[M (for Mature)], rating[excellent])","Why do you always seem to really, really love M rated games?"
+"request_explanation(esrb[M (for Mature)], rating[excellent])","You always praise M rated games, what's the reason for that?"
+"request_explanation(esrb[M (for Mature)], rating[excellent])","I'm wondering, why is it you love M rated games so much?"
+"request_explanation(esrb[M (for Mature)], rating[excellent])",Why do you love M rated games so much more than games with other content ratings?
+"request_explanation(esrb[M (for Mature)], rating[excellent])",What is it about M rated games that you find so excellent?
+"request_explanation(esrb[M (for Mature)], rating[excellent])",Why do you love M rated games so much?
+"request_explanation(esrb[M (for Mature)], rating[poor])",What do you dislike about M rated games?
+"request_explanation(esrb[M (for Mature)], rating[poor])",Why is it if a game has an M rating you tend to dislike it?
+"request_explanation(esrb[M (for Mature)], rating[poor])",What is it about M rated games that you find so off-putting?
+"request_explanation(rating[average], has_multiplayer[yes])",Can you explain to me why you find multiplayer games to be neither good nor bad?
+"request_explanation(rating[average], has_multiplayer[yes])",Is there anything in particular about multiplayer games you find so average?
+"request_explanation(rating[average], has_multiplayer[yes])","If you don't mind me asking, why do you find games with multiplayer to be mediocre?"
+"request_explanation(rating[average], platforms[PlayStation])","So hey, why is it that you find games on the PlayStation to be so thoroughly average?"
+"request_explanation(rating[average], platforms[PlayStation])",So what is it about PlayStation games that causes you to find them so average?
+"request_explanation(rating[average], platforms[PlayStation])",Why do you find PlayStation games so average?
+"request_explanation(rating[excellent], genres[action-adventure, platformer, role-playing])",What is it about action-adventure RPG platformers that you find so amazingly appealing?
+"request_explanation(rating[excellent], genres[action-adventure, platformer, role-playing])",What is it about action-adventure platformer RPGs that you find so great?
+"request_explanation(rating[excellent], genres[action-adventure, platformer, role-playing])","I'm curious, what is it about action-adventure platformers with role-playing elements that makes them some of your favorite games ever?"
+"request_explanation(rating[excellent], genres[action-adventure, shooter])",What do you find so great about action-adventure shooters?
+"request_explanation(rating[excellent], genres[action-adventure, shooter])",So why are action-adventure shooters some of your favorite games?
+"request_explanation(rating[excellent], genres[action-adventure, shooter])",Why is it that action-adventure shooters are always your favorite games?
+"request_explanation(rating[excellent], platforms[PC])",What is it about games on the PC that makes you feel they're so amazing?
+"request_explanation(rating[excellent], platforms[PC])",Why do you love playing games on the PC more than any other platforms?
+"request_explanation(rating[excellent], platforms[PC])",Why do you love PC games so much?
+"request_explanation(rating[excellent], player_perspective[third person])",Why do you love third person games so much?
+"request_explanation(rating[excellent], player_perspective[third person])",What is it about games with a third person perspective that makes you find them so excellent?
+"request_explanation(rating[excellent], player_perspective[third person])","I'm curious, why is it that games with a third person perspective are always your favorites?"
+"request_explanation(rating[good], genres[adventure, platformer, puzzle])",What is it you find interesting about adventure platformers with puzzles?
+"request_explanation(rating[good], genres[adventure, platformer, puzzle])","I'm curious, what is it about adventure puzzle platformers that you enjoy?"
+"request_explanation(rating[good], genres[adventure, platformer, puzzle])",What is it about adventure platformers with puzzles that you find so enjoyable?
+"request_explanation(rating[good], genres[adventure, point-and-click])",Why do you enjoy point and click adventure games so much?
+"request_explanation(rating[good], genres[adventure, point-and-click])","I've been curious about this, but why do you enjoy point-and-click adventure games?"
+"request_explanation(rating[good], genres[adventure, point-and-click])",What is it about point-and-click adventure games that makes you enjoy them?
+"request_explanation(rating[good], has_multiplayer[yes])",What about multiplayer games do you find enjoyable?
+"request_explanation(rating[good], has_multiplayer[yes])",You like multiplayer games quite a bit. Can you tell me why that is?
+"request_explanation(rating[good], has_multiplayer[yes])","So I'm curious, why is it you seem to enjoy multiplayer games?"
+"request_explanation(rating[good], platforms[PlayStation])",Why do you like PlayStation games better compared to games on other platforms?
+"request_explanation(rating[good], platforms[PlayStation])",What is it about the games on PlayStation that you find fun?
+"request_explanation(rating[good], platforms[PlayStation])",What is it you like about games on PlayStation?
+"request_explanation(rating[good], player_perspective[side view])",What is it about the side view perspective in games that makes them fun for you?
+"request_explanation(rating[good], player_perspective[side view])",Why is it that you enjoy games with a side view perspective?
+"request_explanation(rating[good], player_perspective[side view])",Why do you find side view games so enjoyable?
+"request_explanation(rating[good], player_perspective[third person])",You seem to gravitate to games with a third person perspective. What's the reason for that?
+"request_explanation(rating[good], player_perspective[third person])","So I'm curious now, why do you tend to enjoy games that are played from a third person perspective?"
+"request_explanation(rating[good], player_perspective[third person])",what is it you enjoy about third person games?
+"request_explanation(rating[good], player_perspective[third person])",What is it about a third person perspective in video games that makes you like them?
+"request_explanation(rating[good], player_perspective[third person])","So I've been wondering for a while now, what is it about third person games that makes you feel they're good?"
+"request_explanation(rating[good], player_perspective[third person])",Why do you have so much fun with third person games?
+"request_explanation(rating[good], player_perspective[third person])",What do you like about third person games?
+"request_explanation(rating[good], player_perspective[third person])",What is it about third person games that makes you find them enjoyable?
+"request_explanation(rating[good], player_perspective[third person])","I know you enjoy third person games, what is it about that perspective that you like?"
+"request_explanation(rating[poor], genres[indie, trivia/board game])",Why do you dislike indie trivia board games?
+"request_explanation(rating[poor], genres[indie, trivia/board game])",What is it about indie games in the trivia/board game genre that you find so distasteful?
+"request_explanation(rating[poor], genres[indie, trivia/board game])",Why don't you ever enjoy indie trivia/board games?
+"request_explanation(rating[poor], has_mac_release[yes])",What is it about games that have a Mac release that makes you hate them?
+"request_explanation(rating[poor], has_mac_release[yes])","You seem to find all Mac releases unacceptable, why is that?"
+"request_explanation(rating[poor], has_mac_release[yes])",What is it about Mac games that you find so disappointing?
+"request_explanation(rating[poor], has_multiplayer[no])",Why don't you ever enjoy games without multiplayer?
+"request_explanation(rating[poor], has_multiplayer[no])","If you don't mind me asking, why is it if a game doesn't have multiplayer you just don't like it at all?"
+"request_explanation(rating[poor], has_multiplayer[no])",Is there something about multiplayer that puts you off?
+"request_explanation(rating[poor], platforms[PC])",What is it about PC games that makes you find them so unpleasant?
+"request_explanation(rating[poor], platforms[PC])",Why do you dislike PC games?
+"request_explanation(rating[poor], platforms[PC])","I wonder if you can explain something to me, why is it that you can't stand games that are on the PC?"
+"request_explanation(rating[poor], platforms[Xbox])",What is it about games released for the Xbox that makes you hate them?
+"request_explanation(rating[poor], platforms[Xbox])",So why is it you hate Xbox games so much?
+"request_explanation(rating[poor], platforms[Xbox])",What about the Xbox do you find so unappealing?
+"request_explanation(rating[poor], player_perspective[first person])",What do you find so unenjoyable about first person games?
+"request_explanation(rating[poor], player_perspective[first person])","So I've been wondering, why do you dislike first person games so much?"
+"request_explanation(rating[poor], player_perspective[first person])",What is it about first person perspective games that makes you dislike them the way you do?
+"request_explanation(release_year[2004], rating[excellent])",What made 2004 such an excellent year for games?
+"request_explanation(release_year[2004], rating[excellent])","So I've gotten curious now, what is it about games released in 2004 that causes you to rave about how awesome they are all the time?"
+"request_explanation(release_year[2004], rating[excellent])",You often mention 2004 as the best year for games. What was it about the games released that year that makes you love them so much?
+"request_explanation(release_year[2005], rating[excellent])",What is it about games released in 2005 that makes you think it's such a fantastic year for video games?
+"request_explanation(release_year[2005], rating[excellent])",What is it about 2005's games that you think are so great?
+"request_explanation(release_year[2005], rating[excellent])",So what is it about the games that were released in 2005 that you find so excellent?
+"request_explanation(release_year[2018], rating[excellent])",What do you find so amazing about games from 2018?
+"request_explanation(release_year[2018], rating[excellent])",It seems like 2018 is one of your favorite years for video games of all time. Why is that?
+"request_explanation(release_year[2018], rating[excellent])",What is it about the games that came out in 2018 that makes you feel they're excellent?

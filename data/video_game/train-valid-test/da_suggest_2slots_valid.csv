@@ -1,0 +1,19 @@
+mr,ref
+"suggest(name[Mirror's Edge Catalyst], player_perspective[first person])","Do you like playing first person games, such as Mirror's Edge Catalyst?"
+"suggest(name[Mirror's Edge Catalyst], player_perspective[first person])","So, have you ever played a game with a first person perspective, such as for example Mirror's Edge Catalyst?"
+"suggest(name[Mirror's Edge Catalyst], player_perspective[first person])","Have you given first person games a try, like Mirror's Edge Catalyst?"
+"suggest(name[Mirror's Edge Catalyst], release_year[2016])","Have you played any games that came out in 2016, like Mirror's Edge Catalyst?"
+"suggest(name[Mirror's Edge Catalyst], release_year[2016])","Are any of the games you played games released in 2016, like Mirror's Edge Catalyst?"
+"suggest(name[Mirror's Edge Catalyst], release_year[2016])","Have you played any games from 2016, like Mirror's Edge Catalyst?"
+"suggest(name[Tetris], player_perspective[side view])",I was wondering if you're into side view games like Tetris?
+"suggest(name[Tetris], player_perspective[side view])","So have you ever played a game that has a side view perspective, like for example Tetris?"
+"suggest(name[Tetris], player_perspective[side view])",Are you familiar with side view games like Tetris?
+"suggest(name[The Vanishing of Ethan Carter], platforms[Xbox])",Are you into Xbox games like The Vanishing of Ethan Carter?
+"suggest(name[The Vanishing of Ethan Carter], platforms[Xbox])","Have you given Xbox games a try, like The Vanishing of Ethan Carter?"
+"suggest(name[The Vanishing of Ethan Carter], platforms[Xbox])","So, do you have any experience with playing games on the Xbox, such as The Vanishing of Ethan Carter?"
+"suggest(name[The Vanishing of Ethan Carter], player_perspective[first person])","I'm wondering if you ever play games with a first person perspective, like The Vanishing of Ethan Carter."
+"suggest(name[The Vanishing of Ethan Carter], player_perspective[first person])","Do you like first person perspective games, for example, The Vanishing of Ethan Carter?"
+"suggest(name[The Vanishing of Ethan Carter], player_perspective[first person])",Have you played any first person games like The Vanishing of Ethan Carter?
+"suggest(name[Might & Magic: Heroes VI], has_multiplayer[yes])",Are you into multiplayer games like Might & Magic: Heroes VI?
+"suggest(name[Might & Magic: Heroes VI], has_multiplayer[yes])","Do you also enjoy multiplayer games like Might & Magic: Heroes VI, by any chance?"
+"suggest(name[Might & Magic: Heroes VI], has_multiplayer[yes])","I have been wondering if you also like games with multiplayer, such as Might & Magic: Heroes VI for example?"

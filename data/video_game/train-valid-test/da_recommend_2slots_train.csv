@@ -1,0 +1,100 @@
+mr,ref
+"recommend(name[Madden NFL 15], developer[EA Tiburon])","Ever tried out Madden NFL 15? It was developed by EA Tiburon, whose games you seem to like."
+"recommend(name[Madden NFL 15], developer[EA Tiburon])","So while we're talking about games by EA Tiburon, have you played Madden NFL 15?"
+"recommend(name[Madden NFL 15], developer[EA Tiburon])",I've heard you mention EA Tiburon. Are you familiar with their Madden NFL 15?
+"recommend(name[Madden NFL 15], platforms[PlayStation])","If you like PlayStation games, you should try out Madden NFL 15. Have you heard anything about this game?"
+"recommend(name[Madden NFL 15], platforms[PlayStation])","Since you've gotten yourself a PlayStation, have you tried Madden NFL 15 on it?"
+"recommend(name[Madden NFL 15], platforms[PlayStation])","Hey, you have a PlayStation, right? Have you tried Madden NFL 15?"
+"recommend(name[Madden NFL 15], player_perspective[third person])","If you're a fan of third person games, you've gotta play Madden NFL 15. Have you heard of that one?"
+"recommend(name[Madden NFL 15], player_perspective[third person])","Since you like third person perspective games, have you tried Madden NFL 15?"
+"recommend(name[Madden NFL 15], player_perspective[third person])","If I remember correctly, you're into third person games. Have you played Madden NFL 15 by any chance?"
+"recommend(name[Metroid Prime Pinball], developer[Fuse Games])",I heard you say you're a fan of Fuse Games. Have you played Metroid Prime Pinball yet?
+"recommend(name[Metroid Prime Pinball], developer[Fuse Games])","If you like Fuse Games' work, I think you might like Metroid Prime Pinball. Do you know that game?"
+"recommend(name[Metroid Prime Pinball], developer[Fuse Games])","Since you're into games developed by Fuse Games, I wonder if you've tried Metroid Prime Pinball yet."
+"recommend(name[Metroid Prime Pinball], esrb[E (for Everyone)])","Speaking of good E rated games, have you ever played Metroid Prime Pinball?"
+"recommend(name[Metroid Prime Pinball], esrb[E (for Everyone)])",I know you need games rated E (for Everyone) so your whole family can play. Have you tried Metroid Prime Pinball?
+"recommend(name[Metroid Prime Pinball], esrb[E (for Everyone)])","You mentioned you liked games rated E, have you tried Metroid Prime Pinball?"
+"recommend(name[Metroid Prime Pinball], has_multiplayer[yes])","Since you're into multiplayer games, have you checked out Metroid Prime Pinball?"
+"recommend(name[Metroid Prime Pinball], has_multiplayer[yes])","And speaking of games with multiplayer, have you ever heard of Metroid Prime Pinball?"
+"recommend(name[Metroid Prime Pinball], has_multiplayer[yes])","Considering you like multiplayer games, have you played Metroid Prime Pinball?"
+"recommend(name[Metroid Prime Pinball], platforms[Nintendo])","And speaking of Nintendo games, have you heard of Metroid Prime Pinball?"
+"recommend(name[Metroid Prime Pinball], platforms[Nintendo])","Sicne you have a Nintendo, have you played Metroid Prime Pinball?"
+"recommend(name[Metroid Prime Pinball], platforms[Nintendo])","Since you like Nintendo games, I wonder if you've ever played Metroid Prime Pinball."
+"recommend(name[NBA 2K16], available_on_steam[yes])",Have you ever heard of NBA 2K16? You can get it on Steam.
+"recommend(name[NBA 2K16], available_on_steam[yes])","Since you get most of your games on Steam, have you tried NBA 2K16?"
+"recommend(name[NBA 2K16], available_on_steam[yes])","Speaking of Steam games, have you got NBA 2K16 yet?"
+"recommend(name[NBA 2K16], developer[Visual Concepts])",Ever tried NBA 2K16 developed by Visual Concepts?
+"recommend(name[NBA 2K16], developer[Visual Concepts])","If you're a fan of Visual Concepts, you gotta try out NBA 2K16. Have you played it, by any chance?"
+"recommend(name[NBA 2K16], developer[Visual Concepts])",I know Visual Concepts is one of your favorite developers. Have you tried NBA 2K16 yet?
+"recommend(name[NBA 2K16], has_multiplayer[yes])",Have you tried playing the multiplayer game NBA 2K16? You can play with your friends.
+"recommend(name[NBA 2K16], has_multiplayer[yes])","If you're into multiplayer games, you should pick up NBA 2K16. Has anyone mentioned this game to you before?"
+"recommend(name[NBA 2K16], has_multiplayer[yes])",I know you love to play multiplayer games with you friends. Have you guys tried NBA 2K16?
+"recommend(name[NBA 2K16], player_perspective[third person])","Since you're into third person games, I bet you'd love NBA 2K16. Do you know anything about it?"
+"recommend(name[NBA 2K16], player_perspective[third person])","Speaking of third person games, have you tried NBA 2K16?"
+"recommend(name[NBA 2K16], player_perspective[third person])",I know you like third person perspective games. Ever tried NBA 2K16?
+"recommend(name[Need for Speed: The Run], esrb[T (for Teen)])",Have you played Need for Speed: The Run? I think your mom would be OK with it since it's rated T (for Teen).
+"recommend(name[Need for Speed: The Run], esrb[T (for Teen)])","Speaking of good games that are rated T (for Teen), how about you have a look at Need for Speed: The Run?"
+"recommend(name[Need for Speed: The Run], esrb[T (for Teen)])","So you talked about games with a T (for Teen) ESRB rating, so I wonder, have you played Need for Speed: The Run?"
+"recommend(name[Need for Speed: The Run], has_multiplayer[yes])",I know you like beating all your friends in multiplayer games. Have you tried Need for Speed: The Run?
+"recommend(name[Need for Speed: The Run], has_multiplayer[yes])",You were mentioning games with multiplayer. Have you heard about Need for Speed: The Run?
+"recommend(name[Need for Speed: The Run], has_multiplayer[yes])","You seem to be looking for multiplayer games, in general. I wonder, have you ever come across Need for Speed: The Run?"
+"recommend(name[Never Alone], esrb[T (for Teen)])","Since you need games rated T (for Teen) for your kids, have you thought about Never Alone?"
+"recommend(name[Never Alone], esrb[T (for Teen)])","If you're looking for games with a T rating, well, have you ever played Never Alone?"
+"recommend(name[Never Alone], esrb[T (for Teen)])","There's a cool game that's even rated T (for Teen), called Never Alone, have you heard of it?"
+"recommend(name[Never Alone], has_multiplayer[yes])","Since you like multiplayer games, have you tried Never Alone?"
+"recommend(name[Never Alone], has_multiplayer[yes])","If you're looking for a game with multiplayer, are you familiar with Never Alone?"
+"recommend(name[Never Alone], has_multiplayer[yes])","Since you're looking for games to play with friends, have you tried the multiplayer game Never Alone?"
+"recommend(name[Never Alone], platforms[PlayStation])","I wonder, since you have a PlayStation, have you played Never Alone?"
+"recommend(name[Never Alone], platforms[PlayStation])","Since you like PlayStation games, have you given Never Alone a try?"
+"recommend(name[Never Alone], platforms[PlayStation])",I was thinking of trying Never Alone on PlayStation - have you tried it?
+"recommend(name[Never Alone], player_perspective[side view])","Since you seem to be fond of side view games, have you tried Never Alone?"
+"recommend(name[Never Alone], player_perspective[side view])","While we're on the subject of games played from a side view perspective, have you ever heard of Never Alone?"
+"recommend(name[Never Alone], player_perspective[side view])","I know you're into side view games, have you tried Never Alone?"
+"recommend(name[Sid Meier's Civilization V], available_on_steam[yes])",I know you got some Steam credits for your birthday. Have you tried Sid Meier's Civilization V yet?
+"recommend(name[Sid Meier's Civilization V], available_on_steam[yes])","If you like grabbing games on Steam, you should check out Sid Meier's Civilization V. Unless you've already played it?"
+"recommend(name[Sid Meier's Civilization V], available_on_steam[yes])","Since you like to play your games on Steam, have you heard of Sid Meier's Civilization V?"
+"recommend(name[Sid Meier's Civilization V], developer[Firaxis Games])","Hey, I know Firaxis Games night not have the strongest reputation, but Sid Meier's Civilization V is worth a try. Have you checked it out?"
+"recommend(name[Sid Meier's Civilization V], developer[Firaxis Games])","Since you like games developed by Firaxis Games, have you played Sid Meier's Civilization V?"
+"recommend(name[Sid Meier's Civilization V], developer[Firaxis Games])","You seem to be a fan of Firaxis Games titles, so have you played Sid Meier's Civilization V?"
+"recommend(name[Sid Meier's Civilization V], has_mac_release[yes])","It's hard to find good games for Mac, but have you heard of Sid Meier's Civilization V?"
+"recommend(name[Sid Meier's Civilization V], has_mac_release[yes])","Speaking of games released also for Mac, have you heard of Sid Meier's Civilization V?"
+"recommend(name[Sid Meier's Civilization V], has_mac_release[yes])","I know there's not many Mac games out there, but a solid one is Sid Meier's Civilization V. Have you played it, by any chance?"
+"recommend(name[Sid Meier's Civilization V], release_year[2010])","Since you seem to like some other games made in 2010, have you heard about Sid Meier's Civilization V?"
+"recommend(name[Sid Meier's Civilization V], release_year[2010])",Another good one from 2010 was Sid Meier's Civilization V. Have you ever tried it yourself?
+"recommend(name[Sid Meier's Civilization V], release_year[2010])","Speaking of games released in 2010, have you heard of Sid Meier's Civilization V?"
+"recommend(name[The Forest of Doom], available_on_steam[yes])","Since you're fond of games on Steam, have you heard of The Forest of Doom?"
+"recommend(name[The Forest of Doom], available_on_steam[yes])",You seem to have a bunch of Steam games. Have you tried The Forest of Doom?
+"recommend(name[The Forest of Doom], available_on_steam[yes])","Knowing you have Steam, I wonder, have you ever tried The Forest of Doom?"
+"recommend(name[The Forest of Doom], developer[Tin Man Games])","I wonder if you've heard of The Forest of Doom, developed by Tin Man Games."
+"recommend(name[The Forest of Doom], developer[Tin Man Games])",Tin Man Games also made The Forest of Doom. Have you played that game?
+"recommend(name[The Forest of Doom], developer[Tin Man Games])","Have you heard of The Forest of Doom, developed by Tin Man Games?"
+"recommend(name[The Forest of Doom], has_mac_release[yes])",Ever heard of The Forest of Doom on Mac?
+"recommend(name[The Forest of Doom], has_mac_release[yes])","If you like Mac games, you should give The Forest of Doom a try. Have you heard of it before?"
+"recommend(name[The Forest of Doom], has_mac_release[yes])","Since you've got a Mac, I wonder if you've tried The Forest of Doom yet?"
+"recommend(name[The Forest of Doom], platforms[PC])","Since you're a PC gamer, have you tried The Forest of Doom?"
+"recommend(name[The Forest of Doom], platforms[PC])","So, as long as we're bringing up PC games, I was curious, have you played The Forest of Doom?"
+"recommend(name[The Forest of Doom], platforms[PC])","Speaking of great PC games, have you heard of The Forest of Doom?"
+"recommend(name[The Witcher 3: Wild Hunt], developer[CD Projekt RED])",Ever heard of The Witcher 3: Wild Hunt by CD Projekt RED?
+"recommend(name[The Witcher 3: Wild Hunt], developer[CD Projekt RED])","Since you like games by CD Projekt RED, I'm wondering if you've played The Witcher 3: Wild Hunt."
+"recommend(name[The Witcher 3: Wild Hunt], developer[CD Projekt RED])",The best game I know developed by CD Projekt RED is The Witcher 3: Wild Hunt. Have you ever played it?
+"recommend(name[The Witcher 3: Wild Hunt], player_perspective[third person])","Speaking of third person perspective games, have you tried The Witcher 3: Wild Hunt?"
+"recommend(name[The Witcher 3: Wild Hunt], player_perspective[third person])","And speaking of games with a third person perspective, have you played The Witcher 3: Wild Hunt?"
+"recommend(name[The Witcher 3: Wild Hunt], player_perspective[third person])","Since you like third person perspective games, I wonder if you've heard of The Witcher 3: Wild Hunt."
+"recommend(name[The Wolf Among Us], available_on_steam[yes])","I know you use Steam a lot, so I wonder if you've tried The Wolf Among Us."
+"recommend(name[The Wolf Among Us], available_on_steam[yes])","I know there's a lot of good games on Steam, but The Wolf Among Us comes to my mind right now. Have you given it a shot?"
+"recommend(name[The Wolf Among Us], available_on_steam[yes])",I know that you're a true blue Steam gamer. Did you check out The Wolf Among Us on Steam?
+"recommend(name[The Wolf Among Us], developer[Telltale Games])","Since we're on the subject of games developed by Telltale Games, I'm wondering, have you played The Wolf Among Us?"
+"recommend(name[The Wolf Among Us], developer[Telltale Games])",Some of your favorite games seem to have been made by Telltale Games. Have you tried their The Wolf Among Us?
+"recommend(name[The Wolf Among Us], developer[Telltale Games])",Did you say that you like games developed by Telltale Games? I was wondering if you have heard of The Wolf Among Us.
+"recommend(name[The Wolf Among Us], platforms[PC])","Speaking of PC games, have you heard of this great game called The Wolf Among Us?"
+"recommend(name[The Wolf Among Us], platforms[PC])","While we're on the subject of PC games, are you familiar with The Wolf Among Us?"
+"recommend(name[The Wolf Among Us], platforms[PC])",I was looking for a new PC game and thought I'd ask you if you've ever heard of The Wolf Among Us?
+"recommend(name[The Wolf Among Us], player_perspective[third person])","Since you like third person games I think you'd enjoy The Wolf Among Us. Have you played it, by any chance?"
+"recommend(name[The Wolf Among Us], player_perspective[third person])","Speaking of third person games, have you played The Wolf Among Us?"
+"recommend(name[The Wolf Among Us], player_perspective[third person])","Speaking of third person perspective games, have you played The Wolf Among Us?"
+"recommend(name[Transport Tycoon], developer[Chris Sawyer])",Chris Sawyer seems to be one of your favorite developers. Have you played their Transport Tycoon?
+"recommend(name[Transport Tycoon], developer[Chris Sawyer])","Since you like other games developed by Chris Sawyer, I wonder if you've ever played Transport Tycoon."
+"recommend(name[Transport Tycoon], developer[Chris Sawyer])","Since you play games developed by Chris Sawyer, I wonder, have you played Transport Tycoon?"
+"recommend(name[Transport Tycoon], genres[simulation, strategy])","Since you're into simulation strategy games, have you tried the game Transport Tycoon?"
+"recommend(name[Transport Tycoon], genres[simulation, strategy])","A good strategy simulation is hard to find, but have you played Transport Tycoon?"
+"recommend(name[Transport Tycoon], genres[simulation, strategy])","On the topic of simulation strategy games, have you tried Transport Tycoon?"

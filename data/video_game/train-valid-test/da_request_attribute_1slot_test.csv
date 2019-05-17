@@ -1,0 +1,37 @@
+mr,ref
+request_attribute(release_year[]),Is there a particular year from which you enjoy games the most?
+request_attribute(release_year[]),What would you say was a memorable year for video games?
+request_attribute(release_year[]),"Can you think of a year, in which video games were particularly good?"
+request_attribute(developer[]),Would you say you prefer a certain developer?
+request_attribute(developer[]),Which game developer do you think is the best?
+request_attribute(developer[]),"What developer is top notch, in your mind?"
+request_attribute(genres[]),What is your favorite genre of video game?
+request_attribute(genres[]),Are there any genres you could play pretty much any time?
+request_attribute(genres[]),Which is the genre of video games that you are most interested in?
+request_attribute(genres[]),What's your favorite video game genre?
+request_attribute(genres[]),"Since you like video games, what's your favorite genre?"
+request_attribute(genres[]),"When you play video games, what genres are overall your favorite?"
+request_attribute(player_perspective[]),What is your favorite player perspective in games?
+request_attribute(player_perspective[]),Is there a player perspective that you tend to enjoy the most in games?
+request_attribute(player_perspective[]),What player perspective do you prefer?
+request_attribute(has_multiplayer[]),Are you more of a multiplayer type of gamer?
+request_attribute(has_multiplayer[]),Do you prefer playing games with friends in multiplayer?
+request_attribute(has_multiplayer[]),Do you enjoy multiplayer games better than those that don't have the option?
+request_attribute(has_multiplayer[]),Do you like games that you can play in multiplayer?
+request_attribute(has_multiplayer[]),Are you into multiplayer gaming at all?
+request_attribute(has_multiplayer[]),Do you often check out the multiplayer mode of games you play whenever they have it?
+request_attribute(platforms[]),Is there a platform you game on exclusively?
+request_attribute(platforms[]),Do you have a gaming platform you definitely prefer over the others?
+request_attribute(platforms[]),Which platform do you mostly game on?
+request_attribute(available_on_steam[]),Do you prefer getting your games on Steam?
+request_attribute(available_on_steam[]),Is availability of a game on Steam important to you?
+request_attribute(available_on_steam[]),Do you prefer playing games that you can get on Steam?
+request_attribute(has_linux_release[]),Is it important for you that a game is also available on Linux?
+request_attribute(has_linux_release[]),Do you do any of your gaming on a Linux system?
+request_attribute(has_linux_release[]),Is it a dealbreaker for you if a game does not support Linux?
+request_attribute(esrb[]),Do you have a favorite ESRB content rating?
+request_attribute(esrb[]),Are there any ESRB content ratings which you give preference to when picking a game to play?
+request_attribute(esrb[]),"Are you at all bothered by the ESRB rating of a game before playing it? If so, which one do msot often go for?"
+request_attribute(has_mac_release[]),Do you enjoy gaming on a Mac?
+request_attribute(has_mac_release[]),Would you not consider a game without a Mac release?
+request_attribute(has_mac_release[]),Do you ever game on a Mac?

@@ -1,0 +1,28 @@
+mr,ref
+"suggest(name[BioShock], esrb[M (for Mature)], genres[action-adventure, role-playing, shooter])",Do you enjoy M rated action adventure shooter RPGs like BioShock?
+"suggest(name[BioShock], esrb[M (for Mature)], genres[action-adventure, role-playing, shooter])","So I've gotten curious now, do you enjoy playing M rated action-adventure shooters with role-playing elements, such as BioShock?"
+"suggest(name[BioShock], esrb[M (for Mature)], genres[action-adventure, role-playing, shooter])","Are you also a fan of action-adventure role-playing shooter games rated M (for Mature), such as BioShock?"
+"suggest(name[BioShock], player_perspective[first person], platforms[PC])",Do you normally play first person PC games like BioShock?
+"suggest(name[BioShock], player_perspective[first person], platforms[PC])","Do you enjoy playing PC games with a first person perspective, like for instance BioShock?"
+"suggest(name[BioShock], player_perspective[first person], platforms[PC])","Do you enjoy first person PC games, such as BioShock?"
+"suggest(name[Little Big Adventure], player_perspective[third person], platforms[PC])","Have any of the games you've played for the PC had a third person perspective, such as Little Big Adventure?"
+"suggest(name[Little Big Adventure], player_perspective[third person], platforms[PC])","Do you by any chance enjoy third person PC games, such as Little Big Adventure?"
+"suggest(name[Little Big Adventure], player_perspective[third person], platforms[PC])",Are you into third person PC games like Little Big Adventure?
+"suggest(name[Max Payne], esrb[M (for Mature)], genres[action-adventure, shooter])","Have you ever played an M rated action-adventure shooter, such as for example Max Payne?"
+"suggest(name[Max Payne], esrb[M (for Mature)], genres[action-adventure, shooter])",Do you also enjoy M rated action-adventure shooter games such as Max Payne?
+"suggest(name[Max Payne], esrb[M (for Mature)], genres[action-adventure, shooter])","Do you have the stomach for M rated action-adventure shooters, such as Max Payne?"
+"suggest(name[Mirror's Edge Catalyst], developer[EA Digital Illusions CE], has_multiplayer[yes])","Do you like multiplayer games by EA Digital Illusions CE, like Mirror's Edge Catalyst?"
+"suggest(name[Mirror's Edge Catalyst], developer[EA Digital Illusions CE], has_multiplayer[yes])","I was wondering, are you fond of the games developed by EA Digital Illusions CE that have multiplayer, such as Mirror's Edge Catalyst?"
+"suggest(name[Mirror's Edge Catalyst], developer[EA Digital Illusions CE], has_multiplayer[yes])",Do you like EA Digital Illusions CE's games with multiplayer in them like Mirror's Edge Catalyst?
+"suggest(name[RollerCoaster Tycoon], developer[MicroProse], platforms[PC])",Do you enjoy MicroProse's PC games like RollerCoaster Tycoon?
+"suggest(name[RollerCoaster Tycoon], developer[MicroProse], platforms[PC])","Are you familiar with developer MicroProse's lineup of PC games, one example being RollerCoaster Tycoon?"
+"suggest(name[RollerCoaster Tycoon], developer[MicroProse], platforms[PC])",If you've played many PC games by MicroProse; is RollerCoaster Tycoon one of them?
+"suggest(name[Silent Hill 2], player_perspective[third person], platforms[PC])","So do you enjoy third person perspective PC games, like Silent Hill 2?"
+"suggest(name[Silent Hill 2], player_perspective[third person], platforms[PC])","Are you fond of playing PC games with a third person perspective, such as Silent Hill 2?"
+"suggest(name[Silent Hill 2], player_perspective[third person], platforms[PC])","Say, do you usually like third person PC games like Silent Hill 2?"
+"suggest(name[Undertale], release_year[2015], platforms[PlayStation])","I was wondering, do you enjoy the PlayStation games that came out in 2015, such as Undertale?"
+"suggest(name[Undertale], release_year[2015], platforms[PlayStation])","Do you think you would enjoy PlayStation games that came out in 2015, such as Undertale?"
+"suggest(name[Undertale], release_year[2015], platforms[PlayStation])",What do you think about PlayStation games from 2015 like Undertale?
+"suggest(name[Worms: Reloaded], player_perspective[side view], has_multiplayer[yes])","Hey do you like multiplayer side view games, like Worms: Reloaded?"
+"suggest(name[Worms: Reloaded], player_perspective[side view], has_multiplayer[yes])","Are side view games with multiplayer any fun for you, you know, like Worms: Reloaded?"
+"suggest(name[Worms: Reloaded], player_perspective[side view], has_multiplayer[yes])",Are you a fan of multiplayer side view games like Worms: Reloaded?

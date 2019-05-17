@@ -1,0 +1,40 @@
+mr,ref
+"request_explanation(developer[Capcom Production Studio 4], rating[excellent])",Does Capcom Production Studio 4 have some secret recipe for games that makes them so attractive to you?
+"request_explanation(developer[Capcom Production Studio 4], rating[excellent])",So why do you love the games made by Capcom Production Studio 4 so much?
+"request_explanation(developer[Capcom Production Studio 4], rating[excellent])",Why is Capcom Production Studio 4 the developer whose games you love more than anyone's?
+"request_explanation(developer[SIE Santa Monica Studio], rating[excellent])",Can you explain to me what it is about the games developed by SIE Santa Monica Studio that makes you love them so much?
+"request_explanation(developer[SIE Santa Monica Studio], rating[excellent])","Hey, what it is about games developed by SIE Santa Monica Studio that makes you love them so much?"
+"request_explanation(developer[SIE Santa Monica Studio], rating[excellent])",Why do you think SIE Santa Monica Studio is so much better than others?
+"request_explanation(developer[Valve Corporation], rating[excellent])",What is it about Valve Corporation's games that strongly appeals to you?
+"request_explanation(developer[Valve Corporation], rating[excellent])","So hey, why is it that games developed by Valve Corporation are games you find amazing?"
+"request_explanation(developer[Valve Corporation], rating[excellent])",What is it about games developed by Valve Corporation that makes you feel they're so awesome?
+"request_explanation(rating[average], player_perspective[third person])","You've mentioned you find third person perspective games to be just okay, why is that?"
+"request_explanation(rating[average], player_perspective[third person])",Why do you think third person games are so average in quality?
+"request_explanation(rating[average], player_perspective[third person])",Why is it that you find games with a third person perspective to be mediocre?
+"request_explanation(rating[excellent], genres[shooter])",What is it about shooter games that you absolutely love?
+"request_explanation(rating[excellent], genres[shooter])","So if you don't mind me asking, why do you love shooter games so much?"
+"request_explanation(rating[excellent], genres[shooter])",What is it about shooters that you find so great?
+"request_explanation(rating[excellent], has_mac_release[yes])","Why is it that if a game has a Mac release, it's always one of your favorite games?"
+"request_explanation(rating[excellent], has_mac_release[yes])",Why do you think that Mac games are so great?
+"request_explanation(rating[excellent], has_mac_release[yes])",Why do you love Mac games so much?
+"request_explanation(rating[good], available_on_steam[yes])","If you don't mind me asking, what is it about the games available on Steam that you find enjoyable?"
+"request_explanation(rating[good], available_on_steam[yes])",What is it you like about games on Steam?
+"request_explanation(rating[good], available_on_steam[yes])",What is it about Steam games that you find to be good?
+"request_explanation(rating[good], genres[sport])","So now I'm curious, why do you like sport games?"
+"request_explanation(rating[good], genres[sport])",Why do you prefer sports games?
+"request_explanation(rating[good], genres[sport])",How come you always seem to have fun playing sports games?
+"request_explanation(rating[good], has_mac_release[yes])",Why is it you always tend to like games that have a Mac release?
+"request_explanation(rating[good], has_mac_release[yes])",Why do you like Mac games?
+"request_explanation(rating[good], has_mac_release[yes])",So what is it about games with Mac releases that makes you like them like you do?
+"request_explanation(rating[good], has_multiplayer[no])","I've been wondering, why is it that if a game has no multiplayer option, you always find it enjoyable?"
+"request_explanation(rating[good], has_multiplayer[no])",Why do you enjoy single-player games so much?
+"request_explanation(rating[good], has_multiplayer[no])","I'm wondering something, why is it that if a game doesn't have a multiplayer option, you tend to enjoy it?"
+"request_explanation(rating[good], platforms[PC])",What is it about PC games that makes you enjoy them like you do?
+"request_explanation(rating[good], platforms[PC])",So why is it you generally find PC games enjoyable?
+"request_explanation(rating[good], platforms[PC])",Why do you like PC games?
+"request_explanation(rating[poor], has_multiplayer[yes])",What is it about multiplayer games that disappoint you so much?
+"request_explanation(rating[poor], has_multiplayer[yes])",Why do you feel so negatively about games with multiplayer?
+"request_explanation(rating[poor], has_multiplayer[yes])",Why don't you ever enjoy multiplayer games?
+"request_explanation(release_year[1999], rating[average])",Why do you think games from 1999 are so adequate?
+"request_explanation(release_year[1999], rating[average])","So I've been wondering, why did you say that games released in 1999 are merely average?"
+"request_explanation(release_year[1999], rating[average])",What is it about games released in 1999 that makes you feel so-so about them all?

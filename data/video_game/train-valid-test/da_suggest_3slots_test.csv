@@ -1,0 +1,61 @@
+mr,ref
+"suggest(name[BioShock], release_year[2007], genres[action-adventure, role-playing, shooter])","Did you ever play any of the action-adventure shooter RPGs that came out in 2007, like BioShock?"
+"suggest(name[BioShock], release_year[2007], genres[action-adventure, role-playing, shooter])","Do you think highly of any action-adventure RPG shooters from 2007, perhaps BioShock?"
+"suggest(name[BioShock], release_year[2007], genres[action-adventure, role-playing, shooter])","Are you a fan of games from 2007, specifically action-adventure RPG shooters like BioShock?"
+"suggest(name[Bus Driver], genres[driving/racing, indie, simulation], platforms[PC])",Are you into indie racing simulation games for the PC like Bus Driver?
+"suggest(name[Bus Driver], genres[driving/racing, indie, simulation], platforms[PC])","I'm curious, are you fond of playing indie driving/racing simulators for the PC, like for example Bus Driver?"
+"suggest(name[Bus Driver], genres[driving/racing, indie, simulation], platforms[PC])","Do you enjoy indie driving simulators for the PC, like Bus Driver?"
+"suggest(name[Dirt: Showdown], esrb[E 10+ (for Everyone 10 and Older)], has_multiplayer[yes])","I'm curious, do you also enjoy E10+ multiplayer games, like Dirt: Showdown?"
+"suggest(name[Dirt: Showdown], esrb[E 10+ (for Everyone 10 and Older)], has_multiplayer[yes])","Are you fond of playing E 10+ rated games with multiplayer, like Dirt: Showdown?"
+"suggest(name[Dirt: Showdown], esrb[E 10+ (for Everyone 10 and Older)], has_multiplayer[yes])","Do you also like multiplayer games rated E 10+, such as Dirt: Showdown?"
+"suggest(name[Dirt: Showdown], player_perspective[first person], platforms[PC])",I'm curious if you like first person PC games like Dirt: Showdown?
+"suggest(name[Dirt: Showdown], player_perspective[first person], platforms[PC])",What do you think about first person PC games like Dirt: Showdown?
+"suggest(name[Dirt: Showdown], player_perspective[first person], platforms[PC])","Just curious, would you be open to any first person PC games, you know, like that Dirt: Showdown?"
+"suggest(name[Dirt: Showdown], release_year[2012], platforms[PC])","Do you ever play any PC games from 2012, like Dirt: Showdown?"
+"suggest(name[Dirt: Showdown], release_year[2012], platforms[PC])",How do you feel about PC games from 2012 like Dirt: Showdown?
+"suggest(name[Dirt: Showdown], release_year[2012], platforms[PC])",Have you played any of the 2012 PC games like Dirt: Showdown?
+"suggest(name[Little Big Adventure], esrb[T (for Teen)], genres[action-adventure])",Do you also like action-adventure games rated T (for Teen) like Little Big Adventure?
+"suggest(name[Little Big Adventure], esrb[T (for Teen)], genres[action-adventure])","How do you feel about T rated action adventure games, like Little Big Adventure?"
+"suggest(name[Little Big Adventure], esrb[T (for Teen)], genres[action-adventure])",Have you played Teen action-adventure games like Little Big Adventure?
+"suggest(name[Mirror's Edge Catalyst], player_perspective[first person], platforms[Xbox])","Would you ever play an Xbox games with first person perspective, such as Mirror's Edge Catalyst?"
+"suggest(name[Mirror's Edge Catalyst], player_perspective[first person], platforms[Xbox])",How do you feel about first person Xbox games like Mirror's Edge Catalyst?
+"suggest(name[Mirror's Edge Catalyst], player_perspective[first person], platforms[Xbox])","I was wondering, do you like to play first person games on the Xbox, such as Mirror's Edge Catalyst?"
+"suggest(name[NBA 2K16], esrb[E 10+ (for Everyone 10 and Older)], has_multiplayer[yes])","Do you like multiplayer games rated E 10+ (for Everyone 10 and Older), for example, NBA 2K16?"
+"suggest(name[NBA 2K16], esrb[E 10+ (for Everyone 10 and Older)], has_multiplayer[yes])","Have you ever played an E 10+ rated game with multiplayer, like NBA 2K16?"
+"suggest(name[NBA 2K16], esrb[E 10+ (for Everyone 10 and Older)], has_multiplayer[yes])",What do you think about multiplayer E10+ games like NBA 2K16?
+"suggest(name[RollerCoaster Tycoon], developer[MicroProse], genres[simulation, strategy])","Are you familiar with MicroProse's strategy simulators, such as RollerCoaster Tycoon?"
+"suggest(name[RollerCoaster Tycoon], developer[MicroProse], genres[simulation, strategy])","Do you like simulation strategy games from MicroProse, like RollerCoaster Tycoon?"
+"suggest(name[RollerCoaster Tycoon], developer[MicroProse], genres[simulation, strategy])","So I'm wondering, do you also enjoy MicroProse's strategy simulators like RollerCoaster Tycoon?"
+"suggest(name[RollerCoaster Tycoon], release_year[1999], has_linux_release[yes])",Do you like Linux games from 1999 like RollerCoaster Tycoon?
+"suggest(name[RollerCoaster Tycoon], release_year[1999], has_linux_release[yes])","Have you ever played any 1999 games that have Linux releases, like for example RollerCoaster Tycoon?"
+"suggest(name[RollerCoaster Tycoon], release_year[1999], has_linux_release[yes])","What about any Linux games released back in 1999, have you ever played any of those games, such as RollerCoaster Tycoon?"
+"suggest(name[Silent Hill 2], esrb[M (for Mature)], genres[action-adventure, puzzle])",Are you into M rated action-adventure puzzle games like Silent Hill 2?
+"suggest(name[Silent Hill 2], esrb[M (for Mature)], genres[action-adventure, puzzle])","Would you ever consider playing an M rated action-adventure puzzle game, such as Silent Hill 2?"
+"suggest(name[Silent Hill 2], esrb[M (for Mature)], genres[action-adventure, puzzle])","If you don't mind me asking, do you enjoy playing M rated action-adventure puzzle games, such as Silent Hill 2?"
+"suggest(name[Small World 2], developer[Days of Wonder], platforms[PC])","Do you enjoy PC games by Days of Wonder, you know, such as Small World 2?"
+"suggest(name[Small World 2], developer[Days of Wonder], platforms[PC])","How do you feel about Days of Wonder's PC games, such as Small World 2?"
+"suggest(name[Small World 2], developer[Days of Wonder], platforms[PC])","I'm wondering, do you ever play any of the PC games developed by Days of Wonder, like for instance Small World 2?"
+"suggest(name[Small World 2], genres[indie, trivia/board game], has_multiplayer[yes])","Are you a fan of multiplayer indie trivia games, like Small World 2?"
+"suggest(name[Small World 2], genres[indie, trivia/board game], has_multiplayer[yes])","Do you also like indie trivia/board games with multiplayer, such as Small World 2?"
+"suggest(name[Small World 2], genres[indie, trivia/board game], has_multiplayer[yes])","I was wondering, have you ever played a multiplayer game in the indie trivia/board game genre, such as Small World 2?"
+"suggest(name[Super Bomberman], genres[action, strategy], platforms[Nintendo])","Do you enjoy playing action strategy games on Nintendo, such as Super Bomberman?"
+"suggest(name[Super Bomberman], genres[action, strategy], platforms[Nintendo])",Do you like action strategy games from Nintendo like Super Bomberman?
+"suggest(name[Super Bomberman], genres[action, strategy], platforms[Nintendo])","I was wondering, have you played any action strategy games for the Nintendo, such as Super Bomberman?"
+"suggest(name[The Sims], platforms[PC], available_on_steam[no])","Have you ever given any games on PC but not on Steam a try, like The Sims?"
+"suggest(name[The Sims], platforms[PC], available_on_steam[no])","Do you ever play PC games that don't have Steam releases, like for example The Sims?"
+"suggest(name[The Sims], platforms[PC], available_on_steam[no])","Do you think you would ever give a PC game a chance that you can't get on Steam, such as The Sims?"
+"suggest(name[Tom Clancy's Splinter Cell: Chaos Theory], genres[action, tactical], available_on_steam[yes])","Have you played through any tactical action games on Steam, such as Tom Clancy's Splinter Cell: Chaos Theory?"
+"suggest(name[Tom Clancy's Splinter Cell: Chaos Theory], genres[action, tactical], available_on_steam[yes])","So have you played any of the tactical action games that are available on Steam, such as Tom Clancy's Splinter Cell: Chaos Theory?"
+"suggest(name[Tom Clancy's Splinter Cell: Chaos Theory], genres[action, tactical], available_on_steam[yes])","Are you a fan of tactical action games on Steam, like Tom Clancy's Splinter Cell: Chaos Theory?"
+"suggest(name[Tom Clancy's Splinter Cell: Chaos Theory], has_multiplayer[yes], available_on_steam[yes])",What are your feelings on multiplayer Steam games like Tom Clancy's Splinter Cell: Chaos Theory?
+"suggest(name[Tom Clancy's Splinter Cell: Chaos Theory], has_multiplayer[yes], available_on_steam[yes])","Have you played any of the multiplayer games that you can get on Steam, like Tom Clancy's Splinter Cell: Chaos Theory?"
+"suggest(name[Tom Clancy's Splinter Cell: Chaos Theory], has_multiplayer[yes], available_on_steam[yes])","Do you normally play multiplayer games on Steam, you know, games like Tom Clancy's Splinter Cell: Chaos Theory?"
+"suggest(name[Tom Clancy's Splinter Cell: Chaos Theory], release_year[2005], player_perspective[third person])","Do you have experience with any third person games that were released in 2005, like Tom Clancy's Splinter Cell: Chaos Theory?"
+"suggest(name[Tom Clancy's Splinter Cell: Chaos Theory], release_year[2005], player_perspective[third person])","Are you into third person games, like 2005's Tom Clancy's Splinter Cell: Chaos Theory?"
+"suggest(name[Tom Clancy's Splinter Cell: Chaos Theory], release_year[2005], player_perspective[third person])","Did you ever play any third person games released back in 2005, such as Tom Clancy's Splinter Cell: Chaos Theory?"
+"suggest(name[Tony Hawk's Pro Skater 3], player_perspective[third person], has_multiplayer[yes])","I really like third person multiplayer games like Tony Hawk's Pro Skater 3, did you enjoy it?"
+"suggest(name[Tony Hawk's Pro Skater 3], player_perspective[third person], has_multiplayer[yes])","Are you a fan of third person multiplayer games, like Tony Hawk's Pro Skater 3, by any chance?"
+"suggest(name[Tony Hawk's Pro Skater 3], player_perspective[third person], has_multiplayer[yes])",Do you ever play third person multiplayer games like Tony Hawk's Pro Skater 3?
+"suggest(name[Worms: Reloaded], release_year[2010], platforms[PC])","So now I'm curious, have you played any PC games that came out in 2010, such as Worms: Reloaded?"
+"suggest(name[Worms: Reloaded], release_year[2010], platforms[PC])",Do you like PC games from 2010 like Worms: Reloaded?
+"suggest(name[Worms: Reloaded], release_year[2010], platforms[PC])","Have you played any PC games that came out in 2010, for example Worms: Reloaded?"
