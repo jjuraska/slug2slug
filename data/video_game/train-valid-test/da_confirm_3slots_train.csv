@@ -11,9 +11,9 @@ mr,ref
 "confirm(name[Anthem], developer[BioWare], platforms[PlayStation])",Do you mean the Anthem from BioWare on PlayStation?
 "confirm(name[Anthem], developer[BioWare], platforms[PlayStation])",Is the Anthem you're talking about the one developed by BioWare for the PlayStation?
 "confirm(name[Anthem], developer[BioWare], platforms[PlayStation])",Is that Anthem developed by BioWare that you can play on PlayStation?
-"confirm(name[Anthem], exp_release_date[February 22, 2020], has_multiplayer[yes])","When you mention Anthem, are you referring to the multiplayer game that's supposed to come out on February 22, 2020?"
-"confirm(name[Anthem], exp_release_date[February 22, 2020], has_multiplayer[yes])","Do you mean Anthem, launching February 22, 2020 and with a multiplayer mode?"
-"confirm(name[Anthem], exp_release_date[February 22, 2020], has_multiplayer[yes])","Are you talking about Anthem with multiplayer that is expected to be released on February 22, 2020?"
+"confirm(name[Anthem], exp_release_date[February 22, 2019], has_multiplayer[yes])","When you mention Anthem, are you referring to the multiplayer game that's supposed to come out on February 22, 2019?"
+"confirm(name[Anthem], exp_release_date[February 22, 2019], has_multiplayer[yes])","Do you mean Anthem, launching February 22, 2019 and with a multiplayer mode?"
+"confirm(name[Anthem], exp_release_date[February 22, 2019], has_multiplayer[yes])","Are you talking about Anthem with multiplayer that is expected to be released on February 22, 2019?"
 "confirm(name[Anthem], genres[action-adventure, role-playing, shooter], has_multiplayer[yes])",Is the Anthem you're talking about the one that's a multiplayer action-adventure shooter RPG?
 "confirm(name[Anthem], genres[action-adventure, role-playing, shooter], has_multiplayer[yes])",Do you mean Anthem that is an action-adventure role-playing shooter with multiplayer?
 "confirm(name[Anthem], genres[action-adventure, role-playing, shooter], has_multiplayer[yes])",Are you talking about Anthem the multiplayer action adventure shooter RPG?
@@ -149,12 +149,12 @@ mr,ref
 "confirm(name[The Crew 2], developer[Ivory Tower], platforms[PlayStation])",By The Crew 2 are you talking about the PlayStation game created by Ivory Tower?
 "confirm(name[The Crew 2], developer[Ivory Tower], platforms[PlayStation])","You mean The Crew 2, the PlayStation game developed by Ivory Tower?"
 "confirm(name[The Crew 2], developer[Ivory Tower], platforms[PlayStation])","The Crew 2, the one from Ivory Tower released for the PlayStation?"
-"confirm(name[The Crew 2], exp_release_date[June 29, 2019], developer[Ivory Tower])","Do you mean The Crew 2 that's coming out June 29, 2019, by Ivory Tower?"
-"confirm(name[The Crew 2], exp_release_date[June 29, 2019], developer[Ivory Tower])","Do you mean The Crew 2, to be released by Ivory Tower on June 29, 2019?"
-"confirm(name[The Crew 2], exp_release_date[June 29, 2019], developer[Ivory Tower])","When you mention The Crew 2, are you talking about the game developed by Ivory Tower that's supposed to come out on June 29, 2019?"
-"confirm(name[The Crew 2], exp_release_date[June 29, 2019], genres[driving/racing])","The Crew 2, the driving/racing game expected to be released June 29, 2019?"
-"confirm(name[The Crew 2], exp_release_date[June 29, 2019], genres[driving/racing])","Are you referring to The Crew 2, the upcoming driving/racing title releasing June 29, 2019?"
-"confirm(name[The Crew 2], exp_release_date[June 29, 2019], genres[driving/racing])","When you mention The Crew 2, do you mean the driving/racing game that's supposed to come out later this year, on June 29, 2019?"
+"confirm(name[The Crew 2], exp_release_date[June 29, 2018], developer[Ivory Tower])","Do you mean The Crew 2 that's coming out June 29, 2018, by Ivory Tower?"
+"confirm(name[The Crew 2], exp_release_date[June 29, 2018], developer[Ivory Tower])","Do you mean The Crew 2, to be released by Ivory Tower on June 29, 2018?"
+"confirm(name[The Crew 2], exp_release_date[June 29, 2018], developer[Ivory Tower])","When you mention The Crew 2, are you talking about the game developed by Ivory Tower that's supposed to come out on June 29, 2018?"
+"confirm(name[The Crew 2], exp_release_date[June 29, 2018], genres[driving/racing])","The Crew 2, the driving/racing game expected to be released June 29, 2018?"
+"confirm(name[The Crew 2], exp_release_date[June 29, 2018], genres[driving/racing])","Are you referring to The Crew 2, the upcoming driving/racing title releasing June 29, 2018?"
+"confirm(name[The Crew 2], exp_release_date[June 29, 2018], genres[driving/racing])","When you mention The Crew 2, do you mean the driving/racing game that's supposed to come out later this year, on June 29, 2018?"
 "confirm(name[The Elder Scrolls Online], genres[MMORPG], has_mac_release[yes])","The Elder Scrolls Online, the MMORPG that also got a Mac release?"
 "confirm(name[The Elder Scrolls Online], genres[MMORPG], has_mac_release[yes])",Was it the MMORPG game The Elder Scrolls Online that was released on Mac?
 "confirm(name[The Elder Scrolls Online], genres[MMORPG], has_mac_release[yes])","The MMORPG game The Elder Scrolls Online, which was released on Mac too?"

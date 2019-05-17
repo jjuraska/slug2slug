@@ -1,4 +1,5 @@
 import os
+import glob
 import random
 import re
 import json
@@ -300,6 +301,28 @@ class MRGenerator:
 
         df_merged.to_csv(os.path.join(config.DATA_DIR, dataset, file_out), index=False, encoding='utf8')
 
+    def merge_data_files_with_suffix(self, dataset, folder, suffix=''):
+        """"""
+
+        # Read all files with the given suffix in their name
+        file_paths = glob.glob(os.path.join(config.DATA_DIR, dataset, folder, '*' + suffix + '.csv'))
+
+        # Combine all files into a single DataFrame
+        df_merged = pd.concat((pd.read_csv(f) for f in file_paths), ignore_index=True)
+
+        # Shuffle rows
+        df_merged = df_merged.sample(frac=1).reset_index(drop=True)
+
+        # Group rows by MRs and expand them back
+        df_grouped = pd.concat([utt_group for mr, utt_group in df_merged.groupby('mr', sort=False)], ignore_index=True)
+
+        if suffix is not None and len(suffix) > 0:
+            file_out = os.path.join(config.DATA_DIR, dataset, folder, 'merged_' + suffix + '.csv')
+        else:
+            file_out = os.path.join(config.DATA_DIR, dataset, folder, 'merged.csv')
+
+        df_grouped.to_csv(file_out, index=False, encoding='utf8')
+
     def __get_random_slot_comb_for_da(self, row, da='inform', num_slots=None):
         if da == 'inform':
             mr_dict = self.__get_random_slot_comb_inform(row)
@@ -576,9 +599,11 @@ def shuffle_samples_csv(filepath):
     df.to_csv(filepath_out, index=False, encoding='utf8')
 
 
-def train_test_split(dataset_filepath, misses_filepath):
-    valid_ratio = 0.2
-    test_ratio = 0.2
+def train_test_split(dataset_filepath, split_ratios, num_refs_per_mr=1, misses_filepath=None):
+    assert isinstance(split_ratios, list) and sum(split_ratios) == 1
+
+    valid_ratio = split_ratios[1]
+    test_ratio = split_ratios[2]
 
     non_train_ratio = valid_ratio + test_ratio
 
@@ -587,19 +612,21 @@ def train_test_split(dataset_filepath, misses_filepath):
     testset = []
 
     train_mrs_slots_only = set()
+    non_train_mrs_slots_only = set()
+    # train_names = set()
+    # non_train_names = set()
 
     df_dataset = pd.read_csv(dataset_filepath, header=0, encoding='utf8')
-    df_misses = pd.read_csv(misses_filepath, header=0, encoding='utf8')
-
     num_samples = df_dataset.shape[0]
-    num_refs_per_mr = 3
+
+    if misses_filepath is not None:
+        df_misses = pd.read_csv(misses_filepath, header=0, encoding='utf8')
+        if df_misses.shape[0] != num_samples:
+            raise ValueError('Input files do not have matching numbers of lines.')
 
     # DEBUG PRINT
     # print(num_samples)
     # print(df_misses.dtypes)
-
-    if df_misses.shape[0] != num_samples:
-        raise ValueError('Input files do not have matching numbers of lines.')
 
     cur_row = 0
     for mr_idx in range(num_samples // num_refs_per_mr):
@@ -607,7 +634,7 @@ def train_test_split(dataset_filepath, misses_filepath):
         has_ref_with_miss = False
         for ref_idx in range(num_refs_per_mr):
             mr_samples.append(tuple(df_dataset.iloc[cur_row, :].values))
-            if df_misses.iat[cur_row, 2] > 0:
+            if misses_filepath is not None and df_misses.iat[cur_row, 2] > 0:
                 has_ref_with_miss = True
             cur_row += 1
 
@@ -615,21 +642,36 @@ def train_test_split(dataset_filepath, misses_filepath):
         # print(cur_row, '->', has_ref_with_miss)
         # print(mr_samples)
 
+        # Remove the values of certain slots for determining MR similarity
+        cur_mr_generalized = remove_vals_from_slots(mr_samples[0][0], selected_slots_only=True)
+
+        # Extract the value of the name slot
+        # cur_name = extract_name_from_mr_string(mr_samples[0][0])
+
         # Partition the samples into train/valid/test
-        if not has_ref_with_miss and random.random() < non_train_ratio and \
-                remove_vals_from_slots(mr_samples[0][0], selected_slots_only=True) not in train_mrs_slots_only:
+        if cur_mr_generalized in non_train_mrs_slots_only or \
+                cur_mr_generalized not in train_mrs_slots_only and \
+                not has_ref_with_miss and random.random() < non_train_ratio:
             if random.random() < (valid_ratio / non_train_ratio):
                 validset.extend(mr_samples)
             else:
                 testset.extend(mr_samples)
+
+            non_train_mrs_slots_only.add(cur_mr_generalized)
+            # if cur_name is not None:
+            #     non_train_names.add(cur_name)
         else:
             # All samples with missing/hallucinated information go to trainset
             trainset.extend(mr_samples)
-            train_mrs_slots_only.add(remove_vals_from_slots(mr_samples[0][0], selected_slots_only=True))
+
+            train_mrs_slots_only.add(cur_mr_generalized)
+            # if cur_name is not None:
+            #     train_names.add(cur_name)
 
     # DEBUG PRINT
     print('Partition:', len(trainset), len(validset), len(testset))
     print('Unique MRs in trainset:', len(train_mrs_slots_only))
+    # print('Names in trainset:', train_names)
 
     trainset_df = pd.DataFrame(trainset, columns=['mr', 'ref'])
     validset_df = pd.DataFrame(validset, columns=['mr', 'ref'])
@@ -643,13 +685,20 @@ def train_test_split(dataset_filepath, misses_filepath):
     return trainset, validset, testset
 
 
+def extract_name_from_mr_string(mr, slot_name='name'):
+    try:
+        return re.search(slot_name + r'\[(.+?)\]', mr).group(1)
+    except (AttributeError, IndexError):
+        return None
+
+
+# TODO: make more universal so it would work with different value separators
 def remove_vals_from_slots(mr, selected_slots_only=False):
     if selected_slots_only:
         # slots_to_remove_vals = ['name', 'release_year', 'exp_release_date', 'developer',
         #                         'player_perspective', 'platforms', 'esrb', 'rating',
         #                         'has_multiplayer', 'available_on_steam', 'has_linux_release', 'has_mac_release']
-        slots_to_remove_vals = ['name', 'release_year', 'exp_release_date', 'developer',
-                                'player_perspective', 'genres', 'platforms', 'esrb', 'has_multiplayer']
+        slots_to_remove_vals = ['name', 'developer']
 
         for slot in slots_to_remove_vals:
             mr = re.sub(slot + r'\[.+?\]', slot, mr)
@@ -712,16 +761,20 @@ def main():
 
     # ----
 
-    file1 = 'generation/video_games_final_verify_attribute (4 slots, round 1).csv'
-    file2 = 'generation/video_games_final_verify_attribute (4 slots, round 2).csv'
-    mr_gen.merge_data_files('video_game', file1, file2)
+    # file1 = 'generation/video_games_final_verify_attribute (4 slots, round 1).csv'
+    # file2 = 'generation/video_games_final_verify_attribute (4 slots, round 2).csv'
+    # mr_gen.merge_data_files('video_game', file1, file2)
 
     # ----
 
-    # file_dataset = os.path.join(config.VIDEO_GAME_DATA_DIR, 'dataset.csv')
-    # file_misses = os.path.join(config.VIDEO_GAME_DATA_DIR, 'dataset_misses.csv')
+    # file_dataset = os.path.join(config.VIDEO_GAME_DATA_DIR, 'individual_das', 'video_games_da_inform.csv')
+    # file_misses = os.path.join(config.VIDEO_GAME_DATA_DIR, 'individual_das', 'video_games_da_inform (errors).csv')
     #
-    # train_test_split(file_dataset, file_misses)
+    # train_test_split(file_dataset, split_ratios=[0.8, 0.1, 0.1], num_refs_per_mr=3, misses_filepath=file_misses)
+
+    # ----
+
+    mr_gen.merge_data_files_with_suffix('video_game', 'train-valid-test', suffix='train')
 
     # ----
 

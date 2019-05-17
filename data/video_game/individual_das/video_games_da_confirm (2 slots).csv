@@ -2,9 +2,9 @@ mr,ref
 "confirm(name[Ancient Cities], developer[Uncasual Games])",Ancient Cities? From Uncasual Games?
 "confirm(name[Ancient Cities], developer[Uncasual Games])",Are you talking about the Ancient Cities that was made by Uncasual Games?
 "confirm(name[Ancient Cities], developer[Uncasual Games])",Do you mean the Ancient Cities released by Uncasual Games?
-"confirm(name[Ancient Cities], exp_release_date[December 1, 2019])","Do you mean the Ancient Cities that is expected to be released on December 1, 2019?"
-"confirm(name[Ancient Cities], exp_release_date[December 1, 2019])","Do you mean Ancient Cities, coming December 1, 2019?"
-"confirm(name[Ancient Cities], exp_release_date[December 1, 2019])","You mean the Ancient Cities that's not coming out till December 1, 2019, right?"
+"confirm(name[Ancient Cities], exp_release_date[December 1, 2018])","Do you mean the Ancient Cities that is expected to be released on December 1, 2018?"
+"confirm(name[Ancient Cities], exp_release_date[December 1, 2018])","Do you mean Ancient Cities, coming December 1, 2018?"
+"confirm(name[Ancient Cities], exp_release_date[December 1, 2018])","You mean the Ancient Cities that's not coming out till December 1, 2018, right?"
 "confirm(name[Ancient Cities], genres[simulation, strategy])",Do you mean the Ancient Cities which is a strategy simulator?
 "confirm(name[Ancient Cities], genres[simulation, strategy])","Do you mean the simulation strategy game, Ancient Cities?"
 "confirm(name[Ancient Cities], genres[simulation, strategy])",Do you mean the strategy sim Ancient Cities?
@@ -17,9 +17,9 @@ mr,ref
 "confirm(name[Battlefield V], developer[EA Digital Illusions CE])","You're referring to the newest EA Digital Illusions CE game, Battlefield V, right?"
 "confirm(name[Battlefield V], developer[EA Digital Illusions CE])","Oh, do you mean EA Digital Illusions CE's Battlefield V?"
 "confirm(name[Battlefield V], developer[EA Digital Illusions CE])",Are you speaking about the Battlefield V that was made by EA Digital Illusions CE?
-"confirm(name[Battlefield V], exp_release_date[October 16, 2019])","Are you referring to Battlefield V, expected to come out October 16, 2019?"
-"confirm(name[Battlefield V], exp_release_date[October 16, 2019])","Are you talking about the Battlefield V that's being released on October 16, 2019?"
-"confirm(name[Battlefield V], exp_release_date[October 16, 2019])","Did you mean Battlefield V, the game that is coming out on October 16, 2019?"
+"confirm(name[Battlefield V], exp_release_date[October 16, 2018])","Are you referring to Battlefield V, expected to come out October 16, 2018?"
+"confirm(name[Battlefield V], exp_release_date[October 16, 2018])","Are you talking about the Battlefield V that's being released on October 16, 2018?"
+"confirm(name[Battlefield V], exp_release_date[October 16, 2018])","Did you mean Battlefield V, the game that is coming out on October 16, 2018?"
 "confirm(name[Battlefield V], genres[action, shooter])","Are you talking about the action-shooter, Battlefield V?"
 "confirm(name[Battlefield V], genres[action, shooter])",Were you referring to the Battlefield V that's an action shooter game?
 "confirm(name[Battlefield V], genres[action, shooter])","Are you talking about the action-packed first person shooter, Battlefield V?"
@@ -92,12 +92,12 @@ mr,ref
 "confirm(name[NBA 2K19], developer[Visual Concepts])",Do you mean NBA 2K19 from Visual Concepts?
 "confirm(name[NBA 2K19], developer[Visual Concepts])",Is this the NBA 2K19 that was developed by Visual Concepts?
 "confirm(name[NBA 2K19], developer[Visual Concepts])",You mean NBA 2K19 from Visual Concepts?
-"confirm(name[NBA 2K19], exp_release_date[September 11, 2019])","The NBA 2K19 that will be released on September 11, 2019?"
-"confirm(name[NBA 2K19], exp_release_date[September 11, 2019])","You mean the NBA 2K19 slated for release on September 11, 2019, right?"
-"confirm(name[NBA 2K19], exp_release_date[September 11, 2019])","You mean the NBA 2K19 slated for release on September 11, 2019, right?"
-"confirm(name[NBA 2K19], exp_release_date[September 11, 2019])","Hey, is the NBA 2K19 you mentioned the one that's supposed to come out on September 11, 2019?"
-"confirm(name[NBA 2K19], exp_release_date[September 11, 2019])","Are you talking about NBA 2K19 that's coming out September 11, 2019?"
-"confirm(name[NBA 2K19], exp_release_date[September 11, 2019])","Do you mean the game launching September 11, 2019, NBA 2K19?"
+"confirm(name[NBA 2K19], exp_release_date[September 11, 2018])","The NBA 2K19 that will be released on September 11, 2018?"
+"confirm(name[NBA 2K19], exp_release_date[September 11, 2018])","You mean the NBA 2K19 slated for release on September 11, 2018, right?"
+"confirm(name[NBA 2K19], exp_release_date[September 11, 2018])","You mean the NBA 2K19 slated for release on September 11, 2018, right?"
+"confirm(name[NBA 2K19], exp_release_date[September 11, 2018])","Hey, is the NBA 2K19 you mentioned the one that's supposed to come out on September 11, 2018?"
+"confirm(name[NBA 2K19], exp_release_date[September 11, 2018])","Are you talking about NBA 2K19 that's coming out September 11, 2018?"
+"confirm(name[NBA 2K19], exp_release_date[September 11, 2018])","Do you mean the game launching September 11, 2018, NBA 2K19?"
 "confirm(name[NBA 2K19], genres[sport])","Are you talking about the sports game, NBA 2K19?"
 "confirm(name[NBA 2K19], genres[sport])",So you're talking about the sports game NBA 2K19?
 "confirm(name[NBA 2K19], genres[sport])",Do you mean the NBA 2K19 that is in the sport genre?

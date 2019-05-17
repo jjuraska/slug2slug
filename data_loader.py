@@ -1109,7 +1109,7 @@ def preprocess_da_in_mr(mr, separators):
     da_sep_idx = mr.find(da_sep)
     slot_sep_idx = mr.find(slot_sep)
     val_sep_idx = mr.find(val_sep)
-    if 0 <= slot_sep_idx < da_sep_idx or 0 <= val_sep_idx < da_sep_idx:
+    if da_sep_idx < 0 or 0 <= slot_sep_idx < da_sep_idx or 0 <= val_sep_idx < da_sep_idx:
         return mr
 
     # Extract the DA type from the beginning of the MR
@@ -1206,6 +1206,8 @@ def parse_slot_and_value(slot_value, val_sep, val_sep_end=None):
         slot_processed = slot_processed.replace('_', '')
 
     value = value.replace(config.COMMA_PLACEHOLDER, ',')
+    # TODO: fix the cases where a period is in the value
+    # TODO: (e.g., the suggest DA file (2 slots) or verify_attribute DA file (4 slots) in the video game dataset)
     value_processed = ' '.join(word_tokenize(value.lower()))
 
     return slot_processed, value_processed, slot, value

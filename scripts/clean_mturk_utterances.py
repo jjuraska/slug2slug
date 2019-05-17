@@ -66,7 +66,7 @@ class UtteranceCleaner:
     def normalize_has_multiplayer(self, utt):
         value_map = {
             'multiplayer': ['multi player', 'multi-player', 'multiplayer'],
-            'single-player': ['non multiplayer', 'non-multiplayer', 'nonmultiplayer', 'one player', 'one-player',
+            'single-player': ['non multiplayer', 'non-multiplayer', 'nonmultiplayer', 'one-player',
                               'single player', 'singleplayer']
         }
 
@@ -123,9 +123,9 @@ class UtteranceCleaner:
 
 def main():
     file_in = os.path.join(config.VIDEO_GAME_DATA_DIR, 'generation',
-                           'video_games_processed_results_round2_request_attribute (1 slot).csv')
+                           'video_games_processed_results_round1_verify_attribute (4 slots).csv')
 
-    cleaner = UtteranceCleaner(file_in, da='request_attribute')
+    cleaner = UtteranceCleaner(file_in, da='verify_attribute')
 
     cleaner.normalize()
 

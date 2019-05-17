@@ -2,9 +2,9 @@ mr,ref
 "confirm(name[Battlefield V], developer[EA Digital Illusions CE])","You're referring to the newest EA Digital Illusions CE game, Battlefield V, right?"
 "confirm(name[Battlefield V], developer[EA Digital Illusions CE])","Oh, do you mean EA Digital Illusions CE's Battlefield V?"
 "confirm(name[Battlefield V], developer[EA Digital Illusions CE])",Are you speaking about the Battlefield V that was made by EA Digital Illusions CE?
-"confirm(name[Battlefield V], exp_release_date[October 16, 2019])","Are you referring to Battlefield V, expected to come out October 16, 2019?"
-"confirm(name[Battlefield V], exp_release_date[October 16, 2019])","Are you talking about the Battlefield V that's being released on October 16, 2019?"
-"confirm(name[Battlefield V], exp_release_date[October 16, 2019])","Did you mean Battlefield V, the game that is coming out on October 16, 2019?"
+"confirm(name[Battlefield V], exp_release_date[October 16, 2018])","Are you referring to Battlefield V, expected to come out October 16, 2018?"
+"confirm(name[Battlefield V], exp_release_date[October 16, 2018])","Are you talking about the Battlefield V that's being released on October 16, 2018?"
+"confirm(name[Battlefield V], exp_release_date[October 16, 2018])","Did you mean Battlefield V, the game that is coming out on October 16, 2018?"
 "confirm(name[Battlefield V], platforms[Xbox])",Are you talking about Battlefield V for the Xbox?
 "confirm(name[Battlefield V], platforms[Xbox])",Do you mean the Battlefield V for the Xbox?
 "confirm(name[Battlefield V], platforms[Xbox])","Is that Battlefield V, available on Xbox?"

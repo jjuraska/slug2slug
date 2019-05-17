@@ -1,7 +1,7 @@
 mr,ref
-"confirm(name[Ancient Cities], exp_release_date[December 1, 2019], developer[Uncasual Games])","Ancient Cities, the game in developement by Uncasual Games, with the December 1, 2019 release date?"
-"confirm(name[Ancient Cities], exp_release_date[December 1, 2019], developer[Uncasual Games])","Oh, you mean Ancient Cities, the one from Uncasual Games coming out December 1, 2019?"
-"confirm(name[Ancient Cities], exp_release_date[December 1, 2019], developer[Uncasual Games])","Is the Ancient Cities you just referred to the one that's developed by Uncasual Games and coming out on December 1, 2019?"
+"confirm(name[Ancient Cities], exp_release_date[December 1, 2018], developer[Uncasual Games])","Ancient Cities, the game in developement by Uncasual Games, with the December 1, 2018 release date?"
+"confirm(name[Ancient Cities], exp_release_date[December 1, 2018], developer[Uncasual Games])","Oh, you mean Ancient Cities, the one from Uncasual Games coming out December 1, 2018?"
+"confirm(name[Ancient Cities], exp_release_date[December 1, 2018], developer[Uncasual Games])","Is the Ancient Cities you just referred to the one that's developed by Uncasual Games and coming out on December 1, 2018?"
 "confirm(name[BioShock], release_year[2007], genres[action-adventure, role-playing, shooter])","When you mention BioShock, do you mean the action-adventure role-playing shooter that came out in 2007?"
 "confirm(name[BioShock], release_year[2007], genres[action-adventure, role-playing, shooter])",Are you talking about the 2007 action-adventure role-playing shooter game BioShock?
 "confirm(name[BioShock], release_year[2007], genres[action-adventure, role-playing, shooter])","Do you mean 2007's action-adventure RPG shooter, BioShock?"

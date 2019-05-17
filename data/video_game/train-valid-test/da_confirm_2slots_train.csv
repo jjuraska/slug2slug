@@ -1,7 +1,7 @@
 mr,ref
-"confirm(name[Ancient Cities], exp_release_date[December 1, 2019])","Do you mean the Ancient Cities that is expected to be released on December 1, 2019?"
-"confirm(name[Ancient Cities], exp_release_date[December 1, 2019])","Do you mean Ancient Cities, coming December 1, 2019?"
-"confirm(name[Ancient Cities], exp_release_date[December 1, 2019])","You mean the Ancient Cities that's not coming out till December 1, 2019, right?"
+"confirm(name[Ancient Cities], exp_release_date[December 1, 2018])","Do you mean the Ancient Cities that is expected to be released on December 1, 2018?"
+"confirm(name[Ancient Cities], exp_release_date[December 1, 2018])","Do you mean Ancient Cities, coming December 1, 2018?"
+"confirm(name[Ancient Cities], exp_release_date[December 1, 2018])","You mean the Ancient Cities that's not coming out till December 1, 2018, right?"
 "confirm(name[Ancient Cities], genres[simulation, strategy])",Do you mean the Ancient Cities which is a strategy simulator?
 "confirm(name[Ancient Cities], genres[simulation, strategy])","Do you mean the simulation strategy game, Ancient Cities?"
 "confirm(name[Ancient Cities], genres[simulation, strategy])",Do you mean the strategy sim Ancient Cities?
@@ -62,12 +62,12 @@ mr,ref
 "confirm(name[Little Big Adventure], release_year[1994])",You mean the Little Big Adventure that dropped in 1994?
 "confirm(name[Little Big Adventure], release_year[1994])","By Little Big Adventure, do you mean the one that came out in 1994?"
 "confirm(name[Little Big Adventure], release_year[1994])",Do you mean Little Big Adventure from 1994?
-"confirm(name[NBA 2K19], exp_release_date[September 11, 2019])","The NBA 2K19 that will be released on September 11, 2019?"
-"confirm(name[NBA 2K19], exp_release_date[September 11, 2019])","You mean the NBA 2K19 slated for release on September 11, 2019, right?"
-"confirm(name[NBA 2K19], exp_release_date[September 11, 2019])","You mean the NBA 2K19 slated for release on September 11, 2019, right?"
-"confirm(name[NBA 2K19], exp_release_date[September 11, 2019])","Hey, is the NBA 2K19 you mentioned the one that's supposed to come out on September 11, 2019?"
-"confirm(name[NBA 2K19], exp_release_date[September 11, 2019])","Are you talking about NBA 2K19 that's coming out September 11, 2019?"
-"confirm(name[NBA 2K19], exp_release_date[September 11, 2019])","Do you mean the game launching September 11, 2019, NBA 2K19?"
+"confirm(name[NBA 2K19], exp_release_date[September 11, 2018])","The NBA 2K19 that will be released on September 11, 2018?"
+"confirm(name[NBA 2K19], exp_release_date[September 11, 2018])","You mean the NBA 2K19 slated for release on September 11, 2018, right?"
+"confirm(name[NBA 2K19], exp_release_date[September 11, 2018])","You mean the NBA 2K19 slated for release on September 11, 2018, right?"
+"confirm(name[NBA 2K19], exp_release_date[September 11, 2018])","Hey, is the NBA 2K19 you mentioned the one that's supposed to come out on September 11, 2018?"
+"confirm(name[NBA 2K19], exp_release_date[September 11, 2018])","Are you talking about NBA 2K19 that's coming out September 11, 2018?"
+"confirm(name[NBA 2K19], exp_release_date[September 11, 2018])","Do you mean the game launching September 11, 2018, NBA 2K19?"
 "confirm(name[NBA 2K19], genres[sport])","Are you talking about the sports game, NBA 2K19?"
 "confirm(name[NBA 2K19], genres[sport])",So you're talking about the sports game NBA 2K19?
 "confirm(name[NBA 2K19], genres[sport])",Do you mean the NBA 2K19 that is in the sport genre?
