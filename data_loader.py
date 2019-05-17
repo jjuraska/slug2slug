@@ -1579,7 +1579,6 @@ def filter_samples_by_da_type_json(dataset, filename, das_to_keep):
         json.dump(data_filtered, f_dataset_filtered, indent=4, ensure_ascii=False)
 
 
-# TODO: move to the data_analysis.py file?
 def filter_samples_by_slot_count_csv(dataset, filename, min_count=None, max_count=None, eliminate_position_slot=True):
     """Create a new CSV data file by filtering only those samples in the given dataset that contain an MR
     with the number of slots in the desired range.
@@ -1637,7 +1636,6 @@ def filter_samples_by_slot_count_csv(dataset, filename, min_count=None, max_coun
                                        encoding='utf8')
 
 
-# TODO: move to the data_analysis.py file?
 def filter_samples_by_slot_count_json(dataset, filename, min_count=None, max_count=None, eliminate_position_slot=True):
     """Create a new JSON data file by filtering only those samples in the given dataset that contain an MR
     with the number of slots in the desired range.
@@ -1702,7 +1700,6 @@ def filter_samples_by_slot_count_json(dataset, filename, min_count=None, max_cou
         json.dump(data_filtered, f_dataset_filtered, indent=4, ensure_ascii=False)
 
 
-# TODO: move to the data_augmentation.py file?
 def counterfeit_dataset_from_e2e(filename, target_dataset):
     """Creates a counterfeit target dataset from the E2E restaurant dataset by mapping the E2E slots onto similar
     slots in the target domain. Boolean slots are handled by heuristically replacing the corresponding mention
@@ -1859,6 +1856,77 @@ def add_da_info_to_mr(mr, da_type):
     return da_type + '(' + mr + ')'
 
 
+def delex_dataset(dataset, files, slots_to_delex=None):
+
+    if not isinstance(files, list):
+        files = [str(files)]
+
+    for filename in files:
+        # Read in the data
+        data_cont = init_test_data(os.path.join(config.DATA_DIR, dataset, filename))
+        dataset_name = data_cont['dataset_name']
+        mrs_orig, utterances_orig = data_cont['data']
+        _, _, slot_sep, val_sep, val_sep_end = data_cont['separators']
+
+        # Preprocess the MRs and utterances
+        mrs = [preprocess_mr(mr, data_cont['separators']) for mr in mrs_orig]
+        utterances = [preprocess_utterance(utt) for utt in utterances_orig]
+
+        # Produce sequences of extracted words from the meaning representations (MRs) in the testset
+        mrs_delex = []
+        utterances_delex = []
+        for i, mr in enumerate(mrs):
+            mr_dict = OrderedDict()
+
+            # Extract the slot-value pairs into a dictionary
+            for slot_value in mr.split(slot_sep):
+                slot, value, _, _ = parse_slot_and_value(slot_value, val_sep, val_sep_end)
+
+                mr_dict[slot] = value
+
+            # Delexicalize the MR
+            utterances_delex.append(delex_sample(mr_dict, utterance=utterances[i], dataset=dataset_name,
+                                                 slots_to_delex=slots_to_delex))
+            mrs_delex.append(mr_to_string(mr_dict))
+
+        new_df = pd.DataFrame(columns=['mr', 'ref'])
+        new_df['mr'] = mrs_delex
+        new_df['ref'] = utterances_delex
+
+        filename_out = os.path.splitext(filename)[0] + ' [delex]' + os.path.splitext(filename)[1]
+        file_out = os.path.join(config.DATA_DIR, dataset, filename_out)
+
+        new_df.to_csv(file_out, index=False, encoding='utf8')
+
+
+def mr_to_string(mr_dict, da=None):
+    """Convert an MR represented by a dictionary to a flat textual form. The input MR is expected to be an OrderedDict
+    of slots and values.
+    """
+
+    slot_value_pairs = []
+
+    # If there is a "da" slot in the MR dictionary, pop it and use its value to indicate the DA type of the MR
+    if 'da' in mr_dict:
+        if da is None:
+            da = mr_dict.pop('da', None)
+        else:
+            assert mr_dict['da'] == da
+            mr_dict.pop('da', None)
+
+    # Format the slot-value pairs
+    for slot, val in mr_dict.items():
+        slot_value_pairs.append(slot + '[{0}]'.format(str(val.strip()) if val is not None else ''))
+
+    # Concatenate the formatted slot-value pairs to form a textual MR
+    mr = ', '.join(slot_value_pairs)
+
+    if da is not None:
+        # Prepend the DA, and enclose the list of the MR's slot-value pairs in parentheses
+        mr = da + '(' + mr + ')'
+
+    return mr
+
 
 # ---- MAIN ----
 
@@ -1892,7 +1960,12 @@ def main():
     # ----------
 
     # augment_mrs_with_da_type('rest_e2e', 'trainset_e2e.csv', 'inform')
-    augment_mrs_with_da_type('video_game', 'dataset.csv', 'inform')
+    # augment_mrs_with_da_type('video_game', 'dataset.csv', 'inform')
+
+    # ----------
+
+    # delex_dataset('rest_e2e', ['testset_e2e.csv'], slots_to_delex=['name', 'near'])
+    delex_dataset('video_game', ['test.csv'], slots_to_delex=['name', 'developer'])
 
     # ----------
 
