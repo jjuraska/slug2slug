@@ -46,7 +46,7 @@ def align_slots(dataset, filename):
     new_df.to_csv(os.path.join(config.DATA_DIR, dataset, filename_out), index=False, encoding='utf8')
 
 
-def score_slot_realizations(dataset, filename):
+def score_slot_realizations(path, filename):
     """Analyzes unrealized and hallucinated slot mentions in the utterances."""
 
     errors = []
@@ -56,8 +56,7 @@ def score_slot_realizations(dataset, filename):
     print('Analyzing missing slot realizations and hallucinations in ' + str(filename))
 
     # Read in the data
-    # data_cont = data_loader.init_test_data(os.path.join(config.EVAL_DIR, dataset, filename))
-    data_cont = data_loader.init_test_data(os.path.join(config.VIDEO_GAME_DATA_DIR, dataset, filename))
+    data_cont = data_loader.init_test_data(os.path.join(path, filename))
     dataset_name = data_cont['dataset_name']
     mrs_orig, utterances_orig = data_cont['data']
     _, _, slot_sep, val_sep, val_sep_end = data_cont['separators']
@@ -89,7 +88,7 @@ def score_slot_realizations(dataset, filename):
             mr_dict['food'] = food_val
 
         # Delexicalize the MR and the utterance
-        # utterances[i] = data_loader.delex_sample(mr_dict, utterances[i], dataset=dataset_name)
+        utterances[i] = data_loader.delex_sample(mr_dict, utterances[i], dataset=dataset_name)
 
         # Count the missing and hallucinated slots in the utterance
         cur_errors, cur_incorrect_slots = count_errors(utterances[i], mr_dict)
@@ -106,8 +105,7 @@ def score_slot_realizations(dataset, filename):
     new_df['incorrect slots'] = incorrect_slots
 
     filename_out = os.path.splitext(filename)[0] + ' (errors).csv'
-    # new_df.to_csv(os.path.join(config.EVAL_DIR, dataset, filename_out), index=False, encoding='utf8')
-    new_df.to_csv(os.path.join(config.VIDEO_GAME_DATA_DIR, dataset, filename_out), index=False, encoding='utf8')
+    new_df.to_csv(os.path.join(path, filename_out), index=False, encoding='utf8')
 
 
 def score_emphasis(dataset, filename):
@@ -353,10 +351,10 @@ if __name__ == '__main__':
     # align_slots('rest_e2e', 'devset_e2e.csv')
     # align_slots('video_game', 'test.csv')
 
-    # score_slot_realizations(os.path.join('predictions-rest_e2e', 'devset'), 'predictions_devset_TRANS_tmp.csv')
-    # score_slot_realizations(os.path.join('predictions-rest_e2e', 'testset'), 'predictions_testset_TRANS_tmp.csv')
-    # score_slot_realizations(os.path.join('predictions-video_game', 'testset'), 'predictions TRANS beam 4 (8k).csv')
-    score_slot_realizations('generation', 'video_games_processed_results_round1_verify_attribute (4 slots) FINAL.csv')
+    # score_slot_realizations(os.path.join(config.EVAL_DIR, 'predictions video_game'),
+    #                         'predictions TRANS (19.8k) beam 10.csv')
+    score_slot_realizations(os.path.join(config.EVAL_DIR, 'predictions rest_e2e (new)'),
+                            'predictions TRANS utt. split (20k) beam 10.csv')
 
     # score_emphasis('predictions-rest_e2e_stylistic_selection/devset', 'predictions RNN (4+4) augm emph (reference).csv')
 

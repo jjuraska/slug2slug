@@ -307,8 +307,8 @@ def find_slot_realization(text, text_tok, slot, value_orig, delex_slot_placehold
 
 
 # TODO: use delexed utterances for splitting
-def split_content(old_mrs, old_utterances, filename, permute=False):
-    """Splits the MRs into multiple MRs with the corresponding individual sentences."""
+def split_content(old_mrs, old_utterances, filename, permute=False, denoise_only=False):
+    """Splits each MR into multiple MRs and pairs them with the corresponding individual sentences."""
 
     new_mrs = []
     new_utterances = []
@@ -340,7 +340,7 @@ def split_content(old_mrs, old_utterances, filename, permute=False):
             slot_root = slot.rstrip(string.digits)
             value = value_orig.lower()
 
-            # Search for the realization of each slot in each sentence
+            # Search for the mention of each slot in each sentence
             for sent, new_slots in new_pair.items():
                 sent, sent_tok = __preprocess_utterance(sent)
 
@@ -359,27 +359,27 @@ def split_content(old_mrs, old_utterances, filename, permute=False):
                 if slot not in slot_fails:
                     slot_fails[slot] = 0
                 slot_fails[slot] += 1
-        else:   # TODO: is it necessary to have the "else" clause?
-            # Remove slots (from the original MR) whose realizations were not found
-            for slot in slots_to_remove:
-                del mr[slot]
 
-            # Keep the original sample, however, omitting the unrealized slots
-            new_mrs.append(mr)
-            new_utterances.append(utt)
-            
-            if len(new_pair) > 1:
-                for sent, new_slots in new_pair.items():
-                    if sent == sents[0]:
-                        new_slots['position'] = 'outer'
-                    else:
-                        new_slots['position'] = 'inner'
-                        
-                    new_mrs.append(new_slots)
-                    new_utterances.append(sent)
-                    
-            if permute:
-                permuteSentCombos(new_pair, new_mrs, new_utterances, max_iter=True)
+        # Remove slots (from the original MR) whose correct mentions were not found
+        for slot in slots_to_remove:
+            del mr[slot]
+
+        # Keep the original sample, however, omitting the unmentioned/incorrect slots
+        new_mrs.append(mr)
+        new_utterances.append(utt)
+
+        if not denoise_only and len(new_pair) > 1:
+            for sent, new_slots in new_pair.items():
+                if sent == sents[0]:
+                    new_slots['position'] = 'outer'
+                else:
+                    new_slots['position'] = 'inner'
+
+                new_mrs.append(new_slots)
+                new_utterances.append(sent)
+
+        if permute:
+            permuteSentCombos(new_pair, new_mrs, new_utterances, max_iter=True)
 
     # Log the instances in which the aligner did not find the slot
     misses.append('We had these misses from all categories: ' + str(slot_fails.items()))

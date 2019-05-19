@@ -177,6 +177,7 @@ flycheck_*.el
 /predictions/batch_lex
 /predictions/batch_lex_*
 /saved_model
+/slot_aligner/_logs
 /tools
 
 # End of https://www.gitignore.io/api/emacs
