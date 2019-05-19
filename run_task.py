@@ -85,6 +85,7 @@ def test(data_testset, predict_only=True, reranking=True):
     predictions_file = os.path.join(config.PREDICTIONS_DIR, 'predictions.txt')
     predictions_final_file = os.path.join(config.PREDICTIONS_DIR, 'predictions_final.txt')
     predictions_reduced_file = os.path.join(config.METRICS_DIR, 'predictions_reduced.txt')
+    test_reference_file = os.path.join(config.METRICS_DIR, 'test_references.txt')
 
     print('Loading test data...', end=' ')
     sys.stdout.flush()
@@ -163,14 +164,21 @@ def test(data_testset, predict_only=True, reranking=True):
                         f_predictions_reduced.write(predictions_final[i] + '\n')
 
     if not predict_only:
+        # Depending on the OS, the tensor2tensor BLEU script might require a different way of executing
         if sys.executable is not None:
             bleu_script = 'python ' + os.path.join(os.path.dirname(sys.executable), 't2t-bleu')
         else:
             bleu_script = 't2t-bleu'
 
+        metrics_script = 'python ' + os.path.join(config.METRICS_DIR, 'measure_scores.py')
+
+        # Run the tensor2tensor internal BLEU script
         os.system(bleu_script +
                   ' --translation=' + predictions_final_file +
                   ' --reference=' + test_target_file)
+
+        # Run the metrics script provided by the E2E NLG Challenge
+        os.system(metrics_script + ' ' + test_reference_file + ' ' + predictions_reduced_file)
 
     print('DONE')
 
@@ -236,11 +244,13 @@ def test_all(data_testset, reranking=True):
             for prediction in predictions_final:
                 f_predictions_final.write(prediction + '\n')
 
+    # Depending on the OS, the tensor2tensor BLEU script might require a different way of executing
     if sys.executable is not None:
         bleu_script = 'python ' + os.path.join(os.path.dirname(sys.executable), 't2t-bleu')
     else:
         bleu_script = 't2t-bleu'
 
+    # Run the tensor2tensor internal BLEU script
     os.system(bleu_script +
               ' --translations_dir=' + config.PREDICTIONS_BATCH_LEX_DIR +
               ' --reference=' + test_target_file +

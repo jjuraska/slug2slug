@@ -29,7 +29,7 @@ def finalize_utterance(utterance, mr_dict):
     return relex(detokenize(capitalize(utterance, mr_dict)), mr_dict)
 
 
-def capitalize(utt, mr_dict, item_sep='; '):
+def capitalize(utt, mr_dict, item_sep=', '):
     # Tokenize the utterance and capitalize I's
     utt_tok = [token.capitalize() if token == 'i' else token for token in utt.split()]
 
@@ -37,6 +37,9 @@ def capitalize(utt, mr_dict, item_sep='; '):
     for slot in ['area', 'genres', 'platforms', 'esrb']:
         if slot in mr_dict:
             value = mr_dict[slot]
+
+            if len(value) == 0:
+                continue
 
             # Split the slot value into individual items (to account for list slots)
             items = [item.strip() for item in value.split(item_sep)]

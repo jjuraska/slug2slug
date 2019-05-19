@@ -534,8 +534,6 @@ class MRGenerator:
             for slot, val in mr_dict.items():
                 if val is None:
                     val = ''
-                else:
-                    val = val.replace('; ', ', ')
 
                 if slot == 'name':
                     mr_dict[slot] = '<b>' + val + '</b>'
@@ -576,6 +574,7 @@ class MRGenerator:
         df_hit.to_csv(filepath, index=False, encoding='utf8')
 
 
+# TODO: replace all uses of this function with the one in the data_loader.py file
 def mr_to_string(mr_dict, da=None):
     slot_value_pairs = []
 
@@ -749,9 +748,9 @@ def main():
 
     # ----
 
-    # mturk_results_file_in = os.path.join(config.VIDEO_GAME_DATA_DIR, 'generation',
-    #                                      'video_games_mturk_results_round2_request (2 slots).csv')
-    # mr_gen.extract_hit_results_from_csv(mturk_results_file_in, use_specifier=True)
+    mturk_results_file_in = os.path.join(config.VIDEO_GAME_DATA_DIR, 'generation',
+                                         'video_games_mturk_results_inform.csv')
+    mr_gen.extract_hit_results_from_csv(mturk_results_file_in, use_specifier=False)
 
     # ----
 
@@ -774,7 +773,7 @@ def main():
 
     # ----
 
-    mr_gen.merge_data_files_with_suffix('video_game', 'train-valid-test', suffix='train')
+    # mr_gen.merge_data_files_with_suffix('video_game', 'train-valid-test', suffix='train')
 
     # ----
 
