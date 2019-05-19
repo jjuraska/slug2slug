@@ -1443,69 +1443,23 @@ def token_seq_to_idx_seq(token_seqences, token2idx, max_output_seq_len):
 
 # ---- SCRIPTS ----
 
-def count_unique_mrs():
+def count_unique_mrs(dataset, filename):
     """Counts unique MRs in the datasets and prints the statistics. (Requires the initial comment blocks in
     the TV and Laptop data files to be manually removed first.)
     """
 
-    print('Unique MRs (E2E NLG):')
+    if filename.lower().endswith('.csv'):
+        df = pd.read_csv(os.path.join(config.DATA_DIR, dataset, filename), header=0, encoding='utf8')
+    elif filename.lower().endswith('.json'):
+        df = pd.read_json(os.path.join(config.DATA_DIR, dataset, filename), encoding='utf8')
+    else:
+        raise ValueError('Unexpected file type. Please provide a CSV or a JSON file as input.')
 
-    df = pd.read_csv(os.path.join(config.E2E_DATA_DIR, 'trainset_e2e.csv'), header=0, encoding='utf8')
-    print('train:\t', len(df.iloc[:, 0].unique()), '/', len(df.iloc[:, 0]))
+    # Remove delexicalized placeholders
+    df.iloc[:, 0] = df.iloc[:, 0].replace(r'__.*?__', '', regex=True)
 
-    df = pd.read_csv(os.path.join(config.E2E_DATA_DIR, 'devset_e2e.csv'), header=0, encoding='utf8')
-    print('valid:\t', len(df.iloc[:, 0].unique()), '/', len(df.iloc[:, 0]))
-
-    df = pd.read_csv(os.path.join(config.E2E_DATA_DIR, 'testset_e2e.csv'), header=0, encoding='utf8')
-    print('test:\t', len(df.iloc[:, 0].unique()), '/', len(df.iloc[:, 0]))
-
-
-    print('Unique MRs (Video Games):')
-
-    df = pd.read_csv(os.path.join(config.VIDEO_GAME_DATA_DIR, 'trainset.csv'), header=0, encoding='utf8')
-    print('train:\t', len(df.iloc[:, 0].unique()), '/', len(df.iloc[:, 0]))
-
-    # df = pd.read_csv(os.path.join(config.VIDEO_GAME_DATA_DIR, 'devset.csv'), header=0, encoding='utf8')
-    # print('valid:\t', len(df.iloc[:, 0].unique()), '/', len(df.iloc[:, 0]))
-    #
-    # df = pd.read_csv(os.path.join(config.VIDEO_GAME_DATA_DIR, 'testset.csv'), header=0, encoding='utf8')
-    # print('test:\t', len(df.iloc[:, 0].unique()), '/', len(df.iloc[:, 0]))
-
-
-    print('\nUnique MRs (TV):')
-
-    df = pd.read_json(os.path.join(config.TV_DATA_DIR, 'train.json'), encoding='utf8')
-    print('train:\t', len(df.iloc[:, 0].unique()), '/', len(df.iloc[:, 0]))
-
-    df = pd.read_json(os.path.join(config.TV_DATA_DIR, 'valid.json'), encoding='utf8')
-    print('valid:\t', len(df.iloc[:, 0].unique()), '/', len(df.iloc[:, 0]))
-
-    df = pd.read_json(os.path.join(config.TV_DATA_DIR, 'test.json'), encoding='utf8')
-    print('test:\t', len(df.iloc[:, 0].unique()), '/', len(df.iloc[:, 0]))
-
-
-    print('\nUnique MRs (Laptop):')
-
-    df = pd.read_json(os.path.join(config.LAPTOP_DATA_DIR, 'train.json'), encoding='utf8')
-    print('train:\t', len(df.iloc[:, 0].unique()), '/', len(df.iloc[:, 0]))
-
-    df = pd.read_json(os.path.join(config.LAPTOP_DATA_DIR, 'valid.json'), encoding='utf8')
-    print('valid:\t', len(df.iloc[:, 0].unique()), '/', len(df.iloc[:, 0]))
-
-    df = pd.read_json(os.path.join(config.LAPTOP_DATA_DIR, 'test.json'), encoding='utf8')
-    print('test:\t', len(df.iloc[:, 0].unique()), '/', len(df.iloc[:, 0]))
-
-
-    print('\nUnique MRs (Hotel):')
-
-    df = pd.read_json(os.path.join(config.HOTEL_DATA_DIR, 'train.json'), encoding='utf8')
-    print('train:\t', len(df.iloc[:, 0].unique()), '/', len(df.iloc[:, 0]))
-
-    df = pd.read_json(os.path.join(config.HOTEL_DATA_DIR, 'valid.json'), encoding='utf8')
-    print('valid:\t', len(df.iloc[:, 0].unique()), '/', len(df.iloc[:, 0]))
-
-    df = pd.read_json(os.path.join(config.HOTEL_DATA_DIR, 'test.json'), encoding='utf8')
-    print('test:\t', len(df.iloc[:, 0].unique()), '/', len(df.iloc[:, 0]))
+    print('Unique MRs (' + dataset + ' -> ' + filename + '):  ', end='')
+    print(len(df.iloc[:, 0].unique()), '/', len(df.iloc[:, 0]))
 
 
 def verify_slot_order(dataset, filename):
@@ -1856,7 +1810,7 @@ def add_da_info_to_mr(mr, da_type):
     return da_type + '(' + mr + ')'
 
 
-def delex_dataset(dataset, files, slots_to_delex=None):
+def delex_dataset(dataset, files, slots_to_delex=None, mr_only=False):
 
     if not isinstance(files, list):
         files = [str(files)]
@@ -1885,15 +1839,25 @@ def delex_dataset(dataset, files, slots_to_delex=None):
                 mr_dict[slot] = value
 
             # Delexicalize the MR
-            utterances_delex.append(delex_sample(mr_dict, utterance=utterances[i], dataset=dataset_name,
-                                                 slots_to_delex=slots_to_delex))
+
+            if mr_only:
+                delex_sample(mr_dict, utterance=utterances[i], dataset=dataset_name, mr_only=True,
+                             slots_to_delex=slots_to_delex)
+            else:
+                utterances_delex.append(delex_sample(mr_dict, utterance=utterances[i], dataset=dataset_name,
+                                                     slots_to_delex=slots_to_delex))
+
             mrs_delex.append(mr_to_string(mr_dict))
 
         new_df = pd.DataFrame(columns=['mr', 'ref'])
         new_df['mr'] = mrs_delex
-        new_df['ref'] = utterances_delex
+        if mr_only:
+            new_df['ref'] = utterances_orig
+        else:
+            new_df['ref'] = utterances_delex
 
-        filename_out = os.path.splitext(filename)[0] + ' [delex]' + os.path.splitext(filename)[1]
+        suffix = ' [delex' + (', MR only' if mr_only else '') + ']'
+        filename_out = os.path.splitext(filename)[0] + suffix + os.path.splitext(filename)[1]
         file_out = os.path.join(config.DATA_DIR, dataset, filename_out)
 
         new_df.to_csv(file_out, index=False, encoding='utf8')
@@ -1931,9 +1895,19 @@ def mr_to_string(mr_dict, da=None):
 # ---- MAIN ----
 
 def main():
-    # count_unique_mrs()
+    # count_unique_mrs('rest_e2e', 'trainset_e2e [delex, MR only].csv')
+    # count_unique_mrs('rest_e2e', 'devset_e2e [delex, MR only].csv')
+    # count_unique_mrs('rest_e2e', 'testset_e2e [delex, MR only].csv')
+
+    count_unique_mrs('video_game', 'train [delex, MR only].csv')
+    count_unique_mrs('video_game', 'valid [delex, MR only].csv')
+    count_unique_mrs('video_game', 'test [delex, MR only].csv')
+
+    # ----------
 
     # verify_slot_order('rest_e2e', 'trainset_e2e_utt_split.csv')
+
+    # ----------
 
     # das_to_keep = ['inform']
     # filter_samples_by_da_type_json('tv', 'train.json', das_to_keep)
@@ -1943,17 +1917,25 @@ def main():
     # filter_samples_by_slot_count_csv('rest_e2e', 'testset_e2e.csv', min_count=3, max_count=4)
     # filter_samples_by_slot_count_json('hotel', 'test_filtered.json', min_count=3, max_count=4)
 
+    # ----------
+
     # counterfeit_dataset_from_e2e('testset_e2e_min3_max4_slots.csv', 'hotel')
+
+    # ----------
 
     # get_vocab_overlap('rest_e2e', 'trainset_e2e.csv', 'devset_e2e.csv',
     #                   'hotel', 'train.json', 'valid.json')
     # get_vocab_overlap('laptop', 'train.json', 'valid.json',
     #                   'tv', 'train.json', 'valid.json')
 
+    # ----------
+
     # pool_slot_values('rest_e2e', ['trainset_e2e.csv', 'devset_e2e.csv'])
     # pool_slot_values('tv', ['train.json', 'valid.json'])
     # pool_slot_values('laptop', ['train.json', 'valid.json'])
     # pool_slot_values('hotel', ['train.json', 'valid.json'])
+
+    # ----------
 
     # generate_joint_vocab()
 
@@ -1964,8 +1946,8 @@ def main():
 
     # ----------
 
-    # delex_dataset('rest_e2e', ['testset_e2e.csv'], slots_to_delex=['name', 'near'])
-    delex_dataset('video_game', ['test.csv'], slots_to_delex=['name', 'developer'])
+    # delex_dataset('rest_e2e', ['devset_e2e.csv'], slots_to_delex=['name', 'near'], mr_only=True)
+    # delex_dataset('video_game', ['valid.csv'], slots_to_delex=['name', 'developer'], mr_only=True)
 
     # ----------
 
