@@ -30,39 +30,45 @@ customerrating_mapping = {
 }
 
 
-def dontcare_realization(text, slot):
+def dontcare_realization(text, slot, soft_match=False):
     text = re.sub('\'', '', text.lower())
     text_tok = word_tokenize(text)
 
-    slot_root = reduce_slot_name(slot)
-    slot_root_plural = get_plural(slot_root)
+    for slot_stem in reduce_slot_name(slot):
+        slot_stem_plural = get_plural(slot_stem)
 
-    if slot_root in text_tok or slot_root_plural in text_tok or slot in text_tok:
-        for x in ['any', 'all', 'vary', 'varying', 'varied', 'various', 'variety', 'different',
-                  'unspecified', 'irrelevant', 'unnecessary', 'unknown', 'n/a', 'particular', 'specific', 'priority', 'choosy', 'picky',
-                  'regardless', 'disregarding', 'disregard', 'excluding', 'unconcerned', 'matter', 'specification',
-                  'concern', 'consideration', 'considerations', 'factoring', 'accounting', 'ignoring']:
-            if x in text_tok:
+        if slot_stem in text_tok or slot_stem_plural in text_tok or slot in text_tok:
+            if soft_match:
                 return True
-        for x in ['no preference', 'no predetermined', 'no certain', 'wide range', 'may or may not',
-                  'not an issue', 'not a factor', 'not important', 'not considered', 'not considering', 'not concerned',
-                  'without a preference', 'without preference', 'without specification', 'without caring', 'without considering',
-                  'not have a preference', 'dont have a preference', 'not consider', 'dont consider', 'not mind', 'dont mind',
-                  'not caring', 'not care', 'dont care', 'didnt care']:
-            if x in text:
+
+            for x in ['any', 'all', 'vary', 'varying', 'varied', 'various', 'variety', 'different',
+                      'unspecified', 'irrelevant', 'unnecessary', 'unknown', 'n/a', 'particular', 'specific', 'priority', 'choosy', 'picky',
+                      'regardless', 'disregarding', 'disregard', 'excluding', 'unconcerned', 'matter', 'specification',
+                      'concern', 'consideration', 'considerations', 'factoring', 'accounting', 'ignoring']:
+                if x in text_tok:
+                    return True
+            for x in ['no preference', 'no predetermined', 'no certain', 'wide range', 'may or may not',
+                      'not an issue', 'not a factor', 'not important', 'not considered', 'not considering', 'not concerned',
+                      'without a preference', 'without preference', 'without specification', 'without caring', 'without considering',
+                      'not have a preference', 'dont have a preference', 'not consider', 'dont consider', 'not mind', 'dont mind',
+                      'not caring', 'not care', 'dont care', 'didnt care']:
+                if x in text:
+                    return True
+            if ('preference' in text_tok or 'specifics' in text_tok) and ('no' in text_tok):
                 return True
-        if ('preference' in text_tok or 'specifics' in text_tok) and ('no' in text_tok):
-            return True
     
     return False
 
 
-def none_realization(text, slot):
+def none_realization(text, slot, soft_match=False):
     text = re.sub('\'', '', text.lower())
     text_tok = word_tokenize(text)
 
     for slot_stem in reduce_slot_name(slot):
         if slot_stem in text_tok:
+            if soft_match:
+                return True
+
             for x in ['information', 'info', 'inform', 'results', 'requirement', 'requirements', 'specification', 'specifications']:
                 if x in text_tok and ('no' in text_tok or 'not' in text_tok or 'any' in text_tok):
                     return True
@@ -171,21 +177,23 @@ def find_slot_realization(text, text_tok, slot, value_orig, delex_slot_placehold
         else:
             # Universal slot values
             if value == 'dontcare':
-                if dontcare_realization(text, slot):
+                if dontcare_realization(text, slot, soft_match=True):
                     # TODO: get the actual position
                     pos = 0
-                    slot_cnt = text.count(reduce_slot_name(slot))
-                    if slot_cnt > 1:
-                        print('HALLUCINATED SLOT:', slot)
-                        is_hallucinated = True
+                    for slot_stem in reduce_slot_name(slot):
+                        slot_cnt = text.count(slot_stem)
+                        if slot_cnt > 1:
+                            print('HALLUCINATED SLOT:', slot)
+                            is_hallucinated = True
             elif value == 'none':
-                if none_realization(text, slot):
+                if none_realization(text, slot, soft_match=True):
                     # TODO: get the actual position
                     pos = 0
-                    slot_cnt = text.count(reduce_slot_name(slot))
-                    if slot_cnt > 1:
-                        print('HALLUCINATED SLOT:', slot)
-                        is_hallucinated = True
+                    for slot_stem in reduce_slot_name(slot):
+                        slot_cnt = text.count(slot_stem)
+                        if slot_cnt > 1:
+                            print('HALLUCINATED SLOT:', slot)
+                            is_hallucinated = True
             elif value == '':
                 for slot_stem in reduce_slot_name(slot):
                     pos = text.find(slot_stem)
@@ -199,7 +207,7 @@ def find_slot_realization(text, text_tok, slot, value_orig, delex_slot_placehold
             elif slot == 'name' and match_name_ref:
                 pos = text.find(value)
                 if pos < 0:
-                    for pronoun in ['it', 'its', 'they', 'their']:
+                    for pronoun in ['it', 'its', 'they', 'their', 'this']:
                         _, pos = find_first_in_list(pronoun, text_tok)
                         if pos >= 0:
                             break

@@ -194,7 +194,7 @@ mr,ref
 "familyfriendly[no], position[inner]",Unfortunately not family friendly
 "name[Aromi], eattype[coffee shop], food[Chinese], customerrating[5 out of 5], area[city centre], familyfriendly[no]","Given a 5 out of 5 satisfaction rate by its customers, Aromi is a coffee shop joint known for its Chinese food. This non-family friendly restaurant is located in the city centre."
 "name[Aromi], eattype[coffee shop], food[Chinese], customerrating[5 out of 5], position[outer]","Given a 5 out of 5 satisfaction rate by its customers, Aromi is a coffee shop joint known for its Chinese food."
-"area[city centre], familyfriendly[no], position[inner]",This non-family friendly restaurant is located in the city centre.
+"name[Aromi], area[city centre], familyfriendly[no], position[inner]",This non-family friendly restaurant is located in the city centre.
 "name[Aromi], eattype[coffee shop], food[Chinese], customerrating[5 out of 5], area[city centre], familyfriendly[no]",Aromi is a coffee shop selling Chinese food. It has a customer rating of 5 out of 5 stars. It is not family friendly and is located in the city centre
 "name[Aromi], eattype[coffee shop], food[Chinese], position[outer]",Aromi is a coffee shop selling Chinese food.
 "name[Aromi], customerrating[5 out of 5], position[inner]",It has a customer rating of 5 out of 5 stars.
@@ -252,7 +252,7 @@ mr,ref
 "name[Aromi], area[riverside], familyfriendly[yes], position[inner]","It is located in a riverside area, and is family friendly."
 "name[Aromi], eattype[coffee shop], food[Chinese], customerrating[5 out of 5], area[riverside], familyfriendly[yes]",Aromi is a coffee shop that serves Chinese food. This family friendly eatery in riverside gets 5 out of 5 stars.
 "name[Aromi], eattype[coffee shop], food[Chinese], position[outer]",Aromi is a coffee shop that serves Chinese food.
-"customerrating[5 out of 5], area[riverside], familyfriendly[yes], position[inner]",This family friendly eatery in riverside gets 5 out of 5 stars.
+"name[Aromi], customerrating[5 out of 5], area[riverside], familyfriendly[yes], position[inner]",This family friendly eatery in riverside gets 5 out of 5 stars.
 "name[Aromi], eattype[coffee shop], food[Chinese], customerrating[5 out of 5], area[riverside], familyfriendly[yes]","For highly-rated Chinese food in a family-friendly coffee shop setting, Aromi in riverside is a great option."
 "name[Aromi], eattype[coffee shop], food[Chinese], customerrating[5 out of 5], area[riverside], familyfriendly[yes]","The highly-rated family-friendly coffee shop, Aromi, offers Chinese food in the riverside area."
 "name[Aromi], eattype[coffee shop], food[Chinese], customerrating[5 out of 5], area[riverside], familyfriendly[yes]","Chinese food in the riverside area can be found at the highly-rated family-friendly coffee shop, Aromi."
@@ -300,7 +300,7 @@ mr,ref
 "name[Aromi], eattype[coffee shop], food[Chinese], customerrating[average], area[riverside], familyfriendly[yes]","In riverside, a coffee shop named Aromi provide Chinese cuisine with kids friendly environment and average rating."
 "name[Aromi], eattype[coffee shop], food[Chinese], customerrating[average], area[riverside], familyfriendly[yes]",Aromi is a family friendly Chinese coffee shop located in riverside. This establishment has a customer rating of average.
 "name[Aromi], eattype[coffee shop], food[Chinese], area[riverside], familyfriendly[yes], position[outer]",Aromi is a family friendly Chinese coffee shop located in riverside.
-"customerrating[average], position[inner]",This establishment has a customer rating of average.
+"name[Aromi], customerrating[average], position[inner]",This establishment has a customer rating of average.
 "name[Aromi], eattype[coffee shop], food[Chinese], customerrating[average], area[riverside], familyfriendly[yes]",Aromi is an average Chinese coffee shop by the river that caters to children also.
 "name[Aromi], eattype[coffee shop], food[Chinese], customerrating[average], area[riverside], familyfriendly[yes]",Aromi is a family friendly coffee shop featuring Chinese cuisine. It is located in riverside and has an AVERAGE customer rating.
 "name[Aromi], eattype[coffee shop], food[Chinese], familyfriendly[yes], position[outer]",Aromi is a family friendly coffee shop featuring Chinese cuisine.
@@ -495,10 +495,10 @@ mr,ref
 "name[Aromi], customerrating[average], familyfriendly[yes], position[inner]",It is family-friendly and has an average rating.
 "name[Aromi], eattype[coffee shop], food[English], customerrating[average], area[city centre], familyfriendly[yes]","In the city centre area, there is a coffee shop called Aromi that serves traditional English food. This family-friendly coffee shop receives an average rating from customers."
 "name[Aromi], eattype[coffee shop], food[English], area[city centre], position[outer]","In the city centre area, there is a coffee shop called Aromi that serves traditional English food."
-"eattype[coffee shop], customerrating[average], familyfriendly[yes], position[inner]",This family-friendly coffee shop receives an average rating from customers.
+"name[Aromi], eattype[coffee shop], customerrating[average], familyfriendly[yes], position[inner]",This family-friendly coffee shop receives an average rating from customers.
 "name[Aromi], eattype[coffee shop], food[English], customerrating[average], area[city centre], familyfriendly[yes]",Aromi is a family-friendly coffee shop where you can eat English style food in the city centre area. Customers rate this coffee shop as average.
 "name[Aromi], eattype[coffee shop], food[English], area[city centre], familyfriendly[yes], position[outer]",Aromi is a family-friendly coffee shop where you can eat English style food in the city centre area.
-"eattype[coffee shop], customerrating[average], position[inner]",Customers rate this coffee shop as average.
+"name[Aromi], eattype[coffee shop], customerrating[average], position[inner]",Customers rate this coffee shop as average.
 "name[Aromi], eattype[coffee shop], food[English], customerrating[average], area[riverside]",Aromi serves English food in coffee shop and is located in the riverside area. Rated average. kid unfriendly
 "name[Aromi], eattype[coffee shop], food[English], area[riverside], position[outer]",Aromi serves English food in coffee shop and is located in the riverside area.
 "customerrating[average], position[inner]",Rated average.
@@ -767,7 +767,7 @@ name[Aromi],There is a cheap restaurant Aromi located in the centre of the city 
 "name[Browns Cambridge], eattype[coffee shop], food[Chinese], customerrating[5 out of 5], area[riverside], familyfriendly[yes], near[Crowne Plaza Hotel]","The Browns Cambridge is a 5 out of 5, family friendly coffee shop with Chinese food along the riverside near the Crowne Plaza Hotel."
 "name[Browns Cambridge], eattype[coffee shop], food[Chinese], customerrating[5 out of 5], area[riverside], familyfriendly[yes], near[Crowne Plaza Hotel]",The Browns Cambridge is a Chinese coffee shop located near the Crowne Plaza Hotel in Riverside. This family friendly restaurant has a great customer rating at 5 of 5.
 "name[Browns Cambridge], eattype[coffee shop], food[Chinese], area[riverside], near[Crowne Plaza Hotel], position[outer]",The Browns Cambridge is a Chinese coffee shop located near the Crowne Plaza Hotel in Riverside.
-"customerrating[5 out of 5], familyfriendly[yes], position[inner]",This family friendly restaurant has a great customer rating at 5 of 5.
+"name[Browns Cambridge], customerrating[5 out of 5], familyfriendly[yes], position[inner]",This family friendly restaurant has a great customer rating at 5 of 5.
 "name[Browns Cambridge], eattype[coffee shop], food[Chinese], customerrating[average], area[city centre], familyfriendly[no], near[Crowne Plaza Hotel]","Browns Cambridge is a coffee shop that serves Chinese food in the city centre, near Crowne Plaza Hotel. It is not family friendly and has an average customer rating."
 "name[Browns Cambridge], eattype[coffee shop], food[Chinese], area[city centre], near[Crowne Plaza Hotel], position[outer]","Browns Cambridge is a coffee shop that serves Chinese food in the city centre, near Crowne Plaza Hotel."
 "name[Browns Cambridge], customerrating[average], familyfriendly[no], position[inner]",It is not family friendly and has an average customer rating.
@@ -841,12 +841,12 @@ name[Aromi],There is a cheap restaurant Aromi located in the centre of the city 
 "name[Browns Cambridge], customerrating[average], area[riverside], familyfriendly[yes], near[Crowne Plaza Hotel], position[inner]","It has an average customer rating, is located in the Riverside area near the Crowne Plaza Hotel and yes, is family friendly."
 "name[Browns Cambridge], eattype[coffee shop], food[Chinese], customerrating[average], area[riverside], familyfriendly[yes], near[Crowne Plaza Hotel]","Browns Cambridge is a coffee shop located near the Crowne Plaza Hotel, in the riverside area. This establishment offers Chinese food, is family friendly, and has an average customer rating."
 "name[Browns Cambridge], eattype[coffee shop], area[riverside], near[Crowne Plaza Hotel], position[outer]","Browns Cambridge is a coffee shop located near the Crowne Plaza Hotel, in the riverside area."
-"food[Chinese], customerrating[average], familyfriendly[yes], position[inner]","This establishment offers Chinese food, is family friendly, and has an average customer rating."
+"name[Browns Cambridge], food[Chinese], customerrating[average], familyfriendly[yes], position[inner]","This establishment offers Chinese food, is family friendly, and has an average customer rating."
 "name[Browns Cambridge], eattype[coffee shop], food[Chinese], customerrating[average], area[riverside], familyfriendly[yes], near[Crowne Plaza Hotel]","Browns Cambridge coffee shop serves Chinese food. Located in Riverside, Browns Cambridge is children friendly. The customers rate their experience as average. You can find this location near Crowne Plaza Hotel."
 "name[Browns Cambridge], eattype[coffee shop], food[Chinese], position[outer]",Browns Cambridge coffee shop serves Chinese food.
 "name[Browns Cambridge], area[riverside], familyfriendly[yes], position[inner]","Located in Riverside, Browns Cambridge is children friendly."
 "name[Browns Cambridge], customerrating[average], position[inner]",The customers rate their experience as average.
-"near[Crowne Plaza Hotel], position[inner]",You can find this location near Crowne Plaza Hotel.
+"name[Browns Cambridge], near[Crowne Plaza Hotel], position[inner]",You can find this location near Crowne Plaza Hotel.
 "name[Browns Cambridge], eattype[coffee shop], food[Chinese], customerrating[average], area[riverside], familyfriendly[yes], near[Crowne Plaza Hotel]","Browns Cambridge is a coffee shop that also serves Chinese food. It is located in the riverside area near the Crowne Plaza Hotel, has an average customer rating and yes, is family friendly."
 "name[Browns Cambridge], eattype[coffee shop], food[Chinese], position[outer]",Browns Cambridge is a coffee shop that also serves Chinese food.
 "name[Browns Cambridge], customerrating[average], area[riverside], familyfriendly[yes], near[Crowne Plaza Hotel], position[inner]","It is located in the riverside area near the Crowne Plaza Hotel, has an average customer rating and yes, is family friendly."
@@ -891,7 +891,7 @@ name[Aromi],There is a cheap restaurant Aromi located in the centre of the city 
 "name[Browns Cambridge], customerrating[high], position[inner]",Its customer rating is high.
 "name[Browns Cambridge], eattype[coffee shop], food[Chinese], customerrating[low], area[city centre], familyfriendly[no], near[Crowne Plaza Hotel]",Browns Cambridge is a low rated coffee shop that serves Chinese food in the centre of the city. Located near Crowne Plaza Hotel this coffee shop is not family friendly.
 "name[Browns Cambridge], eattype[coffee shop], food[Chinese], customerrating[low], area[city centre], position[outer]",Browns Cambridge is a low rated coffee shop that serves Chinese food in the centre of the city.
-"eattype[coffee shop], familyfriendly[no], near[Crowne Plaza Hotel], position[inner]",Located near Crowne Plaza Hotel this coffee shop is not family friendly.
+"name[Browns Cambridge], eattype[coffee shop], familyfriendly[no], near[Crowne Plaza Hotel], position[inner]",Located near Crowne Plaza Hotel this coffee shop is not family friendly.
 "name[Browns Cambridge], eattype[coffee shop], food[Chinese], customerrating[low], area[city centre], familyfriendly[no], near[Crowne Plaza Hotel]","The coffee shop Browns Cambridge serves Chinese food and is not family friendly, It has a low customer service rating. It's located near the Crowne Plaza Hotel in the city centre."
 "name[Browns Cambridge], eattype[coffee shop], food[Chinese], customerrating[low], familyfriendly[no], position[outer]","The coffee shop Browns Cambridge serves Chinese food and is not family friendly, It has a low customer service rating."
 "name[Browns Cambridge], area[city centre], near[Crowne Plaza Hotel], position[inner]",It's located near the Crowne Plaza Hotel in the city centre.
@@ -1361,7 +1361,7 @@ position[inner],.
 "name[Clowns], eattype[coffee shop], food[Chinese], customerrating[low], area[city centre], near[Clare Hall]","Located in the center of the city, near Clare Hall, is a Chinese coffee shop called Clowns, with low customer ratings."
 "name[Clowns], eattype[coffee shop], food[Chinese], customerrating[low], area[city centre], near[Clare Hall]","If you're looking for a coffee shop serving Chinese food in the centre of the city, check out Clowns. Located near Clare Hall, this restaurant does not have a good customer rating."
 "name[Clowns], eattype[coffee shop], food[Chinese], area[city centre], position[outer]","If you're looking for a coffee shop serving Chinese food in the centre of the city, check out Clowns."
-"customerrating[low], near[Clare Hall], position[inner]","Located near Clare Hall, this restaurant does not have a good customer rating."
+"name[Clowns], customerrating[low], near[Clare Hall], position[inner]","Located near Clare Hall, this restaurant does not have a good customer rating."
 "name[Clowns], eattype[coffee shop], food[Chinese], customerrating[low], area[city centre], near[Clare Hall]",Clowns is a low-priced coffee shop in the city centre near Clare Hall that serves Chinese food.
 "name[Clowns], eattype[coffee shop], food[Chinese], customerrating[low], area[riverside], near[Clare Hall]",Clowns is a coffee shop providing Chinese food It is located in the riverside. It is near Clare Hall. Its customer rating is low.
 "name[Clowns], eattype[coffee shop], food[Chinese], area[riverside], position[outer]",Clowns is a coffee shop providing Chinese food It is located in the riverside.
@@ -1377,7 +1377,7 @@ position[inner],.
 "name[Clowns], eattype[coffee shop], customerrating[1 out of 5], area[riverside], near[Clare Hall]","Clowns , near Clare Hall, is a low rated riverside coffee shop."
 "name[Clowns], eattype[coffee shop], food[English], customerrating[1 out of 5], area[riverside], near[Clare Hall]",Clowns located near Clare Hall serves English food. This is a poorly rated coffee shop around riverside.
 "name[Clowns], food[English], near[Clare Hall], position[outer]",Clowns located near Clare Hall serves English food.
-"eattype[coffee shop], customerrating[1 out of 5], area[riverside], position[inner]",This is a poorly rated coffee shop around riverside.
+"name[Clowns], eattype[coffee shop], customerrating[1 out of 5], area[riverside], position[inner]",This is a poorly rated coffee shop around riverside.
 "name[Clowns], eattype[coffee shop], food[English], customerrating[1 out of 5], area[riverside], near[Clare Hall]","In the riverside area, near Clare Hall, there is a coffee shop called Clowns that serves English food and has a customer rating of 1 out of 5."
 "name[Clowns], eattype[coffee shop], food[English], customerrating[1 out of 5], area[riverside], near[Clare Hall]",Clowns coffee shop is located near Clare Hall on the riverside. it serves English food and has been rated as 1 out of 5
 "name[Clowns], eattype[coffee shop], area[riverside], near[Clare Hall], position[outer]",Clowns coffee shop is located near Clare Hall on the riverside.
@@ -1504,7 +1504,7 @@ position[inner],Good food.
 "name[Clowns], eattype[coffee shop], food[English], customerrating[low], area[city centre], near[Clare Hall]",The Clowns is a English low rating English coffee shop located near Clare Hall in the city centre.
 "name[Clowns], eattype[coffee shop], food[English], customerrating[low], area[city centre], near[Clare Hall]",Located in the city centre near Clare Hall is a coffee shop called Clowns. This coffee shop serves English food and has a low customer rating.
 "name[Clowns], eattype[coffee shop], area[city centre], near[Clare Hall], position[outer]",Located in the city centre near Clare Hall is a coffee shop called Clowns.
-"eattype[coffee shop], food[English], customerrating[low], position[inner]",This coffee shop serves English food and has a low customer rating.
+"name[Clowns], eattype[coffee shop], food[English], customerrating[low], position[inner]",This coffee shop serves English food and has a low customer rating.
 "name[Clowns], eattype[coffee shop], food[English], customerrating[low], area[city centre], near[Clare Hall]",Clowns is a coffee shop serving English food in the city centre near Clare Hall. Customer satisfaction is low.
 "name[Clowns], eattype[coffee shop], food[English], area[city centre], near[Clare Hall], position[outer]",Clowns is a coffee shop serving English food in the city centre near Clare Hall.
 "customerrating[low], position[inner]",Customer satisfaction is low.
@@ -1828,11 +1828,11 @@ position[inner],Good food.
 "name[Cocum], eattype[coffee shop], pricerange[£20-25]",Cocum coffee shop serves a variety of breakfast foods for reasonable prices.
 "name[Cocum], eattype[coffee shop], food[English], pricerange[£20-25], customerrating[high], familyfriendly[yes]",Cocum is an English coffee shop that is kids friendly. This average priced restaurant has a high customer rating.
 "name[Cocum], eattype[coffee shop], food[English], familyfriendly[yes], position[outer]",Cocum is an English coffee shop that is kids friendly.
-"pricerange[£20-25], customerrating[high], position[inner]",This average priced restaurant has a high customer rating.
+"name[Cocum], pricerange[£20-25], customerrating[high], position[inner]",This average priced restaurant has a high customer rating.
 "name[Cocum], pricerange[£20-25], customerrating[high], familyfriendly[yes]",Great food and service at a moderate price from family friendly Cocum
 "name[Cocum], eattype[coffee shop], food[English], pricerange[£20-25], customerrating[high], familyfriendly[yes]",Cocum is a average priced coffee shop with a high customer rating. This kids friendly coffee shop sells English food .
 "name[Cocum], eattype[coffee shop], pricerange[£20-25], customerrating[high], position[outer]",Cocum is a average priced coffee shop with a high customer rating.
-"eattype[coffee shop], food[English], familyfriendly[yes], position[inner]",This kids friendly coffee shop sells English food .
+"name[Cocum], eattype[coffee shop], food[English], familyfriendly[yes], position[inner]",This kids friendly coffee shop sells English food .
 "name[Cocum], eattype[coffee shop], pricerange[£20-25], customerrating[high], familyfriendly[yes]",Family friendly Cocum coffee shop moderate price great reviews
 "name[Cocum], pricerange[£20-25], familyfriendly[yes]","Cocum its a restaurant for all family, accessible price and good food!"
 "name[Cocum], eattype[coffee shop], customerrating[high], familyfriendly[yes]",Cocum coffee shop is a high quality family friendly restaurant.
@@ -1873,12 +1873,12 @@ position[inner],Good food.
 "name[Cocum], eattype[coffee shop], food[English], pricerange[cheap], customerrating[average], familyfriendly[no]","The coffee shop Cocum serves English food, it has an average customer rating, the price range is cheap, but it is not family-friendly."
 "name[Cocum], eattype[coffee shop], pricerange[cheap], customerrating[average], familyfriendly[no]","The coffee Shop, Cocum, serves low cost meals and coffee. This is not a family establishment, adults only. Rating: Average."
 "name[Cocum], eattype[coffee shop], pricerange[cheap], position[outer]","The coffee Shop, Cocum, serves low cost meals and coffee."
-"familyfriendly[no], position[inner]","This is not a family establishment, adults only."
+"name[Cocum], familyfriendly[no], position[inner]","This is not a family establishment, adults only."
 "customerrating[average], position[inner]",Rating: Average.
 "name[Cocum], eattype[coffee shop], food[English], pricerange[cheap], customerrating[average], familyfriendly[no]",Cocum serves English Food at a Cheap Rate. You can get your coffee here and it is not family-friendly. The customer rating is average for this place.
 "name[Cocum], food[English], pricerange[cheap], customerrating[average], position[outer]",Cocum serves English Food at a Cheap Rate.
 "name[Cocum], eattype[coffee shop], familyfriendly[no], position[inner]",You can get your coffee here and it is not family-friendly.
-"customerrating[average], position[inner]",The customer rating is average for this place.
+"name[Cocum], customerrating[average], position[inner]",The customer rating is average for this place.
 "name[Cocum], eattype[coffee shop], food[English], pricerange[cheap], customerrating[average], familyfriendly[no]",Cocum is a cheap English non family-friendly coffee shop with an average customer rating
 "name[Cocum], eattype[coffee shop], food[English], pricerange[cheap], customerrating[average], familyfriendly[no]",Cocum is a cheap English non family-friendly coffee shop with an average customer rating
 "name[Cocum], eattype[coffee shop], pricerange[cheap], customerrating[average], familyfriendly[yes]",There is a coffee shop and cheap dine in family restaurant that has 3 star reviews called Cocum.
@@ -1930,7 +1930,7 @@ name[Cocum],"Cocum is an excellent Café located at 71 Castle Street, Cambridge,
 "name[Cocum], eattype[coffee shop], food[English], pricerange[high], customerrating[1 out of 5], familyfriendly[yes]","Cocum is a child friendly, English style coffee shop with higher prices and a customer rating of 1 out of 5."
 "name[Cocum], eattype[coffee shop], food[English], pricerange[high], customerrating[1 out of 5], familyfriendly[yes]",High-priced British food can be found at the coffee shop the Cocum. This is a family friendly coffee shop. Customers give the coffee shop 1 out of 5 stars.
 "name[Cocum], eattype[coffee shop], food[English], pricerange[high], position[outer]",High-priced British food can be found at the coffee shop the Cocum.
-"eattype[coffee shop], familyfriendly[yes], position[inner]",This is a family friendly coffee shop.
+"name[Cocum], eattype[coffee shop], familyfriendly[yes], position[inner]",This is a family friendly coffee shop.
 "eattype[coffee shop], customerrating[1 out of 5], position[inner]",Customers give the coffee shop 1 out of 5 stars.
 "name[Cocum], eattype[coffee shop], food[English], pricerange[high], customerrating[1 out of 5], familyfriendly[yes]","There is a children friendly coffee shop named Cocum. It serves English food, and is high priced with a 1 out of 5 rating."
 "name[Cocum], eattype[coffee shop], familyfriendly[yes], position[outer]",There is a children friendly coffee shop named Cocum.
@@ -1952,7 +1952,7 @@ name[Cocum],Cocum went on a very busy Friday night; the food was excellent.
 "name[Cocum], eattype[coffee shop], food[English], pricerange[high], customerrating[average], familyfriendly[yes]","The coffee shop, Cocum, provides diners with English food items. It is children friendly which is nice, but the prices are high. This coffee shop has average ratings."
 "name[Cocum], eattype[coffee shop], food[English], position[outer]","The coffee shop, Cocum, provides diners with English food items."
 "name[Cocum], pricerange[high], familyfriendly[yes], position[inner]","It is children friendly which is nice, but the prices are high."
-"eattype[coffee shop], customerrating[average], position[inner]",This coffee shop has average ratings.
+"name[Cocum], eattype[coffee shop], customerrating[average], position[inner]",This coffee shop has average ratings.
 "name[Cocum], eattype[coffee shop], pricerange[high], customerrating[average], familyfriendly[yes]",The Cocum coffee shop also serves food for the whole family. It is high priced and rated three stars.
 "name[Cocum], eattype[coffee shop], familyfriendly[yes], position[outer]",The Cocum coffee shop also serves food for the whole family.
 "name[Cocum], pricerange[high], customerrating[average], position[inner]",It is high priced and rated three stars.
@@ -2153,7 +2153,7 @@ name[Cocum],Cocum went on a very busy Friday night; the food was excellent.
 "name[Cotto], pricerange[cheap], customerrating[5 out of 5], position[inner]",It has a 5 out of 5 customer rating and customers can eat for cheap.
 "name[Cotto], eattype[coffee shop], food[Chinese], pricerange[cheap], customerrating[5 out of 5], area[riverside], near[The Portland Arms]",Chinese food is served at Cotto located in the riverside area near The Portland Arms. This coffee shop is cheap and has a 5 out of 5 customer rating.
 "name[Cotto], food[Chinese], area[riverside], near[The Portland Arms], position[outer]",Chinese food is served at Cotto located in the riverside area near The Portland Arms.
-"eattype[coffee shop], pricerange[cheap], customerrating[5 out of 5], position[inner]",This coffee shop is cheap and has a 5 out of 5 customer rating.
+"name[Cotto], eattype[coffee shop], pricerange[cheap], customerrating[5 out of 5], position[inner]",This coffee shop is cheap and has a 5 out of 5 customer rating.
 "name[Cotto], eattype[coffee shop], food[Chinese], pricerange[cheap], customerrating[average], area[city centre], near[The Portland Arms]","A cheap coffee shop that serves Chinese food called Cotto, is located in the city centre near The Portland Arms and the customers rate it at average."
 "name[Cotto], eattype[coffee shop], food[Chinese], pricerange[cheap], customerrating[average], area[city centre], near[The Portland Arms]",Cotto is a cheap coffee shop with Chinese food near The Portland Arms in the city centre area. They received an average customer rating.
 "name[Cotto], eattype[coffee shop], food[Chinese], pricerange[cheap], area[city centre], near[The Portland Arms], position[outer]",Cotto is a cheap coffee shop with Chinese food near The Portland Arms in the city centre area.
@@ -2287,7 +2287,7 @@ name[Cocum],Cocum went on a very busy Friday night; the food was excellent.
 "name[Cotto], area[city centre], near[The Portland Arms], position[inner]",It is located near The Portland Arms in the city centre.
 "name[Cotto], eattype[coffee shop], food[Chinese], pricerange[moderate], customerrating[1 out of 5], area[riverside], near[The Portland Arms]",Cotto is a coffee shop that serves moderate priced Chinese food. This restaurant has a customer rating of 1 out of 5 and is located in riverside near The Portland Arms.
 "name[Cotto], eattype[coffee shop], food[Chinese], pricerange[moderate], position[outer]",Cotto is a coffee shop that serves moderate priced Chinese food.
-"customerrating[1 out of 5], area[riverside], near[The Portland Arms], position[inner]",This restaurant has a customer rating of 1 out of 5 and is located in riverside near The Portland Arms.
+"name[Cotto], customerrating[1 out of 5], area[riverside], near[The Portland Arms], position[inner]",This restaurant has a customer rating of 1 out of 5 and is located in riverside near The Portland Arms.
 "name[Cotto], eattype[coffee shop], food[Chinese], pricerange[moderate], customerrating[1 out of 5], area[riverside], near[The Portland Arms]",A moderate price ranged coffee shop that serves Chinese food is called Cotto that is located in riverside near The Portland Arms and has a customer rating of 1 out of 5.
 "name[Cotto], eattype[coffee shop], food[Chinese], pricerange[moderate], customerrating[1 out of 5], area[riverside], near[The Portland Arms]",Cotto is a moderately priced Chinese coffee shop in the riverside area near The Portland Arms. It has a customer rating of 1 out of 5.
 "name[Cotto], eattype[coffee shop], food[Chinese], pricerange[moderate], area[riverside], near[The Portland Arms], position[outer]",Cotto is a moderately priced Chinese coffee shop in the riverside area near The Portland Arms.
@@ -2392,7 +2392,7 @@ name[Cocum],Cocum went on a very busy Friday night; the food was excellent.
 "name[Cotto], customerrating[high], position[inner]",It has a 5 star customer rating.
 "name[Cotto], eattype[coffee shop], pricerange[£20-25], customerrating[high], area[riverside], near[The Portland Arms]",There is a restaurant located in the Riverside area near The Portland Arms called Cotto. This restaurant has a coffee shop vibe that offers fair priced foods. Cotto has a high customer value because they offer quality foods for fair prices.
 "name[Cotto], area[riverside], near[The Portland Arms], position[outer]",There is a restaurant located in the Riverside area near The Portland Arms called Cotto.
-"eattype[coffee shop], pricerange[£20-25], position[inner]",This restaurant has a coffee shop vibe that offers fair priced foods.
+"name[Cotto], eattype[coffee shop], pricerange[£20-25], position[inner]",This restaurant has a coffee shop vibe that offers fair priced foods.
 "name[Cotto], pricerange[£20-25], customerrating[high], position[inner]",Cotto has a high customer value because they offer quality foods for fair prices.
 "name[Cotto], eattype[coffee shop], food[English], pricerange[£20-25], customerrating[high], near[The Portland Arms]",The Cotto is a reasonably priced English style coffee shop. It is rated five stars and is located near to The Portland Arms
 "name[Cotto], eattype[coffee shop], food[English], pricerange[£20-25], position[outer]",The Cotto is a reasonably priced English style coffee shop.
@@ -2406,7 +2406,7 @@ name[Cocum],Cocum went on a very busy Friday night; the food was excellent.
 "name[Cotto], eattype[coffee shop], pricerange[£20-25], position[outer]",Cotto is a coffee shop that serves a variety of mid-priced foods.
 "name[Cotto], area[riverside], near[The Portland Arms], position[inner]",It is located by the Riverside near The Portland Arms.
 "name[Cotto], customerrating[high], position[inner]",Cotto has high customer ratings.
-"eattype[coffee shop], pricerange[£20-25], customerrating[high], position[inner]",This is a cheap coffee shop offering quality foods for fair prices.
+"name[Cotto], eattype[coffee shop], pricerange[£20-25], customerrating[high], position[inner]",This is a cheap coffee shop offering quality foods for fair prices.
 "name[Cotto], eattype[coffee shop], food[English], pricerange[£20-25], customerrating[high], area[riverside], near[The Portland Arms]",Cotto is an average priced English coffee shop with high ratings. It can be found in riverside near The Portland Arms.
 "name[Cotto], eattype[coffee shop], food[English], pricerange[£20-25], customerrating[high], position[outer]",Cotto is an average priced English coffee shop with high ratings.
 "name[Cotto], area[riverside], near[The Portland Arms], position[inner]",It can be found in riverside near The Portland Arms.
@@ -2429,7 +2429,7 @@ name[Cocum],Cocum went on a very busy Friday night; the food was excellent.
 "name[Cotto], food[English], pricerange[cheap], customerrating[5 out of 5], position[inner]",It offers cheap English food which has been rated 5 out of 5 by previous customers.
 "name[Cotto], eattype[coffee shop], food[English], pricerange[cheap], customerrating[5 out of 5], area[riverside], near[The Portland Arms]",Cotto is our new affordable coffee shop near The Portland Arms in the beautiful riverside area. Customers are rating this English food shop a 5 out of 5.
 "name[Cotto], eattype[coffee shop], pricerange[cheap], area[riverside], near[The Portland Arms], position[outer]",Cotto is our new affordable coffee shop near The Portland Arms in the beautiful riverside area.
-"food[English], customerrating[5 out of 5], position[inner]",Customers are rating this English food shop a 5 out of 5.
+"name[Cotto], food[English], customerrating[5 out of 5], position[inner]",Customers are rating this English food shop a 5 out of 5.
 "name[Cotto], eattype[coffee shop], pricerange[cheap], near[The Portland Arms]",Cotto is a coffee shop that is in the low price range. It is located close to The Portland Arms.
 "name[Cotto], eattype[coffee shop], pricerange[cheap], position[outer]",Cotto is a coffee shop that is in the low price range.
 "name[Cotto], near[The Portland Arms], position[inner]",It is located close to The Portland Arms.
@@ -2498,7 +2498,7 @@ position[inner],"Sorry, no deliveries."
 "name[Cotto], food[English], pricerange[high], customerrating[1 out of 5], position[inner]",The English food is expensive and it has a low customer rating.
 "name[Cotto], eattype[coffee shop], food[English], pricerange[high], customerrating[1 out of 5], area[city centre], near[The Portland Arms]",English food is served at Cotto in the city centre near to The Portland Arms. Prices are high and customer rating is low at this coffee shop establishment.
 "name[Cotto], food[English], area[city centre], near[The Portland Arms], position[outer]",English food is served at Cotto in the city centre near to The Portland Arms.
-"eattype[coffee shop], pricerange[high], customerrating[1 out of 5], position[inner]",Prices are high and customer rating is low at this coffee shop establishment.
+"name[Cotto], eattype[coffee shop], pricerange[high], customerrating[1 out of 5], position[inner]",Prices are high and customer rating is low at this coffee shop establishment.
 "name[Cotto], eattype[coffee shop], food[English], pricerange[high], area[city centre], near[The Portland Arms]",Cotto is a coffee shop near The Portland Arms in the high price range. They serve English food in the city centre area of town.
 "name[Cotto], eattype[coffee shop], pricerange[high], near[The Portland Arms], position[outer]",Cotto is a coffee shop near The Portland Arms in the high price range.
 "name[Cotto], food[English], area[city centre], position[inner]",They serve English food in the city centre area of town.
@@ -2519,7 +2519,7 @@ position[inner],"Sorry, no deliveries."
 "name[Cotto], customerrating[average], area[city centre], near[The Portland Arms], position[inner]",It is located in the city centre area near The Portland Arms with average ratings
 "name[Cotto], eattype[coffee shop], food[English], pricerange[high], customerrating[average], area[city centre], near[The Portland Arms]",Cotto is a high priced coffee shop located near The Portland Arms in city centre. This coffee shop serves English food with an average customer rating.
 "name[Cotto], eattype[coffee shop], pricerange[high], area[city centre], near[The Portland Arms], position[outer]",Cotto is a high priced coffee shop located near The Portland Arms in city centre.
-"eattype[coffee shop], food[English], customerrating[average], position[inner]",This coffee shop serves English food with an average customer rating.
+"name[Cotto], eattype[coffee shop], food[English], customerrating[average], position[inner]",This coffee shop serves English food with an average customer rating.
 "name[Cotto], eattype[coffee shop], food[English], pricerange[high], customerrating[average], area[city centre], near[The Portland Arms]","In the city centre, by the The Portland Arms, is a coffee shop called Cotto. It is a high priced location that serves English style food. Cotto has an average customer review rating."
 "name[Cotto], eattype[coffee shop], area[city centre], near[The Portland Arms], position[outer]","In the city centre, by the The Portland Arms, is a coffee shop called Cotto."
 "name[Cotto], food[English], pricerange[high], position[inner]",It is a high priced location that serves English style food.
@@ -2553,7 +2553,7 @@ position[inner],"Sorry, no deliveries."
 "name[Cotto], pricerange[high], customerrating[average], position[inner]",It has a high price range but has only received average reviews.
 "name[Cotto], eattype[coffee shop], food[English], pricerange[less than £20], customerrating[low], area[city centre], near[The Portland Arms]","Cotto the coffee shop has a price range of less than £20, serving English food. Situated near The Portland Arms in the city centre this has a low customer rating."
 "name[Cotto], eattype[coffee shop], food[English], pricerange[less than £20], position[outer]","Cotto the coffee shop has a price range of less than £20, serving English food."
-"pricerange[less than £20], customerrating[low], area[city centre], near[The Portland Arms], position[inner]",Situated near The Portland Arms in the city centre this has a low customer rating.
+"name[Cotto], pricerange[less than £20], customerrating[low], area[city centre], near[The Portland Arms], position[inner]",Situated near The Portland Arms in the city centre this has a low customer rating.
 "name[Cotto], eattype[coffee shop], food[English], pricerange[less than £20], customerrating[low], area[city centre], near[The Portland Arms]","For less than £20, a coffee shop named Cotto offers English food. It is located near The Portland Arms in the city centre. its customer rating is low."
 "name[Cotto], eattype[coffee shop], food[English], pricerange[less than £20], position[outer]","For less than £20, a coffee shop named Cotto offers English food."
 "name[Cotto], area[city centre], near[The Portland Arms], position[inner]",It is located near The Portland Arms in the city centre.
@@ -2751,7 +2751,7 @@ position[inner],"Sorry, no deliveries."
 "name[Fitzbillies], eattype[coffee shop], food[Chinese], customerrating[5 out of 5], area[city centre], position[outer]",A highly rated Chinese coffee shop in the city centre is Fitzbillies.
 "name[Fitzbillies], food[Chinese], pricerange[cheap], customerrating[5 out of 5], position[inner]","Selling cheap Chinese food, it has an overall customer rating of 5 out of 5."
 "name[Fitzbillies], familyfriendly[no], position[inner]",It is not suitable for family as it is described as not family friendly.
-"eattype[coffee shop], food[Chinese], pricerange[cheap], position[inner]",This coffee shop sells Chinese food in a cheap price range.
+"name[Fitzbillies], eattype[coffee shop], food[Chinese], pricerange[cheap], position[inner]",This coffee shop sells Chinese food in a cheap price range.
 "name[Fitzbillies], area[city centre], position[inner]",It can be found in the city centre.
 "name[Fitzbillies], eattype[coffee shop], food[Chinese], pricerange[cheap], customerrating[5 out of 5], area[city centre], familyfriendly[no]",Fitzbillies coffee shop serves Chinese food in the city centre. It is in the cheap price range but is not family friendly but has a 5 out of 5 customer rating
 "name[Fitzbillies], eattype[coffee shop], food[Chinese], area[city centre], position[outer]",Fitzbillies coffee shop serves Chinese food in the city centre.
@@ -2800,7 +2800,7 @@ position[inner],"Sorry, no deliveries."
 "name[Fitzbillies], eattype[coffee shop], food[Chinese], pricerange[cheap], customerrating[5 out of 5], position[inner]",It is cheap but excellent coffee shop that also serves Chinese food.
 "name[Fitzbillies], eattype[coffee shop], food[Chinese], pricerange[cheap], customerrating[5 out of 5], area[riverside], familyfriendly[yes]","A cheap, but excellent place of Chinese food is the Fitzbillies. This family-friendly coffee shop is located on the riverside."
 "name[Fitzbillies], food[Chinese], pricerange[cheap], customerrating[5 out of 5], position[outer]","A cheap, but excellent place of Chinese food is the Fitzbillies."
-"eattype[coffee shop], area[riverside], familyfriendly[yes], position[inner]",This family-friendly coffee shop is located on the riverside.
+"name[Fitzbillies], eattype[coffee shop], area[riverside], familyfriendly[yes], position[inner]",This family-friendly coffee shop is located on the riverside.
 "name[Fitzbillies], eattype[coffee shop], food[Chinese], pricerange[cheap], customerrating[5 out of 5], area[riverside], familyfriendly[yes]","Fitzbillies is a coffee shop that sells Chinese food at a cheap price. It is kid friendly, the rating is 5 out of 5, and located in riverside."
 "name[Fitzbillies], eattype[coffee shop], food[Chinese], pricerange[cheap], position[outer]",Fitzbillies is a coffee shop that sells Chinese food at a cheap price.
 "name[Fitzbillies], customerrating[5 out of 5], area[riverside], familyfriendly[yes], position[inner]","It is kid friendly, the rating is 5 out of 5, and located in riverside."
@@ -3024,7 +3024,7 @@ position[inner],"Sorry, no deliveries."
 "name[Fitzbillies], pricerange[less than £20], customerrating[low], area[city centre], familyfriendly[no], position[inner]","It is located in the city centre, is not family friendly, and has a low rating."
 "name[Fitzbillies], eattype[coffee shop], food[Chinese], pricerange[less than £20], customerrating[low], area[city centre], familyfriendly[no]",Located in the city centre area is Fitzbillies. With a price range of less than £20 as well as a low customer rating this Chinese coffee shop is also not family friendly.
 "name[Fitzbillies], area[city centre], position[outer]",Located in the city centre area is Fitzbillies.
-"eattype[coffee shop], food[Chinese], pricerange[less than £20], customerrating[low], familyfriendly[no], position[inner]",With a price range of less than £20 as well as a low customer rating this Chinese coffee shop is also not family friendly.
+"name[Fitzbillies], eattype[coffee shop], food[Chinese], pricerange[less than £20], customerrating[low], familyfriendly[no], position[inner]",With a price range of less than £20 as well as a low customer rating this Chinese coffee shop is also not family friendly.
 "name[Fitzbillies], eattype[coffee shop], food[Chinese], pricerange[less than £20], customerrating[low], area[city centre]","Fitzbillies, a coffee shop and Chinese restaurant, is priced moderately, but has low customer ratings. It is located in city centre and family friendly."
 "name[Fitzbillies], eattype[coffee shop], food[Chinese], pricerange[less than £20], customerrating[low], position[outer]","Fitzbillies, a coffee shop and Chinese restaurant, is priced moderately, but has low customer ratings."
 "name[Fitzbillies], area[city centre], position[inner]",It is located in city centre and family friendly.
@@ -3034,7 +3034,7 @@ position[inner],"Sorry, no deliveries."
 "food[Chinese], pricerange[less than £20], area[city centre], position[inner]",Serving Chinese food in the city centre area and has a price range of less than £20.
 "name[Fitzbillies], eattype[coffee shop], food[Chinese], pricerange[less than £20], customerrating[low], area[city centre], familyfriendly[no]","Located in the center of the city, Fitzbillies is a low rated, low priced coffee shop that serves Chinese food. If you are looking for a family friendly dining choice, this is not a good choice for you,"
 "name[Fitzbillies], eattype[coffee shop], food[Chinese], pricerange[less than £20], customerrating[low], area[city centre], position[outer]","Located in the center of the city, Fitzbillies is a low rated, low priced coffee shop that serves Chinese food."
-"familyfriendly[no], position[inner]","If you are looking for a family friendly dining choice, this is not a good choice for you,"
+"name[Fitzbillies], familyfriendly[no], position[inner]","If you are looking for a family friendly dining choice, this is not a good choice for you,"
 "name[Fitzbillies], eattype[coffee shop], food[Chinese], pricerange[less than £20], customerrating[low], area[city centre]","Fitzbillies is a coffee shop that also serves Chinese food. It is moderately priced, with low customer ratings and is located in the city centre It is family friendly."
 "name[Fitzbillies], eattype[coffee shop], food[Chinese], position[outer]",Fitzbillies is a coffee shop that also serves Chinese food.
 "name[Fitzbillies], pricerange[less than £20], customerrating[low], area[city centre], position[inner]","It is moderately priced, with low customer ratings and is located in the city centre It is family friendly."
@@ -3205,7 +3205,7 @@ position[inner],"Sorry, no deliveries."
 "name[Fitzbillies], pricerange[moderate], customerrating[3 out of 5], familyfriendly[yes], position[inner]",It has a moderate price range and is kid friendly.
 "name[Fitzbillies], eattype[coffee shop], food[Chinese], pricerange[moderate], customerrating[3 out of 5], area[riverside], familyfriendly[no]",Fitzbillies is a coffee shop providing Chinese food at a moderate price on the riverside. Customers rate this coffee shop 3 out of 5 but is not kid friendly.
 "name[Fitzbillies], eattype[coffee shop], food[Chinese], pricerange[moderate], customerrating[3 out of 5], area[riverside], position[outer]",Fitzbillies is a coffee shop providing Chinese food at a moderate price on the riverside.
-"eattype[coffee shop], customerrating[3 out of 5], familyfriendly[no], position[inner]",Customers rate this coffee shop 3 out of 5 but is not kid friendly.
+"name[Fitzbillies], eattype[coffee shop], customerrating[3 out of 5], familyfriendly[no], position[inner]",Customers rate this coffee shop 3 out of 5 but is not kid friendly.
 "name[Fitzbillies], eattype[coffee shop], food[Chinese], pricerange[moderate], customerrating[3 out of 5], area[riverside], familyfriendly[no]","For moderately priced Chinese food with an average customer rating, try Fitzbillies coffee shop in the riverside area. Not kid friendly."
 "name[Fitzbillies], eattype[coffee shop], food[Chinese], pricerange[moderate], customerrating[3 out of 5], area[riverside], position[outer]","For moderately priced Chinese food with an average customer rating, try Fitzbillies coffee shop in the riverside area."
 "familyfriendly[no], position[inner]",Not kid friendly.
@@ -3221,7 +3221,7 @@ position[inner],"Sorry, no deliveries."
 "name[Fitzbillies], customerrating[3 out of 5], position[inner]",Its customer rating is 3 out of 5.
 "name[Fitzbillies], eattype[coffee shop], food[Chinese], pricerange[moderate], customerrating[3 out of 5], area[riverside], familyfriendly[no]","There is a moderately priced coffee shop, Fitzbillies located on the riverside that serves Chinese food. Customers rate this coffee shop 3 out of 5 but is not kid friendly."
 "name[Fitzbillies], eattype[coffee shop], food[Chinese], pricerange[moderate], customerrating[3 out of 5], area[riverside], position[outer]","There is a moderately priced coffee shop, Fitzbillies located on the riverside that serves Chinese food."
-"eattype[coffee shop], customerrating[3 out of 5], familyfriendly[no], position[inner]",Customers rate this coffee shop 3 out of 5 but is not kid friendly.
+"name[Fitzbillies], eattype[coffee shop], customerrating[3 out of 5], familyfriendly[no], position[inner]",Customers rate this coffee shop 3 out of 5 but is not kid friendly.
 "name[Fitzbillies], eattype[coffee shop], food[Chinese], pricerange[moderate], customerrating[3 out of 5], area[riverside], familyfriendly[yes]","This kid friendly coffee shop found riverside, Fitzbillies offers Chinese food at a moderate price range with a customer rating of 3 out of 5."
 "name[Fitzbillies], eattype[coffee shop], food[Chinese], pricerange[moderate], customerrating[3 out of 5], area[riverside], familyfriendly[yes]",There is a kid friendly coffee shop in the riverside area call the Fitzbillies that serves Chinese food at a moderate price and a customer rating of 3 out of 5.
 "name[Fitzbillies], eattype[coffee shop], food[Chinese], pricerange[moderate], customerrating[3 out of 5], area[riverside], familyfriendly[yes]",Fitzbillies is a moderately priced coffee shop serving Chinese food that received a customer rating of 3 out of 5. Kid friendly and located in riverside.
@@ -3311,7 +3311,7 @@ position[inner],.
 "name[Fitzbillies], familyfriendly[no], position[inner]",They are not kids friendly.
 "name[Fitzbillies], eattype[coffee shop], food[English], pricerange[£20-25], customerrating[high], area[city centre], familyfriendly[no]",Fitzbillies in the city centre provides English food with a price range £20-25. This coffee shop is rated high but not kids friendly.
 "name[Fitzbillies], food[English], pricerange[£20-25], area[city centre], position[outer]",Fitzbillies in the city centre provides English food with a price range £20-25.
-"eattype[coffee shop], customerrating[high], familyfriendly[no], position[inner]",This coffee shop is rated high but not kids friendly.
+"name[Fitzbillies], eattype[coffee shop], customerrating[high], familyfriendly[no], position[inner]",This coffee shop is rated high but not kids friendly.
 "name[Fitzbillies], eattype[coffee shop], pricerange[£20-25], customerrating[high], area[city centre]",Fitzbillies coffee shop that is Fast food and has a price range that is less than £20 in the city centre its family-friendly and low customer rating
 "name[Fitzbillies], eattype[coffee shop], food[English], pricerange[£20-25], customerrating[high], area[city centre], familyfriendly[no]",Fitzbillies is an English coffee shop in the city centre with a high customer rating. It is not kids friendly and has a price range of 20 to 25 pounds.
 "name[Fitzbillies], eattype[coffee shop], food[English], customerrating[high], area[city centre], position[outer]",Fitzbillies is an English coffee shop in the city centre with a high customer rating.
@@ -3487,9 +3487,9 @@ position[inner],.
 "name[Fitzbillies], customerrating[1 out of 5], area[city centre], position[inner]",They recently relocated to city centre where the area rates 1 out of 5.
 "name[Fitzbillies], eattype[coffee shop], pricerange[high], position[inner]",They are surrounded by a coffee shop and retail stores where the prices are high.
 "name[Fitzbillies], eattype[coffee shop], food[English], pricerange[high], customerrating[1 out of 5], area[city centre], familyfriendly[yes]","Yes, this restaurant is children friendly and the English food is great. The restaurant is named Fitzbillies located in the city centre where the ratings scores an average of 1 out of 5. This restaurant is also similar to a coffee shop where the prices are high."
-"food[English], familyfriendly[yes], position[outer]","Yes, this restaurant is children friendly and the English food is great."
+"name[Fitzbillies], food[English], familyfriendly[yes], position[outer]","Yes, this restaurant is children friendly and the English food is great."
 "name[Fitzbillies], customerrating[1 out of 5], area[city centre], position[inner]",The restaurant is named Fitzbillies located in the city centre where the ratings scores an average of 1 out of 5.
-"eattype[coffee shop], pricerange[high], position[inner]",This restaurant is also similar to a coffee shop where the prices are high.
+"name[Fitzbillies], eattype[coffee shop], pricerange[high], position[inner]",This restaurant is also similar to a coffee shop where the prices are high.
 "name[Fitzbillies], eattype[coffee shop], food[English], pricerange[high], customerrating[1 out of 5], area[city centre], familyfriendly[yes]",Fitzbillies is a high priced English coffee shop that is in the city centre and is children friendly. Customers rated it 1 out of 5.
 "name[Fitzbillies], eattype[coffee shop], food[English], pricerange[high], area[city centre], familyfriendly[yes], position[outer]",Fitzbillies is a high priced English coffee shop that is in the city centre and is children friendly.
 "name[Fitzbillies], customerrating[1 out of 5], position[inner]",Customers rated it 1 out of 5.
@@ -3553,10 +3553,10 @@ position[inner],.
 "name[Fitzbillies], food[English], pricerange[high], position[inner]","They serve English food, priced high."
 "name[Fitzbillies], eattype[coffee shop], food[English], pricerange[high], customerrating[average], area[city centre], familyfriendly[no]",Fitzbillies is a coffee shop in the city center with an average rating. This English place has a high price range for adults.
 "name[Fitzbillies], eattype[coffee shop], customerrating[average], area[city centre], position[outer]",Fitzbillies is a coffee shop in the city center with an average rating.
-"food[English], pricerange[high], familyfriendly[no], position[inner]",This English place has a high price range for adults.
+"name[Fitzbillies], food[English], pricerange[high], familyfriendly[no], position[inner]",This English place has a high price range for adults.
 "name[Fitzbillies], eattype[coffee shop], food[English], pricerange[high], customerrating[average], area[city centre], familyfriendly[no]",Fitzbillies is an English coffee Shop for adults in the city center. This average rated place has a high price range
 "name[Fitzbillies], eattype[coffee shop], food[English], area[city centre], familyfriendly[no], position[outer]",Fitzbillies is an English coffee Shop for adults in the city center.
-"pricerange[high], customerrating[average], position[inner]",This average rated place has a high price range
+"name[Fitzbillies], pricerange[high], customerrating[average], position[inner]",This average rated place has a high price range
 "name[Fitzbillies], eattype[coffee shop], food[English], pricerange[high], customerrating[average], area[city centre], familyfriendly[no]","Fitzbillies, an English coffee shop in the city centre, has an average rating and a high price range. It is not children friendly."
 "name[Fitzbillies], eattype[coffee shop], food[English], pricerange[high], customerrating[average], area[city centre], position[outer]","Fitzbillies, an English coffee shop in the city centre, has an average rating and a high price range."
 "name[Fitzbillies], familyfriendly[no], position[inner]",It is not children friendly.
@@ -3646,7 +3646,7 @@ position[inner],.
 "name[Fitzbillies], eattype[coffee shop], food[English], pricerange[less than £20], customerrating[low], area[riverside], familyfriendly[no]","It has a low customer rating and is not family-friendly, but Fitzbillies coffee shop, located in riverside, has English food with a less than £20 price range."
 "name[Fitzbillies], eattype[coffee shop], food[English], pricerange[less than £20], customerrating[low], area[riverside], familyfriendly[no]",In the riverside area a coffee shop named Fitzbillies has reasonably priced English food. This restaurant is not family-friendly and has a low rating.
 "name[Fitzbillies], eattype[coffee shop], food[English], pricerange[less than £20], area[riverside], position[outer]",In the riverside area a coffee shop named Fitzbillies has reasonably priced English food.
-"pricerange[less than £20], customerrating[low], familyfriendly[no], position[inner]",This restaurant is not family-friendly and has a low rating.
+"name[Fitzbillies], pricerange[less than £20], customerrating[low], familyfriendly[no], position[inner]",This restaurant is not family-friendly and has a low rating.
 "name[Fitzbillies], eattype[coffee shop], food[English], pricerange[less than £20], customerrating[low], area[riverside], familyfriendly[no]","Fitzbillies is an English riverside coffee shop. Food is cheap, it is not family friendly. It has 1 star."
 "name[Fitzbillies], eattype[coffee shop], food[English], area[riverside], position[outer]",Fitzbillies is an English riverside coffee shop.
 "name[Fitzbillies], pricerange[less than £20], familyfriendly[no], position[inner]","Food is cheap, it is not family friendly."
@@ -3691,7 +3691,7 @@ position[inner],.
 "pricerange[moderate], customerrating[1 out of 5], position[inner]",The price range is moderate and has a rating of 1 out of 5
 "name[Fitzbillies], eattype[coffee shop], food[English], pricerange[moderate], customerrating[1 out of 5], area[city centre], familyfriendly[no]",Fitzbillies is a moderate priced coffee shop in the city center area. The rating is 1 out of 5 for this adult English coffee shop
 "name[Fitzbillies], eattype[coffee shop], pricerange[moderate], area[city centre], position[outer]",Fitzbillies is a moderate priced coffee shop in the city center area.
-"eattype[coffee shop], food[English], customerrating[1 out of 5], familyfriendly[no], position[inner]",The rating is 1 out of 5 for this adult English coffee shop
+"name[Fitzbillies], eattype[coffee shop], food[English], customerrating[1 out of 5], familyfriendly[no], position[inner]",The rating is 1 out of 5 for this adult English coffee shop
 "name[Fitzbillies], eattype[coffee shop], food[English], pricerange[moderate], customerrating[1 out of 5], area[city centre], familyfriendly[no]","Fitzbillies is a moderately priced, English coffee shop in the city centre; however, it is not kid friendly and has a customer rating of 1 out of 5."
 "name[Fitzbillies], eattype[coffee shop], food[English], pricerange[moderate], customerrating[1 out of 5], area[city centre], familyfriendly[yes]","With a rating of 1 out of 5, Fitzbillies is an English coffee shop with moderate prices. It is located in the city centre and is kid friendly."
 "name[Fitzbillies], eattype[coffee shop], food[English], pricerange[moderate], customerrating[1 out of 5], position[outer]","With a rating of 1 out of 5, Fitzbillies is an English coffee shop with moderate prices."
@@ -4116,7 +4116,7 @@ position[inner],.
 "name[Taste of Cambridge], eattype[coffee shop], food[English], area[riverside], familyfriendly[yes], near[Crowne Plaza Hotel]","Taste of Cambridge, a coffee shop specializing in English eatery, is located in riverside near Crowne Plaza Hotel and is known to be very kid friendly."
 "name[Taste of Cambridge], eattype[coffee shop], food[English], area[riverside], familyfriendly[yes]",Taste of Cambridge is located on the riverside near the Crown Plaza Hotel. This coffee shop is kid friendly and serves English cuisine.
 "name[Taste of Cambridge], area[riverside], position[outer]",Taste of Cambridge is located on the riverside near the Crown Plaza Hotel.
-"eattype[coffee shop], food[English], familyfriendly[yes], position[inner]",This coffee shop is kid friendly and serves English cuisine.
+"name[Taste of Cambridge], eattype[coffee shop], food[English], familyfriendly[yes], position[inner]",This coffee shop is kid friendly and serves English cuisine.
 "name[Taste of Cambridge], eattype[coffee shop], food[English], area[riverside], familyfriendly[yes], near[Crowne Plaza Hotel]","Situated near the Crowne Plaza Hotel in the riverside area, is the family friendly coffee shop Taste of Cambridge. It serves English food."
 "name[Taste of Cambridge], eattype[coffee shop], area[riverside], familyfriendly[yes], near[Crowne Plaza Hotel], position[outer]","Situated near the Crowne Plaza Hotel in the riverside area, is the family friendly coffee shop Taste of Cambridge."
 "name[Taste of Cambridge], food[English], position[inner]",It serves English food.
@@ -4150,7 +4150,7 @@ position[inner],.
 "name[Taste of Cambridge], eattype[coffee shop], food[English], area[riverside], familyfriendly[yes], near[Crowne Plaza Hotel]",The Taste of Cambridge is a coffee shop. It is located near Crowne Plaza Hotel in the area of Riverside. This is a family friendly coffee shop serving English food.
 "name[Taste of Cambridge], eattype[coffee shop], position[outer]",The Taste of Cambridge is a coffee shop.
 "name[Taste of Cambridge], area[riverside], near[Crowne Plaza Hotel], position[inner]",It is located near Crowne Plaza Hotel in the area of Riverside.
-"eattype[coffee shop], food[English], familyfriendly[yes], position[inner]",This is a family friendly coffee shop serving English food.
+"name[Taste of Cambridge], eattype[coffee shop], food[English], familyfriendly[yes], position[inner]",This is a family friendly coffee shop serving English food.
 "name[Taste of Cambridge], eattype[coffee shop], area[riverside], familyfriendly[yes], near[Crowne Plaza Hotel]","In Riverside, near the Crowne Plaza Hotel, you can find a family friendly coffee shop called Taste of Cambridge."
 "name[Taste of Cambridge], eattype[coffee shop], food[English], area[riverside], familyfriendly[yes], near[Crowne Plaza Hotel]",Taste of Cambridge is a family friendly coffee shop serving English food. It is situated in the riverside area near the Crowne Plaza Hotel.
 "name[Taste of Cambridge], eattype[coffee shop], food[English], familyfriendly[yes], position[outer]",Taste of Cambridge is a family friendly coffee shop serving English food.
@@ -4242,7 +4242,7 @@ position[inner],.
 "name[The Cambridge Blue], customerrating[3 out of 5], position[inner]",It is rated 3 out of 5.
 "name[The Cambridge Blue], eattype[coffee shop], customerrating[3 out of 5], area[riverside], familyfriendly[yes], near[Burger King]",The Cambridge Blue is a coffee shop near Burger King. This kid friendly establishment is along the riverside. Rated 3 out of 5.
 "name[The Cambridge Blue], eattype[coffee shop], near[Burger King], position[outer]",The Cambridge Blue is a coffee shop near Burger King.
-"area[riverside], familyfriendly[yes], position[inner]",This kid friendly establishment is along the riverside.
+"name[The Cambridge Blue], area[riverside], familyfriendly[yes], position[inner]",This kid friendly establishment is along the riverside.
 "customerrating[3 out of 5], position[inner]",Rated 3 out of 5.
 "name[The Cambridge Blue], eattype[coffee shop], customerrating[3 out of 5], area[riverside], familyfriendly[yes], near[Burger King]","The Cambridge Blue is a coffee shop on the riverside near Burger King. kids-friendly, rated 3 out of 5 by customers."
 "name[The Cambridge Blue], eattype[coffee shop], area[riverside], near[Burger King], position[outer]",The Cambridge Blue is a coffee shop on the riverside near Burger King.
@@ -4253,7 +4253,7 @@ position[inner],.
 "name[The Cambridge Blue], eattype[coffee shop], customerrating[3 out of 5], area[riverside], familyfriendly[yes], near[Burger King]",The Cambridge Blue is a child friendly coffee shop with a customer rating of 3 out of 5 and located by the riverside near a Burger King.
 "name[The Cambridge Blue], eattype[coffee shop], customerrating[3 out of 5], area[riverside], familyfriendly[yes], near[Burger King]","The Cambridge Blue is a child friendly coffee shop in the area Riverside, near Burger King. Customers rate this a 3 out of 5."
 "name[The Cambridge Blue], eattype[coffee shop], area[riverside], familyfriendly[yes], near[Burger King], position[outer]","The Cambridge Blue is a child friendly coffee shop in the area Riverside, near Burger King."
-"customerrating[3 out of 5], position[inner]",Customers rate this a 3 out of 5.
+"name[The Cambridge Blue], customerrating[3 out of 5], position[inner]",Customers rate this a 3 out of 5.
 "name[The Cambridge Blue], eattype[coffee shop], customerrating[3 out of 5], area[riverside], familyfriendly[yes], near[Burger King]","The Cambridge Blue is a coffee shop situated near Burger King on the riverside while being kid friendly, it has a rating of 3 on 5 given by customers."
 "name[The Cambridge Blue], eattype[coffee shop], customerrating[3 out of 5], area[riverside], familyfriendly[yes], near[Burger King]",In riverside near Burger King is a family friendly coffee shop named The Cambridge Blue. It has a 3 out of 5 customer rating.
 "name[The Cambridge Blue], eattype[coffee shop], area[riverside], familyfriendly[yes], near[Burger King], position[outer]",In riverside near Burger King is a family friendly coffee shop named The Cambridge Blue.
@@ -4284,7 +4284,7 @@ position[inner],.
 "name[The Cambridge Blue], eattype[coffee shop], customerrating[3 out of 5], area[riverside], familyfriendly[yes], near[Burger King]","Rated 3 out of 5 by customers, this coffee shop style, kid friendly The Cambridge Blue can be found close to Burger King on the riverside"
 "name[The Cambridge Blue], eattype[coffee shop], customerrating[3 out of 5], area[riverside], familyfriendly[yes], near[Burger King]",In the riverside area near the Burger King there is a coffee shop called The Cambridge Blue. This shop has a 3 out of 5 rating and is children friendly.
 "name[The Cambridge Blue], eattype[coffee shop], area[riverside], near[Burger King], position[outer]",In the riverside area near the Burger King there is a coffee shop called The Cambridge Blue.
-"customerrating[3 out of 5], familyfriendly[yes], position[inner]",This shop has a 3 out of 5 rating and is children friendly.
+"name[The Cambridge Blue], customerrating[3 out of 5], familyfriendly[yes], position[inner]",This shop has a 3 out of 5 rating and is children friendly.
 "name[The Cambridge Blue], eattype[coffee shop], customerrating[3 out of 5], area[riverside], familyfriendly[yes], near[Burger King]","Family friendly environment at The Cambridge Blue coffee shop. Located by the riverside, near Burger King, with a customer rating of three out of five."
 "name[The Cambridge Blue], eattype[coffee shop], familyfriendly[yes], position[outer]",Family friendly environment at The Cambridge Blue coffee shop.
 "customerrating[3 out of 5], area[riverside], near[Burger King], position[inner]","Located by the riverside, near Burger King, with a customer rating of three out of five."
@@ -4376,10 +4376,10 @@ position[inner],.
 "name[The Cambridge Blue], eattype[coffee shop], customerrating[5 out of 5], familyfriendly[yes], position[inner]",It's a children friendly coffee shop rated 5 out of 5.
 "name[The Cambridge Blue], eattype[coffee shop], customerrating[5 out of 5], area[riverside], familyfriendly[yes], near[Burger King]",In the riverside area there is a child friendly coffee shop called The Cambridge Blue. This has a star rating of 5 out of 5 and is situated near Burger King.
 "name[The Cambridge Blue], eattype[coffee shop], area[riverside], familyfriendly[yes], position[outer]",In the riverside area there is a child friendly coffee shop called The Cambridge Blue.
-"customerrating[5 out of 5], near[Burger King], position[inner]",This has a star rating of 5 out of 5 and is situated near Burger King.
+"name[The Cambridge Blue], customerrating[5 out of 5], near[Burger King], position[inner]",This has a star rating of 5 out of 5 and is situated near Burger King.
 "name[The Cambridge Blue], eattype[coffee shop], customerrating[5 out of 5], area[riverside], familyfriendly[yes], near[Burger King]",The Cambridge Blue is a child friendly coffee shop situated near Burger King by the riverside. This has a 5 star rating.
 "name[The Cambridge Blue], eattype[coffee shop], area[riverside], familyfriendly[yes], near[Burger King], position[outer]",The Cambridge Blue is a child friendly coffee shop situated near Burger King by the riverside.
-"customerrating[5 out of 5], position[inner]",This has a 5 star rating.
+"name[The Cambridge Blue], customerrating[5 out of 5], position[inner]",This has a 5 star rating.
 "name[The Cambridge Blue], eattype[coffee shop], customerrating[5 out of 5], area[riverside], familyfriendly[yes], near[Burger King]",Near the riverside and near Burger King is The Cambridge Blue coffee shop. It is children Friendly and has a customer rating of 5 out of 5.
 "name[The Cambridge Blue], eattype[coffee shop], area[riverside], near[Burger King], position[outer]",Near the riverside and near Burger King is The Cambridge Blue coffee shop.
 "name[The Cambridge Blue], customerrating[5 out of 5], familyfriendly[yes], position[inner]",It is children Friendly and has a customer rating of 5 out of 5.
@@ -4462,7 +4462,7 @@ position[inner],.
 "name[The Cambridge Blue], near[Burger King], position[inner]",It's just by Burger King.
 "name[The Cambridge Blue], eattype[coffee shop], customerrating[average], area[riverside], familyfriendly[yes], near[Burger King]",The Cambridge Blue has average ratings but is family-friendly. This coffee shop can be found near Burger King in the riverside area.
 "name[The Cambridge Blue], customerrating[average], familyfriendly[yes], position[outer]",The Cambridge Blue has average ratings but is family-friendly.
-"eattype[coffee shop], area[riverside], near[Burger King], position[inner]",This coffee shop can be found near Burger King in the riverside area.
+"name[The Cambridge Blue], eattype[coffee shop], area[riverside], near[Burger King], position[inner]",This coffee shop can be found near Burger King in the riverside area.
 "name[The Cambridge Blue], eattype[coffee shop], customerrating[average], area[riverside], familyfriendly[yes], near[Burger King]",The Cambridge Blue is a children friendly coffee shop with an average customer rating located near Burger King in riverside
 "name[The Cambridge Blue], eattype[coffee shop], customerrating[average], area[riverside], familyfriendly[yes], near[Burger King]","The Cambridge Blue is a children friendly coffee shop with an average customer rating, located in riverside near Burger King"
 "name[The Cambridge Blue], eattype[coffee shop], customerrating[average], area[riverside], familyfriendly[yes], near[Burger King]",The Cambridge Blue is a coffee shop near Burger King in riverside. it is child friendly with an average customer rating.
@@ -4656,7 +4656,7 @@ position[inner],.
 "name[The Cricketers], customerrating[1 out of 5], familyfriendly[yes], position[inner]",It is kid friendly with a customer rating of 1 out of 5.
 "name[The Cricketers], eattype[coffee shop], food[Chinese], customerrating[1 out of 5], familyfriendly[yes], near[The Portland Arms]",The Cricketers are a coffee shop providing Chinese food. This establishment is kids friendly. Located near The Portland Arms. Currently 1 out of 5 Customer Rating.
 "name[The Cricketers], eattype[coffee shop], food[Chinese], position[outer]",The Cricketers are a coffee shop providing Chinese food.
-"familyfriendly[yes], position[inner]",This establishment is kids friendly.
+"name[The Cricketers], familyfriendly[yes], position[inner]",This establishment is kids friendly.
 "near[The Portland Arms], position[inner]",Located near The Portland Arms.
 "customerrating[1 out of 5], position[inner]",Currently 1 out of 5 Customer Rating.
 "name[The Cricketers], eattype[coffee shop], food[Chinese], customerrating[1 out of 5], near[The Portland Arms]",The Cricketers is a coffee shop providing Chinese food It is near The Portland Arms. Its customer rating is 1 out of 5.
@@ -4729,7 +4729,7 @@ position[inner],.
 "name[The Cricketers], eattype[coffee shop], food[Chinese], customerrating[average], familyfriendly[yes], near[The Portland Arms]","The Cricketers is a coffee shop, providing Chinese food. It is family friendly and has been awarded an average customer rating. You will find this coffee shop near The Portland Arms."
 "name[The Cricketers], eattype[coffee shop], food[Chinese], position[outer]","The Cricketers is a coffee shop, providing Chinese food."
 "name[The Cricketers], customerrating[average], familyfriendly[yes], position[inner]",It is family friendly and has been awarded an average customer rating.
-"eattype[coffee shop], near[The Portland Arms], position[inner]",You will find this coffee shop near The Portland Arms.
+"name[The Cricketers], eattype[coffee shop], near[The Portland Arms], position[inner]",You will find this coffee shop near The Portland Arms.
 "name[The Cricketers], eattype[coffee shop], food[Chinese], customerrating[average], familyfriendly[yes], near[The Portland Arms]","A coffee shop which offers Chinese, The Cricketers is located near The Portland Arms. With its average rating, it is ideal for family and friends."
 "name[The Cricketers], eattype[coffee shop], food[Chinese], near[The Portland Arms], position[outer]","A coffee shop which offers Chinese, The Cricketers is located near The Portland Arms."
 "name[The Cricketers], customerrating[average], familyfriendly[yes], position[inner]","With its average rating, it is ideal for family and friends."
@@ -4914,7 +4914,7 @@ position[inner],.
 "customerrating[average], position[inner]",3 out of 5 stars.
 "name[The Cricketers], eattype[coffee shop], food[English], customerrating[average], familyfriendly[yes], near[The Portland Arms]",By The Portland Arms is The Cricketers. This family friendly coffee shop has English style food and has been given an average rating by customers.
 "name[The Cricketers], near[The Portland Arms], position[outer]",By The Portland Arms is The Cricketers.
-"eattype[coffee shop], food[English], customerrating[average], familyfriendly[yes], position[inner]",This family friendly coffee shop has English style food and has been given an average rating by customers.
+"name[The Cricketers], eattype[coffee shop], food[English], customerrating[average], familyfriendly[yes], position[inner]",This family friendly coffee shop has English style food and has been given an average rating by customers.
 "name[The Cricketers], eattype[coffee shop], food[English], customerrating[average], familyfriendly[yes], near[The Portland Arms]",The Cricketers is a English food place with a average customer rating near The Portland Arms. It is a children friendly coffee shop.
 "name[The Cricketers], food[English], customerrating[average], near[The Portland Arms], position[outer]",The Cricketers is a English food place with a average customer rating near The Portland Arms.
 "name[The Cricketers], eattype[coffee shop], familyfriendly[yes], position[inner]",It is a children friendly coffee shop.
@@ -5011,7 +5011,7 @@ position[inner],Families with children are welcome.
 "name[The Cricketers], eattype[coffee shop], near[The Portland Arms]",The Cricketers coffee shop is located near The Portland Arms and serves breakfast.
 "name[The Cricketers], eattype[coffee shop], food[English], customerrating[low], familyfriendly[yes], near[The Portland Arms]",The Cricketers is a coffee shop that serves English food. This is a family friendly shop that is located near The Portland Arms and has a low customer rating.
 "name[The Cricketers], eattype[coffee shop], food[English], position[outer]",The Cricketers is a coffee shop that serves English food.
-"customerrating[low], familyfriendly[yes], near[The Portland Arms], position[inner]",This is a family friendly shop that is located near The Portland Arms and has a low customer rating.
+"name[The Cricketers], customerrating[low], familyfriendly[yes], near[The Portland Arms], position[inner]",This is a family friendly shop that is located near The Portland Arms and has a low customer rating.
 "name[The Cricketers], familyfriendly[yes], near[The Portland Arms]",The Cricketers is located near The Portland Arms. It is family friendly.
 "name[The Cricketers], near[The Portland Arms], position[outer]",The Cricketers is located near The Portland Arms.
 "name[The Cricketers], familyfriendly[yes], position[inner]",It is family friendly.
@@ -5020,7 +5020,7 @@ position[inner],Families with children are welcome.
 "name[The Cricketers], customerrating[low], familyfriendly[yes], position[inner]",It has a one star ranking and is family friendly.
 "name[The Cricketers], eattype[coffee shop], food[English], customerrating[low], familyfriendly[yes], near[The Portland Arms]","Located near The Portland Arms, The Cricketers is a coffee shop that serves English food. This is a family friendly shop that had a low customer rating."
 "name[The Cricketers], eattype[coffee shop], food[English], near[The Portland Arms], position[outer]","Located near The Portland Arms, The Cricketers is a coffee shop that serves English food."
-"customerrating[low], familyfriendly[yes], position[inner]",This is a family friendly shop that had a low customer rating.
+"name[The Cricketers], customerrating[low], familyfriendly[yes], position[inner]",This is a family friendly shop that had a low customer rating.
 "name[The Eagle], customerrating[1 out of 5], area[riverside], familyfriendly[yes], near[Café Brazil]",The Eagle is in the riverside area near Café Brazil. It is children friendly and has a customer rating of 1 out of 5.
 "name[The Eagle], area[riverside], near[Café Brazil], position[outer]",The Eagle is in the riverside area near Café Brazil.
 "name[The Eagle], customerrating[1 out of 5], familyfriendly[yes], position[inner]",It is children friendly and has a customer rating of 1 out of 5.
@@ -5424,7 +5424,7 @@ position[inner],Families with children are welcome.
 "name[The Eagle], customerrating[low], area[riverside], familyfriendly[no], near[Café Brazil]","Near Café Brazil at the riverside is the low rated, non family-friendly restaurant The Eagle."
 "name[The Eagle], customerrating[low], area[riverside], familyfriendly[no], near[Café Brazil]",Near Café Brazil in riverside is The Eagle. This is non family-friendly and has a low customer rating.
 "name[The Eagle], area[riverside], near[Café Brazil], position[outer]",Near Café Brazil in riverside is The Eagle.
-"customerrating[low], familyfriendly[no], position[inner]",This is non family-friendly and has a low customer rating.
+"name[The Eagle], customerrating[low], familyfriendly[no], position[inner]",This is non family-friendly and has a low customer rating.
 "name[The Eagle], near[Café Brazil]",Café Brazil is located in the City centre in The Eagle
 "name[The Eagle], customerrating[low], area[riverside], near[Café Brazil]","The Eagle, just off the river by Café Brazil, is a poor choice of a place to take a family."
 "name[The Eagle], near[Café Brazil]",In The Eagle in the City centre there is Café Brazil
@@ -5560,14 +5560,14 @@ position[inner],Families with children are welcome.
 "name[The Eagle], familyfriendly[no], position[inner]",It is not family friendly.
 "name[The Eagle], eattype[coffee shop], food[Chinese], pricerange[cheap], customerrating[5 out of 5], area[city centre], near[Burger King]","The Eagle is a coffee shop where you can eat Chinese food very cheaply. This family friendly, city centre, coffee shop which is near Burger King has a top quality customer rating."
 "name[The Eagle], eattype[coffee shop], food[Chinese], pricerange[cheap], position[outer]",The Eagle is a coffee shop where you can eat Chinese food very cheaply.
-"eattype[coffee shop], food[Chinese], customerrating[5 out of 5], area[city centre], near[Burger King], position[inner]","This family friendly, city centre, coffee shop which is near Burger King has a top quality customer rating."
+"name[The Eagle], eattype[coffee shop], food[Chinese], customerrating[5 out of 5], area[city centre], near[Burger King], position[inner]","This family friendly, city centre, coffee shop which is near Burger King has a top quality customer rating."
 "name[The Eagle], eattype[coffee shop], food[Chinese], pricerange[cheap], customerrating[5 out of 5], area[city centre], familyfriendly[no], near[Burger King]","The Eagle is a coffee shop having Chinese food in a cheap price range, customer rating is 5 out of 5. Located in city centre near Burger King and no family friendly."
 "name[The Eagle], eattype[coffee shop], food[Chinese], pricerange[cheap], customerrating[5 out of 5], position[outer]","The Eagle is a coffee shop having Chinese food in a cheap price range, customer rating is 5 out of 5."
 "food[Chinese], area[city centre], familyfriendly[no], near[Burger King], position[inner]",Located in city centre near Burger King and no family friendly.
 "name[The Eagle], eattype[coffee shop], food[Chinese], pricerange[cheap], customerrating[5 out of 5], area[city centre], familyfriendly[no], near[Burger King]","The Eagle is a highly rated, yet cheap coffee shop near Burger King and the city center. that serves Chinese. This establishment is suitable for adult guests."
 "name[The Eagle], eattype[coffee shop], food[Chinese], pricerange[cheap], customerrating[5 out of 5], area[city centre], near[Burger King], position[outer]","The Eagle is a highly rated, yet cheap coffee shop near Burger King and the city center."
 "food[Chinese], position[inner]",that serves Chinese.
-"familyfriendly[no], position[inner]",This establishment is suitable for adult guests.
+"name[The Eagle], familyfriendly[no], position[inner]",This establishment is suitable for adult guests.
 "name[The Eagle], eattype[coffee shop], food[Chinese], pricerange[cheap], customerrating[5 out of 5], area[city centre], familyfriendly[no], near[Burger King]","The Eagle is a highly recommended and inexpensive, adult-only coffee shop that serves Chinese. It is located near Burger King in the center. of town."
 "name[The Eagle], eattype[coffee shop], food[Chinese], pricerange[cheap], customerrating[5 out of 5], familyfriendly[no], position[outer]","The Eagle is a highly recommended and inexpensive, adult-only coffee shop that serves Chinese."
 "name[The Eagle], food[Chinese], area[city centre], near[Burger King], position[inner]",It is located near Burger King in the center.
@@ -5578,7 +5578,7 @@ position[inner],of town.
 "name[The Eagle], eattype[coffee shop], food[Chinese], pricerange[cheap], customerrating[5 out of 5], area[city centre], familyfriendly[yes], near[Burger King]","The Eagle coffee shop serves Chinese food at a cheap price while providing excellence in customer service rating 5 out of 5, located in the city centre this family friendly coffee shop is located right near Burger King."
 "name[The Eagle], eattype[coffee shop], food[Chinese], pricerange[cheap], customerrating[5 out of 5], area[city centre], familyfriendly[yes], near[Burger King]",There is a cheap coffee shop named The Eagle located in the city centre near the Burger King. This family friendly establishment serving Chinese food has a rating of 5 out of 5.
 "name[The Eagle], eattype[coffee shop], food[Chinese], pricerange[cheap], area[city centre], near[Burger King], position[outer]",There is a cheap coffee shop named The Eagle located in the city centre near the Burger King.
-"food[Chinese], customerrating[5 out of 5], familyfriendly[yes], position[inner]",This family friendly establishment serving Chinese food has a rating of 5 out of 5.
+"name[The Eagle], food[Chinese], customerrating[5 out of 5], familyfriendly[yes], position[inner]",This family friendly establishment serving Chinese food has a rating of 5 out of 5.
 "name[The Eagle], eattype[coffee shop], food[Chinese], pricerange[cheap], customerrating[5 out of 5], area[city centre], familyfriendly[yes], near[Burger King]","The Eagle is a Chinese food restaurant and coffee shop located near Burger King in the city centre, it has 5 out of 5 star customer ratings, a cheap price range, and is kid friendly."
 "name[The Eagle], food[Chinese], pricerange[cheap], customerrating[5 out of 5], area[city centre], familyfriendly[yes], near[Burger King]","Located in the city centre near Burger King and rated 5 out of 5, family friendly The Eagle serves Chinese food for cheap."
 "name[The Eagle], eattype[coffee shop], food[Chinese], pricerange[cheap], customerrating[5 out of 5], area[riverside], familyfriendly[no], near[Burger King]","There is a coffee shop called The Eagle that has Chinese food. They have a rating of 5 out of 5 and have cheap food options. They are on the riverside near Burger King. However, they do not allow children."
@@ -5725,11 +5725,11 @@ position[inner],of town.
 "name[The Eagle], food[Chinese], area[city centre], position[outer]",Delicious Chinese food offered at The Eagle is located center.
 "food[Chinese], area[city centre], near[Burger King], position[inner]",City next to Burger King.
 "name[The Eagle], pricerange[high], familyfriendly[yes], position[inner]","Offering up delicious cuisine in the upper range price, The Eagle is child friendly."
-"food[Chinese], customerrating[1 out of 5], position[inner]","Rated a 1 out of 5 rating, this place will please even the pickiest eaters."
+"name[The Eagle], food[Chinese], customerrating[1 out of 5], position[inner]","Rated a 1 out of 5 rating, this place will please even the pickiest eaters."
 "name[The Eagle], eattype[coffee shop], food[Chinese], pricerange[high], customerrating[1 out of 5], area[city centre], familyfriendly[yes], near[Burger King]","A coffee shop serving Chinese food in the high price range with a customer rating of 1 out of 5 but is child friendly is The Eagle, located near Burger King in city centre."
 "name[The Eagle], eattype[coffee shop], food[Chinese], pricerange[high], customerrating[1 out of 5], area[city centre], familyfriendly[yes], near[Burger King]","As a coffee shop also offering up Chinese Food, The Eagle is a wonderful play to visit. Priced in the higher range, customers have given this restaurant a 1 out of 5 rating. Located near the center. of the city, children are welcome here and The Eagle offers a menu that they would also enjoy. Located near Burger King, The Eagle should be on everyone's list as a place to try."
 "name[The Eagle], eattype[coffee shop], food[Chinese], position[outer]","As a coffee shop also offering up Chinese Food, The Eagle is a wonderful play to visit."
-"pricerange[high], customerrating[1 out of 5], position[inner]","Priced in the higher range, customers have given this restaurant a 1 out of 5 rating."
+"name[The Eagle], pricerange[high], customerrating[1 out of 5], position[inner]","Priced in the higher range, customers have given this restaurant a 1 out of 5 rating."
 "area[city centre], position[inner]",Located near the center.
 "name[The Eagle], food[Chinese], area[city centre], familyfriendly[yes], position[inner]","of the city, children are welcome here and The Eagle offers a menu that they would also enjoy."
 "name[The Eagle], food[Chinese], near[Burger King], position[inner]","Located near Burger King, The Eagle should be on everyone's list as a place to try."
@@ -5927,7 +5927,7 @@ position[inner],of town.
 "name[The Eagle], pricerange[less than £20], customerrating[low], familyfriendly[no], position[inner]",The customer rating is low and it is not family friendly.
 "name[The Eagle], eattype[coffee shop], food[Chinese], pricerange[less than £20], customerrating[low], area[riverside], familyfriendly[no], near[Burger King]","There is a riverside coffee shop near Burger King that serves Chinese food for less than £20, called The Eagle. This venue has been given low ratings and does not accommodate families."
 "name[The Eagle], eattype[coffee shop], food[Chinese], pricerange[less than £20], area[riverside], near[Burger King], position[outer]","There is a riverside coffee shop near Burger King that serves Chinese food for less than £20, called The Eagle."
-"pricerange[less than £20], customerrating[low], familyfriendly[no], position[inner]",This venue has been given low ratings and does not accommodate families.
+"name[The Eagle], pricerange[less than £20], customerrating[low], familyfriendly[no], position[inner]",This venue has been given low ratings and does not accommodate families.
 "name[The Eagle], eattype[coffee shop], food[Chinese], pricerange[less than £20], customerrating[low], area[riverside], familyfriendly[yes], near[Burger King]",The Eagle is a Chinese coffee shop. They charge less than 20 pounds. The Eagle has a low customer rating but is family friendly and located on the riverside near Burger King.
 "name[The Eagle], eattype[coffee shop], food[Chinese], position[outer]",The Eagle is a Chinese coffee shop.
 "name[The Eagle], pricerange[less than £20], position[inner]",They charge less than 20 pounds.
@@ -6082,7 +6082,7 @@ position[inner],of town.
 "name[The Eagle], pricerange[moderate], customerrating[3 out of 5], familyfriendly[no], position[inner]",It is not kids friendly and is moderately priced with a customer rating of 3 out of 5.
 "name[The Eagle], eattype[coffee shop], food[Chinese], pricerange[moderate], customerrating[3 out of 5], area[riverside], familyfriendly[no], near[Burger King]","Though not kid friendly, The Eagle is located near the Burger King, in riverside area. This coffee shop has Chinese food in a moderate price range and is rated 3 out of 5."
 "name[The Eagle], food[Chinese], area[riverside], familyfriendly[no], near[Burger King], position[outer]","Though not kid friendly, The Eagle is located near the Burger King, in riverside area."
-"eattype[coffee shop], food[Chinese], pricerange[moderate], customerrating[3 out of 5], position[inner]",This coffee shop has Chinese food in a moderate price range and is rated 3 out of 5.
+"name[The Eagle], eattype[coffee shop], food[Chinese], pricerange[moderate], customerrating[3 out of 5], position[inner]",This coffee shop has Chinese food in a moderate price range and is rated 3 out of 5.
 "name[The Eagle], eattype[coffee shop], food[Chinese], pricerange[moderate], customerrating[3 out of 5], area[riverside], familyfriendly[no], near[Burger King]","The Eagle is a coffee shop that also serves Chinese food. The price range is moderate and rated a 3 out of 5 by customers. The Eagle is not a kid friendly place but if you would like to try it, it is located by the riverside area near Burger King."
 "name[The Eagle], eattype[coffee shop], food[Chinese], position[outer]",The Eagle is a coffee shop that also serves Chinese food.
 "pricerange[moderate], customerrating[3 out of 5], position[inner]",The price range is moderate and rated a 3 out of 5 by customers.
@@ -6090,11 +6090,11 @@ position[inner],of town.
 "name[The Eagle], eattype[coffee shop], food[Chinese], pricerange[moderate], customerrating[3 out of 5], area[riverside], familyfriendly[yes], near[Burger King]","The Eagle is a Chinese coffee shop with a moderate price range. It sells Chinese food and has an overall customer rating of 3 out of 5. This coffee shop is kids friendly, and can be found in the riverside area near Burger King."
 "name[The Eagle], eattype[coffee shop], food[Chinese], pricerange[moderate], customerrating[3 out of 5], position[outer]",The Eagle is a Chinese coffee shop with a moderate price range.
 "name[The Eagle], food[Chinese], customerrating[3 out of 5], position[inner]",It sells Chinese food and has an overall customer rating of 3 out of 5.
-"eattype[coffee shop], food[Chinese], area[riverside], familyfriendly[yes], near[Burger King], position[inner]","This coffee shop is kids friendly, and can be found in the riverside area near Burger King."
+"name[The Eagle], eattype[coffee shop], food[Chinese], area[riverside], familyfriendly[yes], near[Burger King], position[inner]","This coffee shop is kids friendly, and can be found in the riverside area near Burger King."
 "name[The Eagle], eattype[coffee shop], food[Chinese], pricerange[moderate], customerrating[3 out of 5], area[riverside], familyfriendly[yes], near[Burger King]","Located in the riverside area, The Eagle is a coffee shop that also sells Chinese food. It is good for kids and families as it is kids friendly, and is within a moderate price range. This coffee shop has an overall customer rating of 3 out of 5. It can be found near Burger King in the riverside area."
 "name[The Eagle], eattype[coffee shop], food[Chinese], area[riverside], position[outer]","Located in the riverside area, The Eagle is a coffee shop that also sells Chinese food."
 "name[The Eagle], pricerange[moderate], customerrating[3 out of 5], familyfriendly[yes], position[inner]","It is good for kids and families as it is kids friendly, and is within a moderate price range."
-"eattype[coffee shop], customerrating[3 out of 5], position[inner]",This coffee shop has an overall customer rating of 3 out of 5.
+"name[The Eagle], eattype[coffee shop], customerrating[3 out of 5], position[inner]",This coffee shop has an overall customer rating of 3 out of 5.
 "name[The Eagle], food[Chinese], area[riverside], near[Burger King], position[inner]",It can be found near Burger King in the riverside area.
 "name[The Eagle], eattype[coffee shop], food[Chinese], pricerange[moderate], customerrating[3 out of 5], area[riverside], familyfriendly[yes], near[Burger King]",The Eagle is a kids friendly coffee shop with moderately priced Chinese food. It has a customer rating of 3 out of 5 stars. It is on the riverside near Burger King.
 "name[The Eagle], eattype[coffee shop], food[Chinese], pricerange[moderate], customerrating[3 out of 5], familyfriendly[yes], position[outer]",The Eagle is a kids friendly coffee shop with moderately priced Chinese food.
@@ -6125,16 +6125,16 @@ position[inner],of town.
 "name[The Eagle], food[Chinese], area[city centre], familyfriendly[no], near[Burger King], position[inner]",It's not kid friendly and it's near Burger King in the city centre.
 "name[The Eagle], eattype[coffee shop], food[Chinese], pricerange[more than £30], customerrating[high], area[city centre], familyfriendly[no], near[Burger King]",The Eagle is a coffee shop with Chinese food. This establishment has earned a high customer rating. They charge more than 30 pounds. They are located in the city centre near Burger King and are not family friendly.
 "name[The Eagle], eattype[coffee shop], food[Chinese], position[outer]",The Eagle is a coffee shop with Chinese food.
-"pricerange[more than £30], customerrating[high], position[inner]",This establishment has earned a high customer rating.
+"name[The Eagle], pricerange[more than £30], customerrating[high], position[inner]",This establishment has earned a high customer rating.
 "name[The Eagle], pricerange[more than £30], position[inner]",They charge more than 30 pounds.
 "name[The Eagle], food[Chinese], area[city centre], familyfriendly[no], near[Burger King], position[inner]",They are located in the city centre near Burger King and are not family friendly.
 "name[The Eagle], eattype[coffee shop], food[Chinese], pricerange[more than £30], customerrating[high], area[city centre], familyfriendly[no], near[Burger King]","A good choice for Chinese food in the city centre is The Eagle. This no children-friendly coffee shop has slightly high price range, but high customer ratings. It is located near Burger King."
 "name[The Eagle], food[Chinese], area[city centre], position[outer]",A good choice for Chinese food in the city centre is The Eagle.
-"eattype[coffee shop], pricerange[more than £30], customerrating[high], familyfriendly[no], position[inner]","This no children-friendly coffee shop has slightly high price range, but high customer ratings."
+"name[The Eagle], eattype[coffee shop], pricerange[more than £30], customerrating[high], familyfriendly[no], position[inner]","This no children-friendly coffee shop has slightly high price range, but high customer ratings."
 "name[The Eagle], food[Chinese], near[Burger King], position[inner]",It is located near Burger King.
 "name[The Eagle], eattype[coffee shop], food[Chinese], pricerange[more than £30], customerrating[high], familyfriendly[no], near[Burger King]","A highly-rated Chinese establishment is The Eagle. This coffee shop is centrally located, near Burger King. They have a price range of over 30 pounds. Please remember they do not allow children."
 "name[The Eagle], food[Chinese], customerrating[high], position[outer]",A highly-rated Chinese establishment is The Eagle.
-"eattype[coffee shop], food[Chinese], near[Burger King], position[inner]","This coffee shop is centrally located, near Burger King."
+"name[The Eagle], eattype[coffee shop], food[Chinese], near[Burger King], position[inner]","This coffee shop is centrally located, near Burger King."
 "name[The Eagle], pricerange[more than £30], position[inner]",They have a price range of over 30 pounds.
 "name[The Eagle], familyfriendly[no], position[inner]",Please remember they do not allow children.
 "name[The Eagle], eattype[coffee shop], food[Chinese], pricerange[more than £30], customerrating[high], area[city centre], familyfriendly[yes], near[Burger King]",The Eagle is a coffee shop which serves Chinese food at a minimum cost of £30. They have a high customer rating and are child friendly. You can find it near Burger King in the city centre.
@@ -6268,7 +6268,7 @@ position[inner],of town.
 "name[The Eagle], eattype[coffee shop], food[English], pricerange[£20-25], customerrating[high], area[riverside], familyfriendly[yes], near[Burger King]","The Eagle is an average-priced coffee shop, serving English food, it is located by the riverside near Burger King, kids-friendly and high rated."
 "name[The Eagle], eattype[coffee shop], food[English], pricerange[£20-25], customerrating[high], area[riverside], familyfriendly[yes], near[Burger King]","In riverside near Burger King there is a English coffee shop called The Eagle with a price range of £20-25, it has a high customer rating and is child friendly."
 "name[The Eagle], eattype[coffee shop], food[English], pricerange[cheap], customerrating[5 out of 5], area[city centre], familyfriendly[no], near[Burger King]","Come check out this 5 out of 5 rated coffee shop in the city centre near Burger King. Cheap English food will be found at The Eagle, with no noisy kids allowed."
-"eattype[coffee shop], customerrating[5 out of 5], area[city centre], near[Burger King], position[outer]",Come check out this 5 out of 5 rated coffee shop in the city centre near Burger King.
+"name[The Eagle], eattype[coffee shop], customerrating[5 out of 5], area[city centre], near[Burger King], position[outer]",Come check out this 5 out of 5 rated coffee shop in the city centre near Burger King.
 "name[The Eagle], food[English], pricerange[cheap], familyfriendly[no], position[inner]","Cheap English food will be found at The Eagle, with no noisy kids allowed."
 "name[The Eagle], eattype[coffee shop], food[English], pricerange[cheap], customerrating[5 out of 5], area[city centre], near[Burger King]",Near Burger King in the city center you will find a 5 star cheap coffee shop suited for couples named The Eagle That serves English Food.
 "name[The Eagle], eattype[coffee shop], food[English], pricerange[cheap], customerrating[5 out of 5], area[city centre], familyfriendly[no], near[Burger King]","The Eagle is a cheap coffee shop located in the city centre. With a rating of 5 out of 5, and no kids allowed, this place will amaze you with it's English food. Located close to Burger King."
@@ -6277,7 +6277,7 @@ position[inner],of town.
 "near[Burger King], position[inner]",Located close to Burger King.
 "name[The Eagle], eattype[coffee shop], food[English], pricerange[cheap], customerrating[5 out of 5], area[city centre], familyfriendly[no], near[Burger King]","The Eagle is a cheap, non-family-friendly coffee shop with a 5 out of 5 customer rating. This restaurant, which features English food is located in the centre of the city near a Burger King."
 "name[The Eagle], eattype[coffee shop], pricerange[cheap], customerrating[5 out of 5], familyfriendly[no], position[outer]","The Eagle is a cheap, non-family-friendly coffee shop with a 5 out of 5 customer rating."
-"food[English], area[city centre], near[Burger King], position[inner]","This restaurant, which features English food is located in the centre of the city near a Burger King."
+"name[The Eagle], food[English], area[city centre], near[Burger King], position[inner]","This restaurant, which features English food is located in the centre of the city near a Burger King."
 "name[The Eagle], eattype[coffee shop], food[English], pricerange[cheap], customerrating[5 out of 5], area[city centre], familyfriendly[no], near[Burger King]","Located in the centre of Cambridge near a Burger King, The Eagle coffee shop features English dining, and is not family-friendly. It has a 5 out of 5 rating while being cheap."
 "name[The Eagle], eattype[coffee shop], food[English], area[city centre], familyfriendly[no], near[Burger King], position[outer]","Located in the centre of Cambridge near a Burger King, The Eagle coffee shop features English dining, and is not family-friendly."
 "name[The Eagle], pricerange[cheap], customerrating[5 out of 5], position[inner]",It has a 5 out of 5 rating while being cheap.
@@ -6471,8 +6471,8 @@ position[inner],We are not children friendly.
 "name[The Eagle], eattype[coffee shop], food[English], pricerange[high], customerrating[average], area[city centre], familyfriendly[no], near[Burger King]",For a high priced English coffee shop with an average rating that is based in the city centre near to Burger King that isn't children-friendly then The Eagle is the place to go
 "name[The Eagle], eattype[coffee shop], food[English], pricerange[high], customerrating[average], area[city centre], familyfriendly[no], near[Burger King]",The Eagle is located in the city centre area near Burger King. This high-priced coffee shop serves English food with an average customer rating. This is not a family-friendly coffee shop.
 "name[The Eagle], area[city centre], near[Burger King], position[outer]",The Eagle is located in the city centre area near Burger King.
-"eattype[coffee shop], food[English], pricerange[high], customerrating[average], position[inner]",This high-priced coffee shop serves English food with an average customer rating.
-"eattype[coffee shop], familyfriendly[no], position[inner]",This is not a family-friendly coffee shop.
+"name[The Eagle], eattype[coffee shop], food[English], pricerange[high], customerrating[average], position[inner]",This high-priced coffee shop serves English food with an average customer rating.
+"name[The Eagle], eattype[coffee shop], familyfriendly[no], position[inner]",This is not a family-friendly coffee shop.
 "name[The Eagle], eattype[coffee shop], food[English], pricerange[high], customerrating[average], area[city centre], familyfriendly[no], near[Burger King]","The Eagle is a high priced English coffee shop in city centre, near Burger King. They have an average customer rating and are not child friendly."
 "name[The Eagle], eattype[coffee shop], food[English], pricerange[high], area[city centre], near[Burger King], position[outer]","The Eagle is a high priced English coffee shop in city centre, near Burger King."
 "name[The Eagle], customerrating[average], familyfriendly[no], position[inner]",They have an average customer rating and are not child friendly.
@@ -6481,7 +6481,7 @@ position[inner],We are not children friendly.
 "name[The Eagle], customerrating[average], familyfriendly[no], position[inner]",They are not child friendly and have an average customer rating.
 "name[The Eagle], eattype[coffee shop], food[English], pricerange[high], customerrating[average], area[city centre], familyfriendly[no], near[Burger King]",The Eagle is a high-priced coffee shop located near the Burger King in city centre. This average-rated restaurant is not for children. It serves English food.
 "name[The Eagle], eattype[coffee shop], pricerange[high], area[city centre], near[Burger King], position[outer]",The Eagle is a high-priced coffee shop located near the Burger King in city centre.
-"customerrating[average], familyfriendly[no], position[inner]",This average-rated restaurant is not for children.
+"name[The Eagle], customerrating[average], familyfriendly[no], position[inner]",This average-rated restaurant is not for children.
 "name[The Eagle], food[English], position[inner]",It serves English food.
 "name[The Eagle], eattype[coffee shop], food[English], pricerange[high], customerrating[average], area[city centre], familyfriendly[yes], near[Burger King]","The Eagle, near Burger King in the city centre, is a coffee shop with English food. It is in the high price range and has an average customer rating. It is children-friendly."
 "name[The Eagle], eattype[coffee shop], food[English], area[city centre], near[Burger King], position[outer]","The Eagle, near Burger King in the city centre, is a coffee shop with English food."
@@ -6543,7 +6543,7 @@ position[inner],We are not children friendly.
 "name[The Eagle], eattype[coffee shop], food[English], pricerange[high], customerrating[average], area[riverside], familyfriendly[yes], near[Burger King]","The Eagle is located just below the river, near Burger King. It serves high priced British food. This coffee shop is family friendly and rated three stars."
 "name[The Eagle], area[riverside], near[Burger King], position[outer]","The Eagle is located just below the river, near Burger King."
 "name[The Eagle], food[English], pricerange[high], position[inner]",It serves high priced British food.
-"eattype[coffee shop], customerrating[average], familyfriendly[yes], position[inner]",This coffee shop is family friendly and rated three stars.
+"name[The Eagle], eattype[coffee shop], customerrating[average], familyfriendly[yes], position[inner]",This coffee shop is family friendly and rated three stars.
 "name[The Eagle], eattype[coffee shop], food[English], pricerange[high], customerrating[average], area[riverside], familyfriendly[yes], near[Burger King]",The Eagle is a high priced coffee shop offering British food. It is family friendly and rated three stars. It can be found just below the River near Burger King.
 "name[The Eagle], eattype[coffee shop], food[English], pricerange[high], position[outer]",The Eagle is a high priced coffee shop offering British food.
 "name[The Eagle], customerrating[average], familyfriendly[yes], position[inner]",It is family friendly and rated three stars.
@@ -6649,7 +6649,7 @@ position[inner],We are not children friendly.
 "name[The Eagle], eattype[coffee shop], food[English], pricerange[moderate], customerrating[1 out of 5], area[city centre], familyfriendly[no], near[Burger King]","The Eagle is a coffee shop also do English food. A moderate price range, none kids friendly place with a poor 1 out of 5 customer rating. You can find this place in the city centre near Burger King."
 "name[The Eagle], eattype[coffee shop], food[English], position[outer]",The Eagle is a coffee shop also do English food.
 "pricerange[moderate], customerrating[1 out of 5], familyfriendly[no], position[inner]","A moderate price range, none kids friendly place with a poor 1 out of 5 customer rating."
-"area[city centre], near[Burger King], position[inner]",You can find this place in the city centre near Burger King.
+"name[The Eagle], area[city centre], near[Burger King], position[inner]",You can find this place in the city centre near Burger King.
 "name[The Eagle], eattype[coffee shop], food[English], pricerange[moderate], customerrating[1 out of 5], area[city centre], familyfriendly[no], near[Burger King]",The Eagle is a moderately priced coffee shop with a low customer rating. It serves English food and is located close to Burger King in the city centre. It is not suitable for families with children.
 "name[The Eagle], eattype[coffee shop], pricerange[moderate], customerrating[1 out of 5], position[outer]",The Eagle is a moderately priced coffee shop with a low customer rating.
 "name[The Eagle], food[English], area[city centre], near[Burger King], position[inner]",It serves English food and is located close to Burger King in the city centre.
@@ -6697,7 +6697,7 @@ position[inner],We are not children friendly.
 "name[The Eagle], food[English], customerrating[1 out of 5], position[inner]",The Eagle provides English style food and customers give them a 1 out of 5 rating.
 "name[The Eagle], eattype[coffee shop], food[English], pricerange[moderate], customerrating[1 out of 5], area[riverside], familyfriendly[yes], near[Burger King]",The Eagle is an English coffee shop located next to Burger King and in the riverside area. Customers give this coffee shop a 1 out of 5 rating. The Eagle is a kid friendly place with moderate pricing.
 "name[The Eagle], eattype[coffee shop], food[English], area[riverside], near[Burger King], position[outer]",The Eagle is an English coffee shop located next to Burger King and in the riverside area.
-"eattype[coffee shop], customerrating[1 out of 5], position[inner]",Customers give this coffee shop a 1 out of 5 rating.
+"name[The Eagle], eattype[coffee shop], customerrating[1 out of 5], position[inner]",Customers give this coffee shop a 1 out of 5 rating.
 "name[The Eagle], pricerange[moderate], familyfriendly[yes], position[inner]",The Eagle is a kid friendly place with moderate pricing.
 "name[The Eagle], eattype[coffee shop], pricerange[moderate], customerrating[1 out of 5], area[riverside], familyfriendly[yes], near[Burger King]",In the riverside area is a coffee shop name The Eagle. It is near the Burger King. The customer rating is a 1 out of 5 and is in the moderate price range. It is kid friendly.
 "name[The Eagle], eattype[coffee shop], area[riverside], position[outer]",In the riverside area is a coffee shop name The Eagle.
@@ -6741,7 +6741,7 @@ position[inner],We are not children friendly.
 "name[The Eagle], food[English], customerrating[3 out of 5], position[inner]",It serves English food and the customer rating is 3 out of 5.
 "name[The Eagle], eattype[coffee shop], pricerange[moderate], customerrating[3 out of 5], area[city centre], near[Burger King]","The Eagle coffee shop and burger house is located near Burger King in the city centre. A nice place to sit and hang around with your friends or co-workers with a moderately priced menu, you will enjoy this place."
 "name[The Eagle], eattype[coffee shop], area[city centre], near[Burger King], position[outer]",The Eagle coffee shop and burger house is located near Burger King in the city centre.
-"pricerange[moderate], customerrating[3 out of 5], position[inner]","A nice place to sit and hang around with your friends or co-workers with a moderately priced menu, you will enjoy this place."
+"name[The Eagle], pricerange[moderate], customerrating[3 out of 5], position[inner]","A nice place to sit and hang around with your friends or co-workers with a moderately priced menu, you will enjoy this place."
 "name[The Eagle], eattype[coffee shop], food[English], pricerange[moderate], customerrating[3 out of 5], area[city centre], familyfriendly[no], near[Burger King]","If you are searching for a not family-friendly coffee shop that serves English food near Burger King and the city centre, The Eagle might be for you. The price range is moderate, and their customer rating is 3 out of 5."
 "name[The Eagle], eattype[coffee shop], food[English], area[city centre], familyfriendly[no], near[Burger King], position[outer]","If you are searching for a not family-friendly coffee shop that serves English food near Burger King and the city centre, The Eagle might be for you."
 "name[The Eagle], pricerange[moderate], customerrating[3 out of 5], position[inner]","The price range is moderate, and their customer rating is 3 out of 5."
@@ -6858,7 +6858,7 @@ position[inner],Join Us.
 "name[The Golden Palace], eattype[coffee shop], food[Chinese], pricerange[£20-25], customerrating[high], area[city centre]","A coffee shop, with a high customer rating, called The Golden Palace, located in a city centre, offers Chinese food, within a price range of £20-25."
 "name[The Golden Palace], eattype[coffee shop], food[Chinese], pricerange[£20-25], customerrating[high], area[riverside]",The Golden Palace is a coffee shop that also offers Chinese food with items between £20-25. Customers give this Riverside venue a high rating.
 "name[The Golden Palace], eattype[coffee shop], food[Chinese], pricerange[£20-25], position[outer]",The Golden Palace is a coffee shop that also offers Chinese food with items between £20-25.
-"customerrating[high], area[riverside], position[inner]",Customers give this Riverside venue a high rating.
+"name[The Golden Palace], customerrating[high], area[riverside], position[inner]",Customers give this Riverside venue a high rating.
 "name[The Golden Palace], eattype[coffee shop], food[Chinese], pricerange[£20-25], customerrating[high], area[riverside]",The Golden Palace coffee shop serves Chinese food for £20-£25. It has a high customer rating and is in the riverside area.
 "name[The Golden Palace], eattype[coffee shop], food[Chinese], pricerange[£20-25], position[outer]",The Golden Palace coffee shop serves Chinese food for £20-£25.
 "name[The Golden Palace], customerrating[high], area[riverside], position[inner]",It has a high customer rating and is in the riverside area.
@@ -6991,7 +6991,7 @@ position[inner],Join Us.
 "name[The Golden Palace], eattype[coffee shop], food[Chinese], pricerange[high], customerrating[average], area[riverside]",The Golden Palace is a coffee shop offering Chinese food. It is located in the riverside area with its prices in the higher range. customer rating for this establishment is average.
 "name[The Golden Palace], eattype[coffee shop], food[Chinese], position[outer]",The Golden Palace is a coffee shop offering Chinese food.
 "name[The Golden Palace], pricerange[high], area[riverside], position[inner]",It is located in the riverside area with its prices in the higher range.
-"customerrating[average], position[inner]",customer rating for this establishment is average.
+"name[The Golden Palace], customerrating[average], position[inner]",customer rating for this establishment is average.
 "name[The Golden Palace], eattype[coffee shop], food[Chinese], pricerange[high], customerrating[average], area[riverside]","The Chinese coffee shop, The Golden Palace, is located in riverside. The price range is high with customer ratings of average"
 "name[The Golden Palace], eattype[coffee shop], food[Chinese], area[riverside], position[outer]","The Chinese coffee shop, The Golden Palace, is located in riverside."
 "pricerange[high], customerrating[average], position[inner]",The price range is high with customer ratings of average
@@ -7064,7 +7064,7 @@ position[inner],Join Us.
 "name[The Golden Palace], customerrating[1 out of 5], area[city centre], position[inner]",The Golden Palace is located in the city centre and have a 1 out of 5 customer rating.
 "name[The Golden Palace], eattype[coffee shop], food[Chinese], pricerange[moderate], customerrating[1 out of 5], area[city centre]",There is a moderate-priced coffee shop The Golden Palace located in the centre of the city that provides Chinese food. Customer rating for this coffee shop is 1 out of 5.
 "name[The Golden Palace], eattype[coffee shop], food[Chinese], pricerange[moderate], area[city centre], position[outer]",There is a moderate-priced coffee shop The Golden Palace located in the centre of the city that provides Chinese food.
-"eattype[coffee shop], customerrating[1 out of 5], position[inner]",Customer rating for this coffee shop is 1 out of 5.
+"name[The Golden Palace], eattype[coffee shop], customerrating[1 out of 5], position[inner]",Customer rating for this coffee shop is 1 out of 5.
 "name[The Golden Palace], eattype[coffee shop], food[Chinese], pricerange[moderate], customerrating[1 out of 5], area[city centre]","The Golden Palace is a Chinese coffee shop in the moderate price range, It is located in the city centre and has a customer rating of 1 out of 5."
 "name[The Golden Palace], eattype[coffee shop], food[Chinese], pricerange[moderate], customerrating[1 out of 5], area[city centre]",The Golden Palace is a coffee shop. It has a 1 out of 5 customer rating and serves Chinese food. It's located in the city centre and is moderately priced.
 "name[The Golden Palace], eattype[coffee shop], position[outer]",The Golden Palace is a coffee shop.
@@ -7155,7 +7155,7 @@ position[inner],Join Us.
 "name[The Golden Palace], eattype[coffee shop], food[English], pricerange[£20-25], customerrating[high], area[city centre]","There is a coffee shop in city centre that serves English food for about £20-25, with high customer rating called The Golden Palace."
 "name[The Golden Palace], eattype[coffee shop], food[English], pricerange[£20-25], customerrating[high], area[city centre]","The Golden Palace is a truly English dining experience, serving high quality foods at prices they deserve. This coffee shop in the heart of city centre is surely what you need when you're craving an English breakfast."
 "name[The Golden Palace], food[English], pricerange[£20-25], customerrating[high], position[outer]","The Golden Palace is a truly English dining experience, serving high quality foods at prices they deserve."
-"eattype[coffee shop], food[English], area[city centre], position[inner]",This coffee shop in the heart of city centre is surely what you need when you're craving an English breakfast.
+"name[The Golden Palace], eattype[coffee shop], food[English], area[city centre], position[inner]",This coffee shop in the heart of city centre is surely what you need when you're craving an English breakfast.
 "name[The Golden Palace], eattype[coffee shop], food[English], pricerange[£20-25], customerrating[high], area[city centre]","Located in city centre, The Golden Palace is a server of high quality English food and coffee. With a price range of £20-25, The Golden Palace is surely a stand-out dining experience."
 "name[The Golden Palace], eattype[coffee shop], food[English], customerrating[high], area[city centre], position[outer]","Located in city centre, The Golden Palace is a server of high quality English food and coffee."
 "name[The Golden Palace], pricerange[£20-25], position[inner]","With a price range of £20-25, The Golden Palace is surely a stand-out dining experience."
@@ -7166,7 +7166,7 @@ position[inner],Join Us.
 "name[The Golden Palace], eattype[coffee shop], pricerange[£20-25]",The Golden Palace is a moderately priced coffee shop located north of the City centre.
 "name[The Golden Palace], eattype[coffee shop], food[English], pricerange[£20-25], customerrating[high], area[riverside]",The Golden Palace is a coffee shop serving English food located in the riverside area. Prices are average for this area and customer ratings are high.
 "name[The Golden Palace], eattype[coffee shop], food[English], area[riverside], position[outer]",The Golden Palace is a coffee shop serving English food located in the riverside area.
-"pricerange[£20-25], customerrating[high], position[inner]",Prices are average for this area and customer ratings are high.
+"name[The Golden Palace], pricerange[£20-25], customerrating[high], position[inner]",Prices are average for this area and customer ratings are high.
 "name[The Golden Palace], eattype[coffee shop]",The Golden Palace is a mid-range coffee shop located near the city centre
 "name[The Golden Palace], eattype[coffee shop], food[English], pricerange[£20-25], customerrating[high], area[riverside]",The Golden Palace is an English coffee shop with a high customer rating and decent pricing. It is on the riverside.
 "name[The Golden Palace], eattype[coffee shop], food[English], pricerange[£20-25], customerrating[high], position[outer]",The Golden Palace is an English coffee shop with a high customer rating and decent pricing.
@@ -7275,7 +7275,7 @@ position[inner],Join Us.
 "food[English], pricerange[high], position[inner]",Golden Palace provides English food as well as a high price range.
 "name[The Golden Palace], eattype[coffee shop], food[English], pricerange[high], customerrating[average], area[riverside]",The Golden Palace coffee shop in the riverside area offers English food at a high price range. Previous customers have given this establishment an average rating.
 "name[The Golden Palace], eattype[coffee shop], food[English], pricerange[high], area[riverside], position[outer]",The Golden Palace coffee shop in the riverside area offers English food at a high price range.
-"customerrating[average], position[inner]",Previous customers have given this establishment an average rating.
+"name[The Golden Palace], customerrating[average], position[inner]",Previous customers have given this establishment an average rating.
 "name[The Golden Palace], eattype[coffee shop], food[English], pricerange[high], customerrating[average], area[riverside]",If you want a coffee shop in the riverside area try The Golden Palace. It offers English food at a high price range which has been rated average by previous customers.
 "name[The Golden Palace], eattype[coffee shop], area[riverside], position[outer]",If you want a coffee shop in the riverside area try The Golden Palace.
 "name[The Golden Palace], food[English], pricerange[high], customerrating[average], position[inner]",It offers English food at a high price range which has been rated average by previous customers.
@@ -7382,7 +7382,7 @@ position[inner],Located outside city centre.
 "name[The Golden Palace], eattype[coffee shop], food[English], position[outer]","There is a coffee shop, The Golden Palace, also offering English food."
 "name[The Golden Palace], area[city centre], position[inner]",It is located in the city centre.
 "name[The Golden Palace], pricerange[more than £30], position[inner]",Its price range is more than £30.
-"eattype[coffee shop], pricerange[more than £30], customerrating[high], position[inner]",Customer rating for this coffee shop is high.
+"name[The Golden Palace], eattype[coffee shop], pricerange[more than £30], customerrating[high], position[inner]",Customer rating for this coffee shop is high.
 "name[The Golden Palace], eattype[coffee shop], food[English], pricerange[more than £30], customerrating[high], area[city centre]","The Golden Palace is a coffee shop in the city centre. It also offers English food. It is rated high by the customers, however its price range is more than £30."
 "name[The Golden Palace], eattype[coffee shop], area[city centre], position[outer]",The Golden Palace is a coffee shop in the city centre.
 "name[The Golden Palace], food[English], position[inner]",It also offers English food.
@@ -7572,7 +7572,7 @@ position[inner],Located outside city centre.
 "name[The Mill], eattype[coffee shop], near[The Sorrento]",There is a coffee shop called The Mill located near The Sorrento.
 "name[The Mill], eattype[coffee shop], food[English], pricerange[high], area[riverside], near[The Sorrento]","On the riverside, close to The Sorrento, sits The Mill. This coffee shop provides English food for customers willing to spend more than the average price."
 "name[The Mill], area[riverside], near[The Sorrento], position[outer]","On the riverside, close to The Sorrento, sits The Mill."
-"eattype[coffee shop], food[English], pricerange[high], position[inner]",This coffee shop provides English food for customers willing to spend more than the average price.
+"name[The Mill], eattype[coffee shop], food[English], pricerange[high], position[inner]",This coffee shop provides English food for customers willing to spend more than the average price.
 "name[The Mill], eattype[coffee shop], food[English], pricerange[high], area[riverside], near[The Sorrento]","By the riverside, near The Sorrento, is a high priced, English coffee shop called The Mill."
 "name[The Mill], pricerange[high], area[riverside], near[The Sorrento]",The Mill is a high price store located near The Sorrento and its are is in riverside
 "name[The Mill], area[riverside], near[The Sorrento]","The Mill, located near The Sorrento, is in the riverside area."
@@ -7594,7 +7594,7 @@ position[inner],Located outside city centre.
 "name[The Mill], eattype[coffee shop], food[English], pricerange[high], area[riverside], near[The Sorrento]",The Mill is a coffee shop serving English food near The Sorrento with a high price range near the area riverside
 "name[The Mill], eattype[coffee shop], food[English], pricerange[less than £20], area[city centre], near[The Sorrento]",The Mill is located near The Sorrento in the city centre. This coffee shop provides English food with a price range less than £20.
 "name[The Mill], area[city centre], near[The Sorrento], position[outer]",The Mill is located near The Sorrento in the city centre.
-"eattype[coffee shop], food[English], pricerange[less than £20], position[inner]",This coffee shop provides English food with a price range less than £20.
+"name[The Mill], eattype[coffee shop], food[English], pricerange[less than £20], position[inner]",This coffee shop provides English food with a price range less than £20.
 "name[The Mill], eattype[coffee shop], food[English], pricerange[less than £20], area[city centre], near[The Sorrento]",The Mill is an English coffee shop in the city centre near The Sorrento that is priced in the less than £20 range.
 "name[The Mill], eattype[coffee shop], food[English], pricerange[less than £20], area[city centre], near[The Sorrento]","There is an English coffee shop in the city centre near The Sorrento that is called The Mill, and it is reasonably priced at less than £20."
 "name[The Mill], eattype[coffee shop], food[English], pricerange[less than £20], area[city centre], near[The Sorrento]",The Mill as a coffee shop near The Sorrento in the city centre providing English food with a price range less than £20.
@@ -8135,7 +8135,7 @@ position[inner],Located outside city centre.
 "name[The Punter], customerrating[high], position[inner]",Its customer rating is high.
 "name[The Punter], eattype[coffee shop], food[Chinese], pricerange[£20-25], customerrating[high], familyfriendly[no], near[Café Sicilia]","The Punter is a coffee shop offering Chinese food in the £20-25 range. Located near the Café Sicilia, this high rated restaurant is not kid friendly."
 "name[The Punter], eattype[coffee shop], food[Chinese], pricerange[£20-25], position[outer]",The Punter is a coffee shop offering Chinese food in the £20-25 range.
-"customerrating[high], familyfriendly[no], near[Café Sicilia], position[inner]","Located near the Café Sicilia, this high rated restaurant is not kid friendly."
+"name[The Punter], customerrating[high], familyfriendly[no], near[Café Sicilia], position[inner]","Located near the Café Sicilia, this high rated restaurant is not kid friendly."
 "name[The Punter], eattype[coffee shop], food[Chinese], pricerange[£20-25], customerrating[high], familyfriendly[yes], near[Café Sicilia]","Child friendly, mid-priced, and highly rated, The Punter is a Chinese coffee shop, found near Café Sicilia."
 "name[The Punter], eattype[coffee shop], food[Chinese], pricerange[£20-25], customerrating[high], familyfriendly[yes], near[Café Sicilia]","The Punter is a coffee shop near Café Sicilia. It is kid friendly, serves Chinese food and has a high customer rating. Prices are in the average range."
 "name[The Punter], eattype[coffee shop], near[Café Sicilia], position[outer]",The Punter is a coffee shop near Café Sicilia.
@@ -8421,7 +8421,7 @@ position[inner],Located outside city centre.
 "name[The Punter], food[Chinese], pricerange[moderate], customerrating[3 out of 5], familyfriendly[yes], near[Café Sicilia], position[inner]","It is family friendly, offers Chinese food at a moderate price and is located near Café Sicilia."
 "name[The Punter], eattype[coffee shop], food[Chinese], pricerange[more than £30], customerrating[high], familyfriendly[no], near[Café Sicilia]",The Punter is located near Café Sicilia. This is a Chinese restaurant with a price range over thirty dollars. It is also a coffee shop. The customers rate it high. It is not children friendly.
 "name[The Punter], near[Café Sicilia], position[outer]",The Punter is located near Café Sicilia.
-"food[Chinese], pricerange[more than £30], position[inner]",This is a Chinese restaurant with a price range over thirty dollars.
+"name[The Punter], food[Chinese], pricerange[more than £30], position[inner]",This is a Chinese restaurant with a price range over thirty dollars.
 "name[The Punter], eattype[coffee shop], position[inner]",It is also a coffee shop.
 "name[The Punter], pricerange[more than £30], customerrating[high], position[inner]",The customers rate it high.
 "name[The Punter], familyfriendly[no], position[inner]",It is not children friendly.
@@ -8530,7 +8530,7 @@ position[inner],Located outside city centre.
 "name[The Punter], eattype[coffee shop], food[English], pricerange[cheap], customerrating[5 out of 5], familyfriendly[yes], near[Café Sicilia]","There is a family friendly coffee shop called The Punter near Café Sicilia. Their you can find English food for cheap prices. Furthermore, this place has a customer rating of 5 out of 5."
 "name[The Punter], eattype[coffee shop], familyfriendly[yes], near[Café Sicilia], position[outer]",There is a family friendly coffee shop called The Punter near Café Sicilia.
 "name[The Punter], food[English], pricerange[cheap], position[inner]",Their you can find English food for cheap prices.
-"customerrating[5 out of 5], position[inner]","Furthermore, this place has a customer rating of 5 out of 5."
+"name[The Punter], customerrating[5 out of 5], position[inner]","Furthermore, this place has a customer rating of 5 out of 5."
 "name[The Punter], eattype[coffee shop], customerrating[5 out of 5], familyfriendly[yes], near[Café Sicilia]","The Punter coffee Shop is a 5 star family restaurant, located in Café Sicilia"
 "name[The Punter], eattype[coffee shop], food[English], pricerange[cheap], customerrating[average], familyfriendly[no], near[Café Sicilia]",The Punter is a non-family-friendly English coffee shop near Café Sicilia with an average price range and has an average customer rating.
 "name[The Punter], eattype[coffee shop], food[English], pricerange[cheap], customerrating[average], near[Café Sicilia]",There is a coffee shop near Café Sicilia called The Punter what does English food the price range is cheap also it has a low customer rating.
@@ -8676,7 +8676,7 @@ position[inner],Join Us.
 "name[The Punter], pricerange[less than £20], familyfriendly[yes], position[inner]",It serves cheap food and is family friendly.
 "name[The Punter], eattype[coffee shop], food[English], pricerange[less than £20], customerrating[low], familyfriendly[yes], near[Café Sicilia]",Near to Café Sicilia is the The Punter. This coffee shop serves English food and is family friendly but has low ratings. The food is usually under £20.
 "name[The Punter], near[Café Sicilia], position[outer]",Near to Café Sicilia is the The Punter.
-"eattype[coffee shop], food[English], pricerange[less than £20], customerrating[low], familyfriendly[yes], position[inner]",This coffee shop serves English food and is family friendly but has low ratings.
+"name[The Punter], eattype[coffee shop], food[English], pricerange[less than £20], customerrating[low], familyfriendly[yes], position[inner]",This coffee shop serves English food and is family friendly but has low ratings.
 "pricerange[less than £20], position[inner]",The food is usually under £20.
 "name[The Punter], eattype[coffee shop], pricerange[less than £20], familyfriendly[yes], near[Café Sicilia]",The Punter is a family friendly coffee shop located next to Café Sicilia. It serves cheap food.
 "name[The Punter], eattype[coffee shop], familyfriendly[yes], near[Café Sicilia], position[outer]",The Punter is a family friendly coffee shop located next to Café Sicilia.
@@ -8758,7 +8758,7 @@ position[inner],Join Us.
 "name[The Punter], eattype[coffee shop], pricerange[moderate], customerrating[3 out of 5], familyfriendly[yes], near[Café Sicilia]",The Punter is a three star coffee shop that serves mid ranged priced meals. It is located near Café Sicilia. This restaurant permits families with children.
 "name[The Punter], eattype[coffee shop], pricerange[moderate], customerrating[3 out of 5], position[outer]",The Punter is a three star coffee shop that serves mid ranged priced meals.
 "name[The Punter], near[Café Sicilia], position[inner]",It is located near Café Sicilia.
-"familyfriendly[yes], position[inner]",This restaurant permits families with children.
+"name[The Punter], familyfriendly[yes], position[inner]",This restaurant permits families with children.
 "name[The Punter], eattype[coffee shop], pricerange[moderate], customerrating[3 out of 5], familyfriendly[yes], near[Café Sicilia]",Near Café Sicilia is a family friendly coffee shop that is 3 star and medium priced called The Punter.
 "name[The Punter], eattype[coffee shop], food[English], pricerange[moderate], customerrating[3 out of 5], familyfriendly[yes], near[Café Sicilia]","The Punter is an English restaurant. They are moderately priced and child friendly. They are located near the coffee shop, Café Sicilia. Most customers rate them as an average place to eat."
 "name[The Punter], food[English], position[outer]",The Punter is an English restaurant.
@@ -9287,7 +9287,7 @@ position[inner],Join Us.
 "name[The Wrestlers], area[riverside], familyfriendly[yes], near[Raja Indian Cuisine], position[inner]",It allows children and is near the riverside and Raja Indian Cuisine.
 "name[The Wrestlers], eattype[coffee shop], food[Chinese], pricerange[£20-25], area[riverside], familyfriendly[yes], near[Raja Indian Cuisine]",The Wrestlers is a coffee shop offering Chinese food with a price range of 20-25 pounds. This restaurant is located in riverside near the Raja Indian Cuisine restaurant. It is kids friendly.
 "name[The Wrestlers], eattype[coffee shop], food[Chinese], pricerange[£20-25], position[outer]",The Wrestlers is a coffee shop offering Chinese food with a price range of 20-25 pounds.
-"area[riverside], near[Raja Indian Cuisine], position[inner]",This restaurant is located in riverside near the Raja Indian Cuisine restaurant.
+"name[The Wrestlers], area[riverside], near[Raja Indian Cuisine], position[inner]",This restaurant is located in riverside near the Raja Indian Cuisine restaurant.
 "name[The Wrestlers], familyfriendly[yes], position[inner]",It is kids friendly.
 "name[The Wrestlers], area[riverside], familyfriendly[yes], near[Raja Indian Cuisine]",The Wrestlers is near the riverside and Raja Indian Cuisine. It serves Indian food and allows children. It has a average rating.
 "name[The Wrestlers], area[riverside], near[Raja Indian Cuisine], position[outer]",The Wrestlers is near the riverside and Raja Indian Cuisine.
@@ -9295,7 +9295,7 @@ position[inner],Join Us.
 "name[The Wrestlers], position[inner]",It has a average rating.
 "name[The Wrestlers], eattype[coffee shop], food[Chinese], pricerange[£20-25], area[riverside], familyfriendly[yes], near[Raja Indian Cuisine]",The kids friendly coffee shop is called The Wrestlers. This restaurant is located in riverside near the Raja Indian Cuisine restaurant and offers Chinese cuisine. Meals at The Wrestlers cost 20-25 pounds.
 "name[The Wrestlers], eattype[coffee shop], familyfriendly[yes], position[outer]",The kids friendly coffee shop is called The Wrestlers.
-"food[Chinese], area[riverside], near[Raja Indian Cuisine], position[inner]",This restaurant is located in riverside near the Raja Indian Cuisine restaurant and offers Chinese cuisine.
+"name[The Wrestlers], food[Chinese], area[riverside], near[Raja Indian Cuisine], position[inner]",This restaurant is located in riverside near the Raja Indian Cuisine restaurant and offers Chinese cuisine.
 "name[The Wrestlers], food[Chinese], pricerange[£20-25], position[inner]",Meals at The Wrestlers cost 20-25 pounds.
 "name[The Wrestlers], eattype[coffee shop], food[Chinese], pricerange[cheap], area[riverside], familyfriendly[yes], near[Raja Indian Cuisine]",The Wrestlers is a Chinese restaurant and coffee shop in the riverside area near Raja Indian Cuisine. It is family friendly and has cheap pricing.
 "name[The Wrestlers], eattype[coffee shop], food[Chinese], area[riverside], near[Raja Indian Cuisine], position[outer]",The Wrestlers is a Chinese restaurant and coffee shop in the riverside area near Raja Indian Cuisine.
@@ -9323,7 +9323,7 @@ position[inner],Join Us.
 "pricerange[high], familyfriendly[no], position[inner]",The price range is high and isn't children friendly.
 "name[The Wrestlers], eattype[coffee shop], food[Chinese], pricerange[high], area[city centre], familyfriendly[no], near[Raja Indian Cuisine]","The Chinese coffee shop, The Wrestlers, is located in the city centre near Raja Indian Cuisine. This place isn't children friendly, as well as the price range being high."
 "name[The Wrestlers], eattype[coffee shop], food[Chinese], area[city centre], near[Raja Indian Cuisine], position[outer]","The Chinese coffee shop, The Wrestlers, is located in the city centre near Raja Indian Cuisine."
-"pricerange[high], familyfriendly[no], position[inner]","This place isn't children friendly, as well as the price range being high."
+"name[The Wrestlers], pricerange[high], familyfriendly[no], position[inner]","This place isn't children friendly, as well as the price range being high."
 "name[The Wrestlers], eattype[coffee shop], food[Chinese], pricerange[high], area[city centre], familyfriendly[no], near[Raja Indian Cuisine]","In the city centre, The Wrestlers coffee shop s is expensive. It offers Chinese food and is not children friendly. It is located near to the Raja Indian Cuisine."
 "name[The Wrestlers], eattype[coffee shop], pricerange[high], area[city centre], position[outer]","In the city centre, The Wrestlers coffee shop s is expensive."
 "name[The Wrestlers], food[Chinese], familyfriendly[no], position[inner]",It offers Chinese food and is not children friendly.
@@ -9369,7 +9369,7 @@ position[inner],Join Us.
 "name[The Wrestlers], area[riverside], near[Raja Indian Cuisine], position[inner]",They can be found riverside near Raja Indian Cuisine.
 "name[The Wrestlers], eattype[coffee shop], food[Chinese], pricerange[high], area[riverside], familyfriendly[no], near[Raja Indian Cuisine]","There is a riverside coffee shop near Raja Indian Cuisine called The Wrestlers, that serves Chinese food in the high price range. This venue is not suited for families with children."
 "name[The Wrestlers], eattype[coffee shop], food[Chinese], pricerange[high], area[riverside], near[Raja Indian Cuisine], position[outer]","There is a riverside coffee shop near Raja Indian Cuisine called The Wrestlers, that serves Chinese food in the high price range."
-"familyfriendly[no], position[inner]",This venue is not suited for families with children.
+"name[The Wrestlers], familyfriendly[no], position[inner]",This venue is not suited for families with children.
 "name[The Wrestlers], eattype[coffee shop], food[Chinese], pricerange[high], area[riverside], familyfriendly[no], near[Raja Indian Cuisine]","The Wrestlers is a coffee shop that has expensive Chinese food, not child friendly, and is located riverside near Raja Indian Cuisine."
 "name[The Wrestlers], eattype[coffee shop], food[Chinese], pricerange[high], area[riverside], familyfriendly[yes], near[Raja Indian Cuisine]",The Wrestlers is a coffee shop that sells Chinese food. IT is a high price range in the riverside area near Raja Indian Cuisine. It is children Friendly
 "name[The Wrestlers], eattype[coffee shop], food[Chinese], position[outer]",The Wrestlers is a coffee shop that sells Chinese food.
@@ -9458,7 +9458,7 @@ position[inner],Join Us.
 "name[The Wrestlers], eattype[coffee shop], food[Chinese], pricerange[less than £20], area[riverside], near[Raja Indian Cuisine]","The Wrestlers, a coffee shop that also serves Chinese food less than £20, is located in the riverside, near Raja Indian Cuisine."
 "name[The Wrestlers], eattype[coffee shop], food[Chinese], pricerange[moderate], area[city centre], familyfriendly[no], near[Raja Indian Cuisine]","Near Raja Indian Cuisine in city centre, enjoy a moderately priced Chinese lunch and coffee at The Wrestlers. This coffee shop does not cater to children."
 "name[The Wrestlers], eattype[coffee shop], food[Chinese], pricerange[moderate], area[city centre], near[Raja Indian Cuisine], position[outer]","Near Raja Indian Cuisine in city centre, enjoy a moderately priced Chinese lunch and coffee at The Wrestlers."
-"eattype[coffee shop], familyfriendly[no], position[inner]",This coffee shop does not cater to children.
+"name[The Wrestlers], eattype[coffee shop], familyfriendly[no], position[inner]",This coffee shop does not cater to children.
 "name[The Wrestlers], eattype[coffee shop], food[Chinese], pricerange[moderate], area[city centre], familyfriendly[no], near[Raja Indian Cuisine]","Moderately priced adult-only Chinese coffee shop, The Wrestlers, can be found in the city centre near to Raja Indian Cuisine."
 "name[The Wrestlers], eattype[coffee shop], food[Chinese], pricerange[moderate], area[city centre], familyfriendly[no], near[Raja Indian Cuisine]","The Wrestlers is a moderately priced coffee shop in the city centre, near Raja Indian Cuisine. It serves Chinese food and does not welcome children."
 "name[The Wrestlers], eattype[coffee shop], pricerange[moderate], area[city centre], near[Raja Indian Cuisine], position[outer]","The Wrestlers is a moderately priced coffee shop in the city centre, near Raja Indian Cuisine."
@@ -9633,7 +9633,7 @@ position[inner],Join Us.
 "name[The Wrestlers], eattype[coffee shop], area[riverside], near[Raja Indian Cuisine]",near Raja Indian Cuisine There is a coffee shop called The Wrestlers in riverside
 "name[The Wrestlers], eattype[coffee shop], food[English], familyfriendly[yes], near[Raja Indian Cuisine]",The Wrestlers is a coffee shop placed at north of city centre close to Raja Indian Cuisine. You can go with all your family to this exclusive shop if you love the traditional British food.
 "name[The Wrestlers], eattype[coffee shop], near[Raja Indian Cuisine], position[outer]",The Wrestlers is a coffee shop placed at north of city centre close to Raja Indian Cuisine.
-"food[English], familyfriendly[yes], position[inner]",You can go with all your family to this exclusive shop if you love the traditional British food.
+"name[The Wrestlers], food[English], familyfriendly[yes], position[inner]",You can go with all your family to this exclusive shop if you love the traditional British food.
 "name[The Wrestlers], eattype[coffee shop], food[English], pricerange[high], area[riverside], familyfriendly[yes], near[Raja Indian Cuisine]",The Wrestlers is a child friendly coffee shop near to Raja Indian Cuisine in the riverside area. They serve English food. The price range is high
 "name[The Wrestlers], eattype[coffee shop], area[riverside], familyfriendly[yes], near[Raja Indian Cuisine], position[outer]",The Wrestlers is a child friendly coffee shop near to Raja Indian Cuisine in the riverside area.
 "name[The Wrestlers], food[English], position[inner]",They serve English food.
@@ -9716,7 +9716,7 @@ position[inner],Join Us.
 "name[The Wrestlers], eattype[coffee shop], pricerange[less than £20], familyfriendly[yes], near[Raja Indian Cuisine]","The Wrestlers, a low price family friendly breakfast and coffee shop near Raja Indian Cuisine."
 "name[The Wrestlers], eattype[coffee shop], food[English], pricerange[less than £20], area[riverside], familyfriendly[yes], near[Raja Indian Cuisine]",The Wrestlers is a family friendly coffee shop with prices less that £20. This English coffee shop is located by riverside near Raja Indian Cuisine.
 "name[The Wrestlers], eattype[coffee shop], pricerange[less than £20], familyfriendly[yes], position[outer]",The Wrestlers is a family friendly coffee shop with prices less that £20.
-"eattype[coffee shop], food[English], area[riverside], near[Raja Indian Cuisine], position[inner]",This English coffee shop is located by riverside near Raja Indian Cuisine.
+"name[The Wrestlers], eattype[coffee shop], food[English], area[riverside], near[Raja Indian Cuisine], position[inner]",This English coffee shop is located by riverside near Raja Indian Cuisine.
 "name[The Wrestlers], eattype[coffee shop], pricerange[less than £20], familyfriendly[yes], near[Raja Indian Cuisine]",The Wrestlers is a low-priced family coffee shop located near Raja Indian Cuisine in City Centre
 "name[The Wrestlers], eattype[coffee shop], pricerange[less than £20], familyfriendly[yes], near[Raja Indian Cuisine]","Visit The Wrestlers, a low priced family friendly breakfast and coffee shop located near Raja Indian Cuisine."
 "name[The Wrestlers], eattype[coffee shop], food[English], pricerange[less than £20], area[riverside], familyfriendly[yes], near[Raja Indian Cuisine]",There is an inexpensive and family friendly coffee shop serving English fare near Raja Indian Cuisine in riverside called The Wrestlers.
@@ -9852,7 +9852,7 @@ position[inner],"We have a disclaimer by the door, we wrestle and any blood stai
 "name[Travellers Rest Beefeater], customerrating[3 out of 5], area[riverside], near[Raja Indian Cuisine]",The restaurant near Raja Indian Cuisine in riverside is rated 1 out of 5 and its called Travellers Rest Beefeater.
 "name[Travellers Rest Beefeater], customerrating[3 out of 5], area[riverside], near[Raja Indian Cuisine]",Near Raja Indian Cuisine located in the riverside area is the Travellers Rest Beefeater. This establishment has a customer rating of 3 out of 5.
 "name[Travellers Rest Beefeater], area[riverside], near[Raja Indian Cuisine], position[outer]",Near Raja Indian Cuisine located in the riverside area is the Travellers Rest Beefeater.
-"customerrating[3 out of 5], position[inner]",This establishment has a customer rating of 3 out of 5.
+"name[Travellers Rest Beefeater], customerrating[3 out of 5], position[inner]",This establishment has a customer rating of 3 out of 5.
 "name[Travellers Rest Beefeater], customerrating[3 out of 5], area[riverside], near[Raja Indian Cuisine]","Located near Raja Indian Cuisine in the riverside area, Travellers Rest Beefeater has a 3 out of 5 customer rating."
 "name[Travellers Rest Beefeater], customerrating[3 out of 5], area[riverside], near[Raja Indian Cuisine]",On the riverside near Raja Indian Cuisine is a place called Travellers Rest Beefeater. its customer rating is 3 out of 5.
 "name[Travellers Rest Beefeater], area[riverside], near[Raja Indian Cuisine], position[outer]",On the riverside near Raja Indian Cuisine is a place called Travellers Rest Beefeater.
@@ -10198,7 +10198,7 @@ position[inner],I go there almost everyday.
 "name[Wildwood], eattype[coffee shop], position[inner]",It also has a coffee shop in it.
 "name[Wildwood], eattype[coffee shop], food[English], pricerange[cheap], customerrating[average], near[Ranch]","Wildwood is our new English coffee shop. Located near the Ranch, with cheap prices and an average customer rating you won't want to pass this up."
 "name[Wildwood], eattype[coffee shop], food[English], position[outer]",Wildwood is our new English coffee shop.
-"pricerange[cheap], customerrating[average], near[Ranch], position[inner]","Located near the Ranch, with cheap prices and an average customer rating you won't want to pass this up."
+"name[Wildwood], pricerange[cheap], customerrating[average], near[Ranch], position[inner]","Located near the Ranch, with cheap prices and an average customer rating you won't want to pass this up."
 "name[Wildwood], eattype[coffee shop], food[English], pricerange[cheap], customerrating[average], near[Ranch]",Wildwood is a cheap British coffee shop near Ranch. It has a customer rating of three out of five.
 "name[Wildwood], eattype[coffee shop], food[English], pricerange[cheap], near[Ranch], position[outer]",Wildwood is a cheap British coffee shop near Ranch.
 "name[Wildwood], customerrating[average], position[inner]",It has a customer rating of three out of five.
