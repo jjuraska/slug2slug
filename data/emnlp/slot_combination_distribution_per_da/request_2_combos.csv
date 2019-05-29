@@ -1,0 +1,11 @@
+mr_combo,count
+has_mac_release_specifier,1
+available_on_steam_specifier,4
+has_linux_release_specifier,4
+has_multiplayer_specifier,7
+esrb_specifier,8
+player_perspective_specifier,11
+developer_specifier,14
+release_year_specifier,16
+genres_specifier,17
+platforms_specifier,18
