@@ -1,6 +1,7 @@
 import os
 import re
 import pandas as pd
+from nltk import sent_tokenize
 
 import config
 from scripts.generate_mrs import mr_to_string
@@ -10,7 +11,7 @@ class UtteranceCleaner:
     def __init__(self, file_in, da=None):
         # Read in the CSV file with slot values in separate columns
         self.file_in = file_in
-        self.df_in = pd.read_csv(file_in, header=0, dtype=object, encoding='utf8')
+        self.df_in = pd.read_csv(file_in, header=0, dtype=object, encoding='utf8', engine='python')
         self.da = da
 
         self.mr_dicts = self.df_in.drop(columns=['utterance']).to_dict(orient='record')
@@ -41,16 +42,20 @@ class UtteranceCleaner:
             utt = self.capitalize_boolean_slots(utt)
             utt = self.capitalize_categorical_slots(utt, mr_dict)
 
-            # TODO: capitalize sentence beginnings
+            # Capitalize sentence beginnings
+            utt_capitalized = ' '.join([sent[0].upper() + sent[1:] for sent in sent_tokenize(utt)])
 
-            utterances_fixed.append(utt)
+            utterances_fixed.append(utt_capitalized)
 
             # List modified utterances
             if utt != utt_orig:
                 change_cnt += 1
                 print('#' + str(i))
                 print('ORIG.:\t' + utt_orig)
-                print('CLEAN:\t' + utt + '\n')
+                print('CLEAN:\t' + utt_capitalized)
+                if utt_capitalized != utt:
+                    print('[Capitalization fixed.]')
+                print()
 
         print('Number of changed utterances:', change_cnt)
 
@@ -123,9 +128,9 @@ class UtteranceCleaner:
 
 def main():
     file_in = os.path.join(config.VIDEO_GAME_DATA_DIR, 'generation',
-                           'video_games_processed_results_round1_verify_attribute (4 slots).csv')
+                           'video_games_processed_results_inform.csv')
 
-    cleaner = UtteranceCleaner(file_in, da='verify_attribute')
+    cleaner = UtteranceCleaner(file_in, da='inform')
 
     cleaner.normalize()
 

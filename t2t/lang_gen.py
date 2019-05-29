@@ -17,14 +17,14 @@ def transformer_lang_gen():
     hparams.hidden_size = 256
     hparams.filter_size = 512
     hparams.num_heads = 8
-    hparams.attention_dropout = 0.6
-    hparams.layer_prepostprocess_dropout = 0.6
-    hparams.learning_rate = 0.05
-    # hparams.batch_size = 64             # default: 4096
+    hparams.attention_dropout = 0.2
+    hparams.layer_prepostprocess_dropout = 0.2
+    hparams.learning_rate = 0.1                    # default: 0.1
+    # hparams.batch_size = 64                         # default: 4096
     hparams.max_input_seq_length = 50
     hparams.max_target_seq_length = 60
-    # hparams.min_length_bucket = 10      # default: 0
-    # hparams.activation_dtype = 'bfloat16'   # default: 'float32'
+    # hparams.min_length_bucket = 10                  # default: 0
+    # hparams.activation_dtype = 'bfloat16'           # default: 'float32'
 
     return hparams
 

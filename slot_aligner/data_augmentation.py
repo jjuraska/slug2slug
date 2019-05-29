@@ -10,7 +10,7 @@ import data_loader
 from slot_aligner.slot_alignment import split_content, find_alignment, get_scalar_slots
 
 
-def augment_by_utterance_splitting(dataset, filename):
+def augment_by_utterance_splitting(dataset, filename, denoise_only=False):
     """Performs utterance splitting and augments the dataset with new pseudo-samples whose utterances are
     one sentence long. The MR of each pseudo-sample contains only slots mentioned in the corresponding sentence.
     Assumes a CSV or JSON file as input.
@@ -27,19 +27,22 @@ def augment_by_utterance_splitting(dataset, filename):
     # Read in the data
     data_cont = data_loader.init_test_data(os.path.join(config.DATA_DIR, dataset, filename))
     mrs, utterances = data_cont['data']
-    slot_sep, val_sep, _, val_sep_closing = data_cont['separators']
+    _, _, slot_sep, val_sep, val_sep_end = data_cont['separators']
 
     for i, mr in enumerate(mrs):
         mr_dict = OrderedDict()
 
         # Extract the slot-value pairs into a dictionary
         for slot_value in mr.split(slot_sep):
-            slot, _, _, value_orig = data_loader.parse_slot_and_value(slot_value, val_sep, val_sep_closing)
+            slot, _, _, value_orig = data_loader.parse_slot_and_value(slot_value, val_sep, val_sep_end)
             mr_dict[slot] = value_orig
 
         mrs_dicts.append(mr_dict)
 
-    new_mrs, new_utterances = split_content(mrs_dicts, utterances, filename, permute=False)
+    new_mrs, new_utterances = split_content(mrs_dicts, utterances, filename, permute=False, denoise_only=denoise_only)
+
+    suffix = ' [' + ('denoised' if denoise_only else 'utt. split') + ']'
+    filename_out = os.path.splitext(filename)[0] + suffix + os.path.splitext(filename)[1]
 
     if filename.lower().endswith('.csv'):
         for row, mr in enumerate(new_mrs):
@@ -51,7 +54,6 @@ def augment_by_utterance_splitting(dataset, filename):
             data_new.append([mr_str, new_utterances[row]])
 
         # Write the augmented dataset to a new file
-        filename_out = ''.join(filename.split('.')[:-1]) + '_utt_split.csv'
         pd.DataFrame(data_new).to_csv(os.path.join(config.DATA_DIR, dataset, filename_out),
                                       header=['mr', 'ref'],
                                       index=False,
@@ -69,7 +71,6 @@ def augment_by_utterance_splitting(dataset, filename):
             data_new.append([mr_str, new_utterances[row]])
 
         # Write the augmented dataset to a new file
-        filename_out = ''.join(filename.split('.')[:-1]) + '_utt_split.json'
         with io.open(os.path.join(config.DATA_DIR, dataset, filename_out), 'w', encoding='utf8') as f_data_new:
             json.dump(data_new, f_data_new, indent=4)
 
@@ -103,7 +104,7 @@ def augment_with_aux_indicators(dataset, filename, indicators, mode='all', alt_c
     # Read in the data
     data_cont = data_loader.init_test_data(os.path.join(config.DATA_DIR, dataset, filename))
     mrs, utterances = data_cont['data']
-    slot_sep, val_sep, val_sep_end, val_sep_closing = data_cont['separators']
+    _, _, slot_sep, val_sep, val_sep_end = data_cont['separators']
 
     for mr, utt in zip(mrs, utterances):
         mr_dict = OrderedDict()
@@ -111,7 +112,7 @@ def augment_with_aux_indicators(dataset, filename, indicators, mode='all', alt_c
 
         # Extract the slot-value pairs into a dictionary
         for slot_value in mr.split(slot_sep):
-            slot, value, slot_orig, value_orig = data_loader.parse_slot_and_value(slot_value, val_sep, val_sep_closing)
+            slot, value, slot_orig, value_orig = data_loader.parse_slot_and_value(slot_value, val_sep, val_sep_end)
             mr_dict[slot] = value
             mr_list_augm.append((slot, value_orig))
             # mrs[i] = mrs[i].replace(slot_orig, slot)
@@ -126,7 +127,7 @@ def augment_with_aux_indicators(dataset, filename, indicators, mode='all', alt_c
             __add_contrast_tokens(mr_list_augm, utt, alignment, alt_mode=alt_contrast_mode)
 
         # Convert augmented MR from list to string representation
-        mr_augm = (slot_sep + ' ').join([s + val_sep + v + (val_sep_end if val_sep_closing else '') for s, v in mr_list_augm])
+        mr_augm = (slot_sep + ' ').join([s + val_sep + v + (val_sep_end if val_sep_end is not None else '') for s, v in mr_list_augm])
 
         mrs_augm.append(mr_augm)
 
@@ -264,14 +265,14 @@ def augment_with_contrast_tgen(dataset, filename):
     # Read in the data
     data_cont = data_loader.init_test_data(os.path.join(config.DATA_DIR, dataset, filename))
     mrs, utterances = data_cont['data']
-    slot_sep, val_sep, val_sep_closing = data_cont['separators']
+    _, _, slot_sep, val_sep, val_sep_end = data_cont['separators']
 
     for i, mr in enumerate(mrs):
         mr_dict = OrderedDict()
 
         # Extract the slot-value pairs into a dictionary
         for slot_value in mr.split(slot_sep):
-            slot, value, slot_orig, _ = data_loader.parse_slot_and_value(slot_value, val_sep, val_sep_closing)
+            slot, value, slot_orig, _ = data_loader.parse_slot_and_value(slot_value, val_sep, val_sep_end)
             mr_dict[slot] = value
             mrs[i] = mrs[i].replace(slot_orig, slot)
 
@@ -323,11 +324,11 @@ def augment_with_contrast_tgen(dataset, filename):
 
 
 if __name__ == '__main__':
-    # augment_by_utterance_splitting('rest_e2e', 'devset_e2e.csv')
+    augment_by_utterance_splitting('rest_e2e', 'devset_e2e.csv', denoise_only=True)
     # augment_by_utterance_splitting('laptop', 'valid.json')
     # augment_by_utterance_splitting('tv', 'train.json')
     # augment_by_utterance_splitting('video_game', 'train.csv')
 
-    augment_with_aux_indicators('rest_e2e', 'devset_e2e.csv', ['contrast'], 'all', alt_contrast_mode=False)
+    # augment_with_aux_indicators('rest_e2e', 'devset_e2e.csv', ['contrast'], 'all', alt_contrast_mode=False)
 
     # augment_with_contrast_tgen('rest_e2e', 'trainset_e2e.csv')

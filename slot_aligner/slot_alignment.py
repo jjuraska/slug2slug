@@ -30,39 +30,45 @@ customerrating_mapping = {
 }
 
 
-def dontcare_realization(text, slot):
+def dontcare_realization(text, slot, soft_match=False):
     text = re.sub('\'', '', text.lower())
     text_tok = word_tokenize(text)
 
-    slot_root = reduce_slot_name(slot)
-    slot_root_plural = get_plural(slot_root)
+    for slot_stem in reduce_slot_name(slot):
+        slot_stem_plural = get_plural(slot_stem)
 
-    if slot_root in text_tok or slot_root_plural in text_tok or slot in text_tok:
-        for x in ['any', 'all', 'vary', 'varying', 'varied', 'various', 'variety', 'different',
-                  'unspecified', 'irrelevant', 'unnecessary', 'unknown', 'n/a', 'particular', 'specific', 'priority', 'choosy', 'picky',
-                  'regardless', 'disregarding', 'disregard', 'excluding', 'unconcerned', 'matter', 'specification',
-                  'concern', 'consideration', 'considerations', 'factoring', 'accounting', 'ignoring']:
-            if x in text_tok:
+        if slot_stem in text_tok or slot_stem_plural in text_tok or slot in text_tok:
+            if soft_match:
                 return True
-        for x in ['no preference', 'no predetermined', 'no certain', 'wide range', 'may or may not',
-                  'not an issue', 'not a factor', 'not important', 'not considered', 'not considering', 'not concerned',
-                  'without a preference', 'without preference', 'without specification', 'without caring', 'without considering',
-                  'not have a preference', 'dont have a preference', 'not consider', 'dont consider', 'not mind', 'dont mind',
-                  'not caring', 'not care', 'dont care', 'didnt care']:
-            if x in text:
+
+            for x in ['any', 'all', 'vary', 'varying', 'varied', 'various', 'variety', 'different',
+                      'unspecified', 'irrelevant', 'unnecessary', 'unknown', 'n/a', 'particular', 'specific', 'priority', 'choosy', 'picky',
+                      'regardless', 'disregarding', 'disregard', 'excluding', 'unconcerned', 'matter', 'specification',
+                      'concern', 'consideration', 'considerations', 'factoring', 'accounting', 'ignoring']:
+                if x in text_tok:
+                    return True
+            for x in ['no preference', 'no predetermined', 'no certain', 'wide range', 'may or may not',
+                      'not an issue', 'not a factor', 'not important', 'not considered', 'not considering', 'not concerned',
+                      'without a preference', 'without preference', 'without specification', 'without caring', 'without considering',
+                      'not have a preference', 'dont have a preference', 'not consider', 'dont consider', 'not mind', 'dont mind',
+                      'not caring', 'not care', 'dont care', 'didnt care']:
+                if x in text:
+                    return True
+            if ('preference' in text_tok or 'specifics' in text_tok) and ('no' in text_tok):
                 return True
-        if ('preference' in text_tok or 'specifics' in text_tok) and ('no' in text_tok):
-            return True
     
     return False
 
 
-def none_realization(text, slot):
+def none_realization(text, slot, soft_match=False):
     text = re.sub('\'', '', text.lower())
     text_tok = word_tokenize(text)
 
     for slot_stem in reduce_slot_name(slot):
         if slot_stem in text_tok:
+            if soft_match:
+                return True
+
             for x in ['information', 'info', 'inform', 'results', 'requirement', 'requirements', 'specification', 'specifications']:
                 if x in text_tok and ('no' in text_tok or 'not' in text_tok or 'any' in text_tok):
                     return True
@@ -171,21 +177,23 @@ def find_slot_realization(text, text_tok, slot, value_orig, delex_slot_placehold
         else:
             # Universal slot values
             if value == 'dontcare':
-                if dontcare_realization(text, slot):
+                if dontcare_realization(text, slot, soft_match=True):
                     # TODO: get the actual position
                     pos = 0
-                    slot_cnt = text.count(reduce_slot_name(slot))
-                    if slot_cnt > 1:
-                        print('HALLUCINATED SLOT:', slot)
-                        is_hallucinated = True
+                    for slot_stem in reduce_slot_name(slot):
+                        slot_cnt = text.count(slot_stem)
+                        if slot_cnt > 1:
+                            print('HALLUCINATED SLOT:', slot)
+                            is_hallucinated = True
             elif value == 'none':
-                if none_realization(text, slot):
+                if none_realization(text, slot, soft_match=True):
                     # TODO: get the actual position
                     pos = 0
-                    slot_cnt = text.count(reduce_slot_name(slot))
-                    if slot_cnt > 1:
-                        print('HALLUCINATED SLOT:', slot)
-                        is_hallucinated = True
+                    for slot_stem in reduce_slot_name(slot):
+                        slot_cnt = text.count(slot_stem)
+                        if slot_cnt > 1:
+                            print('HALLUCINATED SLOT:', slot)
+                            is_hallucinated = True
             elif value == '':
                 for slot_stem in reduce_slot_name(slot):
                     pos = text.find(slot_stem)
@@ -199,7 +207,7 @@ def find_slot_realization(text, text_tok, slot, value_orig, delex_slot_placehold
             elif slot == 'name' and match_name_ref:
                 pos = text.find(value)
                 if pos < 0:
-                    for pronoun in ['it', 'its', 'they', 'their']:
+                    for pronoun in ['it', 'its', 'they', 'their', 'this']:
                         _, pos = find_first_in_list(pronoun, text_tok)
                         if pos >= 0:
                             break
@@ -307,8 +315,8 @@ def find_slot_realization(text, text_tok, slot, value_orig, delex_slot_placehold
 
 
 # TODO: use delexed utterances for splitting
-def split_content(old_mrs, old_utterances, filename, permute=False):
-    """Splits the MRs into multiple MRs with the corresponding individual sentences."""
+def split_content(old_mrs, old_utterances, filename, permute=False, denoise_only=False):
+    """Splits each MR into multiple MRs and pairs them with the corresponding individual sentences."""
 
     new_mrs = []
     new_utterances = []
@@ -340,7 +348,7 @@ def split_content(old_mrs, old_utterances, filename, permute=False):
             slot_root = slot.rstrip(string.digits)
             value = value_orig.lower()
 
-            # Search for the realization of each slot in each sentence
+            # Search for the mention of each slot in each sentence
             for sent, new_slots in new_pair.items():
                 sent, sent_tok = __preprocess_utterance(sent)
 
@@ -359,27 +367,27 @@ def split_content(old_mrs, old_utterances, filename, permute=False):
                 if slot not in slot_fails:
                     slot_fails[slot] = 0
                 slot_fails[slot] += 1
-        else:   # TODO: is it necessary to have the "else" clause?
-            # Remove slots (from the original MR) whose realizations were not found
-            for slot in slots_to_remove:
-                del mr[slot]
 
-            # Keep the original sample, however, omitting the unrealized slots
-            new_mrs.append(mr)
-            new_utterances.append(utt)
-            
-            if len(new_pair) > 1:
-                for sent, new_slots in new_pair.items():
-                    if sent == sents[0]:
-                        new_slots['position'] = 'outer'
-                    else:
-                        new_slots['position'] = 'inner'
-                        
-                    new_mrs.append(new_slots)
-                    new_utterances.append(sent)
-                    
-            if permute:
-                permuteSentCombos(new_pair, new_mrs, new_utterances, max_iter=True)
+        # Remove slots (from the original MR) whose correct mentions were not found
+        for slot in slots_to_remove:
+            del mr[slot]
+
+        # Keep the original sample, however, omitting the unmentioned/incorrect slots
+        new_mrs.append(mr)
+        new_utterances.append(utt)
+
+        if not denoise_only and len(new_pair) > 1:
+            for sent, new_slots in new_pair.items():
+                if sent == sents[0]:
+                    new_slots['position'] = 'outer'
+                else:
+                    new_slots['position'] = 'inner'
+
+                new_mrs.append(new_slots)
+                new_utterances.append(sent)
+
+        if permute:
+            permuteSentCombos(new_pair, new_mrs, new_utterances, max_iter=True)
 
     # Log the instances in which the aligner did not find the slot
     misses.append('We had these misses from all categories: ' + str(slot_fails.items()))

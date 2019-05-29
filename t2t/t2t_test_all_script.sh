@@ -30,4 +30,5 @@ t2t-translate-all \
     --write_beam_scores=False \
     --return_beams=False \
     --source=$DECODE_FILE \
-    --translations_dir=$PREDICTIONS_DIR
+    --translations_dir=$PREDICTIONS_DIR \
+#    --decoder_command="python C:/Users/JuriQ/.virtualenvs/slug2slug/Scripts/t2t-decoder {params}"       # Might require configuring, depending on your system

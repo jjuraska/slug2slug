@@ -15,7 +15,7 @@ HPARAMS=transformer_lang_gen
 #HPARAMS=transformer_lang_gen_multi_vocab
 #HPARAMS=lstm_lang_gen
 
-BEAM_SIZE=4
+BEAM_SIZE=10
 ALPHA=1.0
 
 t2t-decoder \

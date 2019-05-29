@@ -21,11 +21,12 @@ t2t-trainer \
     --problem=$PROBLEM \
     --model=$MODEL \
     --hparams_set=$HPARAMS \
-    --train_steps=10000 \
+    --train_steps=18000 \
     --eval_steps=100 \
     --local_eval_frequency=200 \
+    --eval_throttle_seconds=10 \
     --eval_early_stopping_metric=accuracy \
     --eval_early_stopping_metric_delta=0.1 \
     --eval_early_stopping_steps=3000 \
     --eval_early_stopping_metric_minimize=False \
-    --keep_checkpoint_max=60
+    --keep_checkpoint_max=70

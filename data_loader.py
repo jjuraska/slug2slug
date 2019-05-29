@@ -21,7 +21,7 @@ CONCESSION_TOKEN = config.CONCESSION_TOKEN
 
 
 # TODO: redesign the data loading so as to be object-oriented
-def load_training_data(data_trainset, data_devset, input_concat=False, generate_vocab=False):
+def load_training_data(data_trainset, data_devset, input_concat=False, generate_vocab=False, skip_if_exist=True):
     """Generate source and target files in the required input format for the model training.
     """
 
@@ -30,13 +30,14 @@ def load_training_data(data_trainset, data_devset, input_concat=False, generate_
     dev_source_file = os.path.join(config.DATA_DIR, 'dev_source.txt')
     dev_target_file = os.path.join(config.DATA_DIR, 'dev_target.txt')
 
-    # If there is an existing source and target file, skip their generation
-    if os.path.isfile(training_source_file) and \
-            os.path.isfile(training_target_file) and \
-            os.path.isfile(dev_source_file) and \
-            os.path.isfile(dev_target_file):
-        print('Found existing input files. Skipping their generation.')
-        return
+    if skip_if_exist:
+        # If there is an existing source and target file, skip their generation
+        if os.path.isfile(training_source_file) and \
+                os.path.isfile(training_target_file) and \
+                os.path.isfile(dev_source_file) and \
+                os.path.isfile(dev_target_file):
+            print('Found existing input files. Skipping their generation.')
+            return
 
     dataset = init_training_data(data_trainset, data_devset)
     dataset_name = dataset['dataset_name']
@@ -1228,6 +1229,7 @@ def delex_sample(mr, utterance=None, dataset=None, slots_to_delex=None, mr_only=
     else:
         if dataset == 'rest_e2e':
             delex_slots = ['name', 'near', 'food']
+            # delex_slots = ['name', 'releaseyear', 'expreleasedate', 'developer']        # counterfeit video_game
         elif dataset == 'video_game':
             delex_slots = ['name', 'releaseyear', 'expreleasedate', 'developer']
         elif dataset == 'tv':
@@ -1300,76 +1302,161 @@ def delex_sample(mr, utterance=None, dataset=None, slots_to_delex=None, mr_only=
         return utterance
 
 
-def counterfeit_sample(mr, utt, dataset=None, slots_to_delex=None):
+def counterfeit_sample(mr, utt, target_dataset=None, slots_to_replace=None):
     """Counterfeits a single E2E sample (MR and the corresponding utterance).
     """
 
-    if slots_to_delex is not None:
-        delex_slots = slots_to_delex
-    else:
-        if dataset == 'rest_e2e':
-            delex_slots = ['name', 'near', 'food']
-        elif dataset == 'video_game':
-            delex_slots = ['name', 'releaseyear', 'expreleasedate', 'developer']
-        elif dataset == 'tv':
-            delex_slots = ['name', 'family', 'hdmiport', 'screensize', 'price', 'audio', 'resolution', 'powerconsumption', 'color', 'count']
-        elif dataset == 'laptop':
-            delex_slots = ['name', 'family', 'processor', 'memory', 'drive', 'battery', 'weight', 'dimension', 'design', 'platform', 'warranty', 'count']
-        elif dataset == 'hotel':
-            delex_slots = ['name', 'address', 'postcode', 'area', 'near', 'phone', 'count']
+    if slots_to_replace is None:
+        if target_dataset == 'rest_e2e':
+            slots_to_replace = ['name', 'near', 'food']
+        elif target_dataset == 'video_game':
+            slots_to_replace = ['name', 'releaseyear', 'expreleasedate', 'developer']
+        elif target_dataset == 'tv':
+            slots_to_replace = ['name', 'family', 'hdmiport', 'screensize', 'price', 'audio', 'resolution', 'powerconsumption', 'color', 'count']
+        elif target_dataset == 'laptop':
+            slots_to_replace = ['name', 'family', 'processor', 'memory', 'drive', 'battery', 'weight', 'dimension', 'design', 'platform', 'warranty', 'count']
+        elif target_dataset == 'hotel':
+            slots_to_replace = ['name', 'address', 'postcode', 'area', 'near', 'phone', 'count']
         else:
-            # By default, assume the dataset is 'rest_e2e'
-            delex_slots = ['name', 'near', 'food']
+            slots_to_replace = []
 
     mr_counterfeit = {}
-    utt = ' '.join(utt)
     utt_counterfeit = utt
 
     for slot_orig, value_orig in mr.items():
-        if slot_orig.rstrip(string.digits) in delex_slots:
-            # Substitute the slot with the corresponding slot from the target domain
-            slot_counterfeit = e2e_slot_to_hotel_slot(slot_orig)
-            while slot_counterfeit in mr_counterfeit:
+        if slot_orig.rstrip(string.digits) in slots_to_replace:
+            # TODO: sample counterfeit slot values to replace the original ones
+            if target_dataset == 'video_game':
+                # Substitute the slot with the corresponding slot from the target domain
+                slot_counterfeit = e2e_slot_to_video_game_slot(slot_orig)
+                while slot_counterfeit in mr_counterfeit:
+                    slot_counterfeit = e2e_slot_to_video_game_slot(slot_orig)
+
+                if slot_orig == 'food':
+                    if slot_counterfeit == 'releaseyear':
+                        value_counterfeit1 = random.choice(['was released in', 'came out in'])
+                        value_counterfeit2 = random.choice(['released in', 'from'])
+                    elif slot_counterfeit == 'expreleasedate':
+                        value_counterfeit1 = random.choice(['will be released on', 'is expected to come out', 'is coming out on'])
+                        value_counterfeit2 = random.choice(['to be released on', 'expected to be released on', 'slated for release on'])
+                    else:
+                        value_counterfeit1 = ''
+                        value_counterfeit2 = ''
+
+                    utt_counterfeit = re.sub(r'\bserves\b', value_counterfeit1, utt_counterfeit)
+                    utt_counterfeit = re.sub(r'\bserving\b', value_counterfeit2, utt_counterfeit)
+                    utt_counterfeit = re.sub(r'\bfood\b', '', utt_counterfeit)
+                elif slot_orig == 'customerrating':
+                    if slot_counterfeit == 'rating':
+                        value_counterfeit = 'rating'
+                    elif slot_counterfeit == 'esrb':
+                        value_counterfeit = 'esrb rating'
+                    else:
+                        value_counterfeit = ''
+
+                    for w in ['customer ratings', 'customer rating', 'ratings', 'rating']:
+                        utt_counterfeit = re.sub(r'\b{}\b'.format(w), value_counterfeit, utt)
+                        if utt_counterfeit != utt:
+                            break
+                elif slot_orig == 'pricerange':
+                    if slot_counterfeit == 'playerperspective':
+                        value_counterfeit = 'perspective'
+                    else:
+                        value_counterfeit = ''
+
+                    for w in ['price range', 'prices', 'price']:
+                        utt_counterfeit = re.sub(r'\b{}\b'.format(w), value_counterfeit, utt)
+                        if utt_counterfeit != utt:
+                            break
+                elif slot_orig == 'familyfriendly':
+                    if slot_counterfeit == 'hasmultiplayer':
+                        value_counterfeit = 'multiplayer'
+                    elif slot_counterfeit == 'availableonsteam':
+                        value_counterfeit = 'steam'
+                    elif slot_counterfeit == 'haslinuxrelease':
+                        value_counterfeit = 'linux'
+                    elif slot_counterfeit == 'hasmacrelease':
+                        value_counterfeit = 'mac'
+                    else:
+                        value_counterfeit = ''
+
+                    for w in ['families', 'children', 'kids', 'family', 'child', 'kid']:
+                        utt_counterfeit = re.sub(r'\b{}\b'.format(w), value_counterfeit, utt)
+                        if utt_counterfeit != utt:
+                            break
+
+                    utt_counterfeit = re.sub(r'\ballow', 'offer', utt_counterfeit)
+                elif slot_orig == 'area':
+                    if slot_counterfeit == 'platforms':
+                        value_counterfeit = random.choice(['available for', 'available on', 'released for', 'released on'])
+                    else:
+                        value_counterfeit = ''
+
+                    for w in ['located in']:
+                        utt_counterfeit = re.sub(r'\b{}\b'.format(w), value_counterfeit, utt)
+                        if utt_counterfeit != utt:
+                            break
+                elif slot_orig == 'eattype':
+                    for w in ['place', 'venue', 'establishment', 'eatery']:
+                        utt_counterfeit = re.sub(r'\b{}\b'.format(w), 'game', utt_counterfeit)
+                elif slot_orig == 'near':
+                    if slot_counterfeit == 'developer':
+                        value_counterfeit = random.choice(['developed by', 'made by'])
+                    else:
+                        value_counterfeit = ''
+
+                    for w in ['located near']:
+                        utt_counterfeit = re.sub(r'\b{}\b'.format(w), value_counterfeit, utt)
+                        if utt_counterfeit != utt:
+                            break
+
+                    utt_counterfeit = re.sub(r'\bnear\b', random.choice(['by', 'from']), utt_counterfeit)
+            elif target_dataset == 'hotel':
+                # Substitute the slot with the corresponding slot from the target domain
                 slot_counterfeit = e2e_slot_to_hotel_slot(slot_orig)
+                while slot_counterfeit in mr_counterfeit:
+                    slot_counterfeit = e2e_slot_to_hotel_slot(slot_orig)
 
-            if slot_orig == 'familyfriendly':
-                if slot_counterfeit == 'acceptscreditcards':
-                    value_counterfeit = 'credit card'
-                elif slot_counterfeit == 'dogsallowed':
-                    value_counterfeit = 'dog'
-                elif slot_counterfeit == 'hasinternet':
-                    value_counterfeit = 'internet'
-                else:
-                    value_counterfeit = value_orig
+                if slot_orig == 'familyfriendly':
+                    if slot_counterfeit == 'acceptscreditcards':
+                        value_counterfeit = 'credit card'
+                    elif slot_counterfeit == 'dogsallowed':
+                        value_counterfeit = 'dog'
+                    elif slot_counterfeit == 'hasinternet':
+                        value_counterfeit = 'internet'
+                    else:
+                        value_counterfeit = ''
 
-                for w in ['families', 'children', 'kids']:
-                    utt_counterfeit = re.sub(r'\b{}\b'.format(w),
-                                             value_counterfeit + 's' if value_counterfeit != 'internet' else value_counterfeit,
-                                             utt)
-                    if utt_counterfeit != utt:
-                        break
-                if utt_counterfeit == utt:
-                    for w in ['family', 'child', 'kid']:
-                        utt_counterfeit = re.sub(r'\b{}\b'.format(w), value_counterfeit, utt)
+                    for w in ['families', 'children', 'kids']:
+                        utt_counterfeit = re.sub(r'\b{}\b'.format(w),
+                                                 value_counterfeit + 's' if value_counterfeit != 'internet' else value_counterfeit,
+                                                 utt)
                         if utt_counterfeit != utt:
                             break
-            elif slot_orig == 'customerrating' or slot_orig == 'food':
-                if slot_counterfeit == 'address':
-                    value_counterfeit = 'address'
-                elif slot_counterfeit == 'phone':
-                    value_counterfeit = 'phone number'
-                elif slot_counterfeit == 'postcode':
-                    value_counterfeit = 'postcode'
-                else:
-                    value_counterfeit = value_orig
+                    if utt_counterfeit == utt:
+                        for w in ['family', 'child', 'kid']:
+                            utt_counterfeit = re.sub(r'\b{}\b'.format(w), value_counterfeit, utt)
+                            if utt_counterfeit != utt:
+                                break
+                elif slot_orig == 'customerrating' or slot_orig == 'food':
+                    if slot_counterfeit == 'address':
+                        value_counterfeit = 'address'
+                    elif slot_counterfeit == 'phone':
+                        value_counterfeit = 'phone number'
+                    elif slot_counterfeit == 'postcode':
+                        value_counterfeit = 'postcode'
+                    else:
+                        value_counterfeit = ''
 
-                if slot_orig == 'customerrating':
-                    for w in ['customer rating of', 'customer ratings', 'customer rating', 'ratings', 'rating']:
-                        utt_counterfeit = re.sub(r'\b{}\b'.format(w), value_counterfeit, utt)
-                        if utt_counterfeit != utt:
-                            break
-                elif slot_orig == 'food':
-                    utt_counterfeit = re.sub(r'\b{}\b'.format('food'), value_counterfeit, utt)
+                    if slot_orig == 'customerrating':
+                        for w in ['customer rating of', 'customer ratings', 'customer rating', 'ratings', 'rating']:
+                            utt_counterfeit = re.sub(r'\b{}\b'.format(w), value_counterfeit, utt)
+                            if utt_counterfeit != utt:
+                                break
+                    elif slot_orig == 'food':
+                        utt_counterfeit = re.sub(r'\b{}\b'.format('food'), value_counterfeit, utt)
+                else:
+                    raise AttributeError('provided domain does not exist')
 
             mr_counterfeit[slot_counterfeit] = value_orig
             utt = utt_counterfeit
@@ -1407,18 +1494,42 @@ def e2e_slot_to_hotel_slot(slot):
     in the Hotel domain, randomly pick one from that category.
     """
 
-    e2e_to_hotel = {
-        'eattype': ['type'],
-        'familyfriendly': ['acceptscreditcards', 'dogsallowed', 'hasinternet'],
+    slot_map = {
+        'food': ['address', 'phone', 'postcode'],
         'customerrating': ['address', 'phone', 'postcode'],
-        'food': ['address', 'phone', 'postcode']
+        'familyfriendly': ['acceptscreditcards', 'dogsallowed', 'hasinternet'],
+        'eattype': ['type']
     }
 
-    if slot in e2e_to_hotel:
-        if len(e2e_to_hotel[slot]) == 1:
-            return e2e_to_hotel[slot][0]
+    if slot in slot_map:
+        if len(slot_map[slot]) == 1:
+            return slot_map[slot][0]
         else:
-            return random.choice(e2e_to_hotel[slot])
+            return random.choice(slot_map[slot])
+    else:
+        return slot
+
+
+def e2e_slot_to_video_game_slot(slot):
+    """Map an E2E slot onto a slot in the Video Game domain. If there are multiple tokens in the corresponding category
+    in the Video Game domain, randomly pick one from that category.
+    """
+
+    slot_map = {
+        'food': ['releaseyear', 'expreleasedate'],      # delexed
+        'customerrating': ['rating', 'esrb'],
+        'pricerange': ['playerperspective'],
+        'familyfriendly': ['hasmultiplayer', 'availableonsteam', 'haslinuxrelease', 'hasmacrelease'],   # boolean
+        'area': ['platforms'],
+        'eattype': ['genres'],
+        'near': ['developer']       # delexed
+    }
+
+    if slot in slot_map:
+        if len(slot_map[slot]) == 1:
+            return slot_map[slot][0]
+        else:
+            return random.choice(slot_map[slot])
     else:
         return slot
 
@@ -1443,69 +1554,51 @@ def token_seq_to_idx_seq(token_seqences, token2idx, max_output_seq_len):
 
 # ---- SCRIPTS ----
 
-def count_unique_mrs():
+def count_unique_mrs(dataset, filename):
     """Counts unique MRs in the datasets and prints the statistics. (Requires the initial comment blocks in
     the TV and Laptop data files to be manually removed first.)
     """
 
-    print('Unique MRs (E2E NLG):')
+    if filename.lower().endswith('.csv'):
+        df = pd.read_csv(os.path.join(config.DATA_DIR, dataset, filename), header=0, encoding='utf8')
+    elif filename.lower().endswith('.json'):
+        df = pd.read_json(os.path.join(config.DATA_DIR, dataset, filename), encoding='utf8')
+    else:
+        raise ValueError('Unexpected file type. Please provide a CSV or a JSON file as input.')
 
-    df = pd.read_csv(os.path.join(config.E2E_DATA_DIR, 'trainset_e2e.csv'), header=0, encoding='utf8')
-    print('train:\t', len(df.iloc[:, 0].unique()), '/', len(df.iloc[:, 0]))
+    # Remove delexicalized placeholders, if present
+    df.iloc[:, 0] = df.iloc[:, 0].replace(r'__.*?__', '', regex=True)
 
-    df = pd.read_csv(os.path.join(config.E2E_DATA_DIR, 'devset_e2e.csv'), header=0, encoding='utf8')
-    print('valid:\t', len(df.iloc[:, 0].unique()), '/', len(df.iloc[:, 0]))
-
-    df = pd.read_csv(os.path.join(config.E2E_DATA_DIR, 'testset_e2e.csv'), header=0, encoding='utf8')
-    print('test:\t', len(df.iloc[:, 0].unique()), '/', len(df.iloc[:, 0]))
-
-
-    print('Unique MRs (Video Games):')
-
-    df = pd.read_csv(os.path.join(config.VIDEO_GAME_DATA_DIR, 'trainset.csv'), header=0, encoding='utf8')
-    print('train:\t', len(df.iloc[:, 0].unique()), '/', len(df.iloc[:, 0]))
-
-    # df = pd.read_csv(os.path.join(config.VIDEO_GAME_DATA_DIR, 'devset.csv'), header=0, encoding='utf8')
-    # print('valid:\t', len(df.iloc[:, 0].unique()), '/', len(df.iloc[:, 0]))
-    #
-    # df = pd.read_csv(os.path.join(config.VIDEO_GAME_DATA_DIR, 'testset.csv'), header=0, encoding='utf8')
-    # print('test:\t', len(df.iloc[:, 0].unique()), '/', len(df.iloc[:, 0]))
+    print('Unique MRs (' + dataset + ' -> ' + filename + '):  ', end='')
+    print(len(df.iloc[:, 0].unique()), '/', len(df.iloc[:, 0]))
 
 
-    print('\nUnique MRs (TV):')
+def count_mr_overlap(dataset, filename1, filename2):
+    """Counts unique MRs in the datasets and prints the statistics. (Requires the initial comment blocks in
+    the TV and Laptop data files to be manually removed first.)
+    """
 
-    df = pd.read_json(os.path.join(config.TV_DATA_DIR, 'train.json'), encoding='utf8')
-    print('train:\t', len(df.iloc[:, 0].unique()), '/', len(df.iloc[:, 0]))
+    if filename1.lower().endswith('.csv') and filename2.lower().endswith('.csv'):
+        df1 = pd.read_csv(os.path.join(config.DATA_DIR, dataset, filename1), header=0, encoding='utf8')
+        df2 = pd.read_csv(os.path.join(config.DATA_DIR, dataset, filename2), header=0, encoding='utf8')
+    elif filename1.lower().endswith('.json') and filename2.lower().endswith('.json'):
+        df1 = pd.read_json(os.path.join(config.DATA_DIR, dataset, filename1), encoding='utf8')
+        df2 = pd.read_json(os.path.join(config.DATA_DIR, dataset, filename2), encoding='utf8')
+    else:
+        raise ValueError('Unexpected file type. Please provide two CSV or two JSON files as input.')
 
-    df = pd.read_json(os.path.join(config.TV_DATA_DIR, 'valid.json'), encoding='utf8')
-    print('valid:\t', len(df.iloc[:, 0].unique()), '/', len(df.iloc[:, 0]))
+    # Remove delexicalized placeholders, if present
+    df1.iloc[:, 0] = df1.iloc[:, 0].replace(r'__.*?__', '', regex=True)
+    df2.iloc[:, 0] = df2.iloc[:, 0].replace(r'__.*?__', '', regex=True)
 
-    df = pd.read_json(os.path.join(config.TV_DATA_DIR, 'test.json'), encoding='utf8')
-    print('test:\t', len(df.iloc[:, 0].unique()), '/', len(df.iloc[:, 0]))
+    # Identify the samples whose MR matches one in the other file
+    df1_overlap = df1[df1.mr.isin(df2.mr)]
+    df2_overlap = df2[df2.mr.isin(df1.mr)]
 
-
-    print('\nUnique MRs (Laptop):')
-
-    df = pd.read_json(os.path.join(config.LAPTOP_DATA_DIR, 'train.json'), encoding='utf8')
-    print('train:\t', len(df.iloc[:, 0].unique()), '/', len(df.iloc[:, 0]))
-
-    df = pd.read_json(os.path.join(config.LAPTOP_DATA_DIR, 'valid.json'), encoding='utf8')
-    print('valid:\t', len(df.iloc[:, 0].unique()), '/', len(df.iloc[:, 0]))
-
-    df = pd.read_json(os.path.join(config.LAPTOP_DATA_DIR, 'test.json'), encoding='utf8')
-    print('test:\t', len(df.iloc[:, 0].unique()), '/', len(df.iloc[:, 0]))
-
-
-    print('\nUnique MRs (Hotel):')
-
-    df = pd.read_json(os.path.join(config.HOTEL_DATA_DIR, 'train.json'), encoding='utf8')
-    print('train:\t', len(df.iloc[:, 0].unique()), '/', len(df.iloc[:, 0]))
-
-    df = pd.read_json(os.path.join(config.HOTEL_DATA_DIR, 'valid.json'), encoding='utf8')
-    print('valid:\t', len(df.iloc[:, 0].unique()), '/', len(df.iloc[:, 0]))
-
-    df = pd.read_json(os.path.join(config.HOTEL_DATA_DIR, 'test.json'), encoding='utf8')
-    print('test:\t', len(df.iloc[:, 0].unique()), '/', len(df.iloc[:, 0]))
+    print('Overlapping MRs (' + dataset + '):')
+    print('-> ' + filename1 + ':\t' + str(len(df1_overlap)) + ' out of ' + str(len(df1)))
+    print('-> ' + filename2 + ':\t' + str(len(df2_overlap)) + ' out of ' + str(len(df2)))
+    print()
 
 
 def verify_slot_order(dataset, filename):
@@ -1700,14 +1793,15 @@ def filter_samples_by_slot_count_json(dataset, filename, min_count=None, max_cou
         json.dump(data_filtered, f_dataset_filtered, indent=4, ensure_ascii=False)
 
 
-def counterfeit_dataset_from_e2e(filename, target_dataset):
+def counterfeit_dataset_from_e2e(filename, target_dataset, out_type='csv'):
     """Creates a counterfeit target dataset from the E2E restaurant dataset by mapping the E2E slots onto similar
     slots in the target domain. Boolean slots are handled by heuristically replacing the corresponding mention
     in the reference utterance to reflect the slot from the target domain that replaced the original E2E one.
     The counterfeit dataset is stored in a JSON format.
     """
 
-    delex_slots = ['name', 'eattype', 'food', 'pricerange', 'customerrating', 'area', 'familyfriendly', 'near']
+    source_slots = ['name', 'eattype', 'food', 'pricerange', 'customerrating', 'area', 'familyfriendly', 'near']
+
     data_counterfeit = []
     data_out = []
 
@@ -1716,7 +1810,8 @@ def counterfeit_dataset_from_e2e(filename, target_dataset):
     mrs, utterances = data_cont['data']
     _, _, slot_sep, val_sep, val_sep_end = data_cont['separators']
 
-    utterances = [preprocess_utterance(utt.lower()) for utt in utterances]
+    # Preprocess the utterances
+    utterances = [preprocess_utterance(utt) for utt in utterances]
 
     for mr, utt in zip(mrs, utterances):
         mr_dict = OrderedDict()
@@ -1727,20 +1822,30 @@ def counterfeit_dataset_from_e2e(filename, target_dataset):
             mr_dict[slot] = value
 
         # Delexicalize the MR and the utterance
-        data_counterfeit.append(counterfeit_sample(mr_dict, utt, dataset=target_dataset, slots_to_delex=delex_slots))
+        data_counterfeit.append(counterfeit_sample(mr_dict, utt, target_dataset=target_dataset, slots_to_replace=source_slots))
 
-    for mr, utt in data_counterfeit:
-        mr_modified = 'inform('
-        for slot, val in mr.items():
-            mr_modified += slot + '=\'' + val + '\';'
-        mr_modified = mr_modified[:-1] + ')'
+    if target_dataset in ['video_game']:
+        for mr, utt in data_counterfeit:
+            mr_str = mr_to_string(mr, da='inform')
+            data_out.append([mr_str, utt])
+    elif target_dataset in ['laptop', 'tv', 'hotel']:
+        for mr, utt in data_counterfeit:
+            mr_str = 'inform('
+            for slot, val in mr.items():
+                mr_str += slot + '=\'' + val + '\';'
+            mr_str = mr_str[:-1] + ')'
 
-        data_out.append([mr_modified, utt, utt])
+            data_out.append([mr_str, utt, utt])
 
-    # Save the conterfeit dataset to a new file
-    filename_out = ''.join(filename.split('.')[:-1]) + '_counterfeit_{}.json'.format(target_dataset)
-    with io.open(os.path.join(config.DATA_DIR, target_dataset, filename_out), 'w', encoding='utf8') as f_dataset_counterfeit:
-        json.dump(data_out, f_dataset_counterfeit, indent=4, ensure_ascii=False)
+    # Save the counterfeit dataset to a new file
+    if out_type == 'csv':
+        filename_out = os.path.splitext(filename)[0] + ' [counterfeit {}].csv'.format(target_dataset)
+        df_out = pd.DataFrame(data_out, columns=['mr', 'ref'])
+        df_out.to_csv(os.path.join(config.E2E_DATA_DIR, filename_out), index=False, encoding='utf8')
+    elif out_type == 'json':
+        filename_out = os.path.splitext(filename)[0] + ' [counterfeit {}].json'.format(target_dataset)
+        with io.open(os.path.join(config.E2E_DATA_DIR, filename_out), 'w', encoding='utf8') as f_dataset_counterfeit:
+            json.dump(data_out, f_dataset_counterfeit, indent=4, ensure_ascii=False)
 
 
 def get_vocab_overlap(dataset1, filename_train1, filename_dev1, dataset2, filename_train2, filename_dev2):
@@ -1819,25 +1924,26 @@ def generate_joint_vocab():
 
     data_trainset = os.path.join(config.VIDEO_GAME_DATA_DIR, 'train.csv')
     data_devset = os.path.join(config.VIDEO_GAME_DATA_DIR, 'valid.csv')
-    data_video_game = load_training_data(data_trainset, data_devset)
+    data_video_game = load_training_data(data_trainset, data_devset, skip_if_exist=False)
 
-    data_trainset = os.path.join(config.HOTEL_DATA_DIR, 'train.json')
-    data_devset = os.path.join(config.HOTEL_DATA_DIR, 'valid.json')
-    data_hotel = load_training_data(data_trainset, data_devset)
+    # data_trainset = os.path.join(config.HOTEL_DATA_DIR, 'train.json')
+    # data_devset = os.path.join(config.HOTEL_DATA_DIR, 'valid.json')
+    # data_hotel = load_training_data(data_trainset, data_devset, skip_if_exist=False)
+    #
+    # data_trainset = os.path.join(config.LAPTOP_DATA_DIR, 'train.json')
+    # data_devset = os.path.join(config.LAPTOP_DATA_DIR, 'valid.json')
+    # data_laptop = load_training_data(data_trainset, data_devset, skip_if_exist=False)
+    #
+    # data_trainset = os.path.join(config.TV_DATA_DIR, 'train.json')
+    # data_devset = os.path.join(config.TV_DATA_DIR, 'valid.json')
+    # data_tv = load_training_data(data_trainset, data_devset, skip_if_exist=False)
 
-    data_trainset = os.path.join(config.LAPTOP_DATA_DIR, 'train.json')
-    data_devset = os.path.join(config.LAPTOP_DATA_DIR, 'valid.json')
-    data_laptop = load_training_data(data_trainset, data_devset)
+    data_trainset = os.path.join(config.E2E_DATA_DIR, 'trainset_e2e [denoised] [counterfeit video_game].csv')
+    data_devset = os.path.join(config.E2E_DATA_DIR, 'devset_e2e [denoised] [counterfeit video_game].csv')
+    data_rest = load_training_data(data_trainset, data_devset, skip_if_exist=False)
 
-    data_trainset = os.path.join(config.TV_DATA_DIR, 'train.json')
-    data_devset = os.path.join(config.TV_DATA_DIR, 'valid.json')
-    data_tv = load_training_data(data_trainset, data_devset)
-
-    data_trainset = os.path.join(config.E2E_DATA_DIR, 'trainset_e2e.csv')
-    data_devset = os.path.join(config.E2E_DATA_DIR, 'devset_e2e.csv')
-    data_rest = load_training_data(data_trainset, data_devset)
-
-    generate_vocab_file(np.concatenate((data_rest, data_tv, data_laptop, data_hotel, data_video_game)),
+    # generate_vocab_file(np.concatenate((data_rest, data_tv, data_laptop, data_hotel, data_video_game)),
+    generate_vocab_file(np.concatenate((data_rest, data_video_game)),
                         vocab_filename='vocab.lang_gen.tokens')
 
 
@@ -1856,7 +1962,7 @@ def add_da_info_to_mr(mr, da_type):
     return da_type + '(' + mr + ')'
 
 
-def delex_dataset(dataset, files, slots_to_delex=None):
+def delex_dataset(dataset, files, slots_to_delex=None, mr_only=False):
 
     if not isinstance(files, list):
         files = [str(files)]
@@ -1885,15 +1991,25 @@ def delex_dataset(dataset, files, slots_to_delex=None):
                 mr_dict[slot] = value
 
             # Delexicalize the MR
-            utterances_delex.append(delex_sample(mr_dict, utterance=utterances[i], dataset=dataset_name,
-                                                 slots_to_delex=slots_to_delex))
+
+            if mr_only:
+                delex_sample(mr_dict, utterance=utterances[i], dataset=dataset_name, mr_only=True,
+                             slots_to_delex=slots_to_delex)
+            else:
+                utterances_delex.append(delex_sample(mr_dict, utterance=utterances[i], dataset=dataset_name,
+                                                     slots_to_delex=slots_to_delex))
+
             mrs_delex.append(mr_to_string(mr_dict))
 
         new_df = pd.DataFrame(columns=['mr', 'ref'])
         new_df['mr'] = mrs_delex
-        new_df['ref'] = utterances_delex
+        if mr_only:
+            new_df['ref'] = utterances_orig
+        else:
+            new_df['ref'] = utterances_delex
 
-        filename_out = os.path.splitext(filename)[0] + ' [delex]' + os.path.splitext(filename)[1]
+        suffix = ' [delex' + (', MR only' if mr_only else '') + ']'
+        filename_out = os.path.splitext(filename)[0] + suffix + os.path.splitext(filename)[1]
         file_out = os.path.join(config.DATA_DIR, dataset, filename_out)
 
         new_df.to_csv(file_out, index=False, encoding='utf8')
@@ -1931,9 +2047,29 @@ def mr_to_string(mr_dict, da=None):
 # ---- MAIN ----
 
 def main():
-    # count_unique_mrs()
+    # count_unique_mrs('rest_e2e', 'trainset_e2e [delex, MR only].csv')
+    # count_unique_mrs('rest_e2e', 'devset_e2e [delex, MR only].csv')
+    # count_unique_mrs('rest_e2e', 'testset_e2e [delex, MR only].csv')
+
+    # count_unique_mrs('video_game', 'train [delex, MR only].csv')
+    # count_unique_mrs('video_game', 'valid [delex, MR only].csv')
+    # count_unique_mrs('video_game', 'test [delex, MR only].csv')
+
+    # ----------
+
+    # count_mr_overlap('rest_e2e', 'trainset_e2e.csv', 'devset_e2e.csv')
+    # count_mr_overlap('rest_e2e', 'trainset_e2e.csv', 'testset_e2e.csv')
+    # count_mr_overlap('rest_e2e', 'devset_e2e.csv', 'testset_e2e.csv')
+
+    # count_mr_overlap('video_game', 'train [delex, MR only].csv', 'valid [delex, MR only].csv')
+    # count_mr_overlap('video_game', 'train [delex, MR only].csv', 'test [delex, MR only].csv')
+    # count_mr_overlap('video_game', 'valid [delex, MR only].csv', 'test [delex, MR only].csv')
+
+    # ----------
 
     # verify_slot_order('rest_e2e', 'trainset_e2e_utt_split.csv')
+
+    # ----------
 
     # das_to_keep = ['inform']
     # filter_samples_by_da_type_json('tv', 'train.json', das_to_keep)
@@ -1943,29 +2079,38 @@ def main():
     # filter_samples_by_slot_count_csv('rest_e2e', 'testset_e2e.csv', min_count=3, max_count=4)
     # filter_samples_by_slot_count_json('hotel', 'test_filtered.json', min_count=3, max_count=4)
 
-    # counterfeit_dataset_from_e2e('testset_e2e_min3_max4_slots.csv', 'hotel')
+    # ----------
+
+    # counterfeit_dataset_from_e2e('testset_e2e_min3_max4_slots.csv', 'hotel', format='json')
+    # counterfeit_dataset_from_e2e('trainset_e2e [denoised].csv', 'video_game', out_type='csv')
+
+    # ----------
 
     # get_vocab_overlap('rest_e2e', 'trainset_e2e.csv', 'devset_e2e.csv',
     #                   'hotel', 'train.json', 'valid.json')
     # get_vocab_overlap('laptop', 'train.json', 'valid.json',
     #                   'tv', 'train.json', 'valid.json')
 
+    # ----------
+
     # pool_slot_values('rest_e2e', ['trainset_e2e.csv', 'devset_e2e.csv'])
     # pool_slot_values('tv', ['train.json', 'valid.json'])
     # pool_slot_values('laptop', ['train.json', 'valid.json'])
     # pool_slot_values('hotel', ['train.json', 'valid.json'])
 
-    # generate_joint_vocab()
+    # ----------
+
+    generate_joint_vocab()
 
     # ----------
 
-    # augment_mrs_with_da_type('rest_e2e', 'trainset_e2e.csv', 'inform')
+    # augment_mrs_with_da_type('rest_e2e', 'trainset_e2e [denoised].csv', 'inform')
     # augment_mrs_with_da_type('video_game', 'dataset.csv', 'inform')
 
     # ----------
 
-    # delex_dataset('rest_e2e', ['testset_e2e.csv'], slots_to_delex=['name', 'near'])
-    delex_dataset('video_game', ['test.csv'], slots_to_delex=['name', 'developer'])
+    # delex_dataset('rest_e2e', ['devset_e2e.csv'], slots_to_delex=['name', 'near'], mr_only=True)
+    # delex_dataset('video_game', ['valid.csv'], slots_to_delex=['name', 'developer'], mr_only=True)
 
     # ----------
 
