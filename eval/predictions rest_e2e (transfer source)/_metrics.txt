@@ -1,0 +1,74 @@
+---- 2 layers, mixed vocab w/ video game, dropout 0.2 ----
+
+-- EXP #1 ---
+
+SCORES (10.4k, no reranking) - lowest loss:
+==============
+* BLEU: 0.6550
+* NIST: 8.4475
+* METEOR: 0.4545
+* ROUGE_L: 0.6854
+* CIDEr: 2.2271
+* SER: 0
+
+SCORES (15.8k, no reranking) - highest accuracy & BLEU:
+==============
+BLEU: 0.6440
+NIST: 8.3927
+METEOR: 0.4494
+ROUGE_L: 0.6746
+CIDEr: 2.0955
+* SER: 0
+
+
+---- 2 layers, denoised, counterfeit video game, dropout 0.2 ----
+
+-- EXP #1 ---
+
+SCORES (6k, no reranking):
+==============
+* BLEU: 0.2682
+* NIST: 5.6304
+* METEOR: 0.3020
+ROUGE_L: 0.4065
+CIDEr: 1.4501
+
+SCORES (8k, no reranking):
+==============
+BLEU: 0.2675
+NIST: 5.5044
+METEOR: 0.2996
+* ROUGE_L: 0.4127
+* CIDEr: 1.5041
+
+SCORES (10k, no reranking):
+==============
+BLEU: 0.2526
+NIST: 5.4533
+METEOR: 0.2979
+ROUGE_L: 0.3973
+CIDEr: 1.3510
+
+SCORES (12k, no reranking) - lowest loss:
+==============
+BLEU: 0.2577
+NIST: 5.4402
+METEOR: 0.2946
+ROUGE_L: 0.4052
+CIDEr: 1.4402
+
+SCORES (14k, no reranking):
+==============
+BLEU: 0.2523
+NIST: 5.3522
+METEOR: 0.2944
+ROUGE_L: 0.3976
+CIDEr: 1.3554
+
+SCORES (14.6k, no reranking) - highest accuracy:
+==============
+BLEU: 0.2490
+NIST: 5.3979
+METEOR: 0.2936
+ROUGE_L: 0.3958
+CIDEr: 1.3466

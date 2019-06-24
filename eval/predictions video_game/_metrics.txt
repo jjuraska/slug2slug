@@ -1,0 +1,838 @@
+---- 2 layers, linear warmup (8k) + rsqrt decay, dropout 0.6 ----
+
+-- EXP # 1 --
+
+SCORES (17.8k) - highest BLEU:
+==============
+BLEU: 0.5301
+NIST: 7.8515
+METEOR: 0.3852
+ROUGE_L: 0.6324
+CIDEr: 2.5449
+SER: 192
+
+-- EXP # 2 --
+
+SCORES (18k) - highest accuracy:
+==============
+BLEU: 0.5257
+NIST: 7.9290
+METEOR: 0.3823
+ROUGE_L: 0.6326
+CIDEr: 2.5403
+SER: 162
+
+SCORES (18.4k) - highest BLEU:
+==============
+BLEU: 0.5196
+NIST: 7.3368
+METEOR: 0.3834
+ROUGE_L: 0.6406
+CIDEr: 2.5058
+SER: 159
+
+-- EXP # 3 --
+
+SCORES (18.6k) - highest BLEU:
+==============
+BLEU: 0.5321
+NIST: 8.0988
+METEOR: 0.3863
+ROUGE_L: 0.6379
+CIDEr: 2.5883
+SER: 189
+
+SCORES (19.8k) - highest accuracy:
+==============
+BLEU: 0.5234
+NIST: 7.9536
+METEOR: 0.3863
+ROUGE_L: 0.6378
+CIDEr: 2.5477
+SER: 165
+
+
+---- 2 layers, linear warmup (8k) + rsqrt decay, dropout 0.1 ----
+
+-- EXP # 1 --
+
+SCORES (2.2k, no reranking) - lowest loss:
+==============
+BLEU: 0.5224
+NIST: 8.1603
+METEOR: 0.3787
+ROUGE_L: 0.6249
+CIDEr: 2.5156
+SER: 411
+
+SCORES (2.2k) - lowest loss:
+==============
+BLEU: 0.5323
+* NIST: 8.4465
+METEOR: 0.3845
+ROUGE_L: 0.6305
+CIDEr: 2.6015
+SER: 192
+
+SCORES (2.5k, no reranking) - lowest loss:
+==============
+BLEU: 0.5272
+NIST: 7.9442
+METEOR: 0.3795
+ROUGE_L: 0.6322
+CIDEr: 2.5115
+SER: 387
+
+SCORES (2.5k) - lowest loss:
+==============
+* BLEU: 0.5388
+NIST: 8.3689
+* METEOR: 0.3885
+* ROUGE_L: 0.6382
+* CIDEr: 2.6259
+* SER: 138
+
+SCORES (2.7k, no reranking) - highest BLEU:
+==============
+BLEU: 0.5056
+NIST: 8.0908
+METEOR: 0.3771
+ROUGE_L: 0.6187
+CIDEr: 2.3724
+
+SCORES (3k, no reranking) - highest accuracy:
+==============
+BLEU: 0.5101
+NIST: 8.0126
+METEOR: 0.3790
+ROUGE_L: 0.6213
+CIDEr: 2.4786
+
+
+---- 2 layers, linear warmup (8k) + rsqrt decay, dropout 0.2 ----
+
+-- EXP # 1 --
+
+SCORES (3.6k, no reranking) - lowest loss:
+==============
+BLEU: 0.5118
+NIST: 8.3088
+METEOR: 0.3825
+ROUGE_L: 0.6267
+CIDEr: 2.4038
+SER: 360
+
+SCORES (3.6k) - lowest loss:
+==============
+* BLEU: 0.5200
+* NIST: 8.5639
+* METEOR: 0.3898
+* ROUGE_L: 0.6332
+CIDEr: 2.4804
+SER: 129
+
+SCORES (4k, no reranking) - highest BLEU:
+==============
+BLEU: 0.5050
+NIST: 8.2301
+METEOR: 0.3846
+ROUGE_L: 0.6255
+CIDEr: 2.4280
+SER: 255
+
+SCORES (4k) - highest BLEU:
+==============
+BLEU: 0.5141
+NIST: 8.3780
+METEOR: 0.3886
+ROUGE_L: 0.6290
+CIDEr: 2.4548
+* SER: 99
+
+SCORES (5.8k, no reranking) - highest accuracy:
+==============
+BLEU: 0.5065
+NIST: 8.3513
+METEOR: 0.3838
+ROUGE_L: 0.6220
+CIDEr: 2.4216
+SER: 267
+
+SCORES (5.8k) - highest accuracy:
+==============
+BLEU: 0.5114
+NIST: 8.4768
+METEOR: 0.3884
+ROUGE_L: 0.6215
+* CIDEr: 2.5025
+SER: 102
+
+-- EXP # 2 --
+
+SCORES (3.4k, no reranking) - lowest loss:
+==============
+BLEU: 0.5076
+NIST: 8.0861
+METEOR: 0.3832
+ROUGE_L: 0.6172
+CIDEr: 2.4861
+SER: 291
+
+SCORES (3.4k) - lowest loss:
+==============
+BLEU: 0.5146
+NIST: 8.2739
+* METEOR: 0.3884
+ROUGE_L: 0.6257
+* CIDEr: 2.5527
+* SER: 126
+
+SCORES (4.6k, no reranking) - highest BLEU:
+==============
+BLEU: 0.5150
+NIST: 8.2931
+METEOR: 0.3814
+ROUGE_L: 0.6209
+CIDEr: 2.4840
+SER: 282
+
+SCORES (4.6k) - highest BLEU:
+==============
+* BLEU: 0.5183
+* NIST: 8.4313
+METEOR: 0.3866
+* ROUGE_L: 0.6267
+CIDEr: 2.5209
+* SER: 126
+
+SCORES (5k, no reranking) - highest accuracy:
+==============
+BLEU: 0.5033
+NIST: 7.8531
+METEOR: 0.3808
+ROUGE_L: 0.6241
+CIDEr: 2.4051
+
+-- EXP # 3 --
+
+SCORES (3.5k, no reranking) - lowest loss:
+==============
+BLEU: 0.5156
+NIST: 7.9721
+METEOR: 0.3794
+ROUGE_L: 0.6223
+CIDEr: 2.4732
+SER: 315
+
+SCORES (3.5k) - lowest loss:
+==============
+* BLEU: 0.5242
+NIST: 8.2426
+METEOR: 0.3860
+ROUGE_L: 0.6288
+* CIDEr: 2.5412
+* SER: 129
+
+SCORES (3.7k, no reranking) - highest accuracy:
+==============
+BLEU: 0.5186
+NIST: 8.1671
+METEOR: 0.3796
+ROUGE_L: 0.6281
+CIDEr: 2.4533
+SER: 333
+
+SCORES (3.7k) - highest accuracy:
+==============
+BLEU: 0.5216
+* NIST: 8.3924
+* METEOR: 0.3864
+* ROUGE_L: 0.6305
+CIDEr: 2.5009
+SER: 144
+
+SCORES (5.9k, no reranking) - highest BLEU:
+==============
+BLEU: 0.4859
+NIST: 8.2060
+METEOR: 0.3749
+ROUGE_L: 0.6089
+CIDEr: 2.3545
+
+-- EXP # 4 --
+
+SCORES (3.5k, no reranking) - lowest loss:
+==============
+BLEU: 0.5016
+NIST: 7.8742
+METEOR: 0.3786
+ROUGE_L: 0.6208
+CIDEr: 2.4656
+SER: 354
+
+SCORES (3.5k) - lowest loss:
+==============
+* BLEU: 0.5095
+NIST: 8.2257
+* METEOR: 0.3862
+* ROUGE_L: 0.6264
+* CIDEr: 2.5221
+SER: 126
+
+SCORES (5k, no reranking) - highest accuracy:
+==============
+BLEU: 0.5065
+NIST: 8.2162
+METEOR: 0.3798
+ROUGE_L: 0.6199
+CIDEr: 2.4335
+SER: 264
+
+SCORES (5k) - highest accuracy:
+==============
+BLEU: 0.5098
+* NIST: 8.3616
+METEOR: 0.3852
+ROUGE_L: 0.6251
+CIDEr: 2.4830
+* SER: 114
+
+-- EXP # 5 --
+
+SCORES (2.9k, no reranking) - lowest loss:
+==============
+BLEU: 0.5302
+NIST: 8.0360
+METEOR: 0.3807
+ROUGE_L: 0.6290
+CIDEr: 2.5042
+SER: 375
+
+SCORES (2.9k) - lowest loss:
+==============
+* BLEU: 0.5394
+NIST: 8.3669
+METEOR: 0.3864
+ROUGE_L: 0.6364
+* CIDEr: 2.5833
+SER: 174
+
+SCORES (3.4k, no reranking) - lowest loss:
+==============
+BLEU: 0.5237
+NIST: 8.1941
+METEOR: 0.3807
+ROUGE_L: 0.6317
+CIDEr: 2.4908
+SER: 309
+
+SCORES (3.4k) - lowest loss:
+==============
+BLEU: 0.5321
+* NIST: 8.4838
+* METEOR: 0.3901
+* ROUGE_L: 0.6375
+CIDEr: 2.5753
+SER: 108
+
+SCORES (4.5k, no reranking) - highest accuracy:
+==============
+BLEU: 0.5080
+NIST: 8.0174
+METEOR: 0.3800
+ROUGE_L: 0.6189
+CIDEr: 2.4728
+SER: 303
+
+SCORES (4.5k) - highest accuracy:
+==============
+BLEU: 0.5182
+NIST: 8.2951
+METEOR: 0.3893
+ROUGE_L: 0.6263
+CIDEr: 2.5530
+* SER: 99
+
+-- EXP # 6 --
+
+SCORES (3.1k, no reranking) - lowest loss:
+==============
+BLEU: 0.5159
+NIST: 8.4616
+METEOR: 0.3820
+ROUGE_L: 0.6207
+CIDEr: 2.5045
+SER: 285
+
+SCORES (3.1k) - lowest loss:
+==============
+* BLEU: 0.5195
+* NIST: 8.5406
+* METEOR: 0.3873
+* ROUGE_L: 0.6249
+* CIDEr: 2.5339
+* SER: 150
+
+SCORES (4.9k, no reranking) - highest accuracy:
+==============
+BLEU: 0.4926
+NIST: 8.2214
+METEOR: 0.3747
+ROUGE_L: 0.6187
+CIDEr: 2.3143
+
+
+---- 2 layers, batch size 1024, linear warmup (8k) + rsqrt decay, dropout 0.2 ----
+
+
+SCORES (5.5k, no reranking) - lowest loss:
+==============
+BLEU: 0.5044
+NIST: 7.6751
+METEOR: 0.3803
+ROUGE_L: 0.6171
+CIDEr: 2.4554
+SER: 339
+
+SCORES (5.5k) - lowest loss:
+==============
+BLEU: 0.5077
+NIST: 8.0335
+* METEOR: 0.3863
+* ROUGE_L: 0.6232
+* CIDEr: 2.5161
+* SER: 147
+
+SCORES (5.7k, no reranking) - highest accuracy:
+==============
+BLEU: 0.5179
+NIST: 8.1490
+METEOR: 0.3783
+ROUGE_L: 0.6214
+CIDEr: 2.4532
+SER: 306
+
+SCORES (5.7k) - highest accuracy:
+==============
+* BLEU: 0.5200
+* NIST: 8.3060
+METEOR: 0.3850
+ROUGE_L: 0.6231
+CIDEr: 2.4872
+SER: 159
+
+
+---- 2 layers, LR 0.002 w/ linear warmup(200) & exponential decay(0.5/500), dropout 0.2 ----
+
+-- EXP # 1 --
+
+SCORES (1.55k, no reranking) - lowest loss:
+==============
+BLEU: 0.5132
+NIST: 8.1922
+METEOR: 0.3815
+ROUGE_L: 0.6299
+CIDEr: 2.4321
+SER: 339
+
+SCORES (1.55k) - lowest loss:
+==============
+BLEU: 0.5252
+NIST: 8.4453
+METEOR: 0.3886
+ROUGE_L: 0.6358
+CIDEr: 2.5259
+SER: 129
+
+SCORES (3.4k, no reranking) - highest accuracy:
+==============
+BLEU: 0.5138
+NIST: 8.2801
+METEOR: 0.3798
+ROUGE_L: 0.6240
+CIDEr: 2.4826
+SER: 306
+
+SCORES (3.4k) - highest accuracy:
+==============
+BLEU: 0.5185
+NIST: 8.4528
+METEOR: 0.3860
+ROUGE_L: 0.6292
+CIDEr: 2.5281
+SER: 126
+
+-- EXP # 2 --
+
+SCORES (1.8k, no reranking) - lowest loss:
+==============
+BLEU: 0.5187
+NIST: 8.4406
+METEOR: 0.3822
+ROUGE_L: 0.6237
+CIDEr: 2.4757
+SER: 339
+
+SCORES (1.8k) - lowest loss:
+==============
+BLEU: 0.5233
+NIST: 8.5644
+METEOR: 0.3859
+ROUGE_L: 0.6300
+CIDEr: 2.5135
+SER: 153
+
+SCORES (2.05k, no reranking) - highest accuracy:
+==============
+BLEU: 0.5252
+NIST: 8.0006
+METEOR: 0.3831
+ROUGE_L: 0.6338
+CIDEr: 2.5477
+SER: 339
+
+SCORES (2.05k) - highest accuracy:
+==============
+BLEU: 0.5240
+NIST: 8.2936
+METEOR: 0.3872
+ROUGE_L: 0.6316
+CIDEr: 2.5854
+SER: 129
+
+
+---- 2 layers, LR 0.0005 w/ cosine decay (1k), dropout 0.2, ----
+
+-- EXP # 1 --
+
+SCORES (3.25k, no reranking) - lowest loss:
+==============
+BLEU: 0.5169
+NIST: 7.8169
+METEOR: 0.3830
+ROUGE_L: 0.6310
+CIDEr: 2.4814
+SER: 318
+
+SCORES (3.25k) - lowest loss:
+==============
+* BLEU: 0.5263
+NIST: 8.1186
+* METEOR: 0.3895
+* ROUGE_L: 0.6381
+* CIDEr: 2.5627
+SER: 147
+
+SCORES (4.65k, no reranking) - highest BLEU:
+==============
+BLEU: 0.5020
+NIST: 8.2134
+METEOR: 0.3797
+ROUGE_L: 0.6217
+CIDEr: 2.4077
+SER: 297
+
+SCORES (4.65k) - highest BLEU:
+==============
+BLEU: 0.5065
+* NIST: 8.3859
+METEOR: 0.3854
+ROUGE_L: 0.6264
+CIDEr: 2.4560
+SER: 114
+
+SCORES (5.4k, no reranking) - highest accuracy:
+==============
+BLEU: 0.4953
+NIST: 8.2491
+METEOR: 0.3817
+ROUGE_L: 0.6124
+CIDEr: 2.3740
+SER: 249
+
+SCORES (5.4k) - highest accuracy:
+==============
+BLEU: 0.4966
+NIST: 8.3469
+METEOR: 0.3853
+ROUGE_L: 0.6159
+CIDEr: 2.4132
+* SER: 108
+
+-- EXP # 2 --
+
+SCORES (4.3k, no reranking) - highest BLEU:
+==============
+BLEU: 0.5105
+NIST: 8.2435
+METEOR: 0.3805
+ROUGE_L: 0.6235
+CIDEr: 2.4765
+SER: 270
+
+SCORES (4.3k) - highest BLEU:
+==============
+BLEU: 0.5159
+NIST: 8.4187
+METEOR: 0.3851
+ROUGE_L: 0.6288
+* CIDEr: 2.5151
+* SER: 114
+
+SCORES (4.95k, no reranking) - lowest loss:
+==============
+BLEU: 0.5150
+NIST: 8.3123
+METEOR: 0.3830
+ROUGE_L: 0.6265
+CIDEr: 2.4591
+SER: 276
+
+SCORES (4.95k) - lowest loss:
+==============
+* BLEU: 0.5246
+* NIST: 8.4864
+* METEOR: 0.3880
+ROUGE_L: 0.6310
+CIDEr: 2.5124
+SER: 117
+
+SCORES (5k, no reranking) - highest accuracy:
+==============
+BLEU: 0.5158
+NIST: 8.3147
+METEOR: 0.3831
+ROUGE_L: 0.6268
+CIDEr: 2.4640
+SER: 276
+
+SCORES (5k) - highest accuracy:
+==============
+BLEU: 0.5236
+NIST: 8.4735
+METEOR: 0.3878
+* ROUGE_L: 0.6312
+CIDEr: 2.5076
+SER: 117
+
+-- EXP # 3 --
+
+SCORES (4.8k, no reranking) - highest BLEU:
+==============
+BLEU: 0.5207
+NIST: 8.0263
+METEOR: 0.3820
+ROUGE_L: 0.6327
+CIDEr: 2.5265
+SER: 267
+
+SCORES (4.8k) - highest BLEU:
+==============
+BLEU: 0.5274
+NIST: 8.2829
+METEOR: 0.3878
+ROUGE_L: 0.6360
+CIDEr: 2.5888
+SER: 120
+
+SCORES (5.15k, no reranking) - lowest loss:
+==============
+BLEU: 0.5235
+NIST: 8.1607
+METEOR: 0.3820
+ROUGE_L: 0.6307
+CIDEr: 2.5155
+SER: 285
+
+SCORES (5.15k) - lowest loss:
+==============
+BLEU: 0.5304
+NIST: 8.3883
+METEOR: 0.3891
+* ROUGE_L: 0.6344
+CIDEr: 2.5915
+SER: 117
+
+SCORES (5.25k, no reranking) - highest accuracy:
+==============
+BLEU: 0.5276
+NIST: 8.3012
+METEOR: 0.3833
+ROUGE_L: 0.6289
+CIDEr: 2.5525
+SER: 249
+
+SCORES (5.25k) - highest accuracy:
+==============
+* BLEU: 0.5351
+* NIST: 8.4706
+* METEOR: 0.3892
+ROUGE_L: 0.6322
+* CIDEr: 2.6151
+* SER: 114
+
+
+---- 2 layers, LR 0.0005 w/ linear warm-up (0.2k) & cosine decay (5k), dropout 0.2, ----
+
+-- EXP # 1 --
+
+SCORES (2.6k, no reranking) - lowest loss:
+==============
+BLEU: 0.5241
+NIST: 8.2928
+METEOR: 0.3860
+ROUGE_L: 0.6348
+CIDEr: 2.5050
+SER: 303
+
+SCORES (2.6k) - lowest loss:
+==============
+* BLEU: 0.5306
+* NIST: 8.4752
+METEOR: 0.3903
+* ROUGE_L: 0.6391
+* CIDEr: 2.5629
+SER: 123
+
+SCORES (4.8k, no reranking) - highest accuracy:
+==============
+BLEU: 0.5239
+NIST: 8.2451
+METEOR: 0.3873
+ROUGE_L: 0.6378
+CIDEr: 2.4940
+SER: 276
+
+SCORES (4.8k) - highest accuracy:
+==============
+BLEU: 0.5211
+NIST: 8.3881
+* METEOR: 0.3911
+ROUGE_L: 0.6379
+CIDEr: 2.5447
+* SER: 102
+
+-- EXP # 2 --
+
+SCORES (3k, no reranking) - lowest loss:
+==============
+BLEU: 0.5204
+NIST: 7.7497
+METEOR: 0.3822
+ROUGE_L: 0.6313
+CIDEr: 2.4542
+SER: 330
+
+SCORES (3k) - lowest loss:
+==============
+* BLEU: 0.5282
+NIST: 8.2049
+* METEOR: 0.3885
+* ROUGE_L: 0.6402
+* CIDEr: 2.5415
+SER: 117
+
+SCORES (4.75k, no reranking) - highest accuracy:
+==============
+BLEU: 0.5153
+NIST: 8.2352
+METEOR: 0.3836
+ROUGE_L: 0.6336
+CIDEr: 2.4808
+SER: 288
+
+SCORES (4.75k) - highest accuracy:
+==============
+BLEU: 0.5181
+* NIST: 8.4062
+METEOR: 0.3865
+ROUGE_L: 0.6348
+CIDEr: 2.5340
+* SER: 111
+
+-- EXP # 3 --
+
+SCORES (2.25k, no reranking) - lowest loss:
+==============
+BLEU: 0.5342
+NIST: 7.9318
+METEOR: 0.3818
+ROUGE_L: 0.6313
+CIDEr: 2.4972
+SER: 288
+
+SCORES (2.25k) - lowest loss:
+==============
+* BLEU: 0.5370
+NIST: 8.2154
+* METEOR: 0.3888
+* ROUGE_L: 0.6363
+* CIDEr: 2.5945
+* SER: 105
+
+SCORES (4.55k, no reranking) - highest accuracy:
+==============
+BLEU: 0.5205
+NIST: 8.2665
+METEOR: 0.3815
+ROUGE_L: 0.6258
+CIDEr: 2.4785
+SER: 243
+
+SCORES (4.55k) - highest accuracy:
+==============
+BLEU: 0.5228
+* NIST: 8.4407
+METEOR: 0.3855
+ROUGE_L: 0.6270
+CIDEr: 2.5480
+SER: 108
+
+-- EXP # 4 --
+
+SCORES (2.8k, no reranking) - lowest loss:
+==============
+BLEU: 0.5193
+NIST: 8.1630
+METEOR: 0.3836
+ROUGE_L: 0.6315
+CIDEr: 2.5138
+SER: 306
+
+SCORES (2.8k) - lowest loss:
+==============
+* BLEU: 0.5269
+NIST: 8.3889
+* METEOR: 0.3890
+* ROUGE_L: 0.6392
+* CIDEr: 2.5553
+SER: 132
+
+SCORES (4.15k, no reranking) - highest accuracy:
+==============
+BLEU: 0.5090
+NIST: 8.2247
+METEOR: 0.3842
+ROUGE_L: 0.6280
+CIDEr: 2.4663
+SER: 261
+
+SCORES (4.15k) - highest accuracy:
+==============
+BLEU: 0.5121
+* NIST: 8.4089
+METEOR: 0.3874
+ROUGE_L: 0.6287
+CIDEr: 2.4999
+* SER: 105
+
+-- ENSEMBLE --
+
+SCORES (3 highest accuracy):
+==============
+BLEU: 0.5222
+NIST: 8.4085
+METEOR: 0.3889
+ROUGE_L: 0.6343
+CIDEr: 2.5274
+SER: 69
