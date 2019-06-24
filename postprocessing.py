@@ -158,6 +158,8 @@ def rerank_beams(beams, keep_n=None, keep_least_errors_only=False):
     checkpoints = range(step - 1, len(mrs), step)
 
     for index in range(len(mrs)):
+        # TODO: load and preprocess the MRs properly, not from the JSON file
+        # cur_mr = {slot: ' '.join(word_tokenize(val.lower())) for slot, val in mrs[index].items()}
         cur_mr = mrs[index]
         beam_reranked = []
 

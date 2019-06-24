@@ -12,6 +12,7 @@ MODEL=transformer
 #MODEL=lstm_seq2seq_attention_bidirectional_encoder
 
 HPARAMS=transformer_lang_gen
+#HPARAMS=transformer_lang_gen_finetune
 #HPARAMS=transformer_lang_gen_multi_vocab
 #HPARAMS=lstm_lang_gen
 

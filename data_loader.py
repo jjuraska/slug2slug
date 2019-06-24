@@ -1302,9 +1302,12 @@ def delex_sample(mr, utterance=None, dataset=None, slots_to_delex=None, mr_only=
         return utterance
 
 
-def counterfeit_sample(mr, utt, target_dataset=None, slots_to_replace=None):
+def counterfeit_sample(mr, utt, target_dataset=None, slots_to_replace=None, slot_value_dict=None):
     """Counterfeits a single E2E sample (MR and the corresponding utterance).
     """
+
+    mr_counterfeit = {}
+    utt_counterfeit = utt
 
     if slots_to_replace is None:
         if target_dataset == 'rest_e2e':
@@ -1320,98 +1323,169 @@ def counterfeit_sample(mr, utt, target_dataset=None, slots_to_replace=None):
         else:
             slots_to_replace = []
 
-    mr_counterfeit = {}
-    utt_counterfeit = utt
+    if target_dataset == 'video_game':
+        for slot_orig, value_orig in mr.items():
+            slot_counterfeit = slot_orig
+            value_counterfeit = value_orig
 
-    for slot_orig, value_orig in mr.items():
-        if slot_orig.rstrip(string.digits) in slots_to_replace:
-            # TODO: sample counterfeit slot values to replace the original ones
-            if target_dataset == 'video_game':
+            if slot_orig.rstrip(string.digits) in slots_to_replace:
                 # Substitute the slot with the corresponding slot from the target domain
                 slot_counterfeit = e2e_slot_to_video_game_slot(slot_orig)
                 while slot_counterfeit in mr_counterfeit:
                     slot_counterfeit = e2e_slot_to_video_game_slot(slot_orig)
 
                 if slot_orig == 'food':
-                    if slot_counterfeit == 'releaseyear':
-                        value_counterfeit1 = random.choice(['was released in', 'came out in'])
-                        value_counterfeit2 = random.choice(['released in', 'from'])
-                    elif slot_counterfeit == 'expreleasedate':
-                        value_counterfeit1 = random.choice(['will be released on', 'is expected to come out', 'is coming out on'])
-                        value_counterfeit2 = random.choice(['to be released on', 'expected to be released on', 'slated for release on'])
-                    else:
-                        value_counterfeit1 = ''
-                        value_counterfeit2 = ''
+                    # If value mentioned in the MR verbatim, replace with a sampled value from the target domain
+                    if value_orig in utt_counterfeit:
+                        value_counterfeit = random.choice(slot_value_dict[slot_counterfeit])
+                        value_realization = value_counterfeit
+                        utt_counterfeit = re.sub(value_orig, value_realization, utt_counterfeit)
 
-                    utt_counterfeit = re.sub(r'\bserves\b', value_counterfeit1, utt_counterfeit)
-                    utt_counterfeit = re.sub(r'\bserving\b', value_counterfeit2, utt_counterfeit)
+                    # Replace related keywords/phrases with alternatives matching the target domain
+                    if slot_counterfeit == 'releaseyear':
+                        phrase_counterfeit1 = random.choice(['was released in', 'came out in'])
+                        phrase_counterfeit2 = random.choice(['released in', 'from'])
+                    elif slot_counterfeit == 'expreleasedate':
+                        phrase_counterfeit1 = random.choice(['will be released on', 'is expected to come out', 'is coming out on'])
+                        phrase_counterfeit2 = random.choice(['to be released on', 'expected to be released on', 'slated for release on'])
+                    else:
+                        phrase_counterfeit1 = ''
+                        phrase_counterfeit2 = ''
+
+                    utt_counterfeit = re.sub(r'\bserves\b', phrase_counterfeit1, utt_counterfeit)
+                    utt_counterfeit = re.sub(r'\bserving\b', phrase_counterfeit2, utt_counterfeit)
+                    utt_counterfeit = re.sub(r'\bprovides\b', phrase_counterfeit1, utt_counterfeit)
+                    utt_counterfeit = re.sub(r'\bproviding\b', phrase_counterfeit2, utt_counterfeit)
                     utt_counterfeit = re.sub(r'\bfood\b', '', utt_counterfeit)
                 elif slot_orig == 'customerrating':
+                    # If value mentioned in the MR verbatim, replace with a sampled value from the target domain
+                    if value_orig in utt_counterfeit:
+                        value_counterfeit = random.choice(slot_value_dict[slot_counterfeit])
+                        value_realization = value_counterfeit
+                        utt_counterfeit = re.sub(value_orig, value_realization, utt_counterfeit)
+
+                    # Replace related keywords/phrases with alternatives matching the target domain
                     if slot_counterfeit == 'rating':
-                        value_counterfeit = 'rating'
+                        phrase_counterfeit = 'rating'
                     elif slot_counterfeit == 'esrb':
-                        value_counterfeit = 'esrb rating'
+                        phrase_counterfeit = 'esrb rating'
                     else:
-                        value_counterfeit = ''
+                        phrase_counterfeit = ''
 
                     for w in ['customer ratings', 'customer rating', 'ratings', 'rating']:
-                        utt_counterfeit = re.sub(r'\b{}\b'.format(w), value_counterfeit, utt)
-                        if utt_counterfeit != utt:
+                        utt_counterfeit_sub = re.sub(r'\b{}\b'.format(w), phrase_counterfeit, utt_counterfeit)
+                        if utt_counterfeit_sub != utt_counterfeit:
+                            utt_counterfeit = utt_counterfeit_sub
                             break
                 elif slot_orig == 'pricerange':
-                    if slot_counterfeit == 'playerperspective':
-                        value_counterfeit = 'perspective'
-                    else:
-                        value_counterfeit = ''
+                    # If value mentioned in the MR verbatim, replace with a sampled value from the target domain
+                    if value_orig in utt_counterfeit:
+                        value_counterfeit = random.choice(slot_value_dict[slot_counterfeit])
+                        if ',' in value_counterfeit:
+                            value_items = [val.strip() for val in value_counterfeit.split(',')]
+                            value_items_shuffled = random.sample(value_items, len(value_items))
+                            value_realization = ', '.join(value_items_shuffled[:-1]) + ' and ' + value_items_shuffled[-1]
+                        else:
+                            value_realization = value_counterfeit
+                        utt_counterfeit = re.sub(value_orig, value_realization, utt_counterfeit)
 
-                    for w in ['price range', 'prices', 'price']:
-                        utt_counterfeit = re.sub(r'\b{}\b'.format(w), value_counterfeit, utt)
-                        if utt_counterfeit != utt:
+                    # Replace related keywords/phrases with alternatives matching the target domain
+                    if slot_counterfeit == 'playerperspective':
+                        phrase_counterfeit = 'perspective'
+                    else:
+                        phrase_counterfeit = ''
+
+                    for w in ['price range', 'priced', 'prices', 'price']:
+                        utt_counterfeit_sub = re.sub(r'\b{}\b'.format(w), phrase_counterfeit, utt_counterfeit)
+                        if utt_counterfeit_sub != utt_counterfeit:
+                            utt_counterfeit = utt_counterfeit_sub
                             break
                 elif slot_orig == 'familyfriendly':
                     if slot_counterfeit == 'hasmultiplayer':
-                        value_counterfeit = 'multiplayer'
+                        phrase_counterfeit = 'multiplayer'
                     elif slot_counterfeit == 'availableonsteam':
-                        value_counterfeit = 'steam'
+                        phrase_counterfeit = 'steam'
                     elif slot_counterfeit == 'haslinuxrelease':
-                        value_counterfeit = 'linux'
+                        phrase_counterfeit = 'linux'
                     elif slot_counterfeit == 'hasmacrelease':
-                        value_counterfeit = 'mac'
+                        phrase_counterfeit = 'mac'
                     else:
-                        value_counterfeit = ''
+                        phrase_counterfeit = ''
 
                     for w in ['families', 'children', 'kids', 'family', 'child', 'kid']:
-                        utt_counterfeit = re.sub(r'\b{}\b'.format(w), value_counterfeit, utt)
-                        if utt_counterfeit != utt:
+                        utt_counterfeit_sub = re.sub(r'\b{}\b'.format(w), phrase_counterfeit, utt_counterfeit)
+                        if utt_counterfeit_sub != utt_counterfeit:
+                            utt_counterfeit = utt_counterfeit_sub
                             break
+
+                    for w in ['-friendly', ' friendly']:
+                        utt_counterfeit = re.sub(r'\b{}\b'.format(w), ' supporting', utt_counterfeit)
 
                     utt_counterfeit = re.sub(r'\ballow', 'offer', utt_counterfeit)
                 elif slot_orig == 'area':
+                    # If value mentioned in the MR verbatim, replace with a sampled value from the target domain
+                    if value_orig in utt_counterfeit:
+                        value_counterfeit = random.choice(slot_value_dict[slot_counterfeit])
+                        if ',' in value_counterfeit:
+                            value_items = [val.strip() for val in value_counterfeit.split(',')]
+                            value_items_shuffled = random.sample(value_items, len(value_items))
+                            value_realization = ', '.join(value_items_shuffled[:-1]) + ' and ' + value_items_shuffled[-1]
+                        else:
+                            value_realization = value_counterfeit
+                        utt_counterfeit = re.sub(value_orig, value_realization, utt_counterfeit)
+
+                    # Replace related keywords/phrases with alternatives matching the target domain
                     if slot_counterfeit == 'platforms':
-                        value_counterfeit = random.choice(['available for', 'available on', 'released for', 'released on'])
+                        phrase_counterfeit = random.choice(['available for', 'available on', 'released for', 'released on'])
                     else:
-                        value_counterfeit = ''
+                        phrase_counterfeit = ''
 
                     for w in ['located in']:
-                        utt_counterfeit = re.sub(r'\b{}\b'.format(w), value_counterfeit, utt)
-                        if utt_counterfeit != utt:
+                        utt_counterfeit_sub = re.sub(r'\b{}\b'.format(w), phrase_counterfeit, utt_counterfeit)
+                        if utt_counterfeit_sub != utt_counterfeit:
+                            utt_counterfeit = utt_counterfeit_sub
                             break
+
+                    for w in ['area']:
+                        phrase_counterfeit = 'platform' + ('s' if ',' in value_counterfeit else '')
+                        utt_counterfeit = re.sub(r'\b{}\b'.format(w), phrase_counterfeit, utt_counterfeit)
                 elif slot_orig == 'eattype':
-                    for w in ['place', 'venue', 'establishment', 'eatery']:
-                        utt_counterfeit = re.sub(r'\b{}\b'.format(w), 'game', utt_counterfeit)
+                    # If value mentioned in the MR verbatim, replace with a sampled value from the target domain
+                    if value_orig in utt_counterfeit:
+                        value_counterfeit = random.choice(slot_value_dict[slot_counterfeit])
+                        if ',' in value_counterfeit:
+                            value_items = [val.strip() for val in value_counterfeit.split(',')]
+                            value_items_shuffled = random.sample(value_items, len(value_items))
+                            value_realization = ' '.join(value_items_shuffled) + ' game'
+                        else:
+                            value_realization = value_counterfeit + ' game'
+                        utt_counterfeit = re.sub(value_orig, value_realization, utt_counterfeit)
                 elif slot_orig == 'near':
                     if slot_counterfeit == 'developer':
-                        value_counterfeit = random.choice(['developed by', 'made by'])
+                        phrase_counterfeit = random.choice(['developed by', 'made by'])
                     else:
-                        value_counterfeit = ''
+                        phrase_counterfeit = ''
 
-                    for w in ['located near']:
-                        utt_counterfeit = re.sub(r'\b{}\b'.format(w), value_counterfeit, utt)
-                        if utt_counterfeit != utt:
+                    for w in ['located near', 'situated by']:
+                        utt_counterfeit_sub = re.sub(r'\b{}\b'.format(w), phrase_counterfeit, utt_counterfeit)
+                        if utt_counterfeit_sub != utt_counterfeit:
+                            utt_counterfeit = utt_counterfeit_sub
                             break
 
                     utt_counterfeit = re.sub(r'\bnear\b', random.choice(['by', 'from']), utt_counterfeit)
-            elif target_dataset == 'hotel':
+
+            mr_counterfeit[slot_counterfeit] = value_counterfeit
+
+        # Replace general keywords/phrases with alternatives matching the target domain
+        for w in ['place', 'venue', 'establishment', 'eatery', 'restaurant']:
+            utt_counterfeit = re.sub(r'\b{}\b'.format(w), 'game', utt_counterfeit)
+        utt_counterfeit = re.sub(r'\bnear\b'.format(w), 'for', utt_counterfeit)
+    elif target_dataset == 'hotel':
+        for slot_orig, value_orig in mr.items():
+            slot_counterfeit = slot_orig
+            value_counterfeit = value_orig
+
+            if slot_orig.rstrip(string.digits) in slots_to_replace:
                 # Substitute the slot with the corresponding slot from the target domain
                 slot_counterfeit = e2e_slot_to_hotel_slot(slot_orig)
                 while slot_counterfeit in mr_counterfeit:
@@ -1419,47 +1493,48 @@ def counterfeit_sample(mr, utt, target_dataset=None, slots_to_replace=None):
 
                 if slot_orig == 'familyfriendly':
                     if slot_counterfeit == 'acceptscreditcards':
-                        value_counterfeit = 'credit card'
+                        phrase_counterfeit = 'credit card'
                     elif slot_counterfeit == 'dogsallowed':
-                        value_counterfeit = 'dog'
+                        phrase_counterfeit = 'dog'
                     elif slot_counterfeit == 'hasinternet':
-                        value_counterfeit = 'internet'
+                        phrase_counterfeit = 'internet'
                     else:
-                        value_counterfeit = ''
+                        phrase_counterfeit = ''
 
                     for w in ['families', 'children', 'kids']:
                         utt_counterfeit = re.sub(r'\b{}\b'.format(w),
-                                                 value_counterfeit + 's' if value_counterfeit != 'internet' else value_counterfeit,
+                                                 phrase_counterfeit + 's' if phrase_counterfeit != 'internet' else phrase_counterfeit,
                                                  utt)
                         if utt_counterfeit != utt:
                             break
                     if utt_counterfeit == utt:
                         for w in ['family', 'child', 'kid']:
-                            utt_counterfeit = re.sub(r'\b{}\b'.format(w), value_counterfeit, utt)
-                            if utt_counterfeit != utt:
+                            utt_counterfeit_sub = re.sub(r'\b{}\b'.format(w), phrase_counterfeit, utt_counterfeit)
+                            if utt_counterfeit_sub != utt_counterfeit:
+                                utt_counterfeit = utt_counterfeit_sub
                                 break
                 elif slot_orig == 'customerrating' or slot_orig == 'food':
                     if slot_counterfeit == 'address':
-                        value_counterfeit = 'address'
+                        phrase_counterfeit = 'address'
                     elif slot_counterfeit == 'phone':
-                        value_counterfeit = 'phone number'
+                        phrase_counterfeit = 'phone number'
                     elif slot_counterfeit == 'postcode':
-                        value_counterfeit = 'postcode'
+                        phrase_counterfeit = 'postcode'
                     else:
-                        value_counterfeit = ''
+                        phrase_counterfeit = ''
 
                     if slot_orig == 'customerrating':
                         for w in ['customer rating of', 'customer ratings', 'customer rating', 'ratings', 'rating']:
-                            utt_counterfeit = re.sub(r'\b{}\b'.format(w), value_counterfeit, utt)
-                            if utt_counterfeit != utt:
+                            utt_counterfeit_sub = re.sub(r'\b{}\b'.format(w), phrase_counterfeit, utt_counterfeit)
+                            if utt_counterfeit_sub != utt_counterfeit:
+                                utt_counterfeit = utt_counterfeit_sub
                                 break
                     elif slot_orig == 'food':
-                        utt_counterfeit = re.sub(r'\b{}\b'.format('food'), value_counterfeit, utt)
+                        utt_counterfeit = re.sub(r'\b{}\b'.format('food'), phrase_counterfeit, utt_counterfeit)
                 else:
                     raise AttributeError('provided domain does not exist')
 
-            mr_counterfeit[slot_counterfeit] = value_orig
-            utt = utt_counterfeit
+            mr_counterfeit[slot_counterfeit] = value_counterfeit
 
     return mr_counterfeit, utt_counterfeit
 
@@ -1639,6 +1714,37 @@ def verify_slot_order(dataset, filename):
                         slot, slot_idx, slots_ordered.index(slot)))
 
 
+def filter_samples_by_da_type_csv(dataset, filename, das_to_keep):
+    """Create a new CSV data file by filtering only those samples in the given dataset that contain an MR
+    with one of the desired DA types.
+    """
+
+    if not filename.lower().endswith('.csv'):
+        raise ValueError('Unexpected file type. Please provide a CSV file as input.')
+
+    data_filtered = []
+
+    # Read in the data
+    data_cont = init_test_data(os.path.join(config.DATA_DIR, dataset, filename))
+    mrs, utterances = data_cont['data']
+    _, _, slot_sep, val_sep, val_sep_end = data_cont['separators']
+
+    # Append the opening parenthesis to the DA names, so as to avoid matching DAs whose names have these as prefixes
+    das_to_keep = tuple(da + '(' for da in das_to_keep)
+
+    # Filter MRs with the desired DA types only
+    for mr, utt in zip(mrs, utterances):
+        if mr.startswith(das_to_keep):
+            data_filtered.append([mr, utt])
+
+    # Save the filtered dataset to a new file
+    filename_out = os.path.splitext(filename)[0] + ' [filtered].csv'
+    pd.DataFrame(data_filtered).to_csv(os.path.join(config.DATA_DIR, dataset, filename_out),
+                                       header=['mr', 'ref'],
+                                       index=False,
+                                       encoding='utf8')
+
+
 def filter_samples_by_da_type_json(dataset, filename, das_to_keep):
     """Create a new JSON data file by filtering only those samples in the given dataset that contain an MR
     with one of the desired DA types.
@@ -1666,7 +1772,7 @@ def filter_samples_by_da_type_json(dataset, filename, das_to_keep):
             data_filtered.append(sample)
 
     # Save the filtered dataset to a new file
-    filename_out = ''.join(filename.split('.')[:-1]) + '_filtered.json'
+        filename_out = os.path.splitext(filename)[0] + ' [filtered].json'
     with io.open(os.path.join(config.DATA_DIR, dataset, filename_out), 'w', encoding='utf8') as f_dataset_filtered:
         f_dataset_filtered.write(comment_block)
         json.dump(data_filtered, f_dataset_filtered, indent=4, ensure_ascii=False)
@@ -1793,7 +1899,7 @@ def filter_samples_by_slot_count_json(dataset, filename, min_count=None, max_cou
         json.dump(data_filtered, f_dataset_filtered, indent=4, ensure_ascii=False)
 
 
-def counterfeit_dataset_from_e2e(filename, target_dataset, out_type='csv'):
+def counterfeit_dataset_from_e2e(filename, target_dataset, out_type='csv', slot_value_dict_path=None):
     """Creates a counterfeit target dataset from the E2E restaurant dataset by mapping the E2E slots onto similar
     slots in the target domain. Boolean slots are handled by heuristically replacing the corresponding mention
     in the reference utterance to reflect the slot from the target domain that replaced the original E2E one.
@@ -1813,6 +1919,12 @@ def counterfeit_dataset_from_e2e(filename, target_dataset, out_type='csv'):
     # Preprocess the utterances
     utterances = [preprocess_utterance(utt) for utt in utterances]
 
+    if slot_value_dict_path is not None:
+        with open(slot_value_dict_path, 'r', encoding='utf8') as f_slot_values:
+            slot_value_dict = json.load(f_slot_values)
+    else:
+        slot_value_dict = None
+
     for mr, utt in zip(mrs, utterances):
         mr_dict = OrderedDict()
 
@@ -1822,7 +1934,10 @@ def counterfeit_dataset_from_e2e(filename, target_dataset, out_type='csv'):
             mr_dict[slot] = value
 
         # Delexicalize the MR and the utterance
-        data_counterfeit.append(counterfeit_sample(mr_dict, utt, target_dataset=target_dataset, slots_to_replace=source_slots))
+        data_counterfeit.append(counterfeit_sample(mr_dict, utt,
+                                                   target_dataset=target_dataset,
+                                                   slots_to_replace=source_slots,
+                                                   slot_value_dict=slot_value_dict))
 
     if target_dataset in ['video_game']:
         for mr, utt in data_counterfeit:
@@ -1893,6 +2008,9 @@ def pool_slot_values(dataset, filenames):
 
     _, _, slot_sep, val_sep, val_sep_end = data_cont['separators']
 
+    # Preprocess the MRs
+    mrs = [preprocess_mr(mr, data_cont['separators']) for mr in mrs]
+
     for i, mr in enumerate(mrs):
         mr_dict = OrderedDict()
 
@@ -1907,14 +2025,15 @@ def pool_slot_values(dataset, filenames):
             if slots_to_pool is None or slot in slots_to_pool:
                 if slot not in slot_poss_values:
                     slot_poss_values[slot] = set()
-                slot_poss_values[slot].add(value)
+                if len(value) > 0:
+                    slot_poss_values[slot].add(value)
 
     # Convert the value sets to lists (and make thus the dictionary serializable into JSON)
     for slot in slot_poss_values.keys():
         slot_poss_values[slot] = sorted(list(slot_poss_values[slot]))
 
     # Store the dictionary to a file
-    with io.open(os.path.join(config.DATA_DIR, dataset, 'slot_values.json'), 'w', encoding='utf8') as f_slot_values:
+    with open(os.path.join(config.DATA_DIR, dataset, 'slot_values.json'), 'w', encoding='utf8') as f_slot_values:
         json.dump(slot_poss_values, f_slot_values, indent=4, sort_keys=True, ensure_ascii=False)
 
 
@@ -2071,18 +2190,23 @@ def main():
 
     # ----------
 
-    # das_to_keep = ['inform']
+    das_to_keep = ['inform']
+
+    filter_samples_by_da_type_csv('video_game', 'valid.csv', das_to_keep)
     # filter_samples_by_da_type_json('tv', 'train.json', das_to_keep)
-    # filter_samples_by_da_type_json('tv', 'valid.json', das_to_keep)
-    # filter_samples_by_da_type_json('tv', 'test.json', das_to_keep)
+
+    # ----------
 
     # filter_samples_by_slot_count_csv('rest_e2e', 'testset_e2e.csv', min_count=3, max_count=4)
     # filter_samples_by_slot_count_json('hotel', 'test_filtered.json', min_count=3, max_count=4)
 
     # ----------
 
+    # slot_value_dict_path = os.path.join(config.VIDEO_GAME_DATA_DIR, 'slot_values_train.json')
+
     # counterfeit_dataset_from_e2e('testset_e2e_min3_max4_slots.csv', 'hotel', format='json')
-    # counterfeit_dataset_from_e2e('trainset_e2e [denoised].csv', 'video_game', out_type='csv')
+    # counterfeit_dataset_from_e2e('trainset_e2e [denoised].csv', 'video_game', out_type='csv',
+    #                              slot_value_dict_path=slot_value_dict_path)
 
     # ----------
 
@@ -2094,13 +2218,12 @@ def main():
     # ----------
 
     # pool_slot_values('rest_e2e', ['trainset_e2e.csv', 'devset_e2e.csv'])
-    # pool_slot_values('tv', ['train.json', 'valid.json'])
     # pool_slot_values('laptop', ['train.json', 'valid.json'])
-    # pool_slot_values('hotel', ['train.json', 'valid.json'])
+    # pool_slot_values('video_game', ['train.csv', 'valid.csv'])
 
     # ----------
 
-    generate_joint_vocab()
+    # generate_joint_vocab()
 
     # ----------
 

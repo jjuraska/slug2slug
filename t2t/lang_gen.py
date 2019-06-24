@@ -19,8 +19,36 @@ def transformer_lang_gen():
     hparams.num_heads = 8
     hparams.attention_dropout = 0.2
     hparams.layer_prepostprocess_dropout = 0.2
-    hparams.learning_rate = 0.1                    # default: 0.1
-    # hparams.batch_size = 64                         # default: 4096
+
+    # Learning rate schedule with an exponential decay for Adam
+
+    # hparams.learning_rate_schedule = "constant*linear_warmup*exp_decay"
+    # hparams.learning_rate_constant = 0.002
+    # hparams.learning_rate_warmup_steps = 200
+    # hparams.learning_rate_decay_rate = 0.5
+    # hparams.learning_rate_decay_steps = 500
+
+    # Learning rate schedule with a cosine decay for Adam (E2E dataset)
+
+    # hparams.learning_rate_schedule = (
+    #     "constant*linear_warmup*cosdecay")
+    # hparams.learning_rate_constant = 2e-3
+    # hparams.learning_rate_warmup_steps = 1000
+    # hparams.learning_rate_decay_steps = 20000
+
+    # Learning rate schedule with a cosine decay for Adam (Video Games dataset)
+
+    # hparams.learning_rate_schedule = (
+    #     "constant*cosdecay")
+    # hparams.learning_rate_constant = 5e-4
+    # hparams.learning_rate_warmup_steps = 200
+    # hparams.learning_rate_decay_steps = 5000
+
+    # Beam search parameters
+    # hparams.sampling_method = "random"
+    # hparams.sampling_temperature = 1.8
+
+    # hparams.batch_size = 1024                       # default: 4096
     hparams.max_input_seq_length = 50
     hparams.max_target_seq_length = 60
     # hparams.min_length_bucket = 10                  # default: 0
@@ -30,18 +58,37 @@ def transformer_lang_gen():
 
 
 @registry.register_hparams
+def transformer_lang_gen_finetune():
+    hparams = transformer_lang_gen()
+
+    # hparams.learning_rate_schedule = (
+    #     "constant*exp_decay")
+    # hparams.learning_rate_constant = 5e-4
+    # hparams.learning_rate_warmup_steps = 500
+    # hparams.learning_rate_decay_rate = 0.5
+    # hparams.learning_rate_decay_steps = 500
+
+    hparams.learning_rate_schedule = (
+        "constant*cosdecay")
+    hparams.learning_rate_constant = 5e-4
+    hparams.learning_rate_warmup_steps = 0
+    hparams.learning_rate_decay_steps = 5000
+
+    return hparams
+
+
+@registry.register_hparams
 def lstm_lang_gen():
-    hparams = lstm.lstm_bahdanau_attention()
+    hparams = lstm.lstm_luong_attention()
 
     hparams.num_hidden_layers = 2
     hparams.hidden_size = 256
-    hparams.attention_layer_size = 256
-    hparams.attention_dropout = 0.8
-    hparams.layer_prepostprocess_dropout = 0.8
-    hparams.learning_rate = 0.05
-    # hparams.batch_size = 64             # default: 4096
-    # hparams.max_input_seq_length = 50
-    # hparams.max_target_seq_length = 60
+    # hparams.attention_dropout = 0.2
+    # hparams.layer_prepostprocess_dropout = 0.2
+    # hparams.learning_rate = 0.05
+    # hparams.batch_size = 64             # default: 1024
+    hparams.max_input_seq_length = 50
+    hparams.max_target_seq_length = 60
     # hparams.min_length_bucket = 10      # default: 0
 
     return hparams

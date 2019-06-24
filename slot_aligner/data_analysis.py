@@ -39,10 +39,10 @@ def align_slots(dataset, filename):
 
     new_df = pd.DataFrame(columns=['mr', 'ref', 'alignment'])
     new_df['mr'] = mrs_orig
-    new_df['ref'] = utterances
+    new_df['ref'] = utterances_orig
     new_df['alignment'] = alignment_strings
 
-    filename_out = ''.join(filename.split('.')[:-1]) + '_aligned.csv'
+    filename_out = os.path.splitext(filename)[0] + ' [aligned].csv'
     new_df.to_csv(os.path.join(config.DATA_DIR, dataset, filename_out), index=False, encoding='utf8')
 
 
@@ -104,7 +104,7 @@ def score_slot_realizations(path, filename):
     new_df['errors'] = errors
     new_df['incorrect slots'] = incorrect_slots
 
-    filename_out = os.path.splitext(filename)[0] + ' (errors).csv'
+    filename_out = os.path.splitext(filename)[0] + ' [errors].csv'
     new_df.to_csv(os.path.join(path, filename_out), index=False, encoding='utf8')
 
 
@@ -349,12 +349,16 @@ def analyze_contrast_relations(dataset, filename):
 
 if __name__ == '__main__':
     # align_slots('rest_e2e', 'devset_e2e.csv')
-    # align_slots('video_game', 'test.csv')
+    # align_slots('video_game', 'valid.csv')
 
-    # score_slot_realizations(os.path.join(config.EVAL_DIR, 'predictions video_game'),
-    #                         'predictions TRANS (19.8k) beam 10.csv')
+    # ----
+
+    # score_slot_realizations(config.E2E_DATA_DIR, 'devset_e2e.csv')
+    # score_slot_realizations(config.LAPTOP_DATA_DIR, 'test.json')
     score_slot_realizations(os.path.join(config.EVAL_DIR, 'predictions rest_e2e (new)'),
-                            'predictions TRANS utt. split (20k) beam 10.csv')
+                            'predictions RNN utt. split (11.4k) beam 10, no reranking.csv')
+
+    # ----
 
     # score_emphasis('predictions-rest_e2e_stylistic_selection/devset', 'predictions RNN (4+4) augm emph (reference).csv')
 
